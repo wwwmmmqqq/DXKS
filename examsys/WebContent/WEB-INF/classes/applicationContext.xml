@@ -52,7 +52,6 @@
 	 		<tx:method name="find*" read-only="true"/>
 	 	</tx:attributes>
 	 </tx:advice>
-	 
-	 <!-- (3) 配置事务的属性-->
+	 <!-- s(3) 配置事务的属性-->
 	 
 </beans>
