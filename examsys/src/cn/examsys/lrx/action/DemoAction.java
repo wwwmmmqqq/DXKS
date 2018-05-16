@@ -4,6 +4,4 @@ import cn.examsys.common.CommonAction;
 
 public class DemoAction extends CommonAction {
 	
-	
-	
 }

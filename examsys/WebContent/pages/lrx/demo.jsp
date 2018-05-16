@@ -10,16 +10,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <title>Demo</title>
     
-    <!-- 公共的 JQuery 引用  = 上级目录的上级目录的js目录-->
-    <link rel="stylesheet" type="text/css" href="../../js/jquery-3.2.1.min.js" />
+    <!-- 注释：所有的JQuery文件引用都用这句-->
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js" ></script>
   </head>
   
   <body>
-  
 	  <div class="demo-box" style="width: 680px;margin: auto;">
 	  	
 	  </div>
-  
   </body>
   
 </html>
