@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>examsys</display-name>
+  
+  <!-- 配置spring:在启动tomcat服务器的时候，就需要实例化Spring容器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 自启动 -->
+	<!-- <listener>
+		<listener-class>cn.lrxzl.unclezhang.servlet.PreloadListener</listener-class>
+	</listener> -->
+	
+	<!--SSH ： Struts2 + Hibernate3.0 + Spring3.0 -->
+	<!-- 所有的请求均由 struts2 处理 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>cn.examsys.servlet.TheDoor</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 首页面配置 -->
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+		<welcome-file>/login.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500.html</location>
+	</error-page>
+	
+	<session-config>
+		<session-timeout>7200</session-timeout>
+	</session-config>
+	
+</web-app>
