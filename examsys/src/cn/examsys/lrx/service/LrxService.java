@@ -1,5 +1,5 @@
 package cn.examsys.lrx.service;
 
-public class LrxService {
+public interface LrxService {
 	
 }
