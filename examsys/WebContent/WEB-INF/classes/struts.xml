@@ -13,8 +13,9 @@
 	
 	<package name="user" namespace="/pages" extends ="struts-default">
 		<action name="LrxDemoAction" class="cn.examsys.lrx.action.DemoAction">
-			<result name="demo">lrx/demo.jsp</result>
+			<result name="demo">/pages/lrx/demo.jsp</result>
 		</action>
+		
 	</package>
 	
 	<package name="json" namespace="/pages" extends="json-default">
