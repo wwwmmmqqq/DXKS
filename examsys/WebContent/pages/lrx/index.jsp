@@ -8,7 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-  
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   
   <script type="text/javascript">
@@ -20,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  返回学生对象列表
 	 */
 	 
-	 $.post("../LrxAjaxAction!loadStuList", null, function(data) {
+	 $.post("LrxAjaxAction!loadStuList", null, function(data) {
 		  
 		  var result = eval("("+data+")");//解析返回的JSON数据
 		  
@@ -48,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div id='ajax-demo'></div>
   	
   	<!-- 调用接口 ，跳转页面，获取到数据 -->
-  	<a href="../LrxDemoAction!loadStuList">demoTest</a>
+  	<a href="LrxDemoAction!loadStuList">demoTest</a>
   	
   </body>
 </html>
