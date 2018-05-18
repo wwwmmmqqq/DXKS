@@ -14,11 +14,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript">
   
   $(document).ready(function() {
-	  
+	 
 	 /*
 	  这里调用了  ../LrxAjaxAction!loadStuList 接口
 	  返回学生对象列表
 	 */
+	 
 	 $.post("../LrxAjaxAction!loadStuList", null, function(data) {
 		  
 		  var result = eval("("+data+")");//解析返回的JSON数据
@@ -31,11 +32,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  var item = list[i];//第i个学生
 			  
 			  //对应数据库字段
-			  $("#ajax-demo").text( $("#ajax-demo").text() + item.studentName);
+			  $("#ajax-demo").html( $("#ajax-demo").html() + item.studentName + "<br>");
 			  
 		  }
 		  
-	  }, null);
+	  });
 	  
   });
   
@@ -43,6 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  	
   	<div id='ajax-demo'></div>
   	
   	<!-- 调用接口 ，跳转页面，获取到数据 -->

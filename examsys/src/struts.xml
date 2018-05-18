@@ -13,7 +13,7 @@
 	
 	<package name="user" namespace="/pages" extends ="struts-default">
 		<action name="LrxDemoAction" class="cn.examsys.lrx.action.DemoAction">
-			<result name="demo">/lrx/demo.jsp</result>
+			<result name="demo">lrx/demo.jsp</result>
 		</action>
 	</package>
 	
@@ -24,7 +24,6 @@
 				<param name="contentType">text/html</param>
 			</result>
 		</action>
-		
 		
 	</package>
 	

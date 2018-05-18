@@ -9,15 +9,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
   
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   
   </head>
   
   <body>
   
   <s:iterator id="item" value="#request.stuLi" status="st">
-  	第 ${st.index} 条 ${item.studentID}
-  	${item.studentName} <br/>
+  	第 ${st.index} 条 ${item.studentID} ${item.studentName} <br/>
   </s:iterator>
   
   </body>
