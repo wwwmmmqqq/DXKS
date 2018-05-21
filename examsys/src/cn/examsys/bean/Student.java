@@ -2,6 +2,12 @@ package cn.examsys.bean;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="student")
 public class Student {
 	/*StudentID	Int
 	StudentName	Varchar(100)
@@ -14,17 +20,17 @@ public class Student {
 	StudentRegisterDate	date
 	ClassID	int
 	StudentNo	Varchar(20)*/
-	
+	@Id
 	int StudentID;
 	String StudentName;
 	String StudentSex;
 	String StudentEmail;
 	String StudentPhone;
 	String StudentPassword;
-	String StudentCardID;//学生身份证号码
+	String StudentCardID;
 	String StudentPhoto;
 	Date StudentRegisterDate;
-	int ClassID;//指向班级表
+	int ClassID;
 	String StudentNo;
 	
 	public int getStudentID() {

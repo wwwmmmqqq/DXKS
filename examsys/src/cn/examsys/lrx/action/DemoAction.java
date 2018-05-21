@@ -3,19 +3,22 @@ package cn.examsys.lrx.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.examsys.bean.Student;
 import cn.examsys.common.CommonAction;
 
-@ParentPackage("struts-default")
 @Namespace("/")
-/*@Controller("demoAction")  //创建对象
+@ParentPackage("struts-default")
+
+@Controller("demoAction")  //创建对象
 @Scope("prototype")    //多实例方式创建对象
-*/
+
 public class DemoAction extends CommonAction {
 	
 	List<Student> stuLi;
@@ -27,7 +30,6 @@ public class DemoAction extends CommonAction {
 	}
 	
 	Student stu;
-	
 	public Student getStu() {
 		return stu;
 	}
@@ -39,8 +41,9 @@ public class DemoAction extends CommonAction {
 		saveLogin(stu);
 		return aa;
 	}
-	
-	/*@Action(value="loadStuList")*/
+	@Action(value="/loadStuListPage",results={
+			@Result(name="demo",location="/pages/lrx/demo.jsp")
+	})
 	public String loadStuList() {
 		stuLi = new ArrayList<Student>();
 		for(int i=0;i<10;i++) {

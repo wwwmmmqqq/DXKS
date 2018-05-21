@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  返回学生对象列表
 	 */
 	 
-	 $.post("loadStuList", null, function(data) {
+	 $.post("loadStuList", {"stu.StudentID":66}, function(data) {
 		  var list = data.stuLi;//拿到学生列表
 		  
 		  //遍历学生
@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div id='ajax-demo'></div>
   	
   	<!-- 调用接口 ，跳转页面，获取到数据 -->
-  	<a href="LrxDemoAction!loadStuList">demoTest</a>
+  	<a href="loadStuListPage">DemoTest</a>
   	
   </body>
   

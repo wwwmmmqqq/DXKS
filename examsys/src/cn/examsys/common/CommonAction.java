@@ -19,17 +19,6 @@ public class CommonAction extends ActionSupport {
 	
 	protected String aa = "success";
 	
-	protected LrxService lrxservice;
-	protected XyService xyservice;
-	
-	public void setLrxservice(LrxService lrxservice) {
-		this.lrxservice = lrxservice;
-	}
-	public void setXyservice(XyService xyservice) {
-		this.xyservice = xyservice;
-	}
-	
-	
 	public <T> void saveLogin(T user) {
 		session.setAttribute("user", user);
 	}
@@ -38,7 +27,5 @@ public class CommonAction extends ActionSupport {
 	public <T> T getSessionUser() {
 		return (T) session.getAttribute("user");
 	}
-	
-	
 	
 }
