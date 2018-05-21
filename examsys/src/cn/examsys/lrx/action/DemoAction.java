@@ -3,9 +3,19 @@ package cn.examsys.lrx.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
 import cn.examsys.bean.Student;
 import cn.examsys.common.CommonAction;
 
+@ParentPackage("struts-default")
+@Namespace("/")
+/*@Controller("demoAction")  //创建对象
+@Scope("prototype")    //多实例方式创建对象
+*/
 public class DemoAction extends CommonAction {
 	
 	List<Student> stuLi;

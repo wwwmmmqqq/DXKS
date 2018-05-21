@@ -19,11 +19,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  返回学生对象列表
 	 */
 	 
-	 $.post("LrxAjaxAction!loadStuList", null, function(data) {
-		  
-		  var result = eval("("+data+")");//解析返回的JSON数据
-		  
-		  var list = result.stuLi;//拿到学生列表
+	 $.post("loadStuList", null, function(data) {
+		  var list = data.stuLi;//拿到学生列表
 		  
 		  //遍历学生
 		  for(var i=0;i<list.length;i++) {
@@ -50,4 +47,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<a href="LrxDemoAction!loadStuList">demoTest</a>
   	
   </body>
+  
 </html>

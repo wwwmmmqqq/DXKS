@@ -3,22 +3,20 @@ package cn.examsys.lrx.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-/*import org.apache.struts2.convention.annotation.Action;
+
+import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.ParentPackage;*/
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
+import org.apache.struts2.convention.annotation.ParentPackage;
 
 import cn.examsys.bean.Student;
 import cn.examsys.common.CommonAction;
 
-/*@Namespace("/")
+@Namespace("/")
 @ParentPackage("json-default")
-//********Spring ×¢½â
+//********Spring ×¢ï¿½ï¿½
 //UserAction userAction=new UserAction();@Controller(value="userAction")
-@Controller("userAction")
+/*@Controller("AjaxAction")
 @Scope("prototype")*/
 public class AjaxAction extends CommonAction {
 	List<Student> stuLi;
@@ -39,31 +37,34 @@ public class AjaxAction extends CommonAction {
 		this.stu = stu;
 	}
 	
-	/*@Action( //±íÊ¾ÇëÇóµÄAction¼°´¦Àí·½·¨  
-            value="login",  //±íÊ¾actionµÄÇëÇóÃû³Æ  
-            results={  //±íÊ¾½á¹ûÌø×ª  
+	/*@Action( //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Actionï¿½ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½  
+            value="login",  //ï¿½ï¿½Ê¾actionï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+            results={  //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½×ª  
                     @Result(name="success",location="/success.jsp",type="redirect"),  
                     @Result(name="login",location="/login.jsp",type="redirect"),  
                     @Result(name="error",location="/error.jsp",type="redirect")  
             },  
-            interceptorRefs={ //±íÊ¾À¹½ØÆ÷ÒýÓÃ  
+            interceptorRefs={ //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
                     @InterceptorRef("defaultStack"),  
                     @InterceptorRef("timer")  
             },  
-            exceptionMappings={  //Ó³ÉäÓ³ÉäÉùÃ÷  
+            exceptionMappings={  //Ó³ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
                     @ExceptionMapping(exception="java.lang.Exception",result="error")  
             }  
     )  */
 	//@Result(name = "error", type = "json")
 	
 	
-	/*@Action(value="login")*/
+	@Action(value="/login")
 	public String login() {
+		System.out.println("login");
 		saveLogin(stu);
 		return aa;
 	}
 	
-	/*@Action(value="loadStuList")*/
+	@Action(value="/loadStuList"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
 	public String loadStuList() {
 		stuLi = new ArrayList<Student>();
 		for(int i=0;i<10;i++) {
@@ -75,6 +76,5 @@ public class AjaxAction extends CommonAction {
 		System.out.println(stuLi.size());
 		return aa;
 	}
-	
 	
 }

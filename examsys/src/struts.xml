@@ -16,6 +16,8 @@
 			<result name="demo">/pages/lrx/demo.jsp</result>
 		</action>
 		
+		
+		
 	</package>
 	
 	<package name="json" namespace="/" extends="json-default">
