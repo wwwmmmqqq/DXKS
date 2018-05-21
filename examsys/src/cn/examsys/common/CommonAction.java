@@ -12,7 +12,7 @@ import cn.examsys.bean.Student;
 import cn.examsys.lrx.service.LrxService;
 import cn.examsys.xy.service.XyService;
 
-public class CommonAction extends ActionSupport {
+public abstract class CommonAction extends ActionSupport {
 	protected HttpSession session = ServletActionContext.getRequest().getSession();
 	protected HttpServletRequest request = ServletActionContext.getRequest();
 	protected HttpServletResponse response = ServletActionContext.getResponse();
@@ -27,5 +27,11 @@ public class CommonAction extends ActionSupport {
 	public <T> T getSessionUser() {
 		return (T) session.getAttribute("user");
 	}
+	
+	protected String result = "success";
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public abstract String getResult();
 	
 }

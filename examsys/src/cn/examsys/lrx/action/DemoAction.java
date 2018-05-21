@@ -55,5 +55,9 @@ public class DemoAction extends CommonAction {
 		System.out.println(stuLi.size());
 		return "demo";
 	}
+	@Override
+	public String getResult() {
+		return result;
+	}
 	
 }

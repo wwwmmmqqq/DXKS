@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import javax.annotation.Resource;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -83,8 +84,14 @@ public class AjaxAction extends CommonAction {
 			stu.setStudentName("studentName" + i);
 			stuLi.add(stu);
 		}
+		
 		System.out.println(stuLi.size());
 		return aa;
+	}
+	
+	@Override
+	public String getResult() {
+		return result;
 	}
 	
 }
