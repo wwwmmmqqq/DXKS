@@ -4,15 +4,15 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<constant name="struts.i18n.encoding" value="UTF-8"/>
- 	<!-- struts2 是否允许url 动态访问方法 ,默认值是true -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- struts2 是否允许url 动态访问方法 ,默认值是true -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
-	
+
 	<!-- struts2的action对象 也来源于spring的IoC容器 -->
 	<constant name="struts.objectFactory" value="spring"></constant>
-	
-	<package name="user" namespace="/pages" extends ="struts-default"></package>
-	
+
+	<package name="user" namespace="/pages" extends="struts-default"></package>
+
 	<package name="json" namespace="/pages" extends="json-default">
 		<action name="AjaxAction" class="AjaxActionBean">
 			<result name="*" type="json"> <!-- class="org.apache.struts2.json.JSONResult" -->
@@ -21,5 +21,5 @@
 			</result>
 		</action>
 	</package>
-	
+
 </struts>
