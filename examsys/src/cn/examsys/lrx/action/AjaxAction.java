@@ -60,7 +60,7 @@ public class AjaxAction extends CommonAction {
             },  
             exceptionMappings={  //ӳ��ӳ������  
                     @ExceptionMapping(exception="java.lang.Exception",result="error")  
-            }  
+            }
     )  */
 	
 	@Action(value="/login")

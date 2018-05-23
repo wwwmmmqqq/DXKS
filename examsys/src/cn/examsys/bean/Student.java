@@ -3,8 +3,12 @@ package cn.examsys.bean;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Generated;
 
 @Entity
 @Table(name="student")
@@ -21,6 +25,7 @@ public class Student {
 	ClassID	int
 	StudentNo	Varchar(20)*/
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int StudentID;
 	String StudentName;
 	String StudentSex;

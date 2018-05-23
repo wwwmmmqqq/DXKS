@@ -67,11 +67,11 @@
 	
 	<!-- 配置HibernateTemplate:此对象封闭了session -->
 	<!-- 
-			bean标签的作用是：创建对象  
-			HibernateTemplate hibernateTemplate = new HibernateTemplate();
-			hibernateTemplate.setSessionFactory(sessionFactory);
-			...
-		 -->
+		bean标签的作用是：创建对象  
+		HibernateTemplate hibernateTemplate = new HibernateTemplate();
+		hibernateTemplate.setSessionFactory(sessionFactory);
+		...
+	 -->
 	<bean id="hibernateTemplate" 
 				class="org.springframework.orm.hibernate5.HibernateTemplate">
 		<!-- 注入SessionFactory -->
@@ -85,8 +85,7 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>	
 	
-		<!-- 开启spring对注解事务的支持 -->
+	<!-- 开启spring对注解事务的支持 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>	
-	
 	
 </beans>

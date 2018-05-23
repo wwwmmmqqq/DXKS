@@ -19,10 +19,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  返回学生对象列表
 	 */
 	 
-	 $.post("loadStuList", {"stu.StudentID":66}, function(data) {
+	 $.post("loadStuList", { "stu.StudentID":66 }, function(data) {
 		 
 		  var list = data.stuLi;//拿到学生列表
+		  
 		  alert(data.result);
+		  
 		  //遍历学生
 		  for(var i=0;i<list.length;i++) {
 			  
