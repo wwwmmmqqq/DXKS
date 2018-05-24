@@ -1,5 +1,5 @@
 package cn.examsys.xy.service;
 
-public class XyService {
-
+public interface XyService {
+	
 }
