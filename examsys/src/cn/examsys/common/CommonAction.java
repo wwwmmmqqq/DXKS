@@ -32,6 +32,7 @@ public abstract class CommonAction extends ActionSupport {
 	public void setResult(String result) {
 		this.result = result;
 	}
+	
 	public abstract String getResult();
 	
 }

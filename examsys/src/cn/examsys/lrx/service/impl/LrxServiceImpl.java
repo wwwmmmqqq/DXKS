@@ -11,13 +11,12 @@ import cn.examsys.lrx.service.LrxService;
 @Transactional
 public class LrxServiceImpl implements LrxService {
 	@Autowired
-	LrxDao lrxDao;
+	LrxDao dao;
 	
 	@Override
 	public void testService() {
-		System.out.println("Service层被调用, lrxDao = " + lrxDao);
-		lrxDao.testDao();
+		System.out.println("Service层被调用, lrxDao = " + dao);
+		dao.testDao();
 	}
-	
-	
+
 }
