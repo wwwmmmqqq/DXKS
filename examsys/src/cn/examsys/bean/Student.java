@@ -13,17 +13,6 @@ import org.hibernate.annotations.Generated;
 @Entity
 @Table(name="student")
 public class Student {
-	/*StudentID	Int
-	StudentName	Varchar(100)
-	StudentSex	Char(1)
-	StudentEmail	Varchar(50)
-	StudentPhone	Char(11)
-	StudentPassword	Varchar(20)
-	StudentCardID	Char(18)
-	StudentPhoto	Varchar(100)
-	StudentRegisterDate	date
-	ClassID	int
-	StudentNo	Varchar(20)*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int StudentID;
