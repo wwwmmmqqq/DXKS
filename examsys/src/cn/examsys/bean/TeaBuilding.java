@@ -1,6 +1,6 @@
 package cn.examsys.bean;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Generated;
 
 @Entity
-@Table(name="TeaBuilding")
+@Table(name="teabuilding")
 public class TeaBuilding {
 	/*TeaBuildingID	int
 	UniversityID	int
