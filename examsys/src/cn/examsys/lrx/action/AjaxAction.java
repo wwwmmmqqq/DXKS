@@ -3,15 +3,6 @@ package cn.examsys.lrx.action;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
-
-
-
-import javax.annotation.Resource;
-
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Namespace;
