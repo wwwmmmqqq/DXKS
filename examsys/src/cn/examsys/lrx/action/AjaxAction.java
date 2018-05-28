@@ -3,15 +3,6 @@ package cn.examsys.lrx.action;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
-
-
-
-import javax.annotation.Resource;
-
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -80,8 +71,6 @@ public class AjaxAction extends CommonAction {
 		stuLi = new ArrayList<Student>();
 		for(int i=0;i<10;i++) {
 			Student stu = new Student();
-			stu.setStudentID(1000 + i);
-			stu.setStudentName("studentName" + i);
 			stuLi.add(stu);
 		}
 		

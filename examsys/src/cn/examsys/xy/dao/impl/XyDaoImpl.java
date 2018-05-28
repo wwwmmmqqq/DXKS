@@ -1,9 +1,8 @@
 package cn.examsys.xy.dao.impl;
 
-import org.springframework.orm.hibernate5.HibernateTemplate;
-
+import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.xy.dao.XyDao;
 
-public class XyDaoImpl implements XyDao {
+public class XyDaoImpl extends DaoAdapter implements XyDao {
 	
 }

@@ -1,6 +1,6 @@
 package cn.examsys.bean;
 
-public class Admin {
+public class Teacher {
 	
 	String userId;
 	
@@ -8,10 +8,6 @@ public class Admin {
 	
 	String name;
 	
-	String sex;
-	
-	int collegeRef;
-	
-	String collegeName;
+	String collegeRef;//属于哪个大学
 	
 }

@@ -3,7 +3,7 @@ package cn.examsys.adapters;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDaoAdapter extends IDao {
+public interface IDaoAdapter {
 	
 	/**
 	 * 通过HQL和SQL查询
@@ -44,15 +44,6 @@ public interface IDaoAdapter extends IDao {
 	public void updateBySql(String sql) throws Exception;
 	
 	/**
-	 * 更新实体的某些字段
-	 * @param claz 类
-	 * @param fields 字段
-	 * @param values 值
-	 * @throws Exception
-	 */
-	public void updateFields(Class<?> claz, String fields[], Object values[]) throws Exception;
-	
-	/**
 	 * 保存实体
 	 * @param entity
 	 * @return
@@ -60,6 +51,5 @@ public interface IDaoAdapter extends IDao {
 	public Serializable saveEntity(Object entity) throws Exception;
 	public void deleteEntity(Object entity) throws Exception;
 	public void updateEntity(Object entity) throws Exception;
-	
 	
 }
