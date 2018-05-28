@@ -1,103 +1,85 @@
 package cn.examsys.bean;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
-@Table(name="student")
+@Table(name="stu_tb")
 public class Student {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int StudentID;
-	String StudentName;
-	String StudentSex;
-	String StudentEmail;
-	String StudentPhone;
-	String StudentPassword;
-	String StudentCardID;
-	String StudentPhoto;
-	Date StudentRegisterDate;
-	int ClassID;
-	String StudentNo;
 	
-	public int getStudentID() {
-		return StudentID;
+	@Id
+	@GenericGenerator(name="userId",strategy = "assigned")
+	/*@Id
+	@GeneratedValue(name="userId",strategy=GenerationType.IDENTITY)*/
+	
+	String userId;//学号
+	String psw;
+	String name;
+	String sex;
+	String idCard;//身份证
+	String headImg;//头像
+	String time;//注册时间
+	String collegeRef;//属于哪个大学
+	
+	public String getUserId() {
+		return userId;
 	}
-	public void setStudentID(int studentID) {
-		StudentID = studentID;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public String getStudentName() {
-		return StudentName;
+	public String getPsw() {
+		return psw;
 	}
-	public void setStudentName(String studentName) {
-		StudentName = studentName;
+	public void setPsw(String psw) {
+		this.psw = psw;
 	}
-	public String getStudentSex() {
-		return StudentSex;
+	public String getName() {
+		return name;
 	}
-	public void setStudentSex(String studentSex) {
-		StudentSex = studentSex;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getStudentEmail() {
-		return StudentEmail;
+	public String getSex() {
+		return sex;
 	}
-	public void setStudentEmail(String studentEmail) {
-		StudentEmail = studentEmail;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
-	public String getStudentPhone() {
-		return StudentPhone;
+	public String getIdCard() {
+		return idCard;
 	}
-	public void setStudentPhone(String studentPhone) {
-		StudentPhone = studentPhone;
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
 	}
-	public String getStudentPassword() {
-		return StudentPassword;
+	public String getHeadImg() {
+		return headImg;
 	}
-	public void setStudentPassword(String studentPassword) {
-		StudentPassword = studentPassword;
+	public void setHeadImg(String headImg) {
+		this.headImg = headImg;
 	}
-	public String getStudentCardID() {
-		return StudentCardID;
+	public String getTime() {
+		return time;
 	}
-	public void setStudentCardID(String studentCardID) {
-		StudentCardID = studentCardID;
+	public void setTime(String time) {
+		this.time = time;
 	}
-	public String getStudentPhoto() {
-		return StudentPhoto;
+	public String getCollegeRef() {
+		return collegeRef;
 	}
-	public void setStudentPhoto(String studentPhoto) {
-		StudentPhoto = studentPhoto;
-	}
-	public Date getStudentRegisterDate() {
-		return StudentRegisterDate;
-	}
-	public void setStudentRegisterDate(Date studentRegisterDate) {
-		StudentRegisterDate = studentRegisterDate;
-	}
-	public int getClassID() {
-		return ClassID;
-	}
-	public void setClassID(int classID) {
-		ClassID = classID;
-	}
-	public String getStudentNo() {
-		return StudentNo;
-	}
-	public void setStudentNo(String studentNo) {
-		StudentNo = studentNo;
+	public void setCollegeRef(String collegeRef) {
+		this.collegeRef = collegeRef;
 	}
 	@Override
 	public String toString() {
-		return "Student [StudentID=" + StudentID + ", StudentName=" + StudentName + ", StudentSex=" + StudentSex
-				+ ", StudentEmail=" + StudentEmail + ", StudentPhone=" + StudentPhone + ", StudentPassword="
-				+ StudentPassword + ", StudentCardID=" + StudentCardID + ", StudentPhoto=" + StudentPhoto
-				+ ", StudentRegisterDate=" + StudentRegisterDate + ", ClassID=" + ClassID + ", StudentNo=" + StudentNo
-				+ "]";
+		return "Student [userId=" + userId + ", psw=" + psw + ", name=" + name
+				+ ", sex=" + sex + ", idCard=" + idCard + ", headImg="
+				+ headImg + ", regTime=" + time + ", collegeRef="
+				+ collegeRef + "]";
 	}
 	
 }

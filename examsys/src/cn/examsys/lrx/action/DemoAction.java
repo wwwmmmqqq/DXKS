@@ -15,7 +15,6 @@ import cn.examsys.common.CommonAction;
 
 @Namespace("/")
 @ParentPackage("struts-default")
-
 @Controller("demoAction")  //创建对象
 @Scope("prototype")    //多实例方式创建对象
 
@@ -48,8 +47,6 @@ public class DemoAction extends CommonAction {
 		stuLi = new ArrayList<Student>();
 		for(int i=0;i<10;i++) {
 			Student stu = new Student();
-			stu.setStudentID(1000 + i);
-			stu.setStudentName("studentName" + i);
 			stuLi.add(stu);
 		}
 		System.out.println(stuLi.size());
