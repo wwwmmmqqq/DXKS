@@ -15,12 +15,13 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
  */
 
 public class DaoAdapter implements IDaoAdapter {
+	public static int COUNT_PER_PAGE = 10;
 	
 	@Autowired
 	protected HibernateTemplate hibernateTemplate;
 	
 	
-	public <T> List<T> findByHql(String hql, Object[] vals, int from_id, int len) throws Exception {
+	public <T> List<T> findByHql(String hql, Object[] vals, int page) throws Exception {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
 		org.hibernate.Transaction tx = session.beginTransaction(); 
 		
@@ -35,9 +36,9 @@ public class DaoAdapter implements IDaoAdapter {
 			}
 		}
 		
-		if(len>0) {
-			query.setFirstResult(from_id);
-			query.setMaxResults(len);
+		if(page>0) {
+			query.setFirstResult((page-1)*COUNT_PER_PAGE);
+			query.setMaxResults(COUNT_PER_PAGE);
 		}
 		
 		try {
@@ -51,7 +52,7 @@ public class DaoAdapter implements IDaoAdapter {
 		}
 		
 	}
-	public <T> List<T> findBySql(String sql, Object[] vals, int from_id, int len) throws Exception {
+	public <T> List<T> findBySql(String sql, Object[] vals, int page) throws Exception {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
 		org.hibernate.Transaction tx = session.beginTransaction(); 
 		
@@ -66,9 +67,9 @@ public class DaoAdapter implements IDaoAdapter {
 			}
 		}
 		
-		if(len>0) {
-			query.setFirstResult(from_id);
-			query.setMaxResults(len-1);
+		if(page>0) {
+			query.setFirstResult((page-1)*COUNT_PER_PAGE);
+			query.setMaxResults(COUNT_PER_PAGE);
 		}
 		
 		try {
@@ -83,46 +84,46 @@ public class DaoAdapter implements IDaoAdapter {
 		}
 		
 	}
-	public <T> List<T> findByHql(String hql, int from_id, int len) throws Exception {
-		return findByHql(hql, null, from_id, len);
+	public <T> List<T> findByHql(String hql, int page) throws Exception {
+		return findByHql(hql, null, page);
 	}
-	public <T> List<T> findBySql(String sql, int from_id, int len) throws Exception {
-		return findBySql(sql, null, from_id, len);
+	public <T> List<T> findBySql(String sql, int page) throws Exception {
+		return findBySql(sql, null, page);
 	}
 	public <T> List<T> findByHql(String hql, Object[] vals) throws Exception {
-		return findByHql(hql, vals, 0, 0);
+		return findByHql(hql, vals, 0);
 	}
 	public <T> List<T> findBySql(String sql, Object[] vals) throws Exception {
-		return findBySql(sql, vals, 0, 0);
+		return findBySql(sql, vals, 0);
 	}
 	public <T> List<T> findByHql(String hql) throws Exception {
-		return findByHql(hql, null, 0, 0);
+		return findByHql(hql, null, 0);
 	}
 	public <T> List<T> findBySql(String sql) throws Exception {
-		return findBySql(sql, null, 0, 0);
+		return findBySql(sql, null, 0);
 	}
 	
 	
 	public <T> T findOneByHql(String hql, Object[] vals) throws Exception {
-		List<T> li = findByHql(hql, vals, 0, 1);
+		List<T> li = findByHql(hql, vals, 0);
 		if(li.size()>0)
 			return li.get(0);
 		return null;
 	}
 	public <T> T findOneBySql(String sql, Object[] vals) throws Exception {
-		List<T> li = findBySql(sql, vals, 0, 1);
+		List<T> li = findBySql(sql, vals, 0);
 		if(li.size()>0)
 			return li.get(0);
 		return null;
 	}
 	public <T> T findOneByHql(String hql) throws Exception {
-		List<T> li = findByHql(hql, null, 0, 1);
+		List<T> li = findByHql(hql, null, 0);
 		if(li.size()>0)
 			return li.get(0);
 		return null;
 	}
 	public <T> T findOneBySql(String sql) throws Exception {
-		List<T> li = findBySql(sql, null, 0, 1);
+		List<T> li = findBySql(sql, null, 0);
 		if(li.size()>0)
 			return li.get(0);
 		return null;

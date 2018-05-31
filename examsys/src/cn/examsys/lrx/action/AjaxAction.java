@@ -21,6 +21,11 @@ import cn.examsys.lrx.service.LrxService;
 
 public class AjaxAction extends CommonAction {
 	
+	int page;
+	public void setPage(int page) {
+		this.page = page;
+	}
+	
 	@Autowired
 	protected LrxService lrxService;
 	
@@ -43,22 +48,23 @@ public class AjaxAction extends CommonAction {
 	
 	@Action(value="/loadStuList",results={@Result(type="json")})
 	public String loadStuList() {
+		
 		System.out.println("Action层被调用, stu = " + stu);
 		
-		lrxService.testService();//调用Service层
+		System.out.println("page = " + page);
 		
-		list = lrxService.loadStuList();
+		//lrxService.testService();//调用Service层
+		
+		list = lrxService.loadStuList(page);
 		
 		return aa;
 	}
 	
 	@Action(value="/loadStuListPageCount", results={@Result(type="json")})
 	public String loadStuListPageCount() {
-		setResult(10 + "");
+		setResult(lrxService.loadStuListPage() + "");
 		return aa;
 	}
-	
-	
 	
 	@Override
 	public String getResult() {

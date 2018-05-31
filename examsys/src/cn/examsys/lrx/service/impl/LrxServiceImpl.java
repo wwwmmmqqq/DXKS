@@ -1,6 +1,8 @@
 package cn.examsys.lrx.service.impl;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,13 @@ public class LrxServiceImpl implements LrxService {
 			e.printStackTrace();
 		}
 		
+		try {
+			List<String> li1 = daoAdapter.findBySql("select name from stu_tb", 1);
+			System.out.println(Arrays.toString(li1.toArray()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
@@ -54,18 +63,24 @@ public class LrxServiceImpl implements LrxService {
 	}
 
 	@Override
-	public List<Student> loadStuList() {
-		List<Student> li = new ArrayList<>();
-		for(int i=0;i<10;i++) {
-			Student stu = new Student();
-			try {
-				BeanAutoFit.autoFit(stu);
-				li.add(stu);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+	public List<Student> loadStuList(int page) {
+		try {
+			return daoAdapter.findByHql("from Student", page);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-		return li;
 	}
-
+	
+	@Override
+	public int loadStuListPage() {
+		try {
+			BigInteger bi = daoAdapter.findOneBySql("select count(*) from stu_tb");
+			return (bi.intValue() / DaoAdapter.COUNT_PER_PAGE) + 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
 }

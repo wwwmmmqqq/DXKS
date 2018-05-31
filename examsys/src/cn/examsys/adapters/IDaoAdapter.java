@@ -12,10 +12,10 @@ public interface IDaoAdapter {
 	 * @param len 查询范围的长度
 	 * @return 返回一个泛型List
 	 */
-	public <T> List<T> findByHql(String hql,Object vals[],int from_id,int len) throws Exception;
-	public <T> List<T> findBySql(String sql,Object vals[],int from_id,int len) throws Exception;
-	public <T> List<T> findByHql(String hql,int from_id,int len) throws Exception;
-	public <T> List<T> findBySql(String sql,int from_id,int len) throws Exception;
+	public <T> List<T> findByHql(String hql,Object vals[],int page) throws Exception;
+	public <T> List<T> findBySql(String sql,Object vals[],int page) throws Exception;
+	public <T> List<T> findByHql(String hql,int page) throws Exception;
+	public <T> List<T> findBySql(String sql,int page) throws Exception;
 	public <T> List<T> findByHql(String hql,Object vals[]) throws Exception;
 	public <T> List<T> findBySql(String sql,Object vals[]) throws Exception;
 	public <T> List<T> findByHql(String hql) throws Exception;

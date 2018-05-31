@@ -12,6 +12,8 @@ public interface LrxService {
 
 	Student loadStudent(int sid);
 
-	List<?> loadStuList();
+	List<Student> loadStuList(int page);
+
+	int loadStuListPage();
 	
 }
