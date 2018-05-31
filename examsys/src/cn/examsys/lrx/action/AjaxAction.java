@@ -1,6 +1,5 @@
 package cn.examsys.lrx.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -17,42 +16,28 @@ import cn.examsys.lrx.service.LrxService;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
-
 @Controller("ajaxAction")
 @Scope("prototype")
+
 public class AjaxAction extends CommonAction {
+	
+	int page;
+	public void setPage(int page) {
+		this.page = page;
+	}
 	
 	@Autowired
 	protected LrxService lrxService;
 	
-	List<Student> stuLi;
-	public void setStuLi(List<Student> stuLi) {
-		this.stuLi = stuLi;
-	}
-	public List<Student> getStuLi() {
-		return stuLi;
+	List<?> list;
+	public List<?> getList() {
+		return list;
 	}
 	
 	Student stu = new Student();
 	public Student getStu() {
 		return stu;
 	}
-	
-	/*@Action( 
-            value="login",  
-            results={ 
-                    @Result(name="success",location="/success.jsp",type="redirect"),  
-                    @Result(name="login",location="/login.jsp",type="redirect"),  
-                    @Result(name="error",location="/error.jsp",type="redirect")  
-            },  
-            interceptorRefs={ //��ʾ����������  
-                    @InterceptorRef("defaultStack"),  
-                    @InterceptorRef("timer")  
-            },  
-            exceptionMappings={  //ӳ��ӳ������  
-                    @ExceptionMapping(exception="java.lang.Exception",result="error")  
-            }
-    )  */
 	
 	@Action(value="/login")
 	public String login() {
@@ -61,23 +46,25 @@ public class AjaxAction extends CommonAction {
 		return aa;
 	}
 	
-	@Action(value="/loadStuList"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
+	@Action(value="/loadStuList",results={@Result(type="json")})
 	public String loadStuList() {
+		
 		System.out.println("Action层被调用, stu = " + stu);
-		lrxService.testService();//调用Service层
 		
-		stuLi = new ArrayList<Student>();
-		for(int i=0;i<10;i++) {
-			Student stu = new Student();
-			stuLi.add(stu);
-		}
+		System.out.println("page = " + page);
 		
-		System.out.println(stuLi.size());
+		//lrxService.testService();//调用Service层
+		
+		list = lrxService.loadStuList(page);
+		
 		return aa;
 	}
 	
+	@Action(value="/loadStuListPageCount", results={@Result(type="json")})
+	public String loadStuListPageCount() {
+		setResult(lrxService.loadStuListPage() + "");
+		return aa;
+	}
 	
 	@Override
 	public String getResult() {

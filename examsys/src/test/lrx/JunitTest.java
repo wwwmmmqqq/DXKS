@@ -1,5 +1,8 @@
 package test.lrx;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,23 +17,18 @@ import cn.examsys.lrx.service.LrxService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"}) 
 public class JunitTest extends AbstractJUnit4SpringContextTests {
-	
 	@Autowired
 	private LrxService service;
+	
 	/**
 	 * 数据库 随机添加一个学生数据
 	 */
+	
 	@Test
 	public void test1() {
 		System.out.println(service);
-		Student stu = new Student();
-		try {
-			BeanAutoFit.autoFit(stu);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(stu);
-		service.saveStudent(stu);
+		List<Student> li = service.loadStuList(4);
+		System.out.println(Arrays.toString(li.toArray()).replaceAll("]", "]\n"));
 	}
 	
 	@Test
