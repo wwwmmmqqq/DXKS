@@ -1,8 +1,6 @@
 package cn.examsys.bean;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,12 +9,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name="stu_tb")
 public class Student {
-	
 	@Id
-	@GenericGenerator(name="userId",strategy = "assigned")
-	/*@Id
-	@GeneratedValue(name="userId",strategy=GenerationType.IDENTITY)*/
-	
+	@GenericGenerator(name="userId", strategy="assigned")
 	String userId;//学号
 	String psw;
 	String name;

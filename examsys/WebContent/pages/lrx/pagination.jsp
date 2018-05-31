@@ -11,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   
   <script type="text/javascript">
+  
   $(document).ready(function() {
 	 
 	 /*
@@ -18,9 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  返回学生对象列表
 	 */
 	 
-	 $.post("loadStuList", { "stu.name":'asdf' }, function(data) {
-		  
-		  var list = data.list;//拿到学生列表
+	 $.post("loadStuList", { "stu.StudentID":66 }, function(data) {
+		 
+		  var list = data.stuLi;//拿到学生列表
 		  
 		  //遍历学生
 		  for(var i=0;i<list.length;i++) {
@@ -28,21 +29,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  var item = list[i];//第i个学生
 			  
 			  //对应数据库字段
-			  $("#container").html( $("#container").html() + item.name + "<br>");
+			  $("#container").html($("#container").html() + item.studentName + "<br>");
 			  
 		  }
 		  
 	  });
 	  
   });
+  
   </script>
   </head>
   
   <body>
   	
   	<div id='container'></div>
-  	
-  	<a href="pagination.jsp">分页demo</a>
   	
   </body>
   
