@@ -1,31 +1,25 @@
 package cn.examsys.bean;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-@Entity
-@Table(name="user_tb")
+
 public class User {
 	@Id
 	@GenericGenerator(name="userId", strategy="assigned")
-	//save() 之前必须指定一个主键，hibernate不会自动生成
 	String userId;
 	
 	String psw;
 	
-	String name;//用户真实姓名
+	String name;
 	
-	String sex;//用户性别
+	String sex;
 	
-	String phone;//用户联系方式
+	String phone;
 	
-	String email;//用户电子邮件
+	String email;
 	
-	int collegeRef;//指向学校
-	
-	int professionRef;//指向专业
+	int collegeRef;
 	
 	String permission;//权限
 	
