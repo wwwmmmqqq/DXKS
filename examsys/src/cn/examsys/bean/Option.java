@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="grade_tb")
+@Table(name="option_tb")
 public class Option {
 	@Id
 	@GenericGenerator(name="sid", strategy="identity")
