@@ -3,6 +3,8 @@ package cn.examsys.adapters;
 import java.io.Serializable;
 import java.util.List;
 
+import cn.examsys.bean.User;
+
 public interface IDaoAdapter {
 	
 	/**
