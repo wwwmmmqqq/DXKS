@@ -15,13 +15,15 @@ public class Question {
 	
 	int paperRef;//指向试卷
 	
+	String type;//题目类型
+	
 	String userId;
 	
-	int subjectRef;//指向科目
+	String title;//题目内容
 	
-	int answerRef;//指向答案选项
+	int choiceCount;
 	
-	int choiceCount; //1 为单项选择(默认1) 2为两项选择 3为三项选择...
+	int difficultyValue;//难度值
 
 	public int getSid() {
 		return sid;
@@ -39,6 +41,14 @@ public class Question {
 		this.paperRef = paperRef;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
@@ -47,20 +57,12 @@ public class Question {
 		this.userId = userId;
 	}
 
-	public int getSubjectRef() {
-		return subjectRef;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setSubjectRef(int subjectRef) {
-		this.subjectRef = subjectRef;
-	}
-
-	public int getAnswerRef() {
-		return answerRef;
-	}
-
-	public void setAnswerRef(int answerRef) {
-		this.answerRef = answerRef;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public int getChoiceCount() {
@@ -71,11 +73,12 @@ public class Question {
 		this.choiceCount = choiceCount;
 	}
 
-	@Override
-	public String toString() {
-		return "Question [sid=" + sid + ", paperRef=" + paperRef + ", userId="
-				+ userId + ", subjectRef=" + subjectRef + ", answerRef="
-				+ answerRef + ", choiceCount=" + choiceCount + "]";
+	public int getDifficultyValue() {
+		return difficultyValue;
+	}
+
+	public void setDifficultyValue(int difficultyValue) {
+		this.difficultyValue = difficultyValue;
 	}
 	
 }

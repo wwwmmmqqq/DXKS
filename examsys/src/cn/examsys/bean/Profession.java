@@ -6,16 +6,19 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * 专业
+ * @author lrx
+ * 2018年6月7日
+ */
 @Entity
-@Table(name="subject_tb")
-public class Subject {
+@Table(name="profession_tb")
+public class Profession {
 	@Id
 	@GenericGenerator(name="sid", strategy="identity")
 	int sid;
 	
-	String userId;//创建的用户
-	
-	String name;//科目名称
+	String name;
 
 	public int getSid() {
 		return sid;
@@ -23,14 +26,6 @@ public class Subject {
 
 	public void setSid(int sid) {
 		this.sid = sid;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public String getName() {

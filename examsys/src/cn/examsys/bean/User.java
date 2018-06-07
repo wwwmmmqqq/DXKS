@@ -5,10 +5,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
 @Entity
-@Table(name="admin_tb")
-public class Admin {
-	
+@Table(name="user_tb")
+public class User {
 	@Id
 	@GenericGenerator(name="userId", strategy="assigned")
 	String userId;
@@ -19,10 +19,16 @@ public class Admin {
 	
 	String sex;
 	
-	int collegeRef;
-	String collegeName;
+	String phone;
 	
-	int permission;//权限
+	String email;
+	
+	int collegeRef;
+	
+	String permission;//权限
+	
+	//@Formula("()")
+	String collegeName;
 
 	public String getUserId() {
 		return userId;
@@ -56,12 +62,36 @@ public class Admin {
 		this.sex = sex;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public int getCollegeRef() {
 		return collegeRef;
 	}
 
 	public void setCollegeRef(int collegeRef) {
 		this.collegeRef = collegeRef;
+	}
+
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
 	}
 
 	public String getCollegeName() {
@@ -71,22 +101,5 @@ public class Admin {
 	public void setCollegeName(String collegeName) {
 		this.collegeName = collegeName;
 	}
-
-	public int getPermission() {
-		return permission;
-	}
-
-	public void setPermission(int permission) {
-		this.permission = permission;
-	}
-
-	@Override
-	public String toString() {
-		return "Admin [userId=" + userId + ", psw=" + psw + ", name=" + name
-				+ ", sex=" + sex + ", collegeRef=" + collegeRef
-				+ ", collegeName=" + collegeName + ", permission=" + permission
-				+ "]";
-	}
-	
 	
 }

@@ -9,11 +9,11 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name="college_tb")
 public class College {
-	
 	@Id
 	@GenericGenerator(name="sid", strategy="identity")
 	int sid;
-	String name;
+	String name;//大学名字
+	
 	public int getSid() {
 		return sid;
 	}
@@ -25,10 +25,6 @@ public class College {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	@Override
-	public String toString() {
-		return "College [sid=" + sid + ", name=" + name + "]";
 	}
 	
 }

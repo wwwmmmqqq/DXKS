@@ -19,13 +19,20 @@ public class Paper {
 	
 	int examRef;//指向哪堂考试
 	
-	int subjectRef;//指向的科目
-	
-	String subjectName;//科目名
-	
 	String name;
 	
 	String time;
+	
+	int totalScore;
+	
+	String questionList;//组好的题目序号  用逗号隔开
+	String scoreList;//组好的题目对应的分数  用逗号隔开
+	
+	//@Formula("()")
+	String subjectName;//科目名
+	//@Formula("()")。
+	
+	int totalTime;//总时间，单位分钟
 
 	public int getSid() {
 		return sid;
@@ -41,22 +48,6 @@ public class Paper {
 
 	public void setExamRef(int examRef) {
 		this.examRef = examRef;
-	}
-
-	public int getSubjectRef() {
-		return subjectRef;
-	}
-
-	public void setSubjectRef(int subjectRef) {
-		this.subjectRef = subjectRef;
-	}
-
-	public String getSubjectName() {
-		return subjectName;
-	}
-
-	public void setSubjectName(String subjectName) {
-		this.subjectName = subjectName;
 	}
 
 	public String getName() {
@@ -75,11 +66,44 @@ public class Paper {
 		this.time = time;
 	}
 
-	@Override
-	public String toString() {
-		return "Paper [sid=" + sid + ", examRef=" + examRef + ", subjectRef="
-				+ subjectRef + ", subjectName=" + subjectName + ", name="
-				+ name + ", time=" + time + "]";
+	public int getTotalScore() {
+		return totalScore;
+	}
+
+	public void setTotalScore(int totalScore) {
+		this.totalScore = totalScore;
+	}
+
+	public String getQuestionList() {
+		return questionList;
+	}
+
+	public void setQuestionList(String questionList) {
+		this.questionList = questionList;
+	}
+
+	public String getScoreList() {
+		return scoreList;
+	}
+
+	public void setScoreList(String scoreList) {
+		this.scoreList = scoreList;
+	}
+
+	public String getSubjectName() {
+		return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+
+	public int getTotalTime() {
+		return totalTime;
+	}
+
+	public void setTotalTime(int totalTime) {
+		this.totalTime = totalTime;
 	}
 	
 }
