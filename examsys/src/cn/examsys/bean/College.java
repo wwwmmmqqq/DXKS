@@ -6,9 +6,38 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * 大学表
+ */
 @Entity
 @Table(name="college_tb")
 public class College {
+	@Id
+	@GenericGenerator(name="sid",strategy="identity")
 	int sid;
+	
 	String name;//大学名字
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "College [sid=" + sid + ", name=" + name + "]";
+	}
+	
+	
 }
