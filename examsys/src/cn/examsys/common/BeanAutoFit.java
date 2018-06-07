@@ -21,13 +21,13 @@ public class BeanAutoFit {
 			Field f = fs[i];
 			f.setAccessible(true);
 			if (f.getType().equals(int.class) || f.getType().equals(Integer.class)) {
-				f.setInt(target, (int)(Math.random() * 999));
+				f.setInt(target, (int)(Math.random() * 99999));
 			} else if (f.getType().equals(float.class) || f.getType().equals(Float.class)) {
-				f.setFloat(target, (float)(Math.random() * 999));
+				f.setFloat(target, (float)(Math.random() * 99999));
 			} else if (f.getType().equals(boolean.class) || f.getType().equals(Boolean.class)) {
 				f.setBoolean(target, (Math.random() > 0.5));
 			} else {
-				f.set(target, f.getName() + "_" + (int)(Math.random() * 999));
+				f.set(target, f.getName() + "_" + (int)(Math.random() * 99999));
 			}
 			
 		}
