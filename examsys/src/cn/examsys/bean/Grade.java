@@ -30,5 +30,61 @@ public class Grade {
 	
 	//@Formula("()")
 	String subjectName;
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public int getPaperRef() {
+		return paperRef;
+	}
+
+	public void setPaperRef(int paperRef) {
+		this.paperRef = paperRef;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public int getTimeComsuming() {
+		return timeComsuming;
+	}
+
+	public void setTimeComsuming(int timeComsuming) {
+		this.timeComsuming = timeComsuming;
+	}
+
+	public String getSubjectName() {
+		return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
 	
 }

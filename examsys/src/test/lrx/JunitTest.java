@@ -1,8 +1,5 @@
 package test.lrx;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +12,7 @@ import cn.examsys.lrx.service.LrxService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"}) 
 public class JunitTest extends AbstractJUnit4SpringContextTests {
+	
 	@Autowired
 	private LrxService service;
 	
@@ -23,7 +21,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	 */
 	@Test
 	public void test1() {
-		service.testService();
+		//service.testService();
 	}
 	
 }

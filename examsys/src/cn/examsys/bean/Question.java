@@ -24,5 +24,61 @@ public class Question {
 	int choiceCount;
 	
 	int difficultyValue;//难度值
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public int getPaperRef() {
+		return paperRef;
+	}
+
+	public void setPaperRef(int paperRef) {
+		this.paperRef = paperRef;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getChoiceCount() {
+		return choiceCount;
+	}
+
+	public void setChoiceCount(int choiceCount) {
+		this.choiceCount = choiceCount;
+	}
+
+	public int getDifficultyValue() {
+		return difficultyValue;
+	}
+
+	public void setDifficultyValue(int difficultyValue) {
+		this.difficultyValue = difficultyValue;
+	}
 	
 }

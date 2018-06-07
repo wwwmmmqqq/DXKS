@@ -33,5 +33,77 @@ public class Paper {
 	//@Formula("()")。
 	
 	int totalTime;//总时间，单位分钟
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public int getExamRef() {
+		return examRef;
+	}
+
+	public void setExamRef(int examRef) {
+		this.examRef = examRef;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public int getTotalScore() {
+		return totalScore;
+	}
+
+	public void setTotalScore(int totalScore) {
+		this.totalScore = totalScore;
+	}
+
+	public String getQuestionList() {
+		return questionList;
+	}
+
+	public void setQuestionList(String questionList) {
+		this.questionList = questionList;
+	}
+
+	public String getScoreList() {
+		return scoreList;
+	}
+
+	public void setScoreList(String scoreList) {
+		this.scoreList = scoreList;
+	}
+
+	public String getSubjectName() {
+		return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+
+	public int getTotalTime() {
+		return totalTime;
+	}
+
+	public void setTotalTime(int totalTime) {
+		this.totalTime = totalTime;
+	}
 	
 }
