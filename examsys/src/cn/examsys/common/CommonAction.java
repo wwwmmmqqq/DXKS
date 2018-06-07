@@ -8,7 +8,6 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import cn.examsys.bean.Student;
 import cn.examsys.lrx.service.LrxService;
 import cn.examsys.xy.service.XyService;
 

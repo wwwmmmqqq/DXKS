@@ -9,7 +9,6 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
-
 /**
  * 所有的DAO实现类都应该继承自DaoAdapter
  */
@@ -19,7 +18,6 @@ public class DaoAdapter implements IDaoAdapter {
 	
 	@Autowired
 	protected HibernateTemplate hibernateTemplate;
-	
 	
 	public <T> List<T> findByHql(String hql, Object[] vals, int page) throws Exception {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
@@ -52,6 +50,7 @@ public class DaoAdapter implements IDaoAdapter {
 		}
 		
 	}
+	
 	public <T> List<T> findBySql(String sql, Object[] vals, int page) throws Exception {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
 		org.hibernate.Transaction tx = session.beginTransaction(); 
