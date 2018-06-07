@@ -1,19 +1,7 @@
 package cn.examsys.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
-
-/**
- * 选项表
- */
-@Entity
-@Table(name="option_tb")
 public class Option {
-	@Id
-	@GenericGenerator(name="sid",strategy="identity")
+	
 	int sid;
 	
 	//选择题Single，判断题TrueOrFalse，多选题Multiple，填空题Fills，解答题Subjective
@@ -26,61 +14,5 @@ public class Option {
 	String fillsText;//填空题答案
 	
 	String SubjectiveText;//主观题答案
-
-	public int getSid() {
-		return sid;
-	}
-
-	public void setSid(int sid) {
-		this.sid = sid;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public int getIsAnswer() {
-		return isAnswer;
-	}
-
-	public void setIsAnswer(int isAnswer) {
-		this.isAnswer = isAnswer;
-	}
-
-	public String getFillsText() {
-		return fillsText;
-	}
-
-	public void setFillsText(String fillsText) {
-		this.fillsText = fillsText;
-	}
-
-	public String getSubjectiveText() {
-		return SubjectiveText;
-	}
-
-	public void setSubjectiveText(String subjectiveText) {
-		SubjectiveText = subjectiveText;
-	}
-
-	@Override
-	public String toString() {
-		return "Option [sid=" + sid + ", type=" + type + ", content=" + content + ", isAnswer=" + isAnswer
-				+ ", fillsText=" + fillsText + ", SubjectiveText=" + SubjectiveText + "]";
-	}
-	
-	
 	
 }
