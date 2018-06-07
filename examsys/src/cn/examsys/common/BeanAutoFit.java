@@ -29,7 +29,6 @@ public class BeanAutoFit {
 			} else {
 				f.set(target, f.getName() + "_" + (int)(Math.random() * 999));
 			}
-			
 		}
 		return target;
 	}

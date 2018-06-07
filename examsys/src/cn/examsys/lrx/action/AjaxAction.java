@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Student;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.LrxService;
 
@@ -17,6 +18,7 @@ import cn.examsys.lrx.service.LrxService;
 @ParentPackage("json-default")//非json时，则为"struts-default"
 @Controller("ajaxAction")
 @Scope("prototype")
+
 public class AjaxAction extends CommonAction {
 	
 	int page;
@@ -30,6 +32,38 @@ public class AjaxAction extends CommonAction {
 	List<?> list;
 	public List<?> getList() {
 		return list;
+	}
+	
+	Student stu = new Student();
+	public Student getStu() {
+		return stu;
+	}
+	
+	@Action(value="/login")
+	public String login() {
+		System.out.println("login");
+		saveLogin(stu);
+		return aa;
+	}
+	
+	@Action(value="/loadStuList",results={@Result(type="json")})
+	public String loadStuList() {
+		
+		System.out.println("Action层被调用, stu = " + stu);
+		
+		System.out.println("page = " + page);
+		
+		//lrxService.testService();//调用Service层
+		
+		list = lrxService.loadStuList(page);
+		
+		return aa;
+	}
+	
+	@Action(value="/loadStuListPageCount", results={@Result(type="json")})
+	public String loadStuListPageCount() {
+		setResult(lrxService.loadStuListPage() + "");
+		return aa;
 	}
 	
 	@Override

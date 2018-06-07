@@ -19,19 +19,67 @@ public class Paper {
 	
 	int examRef;//指向哪堂考试
 	
+	int subjectRef;//指向的科目
+	
+	String subjectName;//科目名
+	
 	String name;
 	
 	String time;
-	
-	int totalScore;
-	
-	String questionList;//组好的题目序号  用逗号隔开
-	String scoreList;//组好的题目对应的分数  用逗号隔开
-	
-	//@Formula("()")
-	String subjectName;//科目名
-	//@Formula("()")。
-	
-	int totalTime;//总时间，单位分钟
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public int getExamRef() {
+		return examRef;
+	}
+
+	public void setExamRef(int examRef) {
+		this.examRef = examRef;
+	}
+
+	public int getSubjectRef() {
+		return subjectRef;
+	}
+
+	public void setSubjectRef(int subjectRef) {
+		this.subjectRef = subjectRef;
+	}
+
+	public String getSubjectName() {
+		return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	@Override
+	public String toString() {
+		return "Paper [sid=" + sid + ", examRef=" + examRef + ", subjectRef="
+				+ subjectRef + ", subjectName=" + subjectName + ", name="
+				+ name + ", time=" + time + "]";
+	}
 	
 }

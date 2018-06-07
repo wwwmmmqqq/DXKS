@@ -7,9 +7,8 @@
 	  	加载学生列表的接口
 	  	参数：page 表示页码
 	  */
-	  $.post("loadStuList", { "text":"sdfasd","sid":22  }, function(data) {
-		  var list = data.list;//拿到学生列表
-		  
+	  $.post("loadStuList", { "page":1 }, function(data) {
+		  var list = data.list;//拿到列表
 		  //遍历
 		  for(var i=0;i<list.length;i++) {
 			  var stu = list[i];//第i个学生
@@ -23,7 +22,7 @@
 	  	拿到学生列表页码的方法
 	  */
 	  $.post("loadStuListPageCount", null, function(data) {
-		  var pageCount = data.result;//页面数
+		  var pageCount = data.result;
 		  alert(pageCount);
 	  });
 	  </script>
