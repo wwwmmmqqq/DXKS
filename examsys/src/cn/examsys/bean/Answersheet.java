@@ -26,7 +26,7 @@ public class Answersheet {
 	
 	String fillsAnswer;//填空题答案
 	
-	String subjectiveAnswer;//填空题答案
+	String SubjectiveAnswer;//填空题答案
 
 	public int getSid() {
 		return sid;
@@ -77,11 +77,11 @@ public class Answersheet {
 	}
 
 	public String getSubjectiveAnswer() {
-		return subjectiveAnswer;
+		return SubjectiveAnswer;
 	}
 
 	public void setSubjectiveAnswer(String subjectiveAnswer) {
-		this.subjectiveAnswer = subjectiveAnswer;
+		SubjectiveAnswer = subjectiveAnswer;
 	}
 	
 }
