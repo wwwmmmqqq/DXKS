@@ -1,6 +1,9 @@
 package cn.examsys.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,8 +18,9 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="profession_tb")
 public class Profession {
 	@Id
-	@GenericGenerator(name="sid", strategy="identity")
-	int sid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "sid", unique = true, nullable = false)
+	Integer sid;
 	
 	String name;
 
