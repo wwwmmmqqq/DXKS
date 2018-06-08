@@ -32,8 +32,8 @@ public class Paper {
 	String subjectName;//科目名
 	//@Formula("()")。
 	
-	int totalTime;//总时间，单位分钟
-
+	int totalTime;//总时间，单位秒
+	
 	public int getSid() {
 		return sid;
 	}

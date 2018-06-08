@@ -1,35 +1,46 @@
 package cn.examsys.lrx.action;
 
-import java.util.List;
-
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Paper;
 import cn.examsys.common.CommonAction;
+import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.LrxService;
+import cn.examsys.lrx.vo.ExamPageVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
-@Controller("ajaxAction")
+@Controller("examAction")
 @Scope("prototype")
-public class AjaxAction extends CommonAction {
-	
-	int page;
-	public void setPage(int page) {
-		this.page = page;
-	}
+public class ExamAction extends CommonAction {
 	
 	@Autowired
-	LrxService lrxService;
+	ExamService service;
 	
-	List<?> list;
-	public List<?> getList() {
-		return list;
+	ExamPageVO vo;
+	public ExamPageVO getVo() {
+		return vo;
+	}
+	
+	Paper paper = new Paper();
+	public Paper getPaper() {
+		return paper;
+	}
+	
+	/**
+	 * 开始考试
+	 * 
+	 * @return
+	 */
+	public String startExam() {
+		
+		vo = service.startExam(getSessionUser(), paper.getSid());
+		
+		return aa;
 	}
 	
 	@Override

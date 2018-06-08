@@ -11,9 +11,13 @@ public class Conf {
 	public static String Question_Fills = "Fills";
 	public static String Question_Subjective = "Subjective";
 	
-	public static int Difficulty_1 = 1;//概念题
-	public static int Difficulty_2 = 2;//概念延伸题
-	public static int Difficulty_3 = 3;//综合题
-	public static int Difficulty_4 = 4;//综合性强题
+	public static int Difficulty_1 = 1;//简单 概念题
+	public static int Difficulty_2 = 2;//中等 概念延伸题
+	public static int Difficulty_3 = 3;//难 综合题
+	public static int Difficulty_4 = 4;//非常难 综合性强题
+	
+	
+	public final static String Permission_Max = "Max";
+	public final static String Permission_StudentManage = "StudentManage";
 	
 }

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -23,6 +24,8 @@ public class User {
 	
 	String email;
 	
+	String profession;//专业
+	
 	int collegeRef;
 	
 	String permission;//权限
@@ -37,7 +40,8 @@ public class User {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
+	
+	@JSON(serialize=false)
 	public String getPsw() {
 		return psw;
 	}
@@ -100,6 +104,14 @@ public class User {
 
 	public void setCollegeName(String collegeName) {
 		this.collegeName = collegeName;
+	}
+	
+	public String getProfession() {
+		return profession;
+	}
+	
+	public void setProfession(String profession) {
+		this.profession = profession;
 	}
 	
 }

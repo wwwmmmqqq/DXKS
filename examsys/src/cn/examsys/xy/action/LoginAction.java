@@ -32,7 +32,7 @@ public class LoginAction extends CommonAction implements ModelDriven<User>{
 	protected LoginService loginService;
 	
 	@Action(value="login",results={@Result(name=INPUT,location="infomation.jsp")})
-	public String login(){
+	public String login() {
 		User loginUser=loginService.login(user.getUserId());
 		
 		if(loginUser==null){
