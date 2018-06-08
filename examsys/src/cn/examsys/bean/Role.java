@@ -1,24 +1,27 @@
 package cn.examsys.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="role_tb")
 public class Role {
 	@Id
-	@GenericGenerator(name="sid", strategy="identity")
-	int sid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "sid", unique = true, nullable = false)
+	Integer sid;
 	
 	String type;//角色类型
 	
-	public int getSid() {
+	public Integer getSid() {
 		return sid;
 	}
-	public void setSid(int sid) {
+	public void setSid(Integer sid) {
 		this.sid = sid;
 	}
 	public String getType() {

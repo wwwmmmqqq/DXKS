@@ -16,10 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<form action="loginAction" method="post">
-  		<div>name<input type="text" name="userId"  placeholder="请输入学号"/></div>
-  		<div>password<input type="text" name="psw" placeholder="请输入密码"/></div>
-  	</form>
+  	<a href="createRole?type=学生">lianjie</a>
   </body>
   
 </html>

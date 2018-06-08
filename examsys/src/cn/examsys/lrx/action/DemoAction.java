@@ -10,7 +10,6 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.examsys.bean.Student;
 import cn.examsys.common.CommonAction;
 
 @Namespace("/")
@@ -20,7 +19,7 @@ import cn.examsys.common.CommonAction;
 
 public class DemoAction extends CommonAction {
 	
-	List<Student> stuLi;
+	/*List<Student> stuLi;
 	public void setStuLi(List<Student> stuLi) {
 		this.stuLi = stuLi;
 	}
@@ -51,7 +50,7 @@ public class DemoAction extends CommonAction {
 		}
 		System.out.println(stuLi.size());
 		return "demo";
-	}
+	}*/
 	@Override
 	public String getResult() {
 		return result;
