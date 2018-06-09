@@ -76,7 +76,6 @@ public class Option {
 		this.subjectiveText = subjectiveText;
 	}
 
-<<<<<<< HEAD
 	public int getQuestionRef() {
 		return questionRef;
 	}
@@ -85,14 +84,4 @@ public class Option {
 		this.questionRef = questionRef;
 	}
 
-=======
-	public Integer getQuestionRef() {
-		return questionRef;
-	}
-
-	public void setQuestionRef(Integer questionRef) {
-		this.questionRef = questionRef;
-	}
-	
->>>>>>> XY
 }
