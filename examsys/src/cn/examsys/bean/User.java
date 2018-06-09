@@ -23,6 +23,8 @@ public class User {
 	
 	String email;
 	
+	String type;
+	
 	int collegeRef;
 	
 	String permission;//权限
@@ -101,5 +103,15 @@ public class User {
 	public void setCollegeName(String collegeName) {
 		this.collegeName = collegeName;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	
 	
 }

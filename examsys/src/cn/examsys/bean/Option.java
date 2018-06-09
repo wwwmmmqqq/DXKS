@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="option_tb")
@@ -16,6 +15,8 @@ public class Option {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "sid", unique = true, nullable = false)
 	Integer sid;
+	
+	Integer questionRef; //指向具体题目
 	
 	//选择题Single，判断题TrueOrFalse，多选题Multiple，填空题Fills，解答题Subjective
     String type;
@@ -74,6 +75,14 @@ public class Option {
 
 	public void setSubjectiveText(String subjectiveText) {
 		SubjectiveText = subjectiveText;
+	}
+
+	public Integer getQuestionRef() {
+		return questionRef;
+	}
+
+	public void setQuestionRef(Integer questionRef) {
+		this.questionRef = questionRef;
 	}
 	
 }
