@@ -1,6 +1,7 @@
 package cn.examsys.common;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 
 /**
  * Bean的自动填充类
@@ -20,6 +21,12 @@ public class BeanAutoFit {
 		for (int i = 0; i < fs.length; i++) {
 			Field f = fs[i];
 			f.setAccessible(true);
+			if (Arrays.toString(f.getAnnotations())
+					.contains("javax.persistence.Id")
+					&& (f.getType().equals(int.class)||f.getType().equals(Integer.class))) {
+				//如果是主键
+				continue;
+			}
 			if (f.getType().equals(int.class) || f.getType().equals(Integer.class)) {
 				f.setInt(target, (int)(Math.random() * 99999));
 			} else if (f.getType().equals(float.class) || f.getType().equals(Float.class)) {

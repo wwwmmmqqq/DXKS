@@ -9,38 +9,24 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="subject_tb")
-public class Subject {
+@Table(name="role_tb")
+public class Role {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
-	String userId;//创建的用户
+	String name;
 	
-	String name;//科目名称
-
 	public int getSid() {
 		return sid;
 	}
-
 	public void setSid(int sid) {
 		this.sid = sid;
 	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 }

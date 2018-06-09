@@ -1,6 +1,8 @@
 package cn.examsys.bean;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,7 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="grade_tb")
 public class Grade {
 	@Id
-	@GenericGenerator(name="sid", strategy="identity")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
 	String userId;
@@ -85,6 +87,14 @@ public class Grade {
 
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
+	}
+
+	@Override
+	public String toString() {
+		return "Grade [sid=" + sid + ", userId=" + userId + ", paperRef="
+				+ paperRef + ", point=" + point + ", time=" + time
+				+ ", timeComsuming=" + timeComsuming + ", subjectName="
+				+ subjectName + "]";
 	}
 	
 }

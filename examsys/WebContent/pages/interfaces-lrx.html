@@ -13,7 +13,7 @@
 		  //遍历
 		  for(var i=0;i<list.length;i++) {
 			  var stu = list[i];//第i个学生
-			  alert(stu.name);//第i个学生的名字 ， 与cn.examsys.bean.Student类里面的字段是一致的
+			  //alert(stu.name);//第i个学生的名字 ， 与cn.examsys.bean.Student类里面的字段是一致的
 		  }
 	  });
 	  </script>
@@ -24,8 +24,12 @@
 	  */
 	  $.post("loadStuListPageCount", null, function(data) {
 		  var pageCount = data.result;//页面数
-		  alert(pageCount);
+		  //alert(pageCount);
 	  });
+	  
+	  
 	  </script>
+	  
+	  
   </head>
 </html>

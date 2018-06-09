@@ -1,6 +1,8 @@
 package cn.examsys.bean;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="exam_tb")
 public class Exam {
 	@Id
-	@GenericGenerator(name="sid", strategy="identity")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
 	String userId;//创建的用户

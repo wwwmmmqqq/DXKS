@@ -1,28 +1,32 @@
 package cn.examsys.bean;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="option_tb")
+@Table(name = "option_tb")
 public class Option {
 	@Id
-	@GenericGenerator(name="sid", strategy="identity")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int sid;
-	
-	//选择题Single，判断题TrueOrFalse，多选题Multiple，填空题Fills，解答题Subjective
-    String type;
-	
-	String content;//选项内容
-	
-	int isAnswer;//选择题答案 0 和  1
-	
-	String fillsText;//填空题答案
-	
-	String SubjectiveText;//主观题答案
+
+	int questionRef;// 指向题目
+
+	// 选择题Single，判断题TrueOrFalse，多选题Multiple，填空题Fills，解答题Subjective
+	String type;
+
+	String content;// 选项内容
+
+	int isAnswer;// 选择题答案 0 和 1
+
+	String fillsText;// 填空题答案
+
+	String subjectiveText;// 主观题答案
 
 	public int getSid() {
 		return sid;
@@ -65,11 +69,19 @@ public class Option {
 	}
 
 	public String getSubjectiveText() {
-		return SubjectiveText;
+		return subjectiveText;
 	}
 
 	public void setSubjectiveText(String subjectiveText) {
-		SubjectiveText = subjectiveText;
+		this.subjectiveText = subjectiveText;
 	}
-	
+
+	public int getQuestionRef() {
+		return questionRef;
+	}
+
+	public void setQuestionRef(int questionRef) {
+		this.questionRef = questionRef;
+	}
+
 }

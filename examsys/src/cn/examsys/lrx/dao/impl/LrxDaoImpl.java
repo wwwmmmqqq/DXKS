@@ -1,6 +1,7 @@
 package cn.examsys.lrx.dao.impl;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.lrx.dao.LrxDao;

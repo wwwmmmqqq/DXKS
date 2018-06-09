@@ -24,6 +24,8 @@ public class User {
 	
 	String email;
 	
+	String idcard;//身份证号码
+	
 	String profession;//专业
 	
 	int collegeRef;
@@ -112,6 +114,15 @@ public class User {
 	
 	public void setProfession(String profession) {
 		this.profession = profession;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", psw=" + psw + ", name=" + name
+				+ ", sex=" + sex + ", phone=" + phone + ", email=" + email
+				+ ", idcard=" + idcard + ", profession=" + profession
+				+ ", collegeRef=" + collegeRef + ", permission=" + permission
+				+ ", collegeName=" + collegeName + "]";
 	}
 	
 }

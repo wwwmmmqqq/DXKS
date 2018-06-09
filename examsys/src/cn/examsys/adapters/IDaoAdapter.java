@@ -52,4 +52,38 @@ public interface IDaoAdapter {
 	public void deleteEntity(Object entity) throws Exception;
 	public void updateEntity(Object entity) throws Exception;
 	
+	/**
+	 * 通过ID拿到实体
+	 * @param id
+	 * @return
+	 */
+	public <T> T findEntity(Class<?> claz, Serializable id);
+	/**
+	 * 通过ID删除实体
+	 * @param id
+	 * @return
+	 * @throws Exception 
+	 */
+	public void deleteEntity(Class<?> claz, Serializable id) throws Exception;
+	
+	/**
+	 * 更新某个实体的某些字段的值
+	 * @param claz 实体类
+	 * @param id 主键
+	 * @param fieldNames 字段名数组
+	 * @param values 值数组
+	 * @throws Exception
+	 */
+	public void updateEntity(Class<?> claz, Serializable id, String[] fieldNames, Object[] values) throws Exception;
+	
+	/**
+	 * 更新某个实体的单个字段的值
+	 * @param claz 实体类
+	 * @param id 主键
+	 * @param fieldName 字段名
+	 * @param value 值数
+	 * @throws Exception
+	 */
+	public void updateEntity(Class<?> claz, Serializable id, String fieldName, Object value) throws Exception;
+	
 }

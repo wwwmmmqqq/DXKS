@@ -22,7 +22,20 @@ public abstract class CommonAction extends ActionSupport {
 	}
 	
 	public User getSessionUser() {
-		return (User) session.getAttribute("user");
+		User user = new User();
+		user.setUserId("admin");
+		user.setPsw("123");
+		user.setName("nick");
+		user.setCollegeName("萍乡学院");
+		user.setPermission("");
+		user.setSex("男");
+		return user;
+		//return (User) session.getAttribute("user");
+	}
+	
+	public String getSessionUserId() {
+		User u = getSessionUser();
+		return u!=null?u.getUserId():null;
 	}
 	
 	public boolean isLogin() {

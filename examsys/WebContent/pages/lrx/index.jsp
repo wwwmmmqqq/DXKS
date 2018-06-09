@@ -34,7 +34,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  
 	  });
 	  
+	 
+	 
   });
+  </script>
+  
+  <script type="text/javascript">
+	  $.post("updateStuInfos", {
+		  "params[0]":'aaa',
+		  "params[1]":'bbb',
+		  "params[2]":'ccc',
+		  "params[5]":'ddd'
+	  }, function(data) {
+		  alert(data.result);
+	  });
   </script>
   </head>
   

@@ -1,25 +1,25 @@
 package cn.examsys.bean;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="notice_tb")
 public class Notice {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
-	
 	String type;
-	
 	String title;
-	
 	String content;
-	
 	String userId;
-	
 	String targetIds;//目标用户 逗号隔开
-	
 	String readsIds;//已读用户 逗号隔开
-	
 	String time;
 
 	public int getSid() {

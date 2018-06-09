@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import cn.examsys.bean.Paper;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ExamService;
-import cn.examsys.lrx.service.LrxService;
 import cn.examsys.lrx.vo.ExamPageVO;
 
 @Namespace("/")
@@ -33,13 +32,10 @@ public class ExamAction extends CommonAction {
 	
 	/**
 	 * 开始考试
-	 * 
 	 * @return
 	 */
 	public String startExam() {
-		
 		vo = service.startExam(getSessionUser(), paper.getSid());
-		
 		return aa;
 	}
 	

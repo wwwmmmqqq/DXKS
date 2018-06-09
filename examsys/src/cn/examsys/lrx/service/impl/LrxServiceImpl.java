@@ -11,6 +11,7 @@ import cn.examsys.lrx.dao.impl.LrxDaoImpl;
 import cn.examsys.lrx.service.LrxService;
 
 @Service("lrxService")
+@Transactional
 public class LrxServiceImpl implements LrxService {
 	@Autowired
 	LrxDaoImpl dao;

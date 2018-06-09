@@ -4,7 +4,13 @@ import java.util.List;
 
 public class PersonalHomePageVO {
 	
-	List<?> list;
+	public int noticeCount;
+	
+	public List<?> list;
+	
+	public int getNoticeCount() {
+		return noticeCount;
+	}
 	public List<?> getList() {
 		return list;
 	}

@@ -1,6 +1,8 @@
 package cn.examsys.bean;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="answersheet_tb")
 public class Answersheet {
 	@Id
-	@GenericGenerator(name="sid", strategy="identity")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
 	int paperRef;//指向的试卷
