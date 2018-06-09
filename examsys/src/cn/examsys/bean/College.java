@@ -1,5 +1,6 @@
 package cn.examsys.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class College {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
+	
 	String name;//大学名字
 	
 	public int getSid() {

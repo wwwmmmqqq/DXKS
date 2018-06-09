@@ -18,7 +18,7 @@ import cn.examsys.xy.service.LoginService;
 @Controller("loginAction")
 @Scope("prototype")
 public class LoginAction extends CommonAction implements ModelDriven<User>{
-	User user = new User();
+	private User user = new User();
 
 	public User getUser() {
 		return user;
@@ -30,11 +30,10 @@ public class LoginAction extends CommonAction implements ModelDriven<User>{
 	
 	@Autowired
 	protected LoginService loginService;
-	
-	@Action(value="login",results={@Result(name=INPUT,location="infomation.jsp")})
-	public String login() {
+	/*用户登录*/
+	@Action(value="/login",results={@Result(name="aa",location="infomation.jsp")})
+	public String login(){
 		User loginUser=loginService.login(user.getUserId());
-		
 		if(loginUser==null){
 			setResult("未找到该账号！");
 		}else if(loginUser.getPsw()!=user.getPsw()){
@@ -42,7 +41,7 @@ public class LoginAction extends CommonAction implements ModelDriven<User>{
 		}
 		saveLogin(user);
 		System.out.println(user.getUserId());
-		return INPUT;
+		return "aa";
 		
 	}
 	

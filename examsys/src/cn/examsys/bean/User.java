@@ -23,10 +23,12 @@ public class User {
 	String phone;
 	
 	String email;
-	
+	 
 	String idcard;//身份证号码
 	
-	String profession;//专业
+	String profession;//专业 
+	
+	String type;
 	
 	int collegeRef;
 	
@@ -107,6 +109,16 @@ public class User {
 	public void setCollegeName(String collegeName) {
 		this.collegeName = collegeName;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	
 	
 	public String getProfession() {
 		return profession;

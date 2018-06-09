@@ -1,12 +1,12 @@
 package cn.examsys.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "option_tb")
@@ -76,6 +76,7 @@ public class Option {
 		this.subjectiveText = subjectiveText;
 	}
 
+<<<<<<< HEAD
 	public int getQuestionRef() {
 		return questionRef;
 	}
@@ -84,4 +85,14 @@ public class Option {
 		this.questionRef = questionRef;
 	}
 
+=======
+	public Integer getQuestionRef() {
+		return questionRef;
+	}
+
+	public void setQuestionRef(Integer questionRef) {
+		this.questionRef = questionRef;
+	}
+	
+>>>>>>> XY
 }

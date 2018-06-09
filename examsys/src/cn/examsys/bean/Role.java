@@ -1,12 +1,12 @@
 package cn.examsys.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="role_tb")
@@ -15,18 +15,18 @@ public class Role {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
-	String name;
+	String type;
 	
-	public int getSid() {
+	public Integer getSid() {
 		return sid;
 	}
-	public void setSid(int sid) {
+	public void setSid(Integer sid) {
 		this.sid = sid;
 	}
-	public String getName() {
-		return name;
+	public String getType() {
+		return type;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setType(String type) {
+		this.type = type;
 	}
 }

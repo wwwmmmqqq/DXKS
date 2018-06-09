@@ -20,4 +20,9 @@ public class Conf {
 	public final static String Permission_Max = "Max";
 	public final static String Permission_StudentManage = "StudentManage";
 	
+	public final static String permession_MAX="max";//最高权限
+	public final static String permession_StudentManager="StudentManager";//学生菜单权限
+	public final static String permession_TeacherManager="TeacherManager";//教师菜单权限
+	public final static String permession_Administration="Administration";//教务菜单权限
+	
 }
