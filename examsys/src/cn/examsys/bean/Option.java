@@ -17,7 +17,7 @@ public class Option {
 
 	int questionRef;// 指向题目
 
-	// 选择题Single，判断题TrueOrFalse，多选题Multiple，填空题Fills，解答题Subjective
+	//选择题Single，判断题TrueOrFalse，多选题Multiple，填空题Fills，解答题Subjective
 	String type;
 
 	String content;// 选项内容

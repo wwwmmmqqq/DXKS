@@ -1,13 +1,10 @@
 package cn.examsys.bean;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="question_tb")
@@ -16,7 +13,7 @@ public class Question {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
-	int paperRef;//指向试卷
+	//int paperRef;//指向试卷
 	
 	String type;//题目类型
 	
@@ -36,13 +33,13 @@ public class Question {
 		this.sid = sid;
 	}
 
-	public int getPaperRef() {
+	/*public int getPaperRef() {
 		return paperRef;
 	}
 
 	public void setPaperRef(int paperRef) {
 		this.paperRef = paperRef;
-	}
+	}*/
 
 	public String getType() {
 		return type;

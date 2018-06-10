@@ -1,25 +1,122 @@
 package cn.examsys.lrx.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.examsys.bean.Answersheet;
+import cn.examsys.bean.Exam;
+import cn.examsys.bean.Grade;
+import cn.examsys.bean.Option;
+import cn.examsys.bean.Paper;
+import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
-import cn.examsys.lrx.dao.ExamDao;
+import cn.examsys.common.Conf;
+import cn.examsys.common.ScoreTool;
+import cn.examsys.common.Tool;
+import cn.examsys.lrx.dao.impl.ExamDaoImpl;
 import cn.examsys.lrx.service.ExamService;
-import cn.examsys.lrx.vo.ExamPageVO;
 
 @Service("examService")
 @Transactional
 public class ExamServiceImpl implements ExamService {
 	
 	@Autowired
-	ExamDao dao;
+	ExamDaoImpl dao;
+	/**
+	 * 拿到考次列表
+	 */
+	@Override
+	public List<Exam> loadMyExamsList(User sessionUser, int page) {
+		try {
+			return dao.findByHql("from Exam where invitee=?"
+					, new Object[]{sessionUser.getCollegeName()}
+					, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	/**
+	 * 拿到试卷列表
+	 */
+	@Override
+	public List<Paper> loadPapersByExam(User sessionUser, int sid, int page) {
+		try {
+			return dao.findByHql("from Paper where examRef=?", new Object[]{sid}, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
+	/**
+	 * 开始考试
+	 */
+	@Override
+	public boolean startExamPaper(User sessionUser, int sid) {
+		//TODO 
+		
+		return false;
+	}
 	
 	@Override
-	public ExamPageVO startExam(User user, int sid) {
+	public List<Question> loadQuestionList(int sid, int page) {
+		try {
+			return dao.findByHql("from Question where paperRef=?", new Object[]{sid}, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
+	}
+	
+	@Override
+	public boolean todo(User sessionUser
+			, int questionRef, int isSelected, String fillsAnswer, String subjectiveAnswer) {
+		
+		Question q = dao.findEntity(Question.class, questionRef);
+		
+		Answersheet answer = new Answersheet();
+		answer.setQuestionRef(questionRef);
+		answer.setFillsAnswer(fillsAnswer);
+		answer.setIsSelected(isSelected);
+		answer.setSubjectiveAnswer(subjectiveAnswer);
+		answer.setType(q.getType());
+		
+		try {
+			dao.saveEntity(answer);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
+	 * 交试卷
+	 * 计算成绩
+	 */
+	@Override
+	public int submitPaper(User sessionUser, int sid, int timeComsuming) {
+		Paper paper = dao.findEntity(Paper.class, sid);
+		
+		Grade grade = new Grade();
+		grade.setPaperRef(sid);
+		grade.setSubjectName(paper.getSubjectName());
+		grade.setTime(Tool.time());
+		grade.setUserId(sessionUser.getUserId());
+		grade.setTimeComsuming(timeComsuming);
+		/*
+		List<Answersheet> answers = dao.findByHql("from Answersheet where userId=? and paperRef=?"
+				, new Object[]{sessionUser.getUserId(), sid});
+		
+		List<Option> options = dao.findByHql("from Option where questionRef=")
+		int score = ScoreTool.
+		grade.setPoint(point);
+		*/
+		return 0;
 	}
 	
 }

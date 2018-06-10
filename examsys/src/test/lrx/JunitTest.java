@@ -31,8 +31,9 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
-				Answersheet.class
+				 Answersheet.class
 				, College.class
+				, Constitute.class
 				, Exam.class
 				, Grade.class
 				, Notice.class
@@ -89,7 +90,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void test5() {
 		try {
-			daoAdapter.updateEntity(User.class, "userId_15165"//userId_15165为主键的值
+			daoAdapter.updateEntity(User.class, "userId_15165"//主键值为userId_15165的实体
 					, new String[] {"collegeName","email"}//字段名
 					, new Object[]{"666", "601740275@cc.com"});//对应的值
 		} catch (Exception e) {

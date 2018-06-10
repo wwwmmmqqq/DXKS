@@ -1,6 +1,5 @@
 package cn.examsys.bean;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Formula;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  * 成绩
@@ -29,11 +27,10 @@ public class Grade {
 	
 	String time;//交卷试卷
 	
-	int timeComsuming;//消耗时间
+	int timeComsuming;//消耗时间 秒
 	
-	//@Formula("()")
 	String subjectName;
-
+	
 	public int getSid() {
 		return sid;
 	}
@@ -81,11 +78,12 @@ public class Grade {
 	public void setTimeComsuming(int timeComsuming) {
 		this.timeComsuming = timeComsuming;
 	}
-
+	
+	@Formula("(select tb1.name from subject_tb tb1 where tb1.sid=(select tb.subjectRef from paper_tb tb.paperRef=tb.sid))")
 	public String getSubjectName() {
 		return subjectName;
 	}
-
+	
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
 	}
