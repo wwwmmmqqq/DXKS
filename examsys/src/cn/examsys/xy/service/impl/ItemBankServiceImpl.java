@@ -1,6 +1,7 @@
 package cn.examsys.xy.service.impl;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,16 +17,7 @@ public class ItemBankServiceImpl implements ItemBankService {
 	@Autowired
 	ItemBankDao itemBankDao;
 	
-	/*创建题目和选项*/
-	/*@Override
-	public boolean createItemBank(Question question, Option option,String userId) {
-		// TODO Auto-generated method stub
-		System.out.println("service的选项："+option.getContent());
-		
-		itemBankDao.saveQuestion(question);
-		itemBankDao.saveOption(option);
-		return true;
-	}*/
+	/********************创建题目和选项**********************/
 	@Override
 	public Integer createQuestion(Question question) {
 		// TODO Auto-generated method stub
@@ -38,5 +30,63 @@ public class ItemBankServiceImpl implements ItemBankService {
 		itemBankDao.saveOption(option);
 		return true;
 	}
-
+	
+	/**************************查看题库**********************/
+	/*老师查看*/
+	@Override
+	public List<Question> selectItemQuestionListByUserId(String userId,int page) {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectItemQuestListByUserId(userId,page);
+	}
+	/*查看选项*/
+	@Override
+	public Option selectItemOptionByQuestion(int sid) {
+		// TODO Auto-generated method stub
+		System.out.println("serviceceng");
+		return itemBankDao.selectItemOptionByQuestion(sid);
+	}
+	/*教师题目列表总页数*/
+	@Override
+	public int selectItemQuestionListToalPageByUserId(String userId) {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectItemQuestListToalPageByUserId(userId);
+	}
+	/*教务查看题库*/
+	@Override
+	public List<Question> selectItemQuestionList(int page) {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectItemQuestList(page);
+	}
+	/*教务题目列表总页数*/
+	@Override
+	public int selectItemQuestionListToalPage() {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectItemQuestListToalPage();
+	}
+	/*按种类显示题目列表*/
+	@Override
+	public List<Question> selectItemQuestionListByType(String type, int page) {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectItemQuestListByType(type,page);
+	}
+	/*按种类显示题目列表总页数*/
+	@Override
+	public int selectItemQuestionListToalPageByType(String type) {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectItemQuestListToalPageByType(type);
+	}
+	/************************修改题库****************************/
+	@Override
+	public boolean editQuestion(Question question) {
+		// TODO Auto-generated method stub
+		itemBankDao.editQuestion(question);
+		return true;
+	}
+	@Override
+	public boolean editOption(Option option) {
+		// TODO Auto-generated method stub
+		itemBankDao.editOption(option);
+		return true;
+	}
+	
 }
