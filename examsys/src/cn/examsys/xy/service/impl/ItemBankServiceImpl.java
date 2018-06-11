@@ -40,7 +40,7 @@ public class ItemBankServiceImpl implements ItemBankService {
 	}
 	/*查看选项*/
 	@Override
-	public Option selectItemOptionByQuestion(int sid) {
+	public List<Option> selectItemOptionByQuestion(int sid) {
 		// TODO Auto-generated method stub
 		System.out.println("serviceceng");
 		return itemBankDao.selectItemOptionByQuestion(sid);
@@ -87,6 +87,25 @@ public class ItemBankServiceImpl implements ItemBankService {
 		// TODO Auto-generated method stub
 		itemBankDao.editOption(option);
 		return true;
+	}
+	/************************显示一道题目**************************/
+	@Override
+	public Question selectItemQuestion(int sid) {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectOneQuestionBySid(sid);
+	}
+	/**************************删除题库**************************/
+	@Override
+	public boolean deleteQuestion(Question question) {
+		// TODO Auto-generated method stub
+		itemBankDao.deleteQuestion(question);
+		return false;
+	}
+	@Override
+	public boolean deleteOption(Option option) {
+		// TODO Auto-generated method stub
+		itemBankDao.deleteOption(option);
+		return false;
 	}
 	
 }

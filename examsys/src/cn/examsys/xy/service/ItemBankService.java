@@ -30,7 +30,7 @@ public interface ItemBankService {
 	/*管理员题目列表总页数*/
 	int selectItemQuestionListToalPage();
 	/*查看选项*/
-	Option selectItemOptionByQuestion(int sid);
+	List<Option> selectItemOptionByQuestion(int sid);
 	/**
 	 * 按题目类型查看题库和总页数
 	 * @param type
@@ -46,4 +46,17 @@ public interface ItemBankService {
 	 */
 	boolean editQuestion(Question question);
 	boolean editOption(Option option);
+	/**
+	 * 根据sid显示一道题目
+	 * @param sid
+	 * @return
+	 */
+	Question selectItemQuestion(int sid);
+	/**
+	 * 根据题目id删除题库
+	 * @param sid
+	 * @return
+	 */
+	boolean deleteQuestion(Question question);
+	boolean deleteOption(Option option);
 }
