@@ -16,6 +16,7 @@ public class BeanAutoFit {
 	 * @param target
 	 * @throws Exception
 	 */
+	
 	public static <T> T autoFit(T target) throws Exception {
 		Field fs[] = target.getClass().getDeclaredFields();
 		for (int i = 0; i < fs.length; i++) {
@@ -27,6 +28,20 @@ public class BeanAutoFit {
 				//如果是主键
 				continue;
 			}
+			
+			if (f.getName().contains("difficultyValue")) {
+				f.setInt(target, (int)(Math.random() * 3 + 1));
+			} else if (f.getName().contains("type")) {
+				String type_arr[] = new String[]{
+						 Conf.Question_Single
+						,Conf.Question_Multiple
+						,Conf.Question_TrueOrFalse
+						,Conf.Question_Fills
+						,Conf.Question_Subjective
+				};
+				f.set(target, type_arr[(int)(Math.random() * type_arr.length)]);
+			} else 
+				
 			if (f.getType().equals(int.class) || f.getType().equals(Integer.class)) {
 				f.setInt(target, (int)(Math.random() * 99999));
 			} else if (f.getType().equals(float.class) || f.getType().equals(Float.class)) {

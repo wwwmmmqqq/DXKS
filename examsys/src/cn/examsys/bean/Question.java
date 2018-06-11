@@ -24,7 +24,9 @@ public class Question {
 	int choiceCount;
 	
 	int difficultyValue;//难度值
-
+	
+	int subjectRef;//所属科目
+	
 	public int getSid() {
 		return sid;
 	}
@@ -40,7 +42,15 @@ public class Question {
 	public void setPaperRef(int paperRef) {
 		this.paperRef = paperRef;
 	}*/
-
+	
+	public int getSubjectRef() {
+		return subjectRef;
+	}
+	
+	public void setSubjectRef(int subjectRef) {
+		this.subjectRef = subjectRef;
+	}
+	
 	public String getType() {
 		return type;
 	}
@@ -79,6 +89,14 @@ public class Question {
 
 	public void setDifficultyValue(int difficultyValue) {
 		this.difficultyValue = difficultyValue;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [sid=" + sid + ", type=" + type + ", userId=" + userId
+				+ ", title=" + title + ", choiceCount=" + choiceCount
+				+ ", difficultyValue=" + difficultyValue + ", subjectRef="
+				+ subjectRef + "]";
 	}
 	
 }

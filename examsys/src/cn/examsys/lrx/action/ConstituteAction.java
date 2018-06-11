@@ -58,21 +58,33 @@ public class ConstituteAction extends CommonAction {
 	 * <div>single.diff4Point //难度4的每题分值</div>
 	 * <img src='https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3062618009,3528994160&fm=27&gp=0.jpg'/>
 	 * <style>div{border:1px solid;background-color:green;width:300px;color:white}</style>
-	 * int examId //考次ID
+	 *    
+	 *    paper.examRef //考次ID
+	    , paper.getSubjectRef()//科目id
+		, paper.getName()//试卷标题名
+		, paper.getTotalScore()//总分
+		, paper.getExamStart()//考试开始时间
+		, paper.getExamEnd()//考试结束时间
+	 * 
 	 * @return 
 	 * 返回试卷ID
 	 */
 	public String createPaperAuto() {
 		
 		int sid = service.createPaperAuto(paper.getExamRef()
-				, paper.getSubjectName()//科目
+				, paper.getSubjectRef()//科目id
 				, paper.getName()//试卷标题名
+				, paper.getTotalScore()//总分
 				, paper.getExamStart()//考试开始时间
 				, paper.getExamEnd()//考试结束时间
 				, single, trueOrFalse, multiple, fills, subjective);
 		
-		setResult(sid + "");
+		if (sid == -1) {
+			setResult("fail");
+			return aa;
+		}
 		
+		setResult(sid + "");
 		return aa;
 	}
 	

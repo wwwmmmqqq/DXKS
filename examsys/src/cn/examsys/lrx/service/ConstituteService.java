@@ -4,8 +4,8 @@ import cn.examsys.lrx.vo.ConstituteVO;
 
 public interface ConstituteService {
 
-	int createPaperAuto(int examSid, String title, String subject//考次id，标题，科目
-			, String startTime, String endTime,//开始和结束时间
+	int createPaperAuto(int examRef, int subjectRef, String name,
+			int totalScore, String examStart, String examEnd,
 			ConstituteVO single, ConstituteVO trueOrFalse,
 			ConstituteVO multiple, ConstituteVO fills, ConstituteVO subjective);
 	
