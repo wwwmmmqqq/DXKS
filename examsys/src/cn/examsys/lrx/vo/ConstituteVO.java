@@ -3,10 +3,10 @@ package cn.examsys.lrx.vo;
 public class ConstituteVO {
 	
 	int count;
-	int diff1;
-	int diff2;
-	int diff3;
-	int diff4;
+	int diff1Percent;
+	int diff2Percent;
+	int diff3Percent;
+	int diff4Percent;
 	int diff1Point;
 	int diff2Point;
 	int diff3Point;
@@ -18,29 +18,29 @@ public class ConstituteVO {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public int getDiff1() {
-		return diff1;
+	public int getDiff1Percent() {
+		return diff1Percent;
 	}
-	public void setDiff1(int diff1) {
-		this.diff1 = diff1;
+	public void setDiff1Percent(int diff1Percent) {
+		this.diff1Percent = diff1Percent;
 	}
-	public int getDiff2() {
-		return diff2;
+	public int getDiff2Percent() {
+		return diff2Percent;
 	}
-	public void setDiff2(int diff2) {
-		this.diff2 = diff2;
+	public void setDiff2Percent(int diff2Percent) {
+		this.diff2Percent = diff2Percent;
 	}
-	public int getDiff3() {
-		return diff3;
+	public int getDiff3Percent() {
+		return diff3Percent;
 	}
-	public void setDiff3(int diff3) {
-		this.diff3 = diff3;
+	public void setDiff3Percent(int diff3Percent) {
+		this.diff3Percent = diff3Percent;
 	}
-	public int getDiff4() {
-		return diff4;
+	public int getDiff4Percent() {
+		return diff4Percent;
 	}
-	public void setDiff4(int diff4) {
-		this.diff4 = diff4;
+	public void setDiff4Percent(int diff4Percent) {
+		this.diff4Percent = diff4Percent;
 	}
 	public int getDiff1Point() {
 		return diff1Point;

@@ -1,7 +1,6 @@
 package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;

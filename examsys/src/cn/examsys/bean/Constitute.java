@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+ 
 /**
  * 组卷表
  */
@@ -15,6 +15,8 @@ public class Constitute {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
+	
+	int no;//题目序号
 	
 	int paperRef;//指向哪个试卷
 	
@@ -31,6 +33,12 @@ public class Constitute {
 	}
 	public void setSid(int sid) {
 		this.sid = sid;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
 	}
 	public String getType() {
 		return type;

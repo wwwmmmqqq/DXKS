@@ -86,6 +86,7 @@ public class Exam {
 	public String getInvitee() {
 		return invitee;
 	}
+	
 	public void setInvitee(String invitee) {
 		this.invitee = invitee;
 	}
@@ -93,6 +94,7 @@ public class Exam {
 	public String getExplication() {
 		return explication;
 	}
+	
 	public void setExplication(String explication) {
 		this.explication = explication;
 	}

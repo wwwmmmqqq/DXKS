@@ -1,5 +1,8 @@
 package test.lrx;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +13,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.*;
 import cn.examsys.common.BeanAutoFit;
+import cn.examsys.lrx.dao.impl.ConstituteDaoImpl;
 import cn.examsys.lrx.dao.impl.LrxDaoImpl;
+import cn.examsys.lrx.service.ConstituteService;
 import cn.examsys.lrx.service.LrxService;
 import cn.examsys.lrx.service.NoticeService;
+import cn.examsys.lrx.service.impl.ConstituteServiceImpl;
 import cn.examsys.lrx.service.impl.NoticeServiceImpl;
+import cn.examsys.lrx.vo.ConstituteVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"}) 
@@ -24,6 +31,44 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	
 	@Autowired
 	LrxDaoImpl daoAdapter;
+	
+	@Autowired
+	ConstituteDaoImpl dao;
+	
+	@Autowired
+	ConstituteService conService;
+	
+	@Test
+	public void testContitution() {
+		
+		ConstituteVO single = new ConstituteVO();
+		ConstituteVO trueOrFalse = new ConstituteVO();
+		ConstituteVO multiple = new ConstituteVO();
+		ConstituteVO fills = new ConstituteVO();
+		ConstituteVO subjective = new ConstituteVO();
+		
+		single.setCount(20);
+		trueOrFalse.setCount(5);
+		multiple.setCount(5);
+		fills.setCount(5);
+		subjective.setCount(5);
+		
+		conService.createPaperAuto(1, 1, "XXX试卷"
+				, 120, "2018-06-10 21:00:00", "2018-06-10 22:20:00"
+				, single, trueOrFalse, multiple
+				, fills, subjective);
+				
+	}
+	
+	@Test
+	public void testHqlRnd() {
+		try {
+			List<Question> qs = dao.findNByHql("from Question ORDER BY RAND()", null, 5);
+			System.out.println(Arrays.toString(qs.toArray()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * 向每一个表里面插入50条数据

@@ -1,6 +1,5 @@
 package cn.examsys.bean;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +16,8 @@ public class Role {
 	
 	String type;
 	
+	String permission;//权限
+	
 	public Integer getSid() {
 		return sid;
 	}
@@ -28,5 +29,11 @@ public class Role {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public String getPermission() {
+		return permission;
+	}
+	public void setPermission(String permission) {
+		this.permission = permission;
 	}
 }
