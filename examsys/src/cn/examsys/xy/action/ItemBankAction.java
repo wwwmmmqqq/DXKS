@@ -69,8 +69,8 @@ public class ItemBankAction extends CommonAction{
 		String stringSid=sid+"";
 		System.out.println("Action层question的sid："+sid);
 		if(stringSid==null){
-			setResult("题库添加失败！");
 			System.out.println("Action题库添加失败！");
+			setResult("题库添加失败！");
 		}
 		/*创建选项*/
 		int count=question.getChoiceCount();   //判断题型决定option对象的个数
@@ -121,8 +121,11 @@ public class ItemBankAction extends CommonAction{
 		
 		/*查看对应question的option*/
 		for(int i=0;i<questionList.size();i++){
-			Option opti=itemBankService.selectItemOptionByQuestion(questionList.get(i).getSid());
-			optionList.add(opti);
+			List<Option> opti=itemBankService.selectItemOptionByQuestion(questionList.get(i).getSid());
+			for(int j=0;j<opti.size();j++){
+				Option op=opti.get(j);
+				optionList.add(op);
+			}
 		}
 		System.out.println("Action option Number"+optionList.size());
 		
@@ -152,8 +155,13 @@ public class ItemBankAction extends CommonAction{
 		
 		/*查看对应question的option*/
 		for(int i=0;i<questionList.size();i++){
-			Option opti=itemBankService.selectItemOptionByQuestion(questionList.get(i).getSid());
-			optionList.add(opti);
+			List<Option> opti=itemBankService.selectItemOptionByQuestion(questionList.get(i).getSid());
+			System.out.println(opti.size());
+			for(int j=0;j<opti.size();j++){
+				Option op=opti.get(j);
+				System.out.println("第"+i+"道题的第"+j+"个选项的内容:"+op.getContent());
+				optionList.add(op);
+			}
 		}
 		System.out.println("Action option Number"+optionList.size());
 		
@@ -165,6 +173,35 @@ public class ItemBankAction extends CommonAction{
 		setResult("题库查看成功！");
 		return "aa";
 	}
+	
+	/******************************显示一道题和相应选项*********************/
+	
+	@Action(value="/showItemAction",results={@Result(name="aa",location="/pages/xy/list.jsp")})
+	public String showItemAction(){
+		List<Option> optionList=new ArrayList<>();
+		
+		/*查看对应question*/
+		question=itemBankService.selectItemQuestion(question.getSid());
+		
+		/*查看对应question的option*/
+			List<Option> opti=itemBankService.selectItemOptionByQuestion(question.getSid());
+			for(int j=0;j<opti.size();j++){
+				Option op=opti.get(j);
+				System.out.println("第"+question.getSid()+"道题的第"+j+"个选项的内容:"+op.getContent());
+				optionList.add(op);
+		}
+		System.out.println("Action option Number"+optionList.size());
+		
+		if(optionList.isEmpty()||questionList.isEmpty()){
+			System.out.println("查看题目失败！");
+			setResult("查看题目失败！");
+		}else{
+			System.out.println("查看题目成功！");
+			setResult("查看题目成功！");
+		}
+		return "aa";
+	}
+	
 	
 	/******************************修改题库******************************/
 	
@@ -190,9 +227,15 @@ public class ItemBankAction extends CommonAction{
 	
 	/***************************删除题库**************************/
 	
-	/*public String deleteItemBank(){
+	public String deleteItemBank(){
 		
-	}*/
+		boolean currentQuestion=itemBankService.deleteQuestion(question);
+		for(int i=0;i<question.getChoiceCount();i++){
+			boolean currentOption=itemBankService.deleteOption(option.get(i));
+		}
+		
+		return "aa";
+	}
 	
 	
 	

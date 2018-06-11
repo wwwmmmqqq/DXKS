@@ -30,7 +30,7 @@ public interface ItemBankDao {
 	/*管理员题目列表总页数*/
 	int selectItemQuestListToalPage();
 	/*查看选项*/
-	Option selectItemOptionByQuestion(int sid);
+	List<Option> selectItemOptionByQuestion(int sid);
 	/**
 	 * 按种类查看题目和总页数
 	 * @param type
@@ -46,6 +46,18 @@ public interface ItemBankDao {
 	 */
 	void editQuestion(Question question);
 	void editOption(Option option);
+	/**
+	 * 显示一道题目根据题目的sid
+	 * @param sid
+	 * @return
+	 */
+	Question selectOneQuestionBySid(int sid);
+	/**
+	 * 根据题目id删除题库
+	 * @param sid
+	 */
+	void deleteQuestion(Question question);
+	void deleteOption(Option option);
 	
 	
 	

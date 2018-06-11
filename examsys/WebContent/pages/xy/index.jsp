@@ -14,9 +14,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	用户查看题库
-  	<a href="showItemBankListByUser">lianjie</a>
-  	添加题库：
+  	 用户查看题库
+  	<a href="showItemAction?question.sid=58">lianjie</a>
+  	<!--添加题库：
   	<form action="editItemBankByUser" method="post">
   	<input type="hidden" name="question.sid" value="61"/>
   	题目：<input type="text" name="question.title"/><br/>	
@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	
   	<input type="submit" value="tijiao" onclick="f()">
-  	</form>					 
+  	</form>		 -->			 
  	
  	按类型查看题目
  	<%-- <form action="showItemBankListByType" method="post">

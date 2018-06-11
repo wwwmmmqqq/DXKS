@@ -57,12 +57,12 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 	}
 	/*查看选项*/
 	@Override
-	public Option selectItemOptionByQuestion(int sid) {
+	public List<Option> selectItemOptionByQuestion(int sid) {
 		// TODO Auto-generated method stub
 		String hql="from Option where questionRef=?";
 		Object[] vals=new Object[]{sid};
 		try {
-			return findOneByHql(hql, vals);
+			return findByHql(hql, vals);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -148,7 +148,7 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 		}
 	}
 	
-	/*************************修改题库***********************/
+	/*************************修改题库有bug***********************/
 	@Override
 	public void editQuestion(Question question) {
 		// TODO Auto-generated method stub
@@ -164,6 +164,42 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 		// TODO Auto-generated method stub
 		try {
 			updateEntity(option);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	/*************************显示一道题目根据Id*********************/
+	@Override
+	public Question selectOneQuestionBySid(int sid) {
+		// TODO Auto-generated method stub
+		String hql="from Question where sid=?";
+		Object[] vals=new Object[]{sid};
+		try {
+			return findOneByHql(hql, vals);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**************************删除题库未测试************************/
+	@Override
+	public void deleteQuestion(Question question) {
+		// TODO Auto-generated method stub
+		try {
+			deleteEntity(question);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void deleteOption(Option option) {
+		// TODO Auto-generated method stub
+		try {
+			deleteEntity(option);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
