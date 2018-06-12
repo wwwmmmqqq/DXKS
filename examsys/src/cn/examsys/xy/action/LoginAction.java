@@ -42,7 +42,6 @@ public class LoginAction extends CommonAction implements ModelDriven<User>{
 		saveLogin(user);
 		System.out.println(user.getUserId());
 		return "aa";
-		
 	}
 	
 	@Override

@@ -148,7 +148,7 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 		}
 	}
 	
-	/*************************修改题库有bug***********************/
+	/*************************修改题库有***********************/
 	@Override
 	public void editQuestion(Question question) {
 		// TODO Auto-generated method stub
@@ -184,7 +184,7 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 		}
 	}
 	
-	/**************************删除题库未测试************************/
+	/**************************删除题库************************/
 	@Override
 	public void deleteQuestion(Question question) {
 		// TODO Auto-generated method stub
