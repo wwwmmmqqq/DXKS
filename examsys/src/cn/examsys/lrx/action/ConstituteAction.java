@@ -2,8 +2,6 @@ package cn.examsys.lrx.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.examsys.bean.Constitute;
-import cn.examsys.bean.Exam;
 import cn.examsys.bean.Paper;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ConstituteService;
@@ -56,7 +54,6 @@ public class ConstituteAction extends CommonAction {
 	 * <div>single.diff2Point //难度2的每题分值</div>
 	 * <div>single.diff3Point //难度3的每题分值</div>
 	 * <div>single.diff4Point //难度4的每题分值</div>
-	 * <img src='https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3062618009,3528994160&fm=27&gp=0.jpg'/>
 	 * <style>div{border:1px solid;background-color:green;width:300px;color:white}</style>
 	 *    
 	 *    paper.examRef //考次ID

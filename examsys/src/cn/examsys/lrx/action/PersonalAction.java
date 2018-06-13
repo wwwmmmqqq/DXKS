@@ -70,9 +70,10 @@ public class PersonalAction extends CommonAction {
 	
 	public String searchExams() {
 		serivce.searchExamsBy(getSessionUser(), filed, words);
-		
 		return aa;
 	}
+	
+	
 	
 	@Override
 	public String getResult() {

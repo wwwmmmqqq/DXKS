@@ -53,11 +53,12 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 		fills.setCount(5);
 		subjective.setCount(5);
 		
-		conService.createPaperAuto(1, 1, "XXX试卷"
+		int n = conService.createPaperAuto(1, 1, "XXX试卷"
 				, 120, "2018-06-10 21:00:00", "2018-06-10 22:20:00"
 				, single, trueOrFalse, multiple
 				, fills, subjective);
-				
+		System.out.println(n);
+		
 	}
 	
 	@Test
@@ -76,7 +77,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
-				 Answersheet.class
+				  Answersheet.class
 				, College.class
 				, Constitute.class
 				, Exam.class
