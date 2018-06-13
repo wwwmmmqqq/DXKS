@@ -14,8 +14,13 @@
 	
 </body>
 <script type="text/javascript">
-	 $.post("createUserssss",{"userId":Math.random()*9999+"","type":"学生","sex":"女","phone":"15078843569","psw":"000000"},function(data){
-		 alert(data.result);
-	}) 
+	 $.post("createUserssss", {
+			 "user.userId":Math.random()*9999+""
+			 ,"user.type":"学生","user.sex":"女"
+			 ,"user.phone":"15078843569"
+			 ,"user.psw":"000000"
+	}, function(r){
+		 alert(r['result']);
+	});
 </script>
 </html>

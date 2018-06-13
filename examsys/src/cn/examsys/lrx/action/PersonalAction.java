@@ -73,8 +73,6 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
-	
-	
 	@Override
 	public String getResult() {
 		return result;

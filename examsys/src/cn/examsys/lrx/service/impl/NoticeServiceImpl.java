@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.bean.Notice;
 import cn.examsys.bean.User;
-import cn.examsys.lrx.dao.NoticeDao;
 import cn.examsys.lrx.dao.impl.NoticeDaoImpl;
 import cn.examsys.lrx.service.NoticeService;
 
