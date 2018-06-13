@@ -10,6 +10,12 @@
 </head>
 <body>
 	1111
+	<a href="createUser?userId=hshshshs&type=教务">s</a>
 	
 </body>
+<script type="text/javascript">
+	 $.post("createUserssss",{"userId":Math.random()*9999+"","type":"学生","sex":"女","phone":"15078843569","psw":"000000"},function(data){
+		 alert(data.result);
+	}) 
+</script>
 </html>

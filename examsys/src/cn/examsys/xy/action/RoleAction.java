@@ -21,7 +21,8 @@ import cn.examsys.xy.service.RoleService;
 public class RoleAction extends CommonAction implements ModelDriven<Role>{
 
 	private Role role=new Role();
-	
+	User user=new User();
+
 	int page;    //当前页面
 	
 	public int getPage() {
@@ -30,9 +31,16 @@ public class RoleAction extends CommonAction implements ModelDriven<Role>{
 	public void setPage(int page) {
 		this.page = page;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Autowired
 	RoleService roleService;
+	
 	/*创建角色*/
 	@Action(value="/createRole",results={@Result(name="aa",location="/pages/xy/index.jsp")})
 	public String createRole(){
@@ -82,6 +90,12 @@ public class RoleAction extends CommonAction implements ModelDriven<Role>{
 		setResult("编辑角色成功");
 		return "aa";
 	}
+	
+	/***********************************权限管理*****************************/
+	
+	/*public String creatPremission(){
+		 roleService.createPremission(user.getUerId);
+	}*/
 	@Override
 	public String getResult() {
 		// TODO Auto-generated method stub
