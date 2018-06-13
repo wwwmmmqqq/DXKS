@@ -7,6 +7,8 @@ import javax.persistence.Table;
 import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.GenericGenerator;
 
+import cn.examsys.common.Permission2;
+
 @Entity
 @Table(name="user_tb")
 public class User {
@@ -127,7 +129,7 @@ public class User {
 	public void setProfession(String profession) {
 		this.profession = profession;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", psw=" + psw + ", name=" + name

@@ -1,6 +1,7 @@
 package cn.examsys.lrx.service.impl;
 
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,10 +64,11 @@ public class ConstituteServiceImpl implements ConstituteService {
 		};
 		
 		ConstituteVO vos[] = new ConstituteVO[] {
-				single, multiple, trueOrFalse,fills, subjective
+				single, multiple, trueOrFalse, fills, subjective
 		};
+		
 		//难度
-		int difficulty_arr[] = new int[]{
+		int difficulty_arr[] = new int[] {
 				 Conf.Difficulty_1
 				,Conf.Difficulty_2
 				,Conf.Difficulty_3
@@ -94,10 +96,11 @@ public class ConstituteServiceImpl implements ConstituteService {
 			//遍历四个难度
 			for (int j = 0; j < difficulty_arr.length; j++) {
 				
-				List<Question> tmp = dao.findNByHql("from Question where subjectRef=? and type=? and difficulty=? ORDER BY RAND()"
+				//List<Question> tmp = dao.findNByHql("from Question where subjectRef=? and type=? and difficultyValue=? ORDER BY RAND()"
+				List<Question> tmp = dao.findNByHql("from Question where type=? and difficultyValue=? ORDER BY RAND()"
 						, new Object[] {
-								subjectRef 
-								, type_arr[i] //题目类型
+								/*subjectRef 
+								,*/ type_arr[i] //题目类型
 								, difficulty_arr[j] //难度
 						} , diff_n_count_arr[j]);//数量
 				//设置   题目序号，某题目类型某难度的分值  
@@ -127,6 +130,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 			con.setType(q.getType());//题目类型
 			//con.setResponsibleUser(null);//负责批改此题目的教师
 			con.setPoint(point);
+			
 			dao.saveEntity(con);
 		}
 		System.out.println();

@@ -91,12 +91,17 @@ public class Question {
 		this.difficultyValue = difficultyValue;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Question [sid=" + sid + ", type=" + type + ", userId=" + userId
 				+ ", title=" + title + ", choiceCount=" + choiceCount
 				+ ", difficultyValue=" + difficultyValue + ", subjectRef="
 				+ subjectRef + "]";
+	}*/
+	
+	@Override
+	public String toString() {
+		return "q"+sid+" ";
 	}
 	
 }

@@ -45,7 +45,7 @@ public class ExamAction extends CommonAction {
 	}
 	
 	/**
-	 * 获取考试列表
+	 * 获取考试列表 
 	 * page
 	 * @return
 	 */
@@ -64,10 +64,6 @@ public class ExamAction extends CommonAction {
 		return aa;
 	}
 	
-	public String startExamPaper() {
-		boolean bo = service.startExamPaper(getSessionUser(), paper.getSid());
-		return aa;
-	}
 	
 	/**
 	 * 加载题目列表
