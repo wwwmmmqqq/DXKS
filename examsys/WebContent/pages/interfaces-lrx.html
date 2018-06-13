@@ -24,7 +24,7 @@
 	  /*标记某个通知已读*/
 	  function readNotice(noticeSid) {
 		  $.post("loadNoticeCount", {
-			  "notice.sid":noticeSid
+			  "sid":noticeSid
 		  }, function(data) {
 			  alert(data.result);
 		  });
