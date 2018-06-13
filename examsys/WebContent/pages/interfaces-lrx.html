@@ -12,12 +12,21 @@
 	  	});
 	  }
 	  
-	  /*获取推送列表*/
+	  /*获取通知列表*/
 	  function loadNoticeList(page) {
 		  $.post("loadNoticeCount", {
 			  "page":page//第几页
 		  }, function(data) {
 			  alert(data.list);
+		  });
+	  }
+	  
+	  /*标记某个通知已读*/
+	  function readNotice(noticeSid) {
+		  $.post("loadNoticeCount", {
+			  "notice.sid":noticeSid
+		  }, function(data) {
+			  alert(data.result);
 		  });
 	  }
 	  </script>

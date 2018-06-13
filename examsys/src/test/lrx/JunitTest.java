@@ -38,6 +38,16 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	ConstituteService conService;
 	
+	@Autowired
+	NoticeServiceImpl noticeServiceImpl;
+	
+	@Test
+	public void testNotice() {
+		List<Notice> li = noticeServiceImpl.loadNoticeList("admin", true, 1);
+		System.out.println(li.size());
+		System.out.println(Arrays.toString(li.toArray()));
+	}
+	
 	@Test
 	public void testContitution() {
 		
