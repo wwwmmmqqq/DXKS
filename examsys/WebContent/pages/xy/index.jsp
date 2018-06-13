@@ -15,20 +15,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	 用户查看题库
-  	<a href="showItemAction?question.sid=58">lianjie</a>
-  	<!--添加题库：
+  <!-- 	<a href="showItemAction?question.sid=58">lianjie</a> -->
+  	<!-- 修改题库&&添加：
   	<form action="editItemBankByUser" method="post">
-  	<input type="hidden" name="question.sid" value="61"/>
-  	题目：<input type="text" name="question.title"/><br/>	
+  	<input type="hidden" name="question.sid" value="56"/>
+  	题目：<input type="text" name="question.title" value="huahuahau"/><br/>	
   	题目类型：<input type="text" name="question.type" id="questiontype"/><br/>
   	选项个数<input type="hidden" name="question.choiceCount" id="choiceCount"><br />
-  	<input type="hidden" name="option[0].sid" value="62"/>
-  	选项：<input type="text" name="option[0].content"/><br/>
-  	是否为答案：<input type="text" name="option[0].isAnswer"/><br/>   后面一定要加"[]"
+  	<input type="hidden" name="option[0].sid" value="51"/>
+  	选项：<input type="text" name="option[0].content" value="balalala"/><br/>
+  	是否为答案：<input type="text" name="option[0].isAnswer" value="0"/><br/>   后面一定要加"[]"
+  		<input type="hidden" name="option[1].sid" value="52"/>
+  	选项：<input type="text" name="option[1].content" value="balalala"/><br/>
+  	是否为答案：<input type="text" name="option[1].isAnswer" value="0"/><br/> 
+  		<input type="hidden" name="option[2].sid" value="53"/>
+  	选项：<input type="text" name="option[2].content" value="balalala"/><br/>
+  	是否为答案：<input type="text" name="option[2].isAnswer" value="0"/><br/> 
+  		<input type="hidden" name="option[3].sid" value="54"/>
+  	选项：<input type="text" name="option[3].content" value="balalala"/><br/>
+  	是否为答案：<input type="text" name="option[3].isAnswer" value="0"/><br/> 
   	
   	
   	<input type="submit" value="tijiao" onclick="f()">
-  	</form>		 -->			 
+  	</form>					  -->
  	
  	按类型查看题目
  	<%-- <form action="showItemBankListByType" method="post">
@@ -40,6 +49,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		</select>
  		<input type="submit" value="tijiao">
  	</form> --%>
+ 	
+ 	删除题库
+ 	<form action="deleteItemBank" method="post">
+  	<input type="hidden" name="question.sid" value="56"/>
+  	题目：<input type="text" name="question.title" value="huahuahau"/><br/>	
+  	题目类型：<input type="text" name="question.type" id="questiontype"/><br/>
+  	选项个数<input type="hidden" name="question.choiceCount" id="choiceCount"><br />
+  	<input type="hidden" name="option[0].sid" value="51"/>
+  	选项：<input type="text" name="option[0].content" value="balalala"/><br/>
+  	是否为答案：<input type="text" name="option[0].isAnswer" value="0"/><br/>   后面一定要加"[]"
+  		<input type="hidden" name="option[1].sid" value="52"/>
+  	选项：<input type="text" name="option[1].content" value="balalala"/><br/>
+  	是否为答案：<input type="text" name="option[1].isAnswer" value="0"/><br/> 
+  		<input type="hidden" name="option[2].sid" value="53"/>
+  	选项：<input type="text" name="option[2].content" value="balalala"/><br/>
+  	是否为答案：<input type="text" name="option[2].isAnswer" value="0"/><br/> 
+  		<input type="hidden" name="option[3].sid" value="54"/>
+  	选项：<input type="text" name="option[3].content" value="balalala"/><br/>
+  	是否为答案：<input type="text" name="option[3].isAnswer" value="0"/><br/> 
+  	
+  	
+  	<input type="submit" value="tijiao" onclick="f()">
+  	</form>
+  	
+  	
   </body>
   <script type="text/javascript">
   var f= function()

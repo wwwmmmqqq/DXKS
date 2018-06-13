@@ -210,14 +210,14 @@ public class ItemBankAction extends CommonAction{
 		question.setUserId("123546"); 
 		boolean currentQuestion=itemBankService.editQuestion(question);
 		if(!currentQuestion){
-			setResult("题库的选项更新失败！");
 			System.out.println("Action题库的选项更新失败！");
+			setResult("题库的选项更新失败！");
 		}
 		for(int i=0;i<question.getChoiceCount();i++){
 			boolean currentOption=itemBankService.editOption(option.get(i));      //修改获取到第[i]个option对象
 			if(!currentOption){
-				setResult("题库的选项更新失败！");
 				System.out.println("Action题库的选项更新失败！");
+				setResult("题库的选项更新失败！");
 			}
 		}
 		System.out.println("Action题库的选项更新成功！");
@@ -227,13 +227,21 @@ public class ItemBankAction extends CommonAction{
 	
 	/***************************删除题库**************************/
 	
+	@Action(value="/deleteItemBank",results={@Result(name="aa",location="/pages/xy/list.jsp")})
 	public String deleteItemBank(){
 		
 		boolean currentQuestion=itemBankService.deleteQuestion(question);
+		if(currentQuestion){
+			System.out.println("Action题库的题目删除成功！");
+			setResult("题目删除成功！");
+		}
 		for(int i=0;i<question.getChoiceCount();i++){
 			boolean currentOption=itemBankService.deleteOption(option.get(i));
+			if(currentOption){
+				System.out.println("Action题库的选项删除成功！");
+				setResult("选项删除成功！");
+			}
 		}
-		
 		return "aa";
 	}
 	
