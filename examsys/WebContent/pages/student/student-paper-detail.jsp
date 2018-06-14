@@ -10,12 +10,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css" />
-<link rel="stylesheet" href="<%=basePath%>css/student.css" />
-<link rel="stylesheet" href="<%=basePath%>css/ionicons.min.css" />
-<link rel="stylesheet" href="<%=basePath%>css/font-awesome.min.css" />
-<script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/student.css" />
+<link rel="stylesheet" href="css/ionicons.min.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
 
