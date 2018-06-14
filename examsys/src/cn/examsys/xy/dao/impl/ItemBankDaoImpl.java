@@ -148,6 +148,37 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 		}
 	}
 	
+	/*按种类和UserID查看题目和总页数*/
+	@Override
+	public List<Question> selectTeacherItemQuestListByType(String type, String userId, int page) {
+		// TODO Auto-generated method stub
+		String hql="from Question where type=? and userId=?";
+		Object[] vals=new Object[]{type,userId};
+		try {
+			List<Question> questionList=findByHql(hql, vals, page);
+			return questionList;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@Override
+	public int selectTeacherItemQuestListToalPageByType(String type, String userId) {
+		// TODO Auto-generated method stub
+		String hql="from Question where type=? and userId=?";
+		Object[] vals=new Object[]{type,userId};
+		try {
+			List<Question> questionList=findByHql(hql, vals);
+			int count=questionList.size();
+			int totalPage=(int) Math.ceil((count*1.0)/COUNT_PER_PAGE);
+			return totalPage;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	/*************************修改题库有***********************/
 	@Override
 	public void editQuestion(Question question) {
@@ -205,6 +236,7 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	

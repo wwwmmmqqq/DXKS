@@ -1,10 +1,13 @@
 package cn.examsys.bean;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -26,7 +29,9 @@ public class Option {
 	String fillsText;// 填空题答案
 
 	String subjectiveText;// 主观题答案
-
+	
+	String time;
+	
 	public int getSid() {
 		return sid;
 	}
@@ -81,6 +86,14 @@ public class Option {
 
 	public void setQuestionRef(int questionRef) {
 		this.questionRef = questionRef;
+	}
+	
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 }

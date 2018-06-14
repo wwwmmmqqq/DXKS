@@ -16,7 +16,6 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	public Serializable saveEntity(User user){
 		// TODO Auto-generated method stub
 		try {
-			System.out.println("create a User");
 			return super.saveEntity(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

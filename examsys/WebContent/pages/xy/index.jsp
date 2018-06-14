@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 String path = request.getContextPath();
@@ -9,11 +9,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
-  
+  <script type="text/javascript">
+	 
+  </script>
   
   </head>
   
   <body>
+  
+  
+  
   	 用户查看题库
   <!-- 	<a href="showItemAction?question.sid=58">lianjie</a> -->
   	<!-- 修改题库&&添加：
@@ -51,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	</form> --%>
  	
  	删除题库
- 	<form action="deleteItemBank" method="post">
+ 	<!-- <form action="deleteItemBank" method="post">
   	<input type="hidden" name="question.sid" value="56"/>
   	题目：<input type="text" name="question.title" value="huahuahau"/><br/>	
   	题目类型：<input type="text" name="question.type" id="questiontype"/><br/>
@@ -68,15 +73,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<input type="hidden" name="option[3].sid" value="54"/>
   	选项：<input type="text" name="option[3].content" value="balalala"/><br/>
   	是否为答案：<input type="text" name="option[3].isAnswer" value="0"/><br/> 
-  	
-  	
   	<input type="submit" value="tijiao" onclick="f()">
-  	</form>
+  	</form> -->
   	
   	
   </body>
-  <script type="text/javascript">
-  var f= function()
+  <%-- <script type="text/javascript">
+ /*  var f= function()
   {
     	var val = $("#questiontype").val(); //获取  
     	alert(val);
@@ -89,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         var val1 = $("#choiceCount").val(); //获取 
         alert(val1);
-  }
-  
-  </script>
+  } */ 
+  	
+  </script> --%>
 </html>

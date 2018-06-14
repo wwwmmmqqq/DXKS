@@ -1,10 +1,13 @@
 package cn.examsys.bean;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="question_tb")
@@ -13,7 +16,7 @@ public class Question {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
-	//int paperRef;//指向试卷
+	int paperRef;//指向试卷
 	
 	String type;//题目类型
 	
@@ -27,6 +30,10 @@ public class Question {
 	
 	int subjectRef;//所属科目
 	
+	String knowledge;//涉及知识点
+	
+	String time;
+	
 	public int getSid() {
 		return sid;
 	}
@@ -35,13 +42,13 @@ public class Question {
 		this.sid = sid;
 	}
 
-	/*public int getPaperRef() {
+	public int getPaperRef() {
 		return paperRef;
 	}
 
 	public void setPaperRef(int paperRef) {
 		this.paperRef = paperRef;
-	}*/
+	}
 	
 	public int getSubjectRef() {
 		return subjectRef;
@@ -90,6 +97,22 @@ public class Question {
 	public void setDifficultyValue(int difficultyValue) {
 		this.difficultyValue = difficultyValue;
 	}
+	
+	public String getKnowledge() {
+		return knowledge;
+	}
+
+	public void setKnowledge(String knowledge) {
+		this.knowledge = knowledge;
+	}
+	
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String string) {
+		this.time = string;
+	}
 
 	/*@Override
 	public String toString() {
@@ -99,6 +122,8 @@ public class Question {
 				+ subjectRef + "]";
 	}*/
 	
+	
+
 	@Override
 	public String toString() {
 		return "q"+sid+" ";

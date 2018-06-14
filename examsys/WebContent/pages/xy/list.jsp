@@ -14,8 +14,14 @@
 	
 </body>
 <script type="text/javascript">
-	 $.post("createUserssss",{"userId":Math.random()*9999+"","type":"学生","sex":"女","phone":"15078843569","psw":"000000"},function(data){
-		 alert(data.result);
+	 $.post("selectRoleList",{"userId":"jjjj"},function(data){
+		 var role=data.roleList;
+		 alert(role.length);			//查询出的用户总数
+		 alert(data.totalPage);		//查询出的总页数
+		 alert(role[5].type);
+		 /* for(var i=0; i<role.length; i++){
+			 alert(role[i].type); 	 //第i位用户的id号
+		 } */
 	}) 
 </script>
 </html>

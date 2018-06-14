@@ -1,5 +1,6 @@
 package cn.examsys.xy.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -13,17 +14,21 @@ import com.opensymphony.xwork2.ModelDriven;
 import cn.examsys.bean.Role;
 import cn.examsys.bean.User;
 import cn.examsys.common.CommonAction;
+import cn.examsys.common.Conf;
+import cn.examsys.common.Permission;
+import cn.examsys.common.Permission2;
 import cn.examsys.xy.service.RoleService;
 @Namespace("/")
-@ParentPackage("struts-default")
+@ParentPackage("json-default")
 @Controller("roleAction")
 @Scope("prototype")
-public class RoleAction extends CommonAction implements ModelDriven<Role>{
+public class RoleAction extends CommonAction{
 
-	private Role role=new Role();
-	User user=new User();
-
+	Role role=new Role();
+	User user = new User();
 	int page;    //当前页面
+	List<Role> roleList=new ArrayList<>();
+	int totalPage;
 	
 	public int getPage() {
 		return page;
@@ -31,56 +36,84 @@ public class RoleAction extends CommonAction implements ModelDriven<Role>{
 	public void setPage(int page) {
 		this.page = page;
 	}
-	public User getUser() {
-		return user;
+
+	public List<Role> getRoleList() {
+		return roleList;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
+	}
+
+	public int getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+	
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	@Autowired
 	RoleService roleService;
 	
 	/*创建角色*/
-	@Action(value="/createRole",results={@Result(name="aa",location="/pages/xy/index.jsp")})
+	@Action(value="/createRole"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
 	public String createRole(){
-		
 		boolean currentRole=roleService.createRole(role.getType());
 		if(!currentRole) {
 			setResult("角色创建失败！");
 		}
 		setResult("角色创建成功");
-		return "aa";
+		return aa;
 	}
+	
 	/*删除角色*/
-	@Action(value="/deleteRole",results={@Result(name="aa",location="/roleList.jsp")})
+	@Action(value="/deleteRole"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
 	public String deleteRole(){
+		System.out.println(role.getSid());
 		boolean currentRole=roleService.deleteRole(role.getSid());
 		if(!currentRole){
 			setResult("删除角色失败");
 		}
 		setResult("删除角色成功");
-		return "aa";
+		return aa;
 	}
+	
 	/*获取角色列表*/
-	@Action(value="/selectRoleList",results={@Result(name="aa",location="/roleList.jsp")})
+	@Action(value="/selectRoleList"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
 	public String selectRoleList(){
-		List<Role> roleList=roleService.selectRoleList(role.getType(),page);
+		roleList=roleService.selectRoleList(page);
+		System.out.println(roleList.size());
 		if(roleList==null){
 			setResult("无角色");
 		}
-		int totalPage=roleService.selectRoleCount(role.getType());
+		totalPage=roleService.selectRoleCount();
 		System.out.println("总页面大小为："+totalPage);
-		return "aa";
+		return aa;
 	}
 	/*显示角色信息*/
-	@Action(value="/showRole",results={@Result(name="aa",location="/rolelist.jsp")})
+	@Action(value="/showRole"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
 	public String showRole(){
-		Role currentRole=roleService.SelectOneRole(role.getSid());
-		return "aa";
+		role=roleService.SelectOneRole(role.getSid());
+		return aa;
 	}
 	/*编辑角色信息*/
-	@Action(value="/editRole",results={@Result(name="aa",location="/rolelist.jsp")})
+	@Action(value="/editRole"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
 	public String editRole(){
 		boolean currentRole=roleService.editRole(role);
 		if(!currentRole){
@@ -88,24 +121,29 @@ public class RoleAction extends CommonAction implements ModelDriven<Role>{
 		}
 		System.out.println("编辑角色成功");
 		setResult("编辑角色成功");
-		return "aa";
+		return aa;
 	}
 	
 	/***********************************权限管理*****************************/
 	
-	/*public String creatPremission(){
-		 roleService.createPremission(user.getUerId);
-	}*/
+	public String hasPremission(){
+		Permission2 permission=new Permission2();
+		if(user.getType()=="老师") {
+			/*boolean per=permission.hasPermission(user.getPermission());
+			if(!per) {
+				user.setPermission(Conf.permession_StudentManage);
+				permission.addPermission(user.getPermission());
+			}*/
+		}
+		
+		
+		
+		return aa;
+	}
 	@Override
 	public String getResult() {
 		// TODO Auto-generated method stub
 		return result;
-	}
-
-	@Override
-	public Role getModel() {
-		// TODO Auto-generated method stub
-		return role;
 	}
 
 }

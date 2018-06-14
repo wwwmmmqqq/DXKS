@@ -58,6 +58,15 @@ public interface ItemBankDao {
 	 */
 	void deleteQuestion(Question question);
 	void deleteOption(Option option);
+	/**
+	 * 根据type和userId查询列表
+	 * @param type
+	 * @param userId
+	 * @param page
+	 * @return
+	 */
+	List<Question> selectTeacherItemQuestListByType(String type, String userId, int page);
+	int selectTeacherItemQuestListToalPageByType(String type, String userId);
 	
 	
 	
