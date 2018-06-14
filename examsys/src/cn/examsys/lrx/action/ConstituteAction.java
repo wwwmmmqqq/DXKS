@@ -13,7 +13,7 @@ import cn.examsys.lrx.vo.ConstituteVO;
  * 2018年6月10日
  */
 public class ConstituteAction extends CommonAction {
-
+	
 	@Autowired
 	ConstituteService service;
 	Paper paper = new Paper();

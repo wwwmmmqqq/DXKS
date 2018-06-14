@@ -20,6 +20,7 @@ import cn.examsys.lrx.service.LrxService;
 import cn.examsys.lrx.service.NoticeService;
 import cn.examsys.lrx.service.impl.ConstituteServiceImpl;
 import cn.examsys.lrx.service.impl.NoticeServiceImpl;
+import cn.examsys.lrx.vo.AnswerVO;
 import cn.examsys.lrx.vo.ConstituteVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,6 +38,18 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	
 	@Autowired
 	ConstituteService conService;
+	
+	@Test
+	public void test() {
+		try {
+			List<AnswerVO> vo = daoAdapter.findByHql("select new cn.examsys.lrx.vo.AnswerVO(a, b, c.point) from Answersheet a, Option b, Constitute c"
+					+ " where b.sid=a.optionRef and c.questionRef=b.questionRef");
+			System.out.println(vo.size());
+			System.out.println(Arrays.toString(vo.toArray()).replaceAll("] -", "] -\n"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Test
 	public void testContitution() {
@@ -78,7 +91,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
 				  Answersheet.class
-				, College.class
+				/*, College.class
 				, Constitute.class
 				, Exam.class
 				, Grade.class
@@ -89,7 +102,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 				, Question.class
 				, Role.class
 				, Subject.class
-				, User.class
+				, User.class*/
 		};
 		for (int i = 0; i < classes.length; i++) {
 			for (int j = 0; j < 50; j++) {

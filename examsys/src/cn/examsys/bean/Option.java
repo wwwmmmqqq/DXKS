@@ -96,4 +96,13 @@ public class Option {
 		this.time = time;
 	}
 
+	@Override
+	public String toString() {
+		return "Option [sid=" + sid + ", questionRef=" + questionRef
+				+ ", type=" + type + ", content=" + content + ", isAnswer="
+				+ isAnswer + ", fillsText=" + fillsText + ", subjectiveText="
+				+ subjectiveText + "]";
+	}
+	
+	
 }

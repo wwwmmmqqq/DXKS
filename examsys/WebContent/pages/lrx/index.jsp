@@ -59,7 +59,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	<a href="pagination-plus.jsp">分页 demo+</a>
   	
-  	
   </body>
   
 </html>

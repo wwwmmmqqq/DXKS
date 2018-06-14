@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 学生答题表
+ * 学生答题表 
  */
 @Entity
 @Table(name="answersheet_tb")
@@ -24,7 +24,9 @@ public class Answersheet {
 	
 	int questionRef;//指向哪题
 	
-	int isSelected;//是否已经选择
+	//int isSelected;//是否已经选择
+	
+	int optionRef;//答案指向
 	
 	String fillsAnswer;//填空题答案
 	
@@ -62,12 +64,12 @@ public class Answersheet {
 		this.questionRef = questionRef;
 	}
 
-	public int getIsSelected() {
-		return isSelected;
+	public int getOptionRef() {
+		return optionRef;
 	}
-
-	public void setIsSelected(int isSelected) {
-		this.isSelected = isSelected;
+	
+	public void setOptionRef(int optionRef) {
+		this.optionRef = optionRef;
 	}
 
 	public String getFillsAnswer() {
@@ -84,6 +86,14 @@ public class Answersheet {
 	
 	public void setSubjectiveAnswer(String subjectiveAnswer) {
 		this.subjectiveAnswer = subjectiveAnswer;
+	}
+
+	@Override
+	public String toString() {
+		return "Answersheet [sid=" + sid + ", userId=" + userId + ", type="
+				+ type + ", questionRef=" + questionRef + ", optionRef="
+				+ optionRef + ", fillsAnswer=" + fillsAnswer
+				+ ", subjectiveAnswer=" + subjectiveAnswer + "]";
 	}
 	
 }

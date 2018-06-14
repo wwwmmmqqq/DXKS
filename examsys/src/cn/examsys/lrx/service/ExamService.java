@@ -31,5 +31,5 @@ public interface ExamService {
 	boolean todo(User sessionUser, int questionRef, int isSelected, String fillsAnswer, String subjectiveAnswer);
 
 	int submitPaper(User sessionUser, int sid, int timeComsuming);
-	
+
 }

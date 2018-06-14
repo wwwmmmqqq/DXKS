@@ -2,6 +2,10 @@ package cn.examsys.bean;
 
 import java.util.Date;
 
+import java.util.Arrays;
+import java.util.List;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -123,10 +127,18 @@ public class Question {
 	}*/
 	
 	
-
+	@Transient
+	List<Option> options;
+	public List<Option> getOptions() {
+		return options;
+	}
+	public void setOptions(List<Option> options) {
+		this.options = options;
+	}
+	
 	@Override
 	public String toString() {
-		return "q"+sid+" ";
+		return "q"+sid+" " + options!=null?Arrays.toString(options.toArray()):"nil";
 	}
 	
 }

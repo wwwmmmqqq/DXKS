@@ -14,6 +14,7 @@
 	
 </body>
 <script type="text/javascript">
+<<<<<<< HEAD
 	 $.post("selectRoleList",{"userId":"jjjj"},function(data){
 		 var role=data.roleList;
 		 alert(role.length);			//查询出的用户总数
@@ -23,5 +24,15 @@
 			 alert(role[i].type); 	 //第i位用户的id号
 		 } */
 	}) 
+=======
+	 $.post("createUserssss", {
+			 "user.userId":Math.random()*9999+""
+			 ,"user.type":"学生","user.sex":"女"
+			 ,"user.phone":"15078843569"
+			 ,"user.psw":"000000"
+	}, function(r){
+		 alert(r['result']);
+	});
+>>>>>>> lrx
 </script>
 </html>
