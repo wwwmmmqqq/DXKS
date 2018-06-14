@@ -29,7 +29,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	
 	@Autowired
 	private LrxService service;
-	
+	 
 	@Autowired
 	LrxDaoImpl daoAdapter;
 	
