@@ -11,12 +11,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>首页-考试</title>
-<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css" />
-<link rel="stylesheet" href="<%=basePath%>css/student.css" />
-<link rel="stylesheet" href="<%=basePath%>css/ionicons.min.css" />
-<link rel="stylesheet" href="<%=basePath%>css/font-awesome.min.css" />
-<script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/student.css" />
+<link rel="stylesheet" href="css/ionicons.min.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
+
 </head>
 <body>
 
@@ -225,12 +224,12 @@
 						</p>
 				</div>
 				<div class="agree-rule">
-					<input type="checkbox" />
+					<input type="checkbox"  name="agree-checkebox"/>
 					<span>我已仔细阅读并同意</span>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript:window.location.href='student-exam.jsp'">开始考试
+				<button type="button" id="start-exam-btn" class="btn btn-primary" data-dismiss="modal" onclick="javascript:window.location.href='student-exam.jsp'">开始考试
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
@@ -351,5 +350,12 @@
 	<div class="footer-section">
 	</div>
 </footer>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+function agreeClick(){
+	$('.agree-rule input[name=agree-checkebox]')
+}
+</script>
 </body>
 </html>
