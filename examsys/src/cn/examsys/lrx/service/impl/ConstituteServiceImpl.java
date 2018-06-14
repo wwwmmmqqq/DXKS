@@ -55,7 +55,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 		//开始组卷
 		//List<Question> list = new ArrayList<>();
 		//题目类型
-		String type_arr[] = new String[]{
+		String type_arr[] = new String[] {
 				 Conf.Question_Single
 				,Conf.Question_Multiple
 				,Conf.Question_TrueOrFalse

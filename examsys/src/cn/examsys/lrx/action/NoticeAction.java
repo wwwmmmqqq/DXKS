@@ -90,7 +90,11 @@ public class NoticeAction extends CommonAction {
 			}
 		} else {
 			list = service.loadNoticeList(getSessionUserId(), true, page);
+			System.out.println(list==null?"no":list.size());
 		}
+		
+		
+		
 		return aa;
 	}
 	

@@ -3,6 +3,7 @@ package cn.examsys.lrx.service.impl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -24,6 +25,7 @@ import cn.examsys.common.ScoreTool;
 import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.ExamDaoImpl;
 import cn.examsys.lrx.service.ExamService;
+import cn.examsys.lrx.vo.AnswerVO;
 
 @Service("examService")
 @Transactional
@@ -70,8 +72,38 @@ public class ExamServiceImpl implements ExamService {
 	
 	@Override
 	public List<Question> loadQuestionList(int sid, int page) {
-		try {
+		/*try {
 			return dao.findByHql("from Question where paperRef=?", new Object[]{sid}, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
+		try {
+			List<String> qlist = dao.findBySql("select questionRef from constitute_tb where paperRef=?", new Object[]{page});
+			String qRefs = Arrays.toString(qlist.toArray());
+			
+			List<Question> questionList = dao.findByHql("from Question where locate(sid, ?)>0"
+					, new Object[]{qRefs});
+			
+			List<Option> optionList = dao.findByHql("from Option where locate(questionRef, ?)>0"
+					, new Object[]{qRefs});
+			
+			HashMap<Integer, List<Option>> mp = new HashMap<>();
+			for (int i = 0; i < optionList.size(); i++) {
+				if (mp.containsKey(optionList.get(i).getQuestionRef())) {
+					mp.get(optionList.get(i).getQuestionRef()).add(optionList.get(i));
+				} else {
+					List<Option> li = new ArrayList<Option>();
+					li.add(optionList.get(i));
+					mp.put(optionList.get(i).getQuestionRef(), li);
+				}
+			}
+			
+			//将选项列表存入到Question对象中
+			for (int i = 0; i < questionList.size(); i++) {
+				questionList.get(i).setOptions(mp.get(questionList.get(i).getSid()));
+			}
+			
+			return questionList;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,19 +112,43 @@ public class ExamServiceImpl implements ExamService {
 	
 	@Override
 	public boolean todo(User sessionUser
-			, int questionRef, int isSelected, String fillsAnswer, String subjectiveAnswer) {
+			, int questionRef, int optionRef, String fillsAnswer, String subjectiveAnswer) {
 		
-		Question q = dao.findEntity(Question.class, questionRef);
+		Question q;
+		try {
+			q = dao.findOneByHql("from Question where sid=?", new Object[]{questionRef});
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			return false;
+		}
 		
-		Answersheet answer = new Answersheet();
+		Answersheet answer = null;
+		try {
+			answer = dao.findOneByHql("from Answersheet where questionRef=? and optionRef=? and userId=?"
+					, new Object[]{questionRef, optionRef, sessionUser.getUserId()});
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		boolean insert = false;
+		if (answer == null) {
+			answer = new Answersheet();
+			insert = true;
+		}
+		
 		answer.setQuestionRef(questionRef);
 		answer.setFillsAnswer(fillsAnswer);
-		answer.setIsSelected(isSelected);
+		answer.setOptionRef(optionRef);
 		answer.setSubjectiveAnswer(subjectiveAnswer);
 		answer.setType(q.getType());
 		
 		try {
-			dao.saveEntity(answer);
+			if (insert) {
+				dao.saveEntity(answer);
+			} else {
+				dao.updateEntity(answer);
+			}
+			System.out.println(answer);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,12 +164,6 @@ public class ExamServiceImpl implements ExamService {
 	public int submitPaper(User sessionUser, int sid, int timeComsuming) {
 		Paper paper = dao.findEntity(Paper.class, sid);
 		
-		Grade grade = new Grade();
-		grade.setPaperRef(sid);
-		grade.setSubjectName(paper.getSubjectName());
-		grade.setTime(Tool.time());
-		grade.setUserId(sessionUser.getUserId());
-		grade.setTimeComsuming(timeComsuming);
 		
 		try {
 			List<Constitute> constitutes = dao.findBySql("from Constitute where paperRef=? order by sid asc"
@@ -126,45 +176,33 @@ public class ExamServiceImpl implements ExamService {
 			
 			System.out.println("QuestionRefs = " + questionRefs);
 			
-			List<Option> options = dao.findByHql("from Option where locate(questionRef, ?)>0 order by sid asc"
+			List<AnswerVO> vo = dao.findByHql("select new cn.examsys.lrx.vo.AnswerVO(a, b, q.point)"
+					+ " from Answersheet a, Option b, Question q"
+					+ " where a.questionRef=? and b.sid=a.optionRef and q.sid=b.questionRef"
 					, new Object[]{questionRefs});
 			
-			//选项数组
-			HashMap<Integer, Option> optMap = new HashMap<>();
-			for (int i = 0; i < options.size(); i++) {
-				optMap.put(options.get(i).getQuestionRef(), options.get(i));
-			}
-			//拿到学生答案 (从小到大排序)
-			List<Answersheet> answers = dao.findByHql("from Answersheet where locate(questionRef, ?)>0 order by sid asc"
-					, new Object[]{questionRefs});
-			
-			System.out.println("选项和答案：");
-			for (int i = 0; i < answers.size(); i++) {
-				System.out.println(answers.get(i).getSid() + ",");
+			//开始算分
+			int score = 0;
+			for (int i = 0; i < vo.size(); i++) {
+				int point = ScoreTool.calc(vo.get(i).getOption(), vo.get(i).getAnswer());
+				score += point;
 			}
 			
-			for (int i = 0; i < answers.size(); i++) {
-				if (Conf.Question_Multiple.equals(answers.get(i).getType())) {
-					//如果是多选题
-					List<Option> question_options = dao.findByHql("from Option where questionRef=?"
-							, new Object[]{answers.get(i).getQuestionRef()});
-					ScoreTool.matchs(question_options, answers.get(i));
-				} else {
-					//ScoreTool.match(, answers.get(i));
-				}
-			}
+			//登成绩
+			Grade grade = new Grade();
+			grade.setPaperRef(sid);
+			grade.setSubjectName(paper.getSubjectName());
+			grade.setUserId(sessionUser.getUserId());
+			grade.setTimeComsuming(timeComsuming);
+			grade.setPoint(score);
+			grade.setTime(Tool.time());
 			
+			dao.saveEntity(grade);
+			
+			return score;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		/*
-		List<Answersheet> answers = dao.findByHql("from Answersheet where userId=? and paperRef=?"
-				, new Object[]{sessionUser.getUserId(), sid});
-		
-		List<Option> options = dao.findByHql("from Option where questionRef=")
-		int score = ScoreTool.
-		grade.setPoint(point);
-		*/
 		return -1;
 	}
 	

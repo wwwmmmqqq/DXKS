@@ -31,7 +31,9 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override 
 	public void readNotice(User user, int sid) {
 		Notice no = dao.findNoticeById(sid);
-		no.setReadsIds(no.getReadsIds() + "," + user.getUserId());
+		if (!no.getReadsIds().contains(user.getUserId())) {
+			no.setReadsIds(no.getReadsIds() + "," + user.getUserId());
+		}
 		try {
 			dao.updateEntity(no);
 		} catch (Exception e) {

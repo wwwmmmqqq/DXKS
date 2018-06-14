@@ -26,7 +26,8 @@ public class Option {
 	String fillsText;// 填空题答案
 
 	String subjectiveText;// 主观题答案
-
+	
+	
 	public int getSid() {
 		return sid;
 	}
@@ -83,4 +84,13 @@ public class Option {
 		this.questionRef = questionRef;
 	}
 
+	@Override
+	public String toString() {
+		return "Option [sid=" + sid + ", questionRef=" + questionRef
+				+ ", type=" + type + ", content=" + content + ", isAnswer="
+				+ isAnswer + ", fillsText=" + fillsText + ", subjectiveText="
+				+ subjectiveText + "]";
+	}
+	
+	
 }

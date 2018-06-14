@@ -1,10 +1,14 @@
 package cn.examsys.bean;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="question_tb")
@@ -26,6 +30,8 @@ public class Question {
 	int difficultyValue;//难度值
 	
 	int subjectRef;//所属科目
+	
+	
 	
 	public int getSid() {
 		return sid;
@@ -99,9 +105,18 @@ public class Question {
 				+ subjectRef + "]";
 	}*/
 	
+	@Transient
+	List<Option> options;
+	public List<Option> getOptions() {
+		return options;
+	}
+	public void setOptions(List<Option> options) {
+		this.options = options;
+	}
+	
 	@Override
 	public String toString() {
-		return "q"+sid+" ";
+		return "q"+sid+" " + options!=null?Arrays.toString(options.toArray()):"nil";
 	}
 	
 }
