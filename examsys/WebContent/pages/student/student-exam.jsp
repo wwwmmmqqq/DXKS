@@ -11,10 +11,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/student.css" />
-<link rel="stylesheet" href="css/ionicons.min.css" />
-<link rel="stylesheet" href="css/font-awesome.min.css" />
-
+<link rel="stylesheet" href="css/student/student.css" />
+<link rel="stylesheet" href="css/student/ionicons.min.css" />
+<link rel="stylesheet" href="css/student/font-awesome.min.css" />
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/echarts.js"></script>
 </head>
 <body>
 		<header>
@@ -62,7 +64,7 @@
 							<span>剩余时间</span>
 						</div>
 						<div class="rest-time">
-							<span><input type="text" name="mss" id="mss" /></span>
+							<span>66:66</span>
 						</div>
 					</div>
 				</div>
@@ -110,162 +112,98 @@
 			</div>-->
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
-	</div> </div>
-	
-			<div id="paper-box">
-				<!-- <div class="exam-paper q-item q-1" id="q-1">
-					<div class="lable-question" >
-						<img  src="img/pre-lable.png" id="lable-img-1" class="lable-question-img" onclick="markClick()"/>
-					</div>
-					<table class="question" >
-						<thead>
-							<tr>
-								<th id="no_1">1</th>
-								<th>(1分)</th>
-								<th>下列哪项不属于因为疫苗的本质因素而引起的不良反应：</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td>A</td>
-								<td>
-									<input type="radio" />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>B</td>
-								<td>
-									<input type="radio" />疫苗生产过程中残留的微量的动物血清引起少数人过敏；
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>C</td>
-								<td>
-									<input type="radio" />疫苗运输过程中保存温度过低导致疫苗变质，接种后出现不良反应。
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>D</td>
-								<td>
-									<input type="radio" />疫苗添加剂引起的过敏反应。
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="pre-next-quetion">
-						<ul class="pager">
-							<li class="previous">
-								<a href="#">&larr; 上一题</a>
-							</li>
-							<li class="next">
-								<a href="#">下一题 &rarr;</a>
-							</li>
-						</ul>
-					</div>
-				</div> -->
-				
-				
+	</div>
+			</div>
+			<div class="exam-paper q-1" id="q-1">
+				<!--<button class="que-label btn btn-primary">标记此题</button>-->
+				<div class="lable-question" >
+					<img  src="img/pre-lable.png" id="lable-img-1" class="lable-question-img" onclick="markClick()"/>
+				</div>
+				<table class="question" >
+					<thead>
+						<tr>
+							<th id="no_1">1</th>
+							<th>(1分)</th>
+							<th>下列哪项不属于因为疫苗的本质因素而引起的不良反应：</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td>A</td>
+							<td>
+								<input type="radio" />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>B</td>
+							<td>
+								<input type="radio" />疫苗生产过程中残留的微量的动物血清引起少数人过敏；
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>C</td>
+							<td>
+								<input type="radio" />疫苗运输过程中保存温度过低导致疫苗变质，接种后出现不良反应。
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>D</td>
+							<td>
+								<input type="radio" />疫苗添加剂引起的过敏反应。
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pre-next-quetion">
+					<ul class="pager">
+						<li class="previous">
+							<a href="#">&larr; 上一题</a>
+						</li>
+						<li class="next">
+							<a href="#">下一题 &rarr;</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<div class="all-question" id="all-question">
+				<a class="que-num has-que-num">1</a>
+				<a class="que-num" onclick="func(this, 2)">2</a>
+				<a class="que-num" onclick="func(this, 3)">3</a>
+				<a class="que-num" onclick="func(this, 4)">4</a>
+				<a class="que-num" onclick="func(this, 5)">5</a>
+				<a class="que-num">6</a>
+				<a class="que-num">7</a>
+				<a class="que-num">8</a>
+				<a class="que-num">9</a>
 			</div>
 		</div>
 		
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/echarts.js"></script>
-<script type="text/javascript" src="js/student-exam.js"></script>
-
-<script type="text/javascript">
-callback();
-function callback() {
-	var htm = "";
-	for(var i=0;i<50;i++) {
-		htm += getChoiceItem(i+1);
+		
+		<script>
+		
+ function lableChange(obj){
+	 var lablea=$("#all-question a");
+	 var tablein=$(".question thead tr th:nth-child(1)")
+	 /* alert(tablein.text()); */
+	 for(i=0;i<=lablea.length;i++) {
+		/*  alert(lablea[i].innerHTML);  */
+		console.log(lablea[i].innerHTML);
+		if(lablea[i].innerHTML==tablein.text()){
+			$(lablea[i]).addClass('has-labled');
+		}
+	 }
+	 alert(obj) 
+	 if(obj.getAttribute("src",2)=="img/pre-lable.png"){
+		 obj.src="img/lable.png";
+	 } else{	
+			 obj.src="img/pre-lable.png"; 
 	}
-	$('#all-question').html(htm);
-}
-
-$("#abc1").click();
-
-function getChoiceItem(n) {
-	var html = "<a id='abc"+n+"' class='que-num que-num-color' onclick='queClicked(this, "+n+")'>"+n+"</a>";
-	return html;
-}
-</script>
-<script type="text/javascript">
-callback1();
-oneChoice();
-function callback1() {
-	var htm = "";
-	for(var i=0;i<50;i++) {
-		htm += getQueItem(i+1);
-	}
-	$('#paper-box').html(htm);
-}
-$('#abc1').click();
-function getQueItem(n) {
-	
-	var htm = 
-		"<div class='exam-paper q-item q-"+n+"' id='q-"+n+"' style='display: none'>"
-	+"					<div class='lable-question' >"
-	+"						<img  src='img/pre-lable.png' id='lable-img-"+n+"' class='lable-question-img' onclick='markClick()'/>"
-	+"					</div>"
-	+"					<table class='question ' >"
-	+"						<thead>"
-	+"							<tr>"
-	+"								<th id='no_"+n+"'>"+n+"</th>"
-	+"								<th>(1分)</th>"
-	+"								<th>下列哪项不属于因为疫苗的本质因素而引起的不良反应：</th>"
-	+"							</tr>"
-	+"						</thead>"
-	+"						<tbody>"
-	+"							<tr >"
-	+"								<td></td>"
-	+"								<td>A</td>"
-	+"								<td >"
-	+"									<input type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
-	+"								</td>"
-	+"							</tr>"
-	+"							<tr >"
-	+"								<td></td>"
-	+"								<td>B</td>"
-	+"								<td >"
-	+"									<input  type='checkbox' />疫苗生产过程中残留的微量的动物血清引起少数人过敏；"
-	+"								</td>"
-	+"							</tr>"
-	+"							<tr >"
-	+"								<td></td>"
-	+"								<td>C</td>"
-	+"								<td >"
-	+"									<input type='checkbox' />疫苗运输过程中保存温度过低导致疫苗变质，接种后出现不良反应。"
-	+"								</td>"
-	+"							</tr>"
-	+"							<tr >"
-	+"								<td></td>"
-	+"								<td>D</td>"
-	+"								<td >"
-	+"									<input type='checkbox' />疫苗添加剂引起的过敏反应。"
-	+"								</td>"
-	+"							</tr>"
-	+"						</tbody>"
-	+"					</table>"
-	+"					<div class='pre-next-quetion'>"
-	+"						<ul class='pager'>"
-	+"							<li class='previous'>"
-	+"								<a href='javascript:prePage()'>&larr; 上一题</a>"
-	+"							</li>"
-	+"							<li class='next'>"
-	+"								<a href='javascript:nextPage()'>下一题 &rarr;</a>"
-	+"							</li>"
-	+"						</ul>"
-	+"					</div>"
-	+"				</div>";
-	return htm;
-}
-</script>
+ }
+		</script>
+		
 </body>
 </html>

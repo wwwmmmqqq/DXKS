@@ -10,12 +10,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/student.css" />
-<link rel="stylesheet" href="css/ionicons.min.css" />
-<link rel="stylesheet" href="css/font-awesome.min.css" />
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<%=basePath%>css/student.css" />
+<link rel="stylesheet" href="<%=basePath%>css/ionicons.min.css" />
+<link rel="stylesheet" href="<%=basePath%>css/font-awesome.min.css" />
+<script type="text/javascript" src="<%=basePath%>js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/bootstrap.min.js"></script>
 </head>
 <body>
 		<header>
@@ -176,7 +176,6 @@
 							<th>总分</th>
 							<th>及格分</th>
 							<th>我的得分</th>
-							<th>正确率</th>
 							<th>考试时间</th>
 							</tr>
 						</thead>
@@ -187,7 +186,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -196,7 +194,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -205,7 +202,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -214,7 +210,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -223,7 +218,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -232,7 +226,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -241,7 +234,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -250,7 +242,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -259,7 +250,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 							<tr>
@@ -268,7 +258,6 @@
 								<td>100分</td>
 								<td>60分</td>
 								<td>85分</td>
-								<td>80%</td>
 								<td>2018-06-04</td>
 							</tr>
 						</tbody>
