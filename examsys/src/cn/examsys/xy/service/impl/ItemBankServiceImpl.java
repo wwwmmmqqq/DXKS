@@ -75,6 +75,18 @@ public class ItemBankServiceImpl implements ItemBankService {
 		// TODO Auto-generated method stub
 		return itemBankDao.selectItemQuestListToalPageByType(type);
 	}
+	/*按种类和userId显示题目列表*/
+	@Override
+	public List<Question> selectTeacherItemQuestionListByType(String type, String userId, int page) {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectTeacherItemQuestListByType(type,userId,page);
+	}
+	/*按种类和userId显示题目列表总页数*/
+	@Override
+	public int selectTeacherItemQuestionListToalPageByType(String type, String userId) {
+		// TODO Auto-generated method stub
+		return itemBankDao.selectTeacherItemQuestListToalPageByType(type,userId);
+	}
 	/************************修改题库****************************/
 	@Override
 	public boolean editQuestion(Question question) {
@@ -107,5 +119,6 @@ public class ItemBankServiceImpl implements ItemBankService {
 		itemBankDao.deleteOption(option);
 		return false;
 	}
+	
 	
 }

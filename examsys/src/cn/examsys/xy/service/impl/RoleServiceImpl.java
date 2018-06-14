@@ -27,7 +27,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 	/*删除角色*/
 	@Override
-	public boolean deleteRole(Integer sid) {
+	public boolean deleteRole(int sid) {
 		// TODO Auto-generated method stub
 		Role role=roleDao.findOneRole(sid);
 		roleDao.deleteEntity(role);
@@ -35,15 +35,15 @@ public class RoleServiceImpl implements RoleService {
 	}
 	/*角色列表*/
 	@Override
-	public List<Role> selectRoleList(String type,int page) {
+	public List<Role> selectRoleList(int page) {
 		// TODO Auto-generated method stub
-		return roleDao.findListByHql(type,page);
+		return roleDao.findListByHql(page);
 	}
 	/*角色总页面*/
 	@Override
-	public int selectRoleCount(String type) {
+	public int selectRoleCount() {
 		// TODO Auto-generated method stub
-		int totalPage=roleDao.selectRoleCount(type);
+		int totalPage=roleDao.selectRoleCount();
 		return totalPage;
 	}
 	/*编辑角色信息*/
@@ -55,7 +55,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 	/*显示一个角色信息*/
 	@Override
-	public Role SelectOneRole(Integer sid) {
+	public Role SelectOneRole(int sid) {
 		// TODO Auto-generated method stub
 		Role role=roleDao.findOneRole(sid);
 		System.out.println("serrvice查询该角色的类型"+role.getType());

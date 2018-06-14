@@ -13,11 +13,11 @@ import com.opensymphony.xwork2.ModelDriven;
 import cn.examsys.bean.User;
 import cn.examsys.common.CommonAction;
 import cn.examsys.xy.service.LoginService;
-@ParentPackage("struts-default")
+@ParentPackage("json-default")
 @Namespace("/")
 @Controller("loginAction")
 @Scope("prototype")
-public class LoginAction extends CommonAction implements ModelDriven<User>{
+public class LoginAction extends CommonAction{
 	private User user = new User();
 
 	public User getUser() {
@@ -31,25 +31,22 @@ public class LoginAction extends CommonAction implements ModelDriven<User>{
 	@Autowired
 	protected LoginService loginService;
 	/*用户登录*/
-	@Action(value="/login",results={@Result(name="aa",location="infomation.jsp")})
+	@Action(value="/login"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
 	public String login(){
-		User loginUser=loginService.login(user.getUserId());
-		if(loginUser==null){
+		user=loginService.login(user.getUserId());
+		if(user.getUserId()==null){
 			setResult("未找到该账号！");
-		}else if(loginUser.getPsw()!=user.getPsw()){
+		}else if(user.getPsw()!=user.getPsw()){
 			setResult("密码错误！");
 		}
 		saveLogin(user);
+		session.setAttribute("userId", user.getUserId());
 		System.out.println(user.getUserId());
-		return "aa";
+		return aa;
 	}
 	
-	@Override
-	public User getModel() {
-		// TODO Auto-generated method stub
-		return user;
-	}
-
 	@Override
 	public String getResult() {
 		// TODO Auto-generated method stub

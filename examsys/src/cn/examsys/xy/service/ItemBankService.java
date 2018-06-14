@@ -59,4 +59,14 @@ public interface ItemBankService {
 	 */
 	boolean deleteQuestion(Question question);
 	boolean deleteOption(Option option);
+	
+	/**
+	 * 老师查看自己的题目
+	 * @param type
+	 * @param userId
+	 * @param page
+	 * @return
+	 */
+	List<Question> selectTeacherItemQuestionListByType(String type, String userId, int page);
+	int selectTeacherItemQuestionListToalPageByType(String type, String userId);
 }

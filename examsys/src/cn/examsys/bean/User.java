@@ -3,11 +3,10 @@ package cn.examsys.bean;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.GenericGenerator;
-
-import cn.examsys.common.Permission2;
 
 @Entity
 @Table(name="user_tb")
