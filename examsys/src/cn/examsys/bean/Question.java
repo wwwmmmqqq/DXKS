@@ -1,9 +1,15 @@
 package cn.examsys.bean;
 
+
 import java.util.Date;
 
 import java.util.Arrays;
 import java.util.List;
+
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Date;
 
 
 import javax.persistence.Entity;
@@ -126,7 +132,7 @@ public class Question {
 				+ subjectRef + "]";
 	}*/
 	
-	
+
 	@Transient
 	List<Option> options;
 	public List<Option> getOptions() {
@@ -135,7 +141,7 @@ public class Question {
 	public void setOptions(List<Option> options) {
 		this.options = options;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "q"+sid+" " + options!=null?Arrays.toString(options.toArray()):"nil";

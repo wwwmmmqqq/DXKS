@@ -24,7 +24,7 @@
 			<nav id="top-nav">
 				<div id="main-nav-content">
 					<a href="student-index.html" clas="logo">
-						<img class="logo-img" src="img/logo.png" />
+						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 					<div class="navbar-right">
 						<ul>
@@ -50,7 +50,7 @@
 				<div class="left-menu">
 					<div class="user-panel">
 						<div class="pull-left image">
-							<img src="img/user.jpg" class="img-circle" alt="User Image" />
+							<img src="<%=basePath%>img/user.jpg" class="img-circle" alt="User Image" />
 						</div>
 						<div class="pull-left info">
 							<p>Hello, wmq</p>
@@ -171,9 +171,6 @@
 					<div class="exam-head">
 						<div class="exam-title">
 							<ul>
-								<li >
-									待参加的考次
-								</li>
 								<li class="exam-title-active ">
 									在线练习
 								</li>
