@@ -135,9 +135,6 @@ public class RoleAction extends CommonAction{
 				permission.addPermission(user.getPermission());
 			}*/
 		}
-		
-		
-		
 		return aa;
 	}
 	@Override
