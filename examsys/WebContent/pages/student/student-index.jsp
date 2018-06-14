@@ -353,15 +353,8 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-agreeClick();
 function agreeClick(){
-	
-	if($('.agree-rule input[name=agree-checkebox]').checked==true){
-		$('#start-exam-btn').disabled=false;
-	}else{
-		$('#start-exam-btn').disabled=true;
-	}
-	
+	$('.agree-rule input[name=agree-checkebox]')
 }
 </script>
 </body>
