@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html, body {
 	overflow: auto !important;
 	font-family: 'Lato', sans-serif;
@@ -767,3 +768,681 @@ li {
 	padding: 30px 80px;
 	background-color: white;
 }
+=======
+html,
+body {
+	font-family: 'Lato', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	min-height: 100%;
+	background: #f1f2f7;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+a:hover,
+a:active,
+a:focus {
+	outline: none;
+	text-decoration: none;
+	color: #72afd2;
+}
+
+li {
+	list-style: none;
+}
+
+.main-content,
+#main-nav-content {
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+}
+ 
+#top-nav {
+	width: 100%;
+	height: 70px;
+	background-color: #4498ee;
+	padding: 8px 20px;
+}
+
+#top-nav a {
+	color: white;
+	line-height: 20px;
+	font-size: 18px;
+	margin-top: 15px;
+}
+
+.logo-img {
+	width: 220px;
+	height: 50px;
+}
+
+.fa {
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	color: white;
+}
+
+.messages-menu {
+	width: 55px;
+	height: 50px;
+	line-height: 50px;
+}
+
+.user-menu {
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+}
+
+.envelope {
+	float: left;
+	/*line-height: 70px;*/
+}
+
+.navbar-right ul>li {
+	float: left;
+}
+
+.navbar-right ul>li>a>.label {
+	border-radius: 50%;
+	position: absolute;
+	font-size: 15px;
+	font-weight: normal;
+	width: 20px;
+	height: 20px;
+	line-height: 1.0em;
+	text-align: center;
+	padding: 4px;
+	
+}
+
+.label-success {
+	background-color: #27C24C;
+	color: #DFF5E4;
+}
+
+.left-menu {
+	width: 220px;
+	height: 580px;
+	float: left;
+}
+
+.breadcrumb {
+	width: 1200px;
+	height: 50px;
+	margin: 0 auto;
+	color: #999;
+}
+
+.breadcrumb a {
+	font-size: 12px;
+	color: #999;
+}
+
+.user-panel{
+	padding: 10px;
+	width: 220px;
+	height: 80px;
+	background-color: #3982ce;
+}
+
+.user-panel>.image>img {
+	width: 45px;
+	height: 45px;
+}
+
+.info i {
+	color: #7dcc93;
+}
+
+.user-panel>.info {
+	font-weight: 600;
+	padding: 5px 5px 5px 15px;
+	font-size: 14px;
+	line-height: 1;
+}
+
+.user-panel>.info>p {
+	margin-bottom: 9px;
+}
+
+.user-panel>.info>a {
+	text-decoration: none;
+	padding-right: 5px;
+	margin-top: 3px;
+	font-size: 11px;
+	font-weight: normal;
+	color: white;
+}
+
+.user-panel>.info>a>.fa,
+.user-panel>.info>a>.ion,
+.user-panel>.info>a>.glyphicon {
+	margin-right: 3px;
+}
+
+.sider-menu {
+	width: 220px;
+	height: 100%;
+	padding: 0px;
+	background-color: white;
+}
+
+.sider-menu span {
+	font-size: 16px;
+	line-height: 45px;
+	padding-left: 20px;
+}
+
+.active {
+	color: #72afd2;
+}
+
+.sider-menu li {
+	width: 220px;
+	height: 45px;
+	list-style: none;
+	float: left;
+	border-bottom: 1px #F0F0F0 solid;
+}
+
+.sider-menu li:hover {
+	cursor: pointer;
+	color: #72afd2;
+}
+.right-content{
+	width: 80%;
+	height: 100%;
+	float: right;
+	background-color: white;
+}
+/*考生进入的考试首页*/
+.student-exam{
+	width: 100%;
+	height: 600px;
+}
+.exam-box{
+	width: 90%;
+	height: 250px;
+	margin: 10px auto;
+}
+.exam-box li{
+	width: 30%;
+	height: 200px;
+	float: left;
+	border-radius: 5%;
+	margin: 40px 10px 0 10px;
+		box-shadow:4px 4px 20px #c2c0c0;
+}
+.exam-box li:hover{
+	transform: scale(1.05);
+transition: all 1s ease 0s;
+cursor: pointer;
+}
+.lable-question{
+	width: 80px;
+	height: 80px;
+	float: right;
+	background-image: url(../img/pre-lable.png);
+}
+/*模拟考图标*/
+.paper-picture-moni{
+	float: left;
+	background-image: url(../img/paper-icon.png);
+background-position: -132px 0px;
+width: 56px;
+height: 63px;
+}
+/*期中考试图标*/
+.paper-picture-qz{
+	float: left;
+	background-image: url(../img/paper-icon.png);
+background-position: -66px -73px;
+width: 56px;
+height: 63px;
+}
+/*同步测试图标*/
+.paper-picture-tb{
+	float: left;
+	background-image: url(../img/paper-icon.png);
+background-position: -132px -73px;
+width: 56px;
+height: 63px;
+}
+/*月考图标*/
+.paper-picture-yk{
+	float: left;
+	background-image: url(../img/paper-icon.png);
+background-position: -198px 0px;
+width: 56px;
+height: 63px;
+}
+/*期末考试图标*/
+.paper-picture-qm{
+	float: left;
+	background-image: url(../img/paper-icon.png);
+background-position: 0px -73px;
+width: 56px;
+height: 63px;
+}
+.exam-type-title{
+	width: 60%;
+	float: right;
+	margin-top: 50px;
+	font-size: 18px;
+	color: #3982ce;
+}
+.exam-type-info {
+	float: left;
+	padding: 10px;
+	color: #656363;
+	font-size: 12px;
+}
+.exam-head{
+	width: 100%;
+	height: 50px;
+	border-bottom:1px #72afd2 solid;
+	padding-right: 20px;
+}
+.exam-info{
+	float: left;
+	width: 50%;
+	height: 50px;
+}
+.info-active{
+	color: #72afd2;
+}
+.exam-info li{
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+}
+.exam-info li:hover{
+	color: #72afd2;
+	cursor: pointer;
+}
+.exam-title{
+	float: left;
+	width: 40%;
+	height:50px;
+	padding-left: 10px;
+}
+.exam-title ul li{
+	float: left;
+	width: 120px;
+	height:50px;
+	line-height: 50px;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+}
+.exam-title ul li:hover{
+	color: #3982ce;
+}
+.exam-title-active{
+	color: #3982ce;
+}
+.searchbox{
+	width: 50%;
+	height: 50px;
+	float: right;
+	margin-top: 5px;
+}
+#search-input{
+	float: right;
+	width: 40%;
+	border-radius: 0;
+}
+#search-button{
+	float: right;
+}
+.search-button{
+	border-radius: 0;
+}
+.paper-item{
+	height: 115px;
+	border-bottom: 1px #CFD1CF solid;
+}
+.icon{
+	display: block;
+margin-left: 20px;
+margin-top: 28px;
+
+}
+.paper-picture{
+	float: left;
+	background-image: url(../img/paper-icon.png);
+background-position: -132px -73px;
+width: 56px;
+height: 63px;
+}
+.paper-title{
+	width: auto;
+}
+.paper-intro{
+	display: block;
+	float: left;
+	height: 55px;
+	line-height: 55px;
+	width: 75%;
+}
+.paper-title span{
+	margin-left: 20%;
+	font-size: 16px;
+}
+
+.paper-body{
+	float: left;
+	height: 55px;
+	line-height: 55px;
+	width: 100%;
+}
+.paper-body span{
+	margin-left: 5%;
+	font-size: 14px;
+	color: #999;
+}
+.exam-button{
+	float: right;
+	height: 115px;
+	margin-right: 2%;
+}
+.exam-page{
+	margin-left: 35%;
+	height: 45px;
+}
+.pagination-sm>li>a{
+	font-size: 16px;
+}
+.score-table{
+	width: 100%;   
+}
+.score-table th{
+	font-size: 14px;
+	color: #444444;
+	text-align: center;
+}
+.score-table tbody {
+	font-size: 14px;
+	color: #444444;
+	text-align: center;
+}
+.score-table thead,tbody{
+	
+	table-layout: fixed;
+}
+.score-table thead,tbody tr{
+	height: 40px;
+}
+.info-body{
+	margin: 0 auto;
+}
+/*考试页面css*/
+.exam-main-content{
+	width: 1200px;
+	height: 600px;
+	margin: 0 auto;
+}
+.submit-exam{
+	float: right;
+	margin: 10px 10px 0 0;
+}
+.exam-left{
+	width: 220px;
+	/*height: 100%;*/
+	padding: 10px;
+	float: left;
+	border: 1px solid #dcdcdc;
+	background-color: white;
+}
+/*考试规则*/
+.info-title{
+	width: 220px;
+	height: 30px;
+	padding: 0px 55px ;	
+	border-left: 5px #3982ce solid;
+}
+.info-title span{
+	font-size: 20px;
+	color: #717171;;
+	font-family: 'Lato', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	
+}
+/*规则内容*/
+.exam-info-body {
+	margin: 20px ;
+}
+.exam-info-body p{
+	color: #666;
+	font-family: MicrosoftYaHei;
+}
+/*剩余时间*/
+.exam-time{
+	margin-top: 50px;
+}
+.rest-time{
+	width: 150px;
+	height: 50px;
+	margin: 10px auto;
+	padding: 5px 40px;
+	font-size: 24px;
+	color: white;
+	border-radius: 10%;
+	background-color: #23589e;
+}
+/*试题区*/
+.exam-paper{
+	width: 60%;
+	height: 400px;
+	float: left;
+	margin: 20px;
+	padding-left: 50px;
+	background-color: white;
+}
+.que-label{
+	float: right;
+}
+.question{
+	width: 100%;
+}
+.question thead,tbody{
+	text-align: left;
+}
+.question th{
+	height: 60px;
+}
+
+.self-exam-paper>.question>tbody>tr:last-child{
+	color: red;
+}
+.paper-title-se{
+	width: 60%;
+	height: 50px;
+	margin: 0 auto;
+	background-color: white
+}
+.title-se{
+	width: 60%;
+	float: left;
+}
+.title-se span{
+	font-size: 24px;
+	margin-left: 45%;
+}
+/*上一題下一題樣式*/
+.pre-next-quetion{
+	margin-top: 50px;
+}
+.pre-next-quetion>ul>li>a{
+	font-size: 14px;
+	color: #4498ee;
+}
+/*题目全部序号*/
+.all-question{
+	width: 18%;
+	height: 400px;
+	float: right;
+	padding: 10px 5px;
+	background-color: white;
+	border: 1px solid #dcdcdc;
+}
+.que-num{
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	float: left;
+	display: inline;
+	border: 1px solid #ccc;
+	font-size: 12px;
+	margin: 5px 2px;
+	padding-left: 8px;
+}
+.has-que-num{
+	background-color: #01d506;
+}
+.has-labled{
+	background-color: #e3be08;
+}
+.que-num:hover{
+	background-color: #2B79AD;
+	color: white;
+	cursor: pointer;
+}
+/*考试结果*/
+.result-title span{
+	font-size: 20px;
+	color: #4498ee;
+	margin-left: 35%;
+}
+.exam-result{
+	width: 90%;
+	height: 100px;
+	margin: 5px auto;
+}
+.score{
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin-top: 50px;
+}
+.grade{
+	width: 130px;
+	height: 100px;
+	float: left;
+	margin-top: 50px;
+}
+.score span{
+	font-size: 16px;
+}
+.grade span{
+	font-size: 16px;
+}
+/*正确率饼状图*/
+#right-rate{
+	width: 200px;
+	height: 200px;
+	float: right;
+}
+.ok-btn{
+	margin-left: 40%;
+}
+
+/*考前须知模态框*/
+.agree-rule{
+	width: 100%;
+	margin-left: 40%;
+	color: #72afd2;
+}
+/*查看试卷*/
+.que-type{
+	font-size: 16px;
+	font-weight: 600;
+}
+.que-info ul{
+	width: 100%;
+	height: 20px;
+	margin-left: 20%;
+}
+.que-info li{
+	float: left;
+	width: 70px;
+	height: 20px;
+	color: #999;
+	line-height: 20px;
+}
+.detail-paper-title{
+	margin: 20px 35%;;
+	font-size: 20px;
+}
+.all-que{
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+}
+.all-answer li:last-child{
+	color: red;
+}
+.intro-answer{
+	margin-bottom: 10px;
+}
+/*填空题横线样式*/
+.tk-que{
+	border: 0;
+	border-bottom: 1px #000000 solid;
+	
+}
+/*翻页输入框*/
+.page-input{
+	display: inline;
+	width: 32px;
+	height: 36px;
+	border-radius: 0;
+}
+.sure-search-btn{
+	width: 40px;
+	height: 33px;
+	border-radius: 0;
+}
+/*在线练习*/
+.exam-choose{
+	width: 80%;
+	height: 50px;
+	line-height: 50px;
+	margin: 0 auto;
+}
+.object-select{
+	width: 200px;
+	display: inline;
+	margin-right: 20px;
+}
+.union-select{
+	width: 100px;
+	display: inline;
+	margin-right: 20px;
+}
+.type-select{
+	width: 100px;
+	display: inline;
+	margin-right: 20px;
+}
+.self-exam-content{
+	width: 100%;
+	height: auto;
+	min-height: 600px;
+}
+.self-exam-paper{
+	width: 80%;
+height: 400px;
+float: left;
+margin: 20px;
+padding: 30px 80px;
+background-color: white;
+}
+>>>>>>> lrx

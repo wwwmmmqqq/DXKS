@@ -1,13 +1,10 @@
 package cn.examsys.bean;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  * 学生答题表
@@ -19,32 +16,36 @@ public class Answersheet {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
-	int paperRef;//指向的试卷
+	String userId;
+	
+	//int paperRef;//指向的试卷
 	
 	String type;//题目类型
 	
 	int questionRef;//指向哪题
 	
-	int isSelected;//是否已经选择
+	//int isSelected;//是否已经选择
+	
+	int optionRef;//答案指向
 	
 	String fillsAnswer;//填空题答案
 	
-	String SubjectiveAnswer;//填空题答案
+	String subjectiveAnswer;//填空题答案
 
+	public String getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 	public int getSid() {
 		return sid;
 	}
 
 	public void setSid(int sid) {
 		this.sid = sid;
-	}
-
-	public int getPaperRef() {
-		return paperRef;
-	}
-
-	public void setPaperRef(int paperRef) {
-		this.paperRef = paperRef;
 	}
 
 	public String getType() {
@@ -63,12 +64,12 @@ public class Answersheet {
 		this.questionRef = questionRef;
 	}
 
-	public int getIsSelected() {
-		return isSelected;
+	public int getOptionRef() {
+		return optionRef;
 	}
-
-	public void setIsSelected(int isSelected) {
-		this.isSelected = isSelected;
+	
+	public void setOptionRef(int optionRef) {
+		this.optionRef = optionRef;
 	}
 
 	public String getFillsAnswer() {
@@ -80,11 +81,19 @@ public class Answersheet {
 	}
 
 	public String getSubjectiveAnswer() {
-		return SubjectiveAnswer;
+		return subjectiveAnswer;
+	}
+	
+	public void setSubjectiveAnswer(String subjectiveAnswer) {
+		this.subjectiveAnswer = subjectiveAnswer;
 	}
 
-	public void setSubjectiveAnswer(String subjectiveAnswer) {
-		SubjectiveAnswer = subjectiveAnswer;
+	@Override
+	public String toString() {
+		return "Answersheet [sid=" + sid + ", userId=" + userId + ", type="
+				+ type + ", questionRef=" + questionRef + ", optionRef="
+				+ optionRef + ", fillsAnswer=" + fillsAnswer
+				+ ", subjectiveAnswer=" + subjectiveAnswer + "]";
 	}
 	
 }

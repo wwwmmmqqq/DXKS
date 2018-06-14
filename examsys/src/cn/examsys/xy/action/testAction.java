@@ -12,14 +12,15 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import cn.examsys.bean.User;
 import cn.examsys.common.CommonAction;
-import cn.examsys.xy.service.LoginService;
-@ParentPackage("struts-default")
-@Namespace("/")
-@Controller("loginAction")
-@Scope("prototype")
-public class LoginAction extends CommonAction implements ModelDriven<User>{
-	private User user = new User();
+import cn.examsys.xy.service.UserService;
 
+@Namespace("/")
+@ParentPackage("json-default")
+@Controller("testAction")
+@Scope("prototype")
+public class testAction extends CommonAction implements ModelDriven<User>{
+	private User user=new User();
+	
 	public User getUser() {
 		return user;
 	}
@@ -27,21 +28,25 @@ public class LoginAction extends CommonAction implements ModelDriven<User>{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	@Autowired
-	protected LoginService loginService;
-	/*用户登录*/
-	@Action(value="/login",results={@Result(name="aa",location="infomation.jsp")})
-	public String login(){
-		User loginUser=loginService.login(user.getUserId());
-		if(loginUser==null){
-			setResult("未找到该账号！");
-		}else if(loginUser.getPsw()!=user.getPsw()){
-			setResult("密码错误！");
+	UserService userService;
+	/*创建用户*/
+	@Action(value="/createUserssss"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String createUserssss(){
+		if(user==null){
+			setResult("输入");
 		}
-		saveLogin(user);
-		System.out.println(user.getUserId());
-		return "aa";
+		boolean currentUser=userService.createUser(user);
+		if(!currentUser){
+			System.out.println("用户创建失败");
+			setResult("用户创建失败！");
+		}
+		System.out.println("用户创建成功");
+		setResult("用户创建成功");
+		return aa;
 	}
 	
 	@Override

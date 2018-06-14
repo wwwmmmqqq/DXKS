@@ -1,6 +1,5 @@
 package cn.examsys.bean;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +16,7 @@ public class Option {
 
 	int questionRef;// 指向题目
 
-	// 选择题Single，判断题TrueOrFalse，多选题Multiple，填空题Fills，解答题Subjective
+	//选择题Single，判断题TrueOrFalse，多选题Multiple，填空题Fills，解答题Subjective
 	String type;
 
 	String content;// 选项内容
@@ -27,7 +26,8 @@ public class Option {
 	String fillsText;// 填空题答案
 
 	String subjectiveText;// 主观题答案
-
+	
+	
 	public int getSid() {
 		return sid;
 	}
@@ -84,4 +84,13 @@ public class Option {
 		this.questionRef = questionRef;
 	}
 
+	@Override
+	public String toString() {
+		return "Option [sid=" + sid + ", questionRef=" + questionRef
+				+ ", type=" + type + ", content=" + content + ", isAnswer="
+				+ isAnswer + ", fillsText=" + fillsText + ", subjectiveText="
+				+ subjectiveText + "]";
+	}
+	
+	
 }
