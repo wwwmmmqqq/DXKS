@@ -3,6 +3,7 @@ package cn.examsys.bean;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.GenericGenerator;
@@ -127,7 +128,7 @@ public class User {
 	public void setProfession(String profession) {
 		this.profession = profession;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", psw=" + psw + ", name=" + name

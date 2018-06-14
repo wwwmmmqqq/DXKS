@@ -25,7 +25,7 @@ public class RoleDaoImpl extends DaoAdapter implements RoleDao {
 	}
 	/*查询角色*/
 	@Override
-	public Role findOneRole(Integer sid) {
+	public Role findOneRole(int sid) {
 		// TODO Auto-generated method stub
 		try {
 			return findOneByHql("from Role where sid=?", new Object[]{sid});
@@ -49,12 +49,11 @@ public class RoleDaoImpl extends DaoAdapter implements RoleDao {
 	}
 	/*查询角色列表*/
 	@Override
-	public List<Role> findListByHql(String type, int page) {
+	public List<Role> findListByHql(int page) {
 		// TODO Auto-generated method stub
-		String hql="from Role where type=?";
-		Object[] vals=new Object[]{type};
+		String hql="from Role";
 		try {
-			List<Role> roleList=findByHql(hql, vals, page);
+			List<Role> roleList=findByHql(hql,page);
 			System.out.println("第"+page+"页第2条角色Id是："+roleList.get(1).getSid());
 			return roleList;
 		} catch (Exception e) {
@@ -65,12 +64,11 @@ public class RoleDaoImpl extends DaoAdapter implements RoleDao {
 	}
 	/*角色列表总页面totalPage*/
 	@Override
-	public int selectRoleCount(String type){
+	public int selectRoleCount(){
 		// TODO Auto-generated catch block
-		String hql="from Role where type=?";
-		Object[] vals=new Object[]{type};
+		String hql="from Role";
 		try {
-			List<Role> roleList=findByHql(hql, vals);
+			List<Role> roleList=findByHql(hql);
 			int count=(int)Math.ceil((roleList.size()*1.0)/COUNT_PER_PAGE);
 			return count;
 		} catch (Exception e) {

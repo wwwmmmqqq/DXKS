@@ -54,7 +54,6 @@ public class UserServiceImpl implements UserService{
 	public User SelectOneUser(String userId) {
 		// TODO Auto-generated method stub
 		User user=userDao.findOneUser(userId);
-		System.out.println("serrvice查询该用户的用户名"+user.getName());
 		return user;
 	}
 

@@ -1,3 +1,4 @@
+
 /*考试结果正确率判断*/
 $(function() {
 	var scoreRate = echarts.init(document.getElementById("right-rate"));
