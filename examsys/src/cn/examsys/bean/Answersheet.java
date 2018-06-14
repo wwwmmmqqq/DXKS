@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 学生答题表
+ * 学生答题表 
  */
 @Entity
 @Table(name="answersheet_tb")
