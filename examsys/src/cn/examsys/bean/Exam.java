@@ -1,5 +1,6 @@
 package cn.examsys.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,10 +18,14 @@ public class Exam {
 	
 	String title;//考试名字
 	
-	//int subjectRef;//指向科目
+	int subjectRef;//指向科目
 	
-	//String subjectName;//科目名称
+	String subjectName;//科目名称
 	
+	String examStart;//开始
+	
+	String examEnd;//结束
+
 	String periodStart;//考试阶段开始时间
 
 	String periodEnd;//考试阶段结束时间
@@ -29,7 +34,6 @@ public class Exam {
 	String invitee;//创建时立刻把本校加入到本字段
 	
 	String explication;//考试说明
-	
 	/**
 	 * 0 初始创建
 	 * 1 邀请了学校
@@ -67,6 +71,38 @@ public class Exam {
 		this.title = title;
 	}
 
+	public int getSubjectRef() {
+		return subjectRef;
+	}
+
+	public void setSubjectRef(int subjectRef) {
+		this.subjectRef = subjectRef;
+	}
+
+	public String getSubjectName() {
+		return subjectName;
+	}
+
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
+	
+	public String getExamStart() {
+		return examStart;
+	}
+
+	public void setExamStart(String examStart) {
+		this.examStart = examStart;
+	}
+
+	public String getExamEnd() {
+		return examEnd;
+	}
+
+	public void setExamEnd(String examEnd) {
+		this.examEnd = examEnd;
+	}
+
 	public String getPeriodStart() {
 		return periodStart;
 	}
@@ -86,7 +122,6 @@ public class Exam {
 	public String getInvitee() {
 		return invitee;
 	}
-	
 	public void setInvitee(String invitee) {
 		this.invitee = invitee;
 	}
@@ -94,7 +129,6 @@ public class Exam {
 	public String getExplication() {
 		return explication;
 	}
-	
 	public void setExplication(String explication) {
 		this.explication = explication;
 	}

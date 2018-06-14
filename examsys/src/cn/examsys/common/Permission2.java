@@ -12,14 +12,6 @@ public class Permission2 {
 	
 	StringBuilder value = new StringBuilder();
 	
-	public Permission2() { 
-		
-	}
-	
-	public Permission2(String initPermission) {
-		this.value = new StringBuilder(initPermission);
-	}
-	
 	public Permission2 addPermission(String permission) {
 		if (!hasPermission(permission)) {
 			value.append(permission + " ");
@@ -43,7 +35,6 @@ public class Permission2 {
 	
 	public static void main(String[] args) {
 		Permission2 permission2 = new Permission2();
-		System.out.println(permission2);
 		/**
 		 * 添加权限
 		 */
@@ -53,7 +44,7 @@ public class Permission2 {
 			.addPermission("修改文件");
 		
 		System.out.println("当前权限：" + permission2);
-		//findBy('...where locate(?, permission)>0', new OBject[]{"修改文件})
+		
 		System.out.println("是否包含‘查看文件’权限：" + permission2.hasPermission("查看文件"));
 		//去掉 '删除文件'权限
 		System.out.println("去掉‘删除文件’权限");

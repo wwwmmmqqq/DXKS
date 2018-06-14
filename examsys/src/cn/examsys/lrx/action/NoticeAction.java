@@ -77,7 +77,6 @@ public class NoticeAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadNoticeList() {
-		System.out.println(page);
 		if (page == 1) {
 			//加载未读的
 			list = service.loadNoticeList(getSessionUserId(), false, page);
@@ -90,11 +89,7 @@ public class NoticeAction extends CommonAction {
 			}
 		} else {
 			list = service.loadNoticeList(getSessionUserId(), true, page);
-			System.out.println(list==null?"no":list.size());
 		}
-		
-		
-		
 		return aa;
 	}
 	

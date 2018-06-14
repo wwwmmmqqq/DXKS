@@ -10,6 +10,8 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
+import cn.examsys.bean.User;
+
 /**
  * 所有的DAO实现类都应该继承自DaoAdapter
  */

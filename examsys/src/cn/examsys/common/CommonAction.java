@@ -17,7 +17,11 @@ public abstract class CommonAction extends ActionSupport {
 	
 	protected String aa = "success";
 	
-	public CommonAction() {
+	public void saveLogin(User user) {
+		session.setAttribute("user", user);
+	}
+	
+	public User getSessionUser() {
 		User user = new User();
 		user.setUserId("admin");
 		user.setPsw("123");
@@ -25,15 +29,8 @@ public abstract class CommonAction extends ActionSupport {
 		user.setCollegeName("萍乡学院");
 		user.setPermission("");
 		user.setSex("男");
-		saveLogin(user);
-	}
-	
-	public void saveLogin(User user) {
-		session.setAttribute("user", user);
-	}
-	
-	public User getSessionUser() {
-		return (User) session.getAttribute("user");
+		return user;
+		//return (User) session.getAttribute("user");
 	}
 	
 	public String getSessionUserId() {

@@ -1,6 +1,5 @@
 package cn.examsys.common;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,25 +8,6 @@ public class Tool {
 	public static String time() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return df.format(new Date());
-	}
-	
-	/**
-	 * 计算两个时间相隔秒数 
-	 * 参数格式"2018-06-10 16:54:24";
-	 * 
-	 * @param startTime 开始时间
-	 * @param endTime 结束时间
-	 * @return 
-	 * @throws ParseException
-	 */
-	public static int secondsOf(String startTime, String endTime) throws ParseException {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date startDate = df.parse(startTime);
-		Date endDate = df.parse(endTime);
-		long a = startDate.getTime();
-		long b = endDate.getTime();
-		int c = (int)((b - a) / 1000);
-		return c;
 	}
 	
 	public static String escape(String src) {

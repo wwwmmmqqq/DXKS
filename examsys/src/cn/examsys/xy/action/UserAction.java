@@ -1,7 +1,5 @@
 package cn.examsys.xy.action;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -18,9 +16,6 @@ import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.User;
 import cn.examsys.common.CommonAction;
 import cn.examsys.xy.service.UserService;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import net.sf.json.JSONString;
 @Namespace("/")
 @ParentPackage("struts-default")
 @Controller("userAction")
@@ -29,14 +24,7 @@ public class UserAction extends CommonAction implements ModelDriven<User> {
 	
 	private User user=new User();
 	private int page;  //页面当前页
-	String end;
 	
-	public String getEnd() {
-		return end;
-	}
-	public void setEnd(String end) {
-		this.end = end;
-	}
 	public int getPage() {
 		return page;
 	}
@@ -47,21 +35,16 @@ public class UserAction extends CommonAction implements ModelDriven<User> {
 	@Autowired
 	UserService userService;
 	/*创建用户*/
-	@Action(value="/createUser")
+	@Action(value="/createUser",results={@Result(name="aa",location="/UserListInfo.jsp")})
 	public String createUser(){
-		
 		boolean currentUser=userService.createUser(user);
-		JSONObject json=new JSONObject();
 		if(!currentUser){
 			System.out.println("用户创建失败");
-			json.put("result", "用户创建失败");
-			setEnd(json.toString());
+			setResult("用户创建失败！");
 		}
 		System.out.println("用户创建成功");
-		json.put("result", "用户创建成功");
-		setEnd(json.toString());
-		System.out.println("action:result="+end);
-		return null;
+		setResult("用户创建成功");
+		return "aa";
 	}
 	/*显示用户信息*/
 	@Action(value="/showUser",results={@Result(name="aa",location="/userlist.jsp")})

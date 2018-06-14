@@ -1,6 +1,7 @@
 package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -70,6 +71,7 @@ public class PersonalAction extends CommonAction {
 	
 	public String searchExams() {
 		serivce.searchExamsBy(getSessionUser(), filed, words);
+		
 		return aa;
 	}
 	
