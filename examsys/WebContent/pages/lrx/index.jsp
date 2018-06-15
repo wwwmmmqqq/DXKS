@@ -10,11 +10,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   
-  <script type="text/javascript">
+  <%-- <script type="text/javascript">
   $(document).ready(function() {
 	 
 	 /*
-	  这里调用了  ../LrxAjaxAction!loadStuList 接口
+	  这里调用了 LrxAjaxAction!loadStuList 接口
+>>>>>>> origin/lrx
 	  返回学生对象列表
 	 */
 	 
@@ -34,7 +35,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  
 	  });
 	  
+<<<<<<< HEAD
   });
+=======
+	 
+	 
+  });
+  </script> --%>
+  
+  <script type="text/javascript">
+	  $.post("updateStuInfos", {
+		  "params[0]":'aaa',
+		  "params[1]":'bbb',
+		  "params[2]":'ccc',
+		  "params[5]":'ddd'
+	  }, function(data) {
+		  alert(data.result);
+	  });
+>>>>>>> origin/lrx
   </script>
   </head>
   
@@ -44,6 +62,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	<a href="pagination.jsp">分页demo</a>
   	
+<<<<<<< HEAD
+=======
+  	<a href="pagination-plus.jsp">分页 demo+</a>
+  	
+>>>>>>> origin/lrx
   </body>
   
 </html>

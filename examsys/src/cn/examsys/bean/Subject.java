@@ -1,16 +1,17 @@
 package cn.examsys.bean;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="subject_tb")
 public class Subject {
 	@Id
-	@GenericGenerator(name="sid", strategy="identity")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
 	String userId;//创建的用户
@@ -20,6 +21,7 @@ public class Subject {
 	public int getSid() {
 		return sid;
 	}
+
 	public void setSid(int sid) {
 		this.sid = sid;
 	}
@@ -38,11 +40,6 @@ public class Subject {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	@Override
-	public String toString() {
-		return "Subject [sid=" + sid + ", userId=" + userId + ", name=" + name
-				+ "]";
 	}
 	
 }

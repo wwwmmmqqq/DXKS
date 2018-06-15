@@ -1,6 +1,7 @@
 package cn.examsys.adapters;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -8,7 +9,6 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
-
 
 /**
  * 所有的DAO实现类都应该继承自DaoAdapter
@@ -19,7 +19,6 @@ public class DaoAdapter implements IDaoAdapter {
 	
 	@Autowired
 	protected HibernateTemplate hibernateTemplate;
-	
 	
 	public <T> List<T> findByHql(String hql, Object[] vals, int page) throws Exception {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
@@ -50,8 +49,8 @@ public class DaoAdapter implements IDaoAdapter {
 		} finally {
 			session.close(); 
 		}
-		
 	}
+	
 	public <T> List<T> findBySql(String sql, Object[] vals, int page) throws Exception {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
 		org.hibernate.Transaction tx = session.beginTransaction(); 
@@ -231,5 +230,82 @@ public class DaoAdapter implements IDaoAdapter {
 			session.close();
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> T findEntity(Class<?> claz, Serializable id) {
+		String primaryKey = getEntityPrimaryKey(claz);
+		if (primaryKey == null) {
+			System.out.println(claz.getName() + "无主键");
+			return null;
+		}
+		try {
+			return (T) findOneByHql("from " +claz.getName()+ " where " + primaryKey + "=?", new Object[]{id});
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public void deleteEntity(Class<?> claz, Serializable id) throws Exception {
+		String primaryKey = getEntityPrimaryKey(claz);
+		if (primaryKey == null) {
+			System.out.println(claz.getName() + "无主键");
+			return;
+		}
+		if ((id+"").contains("'")) {
+			System.out.println("非法值");
+			return;
+		}
+		System.out.println("delete from " + claz.getName() + " where " + primaryKey + "='" + id + "'");
+		updateByHql("delete from " + claz.getName() + " where " + primaryKey + "=?", new Object[]{id});
+	}
+
+	@Override
+	public void updateEntity(Class<?> claz, Serializable id, String[] fieldNames, Object[] values) throws Exception {
+		if (fieldNames == null || fieldNames.length == 0) {
+			return;
+		}
+		String primaryKey = getEntityPrimaryKey(claz);
+		if (primaryKey == null) {
+			System.out.println(claz.getName() + "无主键");
+			return;
+		}
+		if ((id+"").contains("'")) {
+			System.out.println("非法值");
+			return;
+		}
+		
+		StringBuilder hql = new StringBuilder("update " + claz.getName() + " set ");
+		for (int i = 0; i < fieldNames.length-1; i++) {
+			hql.append(fieldNames[i] + "=?,");
+		}
+		
+		hql.append(fieldNames[fieldNames.length-1] + "=? where " + primaryKey + "='" + id + "'");
+		
+		updateByHql(hql.toString(), values);
+		
+	}
 	
+	@Override
+	public void updateEntity(Class<?> claz, Serializable id
+			, String fieldName, Object value) throws Exception {
+		updateEntity(claz, id, new String[]{fieldName}, new Object[]{value});
+	}
+	
+	/**
+	 * 获取某个类的主键
+	 * @param claz 类
+	 * @return
+	 */
+	private static String getEntityPrimaryKey(Class<?> claz) {
+		Field[] fs = claz.getDeclaredFields();
+		for (int i = 0; i < fs.length; i++) {
+			if (fs[i].getAnnotation(javax.persistence.Id.class) != null) {
+				return fs[i].getName();
+			}
+		}
+		return null;
+	}
 }
