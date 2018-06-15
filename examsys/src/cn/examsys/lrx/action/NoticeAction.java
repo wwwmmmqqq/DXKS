@@ -93,8 +93,6 @@ public class NoticeAction extends CommonAction {
 			System.out.println(list==null?"no":list.size());
 		}
 		
-		
-		
 		return aa;
 	}
 	

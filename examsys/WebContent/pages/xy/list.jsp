@@ -19,9 +19,9 @@
 		 alert(role.length);			//查询出的用户总数
 		 alert(data.totalPage);		//查询出的总页数
 		 alert(role[5].type);
-		 /* for(var i=0; i<role.length; i++){
+		 /*for(var i=0; i<role.length; i++){
 			 alert(role[i].type); 	 //第i位用户的id号
-		 } */
-	}) 
+		 }*/
+	});
 </script>
 </html>

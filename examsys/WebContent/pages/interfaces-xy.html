@@ -32,7 +32,7 @@
 	   /**
 	  	修改用户信息接口----先showUser显示，再修改
 	  	参数：修改后的user的信息
-	  */
+	   */
 	   $.post("editUser",{"user.userId":"0088999","user.name":"mingzi"},function(data) {
 		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 			alert(data.result);
