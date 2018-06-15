@@ -5,10 +5,20 @@
 	  <script type="text/javascript">
 
 /**********************************User用户接口*******************************/
+	  /**
+	  	登录接口
+	  	参数：user.userId,user.psw
+	  	返回值：session
+	  */
+	  $.post("showUser",{"user.userId":"userId_102"},function(data) {
+		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
+			alert(data.result);
+	  })
 	  
 	  /*
 		创建用户接口
 		参数：User的所有属性，对应数据库字段
+		返回值：result，user
 	*/
 	  $.post("createUser",
 			 {	"user.userId":Math.random()*9999+"",   //用户名
@@ -17,6 +27,7 @@
 		 		"user.phone":"15078843569",
 		 		"user.psw":"000000"
 		 	},function(data){
+		 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 		 		alert(data.result);    //message为user返回信息
 			 }
 		)
@@ -24,6 +35,7 @@
 	/**
 		显示一位用户信息接口
 		参数：userId,提交参数为user.属性
+		返回值：user
 	*/
 	   $.post("showUser",{"user.userId":"userId_102"},function(data) {
 		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
@@ -33,10 +45,11 @@
 	   /**
 	  	修改用户信息接口----先showUser显示，再修改
 	  	参数：修改后的user的信息
+	  	返回：result，user
 	  */
 	   $.post("editUser",{"user.userId":"0088999","user.name":"mingzi"},function(data) {
-		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
-			alert(data.result);
+		   alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
+		   alert(data.result);
 	  })  
 	  
 	   /**
@@ -85,7 +98,7 @@
 	  })  
 	  /**
 	  	编辑角色信息接口-----先显示再修改
-	  	参数：role的所有参数
+	  	参数：role的属性
 	  */
 	   $.post("editRole",{"role.sid":34,"role.type":"学生"},function(data) {
 		   alert(data.result);
@@ -189,7 +202,7 @@
 		/**
 	  	显示题库列表by questiontype 接口,教务老师统一用此接口
 	  	参数：page---当前页,quesion.type,user.userId
-	  	返回值：题目列表，选项列表，总页数
+	  	返回值：题目列表，选项列表，总页数-questionList,map,totalPage
 	  */
 	  $.post("showItemBankListByType",
 				{
