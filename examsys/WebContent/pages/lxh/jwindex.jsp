@@ -171,7 +171,8 @@
 		    				<thead>
 		    					<tr>
 		    						<th>
-		    							<input type="checkbox" class="flat-grey"/>全选 ID</th>
+		    							<input type="checkbox" class="flat-grey"/>全选 ID
+		    						</th>
 		    						<th>所在考次</th>
 		    						<th>试卷科目</th>
 		    						<th>标题</th>
@@ -181,18 +182,20 @@
 		    						<th>结束时间</th>
 		    					</tr>
 		    				</thead>
-		    				<tr>
-		    					<td id="">
-		    						<input type="checkbox" class="flat-grey" />1</td>
-		    					<td id="">第一次联考</td>
-		    					<td id="">高等数学</td>
-		    					<td id="">2018年高等数学第一次联考</td>
-		    					<td id="">100分</td>
-		    					<td id="">100分钟</td>
-		    					<td id="">2018年5月20日9：00</td>
-		    					<td id="">2018年5月20日9：40</td>
-		    				</tr>
-		    				
+		    				<div id='list-box'>
+			    				<!-- <tr id=''>
+			    					<td id=''>
+			    						<input type='checkbox' class='flat-grey' />1
+			    					</td>
+			    					<td id=''>第一次联考</td>
+			    					<td id=''>高等数学</td>
+			    					<td id=''>2018年高等数学第一次联考</td>
+			    					<td id=''>100分</td>
+			    					<td id=''>100分钟</td>
+			    					<td id=''>2018年5月20日9：00</td>
+			    					<td id=''>2018年5月20日9：40</td>
+			    				</tr> -->
+		    				</div>
 		    			</table>
 		    		  
 		    			<div class="page_pagination">
@@ -504,4 +507,24 @@
 	    	<!-- /.modal -->
 	    </div>
 	</body>
+	
+	
+	<script type="text/javascript">
+	
+	function getItemHtml() {
+		var htm = "<tr id=''>"
+			+"	<td id=''>"
+			+"		<input type='checkbox' class='flat-grey' />1"
+			+"	</td>"
+			+"	<td>第一次联考</td>"
+			+"	<td>高等数学</td>"
+			+"	<td>2018年高等数学第一次联考</td>"
+			+"	<td>100分</td>"
+			+"	<td>100分钟</td>"
+			+"	<td>2018年5月20日9：00</td>"
+			+"	<td>2018年5月20日9：40</td>"
+			+"</tr>";
+		return htm;
+	}
+	</script>
 </html>
