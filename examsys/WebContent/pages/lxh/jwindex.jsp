@@ -182,8 +182,8 @@
 		    						<th>结束时间</th>
 		    					</tr>
 		    				</thead>
-		    				<div id='list-box'>
-			    				<!-- <tr id=''>
+		    				<tbody id="paper-list-box">
+		    					<!-- <tr id=''>
 			    					<td id=''>
 			    						<input type='checkbox' class='flat-grey' />1
 			    					</td>
@@ -195,7 +195,7 @@
 			    					<td id=''>2018年5月20日9：00</td>
 			    					<td id=''>2018年5月20日9：40</td>
 			    				</tr> -->
-		    				</div>
+		    				</tbody>
 		    			</table>
 		    		  
 		    			<div class="page_pagination">
@@ -510,19 +510,31 @@
 	
 	
 	<script type="text/javascript">
+	showPaperList(1);
 	
-	function getItemHtml() {
+	function showPaperList(page) {
+		$.post("showPaperList", {"page":page}, function(data) {
+			var paperList = data.paperList;
+			var htm = "";
+	 		for(var i=0;i<paperList.length;i++) {
+	 			htm += getItemHtml(i, paperList[i]);
+	 		}
+	 		$('#paper-list-box').html(htm);
+		});
+	}
+	
+	function getItemHtml(index, obj) {
 		var htm = "<tr id=''>"
 			+"	<td id=''>"
-			+"		<input type='checkbox' class='flat-grey' />1"
+			+"		<input type='checkbox' class='flat-grey' />"
 			+"	</td>"
 			+"	<td>第一次联考</td>"
-			+"	<td>高等数学</td>"
+			+"	<td>"+obj.name+"</td>"
 			+"	<td>2018年高等数学第一次联考</td>"
-			+"	<td>100分</td>"
-			+"	<td>100分钟</td>"
-			+"	<td>2018年5月20日9：00</td>"
-			+"	<td>2018年5月20日9：40</td>"
+			+"	<td>"+obj.totalScore+"</td>"
+			+"	<td>"+obj.totalTime+"</td>"
+			+"	<td>"+obj.examStart+"</td>"
+			+"	<td>"+obj.examEnd+"</td>"
 			+"</tr>";
 		return htm;
 	}
