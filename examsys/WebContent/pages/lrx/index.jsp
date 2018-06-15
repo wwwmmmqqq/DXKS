@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   $(document).ready(function() {
 	 
 	 /*
-	  这里调用了  ../LrxAjaxAction!loadStuList 接口
+	  这里调用了 LrxAjaxAction!loadStuList 接口
 	  返回学生对象列表
 	 */
 	 
