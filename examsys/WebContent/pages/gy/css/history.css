@@ -739,3 +739,26 @@ button{
 	color: black;
 	border:1px solid #bbb;
 }
+
+/*导出历史成绩页码*/
+/*.page_pagination_export .page-link{
+	color: black;
+	
+}
+
+.page_pagination_export{
+	width: 35%;
+	margin: auto;
+}
+.page_pagination_export .jump{
+	margin-left: 5px;
+	width:50px;
+	height:32px;
+}
+.page_pagination_export .btn_jump{
+	margin-left: 5px;
+	width: 50px;
+	height: 32px;
+	float: right;
+}*/
+

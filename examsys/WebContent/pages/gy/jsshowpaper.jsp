@@ -155,7 +155,7 @@
 		    						<div class="operation">
 		    							<ul>
 		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deletefunction()"><i class="fa fa-times"></i></button></li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
 		    							</ul>
 		    						</div>
 		    					</div>
@@ -176,7 +176,7 @@
 		    						<div class="operation">
 		    							<ul>
 		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deletefunction()"><i class="fa fa-times"></i></button></li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
 		    							</ul>
 		    						</div>
 		    					</div>
@@ -193,7 +193,7 @@
 		    						<div class="operation">
 		    							<ul>
 		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deletefunction()"><i class="fa fa-times"></i></button></li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
 		    							</ul>
 		    						</div>
 		    					</div>
@@ -210,7 +210,7 @@
 		    						<div class="operation">
 		    							<ul>
 		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deletefunction()"><i class="fa fa-times"></i></button></li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
 		    							</ul>
 		    						</div>
 		    					</div>

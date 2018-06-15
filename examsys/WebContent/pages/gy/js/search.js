@@ -76,5 +76,6 @@ $(document).ready(function(e){
     /*点击删除 清空输入框的内容*/
     $('.clean').click(function(){
         $('.search_hide input').val('');
+        $('#clearTbody tbody').html('');
     });
 });
