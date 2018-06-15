@@ -42,8 +42,19 @@ public class LoginAction extends CommonAction{
 			setResult("密码错误！");
 		}
 		saveLogin(user);
-		session.setAttribute("userId", user.getUserId());
 		System.out.println(user.getUserId());
+		return aa;
+	}
+	
+	@Action(value="/loginOut"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loginOut() {
+		if(!isLogin()){
+			setResult("请先登录");
+		}
+		session.removeAttribute("user");
+		setResult("成功退出");
 		return aa;
 	}
 	
