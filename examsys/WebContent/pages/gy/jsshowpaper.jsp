@@ -30,6 +30,7 @@
        
 	</head>
 	<body>
+	<div class="all">
 		<section class="navgationandhead">
 			<!-- head start -->
 			<div class="logo">
@@ -475,7 +476,7 @@
 		    			<!-- /.modal -->
 		    		</div>
 	    </section>
-		
+	</div>	
 	</body>
 	<script type="text/javascript" src="js/search.js" ></script>
 </html>
