@@ -80,7 +80,7 @@
 				<div class="light_bottom">
 					<ul class="side_nav">
 					<a href="jsshowpaper.jsp"><li class="side_nav1 now">题库管理</li></a>
-					<a href="history_teacher.jsp"><li class="side_nav1 ">历史成绩</li></a>
+					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
 				</ul>
 				</div>
 			</nav>

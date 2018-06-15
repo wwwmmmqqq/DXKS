@@ -71,7 +71,7 @@
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
 					<a href="jsshowpaper.jsp"><li class="side_nav1 ">题库管理</li></a>
-					<a href="history_teacher.jsp"><li class="side_nav1 now">历史成绩</li></a>
+					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
 				</ul>
 		  </div>
 		</nav>
@@ -88,7 +88,7 @@
 		    				<li class="active">
 		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>历史成绩</li>
+		    				<li>查看成绩</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
