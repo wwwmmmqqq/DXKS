@@ -229,7 +229,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" id="start-exam-btn" class="btn btn-primary" data-dismiss="modal" onclick="javascript:window.location.href='student-exam.jsp'">开始考试
+				<button type="button" id="start-exam-btn" class="btn btn-primary" data-dismiss="modal" >开始考试
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
@@ -355,14 +355,17 @@
 <script type="text/javascript">
 agreeClick();
 function agreeClick(){
-	
-	if($('.agree-rule input[name=agree-checkebox]').checked==true){
+	if($('.agree-rule').find('input[name="agree-checkebox"]').checked==true){
 		$('#start-exam-btn').disabled=false;
+		$('#start-exam-btn').onclick="javascript:window.location.href='student-exam.jsp'"
+		
 	}else{
+		
 		$('#start-exam-btn').disabled=true;
 	}
 	
 }
 </script>
 </body>
+
 </html>
