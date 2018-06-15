@@ -351,8 +351,46 @@
 	  		var boo=data.result;
 	  		alert(boo);
 	  	})
- 	  	
-
+	  	
+ /**********************************试卷基本信息接口*************************************/			  	
+	/**
+		删除试卷接口
+		参数：paper.sid
+		返回值：result
+	*/
+  		$.post("deletePaper",{"paper.sid":50},function(data) {
+		 	alert(data.result);
+	 	})
+ 	/**
+		显示试卷列表接口
+		参数：page
+		返回值：paperList,totalPage
+	*/
+  		$.post("showPaperList",{"page":1},function(data) {
+			var paperList = data.paperList;
+	 		/* for(var i in paperList) {
+	 			paperList[i].name;
+	 		} */
+			alert(paperList[1].name);
+	 		alert(data.totalPage);
+		})
+	/**
+		修改试卷接口---先查看再修改
+		参数：paper.sid
+		返回值：paper
+	*/
+  		$.post("ShowOnePaper",{"paper.sid":1},function(data) {
+			var paper = data.paper;
+  			alert(paper.name);
+		})
+	/**
+		修改试卷接口---先查看再修改
+		参数：paper所有属性
+		返回值：paperList
+	*/
+  		$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
+			alert(data.result);
+		})
 	  </script>
   </head>
   

@@ -123,4 +123,12 @@ public class Paper {
 		this.subjectRef = subjectRef;
 	}
 
+	@Override
+	public String toString() {
+		return "Paper [sid=" + sid + ", examRef=" + examRef + ", subjectRef=" + subjectRef + ", name=" + name
+				+ ", time=" + time + ", totalScore=" + totalScore + ", examStart=" + examStart + ", examEnd=" + examEnd
+				+ ", totalTime=" + totalTime + ", subjectName=" + subjectName + "]";
+	}
+	
+	
 }

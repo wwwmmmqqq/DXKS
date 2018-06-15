@@ -10,7 +10,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
-	 
+	/**
+		修改试卷接口---先查看再修改
+		参数：paper.sid
+		返回值：paper
+	*/
+  	$.post("ShowOnePaper",{"paper.sid":1},function(data) {
+		var paper = data.paper;
+  		alert(paper.name);
+	 })
   </script>
   
   </head>
