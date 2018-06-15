@@ -11,6 +11,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 	  
 	  <script type="text/javascript">
+	  //获取URL中的参数
+	  function getParam(name) {
+		  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");//匹配目标参数
+		  var result = window.location.search.substr(1).match(reg);//匹配目标参数
+		  if (result != null)
+		  	return decodeURIComponent(result[2]);
+		  return null;
+	  }
+	  alert(getParam("12"));
+	  </script>
+	  
+	  <script type="text/javascript">
 	  
 	  /*加载考试列表*/
 	  function loadMyExamList(page) {

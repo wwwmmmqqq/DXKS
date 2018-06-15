@@ -1,0 +1,65 @@
+/*条件搜索*/
+.search_hide{
+	display: none;
+}
+.search_hide .input_hide1{
+	width: 90px;
+	height: 30px;
+	margin-top:10px ;
+	margin-left:25px;
+	margin-bottom: 10px;
+	border-radius:6px ;
+	border: 1px solid #999;
+}
+.search_hide .input_hide{
+	width: 90px;
+	height: 30px;
+	margin-top:10px ;
+	margin-left:5px;
+	margin-bottom: 10px;
+	border-radius:6px ;
+	border: 1px solid #999;
+}
+.input_hide:hover{
+	border: 1px solid #0e92cf;
+	border-radius:6px ;
+}
+.input_hide1:hover{
+	border: 1px solid #0e92cf;
+	border-radius:6px ;
+}
+.search_hide .select_hide{
+	width: 90px;
+	height: 30px;
+	margin-top:10px ;
+	margin-left:5px;
+	margin-bottom: 10px;
+	border-radius:6px ;
+	border: 1px solid #999;
+}
+.search_hide .right_search{
+	margin-top:-5px ;
+	margin-left: 50px;
+	margin-right: 10px;
+	height: 30px;
+	text-align: center;
+}
+.search_hide .clean{
+	margin-top:-5px ;
+	height: 30px;
+	text-align: center;
+}
+.search_hide .input_hide2{
+	display: none;
+	color: ;
+	width: 90px;
+	height: 30px;
+	margin-top:10px ;
+	margin-left:5px;
+	margin-bottom: 10px;
+	border-radius:6px ;
+	border: 1px solid #999;
+}
+.search_hide .option_hide{
+	color: #999;
+}
