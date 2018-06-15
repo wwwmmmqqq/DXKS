@@ -10,8 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   
-  <script type="text/javascript">
-  
+  <%-- <script type="text/javascript">
   $(document).ready(function() {
 	 
 	 /*
@@ -19,11 +18,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  返回学生对象列表
 	 */
 	 
-	 $.post("loadStuList", { "stu.StudentID":66 }, function(data) {
-		 
-		  var list = data.stuLi;//拿到学生列表
+	 $.post("loadStuList", { "stu.name":'asdf' }, function(data) {
 		  
-		  alert(data.result);
+		  var list = data.list;//拿到学生列表
 		  
 		  //遍历学生
 		  for(var i=0;i<list.length;i++) {
@@ -31,23 +28,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  var item = list[i];//第i个学生
 			  
 			  //对应数据库字段
-			  $("#ajax-demo").html( $("#ajax-demo").html() + item.studentName + "<br>");
+			  $("#container").html( $("#container").html() + item.name + "<br>");
 			  
 		  }
 		  
 	  });
 	  
+	 
+	 
   });
+  </script> --%>
   
+  <script type="text/javascript">
+	  $.post("updateStuInfos", {
+		  "params[0]":'aaa',
+		  "params[1]":'bbb',
+		  "params[2]":'ccc',
+		  "params[5]":'ddd'
+	  }, function(data) {
+		  alert(data.result);
+	  });
   </script>
   </head>
   
   <body>
   	
-  	<div id='ajax-demo'></div>
+  	<div id='container'></div>
   	
-  	<!-- 调用接口 ，跳转页面，获取到数据 -->
-  	<a href="loadStuListPage">DemoTest</a>
+  	<a href="pagination.jsp">分页demo</a>
+  	
+  	<a href="pagination-plus.jsp">分页 demo+</a>
   	
   </body>
   

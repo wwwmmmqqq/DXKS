@@ -3,7 +3,7 @@ package cn.examsys.adapters;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IDaoAdapter extends IDao {
+public interface IDaoAdapter {
 	
 	/**
 	 * 通过HQL和SQL查询
@@ -12,10 +12,10 @@ public interface IDaoAdapter extends IDao {
 	 * @param len 查询范围的长度
 	 * @return 返回一个泛型List
 	 */
-	public <T> List<T> findByHql(String hql,Object vals[],int from_id,int len) throws Exception;
-	public <T> List<T> findBySql(String sql,Object vals[],int from_id,int len) throws Exception;
-	public <T> List<T> findByHql(String hql,int from_id,int len) throws Exception;
-	public <T> List<T> findBySql(String sql,int from_id,int len) throws Exception;
+	public <T> List<T> findByHql(String hql,Object vals[],int page) throws Exception;
+	public <T> List<T> findBySql(String sql,Object vals[],int page) throws Exception;
+	public <T> List<T> findByHql(String hql,int page) throws Exception;
+	public <T> List<T> findBySql(String sql,int page) throws Exception;
 	public <T> List<T> findByHql(String hql,Object vals[]) throws Exception;
 	public <T> List<T> findBySql(String sql,Object vals[]) throws Exception;
 	public <T> List<T> findByHql(String hql) throws Exception;
@@ -44,15 +44,6 @@ public interface IDaoAdapter extends IDao {
 	public void updateBySql(String sql) throws Exception;
 	
 	/**
-	 * 更新实体的某些字段
-	 * @param claz 类
-	 * @param fields 字段
-	 * @param values 值
-	 * @throws Exception
-	 */
-	public void updateFields(Class<?> claz, String fields[], Object values[]) throws Exception;
-	
-	/**
 	 * 保存实体
 	 * @param entity
 	 * @return
@@ -61,5 +52,38 @@ public interface IDaoAdapter extends IDao {
 	public void deleteEntity(Object entity) throws Exception;
 	public void updateEntity(Object entity) throws Exception;
 	
+	/**
+	 * 通过ID拿到实体
+	 * @param id
+	 * @return
+	 */
+	public <T> T findEntity(Class<?> claz, Serializable id);
+	/**
+	 * 通过ID删除实体
+	 * @param id
+	 * @return
+	 * @throws Exception 
+	 */
+	public void deleteEntity(Class<?> claz, Serializable id) throws Exception;
+	
+	/**
+	 * 更新某个实体的某些字段的值
+	 * @param claz 实体类
+	 * @param id 主键
+	 * @param fieldNames 字段名数组
+	 * @param values 值数组
+	 * @throws Exception
+	 */
+	public void updateEntity(Class<?> claz, Serializable id, String[] fieldNames, Object[] values) throws Exception;
+	
+	/**
+	 * 更新某个实体的单个字段的值
+	 * @param claz 实体类
+	 * @param id 主键
+	 * @param fieldName 字段名
+	 * @param value 值数
+	 * @throws Exception
+	 */
+	public void updateEntity(Class<?> claz, Serializable id, String fieldName, Object value) throws Exception;
 	
 }

@@ -1,55 +1,54 @@
 package cn.examsys.bean;
 
+<<<<<<< HEAD
 import java.sql.Date;
 
+=======
+>>>>>>> origin/wmq
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Generated;
 
 @Entity
+<<<<<<< HEAD
 @Table(name="subject")
+=======
+@Table(name="subject_tb")
+>>>>>>> origin/wmq
 public class Subject {
-	/*SubjectID	int
-	SubjectName	Varchar(100)*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int SubjectID;
-	String SubjectName;
+	int sid;
+	
+	String userId;//创建的用户
+	
+	String name;//科目名称
 
-
-
-	public int getSubjectID() {
-		return SubjectID;
+	public int getSid() {
+		return sid;
 	}
 
-
-
-	public void setSubjectID(int subjectID) {
-		SubjectID = subjectID;
+	public void setSid(int sid) {
+		this.sid = sid;
 	}
 
-
-
-	public String getSubjectName() {
-		return SubjectName;
+	public String getUserId() {
+		return userId;
 	}
 
-
-
-	public void setSubjectName(String subjectName) {
-		SubjectName = subjectName;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
+	public String getName() {
+		return name;
+	}
 
-
-	@Override
-	public String toString() {
-		return "Subject [SubjectID=" + SubjectID + ", SubjectName=" +SubjectName
-				+ "]";
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+	  <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+	  <script type="text/javascript">
+/**********************************User用户接口*******************************/
+	  
+	  /*
+		创建用户接口
+		参数：User的所有属性，对应数据库字段
+	*/
+	  $.post("createUser",
+			 {	"user.userId":Math.random()*9999+"",   //用户名
+		 		"user.type":"学生",					//用户类型
+		 		"user.sex":"女",						//用户性别
+		 		"user.phone":"15078843569",
+		 		"user.psw":"000000"
+		 	},function(data){
+		 		alert(data.result);    //message为user返回信息
+			 }
+		) 
+			
+	/**
+		显示一位用户信息接口
+		参数：userId,提交参数为user.属性
+	*/
+	   $.post("showUser",{"user.userId":"userId_102"},function(data) {
+		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
+			alert(data.result);
+	  })  
+	  
+	   /**
+	  	修改用户信息接口----先showUser显示，再修改
+	  	参数：修改后的user的信息
+	  */
+	   $.post("editUser",{"user.userId":"0088999","user.name":"mingzi"},function(data) {
+		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
+			alert(data.result);
+	  })  
+	  
+	   /**
+	  	删除用户信息接口
+	  	参数：user.userId
+	  */
+	  $.post("deleteUser",{"user.userId":"0088999"},function(data) {
+			alert(data.result);
+	  })  
+	  
+	   /**
+	  	显示用户信息列表接口
+	  	参数：page--当前页,user.type----查询的用户类型
+	  */
+	  $.post("selectUserList",{"user.type":"学生","page":6},function(data) {
+		  var user=data.userList;
+		  alert(user.length);			//查询出的当前页的用户的总数
+		  alert(data.totalPage);		//查询出的总页数
+		  for(var i=0; i<user.length; i++){
+			  alert(user[i].userId); 	 //第6*10+i位用户的id号
+		  }
+		      
+	  })  
+	  
+/**********************************Role角色接口***************************************/	  
+	  /**
+	  	创建角色接口
+	  	参数：role对象里面的所有信息，eg：role.type，id自动生成
+	  */
+	   $.post("createRole",{"role.type":"老师"},function(data) {
+		   alert(data.result);
+	  }) 
+	  /**
+	  	删除角色接口
+	  	参数：role.sid
+	  */
+	   $.post("deleteRole",{"role.sid":51},function(data) {
+		   alert(data.result);          //获取操作结果eg：删除成功or删除失败
+	  }) 
+	   /**
+	  	显示角色信息接口
+	  	参数：role.sid
+	  */
+	   $.post("showRole",{"role.sid":34},function(data) {
+		   alert(data.role.type);     //获取role的type属性
+	  })  
+	  /**
+	  	编辑角色信息接口-----先显示再修改
+	  	参数：role的所有参数
+	  */
+	   $.post("editRole",{"role.sid":34,"role.type":"学生"},function(data) {
+		   alert(data.result);
+	  })
+	    /**
+	  	获取角色列表接口
+	  	参数：page---当前页
+	  */
+	  $.post("selectRoleList",{"page":2},function(data){
+			var role=data.roleList;
+			alert(role.length);			//查询出的当前页的角色的总数
+			alert(data.totalPage);		//查询出的总页数
+			alert(role[5].type);		//第16个角色的类型，当page为1是则代表第6位角色的类型
+			for(var i=0; i<role.length; i++){
+				alert(role[i].type); 	 //第2*10+i位用户的id号
+			}
+		})    
+	  
+/**********************************ItemBank题库接口*************************************/		
+	   /**
+	  	获取角色列表接口
+	  	参数：question对象的所有属性，option对象的所有属性，user.usetId
+	  	返回值：result
+	  */
+	  $.post("createItemBank",
+			{
+		  		"user.userId":"123456",
+		  		"question.title":"你说说世界末日什么时候来临？",
+		  		"question.choiceCount":4,      //选项个数，判断为0个
+		  		"question.difficultyValue":"1",//1-4
+		  		"question.type":"Multiple",     //Single,TrueOrFalse,Multiple,Fills,Subjective
+		  		"question.knowledge":"科技 畅想",
+		  		"question.subjectRef":50,       //科目------先获取到所有科目再挑选？？？？？？？？？
+		  		"option[0].content":"我猜想着大约是今天",   //第一个选项的内容
+		  		"option[0].isAnswer":0,                //是否是答案0否1是
+		  		"option[0].type":"Multiple",
+		  		"option[1].content":"我猜想着大约是明天",
+		  		"option[1].isAnswer":0,
+		  		"option[1].type":"Multiple",
+		  		"option[2].content":"我猜想着大约在冬季",
+		  		"option[2].isAnswer":1,
+		  		"option[2].type":"Multiple",
+		  		"option[3].content":"我猜想着大约永远不会到来",
+		  		"option[3].isAnswer":1,
+		  		"option[3].type":"Multiple",
+		 	},
+			 function(data){
+		 		
+				alert(data.result);
+		})   
+	  
+		 /**
+	  	显示题库列表byteacher_userId接口,教务教师统一用此接口
+	  	参数：page---当前页,user.userId
+	  	返回值：题目列表，选项列表，总页数
+	  */
+	  $.post("showItemBankListByUser",
+				{
+			  		"user.userId":"123546",
+			  		"page":1
+			 	},
+				 function(data){
+			 		var questionList = data.questionList;       //所有题目的列表
+			 		var optionList = data.map;                  //所有选项的列表
+			 		var totalPage= data.totalPage;				//列表总页数
+			 		for( var i in questionList) {				//循环题目列表
+			 			/**
+			 				题目
+			 			*/
+			 			alert("第"+questionList[i].sid+"道题目："+questionList[i].title);     //获取到第i道题目的具体属性
+			 			var option = optionList["option["+i+"]"];          //获取到的第i个选项对象
+			 			for(var j in option) {                             //循环第i个选项对象
+			 				/**
+			 					选择题，判断题答案
+			 				*/
+			 				if(option[j].type=="Single"||option[j].type=="Mutiple"||option[j].type=="TrueOrFalse") {
+			 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项内容是："+option[j].content);   //相应第i道题目的第j个选项的具体属性
+			 					
+			 					/* option[j].type;option[j].isAnswer */
+			 					
+			 					if(option[j].isAnswer==1) {
+			 						alert("第"+questionList[i].sid+"道题的正确答案是："+option[j].content); //获取到第i道题的正确答案
+			 					}
+			 				}
+			 				
+			 				/**
+			 					填空题答案
+			 				*/
+			 				else if(option[j].type=="Fills") {
+			 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项答案是"+option[j].type+"："+option[j].fillText);   //相应第i道题目的第j个选项的具体属性,这里是填空题答案
+			 				}
+			 				/**
+			 					主观题答案
+			 				*/
+			 				else if(option[j].type=="Subjective") {
+			 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项答案是"+option[j].type+"："+option[j].subjectiveText);   //相应第i道题目的第j个选项的具体属性,这里是主观题答案
+			 				}continue;
+			 			}
+			 		}
+			})   
+		/**
+	  	显示题库列表by questiontype 接口,教务老师统一用此接口
+	  	参数：page---当前页,quesion.type,user.userId
+	  	返回值：题目列表，选项列表，总页数
+	  */
+	  $.post("showItemBankListByType",
+				{
+			  		"question.type":"Single",
+			  		"user.userId":"admin123",    //教务包含admin
+			  		"page":1
+			 	},
+				 function(data){
+			 		var questionList = data.questionList;       //所有题目的列表
+			 		var optionList = data.map;                  //所有选项的列表
+			 		var totalPage= data.totalPage;				//列表总页数
+			 		for( var i in questionList) {				//循环题目列表
+			 			/**
+			 				题目
+			 			*/
+			 			alert("第"+questionList[i].sid+"道题目："+questionList[i].title);     //获取到第i道题目的具体属性
+			 			var option = optionList["option["+i+"]"];          //获取到的第i个选项对象
+			 			for(var j in option) {                             //循环第i个选项对象
+			 				/**
+			 					选择题，判断题答案
+			 				*/
+			 				if(option[j].type=="Single"||option[j].type=="Mutiple"||option[j].type=="TrueOrFalse") {
+			 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项内容是："+option[j].content);   //相应第i道题目的第j个选项的具体属性
+			 					
+			 					/* option[j].type;option[j].isAnswer */
+			 					
+			 					if(option[j].isAnswer==1) {
+			 						alert("第"+questionList[i].sid+"道题的正确答案是："+option[j].content); //获取到第i道题的正确答案
+			 					}
+			 				}
+			 				
+			 				/**
+			 					填空题答案
+			 				*/
+			 				else if(option[j].type=="Fills") {
+			 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项答案是"+option[j].type+"："+option[j].fillText);   //相应第i道题目的第j个选项的具体属性,这里是填空题答案
+			 				}
+			 				/**
+			 					主观题答案
+			 				*/
+			 				else if(option[j].type=="Subjective") {
+			 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项答案是"+option[j].type+"："+option[j].subjectiveText);   //相应第i道题目的第j个选项的具体属性,这里是主观题答案
+			 				}continue;
+			 			}
+			 		}
+			})   
+			
+			 /**
+	  	显示一道题目by questiontype 接口
+	  	参数：quesion.sid
+	  	返回值：题目，选项
+	  */
+	  $.post("showItem",
+				{
+			  		"question.sid":60,
+			 	},
+				 function(data){
+			 		var question = data.question;       //所有题目的列表
+			 		var optionList = data.map;                  //所有选项的列表
+			 			alert("第"+question.sid+"道题目："+question.title);     //获取到题目的具体属性
+			 			var option = optionList["option[0]"];          //获取到的第0个选项对象
+			 			for(var j in option) {                             //循环第i个选项对象
+			 				/**
+			 					选择题，判断题答案
+			 				*/
+			 				if(option[j].type=="Single"||option[j].type=="Mutiple"||option[j].type=="TrueOrFalse") {
+			 					alert("第"+question.sid+"道题目的第"+j+"个选项内容是："+option[j].content);   //相应第i道题目的第j个选项的具体属性
+			 					
+			 					/* option[j].type;option[j].isAnswer */
+			 					
+			 					if(option[j].isAnswer==1) {
+			 						alert("第"+question.sid+"道题的正确答案是："+option[j].content); //获取到第i道题的正确答案
+			 					}
+			 				}
+			 				
+			 				/**
+			 					填空题答案
+			 				*/
+			 				else if(option[j].type=="Fills") {
+			 					alert("第"+question.sid+"道题目的第"+j+"个选项答案是"+option[j].type+"："+option[j].fillText);   //相应第i道题目的第j个选项的具体属性,这里是填空题答案
+			 				}
+			 				/**
+			 					主观题答案
+			 				*/
+			 				else if(option[j].type=="Subjective") {
+			 					alert("第"+question.sid+"道题目的第"+j+"个选项答案是"+option[j].type+"："+option[j].subjectiveText);   //相应第i道题目的第j个选项的具体属性,这里是主观题答案
+			 				}continue;
+			 			}
+			 		
+			})  
+		/**
+	  	先显示，再修改题库by questiontype 接口
+	  	参数：quesion.sid,option[i].id,必须有
+	  	返回值：题目，选项
+	  */
+	  $.post("editItemBankByUser",
+				{
+			  		"question.sid":57,
+			  		"question.title":"你说说世界末日什么时候来临？",
+			  		"question.choiceCount":4,      //选项个数，判断为0个
+			  		"question.difficultyValue":"1",//1-4
+			  		"question.type":"Multiple",     //Single,TrueOrFalse,Multiple,Fills,Subjective
+			  		"question.knowledge":"科技 畅想",
+			  		"question.subjectRef":50,       //科目------先获取到所有科目再挑选？？？？？？？？？
+			  		"option[0].sid":55, 
+			  		"option[0].content":"大约是今天",   //第一个选项的内容
+			  		"option[0].isAnswer":0,                //是否是答案0否1是
+			  		"option[0].type":"Multiple",
+			  		"option[1].sid":56, 
+			  		"option[1].content":"大约是明天",
+			  		"option[1].isAnswer":0,
+			  		"option[1].type":"Multiple",
+			  		"option[2].sid":57, 
+			  		"option[2].content":"大约在冬季",
+			  		"option[2].isAnswer":1,
+			  		"option[2].type":"Multiple",
+			  		"option[3].sid":58, 
+			  		"option[3].content":"大约永远不会到来",
+			  		"option[3].isAnswer":1,
+			  		"option[3].type":"Multiple",
+			 	},
+				 function(data){
+			 		
+					alert(data.result);
+			})   
+			
+		/**
+	  	删除题库by questiontype 接口
+	  	参数：quesion.sid,option[i].id,question.choiceCount必须有
+	  	返回值：result
+	  */
+	  $.post("deleteItemBank",
+				{
+			  		"question.sid":62,
+			  		"question.choiceCount":4,
+			  		"option[0].sid":63, 
+			  		"option[1].sid":64, 
+			  		"option[2].sid":65, 
+			  		"option[3].sid":66, 
+			 	},
+				 function(data){
+					alert(data.result);
+			})   
+	  </script>
+  </head>
+  
+  <body>
+  
+  	<div id="data1"></div>
+
+  </body>
+  
+</html>

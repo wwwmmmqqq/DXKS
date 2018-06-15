@@ -1,6 +1,7 @@
 package cn.examsys.adapters;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -14,16 +15,12 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
  */
 
 public class DaoAdapter implements IDaoAdapter {
+	public static int COUNT_PER_PAGE = 10;
 	
 	@Autowired
 	protected HibernateTemplate hibernateTemplate;
 	
-	@Override
-	public IDaoAdapter getDaoAdapter() {
-		return this;
-	}
-	
-	public <T> List<T> findByHql(String hql, Object[] vals, int from_id, int len) throws Exception {
+	public <T> List<T> findByHql(String hql, Object[] vals, int page) throws Exception {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
 		org.hibernate.Transaction tx = session.beginTransaction(); 
 		
@@ -38,9 +35,9 @@ public class DaoAdapter implements IDaoAdapter {
 			}
 		}
 		
-		if(len>0) {
-			query.setFirstResult(from_id);
-			query.setMaxResults(len);
+		if(page>0) {
+			query.setFirstResult((page-1)*COUNT_PER_PAGE);
+			query.setMaxResults(COUNT_PER_PAGE);
 		}
 		
 		try {
@@ -52,9 +49,9 @@ public class DaoAdapter implements IDaoAdapter {
 		} finally {
 			session.close(); 
 		}
-		
 	}
-	public <T> List<T> findBySql(String sql, Object[] vals, int from_id, int len) throws Exception {
+	
+	public <T> List<T> findBySql(String sql, Object[] vals, int page) throws Exception {
 		Session session = hibernateTemplate.getSessionFactory().openSession();
 		org.hibernate.Transaction tx = session.beginTransaction(); 
 		
@@ -69,9 +66,9 @@ public class DaoAdapter implements IDaoAdapter {
 			}
 		}
 		
-		if(len>0) {
-			query.setFirstResult(from_id);
-			query.setMaxResults(len-1);
+		if(page>0) {
+			query.setFirstResult((page-1)*COUNT_PER_PAGE);
+			query.setMaxResults(COUNT_PER_PAGE);
 		}
 		
 		try {
@@ -86,46 +83,46 @@ public class DaoAdapter implements IDaoAdapter {
 		}
 		
 	}
-	public <T> List<T> findByHql(String hql, int from_id, int len) throws Exception {
-		return findByHql(hql, null, from_id, len);
+	public <T> List<T> findByHql(String hql, int page) throws Exception {
+		return findByHql(hql, null, page);
 	}
-	public <T> List<T> findBySql(String sql, int from_id, int len) throws Exception {
-		return findBySql(sql, null, from_id, len);
+	public <T> List<T> findBySql(String sql, int page) throws Exception {
+		return findBySql(sql, null, page);
 	}
 	public <T> List<T> findByHql(String hql, Object[] vals) throws Exception {
-		return findByHql(hql, vals, 0, 0);
+		return findByHql(hql, vals, 0);
 	}
 	public <T> List<T> findBySql(String sql, Object[] vals) throws Exception {
-		return findBySql(sql, vals, 0, 0);
+		return findBySql(sql, vals, 0);
 	}
 	public <T> List<T> findByHql(String hql) throws Exception {
-		return findByHql(hql, null, 0, 0);
+		return findByHql(hql, null, 0);
 	}
 	public <T> List<T> findBySql(String sql) throws Exception {
-		return findBySql(sql, null, 0, 0);
+		return findBySql(sql, null, 0);
 	}
 	
 	
 	public <T> T findOneByHql(String hql, Object[] vals) throws Exception {
-		List<T> li = findByHql(hql, vals, 0, 1);
+		List<T> li = findByHql(hql, vals, 0);
 		if(li.size()>0)
 			return li.get(0);
 		return null;
 	}
 	public <T> T findOneBySql(String sql, Object[] vals) throws Exception {
-		List<T> li = findBySql(sql, vals, 0, 1);
+		List<T> li = findBySql(sql, vals, 0);
 		if(li.size()>0)
 			return li.get(0);
 		return null;
 	}
 	public <T> T findOneByHql(String hql) throws Exception {
-		List<T> li = findByHql(hql, null, 0, 1);
+		List<T> li = findByHql(hql, null, 0);
 		if(li.size()>0)
 			return li.get(0);
 		return null;
 	}
 	public <T> T findOneBySql(String sql) throws Exception {
-		List<T> li = findBySql(sql, null, 0, 1);
+		List<T> li = findBySql(sql, null, 0);
 		if(li.size()>0)
 			return li.get(0);
 		return null;
@@ -233,10 +230,82 @@ public class DaoAdapter implements IDaoAdapter {
 			session.close();
 		}
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	@Override
-	public void updateFields(Class<?> claz, String fields[], Object values[]) throws Exception {
+	public <T> T findEntity(Class<?> claz, Serializable id) {
+		String primaryKey = getEntityPrimaryKey(claz);
+		if (primaryKey == null) {
+			System.out.println(claz.getName() + "无主键");
+			return null;
+		}
+		try {
+			return (T) findOneByHql("from " +claz.getName()+ " where " + primaryKey + "=?", new Object[]{id});
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public void deleteEntity(Class<?> claz, Serializable id) throws Exception {
+		String primaryKey = getEntityPrimaryKey(claz);
+		if (primaryKey == null) {
+			System.out.println(claz.getName() + "无主键");
+			return;
+		}
+		if ((id+"").contains("'")) {
+			System.out.println("非法值");
+			return;
+		}
+		System.out.println("delete from " + claz.getName() + " where " + primaryKey + "='" + id + "'");
+		updateByHql("delete from " + claz.getName() + " where " + primaryKey + "=?", new Object[]{id});
+	}
+
+	@Override
+	public void updateEntity(Class<?> claz, Serializable id, String[] fieldNames, Object[] values) throws Exception {
+		if (fieldNames == null || fieldNames.length == 0) {
+			return;
+		}
+		String primaryKey = getEntityPrimaryKey(claz);
+		if (primaryKey == null) {
+			System.out.println(claz.getName() + "无主键");
+			return;
+		}
+		if ((id+"").contains("'")) {
+			System.out.println("非法值");
+			return;
+		}
+		
+		StringBuilder hql = new StringBuilder("update " + claz.getName() + " set ");
+		for (int i = 0; i < fieldNames.length-1; i++) {
+			hql.append(fieldNames[i] + "=?,");
+		}
+		
+		hql.append(fieldNames[fieldNames.length-1] + "=? where " + primaryKey + "='" + id + "'");
+		
+		updateByHql(hql.toString(), values);
 		
 	}
 	
+	@Override
+	public void updateEntity(Class<?> claz, Serializable id
+			, String fieldName, Object value) throws Exception {
+		updateEntity(claz, id, new String[]{fieldName}, new Object[]{value});
+	}
+	
+	/**
+	 * 获取某个类的主键
+	 * @param claz 类
+	 * @return
+	 */
+	private static String getEntityPrimaryKey(Class<?> claz) {
+		Field[] fs = claz.getDeclaredFields();
+		for (int i = 0; i < fs.length; i++) {
+			if (fs[i].getAnnotation(javax.persistence.Id.class) != null) {
+				return fs[i].getName();
+			}
+		}
+		return null;
+	}
 }

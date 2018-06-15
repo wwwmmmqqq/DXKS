@@ -8,9 +8,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import cn.examsys.bean.Student;
-import cn.examsys.lrx.service.LrxService;
-import cn.examsys.xy.service.XyService;
+import cn.examsys.bean.User;
 
 public abstract class CommonAction extends ActionSupport {
 	protected HttpSession session = ServletActionContext.getRequest().getSession();
@@ -19,13 +17,32 @@ public abstract class CommonAction extends ActionSupport {
 	
 	protected String aa = "success";
 	
-	public <T> void saveLogin(T user) {
+	public CommonAction() {
+		User user = new User();
+		user.setUserId("admin");
+		user.setPsw("123");
+		user.setName("nick");
+		user.setCollegeName("萍乡学院");
+		user.setPermission("");
+		user.setSex("男");
+		saveLogin(user);
+	}
+	
+	public void saveLogin(User user) {
 		session.setAttribute("user", user);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public <T> T getSessionUser() {
-		return (T) session.getAttribute("user");
+	public User getSessionUser() {
+		return (User) session.getAttribute("user");
+	}
+	
+	public String getSessionUserId() {
+		User u = getSessionUser();
+		return u!=null?u.getUserId():null;
+	}
+	
+	public boolean isLogin() {
+		return getSessionUser() != null;
 	}
 	
 	protected String result = "success";

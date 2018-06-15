@@ -1,83 +1,40 @@
 package cn.examsys.bean;
 
+<<<<<<< HEAD
 import java.sql.Date;
 
+=======
+>>>>>>> origin/wmq
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Generated;
-
 @Entity
+<<<<<<< HEAD
 @Table(name="college")
+=======
+@Table(name="college_tb")
+>>>>>>> origin/wmq
 public class College {
-	/*CollegeID	int
-      UniversityID	int
-      CollegeName	Varchar(100)
-      CollegeCode	Varchar(10)*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int CollegeID;
-	int UniversityID;
-	String CollegeName;
-	String CollegeCode;
+	int sid;
 	
+	String name;//大学名字
 	
-	
-	public int getCollegeID() {
-		return CollegeID;
+	public int getSid() {
+		return sid;
 	}
-
-
-
-	public void setCollegeID(int collegeID) {
-		CollegeID = collegeID;
+	public void setSid(int sid) {
+		this.sid = sid;
 	}
-
-
-
-	public int getUniversityID() {
-		return UniversityID;
+	public String getName() {
+		return name;
 	}
-
-
-
-	public void setUniversityID(int universityID) {
-		UniversityID = universityID;
-	}
-
-
-
-	public String getCollegeName() {
-		return CollegeName;
-	}
-
-
-
-	public void setCollegeName(String collegeName) {
-		CollegeName = collegeName;
-	}
-
-
-
-	public String getCollegeCode() {
-		return CollegeCode;
-	}
-
-
-
-	public void setCollegeCode(String collegeCode) {
-		CollegeCode = collegeCode;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "College [CollegeID=" + CollegeID + ", UniversityID=" + UniversityID + ", CollegeName=" + CollegeName
-				+ ", CollegeCode=" + CollegeCode +"]";
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
