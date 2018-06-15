@@ -12,13 +12,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  
 	  <script type="text/javascript">
 	  
-	  /*加载考试列表*/
+	  /*加载考次列表*/
 	  function loadMyExamList(page) {
 		  $.post("loadMyExamList", {"page":page}, function(data) {
 			  var examList = data.list;
 			  var htm = "";
 			  for(var i=0;i<examList.length;i++) {
-				  htm += "试卷ID = <a href='javascript:loadPapersByExam("+examList[i].sid+", 1)'>" + examList[i].sid + "</a>";//考试标题
+				  htm += "试卷ID = <a href='javascript:loadPapersByExam("+examList[i].sid+")'>" + examList[i].sid + "</a>";//考试标题
 				  htm += "考试标题 = " + examList[i].title;//考试标题
 				  //其他信息详见cn.examsys.bean.Exam.java文件
 				  htm += "<br>";
@@ -27,11 +27,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  });
 	  }
 	  
+	  var currentPage = 1;
 	  /*加载考试试卷列表*/
-	  function loadPapersByExam(examSid, page) {
+	  function loadPapersByExam(examSid) {
 		  $.post("loadMyExamList", {
 			  "exam.sid":examSid
-			  ,"page":page
+			  ,"page":currentPage
 		  }, function(data) {
 			  var paperList = data.list;
 			  var htm = "";
@@ -78,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  }
 		  });
 	  }
-	  
+	     
 	  function submitPaper(paperSid) {
 		  $(submitPaperBtn).text("交卷中...");
 		  $.post("todo", {

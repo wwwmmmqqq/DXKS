@@ -65,9 +65,6 @@ $(function() {
 var currentItemId = 1;
 function queClicked(obj, n) {
 	currentItemId = n;
-	/* $(".que-num").css({"background-color":"white","color":"black"}); */
-	/* $(obj).css({"background-color":"blue","color":"white"}); */
-	/* s */
 	$(obj).removeClass('que-num-color');
 	$(obj).addClass('on-click');
 	$(obj).siblings().removeClass('on-click');
@@ -132,7 +129,17 @@ function daojishi() {
 
 	}
 }
-/* 单选功能*/
+
+/*$(':checkbox[type="checkbox"]').each(function(){
+	alert("aa")
+	$(this).parent().parent().click(function(){
+		if($(this).attr('checked')){
+			 $(':checkbox[type="checkbox"]').removeAttr('checked');
+             $(this).attr('checked','checked');
+		}
+	})
+})
+ 单选功能
 function oneChoice(){
 	$(':checkbox[type="checkbox"]').each(function(){
 		$(this).parent().parent().click(function(){
@@ -144,3 +151,4 @@ function oneChoice(){
 	})
 }
 
+*/

@@ -59,7 +59,8 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyExamList() {
-		list = service.loadMyExamsList(getSessionUser(), page);
+		//list = service.loadMyExamsList(getSessionUser(), page);
+		System.out.println(234234);
 		try {
 			//TODO 测试数据
 			list = BeanAutoFit.fitBeanArray(Exam.class, page);
