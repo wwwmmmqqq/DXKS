@@ -1,5 +1,7 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
             <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -38,7 +40,7 @@
 		</header>
 		<div class="breadcrumb">
 			<i class="fa fa-circle-o"></i> 位置：
-			<a href="student-index.jsp">首页</a>
+			<a href="student-main.jsp">首页</a>
 			<b>></b>
 			<a href="/">在线考试</a>
 		</div>
@@ -113,62 +115,6 @@
 	</div> </div>
 	
 			<div id="paper-box">
-				<!-- <div class="exam-paper q-item q-1" id="q-1">
-					<div class="lable-question" >
-						<img  src="img/pre-lable.png" id="lable-img-1" class="lable-question-img" onclick="markClick()"/>
-					</div>
-					<table class="question" >
-						<thead>
-							<tr>
-								<th id="no_1">1</th>
-								<th>(1分)</th>
-								<th>下列哪项不属于因为疫苗的本质因素而引起的不良反应：</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td>A</td>
-								<td>
-									<input type="radio" />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>B</td>
-								<td>
-									<input type="radio" />疫苗生产过程中残留的微量的动物血清引起少数人过敏；
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>C</td>
-								<td>
-									<input type="radio" />疫苗运输过程中保存温度过低导致疫苗变质，接种后出现不良反应。
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td>D</td>
-								<td>
-									<input type="radio" />疫苗添加剂引起的过敏反应。
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="pre-next-quetion">
-						<ul class="pager">
-							<li class="previous">
-								<a href="#">&larr; 上一题</a>
-							</li>
-							<li class="next">
-								<a href="#">下一题 &rarr;</a>
-							</li>
-						</ul>
-					</div>
-				</div> -->
-				
-				
 			</div>
 			<div class="all-question" id="all-question">
 			</div>
@@ -180,34 +126,81 @@
 <script type="text/javascript" src="js/student-exam.js"></script>
 
 <script type="text/javascript">
-callback();
-function callback() {
-	var htm = "";
-	for(var i=0;i<50;i++) {
-		htm += getChoiceItem(i+1);
-	}
-	$('#all-question').html(htm);
+var paperSid=getParam("sid");
+loadQuestionListByPaper(paperSid);
+setTimeout(function(){
+	$('#abc0').click();
+}, 50);
+/* 获取题目序号 */
+function loadQuestionListByPaper(paperSid) {
+	$.post("loadQuestionList", {
+		  "paper.sid":paperSid
+	  }, function(data) {
+		  var queList = data.list;
+		  var htm = "";
+		  for(var i=0;i<queList.length;i++) {
+			 htm+=getChoiceItem(i);
+		  }
+		  $('#all-question').html(htm);
+		  
+	  });
 }
-
-$("#abc1").click();
 
 function getChoiceItem(n) {
-	var html = "<a id='abc"+n+"' class='que-num que-num-color' onclick='queClicked(this, "+n+")'>"+n+"</a>";
+	var html = "<a id='abc"+n+"' class='que-num que-num-color' onclick='queClicked(this, "+n+")'>"+(n+1)+"</a>";
 	return html;
 }
+
+//获取url中的参数
+function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
+}
+
 </script>
 <script type="text/javascript">
-callback1();
-oneChoice();
-function callback1() {
-	var htm = "";
-	for(var i=0;i<50;i++) {
-		htm += getQueItem(i+1);
-	}
-	$('#paper-box').html(htm);
+loadQuestionListByPaper(paperSid);
+/* oneChoice();  */
+function loadQuestionListByPaper(paperSid){
+	  $.post("loadQuestionList", {
+		  "paper.sid":paperSid
+	  }, function(data) {
+		  var queList = data.list;
+		  var htm = "";
+		  for(var i=0;i<queList.length;i++){
+			  htm+=getQueItem(i, queList[i]);
+		  }
+		  $('#paper-box').html(htm);
+	  });
 }
-$('#abc1').click();
-function getQueItem(n) {
+
+/*答题 题目id，选项id， 填空题答案，主观题答案*/
+function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer) {
+	  $.post("todo", {
+		  "answer.questionRef":questionSid//题目ID
+		  ,"answer.optionRef":optionSid//选项ID
+		  ,"answer.fillsAnswer":fillsAnswer//填空题内容
+		  ,"answer.subjectiveAnswer":subjectiveAnswer//主观题内容
+	  }, function(data) {
+		  if(data.result == 'fail') {
+			  alert('做题失败');
+		  } else {
+			  alert('做题成功');
+		  }
+	  });
+}
+$(document).ready(function(){
+	$('.option-item').click(function() {
+		$(this).find('.opt-radio').click();
+		$(this).find('.opt-radio').siblings().unbind();
+	});
+})
+	
+
+function getQueItem(n, obj) {
 	
 	var htm = 
 		"<div class='exam-paper q-item q-"+n+"' id='q-"+n+"' style='display: none'>"
@@ -217,38 +210,24 @@ function getQueItem(n) {
 	+"					<table class='question ' >"
 	+"						<thead>"
 	+"							<tr>"
-	+"								<th id='no_"+n+"'>"+n+"</th>"
+	+"								<th id='no_"+n+"'>"+(n+1)+"</th>"
 	+"								<th>(1分)</th>"
-	+"								<th>下列哪项不属于因为疫苗的本质因素而引起的不良反应：</th>"
+	+"								<th>"+obj.title+"</th>"
 	+"							</tr>"
 	+"						</thead>"
 	+"						<tbody>"
-	+"							<tr >"
+	+"							<tr class='option-item'>"
 	+"								<td></td>"
 	+"								<td>A</td>"
 	+"								<td >"
-	+"									<input type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
+	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
 	+"								</td>"
 	+"							</tr>"
-	+"							<tr >"
+	+"							<tr class='option-item'>"
 	+"								<td></td>"
-	+"								<td>B</td>"
+	+"								<td>A</td>"
 	+"								<td >"
-	+"									<input  type='checkbox' />疫苗生产过程中残留的微量的动物血清引起少数人过敏；"
-	+"								</td>"
-	+"							</tr>"
-	+"							<tr >"
-	+"								<td></td>"
-	+"								<td>C</td>"
-	+"								<td >"
-	+"									<input type='checkbox' />疫苗运输过程中保存温度过低导致疫苗变质，接种后出现不良反应。"
-	+"								</td>"
-	+"							</tr>"
-	+"							<tr >"
-	+"								<td></td>"
-	+"								<td>D</td>"
-	+"								<td >"
-	+"									<input type='checkbox' />疫苗添加剂引起的过敏反应。"
+	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
 	+"								</td>"
 	+"							</tr>"
 	+"						</tbody>"
@@ -266,6 +245,9 @@ function getQueItem(n) {
 	+"				</div>";
 	return htm;
 }
+
+
+
 </script>
 </body>
 </html>

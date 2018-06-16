@@ -502,6 +502,13 @@ th {
 	color: blue;
 }
 
+.check{
+	cursor:pointer ;
+}
+.check:hover{
+	color: blue;
+}
+
 
 /*所有按钮*/
 button{

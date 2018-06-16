@@ -171,8 +171,7 @@
 		    				<thead>
 		    					<tr>
 		    						<th>
-		    							<input type="checkbox" class="flat-grey"/>全选 ID
-		    						</th>
+		    							<input type="checkbox" class="flat-grey"/>全选 ID</th>
 		    						<th>所在考次</th>
 		    						<th>试卷科目</th>
 		    						<th>标题</th>

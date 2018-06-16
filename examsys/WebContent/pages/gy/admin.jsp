@@ -37,7 +37,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
-							<a href="#">退出系统</a>
+							<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
 						</div>
 					</div>
 				</div>
@@ -102,6 +102,8 @@
 						</select>
 						<input type="text" class="input_hide2" id="school1" placeholder="学校"/>
 						<input type="text" class="input_hide2" id="institute1" placeholder="学院"/>
+						<input type="text" class="input_hide2" id="profession1" placeholder="专业"/>
+						<input type="text" class="input_hide2" id="class1" placeholder="班级"/>
 						<button type="button" class="btn right_search">搜索</button>
 						<button type="button" class="btn clean">清空搜索</button>
 					</div>
@@ -110,7 +112,7 @@
 				
 				<!--表格-->
 				<div class="tip">用户信息</div>
-				<table class="table table-striped tb1">
+				<table class="table table-striped tb1" id="clearTbody">
 				<thead class="thead-light">
 			      <tr class="tb_width">
 			      	<th>序号</th>
@@ -137,7 +139,7 @@
 			        <td>
 			        	<i class="fa fa-eye see_information"  data-toggle="modal" data-target="#myModal_see_information"></i>
 			        	<i class="fa fa-pencil check" data-toggle="modal" data-target="#myModal_correct_information"></i>
-			        	<i class="fa fa-trash-o"></i>
+			        	<i class="fa fa-trash-o" onclick="myFunction1()"></i>
 			        </td>
 			      </tr>
 			      <tr class="tb_width">

@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 
 	 /*
 	  这里调用了 LrxAjaxAction!loadStuList 接口
+>>>>>>> origin/lrx
 	  返回学生对象列表
 	 */
 	 
@@ -34,6 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  
 	  });
 	  
+<<<<<<< HEAD
+  });
+=======
 	 
 	 
   });
@@ -48,6 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  }, function(data) {
 		  alert(data.result);
 	  });
+>>>>>>> origin/lrx
   </script>
   </head>
   
@@ -57,8 +62,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	<a href="pagination.jsp">分页demo</a>
   	
+<<<<<<< HEAD
+=======
   	<a href="pagination-plus.jsp">分页 demo+</a>
   	
+>>>>>>> origin/lrx
   </body>
   
 </html>

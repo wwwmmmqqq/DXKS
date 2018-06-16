@@ -26,8 +26,6 @@ public class Question {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int sid;
 	
-	int paperRef;//指向试卷
-	
 	String type;//题目类型
 	
 	String userId;
@@ -52,14 +50,6 @@ public class Question {
 		this.sid = sid;
 	}
 
-	public int getPaperRef() {
-		return paperRef;
-	}
-
-	public void setPaperRef(int paperRef) {
-		this.paperRef = paperRef;
-	}
-	
 	public int getSubjectRef() {
 		return subjectRef;
 	}
