@@ -15,7 +15,7 @@
             <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
             <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
             <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-            <link href="css/jsentryquestions.csss" rel="stylesheet" type="text/css" />
+            <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
             <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
