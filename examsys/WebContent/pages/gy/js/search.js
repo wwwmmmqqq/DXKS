@@ -60,3 +60,22 @@ $(document).ready(function(){
 			}
 		}
 	});
+
+
+//警告框
+//退出登陆
+function myFunction(){
+	confirm("确认退出吗？")
+}
+function myFunction1(){
+	confirm("确认删除")
+}
+
+//清空搜索
+$(document).ready(function(e){
+    /*点击删除 清空输入框的内容*/
+    $('.clean').click(function(){
+        $('.search_hide input').val('');
+        $('#clearTbody tbody').html('');
+    });
+});

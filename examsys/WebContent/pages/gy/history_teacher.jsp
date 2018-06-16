@@ -37,7 +37,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-							<a href="#">退出系统</a>
+							<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -119,7 +119,7 @@
 					</div>
 					<!--table-->
 					<div class="tip">历史成绩</div>
-					<table class="table table-striped tb1">
+					<table class="table table-striped tb1" id="clearTbody">
 						<thead class="thead-light">
 							<tr>
 								<th>序号</th>
@@ -136,7 +136,7 @@
 								<td>萍乡学院</td>
 								<td>2018-10-10</td>
 								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-									<i class="fa fa-eye"></i>
+									<i class="fa fa-eye" ></i>
 								</td>
 							</tr>
 							
@@ -594,6 +594,8 @@
 							<button class="btn btn_choose" type="button" id="checkbox_select">全不选</button>
 							<button class="btn btn_choose" type="button" id="reverseSelect">反选</button>
 						</div>
+						
+						
 					</div>
 
 					<!-- 模态框底部 -->
