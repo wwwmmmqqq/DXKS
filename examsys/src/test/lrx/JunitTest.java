@@ -39,8 +39,14 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	ConstituteService conService;
 	
 	@Test
-	public void testCreateQuestion() {
-		
+	public void addQuestion() {
+		for (int i = 0; i < 50; i++) {
+			testCreateQuestion_option_type(i);
+		}
+	}
+	
+	 
+	public void testCreateQuestion_option_type(int index) {
 		String qtype[] = new String[] {
 				Conf.Question_Single
 				, Conf.Question_Multiple
@@ -49,23 +55,38 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 				, Conf.Question_Subjective*/
 		};
 		
-		String type = qtype[(int)(Math.random() * qtype.length)];
+		String type = qtype[Tool.getIntRnd(qtype.length)];
 		
 		Question q = new Question();
-		q.setDifficultyValue((int) (Math.random() * 4));
-		q.setKnowledge("知识点");
-		q.setTitle("题目标题");
+		q.setDifficultyValue(Tool.getIntRnd(4));
+		q.setKnowledge("知识点" + index%4);
+		q.setTitle("题目标题" + index);
 		q.setType(type);
 		q.setUserId("admin");
 		q.setTime(Tool.time());
+		try {
+			q.setSid((Integer) daoAdapter.saveEntity(q));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		List<Option> li = new ArrayList<Option>();
+		for (int i = 0; i < Tool.getIntRnd(5) + 2; i++) {
+			Option o = new Option();
+			int rnd1 = Tool.getIntRnd(10);
+			int rnd2 = Tool.getIntRnd(10);
+			int rst = Tool.getIntRnd(10)>7?(rnd1+rnd2):Tool.getIntRnd(90) + 10;
+			o.setContent(rnd1 + "+" + rnd2 + "=" + rst + " 对吗?");
+			o.setIsAnswer(rnd1+rnd2==rst?1:0);
+			o.setQuestionRef(q.getSid());
+			o.setType(q.getType());
+			try {
+				li.add(o);
+				daoAdapter.saveEntity(o);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
-		Option o = new Option();
-		int rnd1 = Tool.getIntRnd(10);
-		int rnd2 = Tool.getIntRnd(10);
-		int rst = Tool.getIntRnd(10)>7?(rnd1+rnd2):Tool.getIntRnd(90) + 10;
-		o.setContent(rnd1 + "+" + rnd2 + "=" + rst);
-		o.setIsAnswer(rnd1+rnd2==rst?1:0);
 	}
 	
 	
