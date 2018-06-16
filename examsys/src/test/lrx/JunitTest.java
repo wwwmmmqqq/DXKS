@@ -43,10 +43,10 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 		
 		String qtype[] = new String[] {
 				Conf.Question_Single
-				,Conf.Question_Multiple
-				,Conf.Question_TrueOrFalse
-				,Conf.Question_Fills
-				,Conf.Question_Subjective
+				, Conf.Question_Multiple
+				, Conf.Question_TrueOrFalse
+				/*, Conf.Question_Fills
+				, Conf.Question_Subjective*/
 		};
 		
 		String type = qtype[(int)(Math.random() * qtype.length)];
@@ -61,8 +61,11 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 		List<Option> li = new ArrayList<Option>();
 		
 		Option o = new Option();
-		o.setContent(Tool.getIntRnd(999) + "+" + Tool.getIntRnd(999) + "=" + Tool.getIntRnd(999));
-		q.setOptions();
+		int rnd1 = Tool.getIntRnd(10);
+		int rnd2 = Tool.getIntRnd(10);
+		int rst = Tool.getIntRnd(10)>7?(rnd1+rnd2):Tool.getIntRnd(90) + 10;
+		o.setContent(rnd1 + "+" + rnd2 + "=" + rst);
+		o.setIsAnswer(rnd1+rnd2==rst?1:0);
 	}
 	
 	
