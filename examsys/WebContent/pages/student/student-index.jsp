@@ -170,41 +170,9 @@
 			
 			<section class="right-section">
 				<div class="right-content">
-					<div class="exam-head">
-						<div class="exam-title">
-							<span>待参加的考试</span>
-						</div>
-						<div class="searchbox">
-							<form id="">
-
-								<div id="search-button">
-									<input type="submit" class=" search-button btn btn-primary" value="确认" />
-									<!--<i class="fa fa-search-plus"></i>-->
-								</div>
-								<div id="search-input">
-									<input type="text" class="search-input form-control" placeholder="请输入搜索的关键字" />
-								</div>
-							</form>
-						</div>
-					</div>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>限时：120分钟</span>
-									<span>考试时间：2018/06/01-2018/06/03</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary" data-toggle="modal" data-target="#start-exam">开始考试</button>
-								<div class="modal fade" id="start-exam" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+				<!-- 考前须知 -->
+				<div class="modal fade" id="start-exam" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -229,91 +197,34 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" id="start-exam-btn" class="btn btn-primary" data-dismiss="modal" >开始考试
+				<button type="button" id="start-exam-btn" 
+					disabled="disabled" class="btn btn-primary" 
+					data-dismiss="modal" 
+					onclick='startExam()'>开始考试
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
-</div>
-							</div>
-						</li>
-					</ul>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
+	</div>
+					<div class="exam-head">
+						<div class="exam-title">
+							<span>待参加的考试</span>
+						</div>
+						<div class="searchbox">
+							<form id="">
+								<div id="search-button">
+									<input type="submit" class=" search-button btn btn-primary" value="确认" />
+									<!--<i class="fa fa-search-plus"></i>-->
 								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>限时：120分钟</span>
-									<span>考试时间：2018/06/01-2018/06/03</span>
+								<div id="search-input">
+									<input type="text" class="search-input form-control" placeholder="请输入搜索的关键字" />
 								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary">开始考试</button>
-							</div>
-						</li>
-					</ul>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>限时：120分钟</span>
-									<span>考试时间：2018/06/01-2018/06/03</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary">开始考试</button>
-							</div>
-						</li>
-					</ul>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>限时：120分钟</span>
-									<span>考试时间：2018/06/01-2018/06/03</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary">开始考试</button>
-							</div>
-						</li>
-					</ul>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>限时：120分钟</span>
-									<span>考试时间：2018/06/01-2018/06/03</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary">开始考试</button>
-							</div>
-						</li>
-					</ul>
+							</form>
+						</div>
+					</div>
+					<div class="paper-exam">
+					</div>
+				
 					<ul class="exam-page pagination pagination-sm">
 						<li>
 							<a href="#">&laquo;</a>
@@ -353,18 +264,66 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-agreeClick();
-function agreeClick(){
-	if($('.agree-rule').find('input[name="agree-checkebox"]').checked==true){
-		$('#start-exam-btn').disabled=false;
-		$('#start-exam-btn').onclick="javascript:window.location.href='student-exam.jsp'"
-		
-	}else{
-		
-		$('#start-exam-btn').disabled=true;
-	}
-	
+//agreeClick();
+var examsid = getParam("sid");
+var aggreed = false;
+$('.agree-rule').find('input[name="agree-checkebox"]').click(function() {
+	$('#start-exam-btn').attr("disabled",aggreed);
+	aggreed = !aggreed;
+});
+/* 加载试卷方法 */
+loadPapersByExam(examsid);
+var currentPage = 1;
+function loadPapersByExam(examSid){
+	  $.post("loadMyExamList", {
+		  "exam.sid":examSid
+		  ,"page":currentPage
+	  }, function(data) {
+		  var paperList = data.list;
+		  var htm = "";
+		  for(var i=0;i<paperList.length;i++) {
+			  htm+=getPaper(paperList[i]);
+		  }
+		  $('.paper-exam').html(htm);
+	  }); 
 }
+function getPaper(obj){
+	var htm=
+		"<ul class='paper-item'>"
+		+"<li>"
+		+"<div class='icon paper-picture'></div>"
+		+"<div class='paper-intro'>"
+			+"<div class='paper-title'>"
+				+"<span>"+obj.title+"</span>"
+			+"</div>"
+			+"<div class='paper-body'>"
+				+"<span>总分：100分</span>"
+				+"<span>及格：60分</span>"
+				+"<span>"+obj.time+"</span>"
+				+"<span>"+obj.periodStart+" - "+obj.periodEnd+"</span>"
+			+"</div>"
+		+"</div>"
+		+"<div class='exam-button'>"
+		+"<button class='btn btn-primary' data-toggle='modal' data-target='#start-exam' >开始考试</button>"
+		+"</div>"
+	+"</li>"
+	+"</ul>"
+	return htm;
+}
+
+function startExam() {
+	location.href="student-exam.jsp?sid="+examsid;
+}
+
+//获取url中的参数
+function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
+}
+
 </script>
 </body>
 

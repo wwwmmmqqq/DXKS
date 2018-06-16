@@ -63,6 +63,7 @@ public class ExamAction extends CommonAction {
 		DaoAdapter.COUNT_PER_PAGE = 5;
 		list = service.loadMyExamsList(getSessionUser(), page);
 		DaoAdapter.COUNT_PER_PAGE = 10;
+		//list = service.loadMyExamsList(getSessionUser(), page);
 		try {
 			//TODO 测试数据
 			list = BeanAutoFit.fitBeanArray(Exam.class, page);

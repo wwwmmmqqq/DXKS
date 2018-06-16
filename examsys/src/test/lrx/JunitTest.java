@@ -10,16 +10,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.*;
 import cn.examsys.common.BeanAutoFit;
 import cn.examsys.lrx.dao.impl.ConstituteDaoImpl;
 import cn.examsys.lrx.dao.impl.LrxDaoImpl;
 import cn.examsys.lrx.service.ConstituteService;
 import cn.examsys.lrx.service.LrxService;
-import cn.examsys.lrx.service.NoticeService;
-import cn.examsys.lrx.service.impl.ConstituteServiceImpl;
-import cn.examsys.lrx.service.impl.NoticeServiceImpl;
 import cn.examsys.lrx.vo.AnswerVO;
 import cn.examsys.lrx.vo.ConstituteVO;
 
@@ -90,7 +86,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
-				  Answersheet.class
+				 Answersheet.class
 				, College.class
 				, Constitute.class
 				, Exam.class
@@ -133,7 +129,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	/**
 	 * 测试 
 	 * 删除主键值为 'userId_15065' 的实体
-	 */
+	 
 	@Test
 	public void test4() {
 		try {

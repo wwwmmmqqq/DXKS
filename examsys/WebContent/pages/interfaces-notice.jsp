@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    	【通知相关的接口】
-  	当前用户：${session.user.userId} ${session.user.name} ${session.user.sex} ${session.user.collegeName}
+  	当前用户：${session.user.userId} ${session.user.sex} ${session.user.collegeName}
   	<div id='box'></div>
   	<div id="notice-box"></div>
   </body>
