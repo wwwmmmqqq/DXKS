@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% String path=request.getContextPath();
-   String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -87,25 +84,25 @@
 		    	<div class="light_bottom">
 		    		<ul class="side_nav">
 		    			<li class="side_nav1">
-							<a href="staffs_student.jsp">学生信息管理</a>
+							<a href="staffs_student.html">学生信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="staffs_teacher.jsp">教师信息管理</a>
+							<a href="staffs_teacher.html">教师信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwindex.jsp">试卷管理 </a>
+							<a href="jwindex.html">试卷管理 </a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwhandzujuan.jsp">手动组卷</a>
+							<a href="jwhandzujuan.html">手动组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwintelzujuan.jsp">智能组卷</a>
+							<a href="jwintelzujuan.html">智能组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="history_staffs.jsp">历史成绩</a>
+							<a href="history_staffs.html">历史成绩</a>
 						</li>
 						<li class="side_nav1">
-							<a href="test.jsp">考次计划</a>
+							<a href="test.html">考次计划</a>
 						</li>
 		    		</ul>
 		    	</div>
@@ -139,7 +136,8 @@
 		    								<option>大学物理</option>
 		    								<option>计算机</option>
 		    							</select>
-		    						</li>	    
+		    						</li>
+		    
 		    						<li><label>开始时间</label>
 		    							<input type="text" />
 		    						</li>
@@ -147,16 +145,22 @@
 		    							<input type="text" />
 		    						</li>
 		    						<li><button type="submit" class="btn btn-default searchbtn"><i class="fa fa-search"></i></button></li>
-		    					</ul>		    					
-		    				</div>		    		
-		    			</form>		
+		    					</ul>
+		    					
+		    				</div>
+		    				
+		    				
+		    				
+		    			</form>
+		    			
 		    		</div>
-		  
+		    		
+		    		
 		    		<div class="jwchaxun">
 		    			<div class="operation"> 
 		    				<ul>
 		    					<li>
-		    						<a class="btn btn-default btn-sm pull-right" href="apaper.jsp">查看</a>
+		    						<a class="btn btn-default btn-sm pull-right" href="showpaper.html">查看</a>
 		    					</li>
 		    					<li><button class="btn btn-default btn-xs" onclick="deletefunction()"><i class="fa fa-times"></i></button></li>
 		    					<li><button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modify-paper"><i class="fa fa-pencil"></i></button></li>
@@ -167,9 +171,8 @@
 		    				<thead>
 		    					<tr>
 		    						<th>
-		    							<input type="checkbox" class="flat-grey"/>全选 
+		    							<input type="checkbox" class="flat-grey"/>全选 ID
 		    						</th>
-		    						<th>编号</th>
 		    						<th>所在考次</th>
 		    						<th>试卷科目</th>
 		    						<th>标题</th>
@@ -198,21 +201,21 @@
 		    			<div class="page_pagination">
 		    				<ul class="pagination">
 		    					<li class="page-item">
-		    						<a class="page-link" href="javascript:prevPage()">上一页</a>
+		    						<a class="page-link" href="#">上一页</a>
 		    					</li>
 		    					<li class="page-item">
-		    						<a class="page-link" href="javascript:showPaperList(1)">1</a>
+		    						<a class="page-link" href="#">1</a>
 		    					</li>
 		    					<li class="page-item active">
-		    						<a class="page-link " href="javascript:showPaperList(2)">2</a>
+		    						<a class="page-link " href="#">2</a>
 		    					</li>
 		    					<li class="page-item">
-		    						<a class="page-link" href="javascript:showPaperList(3)">3</a>
+		    						<a class="page-link" href="#">3</a>
 		    					</li>
 		    					<li class="page-item">
-		    						<a class="page-link" href="javascript:nextPage()">下一页</a>
+		    						<a class="page-link" href="#">下一页</a>
 		    					</li>
-		    					<input class="jump" type="text" id="jpage"/>
+		    					<input class="jump">
 		    					<button class="btn btn-primary btn_jump">跳转</button>
 		    				</ul>
 		    			</div>
@@ -508,8 +511,7 @@
 	
 	<script type="text/javascript">
 	showPaperList(1);
-	var currentPage = 1;
-	var totalPage = 3;
+	
 	function showPaperList(page) {
 		$.post("showPaperList", {"page":page}, function(data) {
 			var paperList = data.paperList;
@@ -518,29 +520,7 @@
 	 			htm += getItemHtml(i, paperList[i]);
 	 		}
 	 		$('#paper-list-box').html(htm);
-	 		currentPage = page;
 		});
-	}
-	
-	function nextPage() {
-		if(currentPage<totalPage) 
-			showPaperList(++currentPage);
-	}
-	
-	function prevPage() {
-		if(currentPage>=2) 
-			showPaperList(--currentPage);
-	}
-	function jumpPage() {
-		var juPage=$('#jpage').html();
-		alert(juPage);
-		if(currentPage==juPage || juPage<1 || juPage>totalPage){
-			showPaperList(currentPage);
-		} else{
-			showPaperList(currentPage+(juPage-currentPage));
-			
-		}
-			
 	}
 	
 	function getItemHtml(index, obj) {
@@ -548,7 +528,6 @@
 			+"	<td id=''>"
 			+"		<input type='checkbox' class='flat-grey' />"
 			+"	</td>"
-			+"	<td>"+obj.sid+"</td>"
 			+"	<td>第一次联考</td>"
 			+"	<td>"+obj.name+"</td>"
 			+"	<td>2018年高等数学第一次联考</td>"
@@ -559,7 +538,5 @@
 			+"</tr>";
 		return htm;
 	}
-	
-	
 	</script>
 </html>

@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% String path=request.getContextPath();
-   String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -87,25 +84,25 @@
 				<div class="light_bottom">
 					<ul class="side_nav">
 						<li class="side_nav1">
-							<a href="staffs_student.jsp">学生信息管理</a>
+							<a href="staffs_student.html">学生信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="staffs_teacher.jsp">教师信息管理</a>
+							<a href="staffs_teacher.html">教师信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwindex.jsp">试卷管理 </a>
+							<a href="jwindex.html">试卷管理 </a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwhandzujuan.jsp">手动组卷</a>
+							<a href="jwhandzujuan.html">手动组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwintelzujuan.jsp">智能组卷</a>
+							<a href="jwintelzujuan.html">智能组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="history_staffs.jsp">历史成绩</a>
+							<a href="history_staffs.html">历史成绩</a>
 						</li>
 						<li class="side_nav1">
-							<a href="test.jsp">考次计划</a>
+							<a href="test.html">考次计划</a>
 						</li>
 					</ul>
 				</div>

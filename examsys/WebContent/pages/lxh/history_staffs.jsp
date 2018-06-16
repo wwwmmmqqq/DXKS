@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% String path=request.getContextPath();
-   String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -75,13 +72,13 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
-			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="jwhandzhujuan.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="jwintelzhujuan.jsp">智能组卷</a></li>
-			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
-			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
+			  		<li class="side_nav1"><a href="staffs_student.html">学生信息管理</a></li>
+			  		<li class="side_nav1"><a href="staffs_teacher.html">教师信息管理</a></li>	
+			  		<li class="side_nav1"><a href="jwindex.html">试卷管理</a></li>
+			  		<li class="side_nav1"><a href="jwhandzhujuan.html">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="jwintelzhujuan.html">智能组卷</a></li>
+			  		<li class="side_nav1"><a href="history_staffs.html">历史成绩</a></li>	
+			  		<li class="side_nav1"><a href="test.html">考次计划</a></li>	
 			  	</ul>
 		  </div>
 		</nav>
@@ -128,7 +125,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!-- <tr>
+							<tr>
 								<td>1</td>
 								<td>数据库概论</td>
 								<td>萍乡学院</td>
@@ -136,7 +133,62 @@
 								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
 									<i class="fa fa-eye"></i>
 								</td>
-							</tr> -->
+							</tr>
+							
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
 					</tbody>
 				</table>
 				<!--<div class="bottom_button">
@@ -636,22 +688,4 @@
 	
 	</div>
 	</body>
-	
-	<script type="text/javascript">
-	var currentPage = 1;
-	var totalPage = 3;
-	
-	function getHtmls(index, a) {
-		var htm = "<tr>"
-				+"	<td>1</td>"
-				+"	<td>数据库概论</td>"
-				+"	<td>萍乡学院</td>"
-				+"	<td>2018-10-10</td>"
-				+"	<td class='td_correct' data-toggle='modal' data-target='#myModal_correct'>"
-				+"	<i class='fa fa-eye'></i>"
-				+"	</td>"
-				+"</tr>";
-		return htm;
-	}
-	</script>
 </html>
