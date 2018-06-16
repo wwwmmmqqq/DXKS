@@ -1,5 +1,6 @@
 package test.lrx;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.examsys.bean.*;
 import cn.examsys.common.BeanAutoFit;
+import cn.examsys.common.Conf;
+import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.ConstituteDaoImpl;
 import cn.examsys.lrx.dao.impl.LrxDaoImpl;
 import cn.examsys.lrx.service.ConstituteService;
@@ -34,6 +37,34 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	
 	@Autowired
 	ConstituteService conService;
+	
+	@Test
+	public void testCreateQuestion() {
+		
+		String qtype[] = new String[] {
+				Conf.Question_Single
+				,Conf.Question_Multiple
+				,Conf.Question_TrueOrFalse
+				,Conf.Question_Fills
+				,Conf.Question_Subjective
+		};
+		
+		String type = qtype[(int)(Math.random() * qtype.length)];
+		
+		Question q = new Question();
+		q.setDifficultyValue((int) (Math.random() * 4));
+		q.setKnowledge("知识点");
+		q.setTitle("题目标题");
+		q.setType(type);
+		q.setUserId("admin");
+		q.setTime(Tool.time());
+		List<Option> li = new ArrayList<Option>();
+		
+		Option o = new Option();
+		o.setContent(Tool.getIntRnd(999) + "+" + Tool.getIntRnd(999) + "=" + Tool.getIntRnd(999));
+		q.setOptions();
+	}
+	
 	
 	@Test
 	public void test() {
@@ -87,8 +118,6 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
 				 Answersheet.class
-				, College.class
-				, Answersheet.class
 				, College.class
 				, Constitute.class
 				, Exam.class
