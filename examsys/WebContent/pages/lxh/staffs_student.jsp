@@ -49,7 +49,7 @@
 					<div class="dropdown task" >
 					<button class="dropbtn envolope">
 						<i class="fa fa-envelope envelope"></i>	
-						<span class="label-success ">1</span>
+						<span class="label-success "><i></i></span>
 					</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
@@ -76,8 +76,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="jwhandzhujuan.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="jwintelzhujuan.jsp">智能组卷</a></li>
+			  		<li class="side_nav1"><a href="jwhandzujuan.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="jwintelzujuan.jsp">智能组卷</a></li>
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
