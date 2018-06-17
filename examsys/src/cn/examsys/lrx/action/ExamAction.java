@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Exam;
 import cn.examsys.bean.Paper;
@@ -59,7 +60,10 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyExamList() {
+		DaoAdapter.COUNT_PER_PAGE = 5;
 		list = service.loadMyExamsList(getSessionUser(), page);
+		DaoAdapter.COUNT_PER_PAGE = 10;
+		//list = service.loadMyExamsList(getSessionUser(), page);
 		try {
 			//TODO 测试数据
 			list = BeanAutoFit.fitBeanArray(Exam.class, page);
@@ -78,7 +82,9 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadPapersByExam() {
+		DaoAdapter.COUNT_PER_PAGE = 5;
 		list = service.loadPapersByExam(getSessionUser(), exam.getSid(), page);
+		DaoAdapter.COUNT_PER_PAGE = 10;
 		try {
 			//TODO 测试数据
 			list = BeanAutoFit.fitBeanArray(Paper.class, page);

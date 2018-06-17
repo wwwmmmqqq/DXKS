@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% String path=request.getContextPath();
+   String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,7 +63,7 @@
 					<button class="dropbtn">
 							    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							    			    				<i class="fa fa-envelope"></i>
-							    			    				<span class="label label-success noticelabel">4</span>
+							    			    				<span class="label label-success noticelabel"><i></i></span>
 							    			    			</a>
 							    			    	    </button>
 					<div class="dropdown-content">
@@ -85,25 +88,25 @@
 				<div class="light_bottom">
 					<ul class="side_nav">
 						<li class="side_nav1">
-							<a href="staffs_student.html">学生信息管理</a>
+							<a href="staffs_student.jsp">学生信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="staffs_teacher.html">教师信息管理</a>
+							<a href="staffs_teacher.jsp">教师信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwindex.html">试卷管理 </a>
+							<a href="jwindex.jsp">试卷管理 </a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwhandzujuan.html">手动组卷</a>
+							<a href="jwhandzujuan.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwintelzujuan.html">智能组卷</a>
+							<a href="jwintelzujuan.jsp">智能组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="history_staffs.html">历史成绩</a>
+							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
 						<li class="side_nav1">
-							<a href="test.html">考次计划</a>
+							<a href="test.jsp">考次计划</a>
 						</li>
 					</ul>
 				</div>
@@ -141,7 +144,7 @@
 		    			</div>
 		    			<div class="basket-foot">
 		    				<a id="to-paper-admin-edit" data-method="post" class="basket-btn" href="" style="display: none">编辑</a>
-		    				<a id="to-paper-edit" data-method="post" class="basket-btn" href="" style="">生成试卷</a>
+		    				<a id="to-paper-edit" data-method="post" class="basket-btn" href="" >生成试卷</a>
 		    				<a id="to-paper-admin-cancel" class="basket-btn" href="" style="display: none">取消</a>
 		    			</div>
 		    		</div>
@@ -551,16 +554,7 @@
 	    </div>
 		
 	<script >
-//		$(document).ready(function() {
-//			$("#stbtn").click(function(){
-//				$("#basket-con").hide();
-//		});
-//		$(documet).ready(function(){
-// 	        $("#addtobasket").one("click",function(){
-// 	        	alert("hhh");
-// 	        });
-//		});
-//			
+	
 	</script>
 	</body>
 </html>
