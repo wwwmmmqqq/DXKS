@@ -99,8 +99,12 @@
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
-		    	<!-- 搜索部分 start -->
-		    	<div class="search">
+		    	<!-- 搜索部分 -->
+		    	<div>
+		    	<div class="add_paper">
+		    		<button type="button" class="btn"></button>
+		    	</div>
+			    	<div class="search">
 		    		<form class="form-inline searchform" role="form">
 		    			<select class="form-control" id="">
 		    				<option>选择题型</option>
@@ -118,7 +122,8 @@
 		    			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 		    		</form>
 		    	</div>
-		    	<!-- 搜索部分 end -->
+		    		
+		    	</div>
 		    	<div class="papermanage">
 		    		
 		    		<!--  浏览试卷 start -->
@@ -145,7 +150,7 @@
 		    						<li>B. Clean database</li>
 		    						<li>C. Cron job running</li>
 		    						<li>D. Fix and squish bugs</li><br>
-		    						<li>正确答案：dddddaaaaaaaaa</li>
+		    						<li>正确答案：D</li>
 		    					</ul>
 		    					<div class="qtype">
 		    						<p class="information">
@@ -166,7 +171,7 @@
 		    						<li>B. Clean database</li>
 		    						<li>C. Cron job running</li>
 		    						<li>D. Fix and squish bugs</li><br>
-		    						<li>正确答案：dddddaaaaaaaaa</li>
+		    						<li>正确答案：D</li>
 		    					</ul>
 		    					<div class="qtype">
 		    						<p class="information">
@@ -183,11 +188,11 @@
 		    					</div>
 		    					<ul>
 		    						<li class="question"># 世界上最好的语言是</li><br>
-		    						<li>正确答案：dddddaaaaaaaaa</li>
+		    						<li>正确答案：<textarea>dddddaaaaaaaaa</textarea></li>
 		    					</ul>
-		    					<div class="qtype">
+		    				<div class="qtype">
 		    						<p class="information">
-		    							<span>选择题型：填空题</span>
+		    							<span>选择题型：解答题</span>
 		    							<span>难易度：简单</span>
 		    							<span>知识点：java </span>
 		    						</p>
@@ -199,8 +204,8 @@
 		    						</div>
 		    					</div>
 		    					<ul>
-		    						<li class="question"># 世界上最好的语言是php()</li><br>
-		    						<li>正确答案：dddddaaaaaaaaa</li>
+		    						<li class="question"># 世界上最好的语言是()</li><br>
+		    						<li>正确答案：<textarea>dddddaaaaaaaaa</textarea></li>
 		    					</ul>
 		    					<div class="qtype">
 		    						<p class="information">

@@ -125,118 +125,23 @@
 			        <th>操作</th>
 			      </tr>
 			    </thead>
-			     <tbody>
-				<tr class="tb_width">
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        
-			        <td>771196591@qq.com</td>
-			        <td class="see" data-toggle="modal" data-target="#myModal_see">查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye see_information"  data-toggle="modal" data-target="#myModal_see_information"></i>
-			        	<i class="fa fa-pencil check" data-toggle="modal" data-target="#myModal_correct_information"></i>
-			        	<i class="fa fa-trash-o" onclick="myFunction1()"></i>
-			        </td>
-			      </tr>
-			      <tr class="tb_width">
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			       
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        	
-			        </td>
-			      </tr>
-			      <tr class="tb_width">
-			      <td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			      </tr>
-			       <tr class="tb_width"> 
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			        
-			      </tr>
-			      <tr class="tb_width">
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			        
-			      </tr>
-			      <tr class="tb_width">
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			        
-			      </tr>
-			      <tr class="tb_width"> 
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			        
-			      </tr>
+			     <tbody id="data-box">
+					<!-- <tr class="tb_width">
+				      	<td>1</td>
+				        <td>慕雪</td>
+				        <td>17001</td>
+				        
+				        <td>萍乡学院</td>
+				        <td>信息与计算机工程学院</td>
+				        
+				        <td>771196591@qq.com</td>
+				        <td class="see" data-toggle="modal" data-target="#myModal_see">查看权限</td>
+				        <td>
+				        	<i class="fa fa-eye see_information"  data-toggle="modal" data-target="#myModal_see_information"></i>
+				        	<i class="fa fa-pencil check" data-toggle="modal" data-target="#myModal_correct_information"></i>
+				        	<i class="fa fa-trash-o" onclick="myFunction1()"></i>
+				        </td>
+				      </tr> -->
 			     </tbody>
 			     
 			</table>
@@ -252,11 +157,11 @@
 				<!--页码-->
 				<div class="page_pagination">
 					<ul class="pagination">
-					    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
-					    <li class="page-item"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="prevPage()">上一页</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="loadDatas(1)">1</a></li>
+					    <li class="page-item"><a class="page-link " href="javascript:void(0)" onclick="loadDatas(2)">2</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="loadDatas(3)">3</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:nextPage()" >下一页</a></li>
 					    <input class="jump">
 					    <button class="btn btn-primary btn_jump">跳转</button>
 				  </ul>
@@ -780,4 +685,5 @@
 	  
 	</body>
 	<script type="text/javascript" src="js/search.js" ></script>
+	<script type="text/javascript" src="js/admin.js" ></script>
 </html>
