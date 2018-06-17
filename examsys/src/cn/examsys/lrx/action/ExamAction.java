@@ -151,6 +151,19 @@ public class ExamAction extends CommonAction {
 		return aa;
 	}
 	
+	/**
+	 * 加载我的历史试卷
+	 * page
+	 * @return
+	 */
+	@Action(value="/loadMyHistoryPapers"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadMyHistoryPapers() {
+		list = service.loadMyHistoryPapers(getSessionUser(), page);
+		return aa;
+	}
+	
 	@Override
 	public String getResult() {
 		return result;

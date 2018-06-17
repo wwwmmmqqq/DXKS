@@ -205,5 +205,15 @@ public class ExamServiceImpl implements ExamService {
 		}
 		return -1;
 	}
+	@Override
+	public List<Paper> loadMyHistoryPapers(User sessionUser, int page) {
+		try {
+			return dao.findByHql("from Paper order by sid desc" //from Paper where userId=? order by sid desc
+					/*, new Object[]{sessionUser.getUserId()}*/, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 }

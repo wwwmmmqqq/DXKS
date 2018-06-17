@@ -32,4 +32,6 @@ public interface ExamService {
 
 	int submitPaper(User sessionUser, int sid, int timeComsuming);
 
+	List<Paper> loadMyHistoryPapers(User sessionUser, int page);
+
 }
