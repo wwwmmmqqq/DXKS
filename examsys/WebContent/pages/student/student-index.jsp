@@ -297,8 +297,8 @@ function getPaper(obj){
 				+"<span>"+obj.title+"</span>"
 			+"</div>"
 			+"<div class='paper-body'>"
-				+"<span>总分：100分</span>"
-				+"<span>及格：60分</span>"
+				+"<span>总分："+obj.totalScore+"分</span>"
+				+"<span>及格："+obj.totalScore*0.6+"分</span>"
 				+"<span>"+obj.time+"</span>"
 				+"<span>"+obj.periodStart+" - "+obj.periodEnd+"</span>"
 			+"</div>"
@@ -326,5 +326,4 @@ function getParam(name) {
 
 </script>
 </body>
-</head>
 </html>
