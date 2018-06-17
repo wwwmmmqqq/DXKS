@@ -31,9 +31,7 @@ public class PersonalAction extends CommonAction {
 	PersonalService serivce;
 	
 	public String loadStuIndexDatas() {
-		
 		serivce.loadStuIndexDatas(getSessionUser());
-		
 		return aa;
 	}
 	
@@ -51,6 +49,7 @@ public class PersonalAction extends CommonAction {
 	public void setValues(List<String> values) {
 		this.values = values;
 	}
+	
 	@Action(value="/updateStuInfos"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
@@ -72,6 +71,8 @@ public class PersonalAction extends CommonAction {
 		serivce.searchExamsBy(getSessionUser(), filed, words);
 		return aa;
 	}
+	
+	
 	
 	@Override
 	public String getResult() {
