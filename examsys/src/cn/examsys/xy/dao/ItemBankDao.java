@@ -67,6 +67,8 @@ public interface ItemBankDao {
 	 */
 	List<Question> selectTeacherItemQuestListByType(String type, String userId, int page);
 	int selectTeacherItemQuestListToalPageByType(String type, String userId);
+	/*查看一道选项*/
+	Option selectOneOptionBySid(int sid);
 	
 	
 	
