@@ -141,7 +141,6 @@ function loadQuestionListByPaper(paperSid) {
 			 htm+=getChoiceItem(i);
 		  }
 		  $('#all-question').html(htm);
-		  
 	  });
 }
 
