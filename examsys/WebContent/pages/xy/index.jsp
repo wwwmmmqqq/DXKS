@@ -15,10 +15,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		参数：paper.sid
 		返回值：paper
 	*/
-  	$.post("ShowOnePaper",{"paper.sid":1},function(data) {
-		var paper = data.paper;
-  		alert(paper.name);
-	 })
+	 $.post("login",{"user.userId":"userId_27060","user.psw":"psw_83324"},function(data) {
+		 	alert(session.user.userId);
+			alert(data.result);
+	  })
   </script>
   
   </head>

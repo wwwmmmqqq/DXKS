@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Grade;
 import cn.examsys.bean.User;
+import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.PersonalService;
 import cn.examsys.lrx.vo.PersonalHomePageVO;
@@ -26,14 +28,16 @@ public class PersonalAction extends CommonAction {
 	public void setPage(int page) {
 		this.page = page;
 	}
+	List<?> list;
+	public List<?> getList() {
+		return list;
+	}
 	
 	@Autowired
 	PersonalService serivce;
 	
 	public String loadStuIndexDatas() {
-		
 		serivce.loadStuIndexDatas(getSessionUser());
-		
 		return aa;
 	}
 	
@@ -51,6 +55,7 @@ public class PersonalAction extends CommonAction {
 	public void setValues(List<String> values) {
 		this.values = values;
 	}
+	
 	@Action(value="/updateStuInfos"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
@@ -70,6 +75,19 @@ public class PersonalAction extends CommonAction {
 	
 	public String searchExams() {
 		serivce.searchExamsBy(getSessionUser(), filed, words);
+		return aa;
+	}
+	
+	@Action(value="/loadMyGrades"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadMyGrades() {
+		//list = serivce.loadGradeList(getSessionUser(), page);
+		try {
+			list = BeanAutoFit.fitBeanArray(Grade.class, Math.random());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return aa;
 	}
 	

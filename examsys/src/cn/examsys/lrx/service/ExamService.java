@@ -27,9 +27,11 @@ public interface ExamService {
 	boolean startExamPaper(User sessionUser, int sid);
 
 	List<Question> loadQuestionList(int sid, int page);
-	
+
 	boolean todo(User sessionUser, int questionRef, int isSelected, String fillsAnswer, String subjectiveAnswer);
 
 	int submitPaper(User sessionUser, int sid, int timeComsuming);
+
+	List<Paper> loadMyHistoryPapers(User sessionUser, int page);
 
 }
