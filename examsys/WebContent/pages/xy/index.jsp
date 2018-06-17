@@ -15,9 +15,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		参数：paper.sid
 		返回值：paper
 	*/
-	 $.post("login",{"user.userId":"userId_27060","user.psw":"psw_83324"},function(data) {
-		 	alert(session.user.userId);
-			alert(data.result);
+	 $.post("login",{"user.userId":"up88929","user.psw":"000000"},function(data) {
+			var user = data.user;
+			if(user.type="学生") {
+				location.href = path + "student-main.jsp?user.userId="+user.userId;  
+			}
 	  })
   </script>
   

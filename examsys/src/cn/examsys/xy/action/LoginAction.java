@@ -35,15 +35,19 @@ public class LoginAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String login(){
+		String pass=user.getPsw();
 		user=loginService.login(user.getUserId());
-		if(user.getUserId()==null){
+		if(user==null){
+			System.out.println("未找到该账号！");
 			setResult("未找到该账号！");
-		}else if(user.getPsw()!=user.getPsw()){
-			setResult("密码错误！");
+		}else if(!pass.equals(user.getPsw())) {
+					setResult("密码错误！");
+		}else{
+			saveLogin(user);
+			user = getSessionUser();
+			setResult("登录成功");
+			System.out.println(user.getUserId());
 		}
-		saveLogin(user);
-		user = getSessionUser();
-		System.out.println(user.getUserId());
 		return aa;
 	}
 	

@@ -32,7 +32,7 @@
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>wmq </span>
+									<span>wmq</span>
 								</a>
 							</li>
 						</ul>
