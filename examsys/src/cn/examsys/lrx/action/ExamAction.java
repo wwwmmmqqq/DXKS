@@ -160,7 +160,12 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyHistoryPapers() {
-		list = service.loadMyHistoryPapers(getSessionUser(), page);
+		//list = service.loadMyHistoryPapers(getSessionUser(), page);
+		try {
+			list = BeanAutoFit.fitBeanArray(Paper.class, Math.random());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return aa;
 	}
 	
