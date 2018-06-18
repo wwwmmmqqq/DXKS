@@ -14,13 +14,9 @@
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
-
 		<header>
-
 			<nav id="top-nav">
 				<div id="main-nav-content">
 					<a href="student-index.html" clas="logo">
@@ -182,93 +178,7 @@
 					<div class="student-exam">
 						<div class="all-student-exam">
 							<ul class="exam-box">
-								<li ><a href="student-index.jsp">
-									<div class="exam-type">
-										<div class="icon paper-picture-moni ">
-										</div>
-										<div class="exam-type-title">
-												<span>第一次模拟考试</span>
-										</div>
-										<div class="exam-type-info">
-											<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>
-											<p>考试时间：<span>2018/06/01-2018/06/15</span></p>
-										</div>
-									</div>
-									</a>
-								</li>
-								<li>
-									<div class="exam-type">
-										<div class="icon paper-picture-moni ">
-										</div>
-										<div class="exam-type-title">
-												<span>第二次模拟考试</span>
-										</div>
-										<div class="exam-type-info">
-											<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>
-											<p>考试时间：<span>2018/06/01-2018/06/15</span></p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="exam-type">
-										<div class="icon paper-picture-qz ">
-										</div>
-										<div class="exam-type-title">
-												<span>期中考试</span>
-										</div>
-										<div class="exam-type-info">
-											<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>
-											<p>考试时间：<span>2018/06/01-2018/06/15</span></p>
-										
-										</div>
-										
-									</div>
-								</li>
-							</ul>
-							<ul class="exam-box">
-								<li >
-									<div class="exam-type">
-										<div class="icon paper-picture-tb ">
-										</div>
-										<div class="exam-type-title">
-												<span>同步测评</span>
-										</div>
-										<div class="exam-type-info">
-											<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>
-											<p>考试时间：<span>2018/06/01-2018/06/15</span></p>
-										
-										</div>
-										
-									</div>
-								</li>
-								<li>
-									<div class="exam-type">
-										<div class="icon paper-picture-yk ">
-										</div>
-										<div class="exam-type-title">
-												<span>月考</span>
-										</div>
-										<div class="exam-type-info">
-											<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>
-											<p>考试时间：<span>2018/06/01-2018/06/15</span></p>
-										
-										</div>
-										
-									</div>
-								</li>
-								<li>
-									<div class="exam-type">
-										<div class="icon paper-picture-qm ">
-										</div>
-										<div class="exam-type-title">
-												<span>期末考试</span>
-										</div>
-										<div class="exam-type-info">
-											<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>
-											<p>考试时间：<span>2018/06/01-2018/06/15</span></p>
-										</div>
-									</div>
-								</li>
+								
 							</ul>
 						</div>
 						<ul class="exam-page pagination pagination-sm">
@@ -301,11 +211,47 @@
 					</div>
 				</div>
 			</section>
-
 		</div>
 		<footer>
 	<div class="footer-section">
 	</div>
 </footer>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+loadMyExamList(0);
+/*加载考次列表*/
+function loadMyExamList(page) {
+	  $.post("loadMyExamList", {"page":page}, function(data){
+		  var examList = data.list;
+		  var htm = "";
+		  for(var i=0;i<examList.length;i++){
+			  htm+=getExam(examList[i]);  
+		  }
+		  $('.exam-box').html(htm);
+	  });
+}
+
+function getExam(obj){
+	var htm=
+		"		<li onclick='javascript:location.href=\"student-index.jsp?sid="+obj.sid+"\"'>"
+		+"			<div class='exam-type'>"
+		+"				<div class='icon paper-picture-qm '>"
+		+"				</div>"
+		+"				<div class='exam-type-title'>"
+		+"					<span>"+obj.title+"</span>"
+		+"				</div>"
+		+"				<div class='exam-type-info'>"
+		+"					<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>"
+		+"					<p>考试时间：<span>"+obj.periodStart+" - "+obj.periodEnd+"</span></p>"
+		+"				</div>"
+		+"			</div>"
+		+"		</li>";
+	return htm;
+}
+
+
+
+</script>
 </body>
 </html>

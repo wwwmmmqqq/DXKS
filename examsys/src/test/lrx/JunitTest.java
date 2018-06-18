@@ -1,5 +1,6 @@
 package test.lrx;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,16 +11,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.*;
 import cn.examsys.common.BeanAutoFit;
+import cn.examsys.common.Conf;
+import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.ConstituteDaoImpl;
 import cn.examsys.lrx.dao.impl.LrxDaoImpl;
 import cn.examsys.lrx.service.ConstituteService;
 import cn.examsys.lrx.service.LrxService;
-import cn.examsys.lrx.service.NoticeService;
-import cn.examsys.lrx.service.impl.ConstituteServiceImpl;
-import cn.examsys.lrx.service.impl.NoticeServiceImpl;
 import cn.examsys.lrx.vo.AnswerVO;
 import cn.examsys.lrx.vo.ConstituteVO;
 
@@ -38,6 +37,58 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	
 	@Autowired
 	ConstituteService conService;
+	
+	@Test
+	public void addQuestion() {
+		for (int i = 0; i < 50; i++) {
+			testCreateQuestion_option_type(i);
+		}
+	}
+	
+	 
+	public void testCreateQuestion_option_type(int index) {
+		String qtype[] = new String[] {
+				Conf.Question_Single
+				, Conf.Question_Multiple
+				, Conf.Question_TrueOrFalse
+				/*, Conf.Question_Fills
+				, Conf.Question_Subjective*/
+		};
+		
+		String type = qtype[Tool.getIntRnd(qtype.length)];
+		
+		Question q = new Question();
+		q.setDifficultyValue(Tool.getIntRnd(4));
+		q.setKnowledge("知识点" + index%4);
+		q.setTitle("题目标题" + index);
+		q.setType(type);
+		q.setUserId("admin");
+		q.setTime(Tool.time());
+		try {
+			q.setSid((Integer) daoAdapter.saveEntity(q));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		List<Option> li = new ArrayList<Option>();
+		for (int i = 0; i < Tool.getIntRnd(5) + 2; i++) {
+			Option o = new Option();
+			int rnd1 = Tool.getIntRnd(10);
+			int rnd2 = Tool.getIntRnd(10);
+			int rst = Tool.getIntRnd(10)>7?(rnd1+rnd2):Tool.getIntRnd(90) + 10;
+			o.setContent(rnd1 + "+" + rnd2 + "=" + rst + " 对吗?");
+			o.setIsAnswer(rnd1+rnd2==rst?1:0);
+			o.setQuestionRef(q.getSid());
+			o.setType(q.getType());
+			try {
+				li.add(o);
+				daoAdapter.saveEntity(o);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	
 	@Test
 	public void test() {
@@ -90,7 +141,11 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
+<<<<<<< HEAD
 				  Answersheet.class
+=======
+				 Answersheet.class
+>>>>>>> origin/lxh
 				, College.class
 				, Constitute.class
 				, Exam.class
@@ -102,6 +157,10 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 				, Question.class
 				, Role.class
 				, Subject.class
+<<<<<<< HEAD
+=======
+				, User.class
+>>>>>>> origin/lxh
 		};
 		for (int i = 0; i < classes.length; i++) {
 			for (int j = 0; j < 50; j++) {
@@ -132,7 +191,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	/**
 	 * 测试 
 	 * 删除主键值为 'userId_15065' 的实体
-	 */
+	 
 	@Test
 	public void test4() {
 		try {
