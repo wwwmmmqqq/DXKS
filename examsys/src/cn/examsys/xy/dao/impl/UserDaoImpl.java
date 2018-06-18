@@ -97,4 +97,21 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public int findUser(String userId, String psw) {
+		// TODO Auto-generated method stub
+		String hql = "from User where userId=?,psw=?";
+		Object[] vals=new Object[]{userId,psw};
+		try {
+			int u=findOneByHql(hql, vals);
+			if(u>0) {
+				return u;
+			}
+			return 0;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+	}
 }
