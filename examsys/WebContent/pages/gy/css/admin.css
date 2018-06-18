@@ -412,7 +412,13 @@ th {
 	color: black;
 	border:1px solid #bbb;
 }
-
+.modal-body .input_checkbox{
+	width: 85%;
+	height: 50px;
+	margin-top: 20px;
+	margin-left: 50px;
+	
+}
 .modal-body input{
 	border-radius:5px ;
 	border: 1px solid black;

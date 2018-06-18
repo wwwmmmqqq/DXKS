@@ -188,69 +188,50 @@
 							   
 							        <!-- 模态框主体 -->
 							        <div class="modal-body">
-							        	<table id="table">
+							        	<table id="table " class='add-jw'>
 							        		<tbody>
 							        			<tr>
-							        				<td >
+							        				<td>
 							        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover" id="input_name">
+							        					<input type="text" class="hover" name="name">
 							        				</td>
 							        			</tr>
 							        			<tr>			        				
 							        				<td >
 							        					工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover" id="input_id">
-							        				</td>
-							        			</tr>
-							        			<tr>
-							        				<td >
-							        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover" id="input_psw">
+							        					<input type="text" class="hover" name="userid">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover" id="input_collegeName">
-							        				</td>
-							        			</tr>
-							        			<tr>
-							        				<td >
-							        					学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover"  id="input_permission">
+							        					<input type="text" class="hover" name="collegeName">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover"  id="input_sex">
+							        					<div class="input_checkbox" name="sex">
+															<input type="radio" name="1"/>
+															<span>男</span>
+															<input type="radio" name="1"/>
+															<span>女</span>
+														</div>
+							        					<!-- <input type="text" class="hover"  name="sex"> -->
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					联系方式&nbsp;
-							        					<input type="text" class="hover"  id="input_phone">
+							        					<input type="text" class="hover"  name="phone">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover"  id="input_email">
+							        					<input type="text" class="hover"  name="email">
 							        				</td>
 							        			</tr>	
-							        			<tr>
-							        				<td >
-							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<select class="option"> 
-							        						<option>能查看答案</option>
-							        						<option>不能查看答案</option>
-							        					</select>
-							        					<select class="option"> 
-							        						<option>能够阅卷</option>
-							        						<option>不能阅卷</option>
-							        					</select>
-							        				</td>
-							        			</tr>
 							        		</tbody>
 							        	</table>
 							         
@@ -260,7 +241,7 @@
 							        <!-- 模态框底部 -->
 							        <div class="modal-footer">
 							          <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-							          <button type="button" class="btn btn-primary add" onclick="add()">添加</button>
+							          <button type="button" class="btn btn-primary add" onclick="addJw()" id="add">添加</button>
 							        </div>
 						   
 						      </div>
