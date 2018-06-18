@@ -17,9 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		参数：session.userId,user.psw;rePsw;
 		返回值：paper
 	*/
-	 $.post("changePsw",{"user.psw":"up88929","rePsw":"000000"},function(data) {
-			alert(data.result);
-	  })
+	 $.post("editUser",{"user.userId":"15478000","user.name":"mingzi"},function(data) {
+		   alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
+		   alert(data.result);
+	  })  
   </script>
   
   </head>

@@ -44,9 +44,8 @@ public class LoginAction extends CommonAction{
 					setResult("密码错误！");
 		}else{
 			saveLogin(user);
-			user = getSessionUser();
 			setResult("登录成功");
-			System.out.println(user.getUserId());
+			System.out.println(getSessionUser().getUserId());
 		}
 		return aa;
 	}

@@ -79,7 +79,7 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createUser(){
-		
+		boolean currentUser;
 		if(user.getUserId()==null){
 			setResult("请填写用户信息");
 		}
@@ -90,9 +90,12 @@ public class UserAction extends CommonAction{
 				}else{
 					if(getSessionUser().getUserId().contains("admin")){
 						user.setType("教务");
+						user.setPsw("000000");
+						currentUser=userService.createUser(user);
+					}else{
+						user.setPsw("000000");
+						currentUser=userService.createUser(user);
 					}
-					user.setPsw("000000");
-					boolean currentUser=userService.createUser(user);
 					if(!currentUser){
 						System.out.println("用户创建失败");
 						setResult("用户创建失败");
@@ -137,7 +140,7 @@ public class UserAction extends CommonAction{
 		if(!currentUser){
 			setResult("删除失败！");
 		}
-		setResult("删除成功！");
+		setResult("删除成功");
 		return aa;
 	}
 	
