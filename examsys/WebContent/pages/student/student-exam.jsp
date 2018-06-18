@@ -24,21 +24,15 @@
 					<a href="student-index.html" clas="logo">
 						<img class="logo-img" src="img/logo.png" />
 					</a>
-						<div class="navbar-right">
-						<ul class="user-info">
+					<div class="navbar-right">
+						<ul>
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
 									<span>wmq </span>
 								</a>
-								
 							</li>
-							<div class="dropdown-content">
-		    			<a >修改密码</a>
-		    			<a >退出系统</a>
-		    		</div>
 						</ul>
-						
 					</div>
 				</div>
 			</nav>
@@ -200,7 +194,7 @@ var paperSid=getParam("sid");
 //loadQuestionListByPaper(paperSid);
 setTimeout(function() {
 	$('#abc0').click();
-}, 100);
+}, 50);
 /* 获取题目序号 */
 function loadQuestionListByPaper(paperSid) {
 	$.post("loadQuestionList", {
@@ -220,22 +214,20 @@ function getChoiceItem(n) {
 	return html;
 }
 
- function hasAnswered(){
-	$('.question tbody tr input[name="radio"]').each(function(){
-		if($(this).is(":checked")){
-			alert("sss")
-			 $("#abc" + n).addClass("has-que-num"); 
-		}
-	})
-} 
-
+//获取url中的参数
+function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
+}
 
 </script>
 <script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
 /* oneChoice();  */
-
-function loadQuestionByPaper(paperSid){
+function loadQuestionListByPaper(paperSid){
 	  $.post("loadQuestionList", {
 		  "paper.sid":paperSid
 	  }, function(data) {
@@ -248,24 +240,6 @@ function loadQuestionByPaper(paperSid){
 	  });
 }
 
-//获取url中的参数
-function getParam(name) {
-  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
-  var result = window.location.search.substr(1).match(reg); //匹配目标参数
-  if (result != null) 
-  	return decodeURIComponent(result[2]);
-  return null;
-}
-/* function optionClicked(e){
-	var target=e.target || Event.srcElement;
-} */
-$("document").ready(function () {
-	$(".option-item").click(function(){
-		$(this).find('input[name="radio"]').click();
-	})
-	
-	  
-})
 /*答题 题目id，选项id， 填空题答案，主观题答案*/
 function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse) {
 	$.post("todo", {
@@ -293,6 +267,7 @@ $(document).ready(function(){
 		$(this).find('.opt-together').siblings().unbind();
 	});
 });
+	
 
 function getQueItem(n, obj) {
 	
@@ -304,28 +279,24 @@ function getQueItem(n, obj) {
 	+"					<table class='question ' >"
 	+"						<thead>"
 	+"							<tr>"
-	+"								<th>一、单选题</th>"
-	+"							</tr>"
-
-	+"							<tr>"
 	+"								<th id='no_"+n+"'>"+(n+1)+"</th>"
 	+"								<th>(1分)</th>"
 	+"								<th>"+obj.title+"</th>"
 	+"							</tr>"
 	+"						</thead>"
 	+"						<tbody>"
-	+"							<tr class='option-item' >"
+	+"							<tr class='option-item'>"
 	+"								<td></td>"
 	+"								<td>A</td>"
 	+"								<td >"
-	+"									<input class='opt-radio' value='true' type='checkbox' name='radio' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
+	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
 	+"								</td>"
 	+"							</tr>"
-	+"							<tr class='option-item' >"
+	+"							<tr class='option-item'>"
 	+"								<td></td>"
 	+"								<td>A</td>"
 	+"								<td >"
-	+"									<input class='opt-radio' type='checkbox' name='radio'/>减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
+	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
 	+"								</td>"
 	+"							</tr>"
 	+"						</tbody>"
@@ -335,15 +306,17 @@ function getQueItem(n, obj) {
 	+"							<li class='previous'>"
 	+"								<a href='javascript:prePage()'>&larr; 上一题</a>"
 	+"							</li>"
-	+"							<li class='next' onclick='hasAnswered()'>"
-	+"								<a href  ='javascript:nextPage()'>下一题 &rarr;</a>"
+	+"							<li class='next'>"
+	+"								<a href='javascript:nextPage()'>下一题 &rarr;</a>"
 	+"							</li>"
 	+"						</ul>"
 	+"					</div>"
 	+"				</div>";
 	return htm;
 }
+
+
+
 </script>
 </body>
-
 </html>
