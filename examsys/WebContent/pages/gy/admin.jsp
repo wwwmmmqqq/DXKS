@@ -71,7 +71,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="admin.html"><i class="fa fa-home"></i> Home</a>
+		    					<a href="admin.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>用户管理</li>
 		    			</ul>
@@ -188,54 +188,54 @@
 							   
 							        <!-- 模态框主体 -->
 							        <div class="modal-body">
-							        	<table >
+							        	<table id="table">
 							        		<tbody>
 							        			<tr>
 							        				<td >
 							        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover" id="input_name">
 							        				</td>
 							        			</tr>
 							        			<tr>			        				
 							        				<td >
 							        					工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover" id="input_id">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover" id="input_psw">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover" id="input_collegeName">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover"  id="input_permission">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover"  id="input_sex">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					联系方式&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover"  id="input_phone">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover"  id="input_email">
 							        				</td>
 							        			</tr>	
 							        			<tr>
@@ -260,7 +260,7 @@
 							        <!-- 模态框底部 -->
 							        <div class="modal-footer">
 							          <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-							          <button type="button" class="btn btn-primary add">添加</button>
+							          <button type="button" class="btn btn-primary add" onclick="add()">添加</button>
 							        </div>
 						   
 						      </div>

@@ -106,6 +106,7 @@ body{
 }
 .task .envelope{
 	color: black;
+	margin-top: 4px;
 }
 
 .banner .notice .noticelabel {
