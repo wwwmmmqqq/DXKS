@@ -43,13 +43,13 @@
 							<input type="password"  id="password" class="form-control input_password" placeholder="请输入你密码" name="user.psw"/>
 						</div>
 						<div class="input_checkbox">
-							<input type="radio" name="1"/>
+							<input type="radio" name="1" id="admin" value="管理员"/>
 							<span>管理员</span>
-							<input type="radio" name="1"/>
+							<input type="radio" name="1" id="administration" value="教务"/>
 							<span>教务</span>
-							<input type="radio" name="1"/>
+							<input type="radio" name="1" id="teacher" value="教师"/>
 							<span>教师</span>
-							<input type="radio" name="1"/>
+							<input type="radio" name="1" id="student" value="学生"/>
 							<span>学生</span>
 						</div>
 						<!--  <div class="yzm">
@@ -71,50 +71,31 @@
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 	<script type="text/javascript">
-	/* 
-	var name = document.getElementById("name").value;
-	var password =document.getElementById("password").value;
-	
-	alert(name);
-	if(name==null) {
-		alert(name);
-		alert(password);
-		alert("请输入用户名");
-		return false;
-	}
-	if(password==null) {
-		alert("请输入密码");
-		return false;
-	}
-	else {
-		$.post("login",{"user.userId":name,"user.psw":psw},function(data) {
-		 	alert(session.user.userId);
-			alert(data.result);
-			return true;
-	}
-	
-  } */
 	function login() {
 		var Id = $('#userId').val();
 		var password = $('#password').val();
+		var studentType = $('#student').val();
+		var teacherType = $('#teacher').val();
+		var administrationType = $('#administration').val();
+		var adminType = $('#admin').val();
 		if (Id=="" || password=="") {
 			alert("请输入信息");
 			return false;
 		}
 		else {
 			 $.post("login",{"user.userId":Id,"user.psw":password},function(data) {
-				var user = data.user;	
-				 if(user.type="学生") {
-					 window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
+				var user = data.user;
+				 if(user.type=="学生" && user.type == studentType) {
+					window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
 				 }
-				 if(user.typr="教师") {
-					 window.location.href = "../student/history_teacher.jsp?user.userId="+user.userId;
+				if(user.type=="教师" && user.type == teacherType) {
+					window.location.href = "../gy/jsshowpaper.jsp?user.userId="+user.userId;
 				 }
-				 if(user.type="教务") {
-					 window.location.href = "../student/history_teacher.jsp?user.userId="+user.userId;
+				if(user.type=="教务" && user.type == administrationType) {
+					window.location.href = "../lxh/jwindex.jsp?user="+user;
 				 }
-				 if(user.type="管理员") {
-					 window.location.href = "../student/history_teacher.jsp?user.userId="+user.userId;
+				if(user.type=="管理员" && user.type ==adminType) {
+					window.location.href = "../gy/history_teacher.jsp?user.userId="+user.userId;
 				 }
 			  })
 	  	}

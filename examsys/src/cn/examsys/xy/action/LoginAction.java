@@ -29,7 +29,7 @@ public class LoginAction extends CommonAction{
 	}
 	
 	@Autowired
-	protected LoginService loginService;
+	LoginService loginService;
 	/*用户登录*/
 	@Action(value="/login"
 			,results={@Result(type="json")}
