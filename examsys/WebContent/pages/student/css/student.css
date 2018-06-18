@@ -514,7 +514,7 @@ li {
 /*试题区*/
 .exam-paper {
 	width: 60%;
-	height: 400px;
+	min-height: 400px;
 	float: left;
 	margin: 20px;
 	padding-left: 50px;

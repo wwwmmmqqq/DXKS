@@ -71,7 +71,6 @@ public class ConstituteAction extends CommonAction {
 		int sid = service.createPaperAuto(paper.getExamRef()
 				, paper.getSubjectRef()//科目id
 				, paper.getName()//试卷标题名
-				, paper.getTotalScore()//总分
 				, paper.getExamStart()//考试开始时间
 				, paper.getExamEnd()//考试结束时间
 				, single, trueOrFalse, multiple, fills, subjective);

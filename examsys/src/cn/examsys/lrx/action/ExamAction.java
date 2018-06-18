@@ -64,12 +64,12 @@ public class ExamAction extends CommonAction {
 		list = service.loadMyExamsList(getSessionUser(), page);
 		DaoAdapter.COUNT_PER_PAGE = 10;
 		//list = service.loadMyExamsList(getSessionUser(), page);
-		try {
+		/*try {
 			//TODO 测试数据
 			list = BeanAutoFit.fitBeanArray(Exam.class, page);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		return aa;
 	}
 	
@@ -85,12 +85,12 @@ public class ExamAction extends CommonAction {
 		DaoAdapter.COUNT_PER_PAGE = 5;
 		list = service.loadPapersByExam(getSessionUser(), exam.getSid(), page);
 		DaoAdapter.COUNT_PER_PAGE = 10;
-		try {
+		/*try {
 			//TODO 测试数据
 			list = BeanAutoFit.fitBeanArray(Paper.class, page);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		return aa;
 	}
 	
@@ -103,13 +103,13 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadQuestionList() {
-		list = service.loadQuestionList(paper.getSid(), 0);
-		try {
+		list = service.loadQuestionList(paper.getSid());
+		/*try {
 			//TODO 测试数据
 			list = BeanAutoFit.fitBeanArray(Question.class, paper.getSid());
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		return aa;
 	}
 	
@@ -125,9 +125,11 @@ public class ExamAction extends CommonAction {
 		boolean bo = service.todo(getSessionUser()
 				, answer.getQuestionRef()
 				, answer.getOptionRef()
+				, answer.getTrueOrFalse()
 				, answer.getFillsAnswer(), answer.getSubjectiveAnswer());
+		
 		if (!bo) {
-			setResult("fail");
+			setResult("错误，做题失败！");
 		}
 		return aa;
 	}
@@ -142,7 +144,6 @@ public class ExamAction extends CommonAction {
 			,params={"contentType", "text/html"})
 	public String submitPaper() {
 		int score = service.submitPaper(getSessionUser(), paper.getSid(), 0);
-		
 		if (score == -1) {
 			setResult("fail");
 		} else {

@@ -15,5 +15,7 @@ public interface PersonalService {
 	void updateStuInfos(User sessionUser, Object[] objects, Object[] objects2);
 
 	List<Grade> loadGradeList(User sessionUser, int page);
-	
+
+	boolean updatePsw(User sessionUser, String oldPsw, String newPsw);
+
 }

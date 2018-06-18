@@ -125,9 +125,11 @@ public class Question {
 
 	@Transient
 	List<Option> options;
+	@Transient
 	public List<Option> getOptions() {
 		return options;
 	}
+	@Transient
 	public void setOptions(List<Option> options) {
 		this.options = options;
 	}
