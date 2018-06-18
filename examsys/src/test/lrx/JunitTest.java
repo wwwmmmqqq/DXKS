@@ -45,7 +45,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 		}
 	}
 	
-	 
+	
 	public void testCreateQuestion_option_type(int index) {
 		String qtype[] = new String[] {
 				Conf.Question_Single
@@ -59,7 +59,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 		
 		Question q = new Question();
 		q.setDifficultyValue(Tool.getIntRnd(4));
-		q.setKnowledge("知识点" + index%4);
+		q.setKnowledge("知识点" + index % 4);
 		q.setTitle("题目标题" + index);
 		q.setType(type);
 		q.setUserId("admin");
@@ -117,11 +117,10 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 		fills.setCount(5);
 		subjective.setCount(5);
 		
-		int n = conService.createPaperAuto(1, 1, "XXX试卷"
+		/*int n = conService.createPaperAuto(1, 1, "XXX试卷"
 				, 120, "2018-06-10 21:00:00", "2018-06-10 22:20:00"
 				, single, trueOrFalse, multiple
-				, fills, subjective);
-		System.out.println(n);
+				, fills, subjective);*/
 		
 	}
 	
@@ -141,10 +140,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
-<<<<<<< HEAD
-
-				 Answersheet.class
->>>>>>> origin/lxh
+				  Answersheet.class
 				, College.class
 				, Constitute.class
 				, Exam.class
@@ -156,10 +152,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 				, Question.class
 				, Role.class
 				, Subject.class
-<<<<<<< HEAD
-=======
 				, User.class
->>>>>>> origin/lxh
 		};
 		for (int i = 0; i < classes.length; i++) {
 			for (int j = 0; j < 50; j++) {

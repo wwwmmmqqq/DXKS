@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 /*考试结果正确率判断*/
 $(function() {
 	var scoreRate = echarts.init(document.getElementById("right-rate"));
@@ -60,10 +58,9 @@ $(function() {
 
 		} ]
 	});
-
-})
+});
 /* 题目序号点击 */
-var currentItemId = 1;
+var currentItemId = 0;
 function queClicked(obj, n) {
 	currentItemId = n;
 	$(obj).removeClass('que-num-color');
@@ -71,14 +68,12 @@ function queClicked(obj, n) {
 	$(obj).siblings().removeClass('on-click');
 	$(".exam-paper").hide();
 	$("#q-" + n).show();
-	$("#q-" + n).css({
-		"display" : "block"
-	});
+	$("#q-" + n).css({"display":"block"});
 }
 /* 下一题 */
 function nextPage() {
-		currentItemId++;
-		$('#abc' + currentItemId).click();
+	currentItemId++;
+	$('#abc' + currentItemId).click();
 
 }
 /* 上一题 */
@@ -131,27 +126,19 @@ function daojishi() {
 	}
 }
 
-/*$(':checkbox[type="checkbox"]').each(function(){
-	alert("aa")
-	$(this).parent().parent().click(function(){
-		if($(this).attr('checked')){
-			 $(':checkbox[type="checkbox"]').removeAttr('checked');
-             $(this).attr('checked','checked');
-		}
-	})
-})
- 单选功能
-function oneChoice(){
-	$(':checkbox[type="checkbox"]').each(function(){
-		$(this).parent().parent().click(function(){
-			if($(this).attr('checked')){
-				 $(':checkbox[type="checkbox"]').removeAttr('checked');
-                 $(this).attr('checked','checked');
-			}
-		})
-	})
-}
+/*
+ * $(':checkbox[type="checkbox"]').each(function(){ alert("aa")
+ * $(this).parent().parent().click(function(){ if($(this).attr('checked')){
+ * $(':checkbox[type="checkbox"]').removeAttr('checked');
+ * $(this).attr('checked','checked'); } }) }) 单选功能 function oneChoice(){
+ * $(':checkbox[type="checkbox"]').each(function(){
+ * $(this).parent().parent().click(function(){ if($(this).attr('checked')){
+ * $(':checkbox[type="checkbox"]').removeAttr('checked');
+ * $(this).attr('checked','checked'); } }) }) }
+ * 
+ */
 
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 

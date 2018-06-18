@@ -117,14 +117,79 @@
 			</div>-->
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
-	</div> </div>
+	</div> 
+	</div>
 	
-			<div id="paper-box">
+	<div id="paper-box">
+		<s:iterator id="item" value="#request.queList" status="st">
+			<div class="exam-paper q-item" id="q-${st.index}">
+				<div class="lable-question">
+					<img src="img/pre-lable.png" id="lable-img-${st.index}" class="lable-question-img" onclick="markClick()" />
+				</div>
+				<div class="question" style="min-height: 380px">
+					<div id="no_${st.index}">
+						${st.index+1}. ${item.title} 
+						
+						${(item.type=="Single")?"(单选题)":""}
+						${(item.type=="Multiple")?"(多选题)":""}
+						${(item.type=="TrueOrFalse")?"(判断题)":""}
+						${(item.type=="Fills")?"(填空题)":""}
+						${(item.type=="Subjective")?"(解答题)":""}
+					</div>
+					<s:iterator id="optItem" value="#item.options" status="st1">
+						<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("st1")).getIndex()+'A')); %>
+						<div class="option-item">
+							<s:if test="#item.type == 'Single'">
+								${optionLabel}. 
+								<input class="opt-together" type="radio" name="single${item.sid}"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />
+								${optItem.content}
+							</s:if>
+							<s:elseif test="#item.type == 'Multiple'">
+								${optionLabel}.
+								<input class="opt-together" type="checkbox"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />
+								${optItem.content}
+							</s:elseif>
+							<s:elseif test="#item.type == 'Fills'">
+								<div>${st1.index+1}. ${optItem.content}</div>
+								<input type="text" class="opt-input"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)">
+							</s:elseif>
+							<s:elseif test="#item.type == 'TrueOrFalse'">
+								<div>${st1.index+1}. ${optItem.content}</div>
+								<input class="opt-together" type="radio" name="tf${optItem.sid}"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this, 1)">正确 
+								<input class="opt-together" type="radio" name="tf${optItem.sid}"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this, 0)">错误
+							</s:elseif>
+							<s:elseif test="#item.type == 'Subjective'">
+								<div>${st1.index+1}. ${optItem.content}</div>
+								<textarea rows="4" cols="25" placeHolder="填写答案" style="padding:3px;width: 80%;height: 104px;"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)"></textarea>
+							</s:elseif>
+						</div>
+					</s:iterator>
+				</div>
+				<div class="pre-next-quetion">
+					<ul class="pager">
+						<li class="previous">
+							<a href="javascript:prePage()">&larr; 上一题</a>
+						</li>
+						<li class="next">
+							<a href="javascript:nextPage()">下一题 &rarr;</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div class="all-question" id="all-question">
-			</div>
-		</div>
-		
+		</s:iterator>
+	</div>
+	<div class="all-question" id="all-question">
+		<s:iterator id="item" value="#request.queList" status="st">
+			<a id='abc${st.index}' class='que-num que-num-color' onclick='queClicked(this, ${st.index})'>${st.index+1}</a>
+		</s:iterator>
+	</div>
+</div>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
@@ -132,8 +197,8 @@
 
 <script type="text/javascript">
 var paperSid=getParam("sid");
-loadQuestionListByPaper(paperSid);
-setTimeout(function(){
+//loadQuestionListByPaper(paperSid);
+setTimeout(function() {
 	$('#abc0').click();
 }, 100);
 /* 获取题目序号 */
@@ -164,7 +229,10 @@ function getChoiceItem(n) {
 	})
 } 
 
-loadQuestionByPaper(paperSid);
+
+</script>
+<script type="text/javascript">
+//loadQuestionListByPaper(paperSid);
 /* oneChoice();  */
 
 function loadQuestionByPaper(paperSid){
@@ -199,21 +267,32 @@ $("document").ready(function () {
 	  
 })
 /*答题 题目id，选项id， 填空题答案，主观题答案*/
-/* function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer) {
-	  $.post("todo", {
-		  "answer.questionRef":questionSid//题目ID
-		  ,"answer.optionRef":optionSid//选项ID
-		  ,"answer.fillsAnswer":fillsAnswer//填空题内容
-		  ,"answer.subjectiveAnswer":subjectiveAnswer//主观题内容
-	  }, function(data) {
-		  if(data.result == 'fail') {
-			  alert('做题失败');
-		  } else {
-			  alert('做题成功');
-		  }
-	  });
-} */
+function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse) {
+	$.post("todo", {
+	  "answer.questionRef":questionSid//题目ID
+	  ,"answer.optionRef":optionSid//选项ID
+	  ,"answer.trueOrFalse":trueOrFalse//判断题答案
+	  ,"answer.fillsAnswer":fillsAnswer//填空题内容
+	  ,"answer.subjectiveAnswer":subjectiveAnswer//主观题内容
+  }, function(data) {
+	  if(data.result == 'fail') {
+		  alert('做题失败');
+	  } else {
+		  alert('做题成功');
+	  }
+  });
+}
 
+function doit(questionId, optId, inputObj, trueOrFalse) {
+	todo(questionId, optId, inputObj.value, inputObj.value, trueOrFalse);
+}
+
+$(document).ready(function(){
+	$('.option-item').click(function() {
+		$(this).find('.opt-together').click();
+		$(this).find('.opt-together').siblings().unbind();
+	});
+});
 
 function getQueItem(n, obj) {
 	

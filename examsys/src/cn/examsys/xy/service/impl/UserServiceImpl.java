@@ -1,5 +1,6 @@
 package cn.examsys.xy.service.impl;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,35 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean editUser(User user) {
 		// TODO Auto-generated method stub
+			try {
+				User currentUser=userDao.findOneUser(user.getUserId());   
+				Field[] field = currentUser.getClass().getDeclaredFields(); 
+				Field[] f = user.getClass().getDeclaredFields();  
+				for(int i=0;i<field.length;i++) {
+					field[i].setAccessible(true);     
+					f[i].setAccessible(true);		
+					Object vals = f[i].get(user);
+					Object val = field[i].get(currentUser);
+					String type = f[i].getType().toString();
+					if(vals==null) {
+						vals=val.toString();
+						f[i].set(user, vals);
+					}if(type.endsWith("int")) {
+						int va = f[i].getInt(user);
+						int v = f[i].getInt(currentUser);
+						if(va==0) {
+							f[i].set(user, v);
+						}
+					}
+				}
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		System.out.println(user.getCollegeRef());
 		userDao.editUser(user);
 		return true;
 	}

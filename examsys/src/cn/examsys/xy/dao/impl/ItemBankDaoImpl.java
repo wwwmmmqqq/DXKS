@@ -69,6 +69,20 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 			return null;
 		}
 	}
+	/*查看一道选项*/
+	@Override
+	public Option selectOneOptionBySid(int sid) {
+		// TODO Auto-generated method stub
+		String hql="from Option where sid=?";
+		Object[] vals=new Object[]{sid};
+		try {
+			return findOneByHql(hql, vals);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 	/*教师题目列表总页数*/
 	@Override
 	public int selectItemQuestListToalPageByUserId(String userId) {
@@ -179,7 +193,7 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 			return 0;
 		}
 	}
-	/*************************修改题库有***********************/
+	/*************************修改题库***********************/
 	@Override
 	public void editQuestion(Question question) {
 		// TODO Auto-generated method stub
@@ -236,6 +250,7 @@ public class ItemBankDaoImpl extends DaoAdapter implements ItemBankDao {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	
