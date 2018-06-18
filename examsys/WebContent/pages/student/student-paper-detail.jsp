@@ -27,15 +27,21 @@
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
-					<div class="navbar-right">
-						<ul>
+						<div class="navbar-right">
+						<ul class="user-info">
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
 									<span>wmq </span>
 								</a>
+								
 							</li>
+							<div class="dropdown-content">
+		    			<a >修改密码</a>
+		    			<a >退出系统</a>
+		    		</div>
 						</ul>
+						
 					</div>
 				</div>
 			</nav>

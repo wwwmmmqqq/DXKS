@@ -27,15 +27,21 @@
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
-					<div class="navbar-right">
-						<ul>
+						<div class="navbar-right">
+						<ul class="user-info">
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
 									<span>wmq </span>
 								</a>
+								
 							</li>
+							<div class="dropdown-content">
+		    			<a >修改密码</a>
+		    			<a >退出系统</a>
+		    		</div>
 						</ul>
+						
 					</div>
 				</div>
 			</nav>
@@ -99,62 +105,68 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-				<form id="my-info">
-					<div >
-						<table class="info-body">
-							<tbody>
-								<tr class="basic-info">
-									<td>学号：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
-								<tr>
-									<td>姓名：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
-								<tr>
-									<td>性别：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
-								<tr>
-									<td>邮箱：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
-								<tr>
-									<td>电话：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
-								<tr>
-									<td>密码：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
-								<tr>
-									<td>身份证号：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
-								<tr>
-									<td>注册日期：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</form>
+	<form id='my-info'>
+			<div>
+				<table class='info-body'>
+					<tbody>
+				<tr class='basic-info'>
+							<td>学号：</td>
+						<td>
+								<input type='text' class='form-control' name='userid'/>
+							</td>
+						</tr>
+						<tr>
+							<td>姓名：</td>
+							<td>
+								<input type='text' class='form-control' name='name'/>
+						</td>
+						</tr>
+						<tr>
+							<td>性别：</td>
+							<td>
+								<input type='text' class='form-control' name='sex'/>
+							</td>
+						</tr>
+						<tr>
+							<td>学校：</td>
+							<td>
+								<input type='text' class='form-control' name='collegeName' />
+							</td>
+						</tr>
+						<tr>
+							<td>院系：</td>
+							<td>
+								<input type='text' class='form-control' name='department' />
+							</td>
+						</tr>
+						<tr>
+							<td>专业：</td>
+							<td>
+								<input type='text' class='form-control' name='profession'/>
+							</td>
+						</tr>
+						<tr>
+							<td>身份证号：</td>
+							<td>
+								<input type='text' class='form-control' name='idcard'/>
+							</td>
+						</tr>
+						<tr>
+						<td>电话：</td>
+							<td>
+								<input type='text' class='form-control' name='phone'/>
+							</td>
+						</tr>
+						<tr>
+							<td>邮箱：</td>
+							<td>
+								<input type='text' class='form-control' name='email'/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -263,6 +275,7 @@
 </footer>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
 <script type="text/javascript">
 //agreeClick();
 var examsid = getParam("sid");

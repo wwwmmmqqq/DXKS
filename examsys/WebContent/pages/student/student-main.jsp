@@ -24,14 +24,20 @@
 					</a>
 
 					<div class="navbar-right">
-						<ul>
+						<ul class="user-info">
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
 									<span>wmq </span>
 								</a>
+								
 							</li>
+							<div class="dropdown-content">
+		    			<a >修改密码</a>
+		    			<a >退出系统</a>
+		    		</div>
 						</ul>
+						
 					</div>
 				</div>
 			</nav>
@@ -219,6 +225,11 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
+$('.user-info').hover(function(){
+	$('.dropdown-content').css("display","block")
+},function(){
+	$('.dropdown-content').css("display","none")
+}) 
 loadMyExamList(0);
 /*加载考次列表*/
 function loadMyExamList(page) {
