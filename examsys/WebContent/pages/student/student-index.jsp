@@ -27,21 +27,15 @@
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
-						<div class="navbar-right">
-						<ul class="user-info">
+					<div class="navbar-right">
+						<ul>
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
 									<span>wmq </span>
 								</a>
-								
 							</li>
-							<div class="dropdown-content">
-		    			<a >修改密码</a>
-		    			<a >退出系统</a>
-		    		</div>
 						</ul>
-						
 					</div>
 				</div>
 			</nav>
@@ -270,7 +264,6 @@
 </footer>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/com.js"></script>
 <script type="text/javascript">
 //agreeClick();
 var examsid = getParam("sid");
@@ -334,5 +327,4 @@ function getParam(name) {
 
 </script>
 </body>
-
 </html>
