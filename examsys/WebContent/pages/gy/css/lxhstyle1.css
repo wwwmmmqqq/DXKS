@@ -16,7 +16,11 @@
 /*解决弹出模态框页面抖动问题*/
 body{
 	overflow: auto !important;
+	background-color:#f1f2f7;
 } 
+html{
+	backgorund:#f1f2f7;
+}
 .modal{
 	overflow: auto !important;
 }
@@ -223,7 +227,7 @@ body{
 
 /*form search*/
 .cant .search {
-	width: 500px; 
+	width: 540px; 
 	float: left; 
 	margin-left: 100px;
 }
@@ -841,3 +845,111 @@ b {
 	color: #333;
 	text-align: center;
 }
+/*jsentryquestions*/
+.cant .entryquestions {
+	width: 90%;
+	background-color: #FFFFFF;
+	margin: 100px 50px;
+}
+.entryquestions .shaixuan {
+	width: 100%;
+	height: 150px;
+	padding: 10px;
+	background-color: #e3dded;
+}
+.shaixuan select {
+	width: 150px;
+	height: 40px;
+	margin: 20px 50px;
+}
+.shaixuan input {
+	width: 20px;
+	height: 20px;
+	margin: 20px 5px;
+	vertical-align: middle;
+}
+.shaixuan .newq {
+	margin: 20px 50px;
+	float: right;
+}
+.entryquestions .entry {
+	width: 100%;
+	min-height: 450px;
+	padding: 10px;
+	background:#e3dded;
+}
+.entry .choices {
+	/*display: none;*/
+}
+.entry .choicesw {
+	display: none;
+}
+.entry .ture-or-false {
+	display: none;
+}
+.entry .fill-and-judgement {
+	display: none;
+}
+.entry .answer-question {
+	display: none;
+}
+.entry ul {
+	margin: 50px 20px;
+}
+.entry li {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+.entry input {
+	width: 70%;
+    display: inline-block;
+	
+}
+.entry textarea {
+	width: 80%;
+	max-width: 80%;
+	min-height: 100px;
+}
+.entry .clearall {
+	margin-left: 250px;
+}
+.entry .submitbtn {
+	margin-left: 200px;
+}
+
+.btn-in{
+	width:80px;
+	height:30px;
+	background-color:white;
+	text-align: center;
+	float:right;
+	position: relative;
+	top: 2px;
+}
+
+
+
+.choices .choose{
+	width: 70%;
+	padding-left: 100px;
+}
+.choices .choose1{
+	width: 50px;
+}
+
+.choicesw .choose{
+	width: 70%;
+	padding-left: 100px;
+}
+.choicesw .choose1{
+	width: 50px;
+}
+.ture-or-false .choose{
+	width: 70%;
+	padding-left: 100px;
+}
+.ture-or-false .choose1{
+	width: 50px;
+}
+

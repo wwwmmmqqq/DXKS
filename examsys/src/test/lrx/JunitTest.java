@@ -141,19 +141,8 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
-<<<<<<< HEAD
-<<<<<<< HEAD
-				  Answersheet.class
-=======
-				 Answersheet.class
->>>>>>> origin/lxh
-=======
 
 				 Answersheet.class
-
-				,Answersheet.class
-
->>>>>>> origin/XY
 				, College.class
 				, Constitute.class
 				, Exam.class
@@ -165,14 +154,8 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 				, Question.class
 				, Role.class
 				, Subject.class
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 				, User.class
->>>>>>> origin/lxh
-=======
-				, User.class
->>>>>>> origin/XY
+
 		};
 		for (int i = 0; i < classes.length; i++) {
 			for (int j = 0; j < 50; j++) {

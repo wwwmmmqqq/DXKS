@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/XY
 /*考试结果正确率判断*/
 $(function() {
 	var scoreRate = echarts.init(document.getElementById("right-rate"));
@@ -82,9 +78,7 @@ function queClicked(obj, n) {
 function nextPage() {
 		currentItemId++;
 		$('#abc' + currentItemId).click();
-<<<<<<< HEAD
 
-}
 /* 上一题 */
 function prePage() {
 	currentItemId--;
@@ -157,11 +151,7 @@ function oneChoice(){
 }
 
 */
-=======
-=======
->>>>>>> origin/XY
 
-}
 /* 上一题 */
 function prePage() {
 	currentItemId--;
@@ -377,4 +367,5 @@ function oneChoice(){
 			}
 		})
 	})
+}
 }
