@@ -71,7 +71,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="admin.html"><i class="fa fa-home"></i> Home</a>
+		    					<a href="admin.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>用户管理</li>
 		    			</ul>
@@ -125,118 +125,23 @@
 			        <th>操作</th>
 			      </tr>
 			    </thead>
-			     <tbody>
-				<tr class="tb_width">
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        
-			        <td>771196591@qq.com</td>
-			        <td class="see" data-toggle="modal" data-target="#myModal_see">查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye see_information"  data-toggle="modal" data-target="#myModal_see_information"></i>
-			        	<i class="fa fa-pencil check" data-toggle="modal" data-target="#myModal_correct_information"></i>
-			        	<i class="fa fa-trash-o" onclick="myFunction1()"></i>
-			        </td>
-			      </tr>
-			      <tr class="tb_width">
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			       
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        	
-			        </td>
-			      </tr>
-			      <tr class="tb_width">
-			      <td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			      </tr>
-			       <tr class="tb_width"> 
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			        
-			      </tr>
-			      <tr class="tb_width">
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			        
-			      </tr>
-			      <tr class="tb_width">
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			        
-			      </tr>
-			      <tr class="tb_width"> 
-			      	<td>1</td>
-			        <td>慕雪</td>
-			        <td>17001</td>
-			        <td>萍乡学院</td>
-			        <td>信息与计算机工程学院</td>
-			        <td>771196591@qq.com</td>
-			        <td>查看权限</td>
-			        <td>
-			        	<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-			        
-			      </tr>
+			     <tbody id="data-box">
+					<!-- <tr class="tb_width">
+				      	<td>1</td>
+				        <td>慕雪</td>
+				        <td>17001</td>
+				        
+				        <td>萍乡学院</td>
+				        <td>信息与计算机工程学院</td>
+				        
+				        <td>771196591@qq.com</td>
+				        <td class="see" data-toggle="modal" data-target="#myModal_see">查看权限</td>
+				        <td>
+				        	<i class="fa fa-eye see_information"  data-toggle="modal" data-target="#myModal_see_information"></i>
+				        	<i class="fa fa-pencil check" data-toggle="modal" data-target="#myModal_correct_information"></i>
+				        	<i class="fa fa-trash-o" onclick="myFunction1()"></i>
+				        </td>
+				      </tr> -->
 			     </tbody>
 			     
 			</table>
@@ -252,11 +157,11 @@
 				<!--页码-->
 				<div class="page_pagination">
 					<ul class="pagination">
-					    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
-					    <li class="page-item"><a class="page-link" href="#">1</a></li>
-					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="prevPage()">上一页</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="loadDatas(1)">1</a></li>
+					    <li class="page-item"><a class="page-link " href="javascript:void(0)" onclick="loadDatas(2)">2</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="loadDatas(3)">3</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:nextPage()" >下一页</a></li>
 					    <input class="jump">
 					    <button class="btn btn-primary btn_jump">跳转</button>
 				  </ul>
@@ -283,69 +188,50 @@
 							   
 							        <!-- 模态框主体 -->
 							        <div class="modal-body">
-							        	<table >
+							        	<table id="table " class='add-jw'>
 							        		<tbody>
 							        			<tr>
-							        				<td >
+							        				<td>
 							        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover" name="name">
 							        				</td>
 							        			</tr>
 							        			<tr>			        				
 							        				<td >
 							        					工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
-							        				</td>
-							        			</tr>
-							        			<tr>
-							        				<td >
-							        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover" name="userid">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover" name="collegeName">
 							        				</td>
 							        			</tr>
 							        			<tr>
-							        				<td >
-							        					学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
-							        				</td>
-							        			</tr>
-							        			<tr>
-							        				<td >
+							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<!-- <div class="input_checkbox" name="sex">
+															<input type="radio" class="choose" name="1"/>
+															<span>男</span>
+															<input type="radio" class="choose1" name="1"/>
+															<span>女</span>
+														</div> -->
+							        					 <input type="text" class="hover"  name="sex"> 
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					联系方式&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover"  name="phone">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover">
+							        					<input type="text" class="hover"  name="email">
 							        				</td>
 							        			</tr>	
-							        			<tr>
-							        				<td >
-							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<select class="option"> 
-							        						<option>能查看答案</option>
-							        						<option>不能查看答案</option>
-							        					</select>
-							        					<select class="option"> 
-							        						<option>能够阅卷</option>
-							        						<option>不能阅卷</option>
-							        					</select>
-							        				</td>
-							        			</tr>
 							        		</tbody>
 							        	</table>
 							         
@@ -355,7 +241,7 @@
 							        <!-- 模态框底部 -->
 							        <div class="modal-footer">
 							          <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-							          <button type="button" class="btn btn-primary add">添加</button>
+							          <button type="button" class="btn btn-primary add" onclick="addJw()" id="add">添加</button>
 							        </div>
 						   
 						      </div>
@@ -780,4 +666,5 @@
 	  
 	</body>
 	<script type="text/javascript" src="js/search.js" ></script>
+	<script type="text/javascript" src="js/admin.js" ></script>
 </html>

@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  }, function(data) {
 		  alert(data.result);
 	  });
->>>>>>> origin/lrx
+
   </script>
   </head>
   
@@ -61,12 +61,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div id='container'></div>
   	
   	<a href="pagination.jsp">分页demo</a>
-  	
-<<<<<<< HEAD
-=======
+
   	<a href="pagination-plus.jsp">分页 demo+</a>
   	
->>>>>>> origin/lrx
+
   </body>
   
 </html>

@@ -49,7 +49,7 @@
 					<div class="dropdown task" >
 					<button class="dropbtn envolope">
 						<i class="fa fa-envelope envelope"></i>	
-						<span class="label-success ">1</span>
+						<span class="label-success "><i></i></span>
 					</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>

@@ -13,7 +13,9 @@ body{
 } 
 .modal{
 	overflow: auto !important;
-}
+} 
+
+
 .all{
 	width: 100%;
 	height: 100%;
@@ -68,9 +70,7 @@ body{
 	border: none;
 	cursor: pointer;
 }
-.dropbtn.envolope{
-	padding-right: 18px;
-}
+
 .dropdown {
 	z-index: 9999;
 	position: relative;
@@ -106,6 +106,7 @@ body{
 }
 .task .envelope{
 	color: black;
+	margin-top: 4px;
 }
 
 .banner .notice .noticelabel {
@@ -126,17 +127,17 @@ body{
 	margin-top:15px;
 	margin-right: 20px;
 }
-.banner .label-success{
-	width: 15px;
-	height: 15px;
+.banner .success1{
+	width: 6px;
+	height: 6px;
 	position: absolute;
-	top: 10px;
-	
+	top: 14px;
 	border-radius: 50%;
 	text-align: center;
-	color: white;
-	
+	background: red;
+		
 }
+
 
 /*侧面导航栏*/
 .navbar.bg-light{
@@ -151,7 +152,7 @@ body{
 	margin-bottom: 20px;
 	padding-bottom: 80px;
 }
-.navbar .image{
+.navbar .image {
 	width: 45%;
 	height: 50px;
 	float: left;
@@ -162,11 +163,12 @@ body{
 	border-radius:50% ;
 	float: left;
 }
+.side_nav1.now{
+	background-color: #425164;
+}
 .navbar .info{
-	width: 80px;
-	height: 50px;
-	float: right;
-	text-align: center;
+	font-size: 14px;
+	float: left;
 }
 p{
 	width: 45px;
@@ -198,18 +200,150 @@ p{
 .bg-light li:hover{
 	background: #425164;
 }
-/*面包屑导航*/
-.bred{
-	width: 75%;
+
+/*中间部分*/
+.main{
+	float:right;
+	/*position:relative; 
+	top:50px;*/
+	width: 83.6%;
+}
+.main1{
+	width: 90%;
+	height: 98%;
+	margin: auto;
+}
+.cant .bred {
+	width: 90%; 
+}
+.cant .mybread {
+	width: 83.6%;
 	float: left;
-	margin: 20px;
+	background-color: #ffffff;
 }
-.bred .mybread_position{
-	width:100%;
-	background: white;
-}
-.bred li{
+.main .position{
+	width: 100%%;
+	height: 36px;
 	color: #999;
+}
+.bred .position {
+    margin-top: 20px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.main1 .read{
+	width: 100%;
+	height: 80%;
+	margin-top: 20px;
+}
+
+.read .read_left{
+	width: 100%;
+	height: 80%;
+	float: left;
+	padding-bottom: 20px;
+	/*background: white;*/
+
+}
+.read .question{
+	width: 99.9%;
+	height: 40px;
+	background: #dadada;
+	border-radius: 5px 5px  0px 0px;
+	margin-bottom: 0px;
+	padding-left: 10px;
+	padding-top: 10px;
+	
+}
+.read .answer{
+	display: none;
+	width: 99.9%;
+	border: 1px solid #dadada;
+	margin-top: 0px;
+	background: white;
+	padding-top: 20px;
+	padding-right:20px ;
+}
+.read li{
+	padding: 10px;
+	list-style: none;
+	overflow: hidden;
+}
+.read .answer_span{
+	width: 90%;
+	color: #908292;
+	/*border: 1px solid #bcaaaa*/
+}
+.read ul{
+	border-bottom: 1px solid #dadada;
+	
+}
+
+
+/*右边*/
+.read .read_right{
+	width: 100%;
+	height: 80%;
+	float: right;
+	padding-right: 0px;
+	padding-bottom: 20px;
+	/*background: white;*/
+}
+.read_right .num{
+	width: 100%;
+	float: right;
+	padding-right: 20px;
+	margin-top: 30px;
+	margin-right: 30px;
+	line-height: 35px;
+}
+.read_right .input_num{
+	width: 80px;
+	height: 35px;
+	float: right;
+	padding-right:20px ;
+	margin-left: 10px;
+}
+.read_right span{
+	float: right;
+}
+.read .answer1{
+	width: 99.9%;
+	min-height: 350px;	
+	border: 1px solid #dadada;
+	margin-top: 0px;
+	background: white;
+	padding-top: 20px;
+	padding-right:20px ;
+}
+/*分页*/
+.pagination .page-link{
+	color: black;
+	
+}
+.page_pagination{
+	width: 35%;
+	margin: auto;
+}
+.page_pagination .jump{
+	margin-left: 5px;
+	width:50px;
+	height:32px;
+}
+.page_pagination .btn_jump{
+	margin-left: 5px;
+	width: 50px;
+	height: 32px;
+	float: right;
+}
+.page_pagination ul{
+	border-bottom: 0px;
+}
+.page_pagination .page_jump{
+	position: relative;
+	top: -19px;
+
 }
 
 /*模态框*/
@@ -237,7 +371,7 @@ p{
 	height: 30px;
 }
 .modal-body .option{
-	width: 30%;
+	width: 60%;
 	height: 30px;
 	border-radius:5px ;
 	border: 1px solid black;
@@ -259,7 +393,7 @@ p{
 	width: 90px;
 	height: 40px;
 	position: relative;
-	right: 320px;
+	right: 275px;
 	background-color:  #3c91c8;
 	color: white;
 }
@@ -288,6 +422,48 @@ p{
 	top:20px;
 	right:25px;
 }
+/*查看个人信息模态框*/
+.modal-body .tb_information{
+	width: 200px;
+	height: 45px;
+	margin-left:15px ;
+	display: inline;  /*让他具有行级元素的性质*/
+}
+.modal-footer .back_information{
+	width: 90px;
+	height: 40px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+
+/*历史成绩模态框*/
+.modal-footer .add_correct{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right:170px;
+}
+.modal-footer .back_correct{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right:120px;
+}
+/*邀请模态框*/
+.modal-footer .add_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right:170px;
+}
+.modal-footer .back_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right:120px;
+}
+
 
 /*查看个人信息模态框*/
 .modal-body .tb_information{
@@ -348,17 +524,6 @@ p{
 	color: black;
 	border:1px solid #bbb;
 }
-/*查看权限模态框*/
-.see{
-	cursor: pointer;
-}
-.see:hover{
-	color: blue;
-}
-/*操作栏查看权限模态框*/
-.see_information{
-	cursor:pointer ;
-}
-.see_information:hover{
-	color: blue;
-}
+
+
+

@@ -16,9 +16,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/popper.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
 	</head>
 	<body>
 		<!--上方导航栏-->
@@ -71,7 +69,8 @@
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
 					<a href="jsshowpaper.jsp"><li class="side_nav1 ">题库管理</li></a>
-					<a href="history_teacher.jsp"><li class="side_nav1 now">历史成绩</li></a>
+					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
+					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
 		  </div>
 		</nav>
@@ -88,7 +87,7 @@
 		    				<li class="active">
 		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>历史成绩</li>
+		    				<li>查看成绩</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
@@ -121,7 +120,7 @@
 					<div class="tip">历史成绩</div>
 					<table class="table table-striped tb1" id="clearTbody">
 						<thead class="thead-light">
-							<tr>
+							<tr >
 								<th>序号</th>
 								<th>科目</th>
 								<th>参加学校</th>
@@ -129,70 +128,15 @@
 								<th>操作</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
+						<tbody id="data-box">
+							<tr >
+								<!-- <td>1</td>
 								<td>数据库概论</td>
 								<td>萍乡学院</td>
 								<td>2018-10-10</td>
 								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
 									<i class="fa fa-eye" ></i>
-								</td>
-							</tr>
-							
-							<tr>
-								<td>1</td>
-								<td>数据库概论</td>
-								<td>萍乡学院</td>
-								<td>2018-10-10</td>
-								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-									<i class="fa fa-eye"></i>
-								</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>数据库概论</td>
-								<td>萍乡学院</td>
-								<td>2018-10-10</td>
-								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-									<i class="fa fa-eye"></i>
-								</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>数据库概论</td>
-								<td>萍乡学院</td>
-								<td>2018-10-10</td>
-								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-									<i class="fa fa-eye"></i>
-								</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>数据库概论</td>
-								<td>萍乡学院</td>
-								<td>2018-10-10</td>
-								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-									<i class="fa fa-eye"></i>
-								</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>数据库概论</td>
-								<td>萍乡学院</td>
-								<td>2018-10-10</td>
-								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-									<i class="fa fa-eye"></i>
-								</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>数据库概论</td>
-								<td>萍乡学院</td>
-								<td>2018-10-10</td>
-								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-									<i class="fa fa-eye"></i>
-								</td>
+								</td> -->
 							</tr>
 					</tbody>
 				</table>
@@ -407,7 +351,7 @@
 			</div>
 		</div>	
 						
-		<!--模态框查看通知-->
+		<!--模态框查看邀请通知-->
 		<div class="modal fade" id="myModal-email">
 			    	<div class="modal-dialog">
 			      	<div class="modal-content">
@@ -494,7 +438,7 @@
 		          	<div class="email">
 		          		来自xx学校xx学院xx老师的邀请
 		          		<button class="btn btn-primary accept" >接受</button>
-		          		<button class="btn btn-danger refuse"  >拒绝</button>
+		          		<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_read_refuse" >拒绝</button>
 		          	</div>
 		          	<div class="email">
 		          		来自xx学校xx学院xx老师的邀请
@@ -521,8 +465,6 @@
 		    </div>
   		</div>
 
-		<!--导出成绩模态框-->
-	
 		<!--导出历史成绩模态框-->
 		<div class="modal fade" id="myModal_export">
 			<div class="modal-dialog">
@@ -608,7 +550,41 @@
 			</div>
 		</div>	
 		
+		<!--邀请阅卷拒绝模态框-->
+		 <div class="modal fade" id="myModal_read_refuse">
+		    <div class="modal-dialog modal-sm">
+		      <div class="modal-content">
+		   
+		        <!-- 模态框头部 -->
+		        <div class="modal-header">
+		          <h4 class="modal-title">拒绝理由</h4>
+		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		        </div>
+		   
+		        <!-- 模态框主体 -->
+		        <div class="modal-body">
+		         <textarea rows="5" cols="30" placeholder="请输入拒绝理由">
+		         	
+		         </textarea>
+		        </div>
+		   
+		        <!-- 模态框底部 -->
+		        <div class="modal-footer">
+					<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary add">提交</button>
+				</div>
+		   
+		      </div>
+		    </div>
+		  </div>
+		
+		
 	</div>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="js/search.js" ></script>
+				<script type="text/javascript" src="js/teacher_history.js" ></script>
 	</body>
-	<script type="text/javascript" src="js/search.js" ></script>
+
 </html>

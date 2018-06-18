@@ -62,7 +62,7 @@
 		    		<button class="dropbtn">
 		    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		    			    				<i class="fa fa-envelope"></i>
-		    			    				<span class="label label-success noticelabel">4</span>
+		    			    				<span class="label label-success noticelabel"><i></i></span>
 		    			    			</a>
 		    			    	    </button>
 		    		<div class="dropdown-content">
@@ -166,14 +166,9 @@
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
-		    						<th>
-<<<<<<< HEAD
-		    							<input type="checkbox" class="flat-grey"/>全选 ID</th>
-=======
-		    							<input type="checkbox" class="flat-grey"/>全选 
-		    						</th>
+		    						<th><input type="checkbox" class="flat-grey"/>全选 ID</th>
+		    						<th><input type="checkbox" class="flat-grey"/>全选 </th>
 		    						<th>编号</th>
->>>>>>> parent of eec00a7... Revert "hhhh"
 		    						<th>所在考次</th>
 		    						<th>试卷科目</th>
 		    						<th>标题</th>
@@ -184,7 +179,7 @@
 		    					</tr>
 		    				</thead>
 		    				<tbody id="paper-list-box">
-		    					<!-- <tr id=''>
+		    					<tr id=''>
 			    					<td id=''>
 			    						<input type='checkbox' class='flat-grey' />1
 			    					</td>
@@ -195,7 +190,7 @@
 			    					<td id=''>100分钟</td>
 			    					<td id=''>2018年5月20日9：00</td>
 			    					<td id=''>2018年5月20日9：40</td>
-			    				</tr> -->
+			    				</tr>
 		    				</tbody>
 		    			</table>
 		    		  

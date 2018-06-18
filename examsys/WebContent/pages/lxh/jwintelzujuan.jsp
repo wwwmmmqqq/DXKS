@@ -61,7 +61,7 @@
 					<button class="dropbtn">
 					    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					    			    				<i class="fa fa-envelope"></i>
-					    			    				<span class="label label-success noticelabel">4</span>
+					    			    				<span class="label label-success noticelabel"><i></i></span>
 					    			    			</a>
 					    			    	    </button>
 					<div class="dropdown-content">
