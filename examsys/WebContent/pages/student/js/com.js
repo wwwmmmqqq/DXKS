@@ -2,7 +2,7 @@ $(function (){
 	modifyInfo();
 	function modifyInfo(){
 		
-		var sname=$('.basic-info input[name="name"]').val();
+		var sname=$('.basic-info input[name="n    ame"]').val();
 		var ssex=$('.basic-info input[name="sex"]').val();
 		var scollegeName=$('.basic-info input[name="collegeName"]').val();
 		var sdepartment=$('.basic-info input[name="department"]').val();

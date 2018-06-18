@@ -142,8 +142,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
 <<<<<<< HEAD
-				  Answersheet.class
-=======
+
 				 Answersheet.class
 >>>>>>> origin/lxh
 				, College.class

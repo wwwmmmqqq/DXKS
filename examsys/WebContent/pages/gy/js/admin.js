@@ -62,7 +62,6 @@ function addJw() {
 var jname=$('.add-jw input[name="name"]').val();
 var juserid=$('.add-jw input[name="userid"]').val();
 var jcollegeName=$('.add-jw input[name="collegeName"]').val();
-//var jsex=$('.add-jw input[name="sex"]').val();
 var jsex=$("input[name='rd']:checked").val();
 var jphone=$('.add-jw input[name="phone"]').val();
 var jmail=$('.add-jw input[name="mail"]').val();
@@ -76,7 +75,6 @@ $.post("createUser",
 	 	},function(data){
 	 		alert(data.result);    //message为user返回信息
 		 }
-	 	
 	)
 	$("input[name='rd']:checked").val();
 
