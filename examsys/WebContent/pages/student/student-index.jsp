@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
          <%
@@ -11,13 +10,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>首页-考试</title>
+<title>首页-考试</title>   
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 
-</head>
+</head>      
 <body>
 
 		<header>
