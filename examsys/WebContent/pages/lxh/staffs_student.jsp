@@ -27,7 +27,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>muxue <i class="caret"></i></span>
+								<span>${session.user.name} <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -67,7 +67,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, muxue</p>
+					<p>Hello, ${session.user.name}</p>
 				</div>
 
 			</div>
@@ -424,7 +424,6 @@
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-<<<<<<< HEAD
 						<button type="button" class="btn btn-primary add" onclick="createStudent();">添加</button>
 					</div>
 
@@ -512,9 +511,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary add" onclick="editStudent();">修改</button>
-=======
 						<button type="button" class="btn btn-primary add">添加</button>
->>>>>>> origin/wmq
 					</div>
 
 				</div>
@@ -796,7 +793,6 @@
 		
 		
 	</body>
-<<<<<<< HEAD
 <script type="text/javascript">
 	loadStudentList(1);
 	var currentPage=1;
@@ -996,7 +992,5 @@
 		return false;
 	} 
 </script>
-=======
 
->>>>>>> origin/wmq
 </html>
