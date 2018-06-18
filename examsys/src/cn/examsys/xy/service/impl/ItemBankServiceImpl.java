@@ -104,7 +104,7 @@ public class ItemBankServiceImpl implements ItemBankService {
 				Object val = field[i].get(currentQuestion);
 				String type = f[i].getType().toString();
 				if(vals==null) {
-					vals=val.toString();
+					vals=val;
 					f[i].set(question, vals);
 				}if(type.endsWith("int")) {
 					int va = f[i].getInt(question);
@@ -140,7 +140,7 @@ public class ItemBankServiceImpl implements ItemBankService {
 				Object val = field[i].get(currentOption);
 				String type = f[i].getType().toString();
 				if(vals==null) {
-					vals=val.toString();
+					vals=val;
 					f[i].set(option, vals);
 				}if(type.endsWith("int")) {
 					int va = f[i].getInt(option);
