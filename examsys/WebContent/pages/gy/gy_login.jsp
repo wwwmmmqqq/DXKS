@@ -6,7 +6,9 @@
 			+ path + "/";
 %>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd 
+
+">
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -55,7 +57,9 @@
 						<!--  <div class="yzm">
 							<input name="XuasYzm" size="9" maxlength="5" class="form-control input_yzm">
 							<div >
-								<a href='javascript:refreshimg()' title='看不清楚，换个图片' ><img class="img_yzm" id='checkcode' src="http://www.cnhww.com/demo5/GetCode.asp" border="0" /></a>
+								<a href='javascript:refreshimg()' title='看不清楚，换个图片' ><img class="img_yzm" id='checkcode' src="http://www.cnhww.com/demo5/GetCode.asp 
+
+" border="0" /></a>
 							</div>
 						</div>-->
 						
@@ -69,7 +73,9 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js 
+
+"></script>
 	<script type="text/javascript">
 	function login() {
 		var Id = $('#userId').val();

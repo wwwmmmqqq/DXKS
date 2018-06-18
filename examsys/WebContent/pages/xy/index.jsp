@@ -11,16 +11,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
 	/**
-		管理员setType和setPsw未测试
-		
-		修改密码接口---
-		参数：session.userId,user.psw;rePsw;
+		修改试卷接口---先查看再修改
+		参数：paper.sid
 		返回值：paper
 	*/
+<<<<<<< HEAD
 	 $.post("editUser",{"user.userId":"15478000","user.name":"mingzi"},function(data) {
 		   alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 		   alert(data.result);
 	  })  
+=======
+	 $.post("login",{"user.userId":"userId_27060","user.psw":"psw_83324"},function(data) {
+		 	alert(session.user.userId);
+			alert(data.result);
+	  })
+>>>>>>> origin/wmq
   </script>
   
   </head>

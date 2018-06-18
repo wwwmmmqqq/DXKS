@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
-<link rel="stylesheet" href="css/ont-awesome.min.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>ipt>
 </head>
@@ -27,15 +27,21 @@
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
-					<div class="navbar-right">
-						<ul>
+						<div class="navbar-right">
+						<ul class="user-info">
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>wmq </span>
+									<span>${session.user.name} </span>
 								</a>
+								
 							</li>
+							<div class="dropdown-content">
+		    			<a >修改密码</a>
+		    			<a >退出系统</a>
+		    		</div>
 						</ul>
+						
 					</div>
 				</div>
 			</nav>
@@ -202,7 +208,8 @@
 							</form>
 						</div>
 					</div>
-					<ul class="paper-item">
+					<div class="history-paper">
+					<!-- <ul class="paper-item">
 						<li>
 							<div class="icon paper-picture"></div>
 							<div class="paper-intro">
@@ -291,7 +298,8 @@
 								<button class="btn btn-primary">查看</button>
 							</div>
 						</li>
-					</ul>
+					</ul> -->
+					</div>
 					<ul class="exam-page pagination pagination-sm">
 						<li>
 							<a href="#">&laquo;</a>
@@ -322,5 +330,45 @@
 				</div>
 			</section>
 		</div>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+loadMyHistoryPapersByexam();
+var currentPage = 1;
+function loadMyHistoryPapersByexam(){
+	  $.post("loadMyHistoryPapers", {
+		  "page":currentPage
+	  }, function(data) {
+		  var paperHistoryList = data.list;
+		  var htm = "";
+		  for(var i=0;i<paperHistoryList.length;i++) {
+			htm+=getMyHistoryPaper(paperHistoryList[i])
+		  }
+		  $('.history-paper').html(htm);
+	  });
+}
+function getMyHistoryPaper(obj){
+	var htm=
+		"<ul class='paper-item'>"
+		+"	<li>"
+		+"		<div class='icon paper-picture'></div>"
+		+"		<div class='paper-intro'>"
+		+"			<div class='paper-title'>"
+		+"				<span>"+obj.subjectName+"</span>"
+		+"			</div>"
+		+"			<div class='paper-body'>"
+		+"				<span>总分："+obj.totalScore+"分</span>"
+		+"				<span>及格："+obj.totalScore*0.6+"分</span>"
+		+"				<span>考试时间："+obj.totalTime/60+"分钟</span>"
+		+"			</div>"
+		+"		</div>"
+		+"		<div class='exam-button'>"
+		+"			<button class='btn btn-primary'>查看</button>"
+		+"		</div>"
+		+"	</li>"
+		+"</ul>"
+		return htm;
+}
+</script>
 </body>
 </html>

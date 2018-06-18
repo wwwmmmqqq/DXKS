@@ -46,8 +46,8 @@ public class Tool {
                 tmp.append(j);  
             else if (j < 256) {  
                 tmp.append("%");  
-                if (j < 16)  
-                    tmp.append("0");  
+                if (j < 16)
+                    tmp.append("0");
                 tmp.append(Integer.toString(j, 16));  
             } else {  
                 tmp.append("%u");  

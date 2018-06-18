@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <title>页面跳转</title>
     <script type="text/javascript">
-    location.replace("pages/xy/index.jsp");
+    location.replace("pages/student/student-main.jsp");
     </script>
   </head>
   <body>

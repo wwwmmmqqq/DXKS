@@ -17,21 +17,15 @@ $(document).ready(function(){
 	});
 });
 
-//导出历史成绩
-//$(function(){  
-//  $("#selectAll").click(function(){  
-// 		$("#checkBoxList :checkbox").attr("checked", true);  
-//  });  
-//  $("#unSelect").click(function(){  
-//      $("#checkBoxList :checkbox").attr("checked", false);  
-//  });  
-//  $("#reverseSelect").click(function(){  
-//      $("#checkBoxList :checkbox").each(function(){  
-//          $(this).attr("checked", !$(this).attr("checked"));  
-//          });  
-//      });  
-//  });
-    
+//添加角色清除text的值
+$(document).ready(function(e){
+    /*点击删除 清空输入框的内容*/
+    $('#add').click(function(){
+        $('.add-jw input').val('');
+       
+    });
+});
+
 //导出历史成绩
 
 	//获取全选框复选框

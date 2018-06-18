@@ -126,7 +126,7 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody id="student-list-box">
+				<tbody>
 					<tr class="tb_width">
 						<td>1</td>
 						<td>慕雪</td>
@@ -142,6 +142,104 @@
 				        	<i class="fa fa-trash-o"></i>
 				        </td>
 					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
 				</tbody>
 			</table>
 			<!--<div class="bottom_button">
@@ -155,11 +253,11 @@
 				<!--页码-->
 				<div class="page_pagination">
 					<ul class="pagination">
-					    <li class="page-item"><a class="page-link" href="javascript:prevPage()">上一页</a></li>
-					   <!--  <li class="page-item"><a class="page-link" href="javascript:selectUserList('学生',1)">1</a></li>
-					    <li class="page-item active"><a class="page-link " href="javascript:selectUserList('学生',2)">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-					    <li class="page-item"><a class="page-link" href="javascript:nextPage()">下一页</a></li>
+					    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
+					    <li class="page-item"><a class="page-link" href="#">1</a></li>
+					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
+					    <li class="page-item"><a class="page-link" href="#">3</a></li>
+					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
 					    <input class="jump">
 					    <button class="btn btn-primary btn_jump">跳转</button>
 				  </ul>
@@ -262,7 +360,7 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="name">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
@@ -278,43 +376,43 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="userId">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="collegeName">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="department">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="profession">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="classroom">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										身份证号&nbsp;
-										<input type="text" class="hover" id="idcard">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="phone">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 
@@ -326,6 +424,7 @@
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
+<<<<<<< HEAD
 						<button type="button" class="btn btn-primary add" onclick="createStudent();">添加</button>
 					</div>
 
@@ -413,6 +512,9 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary add" onclick="editStudent();">修改</button>
+=======
+						<button type="button" class="btn btn-primary add">添加</button>
+>>>>>>> origin/wmq
 					</div>
 
 				</div>
@@ -538,7 +640,7 @@
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
-							<tbody id="student-info-box">
+							<tbody>
 								<tr>
 									<td>
 										姓名
@@ -694,6 +796,7 @@
 		
 		
 	</body>
+<<<<<<< HEAD
 <script type="text/javascript">
 	loadStudentList(1);
 	var currentPage=1;
@@ -893,4 +996,7 @@
 		return false;
 	} 
 </script>
+=======
+
+>>>>>>> origin/wmq
 </html>

@@ -54,9 +54,7 @@ public class PaperDaoImpl extends DaoAdapter implements PaperDao {
 		// TODO Auto-generated method stub
 		String hql = "from Paper";
 		try {
-			int count=findByHql(hql).size();
-			int totalPage = (int) Math.ceil((count*1.0)/COUNT_PER_PAGE);
-			return totalPage;
+			return findByHql(hql).size();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -86,15 +86,5 @@ public class UserServiceImpl implements UserService{
 		User user=userDao.findOneUser(userId);
 		return user;
 	}
-	@Override
-	public void changePsw(String userId, String psw) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public int findUser(String userId, String psw) {
-		// TODO Auto-generated method stub
-		return userDao.findUser(userId,psw);
-	}
 
 }
