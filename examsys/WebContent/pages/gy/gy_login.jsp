@@ -14,9 +14,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		
 		<title></title>
 	</head>
 	<body>
@@ -40,18 +38,18 @@
 						<img src="img/login_left.jpg"  class="img_left"/>
 					</div>
 					<div class="login_right">
-						<input type="text" class="form-control input_name" placeholder="请输入你的用户名"/>
+						<input type="text" id="userId" class="form-control input_name" placeholder="请输入你的用户名" name="user.userId"/>
 						<div class="input_bottom">
-							<input type="password" class="form-control input_password" placeholder="请输入你密码"/>
+							<input type="password"  id="password" class="form-control input_password" placeholder="请输入你密码" name="user.psw"/>
 						</div>
 						<div class="input_checkbox">
-							<input type="radio" name="1"/>
+							<input type="radio" name="1" id="admin" value="管理员"/>
 							<span>管理员</span>
-							<input type="radio" name="1"/>
+							<input type="radio" name="1" id="administration" value="教务"/>
 							<span>教务</span>
-							<input type="radio" name="1"/>
+							<input type="radio" name="1" id="teacher" value="教师"/>
 							<span>教师</span>
-							<input type="radio" name="1"/>
+							<input type="radio" name="1" id="student" value="学生"/>
 							<span>学生</span>
 						</div>
 						<!--  <div class="yzm">
@@ -62,12 +60,47 @@
 						</div>-->
 						
 						<div class="btn_bottom">
-							<button type="button" class="btn btn-primary btn_login">登录</button>
+							<button type="button" class="btn btn-primary btn_login" onclick="login()">登录</button>
 						</div>
 					</div>
 				</div>
 			</div>
 			
 		</div>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+	<script type="text/javascript">
+	function login() {
+		var Id = $('#userId').val();
+		var password = $('#password').val();
+		var studentType = $('#student').val();
+		var teacherType = $('#teacher').val();
+		var administrationType = $('#administration').val();
+		var adminType = $('#admin').val();
+		if (Id=="" || password=="") {
+			alert("请输入信息");
+			return false;
+		}
+		else {
+			 $.post("login",{"user.userId":Id,"user.psw":password},function(data) {
+				var user = data.user;
+				 if(user.type=="学生" && user.type == studentType) {
+					window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
+				 }
+				if(user.type=="教师" && user.type == teacherType) {
+					window.location.href = "../gy/jsshowpaper.jsp?user.userId="+user.userId;
+				 }
+				if(user.type=="教务" && user.type == administrationType) {
+					window.location.href = "../lxh/jwindex.jsp?user="+user;
+				 }
+				if(user.type=="管理员" && user.type ==adminType) {
+					window.location.href = "../gy/history_teacher.jsp?user.userId="+user.userId;
+				 }
+			  })
+	  	}
+	}
+</script>
 	</body>
+
 </html>

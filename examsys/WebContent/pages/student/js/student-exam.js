@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/XY
 /*考试结果正确率判断*/
 $(function() {
 	var scoreRate = echarts.init(document.getElementById("right-rate"));
@@ -79,6 +82,7 @@ function queClicked(obj, n) {
 function nextPage() {
 		currentItemId++;
 		$('#abc' + currentItemId).click();
+<<<<<<< HEAD
 
 }
 /* 上一题 */
@@ -154,7 +158,82 @@ function oneChoice(){
 
 */
 =======
+=======
+>>>>>>> origin/XY
 
+}
+/* 上一题 */
+function prePage() {
+	currentItemId--;
+	$('#abc' + currentItemId).click();
+}
+
+/* 点击标记图片 */
+function markClick() {
+	var n = currentItemId;
+	if ($("#lable-img-" + n).attr('src') == "img/pre-lable.png") {
+		$("#lable-img-" + n).attr('src', "img/lable.png");
+		$("#abc" + n).addClass("has-labled");
+	} else {
+		$("#lable-img-" + n).attr('src', "img/pre-lable.png");
+		$("#abc" + n).removeClass("has-labled");
+	}
+}
+window.onload = function() {
+	daojishi();
+};
+/* 倒计时 */
+var counttime = 60 * 120;// 把120分钟化成总秒数
+function daojishi() {
+	if (counttime >= 0) {
+		var seconds = counttime % 60;// 得到剩余的秒数 89%60==29秒
+		var min = Math.floor(counttime / 60);// 分钟
+		if (min >= 60) {
+			var hour = Math.floor(min / 60);
+
+			min = Math.floor((counttime - hour * 60 * 60) / 60);
+
+			document.getElementById("mss").value = hour + ":" + min + ":"
+					+ seconds;
+		} else if (mis >= 1) {
+			document.getElementById("mss").value = min + ":" + seconds;
+
+		} else {
+			document.getElementById("mss").value = seconds;
+		}
+
+		counttime--;
+		vartt = window.setTimeout("daojishi()", 1000);
+	} else {
+		window.clearTimeout(vartt);
+		window.confirm("考试时间结束,请单击提交");
+		tijiao();
+
+	}
+}
+
+/*$(':checkbox[type="checkbox"]').each(function(){
+	alert("aa")
+	$(this).parent().parent().click(function(){
+		if($(this).attr('checked')){
+			 $(':checkbox[type="checkbox"]').removeAttr('checked');
+             $(this).attr('checked','checked');
+		}
+	})
+})
+ 单选功能
+function oneChoice(){
+	$(':checkbox[type="checkbox"]').each(function(){
+		$(this).parent().parent().click(function(){
+			if($(this).attr('checked')){
+				 $(':checkbox[type="checkbox"]').removeAttr('checked');
+                 $(this).attr('checked','checked');
+			}
+		})
+	})
+}
+
+*/
 /*考试结果正确率判断*/
 $(function() {
 	var scoreRate = echarts.init(document.getElementById("right-rate"));
@@ -299,5 +378,3 @@ function oneChoice(){
 		})
 	})
 }
-
->>>>>>> gy

@@ -11,14 +11,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
 	/**
-		修改试卷接口---先查看再修改
-		参数：paper.sid
+		管理员setType和setPsw未测试
+		
+		修改密码接口---
+		参数：session.userId,user.psw;rePsw;
 		返回值：paper
 	*/
-  	$.post("ShowOnePaper",{"paper.sid":1},function(data) {
-		var paper = data.paper;
-  		alert(paper.name);
-	 })
+	 $.post("changePsw",{"user.psw":"up88929","rePsw":"000000"},function(data) {
+			alert(data.result);
+	  })
   </script>
   
   </head>
