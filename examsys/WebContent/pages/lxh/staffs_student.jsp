@@ -126,7 +126,7 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody id="student-list-box">
+				<tbody>
 					<tr class="tb_width">
 						<td>1</td>
 						<td>慕雪</td>
@@ -141,6 +141,104 @@
 				        	<i class="fa fa-trash-o"></i>
 				        </td>
 					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye"></i>
+			        	<i class="fa fa-pencil check"></i>
+			        	<i class="fa fa-trash-o"></i>
+			        </td>
+					</tr>
 				</tbody>
 			</table>
 			<!--<div class="bottom_button">
@@ -154,11 +252,11 @@
 				<!--页码-->
 				<div class="page_pagination">
 					<ul class="pagination">
-					    <li class="page-item"><a class="page-link" href="javascript:prevPage()">上一页</a></li>
-					   <!--  <li class="page-item"><a class="page-link" href="javascript:selectUserList('学生',1)">1</a></li>
-					    <li class="page-item active"><a class="page-link " href="javascript:selectUserList('学生',2)">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-					    <li class="page-item"><a class="page-link" href="javascript:nextPage()">下一页</a></li>
+					    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
+					    <li class="page-item"><a class="page-link" href="#">1</a></li>
+					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
+					    <li class="page-item"><a class="page-link" href="#">3</a></li>
+					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
 					    <input class="jump">
 					    <button class="btn btn-primary btn_jump">跳转</button>
 				  </ul>
@@ -261,49 +359,49 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="name">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="userId">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="collegeName">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="department">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="profession">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="classroom">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										身份证号&nbsp;
-										<input type="text" class="hover" id="idcard">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="phone">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 
@@ -315,7 +413,7 @@
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary add" onclick="createStudent()">添加</button>
+						<button type="button" class="btn btn-primary add">添加</button>
 					</div>
 
 				</div>
@@ -441,7 +539,7 @@
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
-							<tbody id="student-info-box">
+							<tbody>
 								<tr>
 									<td>
 										姓名
@@ -597,157 +695,5 @@
 		
 		
 	</body>
-<script type="text/javascript">
-	loadStudentList(1);
-	var currentPage=1;
-	var totalPage=1;
-	function loadStudentList(page) {
-		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
-			  var userList=data.userList;
-			  totalPage=data.totalPage;
-			  var htm = "";
-			  var ht = "";
-			  for(var i=0;i<userList.length;i++) {
-				  	var number=(page-1)*10;
-				  	number +=i+1;
-		 			htm += getItemHtml(i, userList[i],number);
-		 		}
-			  $('#student-list-box').html(htm);
-			 for(var j=1;j<=totalPage;j++) {
-				 ht += getLiHtml(j);
-			 }
-			  $('.pagination').html(ht);
-		 		currentPage = page;
-		  })  
-	}
-	function nextPage() {
-		if(currentPage<totalPage) 
-			showPaperList(++currentPage);
-	}
-	
-	function prevPage() {
-		if(currentPage>=2) 
-			showPaperList(--currentPage);
-	}
-	function jumpPage() {
-		var juPage=$('#jpage').html();
-		alert(juPage);
-		if(currentPage==juPage || juPage<1 || juPage>totalPage){
-			showPaperList(currentPage);
-		} else{
-			showPaperList(currentPage+(juPage-currentPage));
-			
-		}
-	}
-	
-	function getItemHtml(index, obj,number) {
-		
-		var htm = "<tr class='tb_width'>"
-			+"<td>"+number+"</td>"
-			+"<td>"+obj.name+"</td>"
-			+"<td>"+obj.userId+"</td>"
-			+"<td>"+obj.collegeName+"</td>"
-			+"<td>"+obj.department+"</td>"
-			+"<td>"+obj.profession+"</td>"
-			+"<td>"+obj.classroom+"</td>"
-			+"<td>"
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>"
-			+"<i class='fa fa-pencil check'></i>"
-			+"<i class='fa fa-trash-o'></i>"
-			+"</td>"
-			+"</tr>";
-		return htm;
-	}
-	function getLiHtml(index) {
-		if(index==1){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
-		}
-		else if(index==totalPage){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
-		}
-		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
-		}
-		return ht;    
-	}
-	function studentInfo(node) {
-		var td = node.parentNode.parentNode.childNodes;
-		var userId = td[2].innerHTML;
-		$.post("showUser",{"user.userId":userId},function(data) {
-			var user = data.user;
-			var info = getInfoHtml(user);
-			$('#student-info-box').html(info);
-		})
-	}	
-	function getInfoHtml(obj) {
-		var info = "<tr>"
-			+"<td>"
-			+"姓名"
-			+"<div class='tb_information'>"+obj.name+"</div>"
-			+"</td>"
-			+"</tr>"
-			+"<tr>"
-			+"<td>"
-			+"学号"
-			+"<div class='tb_information'>"+obj.userId+"17001</div>"
-			+"</td>"
-			+"</tr>"
-			+"<tr>"
-			+"<td>"
-			+"学校"
-			+"<div class='tb_information'>"+obj.collegeName+"</div>"
-			+"</td></tr>"
-			+"<tr><td>"
-			+"学院"
-			+"<div class='tb_information'>"+obj.department+"</div>"
-			+"</td></tr>"
-			+"<tr><td>"
-			+"专业"
-			+"<div class='tb_information'>"+obj.profession+"</div>"
-			+"</td></tr>"
-			+"<tr><td>"
-			+"班级"
-			+"<div class='tb_information'>"+obj.classroom+"</div>"
-			+"</td></tr>"
-			+"<tr><td>"
-			+"身份证号"
-			+"<div class='tb_information'>"+obj.idcard+"</div>"
-			+"</td></tr>"
-			+"<tr><td>"
-			+"性别"
-			+"<div class='tb_information'>"+obj.sex+"</div>"
-			+"</td></tr>"
-			+"<tr><td>"
-			+"联系方式"
-			+"<div class='tb_information'>"+obj.phone+"</div>"
-			+"</td></tr>"
-			+"<tr><td>"
-			+"邮箱"
-			+"<div class='tb_information'>"+obj.email+"</div>"
-			+"</td></tr>";
-		return info;
-	}
-	
-	function createUser() {
-		 $.post("createUser",
-				 {	
-			 		"user.name":$('#name').val(),
-			 		"user.userId":$('#userId').val(),   //用户名
-				 	"user.collegeName":$('#collegeName').val(),
-				 	"user.department":$('#department').val(),
-				 	"user.profession":$('#profession').val(),
-				 	"user.classroom":$('#classroom').val(),
-			 		"user.type":"学生",					//用户类型
-			 		"user.sex":$('#sex').val(),						//用户性别
-			 		"user.phone":$('#phone').val(),
-			 		"user.idcard":$('#idcard').val()
-			 	},function(data){
-			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
-			 		alert(data.result);    //message为user返回信息
-				 }
-			)
-	}
-</script>
+
 </html>

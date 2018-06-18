@@ -141,7 +141,7 @@ public class ItemBankAction extends CommonAction{
 		 * 数据测试
 		 */
 		/*user.setUserId("admin123546");*/
-		if(user.getType()=="教务"){      //教务查看所有题
+		if(user.getUserId().contains("admin")){      //教务查看所有题
 			questionList=itemBankService.selectItemQuestionList(page);
 			
 			/*管理员题目列表总页数*/
@@ -178,7 +178,7 @@ public class ItemBankAction extends CommonAction{
 			,params={"contentType", "text/html"})
 	public String showItemBankListByType(){
 		
-		if(user.getType()=="教务") {              //管理员查看类型所有
+		if(user.getUserId().contains("admin")) {              //管理员查看类型所有
 			System.out.println("Action按类型查看"+question.getType());
 			questionList=itemBankService.selectItemQuestionListByType(question.getType(),page);
 			/*题目类型列表总页数*/
