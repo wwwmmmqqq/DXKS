@@ -29,7 +29,7 @@
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>wmq </span>
+									<span>${session.user.name}</span>
 								</a>
 							</li>
 						</ul>
@@ -120,7 +120,7 @@
 				<div class="lable-question">
 					<img src="img/pre-lable.png" id="lable-img-${st.index}" class="lable-question-img" onclick="markClick()" />
 				</div>
-				<div class="question" style="min-height: 380px">
+				<div class="question" style="min-height: 300px">
 					<div id="no_${st.index}">
 						${st.index+1}. ${item.title} 
 						
@@ -250,9 +250,9 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 	  ,"answer.subjectiveAnswer":subjectiveAnswer//主观题内容
   }, function(data) {
 	  if(data.result == 'fail') {
-		  alert('做题失败');
+		 /*  alert('做题失败'); */
 	  } else {
-		  alert('做题成功');
+		/*   alert('做题成功'); */
 	  }
   });
 }

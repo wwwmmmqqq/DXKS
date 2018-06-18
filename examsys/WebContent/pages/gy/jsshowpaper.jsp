@@ -47,6 +47,7 @@
 				    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
+						<a href="#" >修改密码</a>
 						<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
 					</div>
 				</div>
@@ -118,9 +119,12 @@
 		    			<div class="form-group">
 		    				<label class="sr-only" for="name">关键字</label>
 		    				<input type="text" class="form-control myinput" id="name" placeholder="请输入关键字搜索">
-		    		
+		    				
 		    			</div>
 		    			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+			    		<a href="jsentryquestions.jsp"><button type="button" class="btn btn-in">录入题库</button></a>
+			    			
+		    			
 		    		</form>
 		    	</div>
 		    		
