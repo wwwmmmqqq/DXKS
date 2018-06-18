@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 /*考试结果正确率判断*/
 $(function() {
 	var scoreRate = echarts.init(document.getElementById("right-rate"));
@@ -153,8 +151,6 @@ function oneChoice(){
 }
 
 */
-=======
-
 /*考试结果正确率判断*/
 $(function() {
 	var scoreRate = echarts.init(document.getElementById("right-rate"));
@@ -299,5 +295,3 @@ function oneChoice(){
 		})
 	})
 }
-
->>>>>>> gy

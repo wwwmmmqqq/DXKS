@@ -21,6 +21,11 @@ body{
 	overflow: auto !important;
 }
 
+.all{
+	width: 100%;
+	height: 100%;
+	background: #f1f2f7;
+}
 
 /*侧面导航栏*/
 
@@ -211,7 +216,7 @@ body{
 }
 .cant .mybread {
 	width: 90%;
-	margin-left: 40px;
+	margin-left: 49px;
 	float: left;
 	background-color: #ffffff;
 }

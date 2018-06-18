@@ -141,7 +141,11 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void test2() {
 		Class<?> classes[] = new Class<?>[]{
+
 				 Answersheet.class
+
+				,Answersheet.class
+
 				, College.class
 				, Constitute.class
 				, Exam.class
