@@ -611,7 +611,7 @@
 		
 		$.post("selectUserList",{"user.type":"student","page":page},function(data) {
 			  var userList=data.userList;
-			  totalPage=data.totalPage;
+			  totalPage=data.totalPage;      
 			  var htm = "";
 			  var ht = "";
 			  for(var i=0;i<userList.length;i++) {
