@@ -2,7 +2,7 @@ $(function (){
 	modifyInfo();
 	function modifyInfo(){
 		
-		var sname=$('.basic-info input[name="n    ame"]').val();
+		var sname=$('.basic-info input[name="name"]').val();
 		var ssex=$('.basic-info input[name="sex"]').val();
 		var scollegeName=$('.basic-info input[name="collegeName"]').val();
 		var sdepartment=$('.basic-info input[name="department"]').val();
@@ -22,6 +22,43 @@ $(function (){
 		  }
 	  });
 	}
-	
-
+ 
 })
+  function setPassword(){
+	   var str = '<form id="user_setting" action="">' +
+		'<table style="width:100%;">' +
+		'<tbody>' +
+		'<tr>' +
+		'<td>旧密码</td>' +
+		'<td><input type="text"class="form-control" name="oldpwd"/></td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>新密码</td>' +
+		'<td><input type="text"class="form-control"name="newpwd"/></td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>确认密码</td>' +
+		'<td><input type="text"class="form-control"name="repwd"/></td>' +
+		'</tr>' +
+		'</tbody>' +
+		'</table>' +
+		'</form>'
+		$.confirm({
+	title : '修改密码',
+	smoothContent : false,
+	content : str,
+	buttons : {
+		deleteUser : {
+			btnClass : 'btn-blue',
+			text : '修改',
+			action : function() {
+				/* 放post方法 */
+			}
+		},
+		cancelAction : {
+			btnClass : 'btn-default',
+			text : '取消',
+		}
+	}
+});
+   }

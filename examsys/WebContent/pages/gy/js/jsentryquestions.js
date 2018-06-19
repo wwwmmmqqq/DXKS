@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
 	$("#single-choice").click();
 	$("#single-choice").click(function(){
 		$(".choices").show();
@@ -35,4 +35,6 @@ $(document).ready(function(){
 		$(".fill-and-judgement").hide();
 		$(".answer-question").show();
 	});
-});
+	
+})
+

@@ -14,8 +14,8 @@
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 								
 							</li>
 							<div class="dropdown-content">
-		    			<a >修改密码</a>
+		    			<a href="javascript:setPassword()">修改密码</a>
 		    			<a >退出系统</a>
 		    		</div>
 						</ul>
@@ -162,9 +162,10 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button>
+				
 				<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
+				</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
@@ -277,6 +278,10 @@
 				
 			</section>
 		</div>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+		<script type="text/javascript" src="js/com.js"></script>
 </body>
 
 </html>
