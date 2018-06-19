@@ -80,6 +80,9 @@ public class ConstituteAction extends CommonAction {
 	 * 返回试卷ID
 	 */
 	
+	@Action(value="/createPaperAuto"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
 	public String createPaperAuto() {
 		
 		int sid = service.createPaperAuto(paper.getExamRef()

@@ -122,6 +122,7 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String todo() {
+		
 		boolean bo = service.todo(getSessionUser()
 				, answer.getQuestionRef()
 				, answer.getOptionRef()

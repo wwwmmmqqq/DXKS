@@ -77,7 +77,7 @@
 				<div class="title-se">
 					<span >安全知识考试</span>
 				</div>
-				<button class="submit-exam btn btn-primary" data-toggle="modal" data-target="#examResult">提交试卷</button>
+				<button id="submitPaperBtn" class="submit-exam btn btn-primary" data-toggle="modal" data-target="#examResult">提交试卷</button>
 				<!-- 模态框（Modal） -->
 <div class="modal fade" id="examResult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -87,7 +87,7 @@
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					提交成功
+					交卷提示
 				</h4>
 			</div>
 			<div class="modal-body">
@@ -97,7 +97,7 @@
 				<div class="exam-result">
 					<div class="score">
 						<span>总分：</span>
-						<span>85</span>
+						<span id="scoreResult">85</span>
 					</div>
 					<div class="grade">
 						<span>考试总排名：</span>
@@ -192,12 +192,26 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/student-exam.js"></script>
+<<<<<<< HEAD
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
 
-
+=======
 <script type="text/javascript">
-var paperSid=getParam("sid");
+var paperSid=getParam("paper.sid");
+>>>>>>> lrx
+
+window.onload = function() {
+	var examEnd = "2018-06-20 23:59:00";//这趟考试结束时间
+	var now = "${session.Time}";//服务器当前时间
+	//开始倒计时
+	startTimeCounting(now, examEnd, function() {
+		//倒计时结束后自动交卷
+		submitPaper(paperSid);
+	});
+};
+</script>
+<script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
 setTimeout(function() {
 	$('#abc0').click();
@@ -265,6 +279,9 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 }
 
 function doit(questionId, optId, inputObj, trueOrFalse) {
+	if(inputObj.type == 'checkbox') {
+		trueOrFalse = inputObj.checked?1:0;
+	}
 	todo(questionId, optId, inputObj.value, inputObj.value, trueOrFalse);
 	$('#abc'+currentItemId).addClass('has-que-num ');
 }
@@ -322,7 +339,28 @@ function getQueItem(n, obj) {
 	return htm;
 }
 
+$("#submitPaperBtn").click(function() {
+	submitPaper(paperSid);
+});
 
+function submitPaper(paperSid) {
+	  $("#submitPaperBtn").text("交卷中...");
+	  $.post("submitPaper", {
+		  "paper.sid":paperSid
+	  }, function (data) {
+		  if(data.result == 'fail') {
+			  //$("#examResult").text("交卷失败");
+			  $(".exam-result").html("交卷失败，该试卷已被提交过！");
+			  $("#submitPaperBtn").html("提交试卷");
+		  } else {
+			  //$("#examResult").text("交卷成功 成绩ID=" + data.result);//成绩ID
+			  $(".exam-result").text("${session.user.name}本次考试最终得分：" + data.result + "分");
+			  $("#submitPaperBtn").html("已交卷");
+			  $("#submitPaperBtn").attr("disabled", "disabled");
+		  }
+		  
+	  });
+}
 
 </script>
 </body>

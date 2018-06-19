@@ -159,12 +159,16 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public int submitPaper(User sessionUser, int sid, int timeComsuming) {
 		try {
+			System.out.println(sid);
 			List<String> questionIdList = dao.findBySql("select questionRef from constitute_tb where paperRef=?"
 					, new Object[]{sid});
+			System.out.println(questionIdList.size());
 			String questionIds = Arrays.toString(questionIdList.toArray());
-			List<Answersheet> answers = dao.findByHql("from Answersheet where userId=? and locate(?, questionIds)>0"
+			List<Answersheet> answers = dao.findByHql("from Answersheet where userId=? and locate(questionRef, ?)>0"
 					, new Object[]{sessionUser.getUserId(), questionIds});
 			float score = 0f;
+			System.out.println(answers.size());
+			System.out.println(Arrays.toString(answers.toArray()));
 			for (int i = 0; i < answers.size(); i++) {
 				score += answers.get(i).getScoring();
 			}
