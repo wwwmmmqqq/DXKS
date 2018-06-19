@@ -800,3 +800,8 @@ li {
 	padding: 30px 80px;
 	background-color: white;
 }
+
+.question .option-item{
+	padding-left:20px;
+	padding-top:15px;
+}
