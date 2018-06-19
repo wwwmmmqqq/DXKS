@@ -874,13 +874,26 @@ b {
 }
 .entryquestions .entry {
 	width: 100%;
+<<<<<<< HEAD
 	min-height: 800px;
+=======
+	min-height: 450px;
+>>>>>>> origin/gy
 	padding: 10px;
 	background:#e3dded;
 }
 .entry .choices {
 	/*display: none;*/
 }
+<<<<<<< HEAD
+=======
+.entry .choicesw {
+	display: none;
+}
+.entry .ture-or-false {
+	display: none;
+}
+>>>>>>> origin/gy
 .entry .fill-and-judgement {
 	display: none;
 }
@@ -924,3 +937,29 @@ b {
 
 
 
+<<<<<<< HEAD
+=======
+.choices .choose{
+	width: 70%;
+	padding-left: 100px;
+}
+.choices .choose1{
+	width: 50px;
+}
+
+.choicesw .choose{
+	width: 70%;
+	padding-left: 100px;
+}
+.choicesw .choose1{
+	width: 50px;
+}
+.ture-or-false .choose{
+	width: 70%;
+	padding-left: 100px;
+}
+.ture-or-false .choose1{
+	width: 50px;
+}
+
+>>>>>>> origin/gy
