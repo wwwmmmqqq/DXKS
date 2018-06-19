@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
-
+<link rel="stylesheet" href="css/mui.min.css">
 </head>
 <body>
 		<header>
@@ -122,7 +122,7 @@
 				</div>
 				<div class="question">
 					<div id="no_${st.index}">
-						${st.index+1}. ${item.title} 
+						${st.index+1}.&nbsp;&nbsp; ${item.title} 
 						${(item.type=="Single")?"(单选题)":""}
 						${(item.type=="Multiple")?"(多选题)":""}
 						${(item.type=="TrueOrFalse")?"(判断题)":""}
@@ -133,15 +133,15 @@
 						<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("st1")).getIndex()+'A')); %>
 						<div class="option-item">
 							<s:if test="#item.type == 'Single'">
-								${optionLabel}. 
-								<input class="opt-together" type="radio" name="single${item.sid}"
+								${optionLabel}. &nbsp;&nbsp;
+								<input class=" opt-together" type="radio" name="single${item.sid}"
 									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />
 								${optItem.content}
 							</s:if>
 							<s:elseif test="#item.type == 'Multiple'">
-								${optionLabel}.
+								${optionLabel}. &nbsp;&nbsp;
 								<input class="opt-together" type="checkbox"
-									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />&nbsp;&nbsp;
 								${optItem.content}
 							</s:elseif>
 							<s:elseif test="#item.type == 'Fills'">

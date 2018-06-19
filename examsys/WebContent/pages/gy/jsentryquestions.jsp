@@ -198,17 +198,11 @@
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
 		    				<ul>
-<<<<<<< HEAD
 		    					<li id="dry">题干<br><textarea></textarea></li>		    					
 		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" /></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
 		    					<li id="resolve">解析<br><textarea></textarea></li>
-=======
-		    					<li id="dry">题干:<textarea></textarea></li>		    					
-		    					<li id="answer">答&nbsp;&nbsp;案:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" /></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
-		    					<li id="resolve">解析:<textarea></textarea></li>
->>>>>>> origin/wmq
+
 		    				</ul>
 		    			</div>
 		    			
