@@ -29,7 +29,7 @@
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>${session.user.name}</span>
+									<span>wmq </span>
 								</a>
 							</li>
 						</ul>
@@ -120,10 +120,9 @@
 				<div class="lable-question">
 					<img src="img/pre-lable.png" id="lable-img-${st.index}" class="lable-question-img" onclick="markClick()" />
 				</div>
-				<div class="question" style="min-height: 300px">
+				<div class="question">
 					<div id="no_${st.index}">
 						${st.index+1}. ${item.title} 
-						
 						${(item.type=="Single")?"(单选题)":""}
 						${(item.type=="Multiple")?"(多选题)":""}
 						${(item.type=="TrueOrFalse")?"(判断题)":""}
@@ -252,19 +251,19 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 	  if(data.result == 'fail') {
 		 /*  alert('做题失败'); */
 	  } else {
-		/*   alert('做题成功'); */
+		  /* alert('做题成功'); */
 	  }
   });
 }
 
 function doit(questionId, optId, inputObj, trueOrFalse) {
 	todo(questionId, optId, inputObj.value, inputObj.value, trueOrFalse);
+	$('#abc'+currentItemId).addClass('has-que-num ');
 }
 
 $(document).ready(function(){
 	$('.option-item').click(function() {
 		$(this).find('.opt-together').click();
-		$(this).find('.opt-together').siblings().unbind();
 	});
 });
 	

@@ -31,7 +31,7 @@ public class JumpAction extends CommonAction {
 	private List<Question> questionList;
 	User user=new User();
 	private int page;					//当前页
-	private int totalPage;            //总页数
+	private int totalPage;             //总页数
 	Map<String,List<Option>> map=new HashMap<String,List<Option>>();
 
 	public int getTotalPage() {
@@ -122,7 +122,7 @@ public class JumpAction extends CommonAction {
 		}
 		
 		/*查看对应question的option*/
-		for(int i=0;i<questionList.size();i++){
+		for(int i=0;i<questionList.size();i++) {
 			option=itemBankService.selectItemOptionByQuestion(questionList.get(i).getSid());
 			map.put("option["+i+"]", option);
 		}

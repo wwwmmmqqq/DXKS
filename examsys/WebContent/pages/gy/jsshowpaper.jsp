@@ -134,7 +134,7 @@
 		    		<!--  浏览试卷 start -->
 		    		<section>
 		    			<div class="panel showpaper">
-		  
+		    			
 		    				<div class="panel-body paperpanel">
 		    					<div class="qtype">
 		    						<p class="information">

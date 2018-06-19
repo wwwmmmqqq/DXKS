@@ -90,12 +90,13 @@
 		}
 		else {
 			 $.post("login",{"user.userId":Id,"user.psw":password},function(data) {
-				var user = data.user;
+				 alert(1)
+				 var user = data.user;
 				 if(user.type=="学生" && user.type == studentType) {
 					window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
 				 }
 				if(user.type=="教师" && user.type == teacherType) {
-					window.location.href = "../gy/jsshowpaper.jsp?user.userId="+user.userId;
+					window.location.href = /* "showItemBankListByUser"; // */"../gy/jsshowpaper.jsp?user.userId="+user.userId;
 				 }
 				if(user.type=="教务" && user.type == administrationType) {
 					window.location.href = "../lxh/jwindex.jsp?user="+user;
