@@ -28,6 +28,11 @@ body{
 	margin-top: 20px;
 	float: left;
 }
+.header_right{
+	width: 75%;
+	height: 86px;
+	float: right;
+}
 .title_line {
     width:75%;
     height: 28px;
@@ -71,8 +76,8 @@ body{
 	width: 49.8%;
 	height: 380px;
 	margin-top: 5px;
-  float: right;
-  padding-top: 50px;
+  	float: right;
+  	padding-top: 50px;
 	padding-left: 30px;
 }
 .login_box .input_name{
