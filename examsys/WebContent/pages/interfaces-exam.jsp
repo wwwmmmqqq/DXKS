@@ -105,10 +105,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  });
 	  }
 	  
+	  
+	  function constituteByHand(qids, examStart, examEnd, examName) {
+		  //手动组卷接口
+		  $.post("createPaperHand", {
+			  "examStart":examStart //考试开始
+			  ,"examEnd":examEnd //考试结束
+			  ,"examName":examStart //考试名字
+			  ,"qids[0]":qids[0]//第一题ID
+			  ,"qids[1]":qids[1]//第二题ID
+			  ,"qids[2]":qids[2]//第三题ID
+			  ,"qids[3]":qids[3]//到总题目数量 的ID 
+		  }, function(data) {
+			  if("fail" == data.result) {
+				  alert("失败");
+			  } else {
+				  var paperSid = data.result;//返回试卷的ID
+				  
+			  }
+		  });
+	  }
 	  </script>
 	  
 	  <script type="text/javascript">
-	  loadMyExamList(1);
+	  //传入题目的ID数组
 	  </script>
 	  
   </head>
