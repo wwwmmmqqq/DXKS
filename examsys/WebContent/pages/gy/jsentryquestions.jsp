@@ -76,7 +76,6 @@
 						<a href="jsshowpaper.jsp"><li class="side_nav1 now">题库管理</li></a>
 						<a href="history_teacher.jsp"><li class="side_nav1 n">查看成绩</li></a>
 						<a href="teacher_read.jsp"><li class="side_nav1 ">查看成绩</li></a>
-						
 					</ul>
 
 				</div>
@@ -158,20 +157,20 @@
 		    			<div class=" choicesw">
 		    				<ul>
 		    				<li id="dry">题干<br><textarea></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerA"/></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerB"/></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerC" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerD" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
 	    							<form class="choose">
-		    							<span>A</span><input type="checkbox"  class="choose1"/>
-			    						<span>B</span><input type="checkbox"  class="choose1"/>
-			    						<span>C</span><input type="checkbox"  class="choose1"/>
-			    						<span>D</span><input type="checkbox"  class="choose1"/>
+		    							<span>A</span><input type="checkbox"  class="choose1" name="singleItemA"/>
+			    						<span>B</span><input type="checkbox"  class="choose1"  name="singleItemB"/>
+			    						<span>C</span><input type="checkbox"  class="choose1"  name="singleItemC"/>
+			    						<span>D</span><input type="checkbox"  class="choose1" name="singleItemD"/>
 		    						</form>
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" /></li>
-		    				    <li id="resolve">解析<br/><textarea ></textarea></li>	 
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="singleknowlege"/></li>
+		    				    <li id="resolve">解析<br/><textarea  name="resolve"></textarea></li>	 
 		    			    </ul>
 		    			</div>
 		    			
@@ -180,7 +179,7 @@
 		    			<!--判断-->
 		    			<div class="ture-or-false">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea></textarea></li>	
+		    					<li id="dry">题干<br><textarea name></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
@@ -228,8 +227,15 @@
 		    	</div>
 		    	<!--题库录入 end-->
 		    </div>	
+		    <script type="text/javascript" src="js/jsentryquestions.js" ></script>
+		    
+		    
 	</body>
 
+<<<<<<< HEAD
+	
+=======
 	<script type="text/javascript" src="js/jsentryquestions.js" ></script>
 
+>>>>>>> lrx
 </html>

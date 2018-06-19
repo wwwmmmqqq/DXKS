@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$("#single-choice").click();
 	$("#single-choice").click(function(){
 		$(".choices").show();
 		$(".choicesw").hide();
