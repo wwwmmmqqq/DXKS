@@ -17,21 +17,37 @@ var currentPage = 1;
 		}
 	}
 //	获取历史成绩
-	function callback(data) {
-		var html = "";
-		var li = data.gradeList;//
-		for(var i=0;i<li.length; i++) {
-			html += getHtmls(i+1, li[i].subjectName, li[i].collegeName, li[i].time);
-		}
-		$('#data-box').html(html);
+	var papsersid=getParam("sid");
+	loadHistoryScore(papsersid);
+	
+	//获取url中的参数
+function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
+}
+	function loadHistoryScore(){
+		 $.post("loadHistoryScore", {
+			  "paper.sid":paperSid
+			  ,"page":currentPage
+		  }, function(data) {
+			  var scoreList = data.list;
+			  var htm = "";
+			  for(var i=0;i<paperList.length;i++) {
+				  html += getScores(i+1, li[i].subjectName, li[i].collegeName, li[i].time);
+			  }
+			  $('#data-box').html(htm);
+		  });
 	}
 	
-	function getHtmls(index, subjectName, collegeName, time) {
+	function getScores(obj) {
 		var htm = "<tr>"
-		+"	<td>"+index+"</td>"
-		+"	<td>"+subjectName+"</td>"
-		+"	<td>"+collegeName+"</td>"
-		+"	<td>"+time+"</td>"
+		+"	<td>"+obj.index+"</td>"
+		+"	<td>"+obj.subjectName+"</td>"
+		+"	<td>"+obj.collegeName+"</td>"
+		+"	<td>"+obj.time+"</td>"
 		+"	<td class='td_correct' data-toggle='modal' data-target='#myModal_correct'>"
 		+"	<td>"
 		+"		<i class='fa fa-eye' ></i>"

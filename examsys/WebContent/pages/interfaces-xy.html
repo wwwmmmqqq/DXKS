@@ -10,8 +10,8 @@
 	  	参数：user.userId,user.psw
 	  	返回值：session
 	  */
-	  $.post("login",{"user.userId":"userId_27060","user.psw":"psw_83324"},function(data) {
-		 	alert(session.user.userId);
+	  $.post("showUser",{"user.userId":"userId_102"},function(data) {
+		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 			alert(data.result);
 	  })
 	  

@@ -29,7 +29,7 @@ public class LoginAction extends CommonAction{
 	}
 	
 	@Autowired
-	LoginService loginService;
+	protected LoginService loginService;
 	/*用户登录*/
 	@Action(value="/login"
 			,results={@Result(type="json")}
@@ -37,17 +37,12 @@ public class LoginAction extends CommonAction{
 	public String login(){
 		String pass=user.getPsw();
 		user=loginService.login(user.getUserId());
-		if(user==null){
-			System.out.println("未找到该账号！");
+		if(user.getUserId()==null){
 			setResult("未找到该账号！");
 		}else if(!pass.equals(user.getPsw())) {
 					setResult("密码错误！");
-		}else{
-			saveLogin(user);
-			user = getSessionUser();
-			setResult("登录成功");
-			System.out.println(user.getUserId());
 		}
+		saveLogin(user);
 		return aa;
 	}
 	

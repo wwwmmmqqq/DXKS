@@ -34,12 +34,13 @@
 					<button class="dropbtn">
 				    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				    				<i class="fa fa-user"></i>
-				    				<span>Mary Doe <i class="caret"></i></span>
+				    				<span>teacher <i class="caret"></i></span>
 				    			</a>    		
 				    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="#">退出系统</a>
+						<a href="#" >修改密码</a>
+						<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
 					</div>
 				</div>
 		
@@ -53,6 +54,7 @@
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
+
 					</div>
 				</div>
 		
@@ -76,6 +78,7 @@
 						<a href="teacher_read.jsp"><li class="side_nav1 ">查看成绩</li></a>
 						
 					</ul>
+
 				</div>
 			</nav>
 			<!-- sidebar end -->
@@ -105,6 +108,7 @@
 		    						<input type="radio"  id="ture-or-false"  name="1"/><label>判断题</label>
 		    						<input type="radio"  id="fill-in" name="1"/><label>填空题</label>
 		    						<input type="radio"  id="answer-questions" name="1"/><label>解答题</label>
+
 		    					</form>
 		    					
 		    					<!--<select>
@@ -129,6 +133,7 @@
 		    			</ul>
 		    		</div>
 		    		<div class="entry">
+
 		    			<!--单选题录入 start-->
 		    			<div class="choices">
 		    				<ul>
@@ -149,6 +154,7 @@
 		    				    <li id="resolve">解析<br/><textarea ></textarea></li>	 
 		    			    </ul>
 		    			</div>	
+		    			<!-- 多选录入 -->
 		    			<div class=" choicesw">
 		    				<ul>
 		    				<li id="dry">题干<br><textarea></textarea></li>	
@@ -192,10 +198,17 @@
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
 		    				<ul>
+<<<<<<< HEAD
 		    					<li id="dry">题干<br><textarea></textarea></li>		    					
 		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" /></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
 		    					<li id="resolve">解析<br><textarea></textarea></li>
+=======
+		    					<li id="dry">题干:<textarea></textarea></li>		    					
+		    					<li id="answer">答&nbsp;&nbsp;案:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" /></li>
+		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
+		    					<li id="resolve">解析:<textarea></textarea></li>
+>>>>>>> origin/wmq
 		    				</ul>
 		    			</div>
 		    			
@@ -208,6 +221,7 @@
 		    					<li id="answer">答案<br><textarea></textarea></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
 		    					<li id="resolve">解析<br><textarea></textarea></li>
+
 		    				</ul>
 		    			</div>
 		    			<div>
@@ -221,5 +235,7 @@
 		    	<!--题库录入 end-->
 		    </div>	
 	</body>
+
 	<script type="text/javascript" src="js/jsentryquestions.js" ></script>
+
 </html>

@@ -31,7 +31,7 @@ public class PaperServiceImpl implements PaperService {
 				Object val = field[i].get(currentPaper);
 				String type = f[i].getType().toString();
 				if(vals==null) {
-					vals=val.toString();
+					vals=val;
 					f[i].set(paper, vals);
 				}if(type.endsWith("int")) {
 					int va = f[i].getInt(paper);
