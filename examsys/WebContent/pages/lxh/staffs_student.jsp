@@ -327,7 +327,7 @@
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
-							<tbody class="editStudent">
+							<tbody id="editStudent">
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
@@ -843,8 +843,8 @@
 	}
 	
 	function editStudent() {
-		if(checkInput()) {
-			$.post("editUser",
+		if(!checkInput()){alert("123"); return false;} 
+		$.post("editUser",
 					{	
 						"user.name":$('#stu_name').val(),
 						"user.sex":$('#stu_sex').val(),
@@ -859,9 +859,7 @@
 						if(data.result=="编辑用户成功") {
 					  	location.href="staffs_student.jsp";
 				  	}
-			  })  
-		}
-		
+			  });
 	}
 
 	function deleteStudent(node) {
@@ -872,7 +870,7 @@
 				if(data.result=="删除成功") {
 						location.href="staffs_student.jsp";
 				}
-		  }) 
+		  }); 
 		}  
 		return false;
 	}
@@ -883,20 +881,17 @@
 				if(data.result=="成功退出") {
 						location.href="../gy/gy_login.jsp";
 				}
-		  }) 
+		  });
 		}  
 	}
 	
 	function checkInput() {
-		$(".editStudent input[type=text]").each(function() {
-			var v = $(this).val();
-			if(v=="") {
-				alert("请填写将信息填写完整");
+		$("#editStudent input[type=text]").each(function() {
+			if($(this).val()=="") {
+				alert("请将信息填写完整");
 				return false;
-			}else {
-				return true;
 			}
-			});
+		});
 	}
 </script>
 </html>

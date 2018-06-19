@@ -42,8 +42,20 @@ public class User {
 	
 	String classroom;//班级
 	
+	String status;
 	
-	
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
 	public String getUserId() {
 		return userId;
 	}
