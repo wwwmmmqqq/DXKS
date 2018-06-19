@@ -16,7 +16,9 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<!--上方导航栏-->
@@ -70,7 +72,6 @@
 			  	<ul class="side_nav">
 					<a href="jsshowpaper.jsp"><li class="side_nav1 ">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
-					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
 		  </div>
 		</nav>
@@ -120,7 +121,7 @@
 					<div class="tip">历史成绩</div>
 					<table class="table table-striped tb1" id="clearTbody">
 						<thead class="thead-light">
-							<tr >
+							<tr>
 								<th>序号</th>
 								<th>科目</th>
 								<th>参加学校</th>
@@ -128,15 +129,70 @@
 								<th>操作</th>
 							</tr>
 						</thead>
-						<tbody id="data-box">
-							<tr >
-								<!-- <td>1</td>
+						<tbody>
+							<tr>
+								<td>1</td>
 								<td>数据库概论</td>
 								<td>萍乡学院</td>
 								<td>2018-10-10</td>
 								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
 									<i class="fa fa-eye" ></i>
-								</td> -->
+								</td>
+							</tr>
+							
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>数据库概论</td>
+								<td>萍乡学院</td>
+								<td>2018-10-10</td>
+								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+									<i class="fa fa-eye"></i>
+								</td>
 							</tr>
 					</tbody>
 				</table>
@@ -580,11 +636,6 @@
 		
 		
 	</div>
-	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/popper.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="js/search.js" ></script>
-				<script type="text/javascript" src="js/teacher_history.js" ></script>
 	</body>
-
+	<script type="text/javascript" src="js/search.js" ></script>
 </html>

@@ -412,25 +412,11 @@ th {
 	color: black;
 	border:1px solid #bbb;
 }
-/* .modal-body .input_checkbox{
-	width: 85%;
-	height: 30px;
-	margin-top: 20px;
-	margin-left: 50px;
-}
-.input_checkbox .choose{
-	float:left;
-}
-.input_checkbox .choose1{
-	float:right;
-}
-.modal-body td.choose-sex{
-	text-align: center;
-}
+
 .modal-body input{
 	border-radius:5px ;
 	border: 1px solid black;
-} */
+}
 .modal-body .hover:hover{
 	border: 1px solid #0e92cf;
 	border-radius:5px ;

@@ -1,8 +1,5 @@
 package cn.examsys.lrx.vo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ConstituteVO {
 	
 	int count;
@@ -14,15 +11,6 @@ public class ConstituteVO {
 	int diff2Point;
 	int diff3Point;
 	int diff4Point;
-	
-	List<Integer> tnPoint = new ArrayList<>();
-	
-	public List<Integer> getTnPoint() {
-		return tnPoint;
-	}
-	public void setTnPoint(List<Integer> tnPoint) {
-		this.tnPoint = tnPoint;
-	}
 	
 	public int getCount() {
 		return count;

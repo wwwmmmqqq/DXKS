@@ -59,111 +59,111 @@
 						</div>
 					</div>
 							<ul class="sider-menu">
-								<li class="active">
-									<span>
-										在线考试
-									</span>
-								</li>
-								<li onclick="javascript:window.location.href='student-self-exam.jsp'">
-									<span>
-										在线练习
-									</span>
-								</li>
-								<li  onclick="javascript:window.location.href='student-all-exam.jsp'">
-									<span>
-										我的考试
-									</span>
-								</li>
-								<li  onclick="javascript:window.location.href='student-exam-score.jsp'">
-									<span>
-										历史成绩
-									</span>
-								</li>
-		
-								<li data-toggle="modal" data-target="#myinfo">
-									<span>
-										我的信息
-									</span>
-								</li>
-							</ul>
+						<li class="active">
+							<span >
+								在线考试
+							</span>
+						</li>
+						<li onclick="javascript:window.location.href='student-self-exam.jsp'">
+							<span>
+								在线练习
+							</span>
+						</li>
+						<li  onclick="javascript:window.location.href='student-all-exam.jsp'">
+							<span>
+								我的考试
+							</span>
+						</li>
+						<li  onclick="javascript:window.location.href='student-exam-score.jsp'">
+							<span>
+								历史成绩
+							</span>
+						</li>
+
+						<li data-toggle="modal" data-target="#myinfo">
+							<span>
+								我的信息
+							</span>
+						</li>
+					</ul>
 					<!-- 模态框（Modal） -->
-					<div class="modal fade" id="myinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-										&times;
-									</button>
-									<h4 class="modal-title" id="myModalLabel">
-										个人信息
-									</h4>
-								</div>
-								<div class="modal-body">
-									<form id="my-info">
-										<div >
-											<table class="info-body">
-												<tbody>
-													<tr class="basic-info">
-														<td>学号：</td>
-														<td>
-															<input type="text" class="form-control"/>
-														</td>
-													</tr>
-													<tr>
-														<td>姓名：</td>
-														<td>
-															<input type="text" class="form-control"/>
-														</td>
-													</tr>
-													<tr>
-														<td>性别：</td>
-														<td>
-															<input type="text" class="form-control"/>
-														</td>
-													</tr>
-													<tr>
-														<td>邮箱：</td>
-														<td>
-															<input type="text" class="form-control"/>
-														</td>
-													</tr>
-													<tr>
-														<td>电话：</td>
-														<td>
-															<input type="text" class="form-control"/>
-														</td>
-													</tr>
-													<tr>
-														<td>密码：</td>
-														<td>
-															<input type="text" class="form-control"/>
-														</td>
-													</tr>
-													<tr>
-														<td>身份证号：</td>
-														<td>
-															<input type="text" class="form-control"/>
-														</td>
-													</tr>
-													<tr>
-														<td>注册日期：</td>
-														<td>
-															<input type="text" class="form-control"/>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-									</button>
-									<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
-									</button>
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal -->
+<div class="modal fade" id="myinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					个人信息
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form id="my-info">
+					<div >
+						<table class="info-body">
+							<tbody>
+								<tr class="basic-info">
+									<td>学号：</td>
+									<td>
+										<input type="text" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>姓名：</td>
+									<td>
+										<input type="text" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>性别：</td>
+									<td>
+										<input type="text" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>邮箱：</td>
+									<td>
+										<input type="text" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>电话：</td>
+									<td>
+										<input type="text" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>密码：</td>
+									<td>
+										<input type="text" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>身份证号：</td>
+									<td>
+										<input type="text" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>注册日期：</td>
+									<td>
+										<input type="text" class="form-control"/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
 				</div>
 				</div>
 			</section>
@@ -223,7 +223,6 @@
 						</div>
 					</div>
 					<div class="paper-exam">
-					<!-- 考试卡片 -->
 					</div>
 				
 					<ul class="exam-page pagination pagination-sm">
@@ -276,7 +275,7 @@ $('.agree-rule').find('input[name="agree-checkebox"]').click(function() {
 loadPapersByExam(examsid);
 var currentPage = 1;
 function loadPapersByExam(examSid){
-	  $.post("loadPapersByExam", {
+	  $.post("loadMyExamList", {
 		  "exam.sid":examSid
 		  ,"page":currentPage
 	  }, function(data) {
@@ -295,13 +294,13 @@ function getPaper(obj){
 		+"<div class='icon paper-picture'></div>"
 		+"<div class='paper-intro'>"
 			+"<div class='paper-title'>"
-				+"<span>"+obj.name+"</span>"
+				+"<span>"+obj.title+"</span>"
 			+"</div>"
 			+"<div class='paper-body'>"
 				+"<span>总分："+obj.totalScore+"分</span>"
 				+"<span>及格："+obj.totalScore*0.6+"分</span>"
 				+"<span>"+obj.time+"</span>"
-				+"<span>"+obj.examStart+" - "+obj.examEnd+"</span>"
+				+"<span>"+obj.periodStart+" - "+obj.periodEnd+"</span>"
 			+"</div>"
 		+"</div>"
 		+"<div class='exam-button'>"
@@ -313,7 +312,7 @@ function getPaper(obj){
 }
 
 function startExam() {
-	location.href="startExam?paper.sid="+examsid;
+	location.href="student-exam.jsp?sid="+examsid;
 }
 
 //获取url中的参数
