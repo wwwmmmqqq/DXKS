@@ -105,7 +105,7 @@ public class JumpAction extends CommonAction {
 		 * 数据测试
 		 */
 		/*user.setUserId("admin123546");*/
-		if(user.getUserId().contains("admin")){      //教务查看所有题
+		if(getSessionUser().getType().contains("admin")){      //教务查看所有题
 			questionList=itemBankService.selectItemQuestionList(page);
 			
 			/*管理员题目列表总页数*/

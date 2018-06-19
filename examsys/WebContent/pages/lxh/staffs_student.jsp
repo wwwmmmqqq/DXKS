@@ -327,7 +327,7 @@
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
-							<tbody>
+							<tbody class="editStudent">
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
@@ -336,7 +336,7 @@
 								</tr>
 								<td class="choose-sex">
 							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  name="sex" id="stu_sex" name="user.sex">
+							      	<select class="hover"  id="stu_sex" name="user.sex">
 							        	<option class="hover">男</option>
 							        	<option class="hover">女</option>
 							      	 </select>		 
@@ -393,7 +393,6 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary add" onclick="editStudent();">修改</button>
-						<button type="button" class="btn btn-primary add">添加</button>
 					</div>
 
 				</div>
@@ -844,23 +843,25 @@
 	}
 	
 	function editStudent() {
-		$.post("editUser",
-				{
-					"user.name":$('#stu_name').val(),
-					"user.sex":$('#stu_sex').val(),
-					"user.userId":$('#stu_userId').val(),
-					"user.collegeName":$('#stu_collegeName').val(),
-					"user.department":$('#stu_department').val(),
-					"user.profession":$('#stu_profession').val(),
-					"user.classroom":$('#stu_classroom').val(),
-					"user.idcard":$('#stu_idcard').val(),
-					"user.phone":$('#stu_phone').val()
-				},function(data) {
-					if(data.result=="编辑用户成功") {
-				  	location.href="staffs_student.jsp";
-			  	}
-			  return false;
-		  })  
+		if(checkInput()) {
+			$.post("editUser",
+					{	
+						"user.name":$('#stu_name').val(),
+						"user.sex":$('#stu_sex').val(),
+						"user.userId":$('#stu_userId').val(),
+						"user.collegeName":$('#stu_collegeName').val(),
+						"user.department":$('#stu_department').val(),
+						"user.profession":$('#stu_profession').val(),
+						"user.classroom":$('#stu_classroom').val(),
+						"user.idcard":$('#stu_idcard').val(),
+						"user.phone":$('#stu_phone').val()
+					},function(data) {
+						if(data.result=="编辑用户成功") {
+					  	location.href="staffs_student.jsp";
+				  	}
+			  })  
+		}
+		
 	}
 
 	function deleteStudent(node) {
@@ -884,6 +885,18 @@
 				}
 		  }) 
 		}  
+	}
+	
+	function checkInput() {
+		$(".editStudent input[type=text]").each(function() {
+			var v = $(this).val();
+			if(v=="") {
+				alert("请填写将信息填写完整");
+				return false;
+			}else {
+				return true;
+			}
+			});
 	}
 </script>
 </html>
