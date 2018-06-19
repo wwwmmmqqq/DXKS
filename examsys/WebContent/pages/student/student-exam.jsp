@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
+<link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -29,9 +30,13 @@
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>wmq </span>
+									<span>${session.user.name}</span>
 								</a>
 							</li>
+								<div class="dropdown-content">
+		    			<a href="javascript:setPassword()">修改密码</a>
+		    			<a >退出系统</a>
+		    		</div>
 						</ul>
 					</div>
 				</div>
@@ -187,6 +192,9 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/student-exam.js"></script>
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+
 
 <script type="text/javascript">
 var paperSid=getParam("sid");

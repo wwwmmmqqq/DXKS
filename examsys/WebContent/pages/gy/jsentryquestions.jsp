@@ -19,8 +19,8 @@
             <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
             <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
             <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
-            <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-            <script type="text/javascript" src="js/jsentryquestions.js" ></script>
+            <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+            
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -39,7 +39,7 @@
 				    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="#" >修改密码</a>
+						<a href="javascript:modifyPassword()" >修改密码</a>
 						<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
 					</div>
 				</div>
@@ -57,7 +57,6 @@
 
 					</div>
 				</div>
-		
 			</div>
 			<!-- head end -->
 		
@@ -107,17 +106,8 @@
 		    						<input type="radio"  id="ture-or-false"  name="1"/><label>判断题</label>
 		    						<input type="radio"  id="fill-in" name="1"/><label>填空题</label>
 		    						<input type="radio"  id="answer-questions" name="1"/><label>解答题</label>
-
 		    					</form>
 		    					
-		    					<!--<select>
-		    						<option>请选择题型</option>
-		    						<option id="single-choice">单选题</option>
-		    						<option id="mutiple-choice">多选题</option>
-		    						<option id="ture-or-false">判断题</option>
-		    						<option id="fill-in">填空题</option>
-		    						<option id="answer-questions">解答题</option>
-		    					</select>-->
 		    				</li>
 		    				<li>请选择科目：
 		    					<select>
@@ -136,40 +126,40 @@
 		    			<!--单选题录入 start-->
 		    			<div class="choices">
 		    				<ul>
-		    				<li id="dry">题干<br><textarea></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
+		    				<li id="dry">题干<br><textarea name="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerA" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerB" /></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerC" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerD" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
 	    							<form class="choose">
-		    							<span>A</span><input type="checkbox"  class="choose1"/>
-			    						<span>B</span><input type="checkbox"  class="choose1"/>
-			    						<span>C</span><input type="checkbox"  class="choose1"/>
-			    						<span>D</span><input type="checkbox"  class="choose1"/>
+		    							<span>A</span><input type="radio" name="ItemA" class="choose1"/>
+			    						<span>B</span><input type="radio" name="ItemB" class="choose1"/>
+			    						<span>C</span><input type="radio" name="ItemC" class="choose1"/>
+			    						<span>D</span><input type="radio" name="ItemD" class="choose1"/>
 		    						</form>
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" /></li>
-		    				    <li id="resolve">解析<br/><textarea ></textarea></li>	 
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowlege"/></li>
+		    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
 		    			    </ul>
 		    			</div>	
 		    			<!-- 多选录入 -->
 		    			<div class=" choicesw">
 		    				<ul>
-		    				<li id="dry">题干<br><textarea></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerA"/></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerB"/></li>
-		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerC" /></li>
-		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerD" /></li>
-		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+		    				<li id="dry">题干<br><textarea name="question"></textarea></li>	
+		    				    <li id="sa">A<input class="form-control " type="text" name="answerA"/></li>
+		    				    <li id="sb">B<input class="form-control " type="text" name="answerB"/></li>
+		    				    <li id="sc">C<input class="form-control " type="text" name="answerC" /></li>
+		    				    <li id="sd">D<input class="form-control " type="text" name="answerD" /></li>
+		    				    <li id="answer" class="answerw">答案&nbsp;
 	    							<form class="choose">
-		    							<span>A</span><input type="checkbox"  class="choose1" name="singleItemA"/>
-			    						<span>B</span><input type="checkbox"  class="choose1"  name="singleItemB"/>
-			    						<span>C</span><input type="checkbox"  class="choose1"  name="singleItemC"/>
-			    						<span>D</span><input type="checkbox"  class="choose1" name="singleItemD"/>
+		    							<span>A</span><input type="checkbox"  class="choose1" name="ItemA"/>
+			    						<span>B</span><input type="checkbox"  class="choose1"  name="ItemB"/>
+			    						<span>C</span><input type="checkbox"  class="choose1"  name="ItemC"/>
+			    						<span>D</span><input type="checkbox"  class="choose1" name="ItemD"/>
 		    						</form>
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="singleknowlege"/></li>
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowlege"/></li>
 		    				    <li id="resolve">解析<br/><textarea  name="resolve"></textarea></li>	 
 		    			    </ul>
 		    			</div>
@@ -179,17 +169,17 @@
 		    			<!--判断-->
 		    			<div class="ture-or-false">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
+		    					<li id="dry">题干<br><textarea name="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerA" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerB" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
 	    							<form class="choose">
-		    							<span>A</span><input type="radio" name="w" class="choose1"/>
-			    						<span>B</span><input type="radio" name="w" class="choose1"/>
+		    							<span>A</span><input type="radio" name="itemA" class="choose1"/>
+			    						<span>B</span><input type="radio" name="itemB" class="choose1"/>
 		    						</form>
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" /></li>
-		    				    <li id="resolve">解析<br/><textarea ></textarea></li>	 
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowledge"/></li>
+		    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
 		    			    </ul>
 		    			</div>	
 		    			
@@ -197,10 +187,10 @@
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea></textarea></li>		    					
-		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" /></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
-		    					<li id="resolve">解析<br><textarea></textarea></li>
+		    					<li id="dry">题干<br><textarea name="question"></textarea></li>		    					
+		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="answer"/></li>
+		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="knowledge"/></li>
+		    					<li id="resolve">解析<br><textarea name="resolve"></textarea></li>
 
 		    				</ul>
 		    			</div>
@@ -210,10 +200,10 @@
 		    			<!--解答题录入 start-->
 		    			<div class="answer-question">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea></textarea></li>
-		    					<li id="answer">答案<br><textarea></textarea></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
-		    					<li id="resolve">解析<br><textarea></textarea></li>
+		    					<li id="dry">题干<br><textarea name="question"></textarea></li>
+		    					<li id="answer">答案<br><textarea name="answer"></textarea></li>
+		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="knowledge"/></li>
+		    					<li id="resolve">解析<br><textarea name="resolve"></textarea></li>
 
 		    				</ul>
 		    			</div>
@@ -227,15 +217,65 @@
 		    	</div>
 		    	<!--题库录入 end-->
 		    </div>	
-		    <script type="text/javascript" src="js/jsentryquestions.js" ></script>
 		    
-		    
+		    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		    <script type="text/javascript" src="js/jquery-confirm.js"></script>
+            <script type="text/javascript" src="js/jsentryquestions.js" ></script>
+            <script>
+            function modifyPassword(){
+             	var str = '<form id="user_setting" action="">' +
+         		'<table style="width:100%;">' +
+         		'<tbody>' +
+         		'<tr>' +
+         		'<td>旧密码</td>' +
+         		'<td><input type="text"class="form-control" name="oldpwd"/></td>' +
+         		'</tr>' +
+         		'<tr>' +
+         		'<td>新密码</td>' +
+         		'<td><input type="text"class="form-control"name="newpwd"/></td>' +
+         		'</tr>' +
+         		'<tr>' +
+         		'<td>确认密码</td>' +
+         		'<td><input type="text"class="form-control"name="repwd"/></td>' +
+         		'</tr>' +
+         		'</tbody>' +
+         		'</table>' +
+         		'</form>'
+         		$.confirm({
+        	title : '修改密码',
+        	smoothContent : false,
+        	content : str,
+        	buttons : {
+        		deleteUser : {
+        			btnClass : 'btn-blue',
+        			text : '修改',
+        			action : function() {
+        				/* 放post方法 */
+        			}
+        		},
+        		cancelAction : {
+        			btnClass : 'btn-default',
+        			text : '取消',
+        		}
+        	}
+        });
+             }
+            function importQuestions(){
+            	
+            	/* 导入单选题答案 */
+            	var sanswera=$('.choices input[name="answerA"]').val();
+            	var sanswerb=$('.choices input[name="answerB"]').val();
+            	var sanswerc=$('.choices input[name="answerC"]').val();
+            	var sanswerd=$('.choices input[name="answer"]').val();
+            	
+                var sitema=$('.choose input[name="ItemA"]').val();
+                var sitemb=$('.choose input[name="ItemB"]').val();
+                var sitemc=$('.choose input[name="ItemC"]').val();
+                var sitemd=$('.choose input[na  me="ItemD"]').val();
+                
+                
+               
+            }
+        </script>
 	</body>
-
-<<<<<<< HEAD
-	
-=======
-	<script type="text/javascript" src="js/jsentryquestions.js" ></script>
-
->>>>>>> lrx
 </html>

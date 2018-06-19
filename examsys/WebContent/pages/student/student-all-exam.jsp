@@ -14,8 +14,9 @@
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>ipt>
+<link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 <body>
 
@@ -37,7 +38,7 @@
 								
 							</li>
 							<div class="dropdown-content">
-		    			<a >修改密码</a>
+		    			<a href="javascript:setPassword()">修改密码</a>
 		    			<a >退出系统</a>
 		    		</div>
 						</ul>
@@ -209,96 +210,7 @@
 						</div>
 					</div>
 					<div class="history-paper">
-					<!-- <ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>考试时间：120分钟</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary" onclick="javascript:window.location.href='student-paper-detail.jsp'" >查看</button>
-							</div>
-						</li>
-					</ul>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>考试时间：120分钟</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary">查看</button>
-							</div>
-						</li>
-					</ul>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>考试时间：120分钟</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary">查看</button>
-							</div>
-						</li>
-					</ul>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>考试时间：120分钟</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary">查看</button>
-							</div>
-						</li>
-					</ul>
-					<ul class="paper-item">
-						<li>
-							<div class="icon paper-picture"></div>
-							<div class="paper-intro">
-								<div class="paper-title">
-									<span>软件工程导论期末测试卷A卷</span>
-								</div>
-								<div class="paper-body">
-									<span>总分：100分</span>
-									<span>及格：60分</span>
-									<span>考试时间：120分钟</span>
-								</div>
-							</div>
-							<div class="exam-button">
-								<button class="btn btn-primary">查看</button>
-							</div>
-						</li>
-					</ul> -->
+					
 					</div>
 					<ul class="exam-page pagination pagination-sm">
 						<li>
@@ -332,6 +244,10 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+
+
 <script type="text/javascript">
 loadMyHistoryPapersByexam();
 var currentPage = 1;
