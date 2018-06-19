@@ -62,7 +62,7 @@ public class RoleServiceImpl implements RoleService {
 				Object vals = f[i].get(role);
 				Object val = field[i].get(currentRole);
 				if(vals==null) {
-					vals=val.toString();
+					vals=val;
 					f[i].set(role, vals);
 				}
 			}

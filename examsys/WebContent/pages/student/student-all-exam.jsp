@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
                 <%
@@ -33,7 +32,7 @@
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>wmq </span>
+									<span>${session.user.name} </span>
 								</a>
 								
 							</li>

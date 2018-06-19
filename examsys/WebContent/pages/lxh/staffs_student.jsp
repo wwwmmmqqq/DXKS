@@ -27,7 +27,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>muxue <i class="caret"></i></span>
+								<span>${session.user.name} <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -67,7 +67,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, muxue</p>
+					<p>Hello, ${session.user.name}</p>
 				</div>
 
 			</div>
@@ -137,7 +137,8 @@
 						<td>1班</td>
 						<td>
 							<i class="fa fa-eye see" data-toggle="modal" data-target="#myModal_eye_student"></i>
-				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-pencil check" data-toggle="modal" data-target="#myModal_check"></i>
+
 				        	<i class="fa fa-trash-o"></i>
 				        </td>
 					</tr>
@@ -363,6 +364,16 @@
 									</td>
 								</tr>
 								<tr>
+									<td class="choose-sex">
+								      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
+								      	<select class="hover"  name="sex" id="sex">
+								        	<option class="hover">男</option>
+								        	<option class="hover">女</option>
+								      	 </select>
+								        					 
+								    </td>
+								</tr>
+								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
 										<input type="text" class="hover">
@@ -413,6 +424,93 @@
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary add" onclick="createStudent();">添加</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+<!--模态框修改学生信息 -->
+		<div class="modal fade" id="myModal_check">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- 模态框头部 -->
+					<div class="modal-header">
+						<h4 class="modal-title">修改学生信息</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- 模态框主体 -->
+					<div class="modal-body">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" id="stu_name" name="user.name">
+									</td>
+								</tr>
+								<td class="choose-sex">
+							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
+							      	<select class="hover"  name="sex" id="stu_sex" name="user.sex">
+							        	<option class="hover">男</option>
+							        	<option class="hover">女</option>
+							      	 </select>		 
+							    </td>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" readonly="readonly" id="stu_userId" name="user.userId">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" id="stu_collegeName" name="user.collegeName">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" id="stu_department" name="user.department">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" id="stu_profession" name="user.profession">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" id="stu_classroom" name="user.classroom">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										身份证号&nbsp;
+										<input type="text" class="hover" id="stu_idcard" name="user.idcard">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										联系方式&nbsp;
+										<input type="text" class="hover" id="stu_phone" name="user.phone">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+					<!-- 模态框底部 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary add" onclick="editStudent();">修改</button>
 						<button type="button" class="btn btn-primary add">添加</button>
 					</div>
 
@@ -695,5 +793,204 @@
 		
 		
 	</body>
+<script type="text/javascript">
+	loadStudentList(1);
+	var currentPage=1;
+	var totalPage=1;
+	function loadStudentList(page) {
+		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
+			  var userList=data.userList;
+			  totalPage=data.totalPage;
+			  var htm = "";
+			  var ht = "";
+			  for(var i=0;i<userList.length;i++) {
+				  	var number=(page-1)*10;
+				  	number +=i+1;
+		 			htm += getItemHtml(i, userList[i],number);
+		 		}
+			  $('#student-list-box').html(htm);
+			 for(var j=1;j<=totalPage;j++) {
+				 ht += getLiHtml(j);
+			 }
+			  $('.pagination').html(ht);
+		 		currentPage = page;
+		  })  
+	}
+	function nextPage() {
+		if(currentPage<totalPage) 
+			showPaperList(++currentPage);
+	}
+	
+	function prevPage() {
+		if(currentPage>=2) 
+			showPaperList(--currentPage);
+	}
+	function jumpPage() {
+		var juPage=$('#jpage').html();
+		alert(juPage);
+		if(currentPage==juPage || juPage<1 || juPage>totalPage){
+			showPaperList(currentPage);
+		} else{
+			showPaperList(currentPage+(juPage-currentPage));
+			
+		}
+	}
+	
+	function getItemHtml(index, obj,number) {
+		
+		var htm = "<tr class='tb_width'>"
+			+"<td>"+number+"</td>"
+			+"<td>"+obj.name+"</td>"
+			+"<td>"+obj.userId+"</td>"
+			+"<td>"+obj.collegeName+"</td>"
+			+"<td>"+obj.department+"</td>"
+			+"<td>"+obj.profession+"</td>"
+			+"<td>"+obj.classroom+"</td>"
+			+"<td>"
+			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>"
+			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
+			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
+			+"</td>"
+			+"</tr>";
+		return htm;
+	}
+	function getLiHtml(index) {
+		if(index==1){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+		}
+		else if(index==totalPage){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+		}
+		else {
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+		}
+		return ht;    
+	}
+	function studentInfo(node) {
+		var td = node.parentNode.parentNode.childNodes;
+		var userId = td[2].innerHTML;
+		$.post("showUser",{"user.userId":userId},function(data) {
+			var user = data.user;
+			var info = getInfoHtml(user);
+			$('#student-info-box').html(info);
+			$('#stu_name').val(user.name);
+			$('#stu_sex').val(user.sex);
+			$('#stu_userId').val(user.userId);
+			$('#stu_collegeName').val(user.collegeName);
+			$('#stu_department').val(user.department);
+			$('#stu_profession').val(user.profession);
+			$('#stu_classroom').val(user.classroom);
+			$('#stu_idcard').val(user.idcard);
+			$('#stu_phone').val(user.phone);
+		})
+	}	
+	function getInfoHtml(obj) {
+		var info = "<tr>"
+			+"<td>"
+			+"姓名"
+			+"<div class='tb_information'>"+obj.name+"</div>"
+			+"</td>"
+			+"</tr>"
+			+"<tr>"
+			+"<td>"
+			+"学号"
+			+"<div class='tb_information'>"+obj.userId+"17001</div>"
+			+"</td>"
+			+"</tr>"
+			+"<tr>"
+			+"<td>"
+			+"学校"
+			+"<div class='tb_information'>"+obj.collegeName+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"学院"
+			+"<div class='tb_information'>"+obj.department+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"专业"
+			+"<div class='tb_information'>"+obj.profession+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"班级"
+			+"<div class='tb_information'>"+obj.classroom+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"身份证号"
+			+"<div class='tb_information'>"+obj.idcard+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"性别"
+			+"<div class='tb_information'>"+obj.sex+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"联系方式"
+			+"<div class='tb_information'>"+obj.phone+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"邮箱"
+			+"<div class='tb_information'>"+obj.email+"</div>"
+			+"</td></tr>";
+		return info;
+	}
+	
+	function createStudent() {
+		 $.post("createUser",
+				 {	
+			 		"user.name":$('#name').val(),
+			 		"user.userId":$('#userId').val(),   //用户名
+				 	"user.collegeName":$('#collegeName').val(),
+				 	"user.department":$('#department').val(),
+				 	"user.profession":$('#profession').val(),
+				 	"user.classroom":$('#classroom').val(),
+			 		"user.type":"学生",					//用户类型
+			 		"user.sex":$('#sex').val(),						//用户性别
+			 		"user.phone":$('#phone').val(),
+			 		"user.idcard":$('#idcard').val()
+			 	},function(data){
+			 		alert(data.result);    //message为user返回信息
+			 		if(data.result=="用户创建成功"){
+			 			location.href="staffs_student.jsp";
+			 		}else {
+			 			return false;
+			 		}
+				 }
+			)
+	}
+	
+	function editStudent() {
+		$.post("editUser",
+				{
+					"user.name":$('#stu_name').val(),
+					"user.sex":$('#stu_sex').val(),
+					"user.userId":$('#stu_userId').val(),
+					"user.collegeName":$('#stu_collegeName').val(),
+					"user.department":$('#stu_department').val(),
+					"user.profession":$('#stu_profession').val(),
+					"user.classroom":$('#stu_classroom').val(),
+					"user.idcard":$('#stu_idcard').val(),
+					"user.phone":$('#stu_phone').val()
+				},function(data) {
+					if(data.result=="编辑用户成功") {
+				  	location.href="staffs_student.jsp";
+			  	}
+			  return false;
+		  })  
+	}
+
+	 function deleteStudent(node) {
+		var td = node.parentNode.parentNode.childNodes;
+		var userId = td[2].innerHTML;
+		if(confirm("确定要删除该用户吗？")) {
+			$.post("deleteUser",{"user.userId":userId},function(data) {
+				if(data.result=="删除成功") {
+						location.href="staffs_student.jsp";
+				}
+		  }) 
+		}  
+		return false;
+	} 
+</script>
 
 </html>

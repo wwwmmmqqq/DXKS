@@ -21,6 +21,7 @@ public abstract class CommonAction extends ActionSupport {
 		User user = new User();
 		user.setUserId("admin");
 		user.setPsw("123");
+		user.setType("admin");
 		user.setName("nick");
 		user.setCollegeName("萍乡学院");
 		user.setPermission("");

@@ -120,10 +120,9 @@
 				<div class="lable-question">
 					<img src="img/pre-lable.png" id="lable-img-${st.index}" class="lable-question-img" onclick="markClick()" />
 				</div>
-				<div class="question" style="min-height: 380px">
+				<div class="question">
 					<div id="no_${st.index}">
 						${st.index+1}. ${item.title} 
-						
 						${(item.type=="Single")?"(单选题)":""}
 						${(item.type=="Multiple")?"(多选题)":""}
 						${(item.type=="TrueOrFalse")?"(判断题)":""}
@@ -250,21 +249,21 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 	  ,"answer.subjectiveAnswer":subjectiveAnswer//主观题内容
   }, function(data) {
 	  if(data.result == 'fail') {
-		  alert('做题失败');
+		 /*  alert('做题失败'); */
 	  } else {
-		  alert('做题成功');
+		  /* alert('做题成功'); */
 	  }
   });
 }
 
 function doit(questionId, optId, inputObj, trueOrFalse) {
 	todo(questionId, optId, inputObj.value, inputObj.value, trueOrFalse);
+	$('#abc'+currentItemId).addClass('has-que-num ');
 }
 
 $(document).ready(function(){
 	$('.option-item').click(function() {
 		$(this).find('.opt-together').click();
-		$(this).find('.opt-together').siblings().unbind();
 	});
 });
 	
