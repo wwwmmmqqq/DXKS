@@ -124,4 +124,5 @@ public class ConstituteAction extends CommonAction {
 	public String getResult() {
 		return result;
 	}
+	
 }
