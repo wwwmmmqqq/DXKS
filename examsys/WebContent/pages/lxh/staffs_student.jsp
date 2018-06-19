@@ -126,7 +126,7 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="student-list-box">
 					<tr class="tb_width">
 						<td>1</td>
 						<td>慕雪</td>
@@ -609,7 +609,7 @@
 	var totalPage=1;
 	function loadStudentList(page) {
 		
-		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
+		$.post("selectUserList",{"user.type":"student","page":page},function(data) {
 			  var userList=data.userList;
 			  totalPage=data.totalPage;
 			  var htm = "";
@@ -822,6 +822,7 @@
 			if(v=="") {
 				alert("请填写将信息填写完整");
 				return false;
+			}
 		});
 	}
 </script>

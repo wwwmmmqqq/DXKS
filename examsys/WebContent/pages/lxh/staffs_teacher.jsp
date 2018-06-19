@@ -126,7 +126,7 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="teacher-list-box">
 					<tr class="tb_width">
 						<td>1</td>
 						<td>慕雪</td>
