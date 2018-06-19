@@ -104,9 +104,7 @@
 		    	</div>
 		    	<!-- 搜索部分 -->
 		    	<div>
-		    	<div class="add_paper">
-		    		<button type="button" class="btn"></button>
-		    	</div>
+		    	
 			    	<div class="search">
 		    		<form class="form-inline searchform" role="form">
 		    			<select class="form-control" id="">
