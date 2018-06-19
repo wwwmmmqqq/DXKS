@@ -91,6 +91,25 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
+	String oldPsw, newPsw;
+	public void setOldPsw(String oldPsw) {
+		this.oldPsw = oldPsw;
+	}
+	public void setNewPsw(String newPsw) {
+		this.newPsw = newPsw;
+	}
+	@Action(value="/updatePsw"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String updatePsw() {
+		
+		boolean bo = serivce.updatePsw(getSessionUser(), oldPsw, newPsw);
+		if (!bo) {
+			setResult("旧密码错误");
+		}
+		return aa;
+	}
+	
 	@Override
 	public String getResult() {
 		return result;

@@ -47,5 +47,22 @@ public class PersonalServiceImpl implements PersonalService {
 			return null;
 		}
 	}
+
+	@Override
+	public boolean updatePsw(User sessionUser, String oldPsw, String newPsw) {
+		try {
+			User u = dao.findOneByHql("from User where userId=?", new Object[]{sessionUser.getUserId()});
+			if (u.getPsw().equals(oldPsw)) {
+				u.setPsw(newPsw);
+				dao.updateEntity(u);
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 }
