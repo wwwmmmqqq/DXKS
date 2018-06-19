@@ -26,7 +26,8 @@ public class ScoreTool {
 		if (type.equals(Conf.Question_Single)) {
 			pct = theOption.getIsAnswer() == 1 ? 1 : 0;
 		} else if (type.equals(Conf.Question_Multiple)) {
-			pct = theOption.getIsAnswer() == 1 ? 1 : 0;
+			pct = theOption.getIsAnswer() == 1
+					&& answer.getTrueOrFalse() == 1 ? 1 : 0;
 		} else if (type.equals(Conf.Question_TrueOrFalse)) {
 			pct = theOption.getIsAnswer() == answer.getTrueOrFalse() ? 1 : 0;
 		} else if (type.equals(Conf.Question_Fills)) {
@@ -56,21 +57,16 @@ public class ScoreTool {
 			array[i][0] = 0;
 		}
 
-		for (int m = 1; m < array.length; m++) {// 利用动态规划将数组赋满值
+		for (int m = 1; m < array.length; m++) {//利用动态规划将数组赋满值
 			for (int n = 1; n < array[m].length; n++) {
 				if (s1[m - 1] == s2[n - 1]) {
-					array[m][n] = array[m - 1][n - 1] + 1;// 动态规划公式一
+					array[m][n] = array[m - 1][n - 1] + 1;
 				} else {
-					array[m][n] = max(array[m - 1][n], array[m][n - 1]);// 动态规划公式二
+					array[m][n] = max(array[m - 1][n], array[m][n - 1]);
 				}
 			}
 		}
-		// for(int m = 0; m < array.length; m++){//将数组赋满值,这样可以从右下角开始遍历找出最大公共子序列
-		// for(int n = 0; n < array[m].length; n++){
-		// System.out.print(array[m][n]);
-		// }
-		// System.out.println();
-		// }
+		
 		Stack<Character> stack = new Stack<>();
 		int i = x.length() - 1;
 		int j = y.length() - 1;
