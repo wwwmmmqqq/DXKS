@@ -54,14 +54,12 @@
 							<input type="radio" name="1" id="student" value="学生"/>
 							<span>学生</span>
 						</div>
-						<!--  <div class="yzm">
+						<div class="yzm">
 							<input name="XuasYzm" size="9" maxlength="5" class="form-control input_yzm">
 							<div >
-								<a href='javascript:refreshimg()' title='看不清楚，换个图片' ><img class="img_yzm" id='checkcode' src="http://www.cnhww.com/demo5/GetCode.asp 
-
-" border="0" /></a>
+								<a href='javascript:refreshimg()' title='看不清楚，换个图片' ><img class="img_yzm" id='checkcode' src="http://www.cnhww.com/demo5/GetCode.asp " border="0" /></a>
 							</div>
-						</div>-->
+						</div>
 						
 						<div class="btn_bottom">
 							<button type="button" class="btn btn-primary btn_login" onclick="login()">登录</button>
@@ -90,20 +88,25 @@
 		}
 		else {
 			 $.post("login",{"user.userId":Id,"user.psw":password},function(data) {
-				 alert(1)
-				 var user = data.user;
-				 if(user.type=="学生" && user.type == studentType) {
-					window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
-				 }
-				if(user.type=="教师" && user.type == teacherType) {
-					window.location.href = /* "showItemBankListByUser"; // */"../gy/jsshowpaper.jsp?user.userId="+user.userId;
-				 }
-				if(user.type=="教务" && user.type == administrationType) {
-					window.location.href = "../lxh/jwindex.jsp?user="+user;
-				 }
-				if(user.type=="管理员" && user.type ==adminType) {
-					window.location.href = "../gy/history_teacher.jsp?user.userId="+user.userId;
-				 }
+				if(data.result=="未找到该账号！") {
+					alert(data.result);
+				}else if(data.result=="密码错误！") {
+					alert(data.result);
+				}else {
+				 	var user = data.user;
+				 	if(user.type=="学生") {
+						window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
+					 }
+					if(user.type=="教师") {
+						window.location.href = "../gy/jsshowpaper.jsp?user.userId="+user.userId;
+					 }
+					if(user.type=="教务") {
+						window.location.href = "../lxh/jwindex.jsp?user="+user;
+					 }
+					if(user.type=="管理员") {
+						window.location.href = "../gy/history_teacher.jsp?user.userId="+user.userId;
+				 	}
+				}
 			  })
 	  	}
 	}

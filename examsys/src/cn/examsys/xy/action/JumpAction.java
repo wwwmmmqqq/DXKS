@@ -98,7 +98,7 @@ public class JumpAction extends CommonAction {
 		return null;
 	}
 	
-	@Action(value="/showItemBankListByUser"
+	@Action(value="/showItemBankListByUserJump"
 			,results={@Result(name="aa",location="/pages/gy/jsshowpaper.jsp")})
 	public String showItemBankListByUser(){
 		/**
@@ -136,4 +136,17 @@ public class JumpAction extends CommonAction {
 		setResult("题库查看成功！");
 		return aa;
 	}
+	
+
+	/*@Action(value="/loginOutJump"
+			,results={@Result(name="aa",location="/pages/gy/gy_login.jsp")})
+	public String loginOut() {
+		if(!isLogin()){
+			setResult("请先登录");
+		}
+		session.removeAttribute("user");
+		System.out.println("tuichula");
+		setResult("成功退出");
+		return "aa";
+	}*/
 }

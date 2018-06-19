@@ -162,7 +162,6 @@
 		    					<li><button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modify-paper"><i class="fa fa-pencil"></i></button></li>
 		    				</ul>
 		    			</div>
-		    			<p>共查询到？条记录</p>
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
@@ -196,7 +195,7 @@
 		    		  
 		    			<div class="page_pagination">
 		    				<ul class="pagination">
-		    					<li class="page-item">
+		    					<!-- <li class="page-item">
 		    						<a class="page-link" href="javascript:prevPage()">上一页</a>
 		    					</li>
 		    					<li class="page-item">
@@ -210,7 +209,7 @@
 		    					</li>
 		    					<li class="page-item">
 		    						<a class="page-link" href="javascript:nextPage()">下一页</a>
-		    					</li>
+		    					</li> -->
 		    					<input class="jump" type="text" id="jpage"/>
 		    					<button class="btn btn-primary btn_jump">跳转</button>
 		    				</ul>
@@ -508,15 +507,21 @@
 	<script type="text/javascript">
 	showPaperList(1);
 	var currentPage = 1;
-	var totalPage = 3;
+	var totalPage = 1;
 	function showPaperList(page) {
 		$.post("showPaperList", {"page":page}, function(data) {
 			var paperList = data.paperList;
+			totalPage = data.totalPage;
 			var htm = "";
+			var ht="";
 	 		for(var i=0;i<paperList.length;i++) {
 	 			htm += getItemHtml(i, paperList[i]);
 	 		}
 	 		$('#paper-list-box').html(htm);
+	 		for(var j=1;j<=totalPage;j++) {
+				ht += getLiHtml(j);
+			 }
+			$('.pagination').html(ht);
 	 		currentPage = page;
 		});
 	}
@@ -559,6 +564,19 @@
 		return htm;
 	}
 	
-	
+	function getLiHtml(index) {
+		if(index==1){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:showPaperList(1)'>"+index+"</a></li>";
+		}
+		else if(index==totalPage){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:showPaperList("+index+")'>"+index+"</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+		}
+		else {
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:showPaperList("+index+")'>"+index+"</a></li>";
+		}
+		return ht;    
+	}
 	</script>
 </html>
