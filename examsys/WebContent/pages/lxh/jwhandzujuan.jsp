@@ -174,7 +174,7 @@
 		    								    </p>
 		    								</div>
 		    							    <div class="exam-con">
-		    							    	<div class="exam-q"> 
+		    							    	<div class="exam-q">
 		    							    		
 		    							    	</div>
 		    							    	<div class="exam-qlist"> 
@@ -182,7 +182,7 @@
 		    							    			<div class="exam-q">
 		    							    				1.下列说法正确的是(&nbsp;&nbsp;)
 		    							    			</div>
-		    							    		
+		    							    			
 		    							    		    <div class="exam-s">
 		    							    			    <span class="op-item">
 		    							    			    	<span>A.</span> 

@@ -141,104 +141,6 @@
 				        	<i class="fa fa-trash-o"></i>
 				        </td>
 					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>15478015</td>
-						<td>萍乡学院</td>
-						<td>信息与计算机工程学院</td>
-						<td>软件工程</td>
-						<td>1班</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>15478015</td>
-						<td>萍乡学院</td>
-						<td>信息与计算机工程学院</td>
-						<td>软件工程</td>
-						<td>1班</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>15478015</td>
-						<td>萍乡学院</td>
-						<td>信息与计算机工程学院</td>
-						<td>软件工程</td>
-						<td>1班</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>15478015</td>
-						<td>萍乡学院</td>
-						<td>信息与计算机工程学院</td>
-						<td>软件工程</td>
-						<td>1班</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>15478015</td>
-						<td>萍乡学院</td>
-						<td>信息与计算机工程学院</td>
-						<td>软件工程</td>
-						<td>1班</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>15478015</td>
-						<td>萍乡学院</td>
-						<td>信息与计算机工程学院</td>
-						<td>软件工程</td>
-						<td>1班</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>15478015</td>
-						<td>萍乡学院</td>
-						<td>信息与计算机工程学院</td>
-						<td>软件工程</td>
-						<td>1班</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
 				</tbody>
 			</table>
 			<!--<div class="bottom_button">
@@ -695,5 +597,19 @@
 		
 		
 	</body>
-
+<script>
+selectUserList();
+function selectUserList(){
+	$.post("selectUserList",{"user.type":"student","page":6},function(data) {
+		  var user=data.userList;
+		  alert(user.length);			//查询出的当前页的用户的总数
+		  alert(data.totalPage);		//查询出的总页数
+		  for(var i=0; i<user.length; i++){
+			  alert(user[i].userId); 	 //第6*10+i位用户的id号
+		  }
+		      
+	}) 
+}
+ 
+</script>
 </html>
