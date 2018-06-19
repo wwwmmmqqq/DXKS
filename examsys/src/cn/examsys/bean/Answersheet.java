@@ -18,7 +18,7 @@ public class Answersheet {
 	
 	String userId;
 	
-	//int paperRef;//指向的试卷
+	int paperRef;//指向的试卷
 	
 	String type;//题目类型
 	
@@ -84,6 +84,14 @@ public class Answersheet {
 		this.fillsAnswer = fillsAnswer;
 	}
 
+	public int getPaperRef() {
+		return paperRef;
+	}
+	
+	public void setPaperRef(int paperRef) {
+		this.paperRef = paperRef;
+	}
+	
 	public String getSubjectiveAnswer() {
 		return subjectiveAnswer;
 	}

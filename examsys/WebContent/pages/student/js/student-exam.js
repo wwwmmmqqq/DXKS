@@ -95,7 +95,7 @@ function markClick() {
 }
 
 /* 倒计时 */
-function startTimeCounting(t0, t1, callback) {
+function startTimeCounting(t0, t1) {
 	var a = new Date(t0);
 	var b = new Date(t1);
 	var dms = b.valueOf() - a.valueOf();//结束时间减去当前时间=剩余时间
@@ -110,7 +110,6 @@ function startTimeCounting(t0, t1, callback) {
 			alert("时间到，自动提交试卷");
 			window.clearInterval(iid);
 			document.getElementById("mss").value = "00:00:00";
-			callback();
 		} else {
 			document.getElementById("mss").value 
 				= displayTime(hour) + ":" + displayTime(min) + ":" + displayTime(sec);
