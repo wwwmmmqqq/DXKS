@@ -193,6 +193,7 @@
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/student-exam.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
 
@@ -201,15 +202,29 @@
 var paperSid=getParam("paper.sid");
 >>>>>>> lrx
 
+=======
+
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+
+<script type="text/javascript">
+var paperSid=${request.paper.sid};
+>>>>>>> lrx
 window.onload = function() {
-	var examEnd = "2018-06-20 23:59:00";//这趟考试结束时间
 	var now = "${session.Time}";//服务器当前时间
+	var examEnd = "2018-06-20 23:20:00";//这趟考试结束时间
 	//开始倒计时
-	startTimeCounting(now, examEnd, function() {
-		//倒计时结束后自动交卷
-		submitPaper(paperSid);
-	});
+	startTimeCounting(now, examEnd);
 };
+//获取url中的参数
+//去掉了！
+/* function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
+} */
 </script>
 <script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
@@ -235,17 +250,38 @@ function getChoiceItem(n) {
 	return html;
 }
 
-//获取url中的参数
-function getParam(name) {
-  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
-  var result = window.location.search.substr(1).match(reg); //匹配目标参数
-  if (result != null) 
-  	return decodeURIComponent(result[2]);
-  return null;
+
+$("#submitPaperBtn").click(function() {
+	submitPaper(paperSid);
+});
+
+function submitPaper(paperSid) {
+	  $("#submitPaperBtn").text("交卷中...");
+	  $.post("submitPaper", {
+		  "paper.sid":paperSid
+	  }, function (data) {
+		  if(data.result == 'fail') {
+			  //$("#examResult").text("交卷失败");
+			  $(".exam-result").html("交卷失败，该试卷已被提交过！");
+			  $("#submitPaperBtn").html("提交试卷");
+		  } else {
+			  //$("#examResult").text("交卷成功 成绩ID=" + data.result);//成绩ID
+			  $(".exam-result").text("${session.user.name}本次考试最终得分：" + data.result + "分");
+			  $("#submitPaperBtn").html("已交卷");
+			  $("#submitPaperBtn").attr("disabled", "disabled");
+		  }
+		  
+	  });
 }
 
+$(document).ready(function(){
+	$('.option-item').click(function() {
+		$(this).find('.opt-together').click();
+	});
+});
 </script>
-<script type="text/javascript">
+<!-- 可以去掉了 -->
+<%-- <script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
 /* oneChoice();  */
 function loadQuestionListByPaper(paperSid){
@@ -339,29 +375,6 @@ function getQueItem(n, obj) {
 	return htm;
 }
 
-$("#submitPaperBtn").click(function() {
-	submitPaper(paperSid);
-});
-
-function submitPaper(paperSid) {
-	  $("#submitPaperBtn").text("交卷中...");
-	  $.post("submitPaper", {
-		  "paper.sid":paperSid
-	  }, function (data) {
-		  if(data.result == 'fail') {
-			  //$("#examResult").text("交卷失败");
-			  $(".exam-result").html("交卷失败，该试卷已被提交过！");
-			  $("#submitPaperBtn").html("提交试卷");
-		  } else {
-			  //$("#examResult").text("交卷成功 成绩ID=" + data.result);//成绩ID
-			  $(".exam-result").text("${session.user.name}本次考试最终得分：" + data.result + "分");
-			  $("#submitPaperBtn").html("已交卷");
-			  $("#submitPaperBtn").attr("disabled", "disabled");
-		  }
-		  
-	  });
-}
-
-</script>
+</script> --%>
 </body>
 </html>
