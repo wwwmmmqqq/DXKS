@@ -12,7 +12,7 @@ import cn.examsys.bean.Option;
 import cn.examsys.bean.Question;
 
 public class QuestionListTool {
-	public static List<Question> queryQuestionList(IDaoAdapter dao,int paperSid) {
+	public static List<Question> queryQuestionList(IDaoAdapter dao, int paperSid) {
 		try {
 			List<String> qlist = dao.findBySql("select questionRef from constitute_tb where paperRef=?", new Object[]{paperSid});
 			
@@ -49,8 +49,8 @@ public class QuestionListTool {
 						,Conf.Question_Subjective
 				};
 				int getTypeIndex(Question q) {
-					for (int i = 0; i < type_arr.length; i++) 
-						if (type_arr[i].equals(q.getType())) 
+					for (int i = 0; i < type_arr.length; i++)
+						if (type_arr[i].equals(q.getType()))
 							return i;
 					return 0;
 				}

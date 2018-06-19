@@ -54,7 +54,6 @@
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
-
 					</div>
 				</div>
 		
@@ -78,7 +77,6 @@
 						<a href="teacher_read.jsp"><li class="side_nav1 ">查看成绩</li></a>
 						
 					</ul>
-
 				</div>
 			</nav>
 			<!-- sidebar end -->
@@ -108,17 +106,7 @@
 		    						<input type="radio"  id="ture-or-false"  name="1"/><label>判断题</label>
 		    						<input type="radio"  id="fill-in" name="1"/><label>填空题</label>
 		    						<input type="radio"  id="answer-questions" name="1"/><label>解答题</label>
-
 		    					</form>
-		    					
-		    					<!--<select>
-		    						<option>请选择题型</option>
-		    						<option id="single-choice">单选题</option>
-		    						<option id="mutiple-choice">多选题</option>
-		    						<option id="ture-or-false">判断题</option>
-		    						<option id="fill-in">填空题</option>
-		    						<option id="answer-questions">解答题</option>
-		    					</select>-->
 		    				</li>
 		    				<li>请选择科目：
 		    					<select>
@@ -202,7 +190,6 @@
 		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" /></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
 		    					<li id="resolve">解析<br><textarea></textarea></li>
-
 		    				</ul>
 		    			</div>
 		    			
@@ -215,7 +202,6 @@
 		    					<li id="answer">答案<br><textarea></textarea></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
 		    					<li id="resolve">解析<br><textarea></textarea></li>
-
 		    				</ul>
 		    			</div>
 		    			<div>
@@ -231,5 +217,4 @@
 	</body>
 
 	<script type="text/javascript" src="js/jsentryquestions.js" ></script>
-
 </html>

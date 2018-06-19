@@ -99,13 +99,13 @@ public class JumpAction extends CommonAction {
 	}
 	
 	@Action(value="/showItemBankListByUser"
-			,results={@Result(name="aa",location="/pages/gy/jsshowpaper")})
+			,results={@Result(name="aa",location="/pages/gy/jsshowpaper.jsp")})
 	public String showItemBankListByUser(){
 		/**
 		 * 数据测试
 		 */
 		/*user.setUserId("admin123546");*/
-		if(user.getUserId().contains("admin")){      //教务查看所有题
+		if(getSessionUser().getType().contains("admin")){      //教务查看所有题
 			questionList=itemBankService.selectItemQuestionList(page);
 			
 			/*管理员题目列表总页数*/
@@ -124,13 +124,14 @@ public class JumpAction extends CommonAction {
 		/*查看对应question的option*/
 		for(int i=0;i<questionList.size();i++) {
 			option=itemBankService.selectItemOptionByQuestion(questionList.get(i).getSid());
-			map.put("option["+i+"]", option);
+			questionList.get(i).setOptions(option);
+			//map.put("option["+i+"]", option);
 		}
 		
-		if(map.isEmpty()||questionList.isEmpty()){
+		/*if(map.isEmpty()||questionList.isEmpty()){
 			System.out.println("题库查看失败！");
 			setResult("题库查看失败！");
-		}
+		}*/
 		System.out.println("题库查看成功！");
 		setResult("题库查看成功！");
 		return aa;

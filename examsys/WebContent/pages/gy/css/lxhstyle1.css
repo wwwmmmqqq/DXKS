@@ -874,19 +874,36 @@ b {
 }
 .entryquestions .entry {
 	width: 100%;
+<<<<<<< HEAD
 	min-height: 450px;
+=======
+<<<<<<< HEAD
+	min-height: 800px;
+=======
+	min-height: 450px;
+>>>>>>> origin/gy
+>>>>>>> origin/lrx
 	padding: 10px;
 	background:#e3dded;
 }
 .entry .choices {
 	/*display: none;*/
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/lrx
 .entry .choicesw {
 	display: none;
 }
 .entry .ture-or-false {
 	display: none;
 }
+<<<<<<< HEAD
+=======
+>>>>>>> origin/gy
+>>>>>>> origin/lrx
 .entry .fill-and-judgement {
 	display: none;
 }
@@ -930,7 +947,12 @@ b {
 
 
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/lrx
 .choices .choose{
 	width: 70%;
 	padding-left: 100px;
@@ -953,3 +975,8 @@ b {
 .ture-or-false .choose1{
 	width: 50px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/gy
+>>>>>>> origin/lrx
