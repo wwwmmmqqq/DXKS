@@ -39,8 +39,7 @@ public class PageAction extends CommonAction {
 	}
 	
 	@Action(value="/startExam", results={
-			@Result(name="success"
-					,location="/pages/student/student-exam.jsp")})
+			@Result(name="success", location="/pages/student/student-exam.jsp")})
 	public String startExam() {
 		
 		queList = service.loadQuestionList(paper.getSid());

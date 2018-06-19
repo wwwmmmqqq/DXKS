@@ -139,9 +139,9 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	 */
 	@Test
 	public void test2() {
+		
 		Class<?> classes[] = new Class<?>[]{
 				  Answersheet.class
-
 				, College.class
 				, Constitute.class
 				, Exam.class
@@ -154,8 +154,8 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 				, Role.class
 				, Subject.class
 				, User.class
-
 		};
+		
 		for (int i = 0; i < classes.length; i++) {
 			for (int j = 0; j < 50; j++) {
 				try {

@@ -1,7 +1,6 @@
 package test.lrx;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -13,7 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.examsys.bean.Exam;
 import cn.examsys.bean.Option;
-import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.common.Conf;
 import cn.examsys.common.Tool;

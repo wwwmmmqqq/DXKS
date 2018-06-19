@@ -21,7 +21,7 @@
 		<header>
 			<nav id="top-nav">
 				<div id="main-nav-content">
-					<a href="student-index.html" clas="logo">
+					<a href="student-index.html" class="logo">
 						<img class="logo-img" src="img/logo.png" />
 					</a>
 					<div class="navbar-right">

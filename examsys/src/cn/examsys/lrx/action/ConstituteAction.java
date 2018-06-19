@@ -1,6 +1,15 @@
 package cn.examsys.lrx.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 import cn.examsys.bean.Paper;
 import cn.examsys.common.CommonAction;
@@ -12,6 +21,10 @@ import cn.examsys.lrx.vo.ConstituteVO;
  * @author lrx
  * 2018年6月10日
  */
+@Namespace("/")
+@ParentPackage("json-default")//非json时，则为"struts-default"
+@Controller("constituteAction")
+@Scope("prototype")
 public class ConstituteAction extends CommonAction {
 	
 	@Autowired
@@ -57,7 +70,7 @@ public class ConstituteAction extends CommonAction {
 	 * <style>div{border:1px solid;background-color:green;width:300px;color:white}</style>
 	 *    
 	 *    paper.examRef //考次ID
-	    , paper.getSubjectRef()//科目id
+	    , paper.getSubjectRef()//科目ID
 		, paper.getName()//试卷标题名
 		, paper.getTotalScore()//总分
 		, paper.getExamStart()//考试开始时间
@@ -66,6 +79,7 @@ public class ConstituteAction extends CommonAction {
 	 * @return 
 	 * 返回试卷ID
 	 */
+	
 	public String createPaperAuto() {
 		
 		int sid = service.createPaperAuto(paper.getExamRef()
@@ -84,19 +98,31 @@ public class ConstituteAction extends CommonAction {
 		return aa;
 	}
 	
-	/**
-	 * 手动组卷
-	 * @return
-	 */
-	public String createPaperManual() {
-		//TODO
-		
-		return aa;
+	List<Integer> qids = new ArrayList<>();
+	List<Integer> points = new ArrayList<>();
+	public List<Integer> getQids() {
+		return qids;
+	}
+	public List<Integer> getPoints() {
+		return points;
 	}
 	
+	@Action(value="/createPaperHand"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String createPaperHand() {
+		int sid = service.createPaperHand(getSessionUser(), qids, paper.getSid(), points
+				, paper.getExamStart(), paper.getExamEnd(), paper.getName(), paper.getExamRef(), 
+				paper.getSubjectRef());
+		if (sid == -1) {
+			setResult("fail");
+		}
+		return aa;
+	}
 	
 	@Override
 	public String getResult() {
 		return result;
 	}
+	
 }
