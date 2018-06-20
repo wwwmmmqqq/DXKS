@@ -37,22 +37,16 @@ public class UserServiceImpl implements UserService{
 	/*查询用户列表*/
 	public List<User> SelectUserList(String type,int page,User administration) {
 		// TODO Auto-generated method stub
-		List<User> userList=userDao.selectUserList(type,page);
-		String collageName=administration.getCollegeName();
-		Iterator<User> iter = userList.iterator();
-		while (iter.hasNext()) {
-		   User it = iter.next();
-		   if("封禁".equals(it.getStatus()) || !collageName.equals(it.getCollegeName())) {
-		    	iter.remove();
-		   }
-		}
+		List<User> userList=userDao.selectUserList(type,page,administration);
 		return userList;
 	}
 	/*查询用户列表总页数*/
 	@Override
-	public int SelectUserListCount(String type) {
+	public int SelectUserListCount(String type, User administration) {
 		// TODO Auto-generated method stub
-		return userDao.selectUserListCount(type);
+		String collegeName = administration.getCollegeName();
+		System.out.println(collegeName);
+		return userDao.selectUserListCount(type , collegeName);
 	}
 	/*编辑用户信息*/
 	@Override

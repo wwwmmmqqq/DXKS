@@ -146,9 +146,7 @@ public class ItemBankAction extends CommonAction{
 			questionList=itemBankService.selectItemQuestionList(page);
 			
 			/*管理员题目列表总页数*/
-			/*totalPage=itemBankService.selectItemQuestionListToalPage();*/
-			DaoAdapter.COUNT_PER_PAGE=10;
-			totalPage=(int) Math.ceil((questionList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
+			totalPage=itemBankService.selectItemQuestionListToalPage();
 			System.out.println("Action question TotlePage："+totalPage);
 			System.out.println("Action question Number："+questionList.size());
 		}else{                                      //教师查看自己出的所有题
@@ -156,9 +154,7 @@ public class ItemBankAction extends CommonAction{
 			questionList=itemBankService.selectItemQuestionListByUserId(getSessionUserId(),page);
 			
 			/*教师题目列表总页数*/
-			/*totalPage=itemBankService.selectItemQuestionListToalPageByUserId(getSessionUserId());*/
-			DaoAdapter.COUNT_PER_PAGE=10;
-			totalPage=(int) Math.ceil((questionList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
+			totalPage=itemBankService.selectItemQuestionListToalPageByUserId(getSessionUserId());
 			System.out.println("Action question Number："+questionList.size());
 		}
 		
@@ -187,9 +183,7 @@ public class ItemBankAction extends CommonAction{
 			System.out.println("Action按类型查看"+question.getType());
 			questionList=itemBankService.selectItemQuestionListByType(question.getType(),page);
 			/*题目类型列表总页数*/
-			/*totalPage=itemBankService.selectItemQuestionListToalPageByType(question.getType());*/
-			DaoAdapter.COUNT_PER_PAGE=10;
-			totalPage=(int) Math.ceil((questionList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
+			totalPage=itemBankService.selectItemQuestionListToalPageByType(question.getType());
 			System.out.println("Action question Number"+questionList.size());
 			
 		}else { 
@@ -197,9 +191,7 @@ public class ItemBankAction extends CommonAction{
 			questionList=itemBankService.selectTeacherItemQuestionListByType(question.getType(),getSessionUserId(),page);
                                                                            		
 			/*教师题目列表总页数*/
-			/*totalPage=itemBankService.selectTeacherItemQuestionListToalPageByType(question.getType(),getSessionUserId());*/
-			DaoAdapter.COUNT_PER_PAGE=10;
-			totalPage=(int) Math.ceil((questionList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
+			totalPage=itemBankService.selectTeacherItemQuestionListToalPageByType(question.getType(),getSessionUserId());
 			System.out.println("Action question Number"+questionList.size());
 		}
 		

@@ -88,9 +88,7 @@ public class PaperAction extends CommonAction {
 			params={"contentType","text/html"})
 	public String showPaperList() {
 		paperList = paperService.selectPaperList(page);
-/*		totalPage = paperService.selectPaperList();*/
-		DaoAdapter.COUNT_PER_PAGE=10;
-		totalPage=(int) Math.ceil((paperList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
+		totalPage = paperService.selectPaperList();
 		if(paperList.isEmpty()){
 			setResult("查询失败");
 		}

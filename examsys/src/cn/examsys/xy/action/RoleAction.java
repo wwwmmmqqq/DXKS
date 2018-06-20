@@ -100,9 +100,7 @@ public class RoleAction extends CommonAction{
 		if(roleList==null){
 			setResult("无角色");
 		}
-/*		totalPage=roleService.selectRoleCount();*/
-		DaoAdapter.COUNT_PER_PAGE=10;
-		totalPage=(int) Math.ceil((roleList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
+		totalPage=roleService.selectRoleCount();
 		System.out.println("总页面大小为："+totalPage);
 		return aa;
 	}

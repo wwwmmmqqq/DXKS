@@ -153,8 +153,7 @@ public class UserAction extends CommonAction{
 		if(userList==null){
 			setResult("无用户");
 		}
-		DaoAdapter.COUNT_PER_PAGE=10;
-		totalPage=(int) Math.ceil((userList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
+		totalPage=userService.SelectUserListCount(user.getType(),administration);
 		System.out.println("Action页面获取总页面大小："+totalPage);
 		return aa;
 	}
