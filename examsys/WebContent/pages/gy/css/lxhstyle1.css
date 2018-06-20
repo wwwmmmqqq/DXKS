@@ -881,12 +881,14 @@ b {
 .entry .choices {
 	/*display: none;*/
 }
+
 .entry .choicesw {
 	display: none;
 }
 .entry .ture-or-false {
 	display: none;
 }
+
 .entry .fill-and-judgement {
 	display: none;
 }
@@ -927,8 +929,6 @@ b {
 	position: relative;
 	top: 2px;
 }
-
-
 
 
 .choices .choose{

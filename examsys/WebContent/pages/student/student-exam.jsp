@@ -192,9 +192,16 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/student-exam.js"></script>
+<<<<<<< HEAD
+
+
+<script type="text/javascript" src="js/jquery-confirm.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+=======
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
 
+>>>>>>> wmq
 
 <script type="text/javascript">
 var paperSid=${request.paper.sid};

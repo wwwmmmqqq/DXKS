@@ -3,6 +3,7 @@ package cn.examsys.lrx.service.impl;
 import java.text.ParseException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -167,36 +168,48 @@ public class ConstituteServiceImpl implements ConstituteService {
 	
 	
 	public int createPaperHand(User sessionUser, List<Integer> qids, int paperSid,
-			List<Integer> points, String examStart, String examEnd,
-			String name, int examRef, int subjectRef) {
-			if (qids.size() != points.size()) {
-				return -1;
+		List<Integer> points, String examStart, String examEnd,
+		String name, int examRef, int subjectRef) {
+		if (qids.size() != points.size()) {
+			return -1;
+		}
+		Paper paper = new Paper();
+		paper.setExamRef(examRef);
+		paper.setName(name);
+		paper.setSubjectRef(subjectRef);
+		paper.setExamStart(examStart);
+		paper.setExamEnd(examEnd);
+		paper.setTime(Tool.time());//试卷创建时间
+		
+		for (int i = 0; i < qids.size(); i++) {
+			Constitute con = new Constitute();
+			con.setNo(i);
+			con.setPaperRef(paperSid);
+			con.setPoint(points.get(i));
+			con.setQuestionRef(qids.get(i));
+			//con.setResponsibleUser(responsibleUser);
+			try {
+				dao.saveEntity(con);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			Paper paper = new Paper();
-			paper.setExamRef(examRef);
-			paper.setName(name);
-			paper.setSubjectRef(subjectRef);
-			paper.setExamStart(examStart);
-			paper.setExamEnd(examEnd);
-			paper.setTime(Tool.time());//试卷创建时间
-			
-			for (int i = 0; i < qids.size(); i++) {
-				Constitute con = new Constitute();
-				con.setNo(i);
-				con.setPaperRef(paperSid);
-				con.setPoint(points.get(i));
-				con.setQuestionRef(qids.get(i));
-				//con.setResponsibleUser(responsibleUser);
-				try {
-					dao.saveEntity(con);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			
-			return 0;
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public List<Map<String, Integer>> loadQuestionCountByType(int subjectRef) {
+		try {
+			return dao.findByHql("select new Map(type as type, count(*) as count) from Question where subjectRef=? group by type"
+					, new Object[]{subjectRef});
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
+	
+}
 	
 	
 	/*try {

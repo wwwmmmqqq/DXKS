@@ -15,7 +15,7 @@ public class ExamPlanDaoImpl extends DaoAdapter implements ExamPlanDao{
 		// TODO Auto-generated method stub
 		try {
 			Serializable ex=saveEntity(exam);
-			return (int) ex;
+			return (Integer) ex;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

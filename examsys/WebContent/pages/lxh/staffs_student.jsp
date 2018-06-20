@@ -27,12 +27,12 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>${session.user.name} <i class="caret"></i></span>
+								<span>muxue <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-							<a href="javascript:Out()">退出系统</a>
+							<a href="#">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -67,7 +67,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, ${session.user.name}</p>
+					<p>Hello, muxue</p>
 				</div>
 
 			</div>
@@ -75,9 +75,9 @@
 			  	<ul class="side_nav">
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="jwhandzujuan.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="jwintelzujuan.jsp">智能组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
+			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -127,7 +127,20 @@
 					</tr>
 				</thead>
 				<tbody id="student-list-box">
-					
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye see" data-toggle="modal" data-target="#myModal_eye_student"></i>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+				        </td>
+					</tr>
 				</tbody>
 			</table>
 			<!--<div class="bottom_button">
@@ -146,7 +159,7 @@
 					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
 					    <li class="page-item"><a class="page-link" href="#">3</a></li>
 					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
-					    <input class="jump" id="jpage" type="text">
+					    <input class="jump">
 					    <button class="btn btn-primary btn_jump">跳转</button>
 				  </ul>
 			  	</div>
@@ -183,6 +196,12 @@
 								</tr>
 								<tr>
 									<td>
+										密码
+										<div class="tb_information">${session.user.psw}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
 										学校
 										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
@@ -190,7 +209,7 @@
 								<tr>
 									<td>
 										学院
-										<div class="tb_information">${session.user.department}</div>
+										<div class="tb_information">信计学院<%-- ${session.user.department} --%></div>
 									</td>
 								</tr>
 								<tr>
@@ -224,96 +243,7 @@
 			</div>
 		</div>
 		
-		<!-- 模态框添加学生信息 -->
-		<div class="modal fade" id="myModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					<!-- 模态框头部 -->
-					<div class="modal-header">
-						<h4 class="modal-title">添加学生</h4>
-						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-					</div>
-
-					<!-- 模态框主体 -->
-					<div class="modal-body">
-						<table>
-							<tbody>
-								<tr>
-									<td>
-										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="name">
-									</td>
-								</tr>
-								<tr>
-									<td class="choose-sex">
-								      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-								      	<select class="hover"  name="sex" id="sex">
-								        	<option class="hover">男</option>
-								        	<option class="hover">女</option>
-								      	 </select>
-								        					 
-								    </td>
-								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="userId">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="collegeName">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="department">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="profession">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="classoom">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										身份证号&nbsp;
-										<input type="text" class="hover" id="idcard">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										联系方式&nbsp;
-										<input type="text" class="hover" id="phone">
-									</td>
-								</tr>
-
-							</tbody>
-						</table>
-
-					</div>
-
-					<!-- 模态框底部 -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary add" onclick="createStudent();">添加</button>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-<!--模态框修改学生信息 -->
+		<!--模态框修改学生信息 -->
 		<div class="modal fade" id="myModal_check">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -398,7 +328,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!--模态框邀请老师组卷-->
 		<div class="modal fade" id="myModal_invite_teacher">
 		    <div class="modal-dialog">
@@ -518,7 +447,7 @@
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
-							<tbody id="student-info-box">
+							<tbody>
 								<tr>
 									<td>
 										姓名
@@ -679,10 +608,12 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
-		
-		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
-			  var userList=data.userList;
-			  totalPage=data.totalPage;
+	
+		$.post("selectUserList",{"user.type":"student","page":page},function(data) {
+			alert("hhh"); 
+			var userList=data.userList;
+			  alert( userList);
+			  totalPage=data.totalPage;      
 			  var htm = "";
 			  var ht = "";
 			  for(var i=0;i<userList.length;i++) {
@@ -708,7 +639,7 @@
 		if(currentPage>=2) 
 			loadStudentList(--currentPage);
 	}
-	function jumpPage() {
+	/* function jumpPage() {
 		var juPage=$('#jpage').html();
 		alert(juPage);
 		if(currentPage==juPage || juPage<1 || juPage>totalPage){
@@ -718,7 +649,7 @@
 			
 		}
 			
-	}
+	} */
 	
 	function getItemHtml(index, obj,number) {
 		var htm = "<tr class='tb_width'>"
@@ -740,14 +671,17 @@
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+				+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
 		}
 		else if(index==totalPage){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>"
+				+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+			+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
 		}
 		return ht;    
 	}
@@ -780,7 +714,7 @@
 			+"<tr>"
 			+"<td>"
 			+"学号"
-			+"<div class='tb_information'>"+obj.userId+"17001</div>"
+			+"<div class='tb_information'>"+obj.userId+"</div>"
 			+"</td>"
 			+"</tr>"
 			+"<tr>"
@@ -828,7 +762,7 @@
 				 	"user.department":$('#department').val(),
 				 	"user.profession":$('#profession').val(),
 				 	"user.classroom":$('#classroom').val(),
-			 		"user.type":"学生",					//用户类型
+			 		"user.type":"student",					//用户类型
 			 		"user.sex":$('#sex').val(),						//用户性别
 			 		"user.phone":$('#phone').val(),
 			 		"user.idcard":$('#idcard').val()

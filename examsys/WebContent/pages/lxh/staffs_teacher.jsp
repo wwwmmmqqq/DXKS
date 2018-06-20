@@ -27,7 +27,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>${session.user.name}<i class="caret"></i></span>
+								<span>muxue <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -67,7 +67,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, ${session.user.name}</p>
+					<p>Hello, muxue</p>
 				</div>
 
 			</div>
@@ -75,9 +75,9 @@
 			  	<ul class="side_nav">
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="jwhandzujuan.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="jwintelzujuan.jsp">智能组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
+			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -126,7 +126,7 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="teacher-list-box">
 					<tr class="tb_width">
 						<td>1</td>
 						<td>慕雪</td>
@@ -137,104 +137,6 @@
 						<td>1770313147</td>
 						<td>
 							<i class="fa fa-eye" data-toggle="modal" data-target="#myModal_eye_teacher"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>慕雪</td>
-						<td>萍乡学院</td>
-						<td>软件工程</td>
-						<td>女</td>
-						<td>1770313147</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr >
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>慕雪</td>
-						<td>萍乡学院</td>
-						<td>软件工程</td>
-						<td>女</td>
-						<td>1770313147</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>慕雪</td>
-						<td>萍乡学院</td>
-						<td>软件工程</td>
-						<td>女</td>
-						<td>1770313147</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>慕雪</td>
-						<td>萍乡学院</td>
-						<td>软件工程</td>
-						<td>女</td>
-						<td>1770313147</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>慕雪</td>
-						<td>萍乡学院</td>
-						<td>软件工程</td>
-						<td>女</td>
-						<td>1770313147</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>慕雪</td>
-						<td>萍乡学院</td>
-						<td>软件工程</td>
-						<td>女</td>
-						<td>1770313147</td>
-						<td>
-							<i class="fa fa-eye"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
-					</tr>
-					<tr class="tb_width">
-						<td>1</td>
-						<td>慕雪</td>
-						<td>慕雪</td>
-						<td>萍乡学院</td>
-						<td>软件工程</td>
-						<td>女</td>
-						<td>1770313147</td>
-						<td>
-							<i class="fa fa-eye"></i>
 			        	<i class="fa fa-pencil check"></i>
 			        	<i class="fa fa-trash-o"></i>
 			        </td>
@@ -656,5 +558,226 @@
 		
 	</div>	
 	</body>
+<script type="text/javascript">
+	loadStudentList(1);
+	var currentPage=1;
+	var totalPage=1;
+	function loadStudentList(page) {
+		$.post("selectUserList",{"user.type":"teacher","page":page},function(data) {
+			  var userList=data.userList;
+			  totalPage=data.totalPage;      
+			  var htm = "";
+			  var ht = "";
+			  for(var i=0;i<userList.length;i++) {
+				  	var number=(page-1)*10;
+				  	number +=i+1;
+		 			htm += getItemHtml(i, userList[i],number);
+		 		}
+			 $('#teacher-list-box').html(htm);
+			 for(var j=1;j<=totalPage;j++) {
+				 ht += getLiHtml(j);
+			 }
+			 $('.pagination').html(ht);
+		 		currentPage = page;
+		  })  
+	}
+	
+	function nextPage() {
+		if(currentPage<totalPage) 
+			loadStudentList(++currentPage);
+	}
+	
+	function prevPage() {
+		if(currentPage>=2) 
+			loadStudentList(--currentPage);
+	}
+	/* function jumpPage() {
+		var juPage=$('#jpage').html();
+		alert(juPage);
+		if(currentPage==juPage || juPage<1 || juPage>totalPage){
+			loadStudentList(currentPage);
+		} else{
+			loadStudentList(currentPage+(juPage-currentPage));
+			
+		}
+			
+	} */
+	
+	function getItemHtml(index, obj,number) {
+		var htm = "<tr class='tb_width'>"
+			+"<td>"+number+"</td>"
+			+"<td>"+obj.name+"</td>"
+			+"<td>"+obj.userId+"</td>"
+			+"<td>"+obj.collegeName+"</td>"
+			+"<td>"+obj.department+"</td>"
+			+"<td>"+obj.profession+"</td>"
+			+"<td>"+obj.classroom+"</td>"
+			+"<td>"
+			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>"
+			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
+			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
+			+"</td>"
+			+"</tr>";
+		return htm;
+	}
+	function getLiHtml(index) {
+		if(index==1){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>"
+				+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
+		}
+		else if(index==totalPage){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>"
+				+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
+		}
+		else {
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+			+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
+		}
+		return ht;    
+	}
+	function teacherInfo(node) {
+		var td = node.parentNode.parentNode.childNodes;
+		var userId = td[2].innerHTML;
+		$.post("showUser",{"user.userId":userId},function(data) {
+			var user = data.user;
+			var info = getInfoHtml(user);
+			$('#teacher-info-box').html(info);
+			$('#teach_name').val(user.name);
+			$('#teach_sex').val(user.sex);
+			$('#teach_userId').val(user.userId);
+			$('#teach_collegeName').val(user.collegeName);
+			$('#teach_department').val(user.department);
+			$('#teach_profession').val(user.profession);
+			$('#teach_classroom').val(user.classroom);
+			$('#teach_idcard').val(user.idcard);
+			$('#teach_phone').val(user.phone);
+		})
+	}	
+	function getInfoHtml(obj) {
+		var info = "<tr>"
+			+"<td>"
+			+"姓名"
+			+"<div class='tb_information'>"+obj.name+"</div>"
+			+"</td>"
+			+"</tr>"
+			+"<tr>"
+			+"<td>"
+			+"学号"
+			+"<div class='tb_information'>"+obj.userId+"17001</div>"
+			+"</td>"
+			+"</tr>"
+			+"<tr>"
+			+"<td>"
+			+"学校"
+			+"<div class='tb_information'>"+obj.collegeName+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"学院"
+			+"<div class='tb_information'>"+obj.department+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"专业"
+			+"<div class='tb_information'>"+obj.profession+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"班级"
+			+"<div class='tb_information'>"+obj.classroom+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"身份证号"
+			+"<div class='tb_information'>"+obj.idcard+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"性别"
+			+"<div class='tb_information'>"+obj.sex+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"联系方式"
+			+"<div class='tb_information'>"+obj.phone+"</div>"
+			+"</td></tr>"
+			+"<tr><td>"
+			+"邮箱"
+			+"<div class='tb_information'>"+obj.email+"</div>"
+			+"</td></tr>";
+		return info;
+	}
+	
+	function createStudent() {
+		 $.post("createUser",
+				 {	
+			 		"user.name":$('#name').val(),
+			 		"user.userId":$('#userId').val(),   //用户名
+				 	"user.collegeName":$('#collegeName').val(),
+				 	"user.department":$('#department').val(),
+				 	"user.profession":$('#profession').val(),
+				 	"user.classroom":$('#classroom').val(),
+			 		"user.type":"学生",					//用户类型
+			 		"user.sex":$('#sex').val(),						//用户性别
+			 		"user.phone":$('#phone').val(),
+			 		"user.idcard":$('#idcard').val()
+			 	},function(data){
+			 		alert(data.result);    //message为user返回信息
+			 		if(data.result=="用户创建成功"){
+			 			location.href="staffs_student.jsp";
+			 		}else {
+			 			return false;
+			 		}
+				 }
+			)
+	}
+	
+	function editStudent() {
+		if(!checkInput()){alert("123"); return false;} 
+		$.post("editUser",
+					{	
+						"user.name":$('#stu_name').val(),
+						"user.sex":$('#stu_sex').val(),
+						"user.userId":$('#stu_userId').val(),
+						"user.collegeName":$('#stu_collegeName').val(),
+						"user.department":$('#stu_department').val(),
+						"user.profession":$('#stu_profession').val(),
+						"user.classroom":$('#stu_classroom').val(),
+						"user.idcard":$('#stu_idcard').val(),
+						"user.phone":$('#stu_phone').val()
+					},function(data) {
+						if(data.result=="编辑用户成功") {
+					  	location.href="staffs_student.jsp";
+				  	}
+			  });
+	}
 
+	function deleteStudent(node) {
+		var td = node.parentNode.parentNode.childNodes;
+		var userId = td[2].innerHTML;
+		if(confirm("确定要删除该用户吗？")) {
+			$.post("deleteUser",{"user.userId":userId},function(data) {
+				if(data.result=="删除成功") {
+						location.href="staffs_student.jsp";
+				}
+		  }); 
+		}  
+		return false;
+	}
+	
+	function Out() {
+		if(confirm("确定要退出吗？")) {
+			$.post("loginOut",null,function(data) {
+				if(data.result=="成功退出") {
+						location.href="../gy/gy_login.jsp";
+				}
+		  });
+		}  
+	}
+	
+	function checkInput() {
+		$("#editStudent input[type=text]").each(function() {
+			if($(this).val()=="") {
+				alert("请将信息填写完整");
+				return false;
+			}
+		});
+	}
+</script>
 </html>

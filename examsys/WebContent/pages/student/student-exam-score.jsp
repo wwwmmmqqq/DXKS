@@ -321,6 +321,9 @@
 		<script type="text/javascript" src="js/com.js"></script>
 		
 </body>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> lrx
 </html>
