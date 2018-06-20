@@ -192,24 +192,12 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/student-exam.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
 
-=======
-<script type="text/javascript">
-var paperSid=getParam("paper.sid");
->>>>>>> lrx
-
-=======
-
-<script type="text/javascript" src="js/jquery-confirm.js"></script>
-<script type="text/javascript" src="js/com.js"></script>
 
 <script type="text/javascript">
 var paperSid=${request.paper.sid};
->>>>>>> lrx
 window.onload = function() {
 	var now = "${session.Time}";//服务器当前时间
 	var examEnd = "2018-06-20 23:20:00";//这趟考试结束时间

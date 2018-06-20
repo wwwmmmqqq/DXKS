@@ -76,7 +76,6 @@
 						<a href="history_teacher.jsp"><li class="side_nav1 n">查看成绩</li></a>
 						<a href="teacher_read.jsp"><li class="side_nav1 ">查看成绩</li></a>
 					</ul>
-
 				</div>
 			</nav>
 			<!-- sidebar end -->
@@ -125,91 +124,93 @@
 
 		    			<!--单选题录入 start-->
 		    			<div class="choices">
+		    			<form class="choose" id="s-question">
 		    				<ul>
-		    				<li id="dry">题干<br><textarea name="question"></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerA" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerB" /></li>
-		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerC" /></li>
-		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerD" /></li>
+		    				
+		    				<li id="dry">题干<br>
+		    				
+		    				<textarea name="title" id="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-	    							<form class="choose">
-		    							<span>A</span><input type="radio" name="ItemA" class="choose1"/>
-			    						<span>B</span><input type="radio" name="ItemB" class="choose1"/>
-			    						<span>C</span><input type="radio" name="ItemC" class="choose1"/>
-			    						<span>D</span><input type="radio" name="ItemD" class="choose1"/>
-		    						</form>
+		    							<span>A</span><input type="radio" name="isAnswer" class="choose1"/>
+			    						<span>B</span><input type="radio" name="isAnswer" class="choose1"/>
+			    						<span>C</span><input type="radio" name="isAnswer" class="choose1"/>
+			    						<span>D</span><input type="radio" name="isAnswer" class="choose1"/>
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowlege"/></li>
-		    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
+		    					
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowledge"/></li>
 		    			    </ul>
+		    			    </form>
 		    			</div>	
 		    			<!-- 多选录入 -->
 		    			<div class=" choicesw">
+		    			<form class="choose" id="w-question">
 		    				<ul>
-		    				<li id="dry">题干<br><textarea name="question"></textarea></li>	
-		    				    <li id="sa">A<input class="form-control " type="text" name="answerA"/></li>
-		    				    <li id="sb">B<input class="form-control " type="text" name="answerB"/></li>
-		    				    <li id="sc">C<input class="form-control " type="text" name="answerC" /></li>
-		    				    <li id="sd">D<input class="form-control " type="text" name="answerD" /></li>
+		    				<li id="dry">题干<br><textarea name="title"></textarea></li>	
+		    				    <li id="sa">A<input class="form-control " type="text" name="content"/></li>
+		    				    <li id="sb">B<input class="form-control " type="text" name="content"/></li>
+		    				    <li id="sc">C<input class="form-control " type="text" name="content" /></li>
+		    				    <li id="sd">D<input class="form-control " type="text" name="content" /></li>
 		    				    <li id="answer" class="answerw">答案&nbsp;
-	    							<form class="choose">
-		    							<span>A</span><input type="checkbox"  class="choose1" name="ItemA"/>
-			    						<span>B</span><input type="checkbox"  class="choose1"  name="ItemB"/>
-			    						<span>C</span><input type="checkbox"  class="choose1"  name="ItemC"/>
-			    						<span>D</span><input type="checkbox"  class="choose1" name="ItemD"/>
-		    						</form>
+		    							<span>A</span><input type="checkbox"  class="choose1" name="isAnswer"/>
+			    						<span>B</span><input type="checkbox"  class="choose1"  name="isAnswer"/>
+			    						<span>C</span><input type="checkbox"  class="choose1"  name="isAnswer"/>
+			    						<span>D</span><input type="checkbox"  class="choose1" name="isAnswer"/>
+		    					
 		    					</li>
 		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowlege"/></li>
-		    				    <li id="resolve">解析<br/><textarea  name="resolve"></textarea></li>	 
 		    			    </ul>
+		    			    	</form>
 		    			</div>
 		    			
 		    					    			<!--多选题录入 end-->
 		    			
 		    			<!--判断-->
 		    			<div class="ture-or-false">
+		    			<form class="choose" id="tf-question">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="question"></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerA" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerB" /></li>
+		    					<li id="dry">题干<br><textarea name="title"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-	    							<form class="choose">
-		    							<span>A</span><input type="radio" name="itemA" class="choose1"/>
-			    						<span>B</span><input type="radio" name="itemB" class="choose1"/>
-		    						</form>
+		    							<span>A</span><input type="radio" name="isAnswer" class="choose1"/>
+			    						<span>B</span><input type="radio" name="isAnswer" class="choose1"/>
 		    					</li>
 		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowledge"/></li>
-		    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
 		    			    </ul>
+		    			    </form>
 		    			</div>	
 		    			
 		    			
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
+		    			<form id="fj-question">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="question"></textarea></li>		    					
-		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="answer"/></li>
+		    					<li id="dry">题干<br><textarea name="title"></textarea></li>		    					
+		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="fillsText" /></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="knowledge"/></li>
-		    					<li id="resolve">解析<br><textarea name="resolve"></textarea></li>
-
 		    				</ul>
+		    				</form>
 		    			</div>
 		    			
 		    			<!--填空、判断题录入 end-->
 		    			
 		    			<!--解答题录入 start-->
 		    			<div class="answer-question">
+		    			<form id="aquestion">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="question"></textarea></li>
-		    					<li id="answer">答案<br><textarea name="answer"></textarea></li>
+		    					<li id="dry">题干<br><textarea name="title"></textarea></li>
+		    					<li id="answer">答案<br><textarea name="subjectiveText"></textarea></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="knowledge"/></li>
-		    					<li id="resolve">解析<br><textarea name="resolve"></textarea></li>
-
 		    				</ul>
+		    				</form>
 		    			</div>
 		    			<div>
 		    				<button type="button" class="btn btn-warning clearall">清空</button>
-		    				<button type="submit" class="btn btn-primary submitbtn">提交</button>
+		    				<button type="submit" class="btn btn-primary submitbtn" onclick="importQuestion()">提交</button>
 		    			</div>
 		    		</div>
 		    		<!--解答题录入 end-->
@@ -260,22 +261,7 @@
         	}
         });
              }
-            function importQuestions(){
-            	
-            	/* 导入单选题答案 */
-            	var sanswera=$('.choices input[name="answerA"]').val();
-            	var sanswerb=$('.choices input[name="answerB"]').val();
-            	var sanswerc=$('.choices input[name="answerC"]').val();
-            	var sanswerd=$('.choices input[name="answer"]').val();
-            	
-                var sitema=$('.choose input[name="ItemA"]').val();
-                var sitemb=$('.choose input[name="ItemB"]').val();
-                var sitemc=$('.choose input[name="ItemC"]').val();
-                var sitemd=$('.choose input[na  me="ItemD"]').val();
-                
-                
-               
-            }
-        </script>
+           
+        </script>  
 	</body>
 </html>

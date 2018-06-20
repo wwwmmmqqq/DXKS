@@ -122,8 +122,6 @@
 		    			</div>
 		    			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 			    		<a href="jsentryquestions.jsp"><button type="button" class="btn btn-in">录入题库</button></a>
-			    			
-		    			
 		    		</form>
 		    	</div>
 		    		
