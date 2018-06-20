@@ -55,11 +55,8 @@ $(function (){
 				var oldpwd=$('#user_setting input[name="user.oldpwd"]').val();
 				var newpwd=$('#user_setting input[name="user.newpwd"]').val();
 				var repwd=$('#user_setting input[name="user.repwd"]').val();
-				alert(oldpwd);
-				alert(newpwd);
-				alert(repwd);
 				$.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
-					alert("修改成功");
+					alert(data.result);
 			  })
 			}
 		},
