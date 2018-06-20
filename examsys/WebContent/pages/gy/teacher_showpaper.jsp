@@ -104,9 +104,7 @@
 		    	</div>
 		    	<!-- 搜索部分 -->
 		    	<div>
-		    	<div class="add_paper">
-		    		<button type="button" class="btn"></button>
-		    	</div>
+		    	
 			    	<div class="search">
 		    		<form class="form-inline searchform" role="form">
 		    			<select class="form-control" id="">
@@ -161,24 +159,32 @@
 		    							</ul>
 		    						</div>
 		    					</div>
-		    					<s:iterator id="optque" value="#que.options" status="s2"></s:iterator>
-		    					<s:if test="#que.type == 'Single'">
-		    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
 		    					<ul>
-		    						<li class="question">$(que.title)</li>
-		    						<li>${optionLabel}.${optque.content}</li>
-		    						<li>正确答案：
-			    						$(que.type=="Single"?optque.isAnswer:""}
-			    						$(que.type=="Fills"?optque.fillsText:""}
-			    						$(que.type=="Multiple"?optque.trueOrFalse:""}
-			    						$(que.type=="Subjective"?optque.subjectiveText:""}
-			    						$(que.type=="TrueOrFalse"?optque.isAnswer:""}
-		    						</li>
+		    						<li class="question"><h4>${que.title}</h4></li>
+			    					<s:iterator id="queOpt" value="#que.options" status="s2">
+			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
+			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
+			    						<li>正确答案：
+				    						<span style="color: red;">
+				    							${("Single Multiple TrueOrFalse".indexOf(que.type)>0 && queOpt.isAnswer==1)?optionLabel:""}
+				    							${que.type=="Fills"?queOpt.fillsText:""}
+				    							${que.type=="Subjective"?queOpt.subjectiveText:""}
+				    						</span>
+			    						</li>
+		    						</s:iterator>
+		    						<%-- <li>正确答案：
+		    							<span style="color: red;">
+				    						${que.type=="Single"?queOpt.isAnswer:""}
+				    						${que.type=="Fills"?queOpt.fillsText:""}
+				    						${que.type=="Multiple"?queOpt.isAnswer:""}
+				    						${que.type=="Subjective"?queOpt.subjectiveText:""}
+				    						${que.type=="TrueOrFalse"?queOpt.isAnswer:""}
+			    						</span>
+		    						</li> --%>
 		    						<%-- <s:if  test="#optque.isAnswer==1">
 		    						<li>正确答案：${optque.content }</li>
 		    						</s:if> --%>
 		    					</ul>
-		    					</s:if>
 		    					
 		    					
 		    				</div>

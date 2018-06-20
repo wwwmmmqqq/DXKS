@@ -24,7 +24,7 @@ import javax.persistence.Transient;
 public class Question {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int sid;
+	int sid; 
 	
 	String type;//题目类型
 	

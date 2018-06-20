@@ -104,6 +104,7 @@ public class ExamAction extends CommonAction {
 			,params={"contentType", "text/html"})
 	public String loadQuestionList() {
 		list = service.loadQuestionList(paper.getSid());
+		setCurrentPaperSid(paper.getSid());
 		/*try {
 			//TODO 测试数据
 			list = BeanAutoFit.fitBeanArray(Question.class, paper.getSid());
@@ -122,7 +123,9 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String todo() {
+		
 		boolean bo = service.todo(getSessionUser()
+				, getCurrentPaperSid()
 				, answer.getQuestionRef()
 				, answer.getOptionRef()
 				, answer.getTrueOrFalse()
@@ -143,7 +146,7 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String submitPaper() {
-		int score = service.submitPaper(getSessionUser(), paper.getSid(), 0);
+		int score = service.submitPaper(getSessionUser(), getCurrentPaperSid(), 0);
 		if (score == -1) {
 			setResult("fail");
 		} else {
@@ -168,6 +171,14 @@ public class ExamAction extends CommonAction {
 			e.printStackTrace();
 		}
 		return aa;
+	}
+	
+	private void setCurrentPaperSid(int paperSid) {
+		session.setAttribute("currentPaper", paperSid);
+	}
+	
+	private int getCurrentPaperSid() {
+		return (int) session.getAttribute("currentPaper");
 	}
 	
 	@Override

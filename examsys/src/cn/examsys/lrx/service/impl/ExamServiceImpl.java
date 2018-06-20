@@ -79,7 +79,7 @@ public class ExamServiceImpl implements ExamService {
 	}
 	
 	@Override
-	public boolean todo(User sessionUser
+	public boolean todo(User sessionUser, int paperSid
 			, int questionRef, int optionRef, int trueOrFalse
 			, String fillsAnswer, String subjectiveAnswer) {
 		
@@ -115,6 +115,7 @@ public class ExamServiceImpl implements ExamService {
 			insert = true;
 		}
 		
+		answer.setPaperRef(paperSid);
 		answer.setUserId(sessionUser.getUserId());
 		answer.setQuestionRef(questionRef);
 		answer.setTrueOrFalse(trueOrFalse);
@@ -123,10 +124,8 @@ public class ExamServiceImpl implements ExamService {
 		answer.setSubjectiveAnswer(subjectiveAnswer);
 		answer.setType(q.getType());
 		
-		
 		try {
 			//计分
-			
 			Option theOption = dao.findOneByHql("from Option where sid=?"
 					, new Object[]{optionRef});
 			Constitute thisQuestion = dao.findOneByHql("from Constitute where questionRef=?"
@@ -157,24 +156,23 @@ public class ExamServiceImpl implements ExamService {
 	 * 计算成绩
 	 */
 	@Override
-	public int submitPaper(User sessionUser, int sid, int timeComsuming) {
+	public int submitPaper(User sessionUser, int paperSid, int timeComsuming) {
 		try {
 			List<String> questionIdList = dao.findBySql("select questionRef from constitute_tb where paperRef=?"
-					, new Object[]{sid});
+					, new Object[]{paperSid});
 			String questionIds = Arrays.toString(questionIdList.toArray());
-			List<Answersheet> answers = dao.findByHql("from Answersheet where userId=? and locate(?, questionIds)>0"
-					, new Object[]{sessionUser.getUserId(), questionIds});
+			List<Answersheet> answers = dao.findByHql("from Answersheet where userId=? and locate(questionRef, ?)>0 and paperRef=?"
+					, new Object[]{sessionUser.getUserId(), questionIds, paperSid});
 			float score = 0f;
 			for (int i = 0; i < answers.size(); i++) {
 				score += answers.get(i).getScoring();
 			}
-			
 			Grade grade = dao.findOneByHql("from Grade where userId=? and paperRef=?"
-					, new Object[]{sessionUser.getUserId(), sid});
+					, new Object[]{sessionUser.getUserId(), paperSid});
 			if (grade == null) {
 				//登成绩
 				grade = new Grade();
-				grade.setPaperRef(sid);
+				grade.setPaperRef(paperSid);
 				grade.setUserId(sessionUser.getUserId());
 				grade.setTimeComsuming(timeComsuming);
 				grade.setPoint(Math.round(score));

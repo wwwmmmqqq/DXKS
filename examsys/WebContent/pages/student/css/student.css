@@ -73,9 +73,9 @@ li {
 	background-color:  #f1f2f7;
 	cursor:pointer; 
 }
- /* .user-info:hover .dropdown-content{
+  .user-info:hover .dropdown-content{
 	display: block;
-} */ 
+} 
 .fa {
 	display: inline-block;
 	font-family: FontAwesome;

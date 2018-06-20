@@ -20,6 +20,7 @@
             <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
             <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
             <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -38,7 +39,7 @@
 				    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="#" >修改密码</a>
+						<a href="javascript:modifyPassword()" >修改密码</a>
 						<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
 					</div>
 				</div>
@@ -125,11 +126,11 @@
 		    			<!--单选题录入 start-->
 		    			<div class="choices">
 		    				<ul>
-		    				<li id="dry">题干<br><textarea></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
+		    				<li id="dry">题干<br><textarea name="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerA" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerB" /></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerC" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerD" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
 	    							<form class="choose">
 		    							<span>A</span><input type="radio" name="radio" class="choose1"/>
@@ -138,8 +139,8 @@
 			    						<span>D</span><input type="radio" name="radio" class="choose1"/>
 		    						</form>
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" /></li>
-		    				    <li id="resolve">解析<br/><textarea ></textarea></li>	 
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowlege"/></li>
+		    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
 		    			    </ul>
 		    			</div>	
 		    			<!-- 多选录入 -->
@@ -173,12 +174,12 @@
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
 	    							<form class="choose">
-		    							<span>A</span><input type="radio" name="w" class="choose1"/>
-			    						<span>B</span><input type="radio" name="w" class="choose1"/>
+		    							<span>A</span><input type="radio" name="itemA" class="choose1"/>
+			    						<span>B</span><input type="radio" name="itemB" class="choose1"/>
 		    						</form>
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" /></li>
-		    				    <li id="resolve">解析<br/><textarea ></textarea></li>	 
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowledge"/></li>
+		    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
 		    			    </ul>
 		    			</div>	
 		    			

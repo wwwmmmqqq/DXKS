@@ -98,13 +98,14 @@ public class JumpAction extends CommonAction {
 		return null;
 	}
 	
-	@Action(value="/showItemBankListByUser"
-			,results={@Result(name="aa",location="/pages/gy/jsshowpaper.jsp")})
+	@Action(value="/showItemBankListByUserJump"
+			,results={@Result(name="success",location="/pages/gy/jsshowpaper.jsp")})
 	public String showItemBankListByUser(){
 		/**
 		 * 数据测试
 		 */
 		/*user.setUserId("admin123546");*/
+		
 		if(getSessionUser().getType().contains("admin")){      //教务查看所有题
 			questionList=itemBankService.selectItemQuestionList(page);
 			
@@ -134,6 +135,19 @@ public class JumpAction extends CommonAction {
 		}*/
 		System.out.println("题库查看成功！");
 		setResult("题库查看成功！");
-		return aa;
+		return SUCCESS;
 	}
+	
+
+	/*@Action(value="/loginOutJump"
+			,results={@Result(name="aa",location="/pages/gy/gy_login.jsp")})
+	public String loginOut() {
+		if(!isLogin()){
+			setResult("请先登录");
+		}
+		session.removeAttribute("user");
+		System.out.println("tuichula");
+		setResult("成功退出");
+		return "aa";
+	}*/
 }
