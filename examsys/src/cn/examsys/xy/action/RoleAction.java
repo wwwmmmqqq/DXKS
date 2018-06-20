@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ModelDriven;
+
+import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Role;
 import cn.examsys.bean.User;
 import cn.examsys.common.CommonAction;
