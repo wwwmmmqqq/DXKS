@@ -255,9 +255,9 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 	  ,"answer.subjectiveAnswer":subjectiveAnswer//主观题内容
   }, function(data) {
 	  if(data.result == 'fail') {
-		  alert('做题失败'); 
+		  /* alert('做题失败');  */
 	  } else {
-		  alert('做题成功'); 
+		 /*  alert('做题成功');  */
 	  }
   });
 }
