@@ -125,89 +125,96 @@
 
 		    			<!--单选题录入 start-->
 		    			<div class="choices">
-		    				<ul>
-		    				<li id="dry">题干<br><textarea name="question"></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerA" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerB" /></li>
-		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerC" /></li>
-		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerD" /></li>
-		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-	    							<form class="choose">
-		    							<span>A</span><input type="radio" name="radio" class="choose1"/>
-			    						<span>B</span><input type="radio" name="radio" class="choose1"/>
-			    						<span>C</span><input type="radio" name="radio" class="choose1"/>
-			    						<span>D</span><input type="radio" name="radio" class="choose1"/>
-		    						</form>
-		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowlege"/></li>
-		    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
-		    			    </ul>
+		    				<form class="choose">
+			    				<ul>
+			    				<li id="dry">题干<br><textarea name="question"></textarea></li>	
+			    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerA" /></li>
+			    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerB" /></li>
+			    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerC" /></li>
+			    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="answerD" /></li>
+			    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+			    							<!-- <span>A</span><input type="radio" name="radio" class="choose1"/>
+				    						<span>B</span><input type="radio" name="radio" class="choose1"/>
+				    						<span>C</span><input type="radio" name="radio" class="choose1"/>
+				    						<span>D</span><input type="radio" name="radio" class="choose1"/> -->
+			    						<input type="text" class="form-control" placeholder="请输入正确答案:选项A或B或C或D" >
+			    					</li>
+			    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowlege"/></li>
+			    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
+			    			    </ul>
+		    			    </form>
 		    			</div>	
 		    			<!-- 多选录入 -->
 		    			<div class=" choicesw">
-		    				<ul>
-		    				<li id="dry">题干<br><textarea></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerA"/></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerB"/></li>
-		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerC" /></li>
-		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerD" /></li>
-		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-	    							<form class="choose">
-		    							<span>A</span><input type="checkbox"  class="choose1" name="singleItemA"/>
-			    						<span>B</span><input type="checkbox"  class="choose1"  name="singleItemB"/>
-			    						<span>C</span><input type="checkbox"  class="choose1"  name="singleItemC"/>
-			    						<span>D</span><input type="checkbox"  class="choose1" name="singleItemD"/>
-		    						</form>
-		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="singleknowlege"/></li>
-		    				    <li id="resolve">解析<br/><textarea  name="resolve"></textarea></li>	 
-		    			    </ul>
+			    			<form class="choose">
+			    				<ul>
+			    					<li id="dry">题干<br><textarea></textarea></li>	
+			    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerA"/></li>
+			    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerB"/></li>
+			    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerC" /></li>
+			    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="singleanswerD" /></li>
+			    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+			    							<!-- <span>A</span><input type="checkbox"  class="choose1" name="singleItemA"/>
+				    						<span>B</span><input type="checkbox"  class="choose1"  name="singleItemB"/>
+				    						<span>C</span><input type="checkbox"  class="choose1"  name="singleItemC"/>
+				    						<span>D</span><input type="checkbox"  class="choose1" name="singleItemD"/> -->
+				    					<input type="text" class="form-control" placeholder="请输入答案组合:选项A,B,C,D" >
+			    					</li>
+			    				    <li id="knowledge">知识点<input class="form-control" type="text" name="singleknowlege"/></li>
+			    				    <li id="resolve">解析<br/><textarea  name="resolve"></textarea></li>	 
+			    			    </ul>
+			    		   </form>
 		    			</div>
 		    			
 		    					    			<!--多选题录入 end-->
 		    			
 		    			<!--判断-->
 		    			<div class="ture-or-false">
-		    				<ul>
-		    					<li id="dry">题干<br><textarea name></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
-		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-	    							<form class="choose">
-		    							<span>A</span><input type="radio" name="itemA" class="choose1"/>
-			    						<span>B</span><input type="radio" name="itemB" class="choose1"/>
-		    						</form>
-		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowledge"/></li>
-		    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
-		    			    </ul>
+		    				<form class="choose">
+			    				<ul>
+			    					<li id="dry">题干<br><textarea name></textarea></li>	
+			    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
+			    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" id="" /></li>
+			    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+			    							<!-- <span>A</span><input type="radio" name="itemA" class="choose1"/>
+				    						<span>B</span><input type="radio" name="itemB" class="choose1"/> -->
+			    						<input type="text" class="form-control" placeholder="请输入“对”或“错”" >
+			    					</li>
+			    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowledge"/></li>
+			    				    <li id="resolve">解析<br/><textarea name="resolve"></textarea></li>	 
+			    			    </ul>
+		    			    </form>
 		    			</div>	
 		    			
 		    			
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
-		    				<ul>
-		    					<li id="dry">题干<br><textarea></textarea></li>		    					
-		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" /></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
-		    					<li id="resolve">解析<br><textarea></textarea></li>
-
-		    				</ul>
+			    			<form class="choose">
+			    				<ul>
+			    					<li id="dry">题干<br><textarea></textarea></li>		    					
+			    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" /></li>
+			    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
+			    					<li id="resolve">解析<br><textarea></textarea></li>
+	
+			    				</ul>
+			    			</form>
 		    			</div>
 		    			
 		    			<!--填空、判断题录入 end-->
 		    			
 		    			<!--解答题录入 start-->
 		    			<div class="answer-question">
-		    				<ul>
-		    					<li id="dry">题干<br><textarea></textarea></li>
-		    					<li id="answer">答案<br><textarea></textarea></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
-		    					<li id="resolve">解析<br><textarea></textarea></li>
-
-		    				</ul>
+		    				<form class="choose">
+			    				<ul>
+			    					<li id="dry">题干<br><textarea></textarea></li>
+			    					<li id="answer">答案<br><textarea></textarea></li>
+			    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" /></li>
+			    					<li id="resolve">解析<br><textarea></textarea></li>
+	
+			    				</ul>
+		    				</form>
 		    			</div>
-		    			<div>
+		    			<div class="foot">
 		    				<button type="button" class="btn btn-warning clearall">清空</button>
 		    				<button type="submit" class="btn btn-primary submitbtn">提交</button>
 		    			</div>
