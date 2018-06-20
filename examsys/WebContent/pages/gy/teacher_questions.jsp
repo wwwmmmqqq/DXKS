@@ -20,6 +20,7 @@
             <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
             <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
             <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+
 	</head>
 	<body>
 		<section class="navgationandhead">
