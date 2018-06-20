@@ -101,7 +101,7 @@
 						window.location.href = "../gy/jsshowpaper.jsp?user.userId="+user.userId;
 					 }
 					if(user.type=="教务") {
-						window.location.href = "../lxh/jwindex.jsp?user="+user;
+						window.location.href = "../lxh/affair_index.jsp?user="+user;
 					 }
 					if(user.type=="管理员") {
 						window.location.href = "../gy/history_teacher.jsp?user.userId="+user.userId;

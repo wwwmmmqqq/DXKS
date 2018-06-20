@@ -261,7 +261,7 @@
 								</tr>
 								<td class="choose-sex">
 							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  id="teach_sex" name="user.sex">
+							      	<select class="hover"  name="user.sex" id="teach_sex">
 							        	<option class="hover">男</option>
 							        	<option class="hover">女</option>
 							      	 </select>		 
@@ -687,7 +687,7 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_teacher' onclick='teacherInfo(this)'></i>"
+			/* +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_teacher' onclick='teacherInfo(this)'></i>" */
 			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_alter' onclick='teacherInfo(this)'></i>"
 			+"<i class='fa fa-trash-o' onclick='deleteTeacher(this)'></i>"
 			+"</td>"
@@ -779,41 +779,22 @@
 	 function createTeacher() {
 		 $.post("createUser",
 				 {	"user.userId":Math.random()*9999+"",   //用户id
-			        "user.UserName":$('#teach_name').val(),   //用户名
+			        "user.name":$('#teach_name').val(),   //用户名
 			 		"user.type":"teacher",					//用户类型
 			 		"user.sex":$('#teach_sex').val(),	//用户性别
-			 		"user.phone":$('#teach-phone').val(),
+			 		"user.phone":$('#teach_phone').val(),
 			 		"user.psw":"000000"
 			 	},function(data){
+			 		alert($('#teach_phone').val());
 			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 			 		alert(data.result);    //message为user返回信息
+			 		location.href="staffs_teacher.jsp";
 				 }
 			)}
-		/*  $.post("createUser",
-				 {	
-			 		"user.name":$('#teach_name').val(),
-			 		"user.userId":$('#teach_userId').val(),   //用户名
-				 	"user.collegeName":$('#teach_collegeName').val(),
-				 	"user.department":$('#teach_department').val(),
-				 	"user.profession":$('#teach_profession').val(),
-				 	"user.classroom":$('#teach_classroom').val(),
-			 		"user.type":"教师",					//用户类型
-			 		"user.sex":$('#teach_sex').val(),						//用户性别
-			 		"user.phone":$('#teach-phone').val(),
-			 		"user.idcard":$('#idcard').val()
-			 	},function(data){
-			 		alert(data.result);    //message为user返回信息
-			 		if(data.result=="用户创建成功"){
-			 			location.href="staffs_student.jsp";
-			 		}else {
-			 			return false;
-			 		}
-				 }
-			)
-	}  */
 	
 	function editTeacher() {
-		if(!checkInput()){alert("123"); return false;} 
+		alert("checkInput()"+checkInput());
+		if(checkInput()==false){ return false;} 
 		$.post("editUser",
 					{	
 						"user.name":$('#teach_name').val(),
@@ -828,18 +809,18 @@
 					},function(data) {
 						if(data.result=="编辑用户成功") {
 							alert("修改成功！");
-					  	location.href="staffs_student.jsp";
+					  	location.href="staffs_teacher.jsp";
 				  	}
 			  });
 	}
 
-	function deleteStudent(node) {
+	function deleteTeacher(node) {
 		var td = node.parentNode.parentNode.childNodes;
 		var userId = td[2].innerHTML;
 		if(confirm("确定要删除该用户吗？")) {
 			$.post("deleteUser",{"user.userId":userId},function(data) {
 				if(data.result=="删除成功") {
-						location.href="staffs_student.jsp";
+						location.href="staffs_teacher.jsp";
 				}
 		  }); 
 		}  
@@ -858,11 +839,14 @@
 	
 	function checkInput() {
 		$("#editStudent input[type=text]").each(function() {
-			if($(this).val()=="") {
+			if($(this).val()=="") {	
 				alert("请将信息填写完整");
 				return false;
+			}else{
+				return true;
 			}
 		});
+		
 	}
 </script>
 </html>
