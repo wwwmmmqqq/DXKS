@@ -48,10 +48,10 @@ public class ExamPlanAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createExamPlan() {
-		exam.setUserId(user.getUserId());
+		exam.setUserId(getSessionUserId());
 		exam.setState(0);
 		exam.setTime(Tool.time());
-		user=userService.SelectOneUser(user.getUserId());
+		user=userService.SelectOneUser(getSessionUserId());
 		exam.setInvitee(user.getCollegeName());
 		boolean ex=examPlanService.createExamPlan(exam);
 		if(!ex) {
