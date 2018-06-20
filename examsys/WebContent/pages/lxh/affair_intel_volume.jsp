@@ -129,6 +129,7 @@
 					</ul>
 					<!--breadcrumbs end -->
 				</div>
+				<div><input type="text" id="paperName" style="margin-left: 50px" placeholder="输入试卷名" /></div>
 				<section class="papermanage">
 					<!-- 智能组卷 start-->
 						<div class="autocompose">
@@ -547,7 +548,7 @@ function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
 }
 
 $('#submitBtn').bind().click(function() {
-	var params = createPaperAutoParams(examSid, 0, "XX考试", "2018-06-20 20:39:00", "2018-06-20 22:39:00");
+	var params = createPaperAutoParams(examSid, 0, $('#paperName').val(), "2018-06-20 20:39:00", "2018-06-20 22:39:00");
 	$.post("createPaperAuto", params, function(data) {
 		if(data.result != 'fail') {
 			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
