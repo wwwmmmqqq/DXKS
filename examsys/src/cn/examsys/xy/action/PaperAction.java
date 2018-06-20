@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Paper;
 import cn.examsys.common.CommonAction;
 import cn.examsys.common.Tool;
@@ -87,7 +88,9 @@ public class PaperAction extends CommonAction {
 			params={"contentType","text/html"})
 	public String showPaperList() {
 		paperList = paperService.selectPaperList(page);
-		totalPage = paperService.selectPaperList();
+/*		totalPage = paperService.selectPaperList();*/
+		DaoAdapter.COUNT_PER_PAGE=10;
+		totalPage=(int) Math.ceil((paperList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
 		if(paperList.isEmpty()){
 			setResult("查询失败");
 		}

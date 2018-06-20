@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ModelDriven;
+
+import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Role;
 import cn.examsys.bean.User;
 import cn.examsys.common.CommonAction;
@@ -98,7 +100,9 @@ public class RoleAction extends CommonAction{
 		if(roleList==null){
 			setResult("无角色");
 		}
-		totalPage=roleService.selectRoleCount();
+/*		totalPage=roleService.selectRoleCount();*/
+		DaoAdapter.COUNT_PER_PAGE=10;
+		totalPage=(int) Math.ceil((roleList.size()*1.0)/DaoAdapter.COUNT_PER_PAGE);
 		System.out.println("总页面大小为："+totalPage);
 		return aa;
 	}

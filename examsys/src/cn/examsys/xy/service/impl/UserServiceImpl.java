@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.bean.User;
+import cn.examsys.common.CommonAction;
 import cn.examsys.xy.dao.UserDao;
 import cn.examsys.xy.service.UserService;
 @Service(value="userService")
@@ -34,17 +35,17 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 	/*查询用户列表*/
-	public List<User> SelectUserList(String type,int page) {
+	public List<User> SelectUserList(String type,int page,User administration) {
 		// TODO Auto-generated method stub
 		List<User> userList=userDao.selectUserList(type,page);
-		/*Iterator<User> iter = userList.iterator();
+		String collageName=administration.getCollegeName();
+		Iterator<User> iter = userList.iterator();
 		while (iter.hasNext()) {
 		   User it = iter.next();
-		   if("封禁".equals(it.getStatus())) {
+		   if("封禁".equals(it.getStatus()) || !collageName.equals(it.getCollegeName())) {
 		    	iter.remove();
-		    	System.out.println("封禁");
 		   }
-		}*/
+		}
 		return userList;
 	}
 	/*查询用户列表总页数*/

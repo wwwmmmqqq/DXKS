@@ -679,9 +679,8 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
-		
 		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
-			  var userList=data.userList;
+			var userList=data.userList;
 			  totalPage=data.totalPage;
 			  var htm = "";
 			  var ht = "";
@@ -689,8 +688,10 @@
 				  	var number=(page-1)*10;
 				  	number +=i+1;
 		 			htm += getItemHtml(i, userList[i],number);
+		 			/* alert("123456"); */
 		 		}
 			 $('#student-list-box').html(htm);
+			
 			 for(var j=1;j<=totalPage;j++) {
 				 ht += getLiHtml(j);
 			 }
@@ -730,9 +731,9 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
+			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
+			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
+			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
 			+"</td>"
 			+"</tr>";
 		return htm;
@@ -751,14 +752,13 @@
 		}
 		return ht;    
 	}
-	function studentInfo(id) {
+	function studentInfo(node) {
 		var td = node.childNodes;
 		var userId = td[0].id;
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
 			$('#student-info-box').html(info);
-			
 			$('#stu_name').val(user.name);
 			$('#stu_sex').val(user.sex);
 			$('#stu_userId').val(user.userId);
@@ -835,7 +835,6 @@
 			 	},function(data){
 			 		alert(data.result);    //message为user返回信息
 			 		if(data.result=="用户创建成功"){
-			 			alert(data.result);
 			 			location.href="staffs_student.jsp";
 			 		}else {
 			 			return false;
@@ -845,6 +844,7 @@
 	}
 	
 	function editStudent() {
+		/* if(!checkInput()){alert("123"); return false;}  */
 		$.post("editUser",
 					{	
 						"user.name":$('#stu_name').val(),
@@ -865,8 +865,8 @@
 	}
 
 	function deleteStudent(node) {
-		var td = node.parentNode.parentNode.childNodes;
-		var userId = td[2].innerHTML;
+		var td = node.childNodes;
+		var userId = td[0].id;
 		if(confirm("确定要删除该用户吗？")) {
 			$.post("deleteUser",{"user.userId":userId},function(data) {
 				if(data.result=="删除成功") {
@@ -887,13 +887,5 @@
 		}  
 	}
 	
-	function checkInput() {
-		$("#editStudent input[type=text]").each(function() {
-			if($(this).val()=="") {
-				alert("请将信息填写完整");
-				return false;
-			}
-		});
-	}
 </script>
 </html>
