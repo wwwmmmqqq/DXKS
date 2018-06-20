@@ -3,6 +3,7 @@ package cn.examsys.lrx.service.impl;
 import java.text.ParseException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.examsys.bean.Constitute;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
+import cn.examsys.bean.User;
 import cn.examsys.common.Conf;
 import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.ConstituteDaoImpl;
@@ -143,55 +145,6 @@ public class ConstituteServiceImpl implements ConstituteService {
 			
 		}
 		
-		
-		/*//难度
-		int difficulty_arr[] = new int[] {
-				 Conf.Difficulty_1
-				,Conf.Difficulty_2
-				,Conf.Difficulty_3
-				,Conf.Difficulty_4
-		};
-		
-		for (int i = 0; i < vos.length; i++) {
-			
-			//四个难度对应的题目数量
-			int diff_n_count_arr[] = {
-					 vos[i].getCount() * vos[i].getDiff1Percent() / 100 
-					,vos[i].getCount() * vos[i].getDiff2Percent() / 100 
-					,vos[i].getCount() * vos[i].getDiff3Percent() / 100 
-					,vos[i].getCount() * vos[i].getDiff4Percent() / 100 
-			};
-			
-			//四个难度对应的题目分值
-			int diff_n_point_arr[] = {
-					 vos[i].getDiff1Point()
-					,vos[i].getDiff2Point()
-					,vos[i].getDiff3Point()
-					,vos[i].getDiff4Point()
-			};
-			
-			//遍历四个难度
-			for (int j = 0; j < difficulty_arr.length; j++) {
-				
-				//List<Question> tmp = dao.findNByHql("from Question where subjectRef=? and type=? and difficultyValue=? ORDER BY RAND()"
-				List<Question> tmp = dao.findNByHql("from Question where type=? and difficultyValue=? ORDER BY RAND()"
-						, new Object[] {
-								subjectRef 
-								, type_arr[i] //题目类型
-								, difficulty_arr[j] //难度
-						} , diff_n_count_arr[j]);//数量
-				//设置   题目序号，某题目类型某难度的分值  
-				//并且插入到数据库
-				try {
-					Constitution(tmp, paperSid, difficulty_arr[j], diff_n_point_arr[j]);
-				} catch (Exception e) {
-					e.printStackTrace();
-					return -1;
-				}
-				
-			}
-		}*/
-		
 		return paperSid;
 	}
 
@@ -211,6 +164,52 @@ public class ConstituteServiceImpl implements ConstituteService {
 		}
 		System.out.println();
 	}
+	
+	
+	
+	public int createPaperHand(User sessionUser, List<Integer> qids, int paperSid,
+		List<Integer> points, String examStart, String examEnd,
+		String name, int examRef, int subjectRef) {
+		if (qids.size() != points.size()) {
+			return -1;
+		}
+		Paper paper = new Paper();
+		paper.setExamRef(examRef);
+		paper.setName(name);
+		paper.setSubjectRef(subjectRef);
+		paper.setExamStart(examStart);
+		paper.setExamEnd(examEnd);
+		paper.setTime(Tool.time());//试卷创建时间
+		
+		for (int i = 0; i < qids.size(); i++) {
+			Constitute con = new Constitute();
+			con.setNo(i);
+			con.setPaperRef(paperSid);
+			con.setPoint(points.get(i));
+			con.setQuestionRef(qids.get(i));
+			//con.setResponsibleUser(responsibleUser);
+			try {
+				dao.saveEntity(con);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public List<Map<String, Integer>> loadQuestionCountByType(int subjectRef) {
+		try {
+			return dao.findByHql("select new Map(type as type, count(*) as count) from Question where subjectRef=? group by type"
+					, new Object[]{subjectRef});
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+}
 	
 	
 	/*try {
@@ -246,4 +245,3 @@ public class ConstituteServiceImpl implements ConstituteService {
 	e.printStackTrace();
 }*/
 
-}

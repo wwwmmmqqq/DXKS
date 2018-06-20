@@ -31,7 +31,7 @@ public class JumpAction extends CommonAction {
 	private List<Question> questionList;
 	User user=new User();
 	private int page;					//当前页
-	private int totalPage;            //总页数
+	private int totalPage;             //总页数
 	Map<String,List<Option>> map=new HashMap<String,List<Option>>();
 
 	public int getTotalPage() {
@@ -99,12 +99,13 @@ public class JumpAction extends CommonAction {
 	}
 	
 	@Action(value="/showItemBankListByUserJump"
-			,results={@Result(name="aa",location="/pages/gy/jsshowpaper.jsp")})
+			,results={@Result(name="success",location="/pages/gy/teacher_showpaper.jsp")})
 	public String showItemBankListByUser(){
 		/**
 		 * 数据测试
 		 */
 		/*user.setUserId("admin123546");*/
+		
 		if(getSessionUser().getType().contains("admin")){      //教务查看所有题
 			questionList=itemBankService.selectItemQuestionList(page);
 			
@@ -122,18 +123,19 @@ public class JumpAction extends CommonAction {
 		}
 		
 		/*查看对应question的option*/
-		for(int i=0;i<questionList.size();i++){
+		for(int i=0;i<questionList.size();i++) {
 			option=itemBankService.selectItemOptionByQuestion(questionList.get(i).getSid());
-			map.put("option["+i+"]", option);
+			questionList.get(i).setOptions(option);
+			//map.put("option["+i+"]", option);
 		}
 		
-		if(map.isEmpty()||questionList.isEmpty()){
+		/*if(map.isEmpty()||questionList.isEmpty()){
 			System.out.println("题库查看失败！");
 			setResult("题库查看失败！");
-		}
+		}*/
 		System.out.println("题库查看成功！");
 		setResult("题库查看成功！");
-		return aa;
+		return SUCCESS;
 	}
 	
 

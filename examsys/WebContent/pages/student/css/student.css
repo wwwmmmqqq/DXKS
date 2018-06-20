@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 
 html, body {
-	overflow: auto !important;
+	/* overflow: auto !important; */
 	font-family: 'Lato', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	min-height: 100%;
@@ -74,9 +73,9 @@ li {
 	background-color:  #f1f2f7;
 	cursor:pointer; 
 }
- /* .user-info:hover .dropdown-content{
+  .user-info:hover .dropdown-content{
 	display: block;
-} */ 
+} 
 .fa {
 	display: inline-block;
 	font-family: FontAwesome;
@@ -555,6 +554,8 @@ li {
 
 .question {
 	width: 100%;
+	padding:100px;
+	min-height: 300px
 }
 
 .question thead, tbody {
@@ -648,6 +649,9 @@ li {
 	border: 0;
 	background-color: transparent;
 	color: white;
+}
+.opt-together{
+	margin:0 50px;
 }
 /*考试结果*/
 .result-title span {
@@ -795,4 +799,9 @@ li {
 	margin: 20px;
 	padding: 30px 80px;
 	background-color: white;
+}
+
+.question .option-item{
+	padding-left:20px;
+	padding-top:15px;
 }

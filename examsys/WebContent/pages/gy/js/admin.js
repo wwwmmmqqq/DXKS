@@ -165,6 +165,7 @@ function getInfoHtml(obj) {
 	return info;
 }
 
+
 function editStudent() {
 	var permission = $('#administration_permission_answer').val()+" "+$('#administration_permission_paper').val();
 	$.post("editUser",
@@ -206,3 +207,4 @@ function Out() {
 	  });
 	}  
 }
+

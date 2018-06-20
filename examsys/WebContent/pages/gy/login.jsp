@@ -88,12 +88,8 @@
 		}
 		else {
 			 $.post("login",{"user.userId":Id,"user.psw":password},function(data) {
-				if(data.result=="未找到该账号！") {
-					alert(data.result);
-				}else if(data.result=="密码错误！") {
-					alert(data.result);
-				}else {
-				 	var user = data.user;
+				 
+					var user = data.user;
 				 	if(user.type=="学生") {
 						window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
 					 }
@@ -106,7 +102,16 @@
 					if(user.type=="管理员") {
 						window.location.href = "../gy/admin.jsp?user.userId="+user.userId;
 				 	}
-				}
+					
+					
+					
+				/* if(data.result=="未找到该账号！") {
+					alert(data.result);
+				}else if(data.result=="密码错误！") {
+					alert(data.result);
+				}else {
+				 
+				} */
 			  })
 	  	}
 	}

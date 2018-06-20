@@ -18,14 +18,17 @@ public abstract class CommonAction extends ActionSupport {
 	protected String aa = "success";
 	
 	public CommonAction() {
-		/*User user = new User();*/
-		/*user.setUserId("admin");*/
-		/*user.setPsw("123");
+		User user = new User();
+		user.setUserId("admin");
+		user.setPsw("123");
+		user.setType("admin");
 		user.setName("nick");
 		user.setCollegeName("萍乡学院");
 		user.setPermission("");
 		user.setSex("男");
-		saveLogin(user);*/
+		saveLogin(user);
+		
+		session.setAttribute("Time", Tool.time());//服务器时间
 	}
 	
 	public void saveLogin(User user) {

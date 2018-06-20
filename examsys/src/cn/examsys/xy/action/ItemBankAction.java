@@ -216,8 +216,8 @@ public class ItemBankAction extends CommonAction{
 	/******************************显示一道题和相应选项*********************/
 	
 	@Action(value="/showItem"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
+			, results={@Result(type="json")}
+			, params={"contentType", "text/html"})
 	public String showItem(){
 		/*查看对应question*/
 		question=itemBankService.selectItemQuestion(question.getSid());

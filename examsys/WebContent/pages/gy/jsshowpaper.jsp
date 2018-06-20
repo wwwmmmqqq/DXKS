@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="/struts-tags" prefix="s"%>
     <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -80,7 +81,7 @@
 				</div>
 				<div class="light_bottom">
 					<ul class="side_nav">
-					<a href="jsshowpaper.jsp"><li class="side_nav1 now">题库管理</li></a>
+					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
 					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
@@ -103,9 +104,7 @@
 		    	</div>
 		    	<!-- 搜索部分 -->
 		    	<div>
-		    	<div class="add_paper">
-		    		<button type="button" class="btn"></button>
-		    	</div>
+		    	
 			    	<div class="search">
 		    		<form class="form-inline searchform" role="form">
 		    			<select class="form-control" id="">
@@ -123,24 +122,33 @@
 		    			</div>
 		    			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 			    		<a href="jsentryquestions.jsp"><button type="button" class="btn btn-in">录入题库</button></a>
-			    			
-		    			
 		    		</form>
 		    	</div>
 		    		
 		    	</div>
 		    	<div class="papermanage">
-		    		
 		    		<!--  浏览试卷 start -->
 		    		<section>
 		    			<div class="panel showpaper">
-		  
+		    			<s:iterator id="que" value="#request.questionList" status="s1">
 		    				<div class="panel-body paperpanel">
 		    					<div class="qtype">
+		    					
 		    						<p class="information">
-		    							<span>选择题型：单选题</span>
-		    							<span>难易度：简单</span>
-		    							<span>知识点：英语阅读理解能力 </span>
+		    							<span>选择题型：
+		    								${(que.type=="Single")?"(单选题)":""}
+											${(que.type=="Multiple")?"(多选题)":""}
+											${(que.type=="TrueOrFalse")?"(判断题)":""}
+											${(que.type=="Fills")?"(填空题)":""}
+											${(que.type=="Subjective")?"(解答题)":""}
+		    							</span>
+		    							<span>难易度：
+		    								${que.difficultyValue==1?"简单":""}
+		    								${que.difficultyValue==2?"一般":""}
+		    								${que.difficultyValue==3?"中等":""}
+		    								${que.difficultyValue==4?"较难":""}
+		    							</span>
+		    							<span>知识点：${que.knowledge}</span>
 		    						</p>
 		    						<div class="operation">
 		    							<ul>
@@ -150,88 +158,35 @@
 		    						</div>
 		    					</div>
 		    					<ul>
-		    						<li class="question"># 下列说法正确的是()</li>
-		    						<li>A. Update software</li>
-		    						<li>B. Clean database</li>
-		    						<li>C. Cron job running</li>
-		    						<li>D. Fix and squish bugs</li><br>
-		    						<li>正确答案：D</li>
+		    						<li class="question"><h4>${que.title}</h4></li>
+			    					<s:iterator id="queOpt" value="#que.options" status="s2">
+			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
+			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
+			    						<li>${s2.last?"正确答案：":""}
+				    						<span style="color: red;">
+				    							${("Single Multiple TrueOrFalse".indexOf(que.type)>0 && queOpt.isAnswer==1)?optionLabel:""}
+				    							${que.type=="Fills"?queOpt.fillsText:""}
+				    							${que.type=="Subjective"?queOpt.subjectiveText:""}
+				    						</span>
+			    						</li>
+		    						</s:iterator>
+		    						<%-- <li>正确答案：
+		    							<span style="color: red;">
+				    						${que.type=="Single"?queOpt.isAnswer:""}
+				    						${que.type=="Fills"?queOpt.fillsText:""}
+				    						${que.type=="Multiple"?queOpt.isAnswer:""}
+				    						${que.type=="Subjective"?queOpt.subjectiveText:""}
+				    						${que.type=="TrueOrFalse"?queOpt.isAnswer:""}
+			    						</span>
+		    						</li> --%>
+		    						<%-- <s:if  test="#optque.isAnswer==1">
+		    						<li>正确答案：${optque.content }</li>
+		    						</s:if> --%>
 		    					</ul>
-		    					<div class="qtype">
-		    						<p class="information">
-		    							<span>选择题型：多选题</span>
-		    							<span>难易度：简单</span>
-		    							<span>知识点：英语阅读理解能力 </span>
-		    						</p>
-		    						<div class="operation">
-		    							<ul>
-		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
-		    							</ul>
-		    						</div>
-		    					</div>
-		    					<ul>
-		    						<li class="question"># 下列说法正确的是()</li>
-		    						<li>A. Update software</li>
-		    						<li>B. Clean database</li>
-		    						<li>C. Cron job running</li>
-		    						<li>D. Fix and squish bugs</li><br>
-		    						<li>正确答案：D</li>
-		    					</ul>
-		    					<div class="qtype">
-		    						<p class="information">
-		    							<span>选择题型：判断题</span>
-		    							<span>难易度：简单</span>
-		    							<span>知识点：java </span>
-		    						</p>
-		    						<div class="operation">
-		    							<ul>
-		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
-		    							</ul>
-		    						</div>
-		    					</div>
-		    					<ul>
-		    						<li class="question"># 世界上最好的语言是</li><br>
-		    						<li>正确答案：<textarea>dddddaaaaaaaaa</textarea></li>
-		    					</ul>
-		    				<div class="qtype">
-		    						<p class="information">
-		    							<span>选择题型：解答题</span>
-		    							<span>难易度：简单</span>
-		    							<span>知识点：java </span>
-		    						</p>
-		    						<div class="operation">
-		    							<ul>
-		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
-		    							</ul>
-		    						</div>
-		    					</div>
-		    					<ul>
-		    						<li class="question"># 世界上最好的语言是()</li><br>
-		    						<li>正确答案：<textarea>dddddaaaaaaaaa</textarea></li>
-		    					</ul>
-		    					<div class="qtype">
-		    						<p class="information">
-		    							<span>选择题型：解答题</span>
-		    							<span>难易度：简单</span>
-		    							<span>知识点：java </span>
-		    						</p>
-		    						<div class="operation">
-		    							<ul>
-		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
-		    							</ul>
-		    						</div>
-		    					</div>
-		    					<ul>
-		    						<li class="question"># 世界上最好的语言是()</li><br>
-		    						<li>正确答案：<textarea>dddddaaaaaaaaa</textarea></li>
-		    					</ul>
-		    			
+		    					
+		    					
 		    				</div>
-		    			
+		    			</s:iterator>
 		    				<div class="page_pagination">
 		    					<ul class="pagination">
 		    						<li class="page-item">

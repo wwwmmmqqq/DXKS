@@ -105,10 +105,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  });
 	  }
 	  
+	  
+	  function constituteByHand(qids, examStart, examEnd, examName) {
+		  //手动组卷接口
+		  $.post("createPaperHand", {
+			  "examStart":examStart //考试开始
+			  ,"examEnd":examEnd //考试结束
+			  ,"examName":examStart //考试名字
+			  ,"qids[0]":qids[0]//第一题ID
+			  ,"qids[1]":qids[1]//第二题ID
+			  ,"qids[2]":qids[2]//第三题ID
+			  ,"qids[3]":qids[3]//到总题目数量 的ID 
+		  }, function(data) {
+			  if("fail" == data.result) {
+				  alert("失败");
+			  } else {
+				  var paperSid = data.result;//返回试卷的ID
+				  
+			  }
+		  });
+	  }
+	  
+	  
+	  
+	  function createPaperAuto(examRef, subjectRef, name, examStart, examEnd) {
+		  $.post("createPaperAuto", {
+			  "paper.examRef":examRef //考试ID
+				, "paper.name":name //试卷标题名
+				, "paper.examStart":examStart //考试开始时间
+				, "paper.examEnd":examEnd //考试结束时间
+				//单选题的参数
+				, "single.count": //题目数量
+				, "single.diff1Percent": //难度为1的百分百
+				, "single.diff2Percent": //难度为2的百分百
+				, "single.diff3Percent": //难度为3的百分百
+				, "single.diff4Percent": //难度为4的百分百
+				, "single.diff1Point": //难度为1的分数
+				, "single.diff2Point": //难度为2的分数
+				, "single.diff3Point": //难度为3的分数
+				, "single.diff4Point": //难度为4的分数
+					//判断题的参数
+				, "trueOrFalse":
+					//判断题的参数
+				, "multiple":
+					//判断题的参数
+				, "fills":
+					//判断题的参数
+				, "subjective":
+				  
+		  }, function(data) {
+			  if(data.result == 'fail') {
+				  alert("组卷失败");
+			  }
+		  });
+	  }
 	  </script>
 	  
 	  <script type="text/javascript">
-	  loadMyExamList(1);
+	  //传入题目的ID数组
 	  </script>
 	  
   </head>

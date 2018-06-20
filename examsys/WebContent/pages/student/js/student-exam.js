@@ -93,48 +93,30 @@ function markClick() {
 		$("#abc" + n).removeClass("has-labled");
 	}
 }
-window.onload = function() {
-	daojishi();
-};
+
 /* 倒计时 */
-var counttime = 60 * 120;// 把120分钟化成总秒数
-function daojishi() {
-	if (counttime >= 0) {
-		var seconds = counttime % 60;// 得到剩余的秒数 89%60==29秒
-		var min = Math.floor(counttime / 60);// 分钟
-		if (min >= 60) {
-			var hour = Math.floor(min / 60);
-
-			min = Math.floor((counttime - hour * 60 * 60) / 60);
-
-			document.getElementById("mss").value = hour + ":" + min + ":"
-					+ seconds;
-		} else if (mis >= 1) {
-			document.getElementById("mss").value = min + ":" + seconds;
-
+function startTimeCounting(t0, t1) {
+	var a = new Date(t0);
+	var b = new Date(t1);
+	var dms = b.valueOf() - a.valueOf();//结束时间减去当前时间=剩余时间
+	var dt = dms / 1000;
+	document.getElementById("mss").value = "--:--:--";
+	var iid = 0;
+	iid = setInterval(function() {
+		var hour = Math.floor(dt / 3600 % 60);
+		var min = Math.floor(dt / 60 % 60);
+		var sec = Math.floor(dt % 60);
+		if(--dt<=0) {
+			alert("时间到，自动提交试卷");
+			window.clearInterval(iid);
+			document.getElementById("mss").value = "00:00:00";
 		} else {
-			document.getElementById("mss").value = seconds;
+			document.getElementById("mss").value 
+				= displayTime(hour) + ":" + displayTime(min) + ":" + displayTime(sec);
 		}
-
-		counttime--;
-		vartt = window.setTimeout("daojishi()", 1000);
-	} else {
-		window.clearTimeout(vartt);
-		window.confirm("考试时间结束,请单击提交");
-		tijiao();
-
+	}, 1000);
+	function displayTime(n) {
+		if(n<10) return "0" + n;
+			else return n;
 	}
 }
-
-/*
- * $(':checkbox[type="checkbox"]').each(function(){ alert("aa")
- * $(this).parent().parent().click(function(){ if($(this).attr('checked')){
- * $(':checkbox[type="checkbox"]').removeAttr('checked');
- * $(this).attr('checked','checked'); } }) }) 单选功能 function oneChoice(){
- * $(':checkbox[type="checkbox"]').each(function(){
- * $(this).parent().parent().click(function(){ if($(this).attr('checked')){
- * $(':checkbox[type="checkbox"]').removeAttr('checked');
- * $(this).attr('checked','checked'); } }) }) }
- * 
- */
-
