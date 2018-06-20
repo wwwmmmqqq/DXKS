@@ -608,8 +608,11 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
+	
 		$.post("selectUserList",{"user.type":"student","page":page},function(data) {
-			  var userList=data.userList;
+			alert("hhh"); 
+			var userList=data.userList;
+			  alert( userList);
 			  totalPage=data.totalPage;      
 			  var htm = "";
 			  var ht = "";
