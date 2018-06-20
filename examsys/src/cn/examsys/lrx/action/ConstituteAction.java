@@ -2,7 +2,6 @@ package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -36,24 +35,23 @@ public class ConstituteAction extends CommonAction {
 	ConstituteVO multiple = new ConstituteVO();
 	ConstituteVO fills = new ConstituteVO();
 	ConstituteVO subjective = new ConstituteVO();
-	
-	public Paper getPaper() {
-		return paper;
+	public void setPaper(Paper paper) {
+		this.paper = paper;
 	}
-	public ConstituteVO getSingle() {
-		return single;
+	public void setSingle(ConstituteVO single) {
+		this.single = single;
 	}
-	public ConstituteVO getTrueOrFalse() {
-		return trueOrFalse;
+	public void setTrueOrFalse(ConstituteVO trueOrFalse) {
+		this.trueOrFalse = trueOrFalse;
 	}
-	public ConstituteVO getMultiple() {
-		return multiple;
+	public void setMultiple(ConstituteVO multiple) {
+		this.multiple = multiple;
 	}
-	public ConstituteVO getFills() {
-		return fills;
+	public void setFills(ConstituteVO fills) {
+		this.fills = fills;
 	}
-	public ConstituteVO getSubjective() {
-		return subjective;
+	public void setSubjective(ConstituteVO subjective) {
+		this.subjective = subjective;
 	}
 	/**
 	 * <div style='background-color: blue'>自动组卷<br>
@@ -86,14 +84,6 @@ public class ConstituteAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createPaperAuto() {
-		
-		System.out.println(single);
-		System.out.println(trueOrFalse);
-		System.out.println(multiple);
-		System.out.println(fills);
-		System.out.println(subjective);
-		System.out.println(paper);
-		
 		
 		int sid = service.createPaperAuto(paper.getExamRef()
 				, paper.getSubjectRef()//科目id
@@ -130,22 +120,6 @@ public class ConstituteAction extends CommonAction {
 		if (sid == -1) {
 			setResult("fail");
 		}
-		return aa;
-	}
-	
-	List<Map<String, Integer>> countListMap = new ArrayList<>();
-	public List<Map<String, Integer>> getCountListMap() {
-		return countListMap;
-	}
-	
-	@Action(value="/loadQuestionCountByType"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
-	public String loadQuestionCountByType() {
-		
-		countListMap = service.loadQuestionCountByType(paper.getSubjectRef());
-		System.out.println(countListMap.size());
-		
 		return aa;
 	}
 	

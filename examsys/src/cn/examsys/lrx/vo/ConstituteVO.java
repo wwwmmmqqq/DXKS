@@ -78,14 +78,4 @@ public class ConstituteVO {
 	public void setDiff4Point(int diff4Point) {
 		this.diff4Point = diff4Point;
 	}
-	@Override
-	public String toString() {
-		return "ConstituteVO [count=" + count + ", diff1Percent="
-				+ diff1Percent + ", diff2Percent=" + diff2Percent
-				+ ", diff3Percent=" + diff3Percent + ", diff4Percent="
-				+ diff4Percent + ", diff1Point=" + diff1Point + ", diff2Point="
-				+ diff2Point + ", diff3Point=" + diff3Point + ", diff4Point="
-				+ diff4Point + ", tnPoint=" + tnPoint + "]";
-	}
-	
 }

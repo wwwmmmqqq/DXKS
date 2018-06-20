@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% String path=request.getContextPath();
    String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
@@ -76,9 +76,9 @@
 			  	<ul class="side_nav">
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
+			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
+			  		<li class="side_nav1"><a href="jwhandzujuan.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="jwintelzujuan.jsp">智能组卷</a></li>
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -120,7 +120,7 @@
 			      <tr class="tb_width">
 			      
 			        <th>考试计划名称</th>
-			        <th>计划时间</th>
+			        <th>考试结束时间</th>
 			        <th>考试计划开始时间</th>
 			        <th>考试计划结束时间</th>
 			        <th>受邀学校</th>
@@ -130,8 +130,113 @@
 			        <th>操作</th>
 			      </tr>
 			    </thead>
-				<tbody  id="tplan-list-box">
-					<tr class="tb_width">	
+				<tbody>
+					<tr class="tb_width">
+						
+				        <td>四六级</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>萍乡学院</td>
+				        <td>xxx</td>
+				        <td>完成</td>
+				        <td>软件工程</td>
+				        <td>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+			        	</td>
+			        </tr>
+			        <tr class="tb_width">
+						
+				        <td>四六级</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>萍乡学院</td>
+				        <td>xxx</td>
+				        <td>完成</td>
+				        <td>软件工程</td>
+				        <td>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+			        	</td>
+			        </tr>
+			        <tr class="tb_width">
+						
+				        <td>四六级</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>萍乡学院</td>
+				        <td>xxx</td>
+				        <td>完成</td>
+				        <td>软件工程</td>
+				        <td>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+			        	</td>
+			        </tr>
+			        <tr class="tb_width">
+						
+				        <td>四六级</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>萍乡学院</td>
+				        <td>xxx</td>
+				        <td>完成</td>
+				        <td>软件工程</td>
+				        <td>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+			        	</td>
+			        </tr>
+			     	<tr class="tb_width">
+						
+				        <td>四六级</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>萍乡学院</td>
+				        <td>xxx</td>
+				        <td>完成</td>
+				        <td>软件工程</td>
+				        <td>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+			        	</td>
+			        </tr>
+			        <tr class="tb_width">
+						
+				        <td>四六级</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>萍乡学院</td>
+				        <td>xxx</td>
+				        <td>完成</td>
+				        <td>软件工程</td>
+				        <td>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+			        	</td>
+			        </tr>
+			        <tr class="tb_width">
+						
+				        <td>四六级</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>2018-8-8</td>
+				        <td>萍乡学院</td>
+				        <td>xxx</td>
+				        <td>完成</td>
+				        <td>软件工程</td>
+				        <td>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+			        	</td>
+			        <tr class="tb_width">
+						
 				        <td>四六级</td>
 				        <td>2018-8-8</td>
 				        <td>2018-8-8</td>
@@ -619,89 +724,8 @@
 				</div>
 			</div>
 		</div>
+
+	</div>
 	</div>
 	</body>
-<script>
-loadMyExamList(1);
-var currentPage=1;
-var totalPage=1;
-function loadMyExamList(page) {
-	  $.post("loadMyExamList", {"page":page}, function(data) {
-		  var examList = data.list;
-		  alert(examList);
-		  var htm = "";
-		  var ht="";
-		  for(var i=0;i<examList.length;i++) {
-			  //其他信息详见cn.examsys.bean.Exam.java文件
-			  var number=(page-1)*10;
-		      number +=i+1;	
-			  htm +=getItemHtml(i,examList[i],number); 
-				
-		  }
-		  $('#tplan-list-box').html(htm);
-		  
-		  for(var j=1;j<=totalPage;j++) {
-				 ht += getLiHtml(j);
-			 }
-			 $('.pagination').html(ht);
-		 		currentPage = page;
-	  });
-}
-function getItemHtml(index,obj,number){
-	var htm="<tr class='tb_width'>"
-	+"<td>"+obj.title+"</td>"
-	+"<td>"+obj.time+"</td>"
-	+"<td>"+obj.periodStart+"</td>"
-	+"<td>"+obj.periodEnd+"</td>"
-	+"<td>"+obj.invitee+"</td>"
-	+"<td>xxx</td>"
-	+"<td>"+obj.state+"</td>"
-	+"<td>软件工程</td>"
-	+"<td>"
-	+"<i class='fa fa-pencil check'></i>"
-	+"<i class='fa fa-trash-o'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
-	+"</td>"
-	+"</tr>";
-		
-     return htm;
-}
-function getLiHtml(index) {
-	if(index==1){
-		var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-			+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-			+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
-	}
-	else if(index==totalPage){
-		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-			+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>"
-			+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
-	}
-	else {
-		var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-		+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
-	}
-	return ht;    
-}
-
-function nextPage() {
-	if(currentPage<totalPage) 
-		loadStudentList(++currentPage);
-}
-
-function prevPage() {
-	if(currentPage>=2) 
-		loadStudentList(--currentPage);
-}
-function jumpPage() {
-	var juPage=$('#jpage').html();
-	alert(juPage);
-	if(currentPage==juPage || juPage<1 || juPage>totalPage){
-		loadStudentList(currentPage);
-	} else{
-		loadStudentList(currentPage+(juPage-currentPage));
-		
-	}
-		
-}
-</script>
 </html>

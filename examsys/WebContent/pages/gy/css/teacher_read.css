@@ -207,7 +207,6 @@ p{
 	/*position:relative; 
 	top:50px;*/
 	width: 83.6%;
-	display:none;
 }
 .main1{
 	width: 90%;
@@ -525,4 +524,6 @@ p{
 	color: black;
 	border:1px solid #bbb;
 }
+
+
 

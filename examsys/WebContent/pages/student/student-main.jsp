@@ -267,9 +267,5 @@ function getExam(obj){
 
 
 </script>
-<<<<<<< HEAD
 </body>
-=======
-</body>
->>>>>>> lrx
 </html>

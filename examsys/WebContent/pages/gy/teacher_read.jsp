@@ -102,7 +102,7 @@
 
 					<div class="read">
 						<div class="read_left">
-							<div class="question" id="find">查看试题</div>
+							<div class="question" id="find">试题</div>
 							<div class="answer" id="hide">
 								<ul>
 									<div class="answer_span"><span>题目</span></div>
@@ -382,7 +382,7 @@
 						<div class="modal-body">
 							<div class="email">
 								来自xx学校xx学院xx老师的邀请
-								<button class="btn btn-primary accept" id="accept">接受</button>
+								<button class="btn btn-primary accept">接受</button>
 								<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_read_refuse">拒绝</button>
 							</div>
 							<div class="email">
@@ -440,11 +440,5 @@
 			</div>
 	</body>
 	<script type="text/javascript" src="js/search.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#accept").click(function(){
-				$(".main").show();
-			});
-		});
-	</script>
+
 </html>
