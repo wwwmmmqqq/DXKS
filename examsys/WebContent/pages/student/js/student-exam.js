@@ -95,7 +95,7 @@ function markClick() {
 }
 
 /* 倒计时 */
-function startTimeCounting(t0, t1) {
+/*function startTimeCounting(t0, t1) {
 	var a = new Date(t0);
 	var b = new Date(t1);
 	var dms = b.valueOf() - a.valueOf();//结束时间减去当前时间=剩余时间
@@ -106,6 +106,8 @@ function startTimeCounting(t0, t1) {
 		var hour = Math.floor(dt / 3600 % 60);
 		var min = Math.floor(dt / 60 % 60);
 		var sec = Math.floor(dt % 60);
+		document.getElementById("mss").value 
+		= displayTime(hour) + ":" + displayTime(min) + ":" + displayTime(sec);
 		if(--dt<=0) {
 			alert("时间到，自动提交试卷");
 			window.clearInterval(iid);
@@ -118,5 +120,35 @@ function startTimeCounting(t0, t1) {
 	function displayTime(n) {
 		if(n<10) return "0" + n;
 			else return n;
+	}
+}*/
+/* 倒计时 */
+daojishi();
+var counttime = 60 * 120;// 把120分钟化成总秒数
+function daojishi() {
+	if (counttime >= 0) {
+		var seconds = counttime % 60;// 得到剩余的秒数 89%60==29秒
+		var min = Math.floor(counttime / 60);// 分钟
+		if (min >= 60) {
+			var hour = Math.floor(min / 60);
+
+			min = Math.floor((counttime - hour * 60 * 60) / 60);
+
+			document.getElementById("mss").value = hour + ":" + min + ":"
+					+ seconds;
+		} else if (mis >= 1) {
+			document.getElementById("mss").value = min + ":" + seconds;
+
+		} else {
+			document.getElementById("mss").value = seconds;
+		}
+
+		counttime--;
+		vartt = window.setTimeout("daojishi()", 1000);
+	} else {
+		window.clearTimeout(vartt);
+		window.confirm("考试时间结束,请单击提交");
+		tijiao();
+
 	}
 }

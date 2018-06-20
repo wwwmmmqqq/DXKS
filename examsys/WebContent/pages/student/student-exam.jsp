@@ -15,14 +15,13 @@
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
-<link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
 		<header>
 			<nav id="top-nav">
 				<div id="main-nav-content">
-					<a href="student-index.html" class="logo">
+					<a href="student-index.html" clas="logo">
 						<img class="logo-img" src="img/logo.png" />
 					</a>
 					<div class="navbar-right">
@@ -33,10 +32,6 @@
 									<span>${session.user.name}</span>
 								</a>
 							</li>
-								<div class="dropdown-content">
-		    			<a href="javascript:setPassword()">修改密码</a>
-		    			<a >退出系统</a>
-		    		</div>
 						</ul>
 					</div>
 				</div>
@@ -75,9 +70,9 @@
 			</div>
 			<div class="paper-title-se">
 				<div class="title-se">
-					<span >安全知识考试</span>
+					<span >考试</span>
 				</div>
-				<button id="submitPaperBtn" class="submit-exam btn btn-primary" data-toggle="modal" data-target="#examResult">提交试卷</button>
+				<button class="submit-exam btn btn-primary" data-toggle="modal" data-target="#examResult">提交试卷</button>
 				<!-- 模态框（Modal） -->
 <div class="modal fade" id="examResult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -87,7 +82,7 @@
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					交卷提示
+					提交成功
 				</h4>
 			</div>
 			<div class="modal-body">
@@ -97,7 +92,7 @@
 				<div class="exam-result">
 					<div class="score">
 						<span>总分：</span>
-						<span id="scoreResult">85</span>
+						<span>85</span>
 					</div>
 					<div class="grade">
 						<span>考试总排名：</span>
@@ -125,9 +120,10 @@
 				<div class="lable-question">
 					<img src="img/pre-lable.png" id="lable-img-${st.index}" class="lable-question-img" onclick="markClick()" />
 				</div>
-				<div class="question">
+				<div class="question" style="min-height: 300px">
 					<div id="no_${st.index}">
 						${st.index+1}. ${item.title} 
+						
 						${(item.type=="Single")?"(单选题)":""}
 						${(item.type=="Multiple")?"(多选题)":""}
 						${(item.type=="TrueOrFalse")?"(判断题)":""}
@@ -135,7 +131,9 @@
 						${(item.type=="Subjective")?"(解答题)":""}
 					</div>
 					<s:iterator id="optItem" value="#item.options" status="st1">
-						<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("st1")).getIndex()+'A')); %>
+						<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute
+
+("st1")).getIndex()+'A')); %>
 						<div class="option-item">
 							<s:if test="#item.type == 'Single'">
 								${optionLabel}. 
@@ -192,36 +190,9 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/student-exam.js"></script>
-<<<<<<< HEAD
-
-
-<script type="text/javascript" src="js/jquery-confirm.js"></script>
-<script type="text/javascript" src="js/com.js"></script>
-=======
-<script type="text/javascript" src="js/jquery-confirm.js"></script>
-<script type="text/javascript" src="js/com.js"></script>
-
->>>>>>> wmq
 
 <script type="text/javascript">
-var paperSid=${request.paper.sid};
-window.onload = function() {
-	var now = "${session.Time}";//服务器当前时间
-	var examEnd = "2018-06-20 23:20:00";//这趟考试结束时间
-	//开始倒计时
-	startTimeCounting(now, examEnd);
-};
-//获取url中的参数
-//去掉了！
-/* function getParam(name) {
-  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
-  var result = window.location.search.substr(1).match(reg); //匹配目标参数
-  if (result != null) 
-  	return decodeURIComponent(result[2]);
-  return null;
-} */
-</script>
-<script type="text/javascript">
+var paperSid=getParam("sid");
 //loadQuestionListByPaper(paperSid);
 setTimeout(function() {
 	$('#abc0').click();
@@ -245,38 +216,17 @@ function getChoiceItem(n) {
 	return html;
 }
 
-
-$("#submitPaperBtn").click(function() {
-	submitPaper(paperSid);
-});
-
-function submitPaper(paperSid) {
-	  $("#submitPaperBtn").text("交卷中...");
-	  $.post("submitPaper", {
-		  "paper.sid":paperSid
-	  }, function (data) {
-		  if(data.result == 'fail') {
-			  //$("#examResult").text("交卷失败");
-			  $(".exam-result").html("交卷失败，该试卷已被提交过！");
-			  $("#submitPaperBtn").html("提交试卷");
-		  } else {
-			  //$("#examResult").text("交卷成功 成绩ID=" + data.result);//成绩ID
-			  $(".exam-result").text("${session.user.name}本次考试最终得分：" + data.result + "分");
-			  $("#submitPaperBtn").html("已交卷");
-			  $("#submitPaperBtn").attr("disabled", "disabled");
-		  }
-		  
-	  });
+//获取url中的参数
+function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
 }
 
-$(document).ready(function(){
-	$('.option-item').click(function() {
-		$(this).find('.opt-together').click();
-	});
-});
 </script>
-<!-- 可以去掉了 -->
-<%-- <script type="text/javascript">
+<script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
 /* oneChoice();  */
 function loadQuestionListByPaper(paperSid){
@@ -304,26 +254,24 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 	  if(data.result == 'fail') {
 		 /*  alert('做题失败'); */
 	  } else {
-		  /* alert('做题成功'); */
+		/*   alert('做题成功'); */
 	  }
   });
 }
 
 function doit(questionId, optId, inputObj, trueOrFalse) {
-	if(inputObj.type == 'checkbox') {
-		trueOrFalse = inputObj.checked?1:0;
-	}
 	todo(questionId, optId, inputObj.value, inputObj.value, trueOrFalse);
-	$('#abc'+currentItemId).addClass('has-que-num ');
+$('#abc'+currentItemId).addClass('has-que-num ');
 }
 
 $(document).ready(function(){
 	$('.option-item').click(function() {
 		$(this).find('.opt-together').click();
+		$(this).find('.opt-together').siblings().unbind();
 	});
 });
 	
-
+/* 
 function getQueItem(n, obj) {
 	
 	var htm = 
@@ -344,14 +292,18 @@ function getQueItem(n, obj) {
 	+"								<td></td>"
 	+"								<td>A</td>"
 	+"								<td >"
-	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
+	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床
+
+症状；"
 	+"								</td>"
 	+"							</tr>"
 	+"							<tr class='option-item'>"
 	+"								<td></td>"
 	+"								<td>A</td>"
 	+"								<td >"
-	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
+	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床
+
+症状；"
 	+"								</td>"
 	+"							</tr>"
 	+"						</tbody>"
@@ -370,6 +322,8 @@ function getQueItem(n, obj) {
 	return htm;
 }
 
-</script> --%>
+ */
+
+</script>
 </body>
 </html>
