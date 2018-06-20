@@ -321,4 +321,9 @@
 		<script type="text/javascript" src="js/com.js"></script>
 		
 </body>
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 9073daa... Merge branch 'lrx' into wmq
 </html>
