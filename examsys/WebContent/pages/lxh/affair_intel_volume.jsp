@@ -92,13 +92,13 @@
 							<a href="staffs_teacher.jsp">教师信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwindex.jsp">试卷管理 </a>
+							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwhandzujuan.jsp">手动组卷</a>
+							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwintelzujuan.jsp">智能组卷</a>
+							<a href="affair_intel_volume.jsp">智能组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
@@ -144,21 +144,21 @@
 									<tr>
 										<td  id="qtype">单选题</td>
 										<td  id="leamount">？道可选</td>
-										<td  id="qmount"><input type="text" />道</td>
+										<td  id="qmount"><input type="text" id="question-mount" />道</td>
 										<td>
 											<div class="nandu">
-												<span>简单<input type="text"/>%</span>
-												<span>一般<input type="text"/>%</span>
-												<span>难&nbsp;<input type="text"/>%</span>
-												<span>较难<input type="text"/>%</span>
+												<span>简单<input type="text" id="simple"/>%</span>
+												<span>一般<input type="text" id="normal"/>%</span>
+												<span>难&nbsp;<input type="text" id="difficult"/>%</span>
+												<span>较难<input type="text" id="moredifficult"/>%</span>
 											</div>
 										</td>
 										<td>
 											<div>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
+												<span id="simple1">选择？道题</span>
+												<span id="normal1">选择？道题</span>
+												<span id="difficult1">选择？道题</span>
+												<span id="moredifficult1">选择？道题</span>
 											</div>
 										</td>
 										<td  id="eachq">每题<input type="text"/>分</td>
@@ -529,4 +529,41 @@
 		</div>
 
 </body>
+<script type="text/javascript">
+createPaperAuto();
+function createPaperAuto(examRef, subjectRef, name, examStart, examEnd) {
+	  $.post("createPaperAuto", {
+		  "paper.examRef":examRef //考试ID
+			, "paper.name":name //试卷标题名
+			, "paper.examStart":examStart //考试开始时间
+			, "paper.examEnd":examEnd //考试结束时间
+			//单选题的参数
+			, "single.count":$("#question-mount").val() //题目数量
+			, "single.diff1Percent":$("#simple").val()  //难度为1的百分百
+			, "single.diff2Percent":$("#normal").val()  //难度为2的百分百
+			, "single.diff3Percent":$("#difficult").val()  //难度为3的百分百
+			, "single.diff4Percent":$("#moredifficult").val()  //难度为4的百分百
+			, "single.diff1Point":($("#question-mount").val() * $("#simple").val())  //难度为1的分数
+			, "single.diff2Point":$("#normal1").val()  //难度为2的分数
+			, "single.diff3Point":$("#difficult1").val()  //难度为3的分数
+			, "single.diff4Point":$("#moredifficult1").val() //难度为4的分数
+				//判断题的参数
+			, "trueOrFalse":
+				//多选题的参数
+			, "multiple":
+				//填空题的参数
+			, "fills":
+				//解答题的参数
+			, "subjective":
+			  
+	  }, function(data) {
+		  if(data.result == 'fail') {
+			  alert("组卷失败");
+		  }
+		  
+		  
+	  });
+}
+
+</script>
 </html>

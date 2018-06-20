@@ -377,10 +377,7 @@ th {
 	width: 590px;
 	height: 80px;
 }
-.modal-body select{
-	width:60%;
-	text-align:center;
-}
+
 .modal-footer .add{
 	width: 90px;
 	height: 40px;
