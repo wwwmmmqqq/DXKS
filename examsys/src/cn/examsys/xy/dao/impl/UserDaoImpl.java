@@ -52,19 +52,10 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	}
 	/*用户总页面*/
 	@Override
-	public int selectUserListCount(String type,String collegeName) {
+	public int selectUserListCount(String type) {
 		// TODO Auto-generated method stub
-		String hql;
-		Object[] vals;
-		if(collegeName==null || collegeName.equals("")) {
-			System.out.println("123");
-			hql="from User where (status !='封禁' or status is null) and type=? ";
-			vals=new Object[]{type};
-		}else {
-			System.out.println("1358888888");
-			hql="from User where (status !='封禁' or status is null) and type=? and collegeName=?";
-			vals=new Object[]{type,collegeName};
-		}
+		String hql="from User where (status !='封禁' or status is null) and type=? ";
+		Object[] vals=new Object[]{type};
 		try {
 			List<User> userList = findByHql(hql,vals);
 			int size =userList.size();
@@ -80,18 +71,10 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	}
 	/*查询用户列表*/
 	@Override
-	public List<User> selectUserList(String type, int page,User administration) {
+	public List<User> selectUserList(String type, int page) {
 		// TODO Auto-generated method stub
-		String hql;
-		Object[] vals;
-		String collegeName = administration.getCollegeName();
-		if(collegeName==null || "".equals(collegeName)) {
-			hql="from User where (status !='封禁' or status is null) and type=?";
-			vals=new Object[]{type};
-		}else {
-			hql="from User where (status !='封禁' or status is null) and type=? and collegeName=?";
-			vals=new Object[]{type,collegeName};
-		}
+		String hql="from User where (status !='封禁' or status is null) and type=?";
+		Object[] vals=new Object[]{type};
 		try {
 			List<User> userList = findByHql(hql, vals, page);
 			return userList;

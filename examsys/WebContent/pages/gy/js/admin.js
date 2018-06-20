@@ -26,9 +26,7 @@ function callback(data) {
 	totalPage=data.totalPage;
 	var li = data.userList;// 学生列表
 	for (var i = 0; i < li.length; i++) {
-		var number=(currentPage-1)*10;
-	  	number +=i+1;
-		html += getHtmls(number, li[i].name, li[i].userId, li[i].collegeName,
+		html += getHtmls(i + 1, li[i].name, li[i].userId, li[i].collegeName,
 				li[i].type, li[i].email);
 	}
 	$('#data-box').html(html);
@@ -61,7 +59,7 @@ function getHtmls(index, name, stuid, collegeName, type, email) {
 			+ "	<td>"
 			+ "		<i class='fa fa-eye see_information'  data-toggle='modal' data-target='#myModal_see_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
 			+ "		<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_correct_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
-			+ "		<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+stuid+"' /></i>"
+			+ "		<i class='fa fa-trash-o' onclick='myFunction1()'></i>"
 			+ "	</td>" + "</tr>";
 	return htm;
 }
@@ -112,20 +110,18 @@ function administrationInfo(node) {
 		var info = getInfoHtml(user);
 		$('#administration-info-box').html(info);
 		/*$('#administration_psw').val(user.psw);*/
-		var permission = user.permission;
-		var strs=permission.split(" ");
-		var permission_answer = strs[0];
-		var permission_paper = strs[1];
-		$('#administration_name').html(user.name);
-		$('#administration_sex').html(user.sex);
-		$('#administration_userId').html(user.userId);
-		$('#administration_collegeName').html(user.collegeName);
-		$('#administration_email').html(user.email);
-		$('#administration_permission_answer').val(permission_answer);
-		$('#administration_permission_paper').val(permission_paper);
-		$('#administration_phone').html(user.phone);
+		
+		$('#administration_name').val(user.name);
+		$('#administration_sex').val(user.sex);
+		$('#administration_userId').val(user.userId);
+		$('#administration_collegeName').val(user.collegeName);
+		$('#administration_email').val(user.email);
+		$('#administration_permission').val(user.permission);
+		$('#administration_phone').val(user.phone);
 	})
 }	
+
+
 
 function getInfoHtml(obj) {
 	var info = "<tr>"
@@ -163,46 +159,4 @@ function getInfoHtml(obj) {
 		+"</td></tr>"
 		;
 	return info;
-}
-
-function editStudent() {
-	var permission = $('#administration_permission_answer').val()+" "+$('#administration_permission_paper').val();
-	$.post("editUser",
-				{	
-					"user.name":$('#administration_name').text(),
-					"user.sex":$('#administration_sex').text(),
-					"user.userId":$('#administration_userId').text(),
-					"user.collegeName":$('#administration_collegeName').text(),
-					"user.email":$('#administration_email').text(),
-					"user.permission":permission,
-					"user.phone":$('#administration_phone').text()
-				},function(data) {
-					if(data.result=="编辑用户成功") {
-						alert(data.result);
-				  	location.href="admin.jsp";
-			  	}
-		  });
-}
-
-function deleteStudent(node) {
-	var td = node.childNodes;
-	var userId = td[0].id;
-	if(confirm("确定要删除该用户吗？")) {
-		$.post("deleteUser",{"user.userId":userId},function(data) {
-			if(data.result=="删除成功") {
-					location.href="admin.jsp";
-			}
-	  }); 
-	}  
-	return false;
-}
-
-function Out() {
-	if(confirm("确定要退出吗？")) {
-		$.post("loginOut",null,function(data) {
-			if(data.result=="成功退出") {
-					location.href="../gy/gy_login.jsp";
-			}
-	  });
-	}  
 }
