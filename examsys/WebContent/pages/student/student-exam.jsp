@@ -190,12 +190,9 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/student-exam.js"></script>
-<<<<<<< HEAD
-=======
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
 
->>>>>>> parent of 9073daa... Merge branch 'lrx' into wmq
 
 <script type="text/javascript">
 var paperSid=getParam("sid");
@@ -258,9 +255,9 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 	  ,"answer.subjectiveAnswer":subjectiveAnswer//主观题内容
   }, function(data) {
 	  if(data.result == 'fail') {
-		 /*  alert('做题失败'); */
+		  alert('做题失败'); 
 	  } else {
-		/*   alert('做题成功'); */
+		  alert('做题成功'); 
 	  }
   });
 }
