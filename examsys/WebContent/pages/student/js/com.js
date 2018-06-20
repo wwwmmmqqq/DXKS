@@ -30,15 +30,15 @@ $(function (){
 		'<tbody>' +
 		'<tr>' +
 		'<td>旧密码</td>' +
-		'<td><input type="text"class="form-control" name="oldpwd"/></td>' +
+		'<td><input type="text"class="form-control" name="user.oldpwd"/></td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>新密码</td>' +
-		'<td><input type="text"class="form-control"name="newpwd"/></td>' +
+		'<td><input type="text"class="form-control"name="user.newpwd"/></td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>确认密码</td>' +
-		'<td><input type="text"class="form-control"name="repwd"/></td>' +
+		'<td><input type="text"class="form-control"name="user.repwd"/></td>' +
 		'</tr>' +
 		'</tbody>' +
 		'</table>' +
@@ -52,7 +52,15 @@ $(function (){
 			btnClass : 'btn-blue',
 			text : '修改',
 			action : function() {
-				/* 放post方法 */
+				var oldpwd=$('#user_setting input[name="user.oldpwd"]').val();
+				var newpwd=$('#user_setting input[name="user.newpwd"]').val();
+				var repwd=$('#user_setting input[name="user.repwd"]').val();
+				alert(oldpwd);
+				alert(newpwd);
+				alert(repwd);
+				$.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
+					alert("修改成功");
+			  })
 			}
 		},
 		cancelAction : {
