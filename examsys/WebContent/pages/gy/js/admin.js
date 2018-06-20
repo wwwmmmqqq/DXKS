@@ -79,3 +79,17 @@ $.post("createUser",
 	$("input[name='rd']:checked").val();
 
 }
+
+/*//admin条件搜索  gy也不清楚是不是这样写
+
+function select(){
+	var jname=$('#hide input[name="name"]').val();
+	var jid=$('#hide input[name="id"]').val();
+	$(".select_hide option:checked").val();
+	var jschool=$('#hide input[name="school1"]').val();
+	var jinstitute=$('#hide input[name="institute1"]').val();
+	$.post("")
+	
+}
+*/	
+	
