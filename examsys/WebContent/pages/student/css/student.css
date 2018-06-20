@@ -1,6 +1,6 @@
 
 html, body {
-	overflow: auto !important;
+	/* overflow: auto !important; */
 	font-family: 'Lato', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	min-height: 100%;

@@ -1,6 +1,4 @@
-	
 $(function() {
-
 	$("#single-choice").click();
 	$("#single-choice").click(function() {
 		$(".choices").show();

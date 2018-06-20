@@ -15,9 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="css/ionicons.min.css" />
 		<link rel="stylesheet" href="css/search.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		
 		<title></title>
 		
 	</head>
@@ -32,7 +30,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>admin <i class="caret"></i></span>
+								<span>${session.user.userId} <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -52,7 +50,7 @@
 					<img class="user1" src="img/user1.jpg"  alt="User Image">
 				</div>
 				<div class="info">
-                    <p>Hello, admin</p>                   
+                    <p>Hello, ${session.user.userId}</p>                   
                </div>
 			</div>
 			<div class="light_bottom"> 
@@ -157,11 +155,11 @@
 				<!--页码-->
 				<div class="page_pagination">
 					<ul class="pagination">
-					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="prevPage()">上一页</a></li>
+					    <!-- <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="prevPage()">上一页</a></li>
 					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="loadDatas(1)">1</a></li>
 					    <li class="page-item"><a class="page-link " href="javascript:void(0)" onclick="loadDatas(2)">2</a></li>
 					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="loadDatas(3)">3</a></li>
-					    <li class="page-item"><a class="page-link" href="javascript:nextPage()" >下一页</a></li>
+					    <li class="page-item"><a class="page-link" href="javascript:nextPage()" >下一页</a></li> -->
 					    <input class="jump">
 					    <button class="btn btn-primary btn_jump">跳转</button>
 				  </ul>
@@ -527,7 +525,7 @@
 				<!-- 模态框主体 -->
 				<div class="modal-body">
 					<table >
-						<tbody >
+						<tbody id="administration-info-box">
 							<tr>
 								<td >
 									姓名<div class="tb_information">慕雪</div>
@@ -599,46 +597,46 @@
 								        <!-- 模态框主体 -->
 								        <div class="modal-body">
 											<table >
-												<tbody >
+												<tbody>
 								        			<tr>
 								        				<td >
-								        					用户名<div class="tb_information">慕雪</div>
+								        					用户名<div class="tb_information" id="administration_userId">慕雪</div>
 								        				</td>
 								        			</tr>
 								        			<tr>			        				
 								        				<td >
-								        					密码<div class="tb_information">145681</div>
+								        					密码<div class="tb_information" id="administration_psw">145681</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					姓名<div class="tb_information">慕雪</div>
+								        					姓名<div class="tb_information" id="administration_name">慕雪</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					性别<div class="tb_information">女 </div>
+								        					性别<div class="tb_information" id="administration_sex">女 </div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					电话<div class="tb_information">15574014263</div>
+								        					电话<div class="tb_information" id="administration_phone">15574014263</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					所属大学<div class="tb_information">萍乡学院</div>
+								        					所属大学<div class="tb_information" id="administration_collegeName">萍乡学院</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					邮箱<div class="tb_information">1770313147@qq.com</div>
+								        					邮箱<div class="tb_information" id="administration_email">1770313147@qq.com</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 							        				<td >
 							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<select class="option"> 
+							        					<select class="option" id="administration_permission"> 
 							        						<option>能查看答案</option>
 							        						<option>不能查看答案</option>
 							        					</select>
@@ -663,8 +661,11 @@
 							</div>			
 			
 	  </div>
-	  
-	</body>
-	<script type="text/javascript" src="js/search.js" ></script>
+	  <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+	  <script type="text/javascript" src="js/search.js" ></script>
 	<script type="text/javascript" src="js/admin.js" ></script>
+	</body>
+	
 </html>

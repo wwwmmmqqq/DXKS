@@ -15,17 +15,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		参数：paper.sid
 		返回值：paper
 	*/
-<<<<<<< HEAD
-	 $.post("editUser",{"user.userId":"15478000","user.name":"mingzi"},function(data) {
-		   alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
-		   alert(data.result);
-	  })  
-=======
-	 $.post("login",{"user.userId":"userId_27060","user.psw":"psw_83324"},function(data) {
-		 	alert(session.user.userId);
-			alert(data.result);
-	  })
->>>>>>> origin/wmq
+	$.post("createExamPlan",
+			 {	"exam.title":"1",   //用户名
+		 		"user.userId":"34"				//用户类型
+		 	},function(data){
+		 		alert(data.result);    //message为user返回信息
+			 }
+		)
   </script>
   
   </head>

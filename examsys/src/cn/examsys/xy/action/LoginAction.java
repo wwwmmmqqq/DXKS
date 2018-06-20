@@ -42,7 +42,10 @@ public class LoginAction extends CommonAction{
 		}else if(!pass.equals(user.getPsw())) {
 					setResult("密码错误！");
 		}
-		saveLogin(user);
+		else{
+			saveLogin(user);
+		}
+		
 		return aa;
 	}
 	
