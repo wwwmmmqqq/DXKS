@@ -7,6 +7,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,16 @@ public class UserAction extends CommonAction{
 	List<User> userList=new ArrayList<>();
 	private int page;   //当前页面
 	private int totalPage;   //总页数
+	private String rePsw;
+	
+	@JSON(serialize=false)
+	public String getRePsw() {
+		return rePsw;
+	}
+
+	public void setRePsw(String rePsw) {
+		this.rePsw = rePsw;
+	}
 
 	public User getUser() {
 		return user;
@@ -67,24 +78,20 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createUser(){
-		boolean currentUser;
 		if(user.getUserId()==null){
 			setResult("请填写用户信息");
 		}
 		else{
 				User loginUser=userService.SelectOneUser(user.getUserId());		//查询用户是否存在
+				System.out.println("1565");
 				if(loginUser!=null){
 					setResult("该用户名已存在");
 				}else{
 					if(getSessionUser().getUserId().contains("admin")){
 						user.setType("教务");
-						user.setPsw("000000");
-						currentUser=userService.createUser(user);
-					}else{
-						user.setPsw("000000");
-						currentUser=userService.createUser(user);
 					}
-					currentUser=userService.createUser(user);
+					user.setPsw("000000");
+					boolean currentUser=userService.createUser(user);
 					if(!currentUser){
 						System.out.println("用户创建失败");
 						setResult("用户创建失败");
@@ -125,7 +132,8 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String deleteUser(){
-		boolean currentUser=userService.deleteUser(user.getUserId());
+		user.setStatus("封禁");
+		boolean currentUser=userService.editUser(user);
 		if(!currentUser){
 			setResult("删除失败！");
 		}
@@ -147,6 +155,28 @@ public class UserAction extends CommonAction{
 		System.out.println("Action页面获取总页面大小："+totalPage);
 		return aa;
 	}
+	
+	/*修改密码*/
+	@Action(value="/changePsw"
+			,results={@Result(type="json")}
+			,params={"contentType","text/html"})
+	public String changePsw() {
+			int u=userService.findUser(getSessionUserId(),user.getPsw());
+			if(u>0) {
+				if(user.getPsw().equals(rePsw)) {
+					setResult("新密码不能与旧密码一致");
+				}else {
+					user.setPsw(rePsw);
+					userService.editUser(user);
+					setResult("密码修改成功");
+				}
+			}else {
+				setResult("旧密码输入错误");
+			}
+		
+		return aa;
+	}
+	
 	
 	@Override
 	public String getResult() {

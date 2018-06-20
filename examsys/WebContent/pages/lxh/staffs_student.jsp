@@ -655,14 +655,14 @@
 		var htm = "<tr class='tb_width'>"
 			+"<td>"+number+"</td>"
 			+"<td>"+obj.name+"</td>"
-			+"<td>"+obj.userId+"</td>"
+			+"<td id='userid'>"+obj.userId+"</td>"
 			+"<td>"+obj.collegeName+"</td>"
 			+"<td>"+obj.department+"</td>"
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>"
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
+			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
+			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
 			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
 			+"</td>"
 			+"</tr>";
@@ -685,13 +685,14 @@
 		}
 		return ht;    
 	}
-	function studentInfo(node) {
-		var td = node.parentNode.parentNode.childNodes;
-		var userId = td[2].innerHTML;
+	function studentInfo(id) {
+		var td = node.childNodes;
+		var userId = td[0].id;
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
 			$('#student-info-box').html(info);
+			
 			$('#stu_name').val(user.name);
 			$('#stu_sex').val(user.sex);
 			$('#stu_userId').val(user.userId);
@@ -768,6 +769,7 @@
 			 	},function(data){
 			 		alert(data.result);    //message为user返回信息
 			 		if(data.result=="用户创建成功"){
+			 			alert(data.result);
 			 			location.href="staffs_student.jsp";
 			 		}else {
 			 			return false;
@@ -777,7 +779,6 @@
 	}
 	
 	function editStudent() {
-		if(!checkInput()){alert("123"); return false;} 
 		$.post("editUser",
 					{	
 						"user.name":$('#stu_name').val(),
@@ -791,6 +792,7 @@
 						"user.phone":$('#stu_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
+							alert(data.result);
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
