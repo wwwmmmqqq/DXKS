@@ -89,14 +89,14 @@
 						</div>
 					</div>
 					<div class="search_hide" id="hide">
-						<input type="text" class="input_hide1"  placeholder="姓名"/>
-						<input type="text" class="input_hide"  placeholder="工号"/>
+						<input type="text" class="input_hide1 name"  placeholder="姓名"/>
+						<input type="text" class="input_hide id"  placeholder="工号"/>
 						<select class="select_hide">
 							<option class="option_hide" selected="selected">全部</option>
 							<option class="option_hide" id="school">学校</option>
 							<option class="option_hide" id="institute">学院</option>
-							<option class="option_hide" id="profession">专业</option>
-							<option class="option_hide" id="class">班级</option>
+							<!-- <option class="option_hide" id="profession">专业</option>
+							<option class="option_hide" id="class">班级</option> -->
 						</select>
 						<input type="text" class="input_hide2" id="school1" placeholder="学校"/>
 						<input type="text" class="input_hide2" id="institute1" placeholder="学院"/>
