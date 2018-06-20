@@ -1,6 +1,7 @@
 package cn.examsys.xy.service.impl;
 
 import java.lang.reflect.Field;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,22 +29,22 @@ public class UserServiceImpl implements UserService{
 	public boolean deleteUser(String userId) {
 		// TODO Auto-generated method stub
 		User user=userDao.findOneUser(userId);
+		
 		userDao.deleteEntity(user);
 		return true;
 	}
 	/*查询用户列表*/
 	public List<User> SelectUserList(String type,int page) {
 		// TODO Auto-generated method stub
-		List<User> user=userDao.selectUserList(type,page);
-		List<User> userList=user;
-		for(int i=0;i<userList.size();i++) {
-			System.out.println(user.get(i).getUserId());
-			/*if(user.get(i).getStatus().equals("封禁")){
-				user.remove(i);
-			}*/
-		}
-		userList=user;
-		System.out.println(user.size());
+		List<User> userList=userDao.selectUserList(type,page);
+		/*Iterator<User> iter = userList.iterator();
+		while (iter.hasNext()) {
+		   User it = iter.next();
+		   if("封禁".equals(it.getStatus())) {
+		    	iter.remove();
+		    	System.out.println("封禁");
+		   }
+		}*/
 		return userList;
 	}
 	/*查询用户列表总页数*/
@@ -84,7 +85,6 @@ public class UserServiceImpl implements UserService{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		System.out.println("123");
 		userDao.editUser(user);
 		return true;
 	}
@@ -94,6 +94,13 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		User user=userDao.findOneUser(userId);
 		return user;
+	}
+	
+	/*找到该用户--修改密码*/
+	@Override
+	public int findUser(String userId, String psw) {
+		// TODO Auto-generated method stub
+		return userDao.findUser(userId,psw);
 	}
 
 }

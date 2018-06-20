@@ -17,4 +17,6 @@ public interface UserService {
 	boolean editUser(User user);
 	/*显示一个用户信息*/
 	User SelectOneUser(String userId);
+	/*找回密码*/
+	int findUser(String userId, String psw);
 }
