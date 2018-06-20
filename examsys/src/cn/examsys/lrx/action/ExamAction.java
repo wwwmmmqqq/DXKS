@@ -1,3 +1,4 @@
+
 package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
@@ -178,7 +179,12 @@ public class ExamAction extends CommonAction {
 	}
 	
 	private int getCurrentPaperSid() {
-		return (int) session.getAttribute("currentPaper");
+		Object o = session.getAttribute("currentPaper");
+		if (o == null) {
+			return 0;
+		} else {
+			return (Integer) o;
+		}
 	}
 	
 	@Override
