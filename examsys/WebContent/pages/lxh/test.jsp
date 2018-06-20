@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% String path=request.getContextPath();
    String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
@@ -628,6 +628,7 @@ var totalPage=1;
 function loadMyExamList(page) {
 	  $.post("loadMyExamList", {"page":page}, function(data) {
 		  var examList = data.list;
+		  alert(examList);
 		  var htm = "";
 		  var ht="";
 		  for(var i=0;i<examList.length;i++) {
@@ -635,6 +636,7 @@ function loadMyExamList(page) {
 			  var number=(page-1)*10;
 		      number +=i+1;	
 			  htm +=getItemHtml(i,examList[i],number); 
+				
 		  }
 		  $('#tplan-list-box').html(htm);
 		  
