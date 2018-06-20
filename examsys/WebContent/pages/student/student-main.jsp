@@ -28,7 +28,7 @@
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>${session.user.name}</span>
+									<span>wmq</span>
 								</a>
 								
 							</li>
@@ -260,8 +260,6 @@ function getExam(obj){
 		+"		</li>";
 	return htm;
 }
-
-
 
 </script>
 </body>

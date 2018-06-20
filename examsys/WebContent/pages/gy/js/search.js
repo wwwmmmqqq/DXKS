@@ -59,7 +59,13 @@ $(document).ready(function(e){
 //警告框
 //退出登陆
 function myFunction(){
-	confirm("确认退出吗？")
+	if(confirm("确认退出吗？")) {
+		$.post("loginOut",null,function(data) {
+			if(data.result=="成功退出") {
+				location.href="../gy/gy_login.jsp";
+			}
+	  });
+	}
 }
 function myFunction1(){
 	confirm("确认删除")

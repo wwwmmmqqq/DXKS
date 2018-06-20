@@ -104,7 +104,7 @@
 						window.location.href = "../lxh/jwindex.jsp?user="+user;
 					 }
 					if(user.type=="管理员") {
-						window.location.href = "../gy/history_teacher.jsp?user.userId="+user.userId;
+						window.location.href = "../gy/admin.jsp?user.userId="+user.userId;
 				 	}
 				}
 			  })

@@ -14,6 +14,16 @@
 		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 			alert(data.result);
 	  })
+	/**
+		修改密码接口
+		参数：session.userId,user.psw,rePsw(旧密码不能与新密码一致)
+		返回值：result
+	*/
+	$.post("changePsw",{"user.userId":"21188999","user.psw":"123456","rePsw":"123"},function(data) {
+		alert(data.result);
+  })
+	  
+	  
 	  
 	  /*
 		创建用户接口
@@ -404,6 +414,19 @@
   		$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
 			alert(data.result);
 		})
+		
+/***********************************考试计划****************************************/
+/**
+		修改试卷接口---先查看再修改
+		参数：paper.sid
+		返回值：paper
+	*/
+	$.post("createExamPlan",
+			 {	"exam.title":"1",   //用户名
+			"user.userId":"34"				//用户类型
+		},function(data){
+			alert(data.result);    //message为user返回信息
+		 })
 	  </script>
   </head>
   

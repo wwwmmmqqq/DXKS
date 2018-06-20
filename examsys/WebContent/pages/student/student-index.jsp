@@ -54,7 +54,7 @@
 							<img src="<%=basePath%>img/user.jpg" class="img-circle" alt="User Image" />
 						</div>
 						<div class="pull-left info">
-							<p>Hello, wmq</p>
+							<p>Hello, ${session.user.name}</p>
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
 					</div>
@@ -324,7 +324,6 @@ function getParam(name) {
   	return decodeURIComponent(result[2]);
   return null;
 }
-
 </script>
 </body>
 </html>
