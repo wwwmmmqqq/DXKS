@@ -97,7 +97,7 @@
 		    	<!--题库录入 start-->
 		    	<div class="entryquestions">
 		    		<div class="shaixuan">
-		    			<ul>
+		    			<ul class="question-type">
 		    				<li><button type="button" class="btn btn-danger newq">+新题目</button>
 		    					<form>请选择题目类型 ：
 		    						<input type="radio"  id="single-choice" value="single-choice" name="1" checked="checked"/><label>单选题</label>
@@ -106,7 +106,6 @@
 		    						<input type="radio"  id="fill-in" name="1"/><label>填空题</label>
 		    						<input type="radio"  id="answer-questions" name="1"/><label>解答题</label>
 		    					</form>
-		    					
 		    				</li>
 		    				<li>请选择科目：
 		    					<select>
@@ -126,22 +125,20 @@
 		    			<div class="choices">
 		    			<form class="choose" id="s-question">
 		    				<ul>
-		    				
 		    				<li id="dry">题干<br>
-		    				
-		    				<textarea name="title" id="question"></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
-		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
-		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
+		    				<textarea name="question.title" id="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-		    							<span>A</span><input type="radio" name="isAnswer" class="choose1"/>
-			    						<span>B</span><input type="radio" name="isAnswer" class="choose1"/>
-			    						<span>C</span><input type="radio" name="isAnswer" class="choose1"/>
-			    						<span>D</span><input type="radio" name="isAnswer" class="choose1"/>
+		    							<span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>B</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>C</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>D</span><input type="radio" name="question.isAnswer" class="choose1"/>
 		    					</li>
 		    					
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowledge"/></li>
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    			    </ul>
 		    			    </form>
 		    			</div>	
@@ -149,19 +146,19 @@
 		    			<div class=" choicesw">
 		    			<form class="choose" id="w-question">
 		    				<ul>
-		    				<li id="dry">题干<br><textarea name="title"></textarea></li>	
-		    				    <li id="sa">A<input class="form-control " type="text" name="content"/></li>
-		    				    <li id="sb">B<input class="form-control " type="text" name="content"/></li>
-		    				    <li id="sc">C<input class="form-control " type="text" name="content" /></li>
-		    				    <li id="sd">D<input class="form-control " type="text" name="content" /></li>
+		    				<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
+		    				    <li id="sa">A<input class="form-control " type="text" name="question.content"/></li>
+		    				    <li id="sb">B<input class="form-control " type="text" name="question.content"/></li>
+		    				    <li id="sc">C<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="sd">D<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="answer" class="answerw">答案&nbsp;
-		    							<span>A</span><input type="checkbox"  class="choose1" name="isAnswer"/>
-			    						<span>B</span><input type="checkbox"  class="choose1"  name="isAnswer"/>
-			    						<span>C</span><input type="checkbox"  class="choose1"  name="isAnswer"/>
-			    						<span>D</span><input type="checkbox"  class="choose1" name="isAnswer"/>
+		    							<span>A</span><input type="checkbox"  class="choose1" name="question.isAnswer"/>
+			    						<span>B</span><input type="checkbox"  class="choose1"  name="question.isAnswer"/>
+			    						<span>C</span><input type="checkbox"  class="choose1"  name="question.isAnswer"/>
+			    						<span>D</span><input type="checkbox"  class="choose1" name="question.isAnswer"/>
 		    					
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowlege"/></li>
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="question.knowlege"/></li>
 		    			    </ul>
 		    			    	</form>
 		    			</div>
@@ -172,14 +169,14 @@
 		    			<div class="ture-or-false">
 		    			<form class="choose" id="tf-question">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="title"></textarea></li>	
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
-		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="content" /></li>
+		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-		    							<span>A</span><input type="radio" name="isAnswer" class="choose1"/>
-			    						<span>B</span><input type="radio" name="isAnswer" class="choose1"/>
+		    							<span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>B</span><input type="radio" name="question.isAnswer" class="choose1"/>
 		    					</li>
-		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="knowledge"/></li>
+		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    			    </ul>
 		    			    </form>
 		    			</div>	
@@ -189,9 +186,9 @@
 		    			<div class="fill-and-judgement">
 		    			<form id="fj-question">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="title"></textarea></li>		    					
-		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="fillsText" /></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="knowledge"/></li>
+		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>		    					
+		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="question.fillsText" /></li>
+		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
 		    			</div>
@@ -202,9 +199,9 @@
 		    			<div class="answer-question">
 		    			<form id="aquestion">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="title"></textarea></li>
-		    					<li id="answer">答案<br><textarea name="subjectiveText"></textarea></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="knowledge"/></li>
+		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>
+		    					<li id="answer">答案<br><textarea name="question.subjectiveText"></textarea></li>
+		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
 		    			</div>
