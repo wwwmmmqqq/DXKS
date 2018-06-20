@@ -125,6 +125,7 @@
 					</ul>
 					<!--breadcrumbs end -->
 				</div>
+				<div><input type="text" id="paperName" style="margin-left: 50px" placeholder="输入试卷名" /></div>
 				<section class="papermanage">
 					<!-- 智能组卷 start-->
 						<div class="autocompose">
@@ -529,4 +530,125 @@
 		</div>
 
 </body>
+<script type="text/javascript">
+function getParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+	var result = window.location.search.substr(1).match(reg); //匹配目标参数
+	if (result != null) 
+		return decodeURIComponent(result[2]);
+	return null;
+}
+var examSid = getParam("exam.sid");//拿到考次
+</script>
+<script type="text/javascript">
+loadDiffCounts();
+var type_count = [0, 0, 0, 0, 0];
+function loadDiffCounts() {
+	$.post("loadQuestionCountByType", {
+		"paper.subjectRef":0
+	}, function(data) {
+		for(var i=0;i<data.countListMap.length;i++) {
+			type_count[i] = data.countListMap[i]["count"];
+			$("#leamount" + (i+1)).text("共"+type_count[i] + "题");
+		}
+	});
+}
+</script>
+
+<script>
+var type_set_count = [0,0,0,0,0];
+var type_diff_percent = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+var type_diff_point = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+function setCount(typeIndex, value) {
+	type_set_count[typeIndex] = Number(value);
+	updateShows(typeIndex);
+}
+
+function setTypeDiffPercent(typeIndex, diff, value) {
+	type_diff_percent[typeIndex][diff] = Number(value);
+	var pvalue = 0;
+	for(var i = 0;i<type_diff_percent[typeIndex].length;i++) 
+		pvalue += type_diff_percent[typeIndex][i];
+	if(pvalue>100) {
+		$("#type"+typeIndex).find("#diff_total_percent"+typeIndex).text("还差" + (100-pvalue) + "%");
+		$("#diff_total_percent" + typeIndex).css({"color":"red"});
+		alert("超出范围");
+	} else if(pvalue<100) {
+		$("#type"+typeIndex).find("#diff_total_percent"+typeIndex).text("还差" + (100-pvalue) + "%");
+		$("#diff_total_percent" + typeIndex).css({"color":"orange"});
+	} else {
+		$("#type"+typeIndex).find("#diff_total_percent"+typeIndex).text("");
+	}
+	updateShows(typeIndex);
+}
+
+function setTypeDiffPoint(typeIndex, diff, value) {
+	type_diff_point[typeIndex][diff] = Number(value);
+	updateShows(typeIndex);
+}
+
+function updateShows(typeIndex) {
+	for(var i=0;i<type_diff_percent[typeIndex].length;i++) {
+		var val = type_set_count[typeIndex] * type_diff_percent[typeIndex][i] / 100;
+		$("#type"+typeIndex).find("#count_diff"+typeIndex+i).text(Math.floor(val));
+	}
+	
+	var typeScoreVal = 0;
+	for(var i=0;i<type_diff_point[typeIndex].length;i++) {
+		typeScoreVal += Number(type_diff_point[typeIndex][i])
+			* Number(type_diff_percent[typeIndex][i] * type_set_count[typeIndex]) / 100;
+	}
+	$("#type"+typeIndex).find(".leamark").text(typeScoreVal);
+}
+
+
+$('tr input').click(function() {
+	if($(this).val() == '0') {
+		$(this).val("");
+	}
+})
+$('tr input').blur(function() {
+	if($(this).val() == '') {
+		$(this).val("0");
+	}
+	if(isNaN($(this).val())) {
+		alert("非数字");
+		$(this).val("0");
+		$(this).facus();
+	}
+})
+</script>
+<script type="text/javascript">
+function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
+	var params = {
+			  "paper.examRef":examRef //考试ID
+			, "paper.subjectRef":subjectRef //考试ID
+			, "paper.name":name //试卷标题名
+			, "paper.examStart":examStart //考试开始时间
+			, "paper.examEnd":examEnd //考试结束时间
+	};
+	var types = ["single", "multiple", "trueOrFalse", "fills", "subjective"];
+	for(var i=0;i<types.length;i++) {
+		params[types[i] + ".count"] = type_set_count[i];
+		for(var j=0;j<type_diff_percent[i].length;j++) {
+			params[types[i] + ".diff" + (j+1) + "Percent"] = type_diff_percent[i][j];
+		}
+		for(var j=0;j<type_diff_point[i].length;j++) {
+			params[types[i] + ".diff" + (j+1) + "Point"] = type_diff_point[i][j];
+		}
+	}
+	return params;
+}
+
+$('#submitBtn').bind().click(function() {
+	var params = createPaperAutoParams(examSid, 0, $('#paperName').val(), "2018-06-20 20:39:00", "2018-06-20 22:39:00");
+	$.post("createPaperAuto", params, function(data) {
+		if(data.result != 'fail') {
+			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
+			location.href = "../student/student-index.jsp?sid=" + examSid;
+		}
+	});
+	//window.open('apaper.html')
+});
+</script>
 </html>

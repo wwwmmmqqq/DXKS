@@ -80,11 +80,11 @@ function importQuestion() {
 		}
 		if(radios[3].checked){
 			xhr.send(formData4);
-			alert("填空题录入成功！")
+			alert("填空题录入成功！");
 		}
 		if(radios[4].checked){
 			xhr.send(formData5);
-			alert("简答题录入成功！")
+			alert("简答题录入成功！");
 		}
 	}
 }

@@ -35,4 +35,6 @@ public interface ExamService {
 	boolean todo(User sessionUser, int currentPaperSid, int questionRef, int optionRef,
 			int trueOrFalse, String fillsAnswer, String subjectiveAnswer);
 
+	boolean todo1();
+
 }

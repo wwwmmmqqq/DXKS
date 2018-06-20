@@ -82,7 +82,6 @@ public class ExamServiceImpl implements ExamService {
 	public boolean todo(User sessionUser, int paperSid
 			, int questionRef, int optionRef, int trueOrFalse
 			, String fillsAnswer, String subjectiveAnswer) {
-		
 		Question q;
 		try {
 			q = dao.findOneByHql("from Question where sid=?", new Object[]{questionRef});
@@ -90,7 +89,6 @@ public class ExamServiceImpl implements ExamService {
 			e1.printStackTrace();
 			return false;
 		}
-		
 		Answersheet answer = null;
 		if (q.getType().equals(Conf.Question_Single)) {
 			//如果是单选题，题目下面的答案都清除掉
@@ -123,7 +121,6 @@ public class ExamServiceImpl implements ExamService {
 		answer.setOptionRef(optionRef);
 		answer.setSubjectiveAnswer(subjectiveAnswer);
 		answer.setType(q.getType());
-		
 		try {
 			//计分
 			Option theOption = dao.findOneByHql("from Option where sid=?"
@@ -242,6 +239,11 @@ public class ExamServiceImpl implements ExamService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	@Override
+	public boolean todo1() {
+		System.out.println("TODO 1");
+		return false;
 	}
 	
 }
