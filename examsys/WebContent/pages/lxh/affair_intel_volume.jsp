@@ -437,8 +437,18 @@
 
 </body>
 <script type="text/javascript">
+function getParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+	var result = window.location.search.substr(1).match(reg); //匹配目标参数
+	if (result != null) 
+		return decodeURIComponent(result[2]);
+	return null;
+}
+var examSid = getParam("exam.sid");//拿到考次
+</script>
+<script type="text/javascript">
 loadDiffCounts();
-var type_count = [0,0,0,0,0];
+var type_count = [0, 0, 0, 0, 0];
 function loadDiffCounts() {
 	$.post("loadQuestionCountByType", {
 		"paper.subjectRef":0
@@ -537,9 +547,12 @@ function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
 }
 
 $('#submitBtn').bind().click(function() {
-	var params = createPaperAutoParams(66, 77, 88, 99, 11);
+	var params = createPaperAutoParams(examSid, 0, "XX考试", "2018-06-20 20:39:00", "2018-06-20 22:39:00");
 	$.post("createPaperAuto", params, function(data) {
-		alert(data.result);
+		if(data.result != 'fail') {
+			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
+			location.href = "../student/student-index.jsp?sid=" + examSid;
+		}
 	});
 	//window.open('apaper.html')
 });

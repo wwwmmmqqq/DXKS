@@ -316,15 +316,22 @@ function getPaper(obj){
 			+"</div>"
 		+"</div>"
 		+"<div class='exam-button'>"
-		+"<button class='btn btn-primary' data-toggle='modal' data-target='#start-exam' >开始考试</button>"
+		+"<button class='btn btn-primary' data-toggle='modal' data-target='#start-exam' onclick='ready("+obj.sid+")' >开始考试</button>"
 		+"</div>"
 	+"</li>"
 	+"</ul>"
 	return htm;
 }
 
+var readyPaperSid;
+
+function ready(paperSid) {
+	readyPaperSid = paperSid;
+	
+}
+
 function startExam() {
-	location.href="startExam?paper.sid="+examsid;
+	location.href="startExam?paper.sid="+readyPaperSid;
 }
 
 //获取url中的参数

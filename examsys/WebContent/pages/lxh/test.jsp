@@ -659,7 +659,7 @@ function getItemHtml(index,obj,number){
 	+"<td>软件工程</td>"
 	+"<td>"
 	+"<i class='fa fa-pencil check'></i>"
-	+"<i class='fa fa-trash-o'></i>"
+	+"<i class='fa fa-trash-o'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
 	+"</td>"
 	+"</tr>";
 		
