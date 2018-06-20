@@ -54,7 +54,7 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	@Override
 	public int selectUserListCount(String type) {
 		// TODO Auto-generated method stub
-		String hql="from User where type=?";
+		String hql="from User where (status !='封禁' or status is null) and type=? ";
 		Object[] vals=new Object[]{type};
 		try {
 			List<User> userList = findByHql(hql,vals);
@@ -73,12 +73,10 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	@Override
 	public List<User> selectUserList(String type, int page) {
 		// TODO Auto-generated method stub
-		String hql="from User where type=?";
+		String hql="from User where (status !='封禁' or status is null) and type=?";
 		Object[] vals=new Object[]{type};
 		try {
 			List<User> userList = findByHql(hql, vals, page);
-			String userid=userList.get(1).getUserId();
-			System.out.println("第"+page+"页的第二个用户ID是："+userid);
 			return userList;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -95,6 +93,24 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	/*修改密码*/
+	@Override
+	public int findUser(String userId, String psw) {
+		// TODO Auto-generated method stub
+		String hql = "from User where userId=? and psw=?";
+		Object[] vals=new Object[]{userId,psw};
+		try {
+			User user=findOneByHql(hql, vals);
+			if(user!=null) {
+				return 1;
+			}
+			return 0;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
 		}
 	}
 }
