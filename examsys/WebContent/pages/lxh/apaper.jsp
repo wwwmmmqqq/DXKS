@@ -97,13 +97,13 @@
 							<a href="staffs_teacher.html">教师信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwindex.html">试卷管理 </a>
+							<a href="affair_index.html">试卷管理 </a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwhandzujuan.html">手动组卷</a>
+							<a href="affair_hand_volume.html">手动组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwintelzujuan.html">智能组卷</a>
+							<a href="affair_intel_volume.html">智能组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="history_staffs.html">历史成绩</a>

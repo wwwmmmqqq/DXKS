@@ -93,10 +93,10 @@
 							<a href="staffs_teacher.jsp">教师信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwindex.jsp">试卷管理 </a>
+							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwhandzujuan.jsp">手动组卷</a>
+							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="jwintelzujuan.jsp">智能组卷</a>
@@ -166,7 +166,6 @@
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
-		    						<th><input type="checkbox" class="flat-grey"/>全选 ID</th>
 		    						<th><input type="checkbox" class="flat-grey"/>全选 </th>
 		    						<th>编号</th>
 		    						<th>所在考次</th>

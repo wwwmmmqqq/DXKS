@@ -75,9 +75,9 @@
 			  	<ul class="side_nav">
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="jwhandzujuan.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="jwintelzujuan.jsp">智能组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
+			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -197,7 +197,7 @@
 								<tr>
 									<td>
 										密码
-										<div class="tb_information">${session.user.collegeName}</div>
+										<div class="tb_information">${session.user.psw}</div>
 									</td>
 								</tr>
 								<tr>
@@ -209,7 +209,7 @@
 								<tr>
 									<td>
 										学院
-										<div class="tb_information">${session.user.department}</div>
+										<div class="tb_information">信计学院<%-- ${session.user.department} --%></div>
 									</td>
 								</tr>
 								<tr>
@@ -257,7 +257,7 @@
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
-							<tbody class="editStudent">
+							<tbody id="editStudent">
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
@@ -608,7 +608,6 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
-		
 		$.post("selectUserList",{"user.type":"student","page":page},function(data) {
 			  var userList=data.userList;
 			  totalPage=data.totalPage;      
@@ -637,7 +636,7 @@
 		if(currentPage>=2) 
 			loadStudentList(--currentPage);
 	}
-	function jumpPage() {
+	/* function jumpPage() {
 		var juPage=$('#jpage').html();
 		alert(juPage);
 		if(currentPage==juPage || juPage<1 || juPage>totalPage){
@@ -647,7 +646,7 @@
 			
 		}
 			
-	}
+	} */
 	
 	function getItemHtml(index, obj,number) {
 		var htm = "<tr class='tb_width'>"
@@ -669,14 +668,17 @@
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+				+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
 		}
 		else if(index==totalPage){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>"
+				+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+			+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
 		}
 		return ht;    
 	}
@@ -708,7 +710,7 @@
 			+"<tr>"
 			+"<td>"
 			+"学号"
-			+"<div class='tb_information'>"+obj.userId+"17001</div>"
+			+"<div class='tb_information'>"+obj.userId+"</div>"
 			+"</td>"
 			+"</tr>"
 			+"<tr>"
@@ -756,7 +758,7 @@
 				 	"user.department":$('#department').val(),
 				 	"user.profession":$('#profession').val(),
 				 	"user.classroom":$('#classroom').val(),
-			 		"user.type":"学生",					//用户类型
+			 		"user.type":"student",					//用户类型
 			 		"user.sex":$('#sex').val(),						//用户性别
 			 		"user.phone":$('#phone').val(),
 			 		"user.idcard":$('#idcard').val()
@@ -772,8 +774,8 @@
 	}
 	
 	function editStudent() {
-		if(checkInput()) {
-			$.post("editUser",
+		if(!checkInput()){alert("123"); return false;} 
+		$.post("editUser",
 					{	
 						"user.name":$('#stu_name').val(),
 						"user.sex":$('#stu_sex').val(),
@@ -788,9 +790,7 @@
 						if(data.result=="编辑用户成功") {
 					  	location.href="staffs_student.jsp";
 				  	}
-			  })  
-		}
-		
+			  });
 	}
 
 	function deleteStudent(node) {
@@ -801,7 +801,7 @@
 				if(data.result=="删除成功") {
 						location.href="staffs_student.jsp";
 				}
-		  }) 
+		  }); 
 		}  
 		return false;
 	}
@@ -812,15 +812,14 @@
 				if(data.result=="成功退出") {
 						location.href="../gy/gy_login.jsp";
 				}
-		  }) 
+		  });
 		}  
 	}
 	
 	function checkInput() {
-		$(".editStudent input[type=text]").each(function() {
-			var v = $(this).val();
-			if(v=="") {
-				alert("请填写将信息填写完整");
+		$("#editStudent input[type=text]").each(function() {
+			if($(this).val()=="") {
+				alert("请将信息填写完整");
 				return false;
 			}
 		});

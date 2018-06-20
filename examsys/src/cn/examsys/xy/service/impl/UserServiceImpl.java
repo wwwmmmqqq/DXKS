@@ -34,7 +34,16 @@ public class UserServiceImpl implements UserService{
 	/*查询用户列表*/
 	public List<User> SelectUserList(String type,int page) {
 		// TODO Auto-generated method stub
-		List<User> userList=userDao.selectUserList(type,page);
+		List<User> user=userDao.selectUserList(type,page);
+		List<User> userList=user;
+		for(int i=0;i<userList.size();i++) {
+			System.out.println(user.get(i).getUserId());
+			/*if(user.get(i).getStatus().equals("封禁")){
+				user.remove(i);
+			}*/
+		}
+		userList=user;
+		System.out.println(user.size());
 		return userList;
 	}
 	/*查询用户列表总页数*/
