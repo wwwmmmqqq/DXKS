@@ -143,14 +143,14 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 		Class<?> classes[] = new Class<?>[]{
 				  Answersheet.class
 				, College.class
-				, Constitute.class
-				, Exam.class
+				/*, Constitute.class*/
+				/*, Exam.class*/
 				, Grade.class
 				, Notice.class
-				, Option.class
-				, Paper.class
+				/*, Option.class*/
+				/*, Paper.class*/
 				, Profession.class
-				, Question.class
+				/*, Question.class*/
 				, Role.class
 				, Subject.class
 				, User.class
