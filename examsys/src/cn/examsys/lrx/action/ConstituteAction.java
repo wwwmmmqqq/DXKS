@@ -2,6 +2,7 @@ package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -120,6 +121,22 @@ public class ConstituteAction extends CommonAction {
 		if (sid == -1) {
 			setResult("fail");
 		}
+		return aa;
+	}
+	
+	List<Map<String, Integer>> countListMap = new ArrayList<>();
+	public List<Map<String, Integer>> getCountListMap() {
+		return countListMap;
+	}
+	
+	@Action(value="/loadQuestionCountByType"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadQuestionCountByType() {
+		
+		countListMap = service.loadQuestionCountByType(paper.getSubjectRef());
+		System.out.println(countListMap.size());
+		
 		return aa;
 	}
 	

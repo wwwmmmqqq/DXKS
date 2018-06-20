@@ -1,16 +1,6 @@
 package cn.examsys.bean;
-
-
-import java.util.Date;
-
 import java.util.Arrays;
 import java.util.List;
-
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Date;
-
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

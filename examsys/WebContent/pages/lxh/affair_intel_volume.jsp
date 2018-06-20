@@ -143,7 +143,7 @@
 								<tbody>
 									<tr>
 										<td  id="qtype">单选题</td>
-										<td  id="leamount">？道可选</td>
+										<td  id="leamount1" class="leamount">？道可选</td>
 										<td  id="qmount"><input type="text" id="question-mount" />道</td>
 										<td>
 											<div class="nandu">
@@ -166,7 +166,7 @@
 									</tr>
 									<tr>
 										<td id="qtype">多选题</td>
-										<td id="leamount">？道可选</td>
+										<td id="leamount2" class="leamount">？道可选</td>
 										<td id="qmount"><input type="text"/>道</td>
 										<td>
 											<div class="">
@@ -189,7 +189,7 @@
 									</tr>
 									<tr>
 										<td id="qtype">填空题</td>
-										<td id="leamount">？道可选</td>
+										<td id="leamount3" class="leamount">？道可选</td>
 										<td id="qmount"><input type="text" />道</td>
 										<td>
 											<div class="">
@@ -212,7 +212,7 @@
 									</tr>
 									<tr>
 										<td  id="qtype">判断题</td>
-										<td  id="leamount">？道可选</td>
+										<td  id="leamount4" class="leamount">？道可选</td>
 										<td  id="qmount"><input type="text"/>道</td>
 										<td>
 											<div class="">
@@ -242,7 +242,7 @@
 									</tr>
 									<tr>
 										<td id="qtype">解答题</td>
-										<td id="leamount">？道可选</td>
+										<td id="leamount5" class="leamount">？道可选</td>
 										<td id="qmount"><input type="text"/>道</td>
 										<td>
 											<div class="">
@@ -529,6 +529,19 @@
 		</div>
 
 </body>
+<script type="text/javascript">
+loadDiffCounts();
+function loadDiffCounts() {
+	$.post("loadQuestionCountByType", {
+		"paper.subjectRef":0
+	}, function(data) {
+		for(var i=0;i<data.countListMap.length;i++) {
+			$("#leamount" + (i+1)).text(data.countListMap[i]["count"] + "道题可选");
+		}
+	});
+}
+
+</script>
 <script type="text/javascript">
 createPaperAuto();
 function createPaperAuto(examRef, subjectRef, name, examStart, examEnd) {

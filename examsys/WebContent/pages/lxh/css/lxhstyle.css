@@ -363,7 +363,7 @@ li{
 	margin: 0px;
 	padding: 0px;
 }
-#qtype, #leamount, #qmount, #leamark, #trash ,#eachq {
+#qtype, #leamount1, #leamount2, #leamount3, #leamount4, #leamount5, #qmount, #leamark, #trash ,#eachq {
 	vertical-align: middle;
 }
 .mytable td {

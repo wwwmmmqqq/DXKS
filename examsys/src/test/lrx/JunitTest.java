@@ -3,6 +3,7 @@ package test.lrx;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +38,21 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	
 	@Autowired
 	ConstituteService conService;
+	
+	@Test
+	public void teste() {
+		/*try {
+			List<Map<String, Object>> li = daoAdapter.findByHql("select new Map(userId as userId, psw as psw, name as name) from User");
+			System.out.println(li.size());
+			for (int i = 0; i < li.size(); i++) {
+				System.out.println(li.get(i).get("userId"));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+	}
 	
 	@Test
 	public void addQuestion() {
