@@ -36,23 +36,24 @@ public class ConstituteAction extends CommonAction {
 	ConstituteVO multiple = new ConstituteVO();
 	ConstituteVO fills = new ConstituteVO();
 	ConstituteVO subjective = new ConstituteVO();
-	public void setPaper(Paper paper) {
-		this.paper = paper;
+	
+	public Paper getPaper() {
+		return paper;
 	}
-	public void setSingle(ConstituteVO single) {
-		this.single = single;
+	public ConstituteVO getSingle() {
+		return single;
 	}
-	public void setTrueOrFalse(ConstituteVO trueOrFalse) {
-		this.trueOrFalse = trueOrFalse;
+	public ConstituteVO getTrueOrFalse() {
+		return trueOrFalse;
 	}
-	public void setMultiple(ConstituteVO multiple) {
-		this.multiple = multiple;
+	public ConstituteVO getMultiple() {
+		return multiple;
 	}
-	public void setFills(ConstituteVO fills) {
-		this.fills = fills;
+	public ConstituteVO getFills() {
+		return fills;
 	}
-	public void setSubjective(ConstituteVO subjective) {
-		this.subjective = subjective;
+	public ConstituteVO getSubjective() {
+		return subjective;
 	}
 	/**
 	 * <div style='background-color: blue'>自动组卷<br>
@@ -85,6 +86,14 @@ public class ConstituteAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createPaperAuto() {
+		
+		System.out.println(single);
+		System.out.println(trueOrFalse);
+		System.out.println(multiple);
+		System.out.println(fills);
+		System.out.println(subjective);
+		System.out.println(paper);
+		
 		
 		int sid = service.createPaperAuto(paper.getExamRef()
 				, paper.getSubjectRef()//科目id

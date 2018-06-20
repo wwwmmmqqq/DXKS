@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="s" uri="/struts-tags" %>
     <% String path=request.getContextPath();
    String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
 %>
@@ -23,6 +24,9 @@
 		<link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<style type="text/css">
+		input {text-align: center;}
+		</style>
 	</head>
 
 	<body>
@@ -134,147 +138,50 @@
 										<th>题型</th>
 										<th>题库题量</th>
 										<th>设置题量</th>
-										<th>难度系数</th>
+										<th>难度占比</th>
 										<th>题量</th>
 										<th>每题分值</th>
-										<th>未分配量</th>
+										<th>合计（分值）</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td  id="qtype">单选题</td>
-										<td  id="leamount1" class="leamount">？道可选</td>
-										<td  id="qmount"><input type="text" id="question-mount" />道</td>
-										<td>
-											<div class="nandu">
-												<span>简单<input type="text" id="simple"/>%</span>
-												<span>一般<input type="text" id="normal"/>%</span>
-												<span>难&nbsp;<input type="text" id="difficult"/>%</span>
-												<span>较难<input type="text" id="moredifficult"/>%</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<span id="simple1">选择？道题</span>
-												<span id="normal1">选择？道题</span>
-												<span id="difficult1">选择？道题</span>
-												<span id="moredifficult1">选择？道题</span>
-											</div>
-										</td>
-										<td  id="eachq">每题<input type="text"/>分</td>
-										<td  id="leamark">剩余？分未分配</td>
-									</tr>
-									<tr>
-										<td id="qtype">多选题</td>
-										<td id="leamount2" class="leamount">？道可选</td>
-										<td id="qmount"><input type="text"/>道</td>
-										<td>
-											<div class="">
-												<span>简单<input type="text"/>%</span>
-												<span>一般<input type="text"/>%</span>
-												<span>难 &nbsp; <input type="text"/>%</span>
-												<span>较难<input type="text"/>%</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-											</div>
-										</td>
-										<td  id="eachq">每题<input type="text" />分</td>
-										<td  id="leamark">剩余？分未分配</td>
-									</tr>
-									<tr>
-										<td id="qtype">填空题</td>
-										<td id="leamount3" class="leamount">？道可选</td>
-										<td id="qmount"><input type="text" />道</td>
-										<td>
-											<div class="">
-												<span>简单<input type="text"/>%</span>
-												<span>一般<input type="text"/>%</span>
-												<span>难 &nbsp; <input type="text"/>%</span>
-												<span>较难<input type="text"/>%</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-											</div>
-										</td>
-										<td id="eachq">每题<input type="text"/>分</td>
-										<td id="leamark">剩余？分未分配</td>
-									</tr>
-									<tr>
-										<td  id="qtype">判断题</td>
-										<td  id="leamount4" class="leamount">？道可选</td>
-										<td  id="qmount"><input type="text"/>道</td>
-										<td>
-											<div class="">
-												<span>简单<input type="text"/>%</span>
-												<span>一般<input type="text"/>%</span>
-												<span>难 &nbsp; <input type="text"/>%</span>
-												<span>较难<input type="text"/>%</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<span>每题<input type="text"/>分</span>
-												<span>每题<input type="text"/>分</span>
-												<span>每题<input type="text"/>分</span>
-												<span>每题<input type="text"/>分</span>
-											</div>
-										</td>
-										<td  id="leamark">剩余？分未分配</td>
-									</tr>
-									<tr>
-										<td id="qtype">解答题</td>
-										<td id="leamount5" class="leamount">？道可选</td>
-										<td id="qmount"><input type="text"/>道</td>
-										<td>
-											<div class="">
-												<span>简单<input type="text"/>%</span>
-												<span>一般<input type="text"/>%</span>
-												<span>难 &nbsp; <input type="text"/>%</span>
-												<span>较难<input type="text"/>%</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-												<span>选择？道题</span>
-											</div>
-										</td>
-										<td>
-											<div>
-												<span>每题<input type="text" />分</span>
-												<span>每题<input type="text" />分</span>
-												<span>每题<input type="text" />分</span>
-												<span>每题<input type="text" />分</span>
-											</div>
-										</td>
-										<td id="leamark">剩余？分未分配</td>
-									</tr>
-							
+									<s:iterator id="item" value="{'单选题','多选题','判断题','填空题','主观题'}" status="st">
+										<tr id="type${st.index}">
+											<td id="qtype">${item}</td>
+											<td id="leamount${st.index+1}" class="hasCount">共0题</td>
+											<td id="qmount"><input type="text" id="count" value="0" onchange="setCount(${st.index}, this.value)"/> 题</td>
+											<td>
+												<span>简单<input type="text" id="diffPercent${st.index}1" value="0" onchange="setTypeDiffPercent(${st.index}, 0, this.value)"/>%</span>
+												<span>一般<input type="text" id="diffPercent${st.index}2" value="0" onchange="setTypeDiffPercent(${st.index}, 1, this.value)"/>%</span>
+												<span>难题
+														 <input type="text" id="diffPercent${st.index}3" value="0" onchange="setTypeDiffPercent(${st.index}, 2, this.value)" />%</span>
+												<span>地狱<input type="text" id="diffPercent${st.index}4" value="0" onchange="setTypeDiffPercent(${st.index}, 3, this.value)"/>%</span>
+												<span id='diff_total_percent${st.index}'>还差100%</span>
+											</td>
+											<td>
+												<div>
+													<span style="line-height: 180%" id="count_diff${st.index}0">0</span>
+													<span style="line-height: 180%" id="count_diff${st.index}1">0</span>
+													<span style="line-height: 180%" id="count_diff${st.index}2">0</span>
+													<span style="line-height: 180%" id="count_diff${st.index}3">0</span>
+												</div>
+											</td>
+											<td>
+												<div>
+													<span>每题<input type="text" id="diff0point" value="0" onchange="setTypeDiffPoint(${st.index}, 0, this.value)"/>分</span>
+													<span>每题<input type="text" id="diff1point" value="0" onchange="setTypeDiffPoint(${st.index}, 1, this.value)"/>分</span>
+													<span>每题<input type="text" id="diff2point" value="0" onchange="setTypeDiffPoint(${st.index}, 2, this.value)"/>分</span>
+													<span>每题<input type="text" id="diff3point" value="0" onchange="setTypeDiffPoint(${st.index}, 3, this.value)"/>分</span>
+												</div>
+											</td>
+											<td id="leamark" class="leamark">0</td>
+										</tr> 
+									</s:iterator>
 								</tbody>
 							</table>
 						
-							<p style="text-align: center;"><button type="submit" class="btn btn-primary" onclick="window.open('apaper.html')">生成试卷并预览</button></p>
+							<p style="text-align: center;">
+								<button type="submit" class="btn btn-primary" id="submitBtn">生成试卷并预览</button></p>
 						</div>
 					</section>
 					<!-- 智能组卷 end-->
@@ -531,52 +438,110 @@
 </body>
 <script type="text/javascript">
 loadDiffCounts();
+var type_count = [0,0,0,0,0];
 function loadDiffCounts() {
 	$.post("loadQuestionCountByType", {
 		"paper.subjectRef":0
 	}, function(data) {
 		for(var i=0;i<data.countListMap.length;i++) {
-			$("#leamount" + (i+1)).text(data.countListMap[i]["count"] + "道题可选");
+			type_count[i] = data.countListMap[i]["count"];
+			$("#leamount" + (i+1)).text("共"+type_count[i] + "题");
 		}
 	});
 }
+</script>
 
+<script>
+var type_set_count = [0,0,0,0,0];
+var type_diff_percent = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+var type_diff_point = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+function setCount(typeIndex, value) {
+	type_set_count[typeIndex] = Number(value);
+	updateShows(typeIndex);
+}
+
+function setTypeDiffPercent(typeIndex, diff, value) {
+	type_diff_percent[typeIndex][diff] = Number(value);
+	var pvalue = 0;
+	for(var i = 0;i<type_diff_percent[typeIndex].length;i++) 
+		pvalue += type_diff_percent[typeIndex][i];
+	if(pvalue>100) {
+		$("#type"+typeIndex).find("#diff_total_percent"+typeIndex).text("还差" + (100-pvalue) + "%");
+		$("#diff_total_percent" + typeIndex).css({"color":"red"});
+		alert("超出范围");
+	} else if(pvalue<100) {
+		$("#type"+typeIndex).find("#diff_total_percent"+typeIndex).text("还差" + (100-pvalue) + "%");
+		$("#diff_total_percent" + typeIndex).css({"color":"orange"});
+	} else {
+		$("#type"+typeIndex).find("#diff_total_percent"+typeIndex).text("");
+	}
+	updateShows(typeIndex);
+}
+
+function setTypeDiffPoint(typeIndex, diff, value) {
+	type_diff_point[typeIndex][diff] = Number(value);
+	updateShows(typeIndex);
+}
+
+function updateShows(typeIndex) {
+	for(var i=0;i<type_diff_percent[typeIndex].length;i++) {
+		var val = type_set_count[typeIndex] * type_diff_percent[typeIndex][i] / 100;
+		$("#type"+typeIndex).find("#count_diff"+typeIndex+i).text(Math.floor(val));
+	}
+	
+	var typeScoreVal = 0;
+	for(var i=0;i<type_diff_point[typeIndex].length;i++) {
+		typeScoreVal += Number(type_diff_point[typeIndex][i])
+			* Number(type_diff_percent[typeIndex][i] * type_set_count[typeIndex]) / 100;
+	}
+	$("#type"+typeIndex).find(".leamark").text(typeScoreVal);
+}
+
+
+$('tr input').click(function() {
+	if($(this).val() == '0') {
+		$(this).val("");
+	}
+})
+$('tr input').blur(function() {
+	if($(this).val() == '') {
+		$(this).val("0");
+	}
+	if(isNaN($(this).val())) {
+		alert("非数字");
+		$(this).val("0");
+		$(this).facus();
+	}
+})
 </script>
 <script type="text/javascript">
-createPaperAuto();
-function createPaperAuto(examRef, subjectRef, name, examStart, examEnd) {
-	  $.post("createPaperAuto", {
-		  "paper.examRef":examRef //考试ID
+function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
+	var params = {
+			  "paper.examRef":examRef //考试ID
+			, "paper.subjectRef":subjectRef //考试ID
 			, "paper.name":name //试卷标题名
 			, "paper.examStart":examStart //考试开始时间
 			, "paper.examEnd":examEnd //考试结束时间
-			//单选题的参数
-			, "single.count":$("#question-mount").val() //题目数量
-			, "single.diff1Percent":$("#simple").val()  //难度为1的百分百
-			, "single.diff2Percent":$("#normal").val()  //难度为2的百分百
-			, "single.diff3Percent":$("#difficult").val()  //难度为3的百分百
-			, "single.diff4Percent":$("#moredifficult").val()  //难度为4的百分百
-			, "single.diff1Point":($("#question-mount").val() * $("#simple").val())  //难度为1的分数
-			, "single.diff2Point":$("#normal1").val()  //难度为2的分数
-			, "single.diff3Point":$("#difficult1").val()  //难度为3的分数
-			, "single.diff4Point":$("#moredifficult1").val() //难度为4的分数
-				//判断题的参数
-			, "trueOrFalse":
-				//多选题的参数
-			, "multiple":
-				//填空题的参数
-			, "fills":
-				//解答题的参数
-			, "subjective":
-			  
-	  }, function(data) {
-		  if(data.result == 'fail') {
-			  alert("组卷失败");
-		  }
-		  
-		  
-	  });
+	};
+	var types = ["single", "multiple", "trueOrFalse", "fills", "subjective"];
+	for(var i=0;i<types.length;i++) {
+		params[types[i] + ".count"] = type_set_count[i];
+		for(var j=0;j<type_diff_percent[i].length;j++) {
+			params[types[i] + ".diff" + (j+1) + "Percent"] = type_diff_percent[i][j];
+		}
+		for(var j=0;j<type_diff_point[i].length;j++) {
+			params[types[i] + ".diff" + (j+1) + "Point"] = type_diff_point[i][j];
+		}
+	}
+	return params;
 }
 
+$('#submitBtn').bind().click(function() {
+	var params = createPaperAutoParams(66, 77, 88, 99, 11);
+	$.post("createPaperAuto", params, function(data) {
+		alert(data.result);
+	});
+	//window.open('apaper.html')
+});
 </script>
 </html>
