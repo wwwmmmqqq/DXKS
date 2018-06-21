@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@taglib prefix="s" uri="/struts-tags" %>
     <% String path=request.getContextPath();
    String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
 %>
@@ -128,15 +129,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!-- <tr>
-								<td>1</td>
-								<td>数据库概论</td>
-								<td>萍乡学院</td>
-								<td>2018-10-10</td>
-								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-									<i class="fa fa-eye"></i>
-								</td>
-							</tr> -->
+						<s:iterator id="item" value="{'计算机导论','算法基础','人工智能','高等数学'}" status="st">
+						<tr>
+							<td>${st.index }</td>
+							<td>${item}</td>
+							<td>萍乡学院</td>
+							<td class='aa'>2018-06-</td>
+							<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
+								<i class="fa fa-eye"></i>
+							</td>
+						</tr>
+						</s:iterator>
+						<script>$(".aa")</script>
 					</tbody>
 				</table>
 				<!--<div class="bottom_button">
