@@ -129,18 +129,6 @@
 							</tr>
 						</thead>
 						<tbody>
-						<s:iterator id="item" value="{'计算机导论','算法基础','人工智能','高等数学'}" status="st">
-						<tr>
-							<td>${st.index }</td>
-							<td>${item}</td>
-							<td>萍乡学院</td>
-							<td class='aa'>2018-06-</td>
-							<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
-								<i class="fa fa-eye"></i>
-							</td>
-						</tr>
-						</s:iterator>
-						<script>$(".aa")</script>
 					</tbody>
 				</table>
 				<!--<div class="bottom_button">
