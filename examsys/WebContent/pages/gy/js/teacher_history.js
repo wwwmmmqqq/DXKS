@@ -1,7 +1,5 @@
 //	分页
 var currentPage = 1;
-
-	
 	function nextPage() {
 		currentPage ++;
 		loadDatas(currentPage);
@@ -32,17 +30,15 @@ var currentPage = 1;
 /*	获取教师所接受参加过得考试*/
 	var examSid = getParam("sid");
 	loadPapersByExam(examSid);
-	function loadPapersByExam(examSid) {
-		  $.post("loadMyExamList", {
-			  "exam.sid":examSid
-			  ,"page":currentPage
+	function loadPapersByExam() {
+		  $.post("loadInvitedExamPapers", {
+			  "page":1
 		  }, function(data) {
-			  var paperList = data.list;
+			  var list = data.list;
 			  var htm = "";
-			  for(var i=0;i<paperList.length;i++) {
-				 htm+=getMyExam(paperList[i]);
+			  for(var i=0;i<list.length;i++) {
+				 htm+=getMyExam(i,list[i].exam,list[i].paper);
 			  }
-			  alert(htm)
 			  $('#data-box').html(htm);
 		  });
 	  }
@@ -56,15 +52,14 @@ var currentPage = 1;
 	  	return decodeURIComponent(result[2]);
 	  return null;
 	}
-	function getMyExam(obj) {
+	function getMyExam(i,exam,paper) {
 		var htm = "<tr>"
-		+"	<td>"+obj.index+"</td>"
-		+"	<td>"+obj.subjectName+"</td>"
-		+"	<td>"+obj.collegeName+"</td>"
-		+"	<td>"+obj.time+"</td>"
-		+"	<td class='td_correct' data-toggle='modal' data-target='#myModal_correct'>"
+		+"	<td>"+(i+1)+"</td>"
+		+"	<td>"+paper.subjectName+"</td>"
+		+"	<td>"+exam.invitee+"</td>"
+		+"	<td>"+exam.periodStart+"-"+exam.periodEnd+"</td>"
 		+"	<td>"
-		+"		<i class='fa fa-eye' ></i>"
+		+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' ></i>"
 		+"	</td>"
 		+"</tr>";
 		return htm;

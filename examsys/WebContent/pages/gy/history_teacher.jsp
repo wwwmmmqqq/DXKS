@@ -95,10 +95,7 @@
 				
 				<div class="top_main">
 					<div class="top_button">
-						<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_export">
-							<i class="fa fa-mail-forward history"></i>
-							导出成绩
-						</button>
+						
 						<button type="button" class="btn btn2" id="find">
 							<i class="fa fa-search-minus"></i>
 							条件搜索
@@ -262,6 +259,7 @@
 						<table >
 							<thead >
 							<tr>
+							   <th>序号</th>
 								<th>学号</th>
 								<th>姓名</th>
 								<th>学院</th>
@@ -273,7 +271,7 @@
 								<th>本校排名</th>
 							</tr>
 							</thead>
-							<tbody  id="studentScore">
+							<tbody id="studentScore">
 								<tr>
 									<td>15478015</td>
 									<td>慕雪</td>
@@ -285,6 +283,94 @@
 									<td>xxx</td>
 									<td>xxx</td>
 									
+								</tr>
+								<tr>
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+								<tr>
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+								<tr>
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+								<tr>
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+								<tr>
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+								<tr>
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+								<tr>
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+								<tr>
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
 								</tr>
 								<tr>
 									<td>15478015</td>
