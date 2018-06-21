@@ -256,7 +256,7 @@
 
 					<!-- 模态框主体 -->
 					<div class="modal-body">
-						<table >
+						<table id="studentScore">
 							<thead >
 							<tr>
 							   <th>序号</th>
@@ -271,8 +271,9 @@
 								<th>本校排名</th>
 							</tr>
 							</thead>
-							<tbody id="studentScore">
+							<tbody >
 								<tr>
+								<td>1</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -285,6 +286,7 @@
 									
 								</tr>
 								<tr>
+								<td>1</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -296,6 +298,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+								<td>1</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -307,116 +310,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
+								<td>1</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -428,6 +322,8 @@
 									<td>xxx</td>
 								</tr>
 								
+								
+								
 							</tbody>
 						</table>
 					<ul>
@@ -437,7 +333,8 @@
 
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
-					<button type="button" class="btn btn-primary " data-dismiss="modal">导出</button>
+					<button type="button" class="btn btn-primary all-choose"  style="display:none">全选</button>
+					<button type="button" class="btn btn-primary "  onclick="exportScore()">导出</button>
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>

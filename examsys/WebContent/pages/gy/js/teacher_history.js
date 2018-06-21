@@ -23,7 +23,7 @@ var currentPage = 1;
 			  for(var i=0;i<paperList.length;i++) {
 				  html += getScores(i+1, li[i].subjectName, li[i].collegeName, li[i].time);
 			  }
-			  $('#studentScore').html(htm);
+			  $('#studentScore tbody').html(htm);
 		  });
 	}*/
 	
@@ -64,5 +64,28 @@ var currentPage = 1;
 		+"</tr>";
 		return htm;
 	}
-
+	function getScore(obj){
+		var htm=
+			"<tr>"
+		+"<td>1</td>"
+		+"<td>15478015</td>"
+		+"<td>慕雪</td>"
+		+"<td>xxx</td>"
+		+"<td>xxx</td>"
+		+"<td>xxx</td>"
+		+"<td>xxx</td>"
+		+"<td>xxx</td>"
+		+"<td>xxx</td>"
+		+"<td>xxx</td>"
+		+"</tr>"
+	}
+/*成绩导出*/
+	function exportScore(){
+		var tr=$('#studentScore tbody tr');
+		tr.each(function(){
+			$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
+		})
+		$('.all-choose').show();
+		$(this).innerHTML("确认导出 ")
+	}
 	
