@@ -1,0 +1,594 @@
+html,body{
+  font-family: 'Lato', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	min-height: 100%;
+	background: #f1f2f7;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+/*解决弹出模态框页面抖动问题*/
+body{
+	overflow: auto !important;
+} 
+.modal{
+	overflow: auto !important;
+}
+.all{
+	width: 100%;
+	height: 100%;
+	background: #f1f2f7;
+}
+/*上方导航栏*/
+.header{
+	width: 100%;
+	height: 50px;
+	background-color: white;
+	z-index: 1;
+	
+}
+
+
+/*logo*/
+ .header a .logo{
+ 	float:left ;
+	width: 16.3%;
+	height: 50px;
+	padding: 0px 0px;
+	border-right:1px solid #bbb;
+	background-color: #222222;
+}
+.header>a>.logo{
+	padding: 0px;
+	width: 220px;
+	height: 50px;
+	border-right:1px solid #bbb;
+	background-color: #000000;
+}
+
+
+/*上方导航栏右侧*/
+.banner .users ,.task , .notice ,.dropdown_envelope{
+	float: right;
+}
+.banner a{
+	color: black;
+}
+.navgationandhead .banner {
+	width: 1100px; 
+	height: 53px; 
+	background-color: #ffffff; 
+	float: left;
+}
+.dropbtn {
+	background-color: white;
+	color: white;
+	padding: 13.8px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+.dropbtn.envolope{
+	padding-right: 18px;
+}
+.dropdown {
+	z-index: 9999;
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	right: 0;
+	background-color: #ffffff;
+	min-width: 120px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration:none;  /*去掉a标签的下划线*/
+	display: block;
+}
+.dropdown-content a:hover {
+	background-color:  #f1f2f7;
+	text-decoration:none;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background: #f1f2f7;
+}
+.task .envelope{
+	color: black;
+}
+
+.banner .notice .noticelabel {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 15px;
+	border-radius: 50%;
+}
+.banner .task .tasklabel {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 15px;
+	border-radius: 50%;
+}
+.banner .dropdown_envelope{
+	margin-top:15px;
+	margin-right: 20px;
+}
+.banner .label-success{
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 13px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	background-color: #f05050;
+}
+
+/*侧面导航栏*/
+.navbar.bg-light{
+	width: 16.3%;
+	height: 588px;
+  background-color: #454545;
+  float: left;
+  border-radius:0px ;
+}
+.navbar .user-panel{
+	padding: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 80px;
+}
+.navbar .image{
+	width: 45%;
+	height: 50px;
+	float: left;
+}
+.navbar .user1{
+	width: 50px;
+	height: 50px;
+	border-radius:50% ;
+	float: left;
+}
+.navbar .info{
+	width: 80px;
+	height: 50px;
+	float: right;
+	text-align: center;
+}
+p{
+	width: 45px;
+	height: 50px;
+	color: white;
+}
+.navbar .light_bottom{
+	margin-top:10px;
+}
+.light_bottom li{
+	display: block;
+	color: white;
+	list-style: none;
+	line-height: 50px;
+	font:14px/50px ;
+	border-bottom:1px solid black ;
+	text-align: center;
+}
+.bg-light ul{
+	padding-left:0px ;
+}
+.bg-light a{
+	color: white;
+}
+.bg-light a:hover{
+	text-decoration: none;
+	color: white;
+}
+.bg-light li:hover{
+	background: #425164;
+}
+
+/*添加模态框*/
+.modal-header{
+	text-align: center;
+	color: #3c91c8;
+}
+.modal-body{
+	text-align: center;
+}
+
+.modal-body table{
+  width: 500px;
+  height: 200px;
+	margin: auto;  
+}
+.modal-body td{
+	text-align: center;
+	padding: 10px;
+}
+
+.modal-body  input{
+	width: 60%;
+	height: 30px;
+}
+.modal-body .option{
+	width: 30%;
+	height: 30px;
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body section{
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body .option:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.modal-footer{
+	width: 590px;
+	height: 80px;
+}
+
+.modal-footer .add{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 320px;
+	background-color:  #3c91c8;
+	color: white;
+}
+
+.modal-footer .back{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 20px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+
+.modal-body input{
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body .hover:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.modal-header .close1{
+	display: block;
+	position: absolute;
+	top:20px;
+	right:25px;
+}
+
+/*查看个人信息模态框*/
+.modal-body .tb_information{
+	width: 200px;
+	height: 45px;
+	margin-left:15px ;
+	display: inline;  /*让他具有行级元素的性质*/
+}
+.modal-footer .back_information{
+	width: 90px;
+	height: 40px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+/*邀请通知模态框*/
+.modal-body .email{
+	display: block;
+	width: 500px;
+	height: 60px;
+	padding: 20px;
+	font: 15px/20px ;
+	text-align: center;
+	margin: auto;
+	border-bottom:1px solid #bbb ;	
+}
+.modal-body .accept{
+	margin-right:20px ;
+	margin-left:20px ;	
+}
+.modal-body .refuse{
+	margin-right:20px ;
+	
+}
+.modal-footer .back-email{
+	width: 90px;
+	height: 40px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+/*阅卷通知*/
+.modal-footer .add_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 180px;
+	background-color:  #3c91c8;
+	color: white;
+}
+
+.modal-footer .back_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 120px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+/*中间部分*/
+.main{
+	float:right;
+	/*position:relative; 
+	top:50px;*/
+	width: 83.6%;
+}
+.main1{
+	width: 90%;
+	height: 98%;
+	margin: auto;
+}
+.cant .bred {
+	width: 90%; 
+}
+.cant .mybread {
+	width: 83.6%;
+	float: left;
+	background-color: #ffffff;
+}
+.main .position{
+	width: 100%%;
+	color: #999;
+}
+.bred .position{
+	margin-top: 20px;
+	background-color:#fff ;
+	width: 100%;
+}
+/*.main .top_position{
+	margin-top: 20px;
+	margin-left:0px ;
+	height: 40px;
+	background-color:white ;
+	color: #999;
+}
+.main .position{
+	margin-left: 20px;
+	line-height: 40px;
+}*/
+.main .btn1{
+	margin-top:10px ;
+	margin-left: 25px;
+	margin-bottom: 10px;
+}
+.main .btn2{
+	
+	margin-left: 10px;
+}
+.main .top_search{
+	margin-top: 10px;
+	float: left;
+	margin-left: 16px;
+}
+.main .top_input{
+	width: 60%;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid black;
+}
+.main .top_input:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.main .top_button{
+	width: 95%px;
+	height: 50px;
+	margin-top: 10px;
+}
+.main .top_main{
+	height: 100%;
+	margin-top:20px ;
+	background-color:white ;
+}
+/*表格*/
+.tip{
+	width: 95%;
+	height: 35px;
+	background-color:#dadada;
+	/*border-top:1px solid #bbb;
+	border-right:1px solid #bbb;
+	border-left:1px solid #bbb;*/
+	border-radius: 5px 5px  0px 0px;
+	margin-top:5px ;
+	padding-top:8px;
+	margin: auto;
+	padding-left: 12px;
+}
+.table{
+	margin: 8px;
+}
+.tb_width i{
+	margin: 5px;
+}
+th,td{
+	height: 44px;
+	text-align: center;
+}
+.table.tb1{
+	width: 95%;
+	margin: auto;
+}
+.thead-light th{
+	text-align: center;
+	
+}
+th {
+	text-align: center;
+}
+.main .bottom_button{
+	width: 100%;
+	height: 50px;
+	margin: 10px;
+}
+.main .btn3{
+	margin-left:30px ;
+}
+.main .btn4{
+	margin-left:10px ;
+}
+.main .btn5{
+	margin-left:10px ;
+	
+}
+
+/*分页*/
+/*.pagination{
+	position:absolute;
+	top:480px;
+	left: 420px;
+	
+}*/
+.pagination .page-link{
+	color: black;
+	
+}
+
+.page_pagination{
+	width: 35%;
+	margin: auto;
+}
+.page_pagination .jump{
+	margin-left: 5px;
+	width:50px;
+	height:32px;
+}
+.page_pagination .btn_jump{
+	margin-left: 5px;
+	width: 50px;
+	height: 32px;
+	float: right;
+}
+
+
+/*添加模态框*/
+.modal-header{
+	text-align: center;
+	color: #3c91c8;
+}
+.modal-body{
+	text-align: center;
+}
+
+.modal-body table{
+  width: 500px;
+  height: 200px;
+	margin: auto;  
+}
+.modal-body td{
+	text-align: center;
+	ping: 10px;
+}
+
+.modal-body  input{
+	width: 60%;
+	height: 30px;
+}
+.modal-body .option{
+	width: 60%;
+	height: 30px;
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body section{
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body .option:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.modal-footer{
+	width: 590px;
+	height: 80px;
+}
+
+.modal-footer .add{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 275px;
+	background-color:  #3c91c8;
+	color: white;
+}
+
+.modal-footer .back{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 20px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+
+.modal-body input{
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body .hover:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.modal-header .close1{
+	display: block;
+	position: absolute;
+	top:20px;
+	right:25px;
+}
+/*查看个人信息模态框*/
+.modal-body .tb_information{
+	width: 200px;
+	height: 45px;
+	margin-left:15px ;
+	display: inline;  /*让他具有行级元素的性质*/
+}
+.modal-footer .back_information{
+	width: 90px;
+	height: 40px;
+	
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+.modal-footer .add_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right:170px;
+}
+.modal-footer .back_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right:120px;
+}
+button{
+	color: #999;
+}

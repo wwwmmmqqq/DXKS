@@ -84,6 +84,7 @@ var currentPage = 1;
 			$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
 		})
 		$('.all-choose').show();
-		$(this).innerHTML("确认导出 ")
+		$(this).html("确认导出 ");
+		$(this).addClss('.sure-export');
 	}
 	

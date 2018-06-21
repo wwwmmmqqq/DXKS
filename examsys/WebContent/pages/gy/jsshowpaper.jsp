@@ -170,18 +170,7 @@
 				    						</span>
 			    						</li>
 		    						</s:iterator>
-		    						<%-- <li>正确答案：
-		    							<span style="color: red;">
-				    						${que.type=="Single"?queOpt.isAnswer:""}
-				    						${que.type=="Fills"?queOpt.fillsText:""}
-				    						${que.type=="Multiple"?queOpt.isAnswer:""}
-				    						${que.type=="Subjective"?queOpt.subjectiveText:""}
-				    						${que.type=="TrueOrFalse"?queOpt.isAnswer:""}
-			    						</span>
-		    						</li> --%>
-		    						<%-- <s:if  test="#optque.isAnswer==1">
-		    						<li>正确答案：${optque.content }</li>
-		    						</s:if> --%>
+		    					
 		    					</ul>
 		    					
 		    					
