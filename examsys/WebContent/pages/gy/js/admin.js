@@ -112,10 +112,10 @@ function administrationInfo(node) {
 		var info = getInfoHtml(user);
 		$('#administration-info-box').html(info);
 		/*$('#administration_psw').val(user.psw);*/
-		var permission = user.permission;
+		/*var permission = user.permission;
 		var strs=permission.split(" ");
 		var permission_answer = strs[0];
-		var permission_paper = strs[1];
+		var permission_paper = strs[1];*/
 		$('#administration_name').html(user.name);
 		$('#administration_sex').html(user.sex);
 		$('#administration_userId').html(user.userId);
@@ -202,7 +202,7 @@ function Out() {
 	if(confirm("确定要退出吗？")) {
 		$.post("loginOut",null,function(data) {
 			if(data.result=="成功退出") {
-					location.href="../gy/gy_login.jsp";
+					location.href="../gy/login.jsp";
 			}
 	  });
 	}  

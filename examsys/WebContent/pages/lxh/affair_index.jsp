@@ -38,12 +38,12 @@
 		    		<button class="dropbtn">
 		    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		    				<i class="fa fa-user"></i>
-		    				<span>Jane Doe <i class="caret"></i></span>
+		    				<span>${session.user.name} <i class="caret"></i></span>
 		    			</a>    		
 		    	    </button>
 		    		<div class="dropdown-content">
 		    			<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-		    			<a href="#">退出系统</a>
+		    			<a href="javascript:Out()">退出系统</a>
 		    		</div>
 		    	</div>
 		    	<div class="dropdown task">
@@ -81,7 +81,7 @@
 		    			<img class="user1" src="img/1098.jpg" alt="User Image">
 		    		</div>
 		    		<div class="info">
-		    			<p>Hello, 教务周</p>
+		    			<p>Hello, ${session.user.name}</p>
 		    		</div>
 		    	</div>
 		    	<div class="light_bottom">
@@ -99,7 +99,7 @@
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
-							<a href="jwintelzujuan.jsp">智能组卷</a>
+							<a href="affair_intel_volume.jsp">智能组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
@@ -162,7 +162,7 @@
 		    					<li><button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modify-paper"><i class="fa fa-pencil"></i></button></li>
 		    				</ul>
 		    			</div>
-		    			<p>共查询到？条记录</p>
+		    			<!-- <p>共查询到？条记录</p> -->
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
