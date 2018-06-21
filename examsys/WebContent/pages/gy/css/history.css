@@ -543,7 +543,7 @@ th {
 }
 /*历史成绩模态框*/
 .modal-body th{
-	text-align: center;
+	/* text-align: center; */
 }
 
 .tb1 .td_correct:hover{
@@ -684,6 +684,7 @@ button{
 	height:40px;
 }
 .modal-footer.foot{
+	width:900px;
 	display: block;
 	text-align: center;
 }
@@ -711,4 +712,12 @@ button{
 	height: 32px;
 	float: right;
 }*/
-
+.modal-body .history-table{
+	width:900px;
+}
+.history-all {
+	width:900px !important;
+}
+.history-table th{
+	text-align: center;
+}
