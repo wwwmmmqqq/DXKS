@@ -78,7 +78,7 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
-	@Action(value="/loadMyGrades"
+	/*@Action(value="/loadMyGrades"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyGrades() {
@@ -89,7 +89,7 @@ public class PersonalAction extends CommonAction {
 			e.printStackTrace();
 		}
 		return aa;
-	}
+	}*/
 	
 	String oldPsw, newPsw;
 	public void setOldPsw(String oldPsw) {

@@ -81,7 +81,7 @@
 				</div>
 				<div class="light_bottom">
 					<ul class="side_nav">
-					<a href="jsshowpaper.jsp"><li class="side_nav1 now">题库管理</li></a>
+					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
 					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
@@ -122,8 +122,6 @@
 		    			</div>
 		    			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 			    		<a href="jsentryquestions.jsp"><button type="button" class="btn btn-in">录入题库</button></a>
-			    			
-		    			
 		    		</form>
 		    	</div>
 		    		
@@ -164,7 +162,7 @@
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
-			    						<li>正确答案：
+			    						<li>${s2.last?"正确答案：":""}
 				    						<span style="color: red;">
 				    							${("Single Multiple TrueOrFalse".indexOf(que.type)>0 && queOpt.isAnswer==1)?optionLabel:""}
 				    							${que.type=="Fills"?queOpt.fillsText:""}

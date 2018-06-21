@@ -201,7 +201,7 @@
 var paperSid=${request.paper.sid};
 window.onload = function() {
 	var now = "${session.Time}";//服务器当前时间
-	var examEnd = "2018-06-20 23:20:00";//这趟考试结束时间
+	var examEnd = "2018-06-21 10:00:00";//这趟考试结束时间
 	//开始倒计时
 	startTimeCounting(now, examEnd);
 };
@@ -270,7 +270,7 @@ $(document).ready(function(){
 });
 </script>
 <!-- 可以去掉了 -->
-<%-- <script type="text/javascript">
+<script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
 /* oneChoice();  */
 function loadQuestionListByPaper(paperSid){
@@ -364,6 +364,6 @@ function getQueItem(n, obj) {
 	return htm;
 }
 
-</script> --%>
+</script>
 </body>
 </html>

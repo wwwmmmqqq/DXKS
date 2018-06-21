@@ -45,7 +45,10 @@ public class LoginAction extends CommonAction{
 					setResult("密码错误！");
 					return aa;
 		}
-		saveLogin(user);
+		else{
+			saveLogin(user);
+		}
+		
 		return aa;
 	}
 	
