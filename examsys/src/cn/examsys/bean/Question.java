@@ -1,16 +1,6 @@
 package cn.examsys.bean;
-
-
-import java.util.Date;
-
 import java.util.Arrays;
 import java.util.List;
-
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Date;
-
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +14,7 @@ import javax.persistence.Transient;
 public class Question {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int sid;
+	int sid; 
 	
 	String type;//题目类型
 	

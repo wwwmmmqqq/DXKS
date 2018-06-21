@@ -80,7 +80,7 @@
 							<a href="history_teacher.html">历史成绩</a>
 						</li>
 						
-					</ul>
+					</ul>        
 				</div>
 			</nav>
 			<!-- sidebar end -->
@@ -464,6 +464,6 @@
 	    		<!-- /.modal-content -->
 	    	</div>
 	    	<!-- /.modal -->
-	    </div>
+	    </div>                  
 	</body>
 </html>

@@ -322,8 +322,4 @@
 		
 </body>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 9073daa... Merge branch 'lrx' into wmq
 </html>
