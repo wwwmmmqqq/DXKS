@@ -99,7 +99,7 @@ public class JumpAction extends CommonAction {
 	}
 	
 	@Action(value="/showItemBankListByUserJump"
-			,results={@Result(name="success",location="/pages/gy/jsentryquestions.jsp")})
+			,results={@Result(name="success",location="/pages/gy/jsshowpaper.jsp")})
 	public String showItemBankListByUser(){
 		/**
 		 * 数据测试
