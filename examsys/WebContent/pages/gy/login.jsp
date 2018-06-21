@@ -92,7 +92,7 @@
 					} else 
 					if(user.type=="教务") {
 						window.location.href = "../lxh/affair_index.jsp?";
-					}
+					} else·
 					if(user.type=="管理员") {
 						window.location.href = "../gy/admin.jsp?user.userId="+user.userId;
 				 	}

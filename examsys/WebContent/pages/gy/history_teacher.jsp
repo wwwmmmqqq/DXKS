@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="/struts-tags" prefix="s"%>
     <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -129,7 +130,13 @@
 							</tr>    
 						</thead>
 						<tbody id="data-box">
-							<tr >
+						
+							<s:iterator id="item" value="#request.list">
+							<tr>
+							分数	${item.point}
+							</tr>
+							</s:iterator>
+							
 								<!-- <td>1</td>
 								<td>数据库概论</td>
 								<td>萍乡学院</td>
@@ -137,7 +144,6 @@
 								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
 									<i class="fa fa-eye" ></i>
 								</td> -->
-							</tr>
 					</tbody>
 				</table>
 				<!--<div class="bottom_button">
