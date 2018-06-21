@@ -1,4 +1,3 @@
-
 package cn.examsys.lrx.action;
 
 import java.lang.reflect.Field;
@@ -231,12 +230,7 @@ public class ExamAction extends CommonAction {
 	}
 	
 	private int getCurrentPaperSid() {
-		Object o = session.getAttribute("currentPaper");
-		if (o == null) {
-			return 0;
-		} else {
-			return (Integer) o;
-		}
+		return (int) session.getAttribute("currentPaper");
 	}
 	
 	@Override

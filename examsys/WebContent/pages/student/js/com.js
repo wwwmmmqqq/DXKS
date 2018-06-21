@@ -16,9 +16,9 @@ $(function (){
 	  }, function(data) {
 		  alert("s")
 		  if(data.result == 'success') {
-			  alert('修改成功');
+			  toastr.success("修改成功！");
 		  } else {
-			  alert('修改失败');
+			  toastr.warning("修改失败！");
 		  }
 	  });
 	}
@@ -56,7 +56,7 @@ $(function (){
 				var newpwd=$('#user_setting input[name="user.newpwd"]').val();
 				var repwd=$('#user_setting input[name="user.repwd"]').val();
 				$.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
-					alert(data.result);
+					toastr.success("密码修改成功！");
 			  })
 			}
 		},

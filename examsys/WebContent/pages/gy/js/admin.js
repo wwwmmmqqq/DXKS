@@ -95,7 +95,7 @@ $.post("createUser",
 	 		"user.email":jmail
 	 	},function(data){
 	 		if(data.result=="用户创建成功") {   //result为user返回信息
-			  	alert(data.result);
+	 			toastr.success("成功添加用户");
 	 			location.href="admin.jsp";
 		  	}   
 		 }
