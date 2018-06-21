@@ -6,9 +6,7 @@
 			+ path + "/";
 %>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd 
-
-">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -45,14 +43,14 @@
 							<input type="password"  id="password" class="form-control input_password" placeholder="请输入你密码" name="user.psw"/>
 						</div>
 						<div class="input_checkbox">
-							<input type="radio" name="1" id="admin" value="管理员"/>
+							<!-- <input type="radio" name="1" id="admin" value="管理员"/>
 							<span>管理员</span>
 							<input type="radio" name="1" id="administration" value="教务"/>
 							<span>教务</span>
 							<input type="radio" name="1" id="teacher" value="教师"/>
 							<span>教师</span>
 							<input type="radio" name="1" id="student" value="学生"/>
-							<span>学生</span>
+							<span>学生</span> -->
 						</div>
 						<div class="yzm">
 							<input name="XuasYzm" size="9" maxlength="5" class="form-control input_yzm">
@@ -62,7 +60,7 @@
 						</div>
 						
 						<div class="btn_bottom">
-							<button type="button" class="btn btn-primary btn_login" onclick="login()">登录</button>
+							<button type="button" class="btn btn-primary btn_login" onclick="login();">登录</button>
 						</div>
 					</div>
 				</div>
@@ -71,51 +69,37 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js 
-
-"></script>
-	<script type="text/javascript">
-	function login() {
-		var Id = $('#userId').val();
-		var password = $('#password').val();
-		var studentType = $('#student').val();
-		var teacherType = $('#teacher').val();
-		var administrationType = $('#administration').val();
-		var adminType = $('#admin').val();
-		if (Id=="" || password=="") {
-			alert("请输入信息");
-			return false;
-		}
-		else {
-			 $.post("login",{"user.userId":Id,"user.psw":password},function(data) {
-				 
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript">
+		function login() {
+			var Id = $('#userId').val();
+			var password = $('#password').val();
+			//var studentType = $('#student').val();
+			//var teacherType = $('#teacher').val();
+			//var administrationType = $('#administration').val();
+			//var adminType = $('#admin').val();
+			if (Id=="" || password=="") {
+				alert("请输入信息");
+				return false;
+			} else { 
+				$.post("login",{"user.userId":Id,"user.psw":password},function(data) {
 					var user = data.user;
 				 	if(user.type=="学生") {
-						window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
-					 }
+						window.location.href = "../student/student-main.jsp";
+					} else 
 					if(user.type=="教师") {
-						window.location.href = "../gy/jsshowpaper.jsp?user.userId="+user.userId;
-					 }
+						window.location.href = "../gy/jsshowpaper.jsp";
+					} else 
 					if(user.type=="教务") {
-						window.location.href = "../lxh/affair_index.jsp?user="+user;
+						window.location.href = "../lxh/affair_index.jsp";
 					 }
 					if(user.type=="管理员") {
-						window.location.href = "../gy/admin.jsp?user.userId="+user.userId;
+						window.location.href = "../gy/admin.jsp";
 				 	}
-					
-					
-					
-				/* if(data.result=="未找到该账号！") {
-					alert(data.result);
-				}else if(data.result=="密码错误！") {
-					alert(data.result);
-				}else {
-				 
-				} */
-			  })
-	  	}
-	}
-</script>
+				});
+			}
+		}
+	</script>
 	</body>
 
 </html>

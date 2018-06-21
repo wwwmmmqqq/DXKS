@@ -29,6 +29,7 @@
 	<body>
 		<section class="navgationandhead">
 			<!-- head start -->
+		
 		    <div class="logo">
 		    	<img src="img/logo.png" />
 		    </div>
