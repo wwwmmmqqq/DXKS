@@ -255,7 +255,7 @@ p{
 }
 .main .btn2{
 	
-	margin-left: 10px;
+	margin-top: 8px;
 }
 .main .top_search{
 	margin-top: 10px;
@@ -273,14 +273,16 @@ p{
 	border-radius:5px ;
 }
 .main .top_button{
-	width: 95%px;
+	width: 95%;
 	height: 50px;
 	margin-top: 10px;
+	margin: 0 auto;
 }
 .main .top_main{
 	height: 100%;
 	margin-top:20px ;
 	background-color:white ;
+	border-radius: 5px;
 }
 /*表格*/
 .tip{
@@ -668,9 +670,25 @@ button{
 	color: black;
 	border:1px solid #bbb;
 }
-.modal-body .grade{
-	height:500px;
-	overflow:scroll;
+.modal-body.grade{
+	height: 400px;
+	overflow: auto;
+}
+.grade .rate{
+	color:#2b9dfa;
+	text-algin:center;
+	font-size:20px;
+}
+.modal-footer .export{
+	width:90px;
+	height:40px;
+}
+.modal-footer.foot{
+	display: block;
+	text-align: center;
+}
+.modal-footer .export{
+	margin-right:40px;
 }
 /*导出历史成绩页码*/
 /*.page_pagination_export .page-link{

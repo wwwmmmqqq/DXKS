@@ -273,6 +273,7 @@
 							</thead>
 							<tbody id="studentScore">
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -285,6 +286,7 @@
 									
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -296,6 +298,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -307,6 +310,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -318,6 +322,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -329,6 +334,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -340,6 +346,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -351,6 +358,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -362,6 +370,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -373,6 +382,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -384,6 +394,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -395,6 +406,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -406,6 +418,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -417,6 +430,7 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
+									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -431,13 +445,13 @@
 							</tbody>
 						</table>
 					<ul>
-						<li>正确率:50%</li>
+						<li class="rate"><b>正确率:50%</b></li>
 					</ul>
 					</div>
 
 					<!-- 模态框底部 -->
-					<div class="modal-footer">
-					<button type="button" class="btn btn-primary " data-dismiss="modal">导出</button>
+					<div class="modal-footer foot">
+					<button type="button" class="btn btn-primary export" >导出</button>
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
