@@ -6,6 +6,8 @@ import cn.examsys.bean.Exam;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
+import cn.examsys.lrx.vo.GradeVO;
+import cn.examsys.lrx.vo.PaperWithExamVO;
 
 public interface ExamService {
 	/**
@@ -26,10 +28,18 @@ public interface ExamService {
 	 */
 	boolean startExamPaper(User sessionUser, int sid);
 
-	List<Question> loadQuestionList(int sid, int page);
-	
-	boolean todo(User sessionUser, int questionRef, int isSelected, String fillsAnswer, String subjectiveAnswer);
+	List<Question> loadQuestionList(int sid);
 
 	int submitPaper(User sessionUser, int sid, int timeComsuming);
 
+	List<Paper> loadMyHistoryPapers(User sessionUser, int page);
+
+	boolean todo(User sessionUser, int currentPaperSid, int questionRef, int optionRef,
+			int trueOrFalse, String fillsAnswer, String subjectiveAnswer);
+
+
+	List<PaperWithExamVO> loadInvitedExamPapers(User sessionUser, int page);
+	
+	List<GradeVO> loadGradesByPaper(User sessionUser, int sid);
+	
 }

@@ -1,0 +1,935 @@
+/*navgationandhead   */
+.navgationandhead .logo {
+   width: 16.34%; 
+   height: 53px; 
+   background-color: #283744; 
+   float: left;
+}
+.navgationandhead .logo img {
+   width: 220px; 
+   height: 53px; 
+   background-color: black;
+}
+
+
+/*侧面导航栏*/
+
+.navbar.bg-light {
+	width: 16.3%;
+	height: 588px;
+	background-color: #454545;
+	float: left;
+	border-radius: 0px;
+}
+
+.navbar .user-panel {
+	padding: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 80px;
+}
+
+.navbar .image {
+	width: 45%;
+	height: 50px;
+	float: left;
+}
+
+.navbar .user1 {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	float: left;
+}
+
+.navbar .info {
+	width: 80px;
+	height: 50px;
+	float: right;
+	text-align: center;
+}
+
+.info p {
+	width: 45px;
+	height: 50px;
+	color: white;
+}
+
+.navbar .light_bottom {
+	margin-top: 10px;
+}
+
+.light_bottom li {
+	display: block;
+	color: white;
+	list-style: none;
+	line-height: 50px;
+	font: 14px/50px;
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+
+.bg-light ul {
+	padding-left: 0px;
+}
+
+.bg-light a {
+	dispaly: block;
+	color: white;
+}
+
+ .bg-light a:hover {
+	text-decoration: none;
+	color: white;
+} 
+.bg-light a: visited {
+	color: black;
+} 
+.bg-light li:hover {
+	background: #425164;
+}
+
+.navbar .mynav a {
+	font-size: 14px;
+	font-family: "微软雅黑";
+	font-weight: 200;
+	color: white;
+}
+.mynav li {
+	border-bottom: 1px solid black;
+}
+/* .mynav > li > a:hover, .mynav > li > a:focus {
+    text-decoration: none;
+    background-color: #425164;
+}  */
+ .user-panel .image img {
+	width: 45px;
+	height: 45px;
+}
+.user-panel > .info {
+    font-size: 14px;
+    float: left;
+}
+
+
+/*banner*/
+.banner .users ,.task , .notice {
+	float: right;
+}
+.banner a {
+	text-align: center;
+	color: #000000;
+}
+.navgationandhead .banner {
+	width: 83%; 
+	height: 53px; 
+	background-color: #ffffff; 
+	float: left;
+}
+.dropbtn {
+	background-color: white;
+	color: white;
+	padding: 14.5px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropdown {
+	/*z-index: 9999;*/
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	right: 0;
+	background-color: #ffffff;
+	min-width: 120px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+.dropdown-content a:hover {
+	background-color:  #f1f2f7;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: white;
+}
+
+.banner .notice .noticelabel {
+	width: 8px;
+	height: 8px;
+	position: absolute;
+	right: 6px;
+	border-radius: 50%;
+	font-size: 8px;
+	background-color: #f05050 !important;
+}
+.navgationandhead  .cant {
+	width: 83%; 
+	margin: 1px 2px;
+	min-height: 750px; 
+	max-height: 100%;
+	display: block; 
+	background-color: #f1f2f7; 
+	float: left; 
+}
+.cant .bred {
+	width: 100%; 
+	margin: 20px 0px;
+}
+.cant .mybread {
+	width: 90%;
+	margin-left: 40px;
+	float: left;
+	background-color: #ffffff;
+}
+
+/*form search*/
+.cant .search {
+	width: 500px; 
+	float: left; 
+	margin-left: 100px;
+}
+.cant .searchform {
+	text-align: center;
+} 
+.cant .searchform .myinput {
+	width: 300px;
+	border: 0;
+	padding: 7px 10px;
+	font-size: 12px;
+	color: #999;
+	background-color: #fff;
+}
+.search select {
+	border: 1px solid #09abf6;
+}
+
+/*papermanage*/
+.cant .papermanage {
+	width: 90%;
+	display: block; 
+	margin-top: 20px; 
+	margin-left: 40px;
+	margin-bottom: 20px;
+	float: left;
+}
+.papermanage textarea {
+	width: 600px;
+	min-height: 40px;
+}
+
+/*jwindex*/
+.papermanage #panel,#flip {
+	padding:5px;
+	text-align:center;
+	background-color: #ccd2ee;
+	border:solid 1px #ccd2ee;
+}
+.papermanage #panel {
+	padding:50px;
+	display:none;
+}
+.papermanage .searchpanel {
+	width: 85%;
+	float: left;
+}
+.searchpanel li {
+	float: left;
+}
+.searchpanel .searchbtn {
+	height: 26px;
+}
+
+.papermanage .jwchaxun .jwcxtable {
+	
+	background-color: #FFFFFF;
+}
+.papermanage .jwchaxun .jwtable  td {
+	vertical-align: middle;
+
+}
+.papermanage .jwchaxun .table-foot {
+	font-size: 16px;
+	margin: 10px 300px;
+	float: right;
+}
+.jwchaxun .operation li {
+	margin: 5px 10px;
+	float: right;
+}
+.papermanage .jwchaxun .table-foot .paginginput {
+	width: 36px;
+	height: 36px;
+}
+
+.jwcxtable td {
+	width: 10%;
+}
+.jwchaxun .operation {
+	margin-top: 20px;
+}
+.jwchaxun   p {
+	width: 30%;
+	color: #000000;
+}
+/*分页*/
+.pagination .page-link{
+	color: black;
+	
+}
+.page_pagination{
+	width: 40%;
+	margin: auto;
+}
+.page_pagination .jump{
+	width: 55px;
+	height: 32px;
+}
+.page_pagination .btn_jump{
+	width: 50px;
+	height: 32px;
+	
+}
+
+
+
+/*
+    By default the layout is not fixed but if you add the class .fixed to the body element
+    the sidebar and the navbar will automatically become poisitioned fixed
+*/
+body.fixed > .header,
+body.fixed .left-side,
+body.fixed .navbar {
+  position: fixed;
+}
+body.fixed > .header {
+  top: 0;
+  right: 0;
+  left: 0;
+}
+body.fixed .navbar {
+  left: 0;
+  right: 0;
+}
+body.fixed .wrapper {
+  margin-top: 50px;
+}
+li{
+	
+	list-style: none;
+}
+
+/*index showtest*/
+.showtest li {
+	margin: 10px 10px;
+	float: left;
+}
+.showtest ul {
+	margin: 20px 20px 0px 0px;
+	float: left;
+}
+/*autocompose*/
+.autocompose {
+	width: auto;
+	
+}
+.autocompose .mytable {
+    margin: 10px 0px;	
+    background-color: white !important;
+}
+.mytable thead {
+	line-height: 25px;
+	text-align: center;
+	margin: 1px  10px;
+}
+.mytable input {
+	width: 80px;
+}
+.mytable th {
+	text-align: center;
+}
+.differtype {
+	margin: 0px;
+	padding: 0px;
+}
+#qtype, #leamount1, #leamount2, #leamount3, #leamount4, #leamount5, #qmount, #leamark, #trash ,#eachq {
+	vertical-align: middle;
+}
+.mytable td {
+	width: 10%;
+	overflow: hidden;
+	border: none;
+	text-align: center;
+	margin: 10px 10px;
+	line-height: 8px;
+	border: none;
+}
+.mytable .nandu {
+	width: 150px;
+}
+.mytable tbody span {
+	display: block;
+	margin: 15px 0px;
+	line-height: 20px;
+}
+.mytable tbody tr {
+	line-height: 100px;
+}
+.mytable td input {
+	width: 50px;
+}
+
+.mymenu {
+	width: 50px;
+}
+/* Content */
+.content {
+	width: 100%;
+	margin: 10px 30px;
+    background: #f0f3f4;
+}
+/*handzujuan*/
+.content .testpanel {
+	width: 85%;
+	margin: 1px 1px;
+	float: left;
+}
+.content .testpanel textarea {
+	width: 700px;
+	min-height: 30px;
+}
+
+.cant .basket {
+	position: fixed;
+	padding-left: 40px;
+	right: 1px;
+	top: 55%;
+	margin-top: -150px;
+	background: #fff;
+	border-radius: 5px 0 0 5px;
+	z-index: 999;
+	transition: all .2s linear;
+	main-width: 50px;
+	height: 180px;
+}
+
+.basket .active {
+	right: 0;
+}
+
+.basket-tit {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 40px;
+	height: 100%;
+	background: #4498ee;
+	cursor: pointer;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.basket-tit p {
+	margin-top: 40px;
+}
+
+.basket-kit p i {}
+
+.basket p i {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.basket-tit span i {
+	margin: 8px 0 0 12px;
+}
+
+.icona-gouwulan {
+	background-position: -259px -130px;
+	width: 22px;
+	height: 22px;
+}
+
+.basket-tit p {
+	display: block;
+	width: 1em;
+	margin-left: 13px;
+	margin-bottom: 20px;
+	line-height: 18px;
+	font-weight: 400;
+}
+
+.basket-num {
+	background-color: #ff9a18;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 10px;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	right: 1px;
+	text-align: center;
+	top: 32px;
+	width: 20px;
+	z-index: 3;
+}
+
+b {
+	font-weight: bold;
+}
+
+.basket-tit span {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	border-top: 1px solid #FFBE8F;
+	display: block;
+}
+
+.basket-con {
+	float: left;
+	width: 110px;
+	border: 1px solid #DAD4CE;
+	border-left: 0;
+	min-height: 180px;
+}
+
+.basket-head {
+	background: #d5eaff;
+	height: 35px;
+	line-height: 35px;
+	font-size: 12px;
+	color: #333;
+	text-align: center;
+}
+
+.basket-con span {
+	color: #fe8a00;
+}
+
+.baskrt-list {
+	min-height: 80px;
+}
+
+.basket-foot {
+	text-align: center;
+}
+
+.basket-foot a:hover,
+a:focus {
+	text-decoration: none!important;
+}
+
+.basket-btn {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	margin: 8px 1px;
+	font-size: 12px;
+	color: #fff;
+	background: #4498ee;
+	border-radius: 5px;
+}
+.content .table-foot {
+	margin: 10px 300px;
+	float: right;
+}
+/*.content .handjuajuanpaging {
+	margin: 10px 30px!important;
+}*/
+/* Page Header */
+.page-header {
+  margin: 10px 0 20px 0;
+  font-size: 22px;
+}
+.page-header > small {
+  color: #666;
+  display: block;
+  margin-top: 5px;
+}
+
+/* jsshowpaper*/
+.showpaper {
+	width: 100%;
+	font-size: 14px;
+	margin: 10px 10px;
+	float: left;
+}
+.showpaper .qtype {
+	height: 30px;
+	background-color: #bac4f8;
+}
+
+.qtype .information span {
+	margin-left: 40px;
+	float: left;
+	margin-top: 5px;
+}
+.qtype .operation {
+	float: right;
+}
+.operation li {
+	margin-right: 20px;
+	float: left;
+}
+.showpaperpanel {
+	width: 100%;
+}
+.showpaperpanel .panelbod {
+	padding: 0px;
+}
+.searchlist .exam-head {
+	background-color: #bac4f8;
+}
+.exam-head-left span {
+	margin-left: 40px;
+}
+
+.showpaper .paperpanel {
+	margin: 10px 30px;
+}
+
+/*jsentryquestions*/
+.cant .entryquestions {
+	width: 90%;
+	background-color: #FFFFFF;
+	margin: 100px 40px;
+}
+.entryquestions .shaixuan {
+	width: 100%;
+	height: 150px;
+	padding: 10px;
+	background-color: #e3dded;
+}
+.shaixuan select {
+	width: 150px;
+	height: 40px;
+	margin: 20px 50px;
+}
+.shaixuan input {
+	width: 20px;
+	height: 20px;
+	margin: 20px 5px;
+	vertical-align: middle;
+}
+.shaixuan .newq {
+	margin: 20px 50px;
+	float: right;
+}
+.entryquestions .entry {
+	width: 100%;
+	min-height: 800px;
+	padding: 10px;
+	background-color: gainsboro;
+}
+.entry .choices {
+	/*display: none;*/
+}
+.entry .fill-and-judgement {
+	display: none;
+}
+.entry .answer-question {
+	display: none;
+}
+.entry ul {
+	margin: 50px 20px;
+}
+.entry li {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+.entry input {
+	width: 70%;
+    display: inline-block;
+	
+}
+.entry textarea {
+	width: 80%;
+	max-width: 80%;
+	min-height: 100px;
+}
+.entry .clearall {
+	margin-left: 250px;
+}
+.entry .submitbtn {
+	margin-left: 200px;
+}
+
+
+/*apaper*/
+
+.exam-qlist .exam-question,
+.search-exam>.exam-content>.exam-question {
+	padding-bottom: 20px;
+	margin: 15px 15px;
+}
+
+.exam-question {
+	font-size: 15px!important;
+	color: #333;
+	line-height: 24px;
+}
+.exam-question .tk-que {
+	border : 0;
+	border-bottom : 1px solid #000000; 
+}
+.exam-question .xz-que {
+	border : 0;
+}
+.exam-content .exam-selection {
+	margin-bottom: 20px;
+}
+
+.exam-selection .op-item {
+	width: 40%;
+	margin: 0px 40px 0px 50px;
+}
+/*prepaper*/
+.yj-opration li {
+	margin: 5px 10px;
+	float: right;
+}
+#mse,#msf {
+	display: none;
+}
+
+/*searchpaper*/
+
+.exam-head-left i {
+	margin: 0 25px;
+	width: 1px;
+	height: 20px;
+	line-height: 40px;
+}
+
+.exam-qlist .exam-q,
+.search-exam>.exam-con>.exam-q {
+	padding-bottom: 20px;
+}
+
+.exam-q {
+	font-size: 14px!important;
+	color: #333;
+	line-height: 24px;
+}
+.exam-s {
+	margin: 0px;
+}
+.exam-s .op-item {
+	width: 40%;
+	margin: 0px 40px 0px 10px;
+}
+
+.exam-qlist .exam-foot {
+	height: 50px;
+	padding: 0 18px;
+	margin: 40px 0px;
+	background-color: #fcfafa;
+	border-top: 1px dashed #dcdcdc;
+}
+
+.exam-foot .exam-foot-left {
+	margin-left: 20px;
+	margin-top: 20px;
+	float: left;
+}
+
+.exam-foot .exam-foot-right {
+	margin-right: 70px;
+	margin-top: 5px;
+	float: right;
+}
+
+.exam-foot-left a {
+	font-size: 14px;
+	text-decoration: none;
+}
+
+/*解决弹出模态框页面抖动问题*/
+
+body {
+	overflow: auto !important;
+}
+
+.modal {
+	overflow: auto !important;
+}
+
+/*添加模态框*/
+.modal-header{
+	text-align: center;
+	color: #3c91c8;
+}
+.modal-body{
+	text-align: center;
+}
+
+.modal-body table{
+  width: 500px;
+  height: 200px;
+	margin: auto;  
+}
+.modal-body td{
+	text-align: center;
+	padding: 10px;
+}
+
+.modal-body  input{
+	width: 60%;
+	height: 30px;
+}
+.modal-body .option{
+	width: 30%;
+	height: 30px;
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body section{
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body .option:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.modal-footer{
+	width: 590px;
+	height: 80px;
+}
+
+.modal-footer .add{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 320px;
+	background-color:  #3c91c8;
+	color: white;
+}
+
+.modal-footer .back{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 20px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+
+.modal-body input{
+	border-radius:5px ;
+	border: 1px solid black;
+	margin: 10px 0px;
+}
+.modal-body .hover:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.modal-header .close1{
+	display: block;
+	position: absolute;
+	top:20px;
+	right:25px;
+}
+
+/*查看个人信息模态框*/
+.modal-body .tb_information{
+	width: 200px;
+	height: 45px;
+	margin-left:15px ;
+	display: inline;  /*让他具有行级元素的性质*/
+}
+.modal-footer .back_information{
+	width: 90px;
+	height: 40px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+/*邀请通知模态框*/
+.modal-body .email{
+	display: block;
+	width: 500px;
+	height: 60px;
+	padding: 20px;
+	font: 15px/20px ;
+	text-align: center;
+	margin: auto;
+	border-bottom:1px solid #bbb ;	
+}
+.modal-body .accept{
+	margin-right:20px ;
+	margin-left:20px ;	
+}
+.modal-body .refuse{
+	margin-right:20px ;
+	
+}
+.modal-footer .back-email{
+	width: 90px;
+	height: 40px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+/*阅卷通知*/
+.modal-footer .add_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 180px;
+	background-color:  #3c91c8;
+	color: white;
+}
+
+.modal-footer .back_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 120px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+/*查看权限模态框*/
+.see{
+	cursor: pointer;
+}
+.see:hover{
+	color: blue;
+}
+/*操作栏查看权限模态框*/
+.see_information{
+	cursor:pointer ;
+}
+.see_information:hover{
+	color: blue;
+}
+/*修改试卷信息模态框*/
+
+#modify-paper .modify-body li {
+    float: left;
+    border-bottom: 1px solid #ddd;
+}
+#modify-paper .modify-paper  input {
+	border: 0px;
+	width: 60%;
+}

@@ -102,7 +102,7 @@ public class ItemBankAction extends CommonAction{
 			,params={"contentType", "text/html"})
 	public String createItemBank(){
 		
-		question.setUserId(user.getUserId());     //老师的UserId
+		question.setUserId(getSessionUserId());     //老师的UserId
 		/*创建问题*/
 		question.setTime(Tool.time());
 		int sid=itemBankService.createQuestion(question);
@@ -141,7 +141,7 @@ public class ItemBankAction extends CommonAction{
 		 * 数据测试
 		 */
 		/*user.setUserId("admin123546");*/
-		if(user.getUserId().contains("admin")){      //教务查看所有题
+		if(getSessionUser().getType().contains("admin")){      //教务查看所有题
 			questionList=itemBankService.selectItemQuestionList(page);
 			
 			/*管理员题目列表总页数*/
@@ -150,10 +150,10 @@ public class ItemBankAction extends CommonAction{
 			System.out.println("Action question Number："+questionList.size());
 		}else{                                      //教师查看自己出的所有题
 			System.out.println("Action层教师查看");
-			questionList=itemBankService.selectItemQuestionListByUserId(user.getUserId(),page);
+			questionList=itemBankService.selectItemQuestionListByUserId(getSessionUserId(),page);
 			
 			/*教师题目列表总页数*/
-			totalPage=itemBankService.selectItemQuestionListToalPageByUserId(user.getUserId());
+			totalPage=itemBankService.selectItemQuestionListToalPageByUserId(getSessionUserId());
 			System.out.println("Action question Number："+questionList.size());
 		}
 		
@@ -178,7 +178,7 @@ public class ItemBankAction extends CommonAction{
 			,params={"contentType", "text/html"})
 	public String showItemBankListByType(){
 		
-		if(user.getUserId().contains("admin")) {              //管理员查看类型所有
+		if(getSessionUser().getType().contains("admin")) {              //管理员查看类型所有
 			System.out.println("Action按类型查看"+question.getType());
 			questionList=itemBankService.selectItemQuestionListByType(question.getType(),page);
 			/*题目类型列表总页数*/
@@ -187,10 +187,10 @@ public class ItemBankAction extends CommonAction{
 			
 		}else { 
 			System.out.println("Action层教师查看");           //教师查看自己的
-			questionList=itemBankService.selectTeacherItemQuestionListByType(question.getType(),user.getUserId(),page);
+			questionList=itemBankService.selectTeacherItemQuestionListByType(question.getType(),getSessionUserId(),page);
                                                                            		
 			/*教师题目列表总页数*/
-			totalPage=itemBankService.selectTeacherItemQuestionListToalPageByType(question.getType(),user.getUserId());
+			totalPage=itemBankService.selectTeacherItemQuestionListToalPageByType(question.getType(),getSessionUserId());
 			System.out.println("Action question Number"+questionList.size());
 		}
 		
@@ -215,8 +215,8 @@ public class ItemBankAction extends CommonAction{
 	/******************************显示一道题和相应选项*********************/
 	
 	@Action(value="/showItem"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
+			, results={@Result(type="json")}
+			, params={"contentType", "text/html"})
 	public String showItem(){
 		/*查看对应question*/
 		question=itemBankService.selectItemQuestion(question.getSid());
@@ -244,6 +244,7 @@ public class ItemBankAction extends CommonAction{
 	public String editItemBankByUser(){
 		
 		question.setTime(Tool.time());
+		question.setUserId(getSessionUserId());
 		boolean currentQuestion=itemBankService.editQuestion(question);
 		if(!currentQuestion){
 			System.out.println("Action题库的选项更新失败！");

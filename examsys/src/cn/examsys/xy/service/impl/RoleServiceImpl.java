@@ -1,5 +1,6 @@
 package cn.examsys.xy.service.impl;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -50,6 +51,28 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public boolean editRole(Role role) {
 		// TODO Auto-generated method stub
+		try {
+			Role currentRole=roleDao.findOneRole(role.getSid());
+			Field[] field = currentRole.getClass().getDeclaredFields();  
+			Field[] f = role.getClass().getDeclaredFields();  
+			System.out.println("before:"+role.toString());
+			for(int i=0;i<field.length;i++) {
+				field[i].setAccessible(true);
+				f[i].setAccessible(true);
+				Object vals = f[i].get(role);
+				Object val = field[i].get(currentRole);
+				if(vals==null) {
+					vals=val;
+					f[i].set(role, vals);
+				}
+			}
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		roleDao.editRole(role);
 		return true;
 	}

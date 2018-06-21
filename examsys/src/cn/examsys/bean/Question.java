@@ -1,8 +1,6 @@
 package cn.examsys.bean;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,9 +14,7 @@ import javax.persistence.Transient;
 public class Question {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int sid;
-	
-	int paperRef;//指向试卷
+	int sid; 
 	
 	String type;//题目类型
 	
@@ -44,14 +40,6 @@ public class Question {
 		this.sid = sid;
 	}
 
-	public int getPaperRef() {
-		return paperRef;
-	}
-
-	public void setPaperRef(int paperRef) {
-		this.paperRef = paperRef;
-	}
-	
 	public int getSubjectRef() {
 		return subjectRef;
 	}
@@ -124,11 +112,14 @@ public class Question {
 				+ subjectRef + "]";
 	}*/
 	
+
 	@Transient
 	List<Option> options;
+	@Transient
 	public List<Option> getOptions() {
 		return options;
 	}
+	@Transient
 	public void setOptions(List<Option> options) {
 		this.options = options;
 	}

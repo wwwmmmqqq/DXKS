@@ -11,6 +11,10 @@ public class Tool {
 		return df.format(new Date());
 	}
 	
+	public static int getIntRnd(int n) {
+		return (int) (Math.random() * n);
+	}
+	
 	/**
 	 * 计算两个时间相隔秒数 
 	 * 参数格式"2018-06-10 16:54:24";
@@ -42,8 +46,8 @@ public class Tool {
                 tmp.append(j);  
             else if (j < 256) {  
                 tmp.append("%");  
-                if (j < 16)  
-                    tmp.append("0");  
+                if (j < 16)
+                    tmp.append("0");
                 tmp.append(Integer.toString(j, 16));  
             } else {  
                 tmp.append("%u");  

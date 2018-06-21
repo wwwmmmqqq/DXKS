@@ -18,4 +18,6 @@ public interface UserDao {
 	List<User> selectUserList(String type,int page);
 	/*编辑用户信息*/
 	void editUser(User user);
+	/*找回密码*/
+	int findUser(String userId, String psw);
 }

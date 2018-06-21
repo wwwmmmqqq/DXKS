@@ -11,14 +11,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 	  
 	  <script type="text/javascript">
+	  //获取URL中的参数
+	  function getParam(name) {
+		  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");//匹配目标参数
+		  var result = window.location.search.substr(1).match(reg);//匹配目标参数
+		  if (result != null)
+		  	return decodeURIComponent(result[2]);
+		  return null;
+	  }
+	  alert(getParam("12"));
+	  </script>
 	  
-	  /*加载考试列表*/
+	  <script type="text/javascript">
+	  
+	  /*加载考次列表*/
 	  function loadMyExamList(page) {
 		  $.post("loadMyExamList", {"page":page}, function(data) {
 			  var examList = data.list;
 			  var htm = "";
 			  for(var i=0;i<examList.length;i++) {
-				  htm += "试卷ID = <a href='javascript:loadPapersByExam("+examList[i].sid+", 1)'>" + examList[i].sid + "</a>";//考试标题
+				  htm += "试卷ID = <a href='javascript:loadPapersByExam("+examList[i].sid+")'>" + examList[i].sid + "</a>";//考试标题
 				  htm += "考试标题 = " + examList[i].title;//考试标题
 				  //其他信息详见cn.examsys.bean.Exam.java文件
 				  htm += "<br>";
@@ -27,11 +39,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  });
 	  }
 	  
+	  var currentPage = 1;
 	  /*加载考试试卷列表*/
-	  function loadPapersByExam(examSid, page) {
+	  function loadPapersByExam(examSid) {
 		  $.post("loadMyExamList", {
 			  "exam.sid":examSid
-			  ,"page":page
+			  ,"page":currentPage
 		  }, function(data) {
 			  var paperList = data.list;
 			  var htm = "";
@@ -78,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  }
 		  });
 	  }
-	  
+	     
 	  function submitPaper(paperSid) {
 		  $(submitPaperBtn).text("交卷中...");
 		  $.post("todo", {
@@ -92,10 +105,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  });
 	  }
 	  
+	  
+	  function constituteByHand(qids, examStart, examEnd, examName) {
+		  //手动组卷接口
+		  $.post("createPaperHand", {
+			  "examStart":examStart //考试开始
+			  ,"examEnd":examEnd //考试结束
+			  ,"examName":examStart //考试名字
+			  ,"qids[0]":qids[0]//第一题ID
+			  ,"qids[1]":qids[1]//第二题ID
+			  ,"qids[2]":qids[2]//第三题ID
+			  ,"qids[3]":qids[3]//到总题目数量 的ID 
+		  }, function(data) {
+			  if("fail" == data.result) {
+				  alert("失败");
+			  } else {
+				  var paperSid = data.result;//返回试卷的ID
+				  
+			  }
+		  });
+	  }
+	  
+	  
+	  
+	  function createPaperAuto(examRef, subjectRef, name, examStart, examEnd) {
+		  $.post("createPaperAuto", {
+			  "paper.examRef":examRef //考试ID
+				, "paper.name":name //试卷标题名
+				, "paper.examStart":examStart //考试开始时间
+				, "paper.examEnd":examEnd //考试结束时间
+				//单选题的参数
+				, "single.count": //题目数量
+				, "single.diff1Percent": //难度为1的百分百
+				, "single.diff2Percent": //难度为2的百分百
+				, "single.diff3Percent": //难度为3的百分百
+				, "single.diff4Percent": //难度为4的百分百
+				, "single.diff1Point": //难度为1的分数
+				, "single.diff2Point": //难度为2的分数
+				, "single.diff3Point": //难度为3的分数
+				, "single.diff4Point": //难度为4的分数
+					//判断题的参数
+				, "trueOrFalse":
+					//判断题的参数
+				, "multiple":
+					//判断题的参数
+				, "fills":
+					//判断题的参数
+				, "subjective":
+				  
+		  }, function(data) {
+			  if(data.result == 'fail') {
+				  alert("组卷失败");
+			  }
+		  });
+	  }
 	  </script>
 	  
 	  <script type="text/javascript">
-	  loadMyExamList(1);
+	  //传入题目的ID数组
 	  </script>
 	  
   </head>

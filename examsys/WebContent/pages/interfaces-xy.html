@@ -3,39 +3,63 @@
   <head>
 	  <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
 	  <script type="text/javascript">
+
 /**********************************User用户接口*******************************/
+	  /**
+	  	登录接口
+	  	参数：user.userId,user.psw
+	  	返回值：session
+	  */
+	  $.post("showUser",{"user.userId":"userId_102"},function(data) {
+		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
+			alert(data.result);
+	  })
+	/**
+		修改密码接口
+		参数：session.userId,user.psw,rePsw(旧密码不能与新密码一致)
+		返回值：result
+	*/
+	$.post("changePsw",{"user.userId":"21188999","user.psw":"123456","rePsw":"123"},function(data) {
+		alert(data.result);
+  })
+	  
+	  
 	  
 	  /*
 		创建用户接口
 		参数：User的所有属性，对应数据库字段
+		返回值：result，user
 	*/
 	  $.post("createUser",
 			 {	"user.userId":Math.random()*9999+"",   //用户名
 		 		"user.type":"学生",					//用户类型
 		 		"user.sex":"女",						//用户性别
 		 		"user.phone":"15078843569",
-		 		"user.psw":"000000"
+		 		"user.psw`":"000000"
 		 	},function(data){
+		 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 		 		alert(data.result);    //message为user返回信息
 			 }
-		) 
+		)
 			
 	/**
 		显示一位用户信息接口
 		参数：userId,提交参数为user.属性
+		返回值：user
 	*/
 	   $.post("showUser",{"user.userId":"userId_102"},function(data) {
 		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 			alert(data.result);
-	  })  
+	  })
 	  
 	   /**
 	  	修改用户信息接口----先showUser显示，再修改
 	  	参数：修改后的user的信息
+	  	返回：result，user
 	  */
 	   $.post("editUser",{"user.userId":"0088999","user.name":"mingzi"},function(data) {
-		 	alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
-			alert(data.result);
+		   alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
+		   alert(data.result);
 	  })  
 	  
 	   /**
@@ -84,7 +108,7 @@
 	  })  
 	  /**
 	  	编辑角色信息接口-----先显示再修改
-	  	参数：role的所有参数
+	  	参数：role的属性
 	  */
 	   $.post("editRole",{"role.sid":34,"role.type":"学生"},function(data) {
 		   alert(data.result);
@@ -105,7 +129,11 @@
 	  
 /**********************************ItemBank题库接口*************************************/		
 	   /**
-	  	获取角色列表接口
+<<<<<<< HEAD
+	  	录入题库接口
+=======
+	  	创建题库接口
+>>>>>>> XY
 	  	参数：question对象的所有属性，option对象的所有属性，user.usetId
 	  	返回值：result
 	  */
@@ -130,10 +158,10 @@
 		  		"option[3].content":"我猜想着大约永远不会到来",
 		  		"option[3].isAnswer":1,
 		  		"option[3].type":"Multiple",
-		 	},
-			 function(data){
+		 	}, function(data){
 		 		
 				alert(data.result);
+		 	
 		})   
 	  
 		 /**
@@ -188,7 +216,7 @@
 		/**
 	  	显示题库列表by questiontype 接口,教务老师统一用此接口
 	  	参数：page---当前页,quesion.type,user.userId
-	  	返回值：题目列表，选项列表，总页数
+	  	返回值：题目列表，选项列表，总页数-questionList,map,totalPage
 	  */
 	  $.post("showItemBankListByType",
 				{
@@ -332,6 +360,77 @@
 				 function(data){
 					alert(data.result);
 			})   
+
+	  	/**
+	  		创建用户接口
+	  		参数：User信息
+	  	*/
+	  	/*  $.post("createUser", null, function(data) {
+			  var list = data.list;//拿到学生列表
+			  
+			  //遍历
+			  for(var i=0;i<list.length;i++) {
+				  var stu = list[i];//第i个学生
+				  //alert(stu.name);//第i个学生的名字 ， 与cn.examsys.bean.Student类里面的字段是一致的
+			  }
+		  }); */
+		  $.post("createUserssss",{"user.type":"学生","user.sex":"女","user.phone":"15078843569","user.psw":"000000"},function(data){
+	  		var boo=data.result;
+	  		alert(boo);
+	  	})
+	  	
+ /**********************************试卷基本信息接口*************************************/			  	
+	/**
+		删除试卷接口
+		参数：paper.sid
+		返回值：result
+	*/
+  		$.post("deletePaper",{"paper.sid":50},function(data) {
+		 	alert(data.result);
+	 	})
+ 	/**
+		显示试卷列表接口
+		参数：page
+		返回值：paperList,totalPage
+	*/
+  		$.post("showPaperList",{"page":1},function(data) {
+			var paperList = data.paperList;
+	 		/* for(var i in paperList) {
+	 			paperList[i].name;
+	 		} */
+			alert(paperList[1].name);
+	 		alert(data.totalPage);
+		})
+	/**
+		修改试卷接口---先查看再修改
+		参数：paper.sid
+		返回值：paper
+	*/
+  		$.post("ShowOnePaper",{"paper.sid":1},function(data) {
+			var paper = data.paper;
+  			alert(paper.name);
+		})
+	/**
+		修改试卷接口---先查看再修改
+		参数：paper所有属性
+		返回值：paperList
+	*/
+  		$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
+			alert(data.result);
+		})
+		
+/***********************************考试计划****************************************/
+/**
+		修改试卷接口---先查看再修改
+		参数：paper.sid
+		返回值：paper
+	*/
+	$.post("createExamPlan",
+			 {	"exam.title":"1",   //用户名
+			"user.userId":"34"				//用户类型
+		},function(data){
+			alert(data.result);    //message为user返回信息
+		 })
 	  </script>
   </head>
   

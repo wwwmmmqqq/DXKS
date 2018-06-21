@@ -74,8 +74,8 @@ public class NoticeAction extends CommonAction {
 	 * 推送列表
 	 */
 	@Action(value="/loadNoticeList"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
+			, results={@Result(type="json")}
+			, params={"contentType", "text/html"})
 	public String loadNoticeList() {
 		System.out.println(page);
 		if (page == 1) {
@@ -92,8 +92,6 @@ public class NoticeAction extends CommonAction {
 			list = service.loadNoticeList(getSessionUserId(), true, page);
 			System.out.println(list==null?"no":list.size());
 		}
-		
-		
 		
 		return aa;
 	}

@@ -10,7 +10,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
   <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
-	 
+	/**
+		修改试卷接口---先查看再修改
+		参数：paper.sid
+		返回值：paper
+	*/
+	$.post("createExamPlan",
+			 {	"exam.title":"1",   //用户名
+		 		"user.userId":"34"				//用户类型
+		 	},function(data){
+		 		alert(data.result);    //message为user返回信息
+			 }
+		)
   </script>
   
   </head>

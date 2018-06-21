@@ -1,6 +1,7 @@
 package cn.examsys.xy.service.impl;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.bean.Option;
+import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.xy.dao.ItemBankDao;
 import cn.examsys.xy.service.ItemBankService;
@@ -91,12 +93,70 @@ public class ItemBankServiceImpl implements ItemBankService {
 	@Override
 	public boolean editQuestion(Question question) {
 		// TODO Auto-generated method stub
+		try {
+			Question currentQuestion=itemBankDao.selectOneQuestionBySid(question.getSid());   
+			Field[] field = currentQuestion.getClass().getDeclaredFields(); 
+			Field[] f = question.getClass().getDeclaredFields();  
+			for(int i=0;i<field.length;i++) {
+				field[i].setAccessible(true);     
+				f[i].setAccessible(true);		
+				Object vals = f[i].get(question);
+				Object val = field[i].get(currentQuestion);
+				String type = f[i].getType().toString();
+				if(vals==null) {
+					vals=val;
+					f[i].set(question, vals);
+				}if(type.endsWith("int")) {
+					int va = f[i].getInt(question);
+					int v = f[i].getInt(currentQuestion);
+					if(va==0) {
+						f[i].set(question, v);
+					}
+				}
+			}
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		itemBankDao.editQuestion(question);
 		return true;
 	}
+	/*修改选项*/
 	@Override
 	public boolean editOption(Option option) {
 		// TODO Auto-generated method stub
+		
+		try {
+			Option currentOption=itemBankDao.selectOneOptionBySid(option.getSid());   
+			Field[] field = currentOption.getClass().getDeclaredFields(); 
+			Field[] f = option.getClass().getDeclaredFields();  
+			for(int i=0;i<field.length;i++) {
+				field[i].setAccessible(true);     
+				f[i].setAccessible(true);		
+				Object vals = f[i].get(option);
+				Object val = field[i].get(currentOption);
+				String type = f[i].getType().toString();
+				if(vals==null) {
+					vals=val;
+					f[i].set(option, vals);
+				}if(type.endsWith("int")) {
+					int va = f[i].getInt(option);
+					int v = f[i].getInt(currentOption);
+					if(va==0) {
+						f[i].set(option, v);
+					}
+				}
+			}
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		itemBankDao.editOption(option);
 		return true;
 	}

@@ -18,7 +18,7 @@ public class Answersheet {
 	
 	String userId;
 	
-	//int paperRef;//指向的试卷
+	int paperRef;//指向的试卷
 	
 	String type;//题目类型
 	
@@ -31,6 +31,10 @@ public class Answersheet {
 	String fillsAnswer;//填空题答案
 	
 	String subjectiveAnswer;//填空题答案
+	
+	int trueOrFalse;//判断题档案 1 true 0 false
+	
+	float scoring;//得分 浮点型
 
 	public String getUserId() {
 		return userId;
@@ -80,6 +84,14 @@ public class Answersheet {
 		this.fillsAnswer = fillsAnswer;
 	}
 
+	public int getPaperRef() {
+		return paperRef;
+	}
+	
+	public void setPaperRef(int paperRef) {
+		this.paperRef = paperRef;
+	}
+	
 	public String getSubjectiveAnswer() {
 		return subjectiveAnswer;
 	}
@@ -87,13 +99,29 @@ public class Answersheet {
 	public void setSubjectiveAnswer(String subjectiveAnswer) {
 		this.subjectiveAnswer = subjectiveAnswer;
 	}
+	
+	public float getScoring() {
+		return scoring;
+	}
+	
+	public void setScoring(float scoring) {
+		this.scoring = scoring;
+	}
+	public int getTrueOrFalse() {
+		return trueOrFalse;
+	}
+	
+	public void setTrueOrFalse(int trueOrFalse) {
+		this.trueOrFalse = trueOrFalse;
+	}
 
 	@Override
 	public String toString() {
 		return "Answersheet [sid=" + sid + ", userId=" + userId + ", type="
 				+ type + ", questionRef=" + questionRef + ", optionRef="
 				+ optionRef + ", fillsAnswer=" + fillsAnswer
-				+ ", subjectiveAnswer=" + subjectiveAnswer + "]";
+				+ ", subjectiveAnswer=" + subjectiveAnswer + ", trueOrFalse="
+				+ trueOrFalse + ", scoring=" + scoring + "]";
 	}
 	
 }
