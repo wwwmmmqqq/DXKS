@@ -131,11 +131,11 @@
 						</thead>
 						<tbody id="data-box">
 						
-							<s:iterator id="item" value="#request.list">
+							<%-- <s:iterator id="item" value="#request.list">
 							<tr>
 							分数	${item.point}
 							</tr>
-							</s:iterator>
+							</s:iterator> --%>
 							
 								<!-- <td>1</td>
 								<td>数据库概论</td>
@@ -273,7 +273,7 @@
 								<th>本校排名</th>
 							</tr>
 							</thead>
-							<tbody>
+							<tbody  id="studentScore">
 								<tr>
 									<td>15478015</td>
 									<td>慕雪</td>
@@ -351,7 +351,8 @@
 
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary " data-dismiss="modal">导出</button>
+					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
 			</div>
