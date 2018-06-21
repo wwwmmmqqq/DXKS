@@ -27,7 +27,7 @@ body{
 	height: 50px;
 	background-color: white;
 	z-index: 1;
-	
+    position: fixed;
 }
 
 
@@ -139,11 +139,13 @@ body{
 
 /*侧面导航栏*/
 .navbar.bg-light{
-	width: 16.3%;
-	height: 588px;
-  background-color: #454545;
-  float: left;
-  border-radius:0px ;
+	 width: 16.3%;
+    height: 582px;
+    background-color: #454545;
+    float: left;
+    border-radius: 0px;
+    position: fixed;
+    top:50px;
 }
 .side_nav1.now{
 	background-color: #425164;
@@ -206,6 +208,7 @@ p{
 	/*position:relative; 
 	top:50px;*/
 	width: 83.6%;
+	margin: 50px 0%;
 }
 .main1{
 	width: 90%;
