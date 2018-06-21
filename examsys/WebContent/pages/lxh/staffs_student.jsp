@@ -31,7 +31,7 @@
 							</a>
 						</button>
 						<div class="dropdown-content">
-							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
+							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
 							<a href="#">退出系统</a>
 						</div>
 					</div>
@@ -99,7 +99,7 @@
 		    	</div>
 				<div class="top_main">
 					<div class="top_button">
-						<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal-addstudent">
+						<button class="btn btn1" type="button" data-toggle="modal" data-target="#">
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 						</button>
@@ -169,7 +169,7 @@
 		</div>	
 			
 		<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal-information">
+		<div class="modal fade" id="myModal_information">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
@@ -245,7 +245,7 @@
 		</div>
 		
 		<!-- 模态框添加学生信息 -->
-		<div class="modal fade" id="myModal-addstudent">
+		<div class="modal fade" id="myModal_addstudent">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
@@ -721,13 +721,8 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-<<<<<<< HEAD
-			/* +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>" */
+			/* +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_teacher' onclick='teacherInfo(this)'></i>" */
 			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
-=======
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
->>>>>>> XY
 			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
 			+"</td>"
 			+"</tr>";
@@ -749,14 +744,14 @@
 		}
 		return ht;    
 	}
-	function studentInfo(id) {
-		var td = node.childNodes;
-		var userId = td[0].id;
+	function studentInfo(node) {
+		var td =node.node.parentNode.parentNode.childNodes;
+		var userId = td[2].innerHTML;
+		alert("jjj"+userId);
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
-			$('#student-info-box').html(info);
-			
+			$('#student-info-box').html(info);		
 			$('#stu_name').val(user.name);
 			$('#stu_sex').val(user.sex);
 			$('#stu_userId').val(user.userId);
@@ -843,11 +838,8 @@
 	} */
 	
 	function editStudent() {
-<<<<<<< HEAD
 		if(checkInput()){alert("未做任何修改"); return false;} 
 		else{
-=======
->>>>>>> XY
 		$.post("editUser",
 					{	
 						"user.name":$('#stu_name').val(),
@@ -861,11 +853,8 @@
 						"user.phone":$('#stu_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-<<<<<<< HEAD
 							alert("修改成功!");
-=======
 							alert(data.result);
->>>>>>> XY
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
