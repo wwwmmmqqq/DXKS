@@ -6,9 +6,7 @@
 			+ path + "/";
 %>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd 
-
-">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -72,42 +70,36 @@
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
-	<script type="text/javascript">
-	function login() {
-		setTimeout(function(){window.location.href = "../student/student-main.jsp";}, 300);
-	}
-		
-		/* var Id = $('#userId').val();
-		var password = $('#password').val();
-		var studentType = $('#student').val();
-		var teacherType = $('#teacher').val();
-		var administrationType = $('#administration').val();
-		var adminType = $('#admin').val();
-		if (Id=="" || password=="") {
-			alert("请输入信息");
-			return false;
-		}
-		else {
-			
-			 $.post("login",{"user.userId":Id,"user.psw":password},function(data) {
-				 
+		<script type="text/javascript">
+		function login() {
+			var Id = $('#userId').val();
+			var password = $('#password').val();
+			//var studentType = $('#student').val();
+			//var teacherType = $('#teacher').val();
+			//var administrationType = $('#administration').val();
+			//var adminType = $('#admin').val();
+			if (Id=="" || password=="") {
+				alert("请输入信息");
+				return false;
+			} else { 
+				$.post("login",{"user.userId":Id,"user.psw":password},function(data) {
 					var user = data.user;
 				 	if(user.type=="学生") {
 						window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
-					 }
+					} else 
 					if(user.type=="教师") {
 						window.location.href = "../gy/jsshowpaper.jsp?user.userId="+user.userId;
-					 }
+					} else 
 					if(user.type=="教务") {
 						window.location.href = "../lxh/jwindex.jsp?user="+user;
-					 }
+					} else 
 					if(user.type=="管理员") {
 						window.location.href = "../gy/admin.jsp?user.userId="+user.userId;
 				 	}
-					
-				
-			  }) */
-</script>
+				});
+			}
+		}
+	</script>
 	</body>
 
 </html>
