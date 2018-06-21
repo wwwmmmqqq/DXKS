@@ -192,10 +192,9 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/student-exam.js"></script>
-
-
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
+
 
 <script type="text/javascript">
 var paperSid=${request.paper.sid};
@@ -203,7 +202,7 @@ window.onload = function() {
 	var now = "${session.Time}";//服务器当前时间
 	var examEnd = "2018-06-21 10:00:00";//这趟考试结束时间
 	//开始倒计时
-	startTimeCounting(now, examEnd);
+	/* startTimeCounting(now, examEnd); */
 };
 //获取url中的参数
 //去掉了！
@@ -270,7 +269,7 @@ $(document).ready(function(){
 });
 </script>
 <!-- 可以去掉了 -->
-<script type="text/javascript">
+<%-- <script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
 /* oneChoice();  */
 function loadQuestionListByPaper(paperSid){
@@ -364,6 +363,6 @@ function getQueItem(n, obj) {
 	return htm;
 }
 
-</script>
+</script> --%>
 </body>
 </html>

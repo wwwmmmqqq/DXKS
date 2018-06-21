@@ -87,6 +87,14 @@ public class ConstituteAction extends CommonAction {
 			,params={"contentType", "text/html"})
 	public String createPaperAuto() {
 		
+		System.out.println(single);
+		System.out.println(trueOrFalse);
+		System.out.println(multiple);
+		System.out.println(fills);
+		System.out.println(subjective);
+		System.out.println(paper);
+		
+		
 		int sid = service.createPaperAuto(paper.getExamRef()
 				, paper.getSubjectRef()//科目id
 				, paper.getName()//试卷标题名
