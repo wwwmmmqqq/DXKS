@@ -215,7 +215,7 @@
 		    							    			<div class="exam-q">
 		    							    				${sta.index}.${que.title}(&nbsp;&nbsp;)
 		    							    			</div>
-		    							    		</s:iterator>	
+		    			     </s:iterator>	
 		    							    		    <div class="exam-s">
 		    							    		    <s:iterator id="opt" value="#request.optionList" status="st">
 		    							    			    <span class="op-item">
@@ -589,7 +589,13 @@
 	    </div>
 		
 	<script >
-
+	var questionList = [];
+	function addQuestion(sid) {
+		questionList.push(sid);
+	}
+	function remove() {
+		
+	}
 	/*搜索jquery隐藏显示面板*/
 	$(document).ready(function() {
 	    $("#flip").click(function() {

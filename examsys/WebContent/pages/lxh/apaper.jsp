@@ -142,6 +142,9 @@
 		    			<div class="panel-body ">
 		    				<div class="exam-list">
 		    				<%-- <s:if(){}></s:if> --%>
+		    				<s:if test="1=1 && 2=2">
+		    					
+		    				</s:if>
 		    					<s:iterator id="que" value="#request.questionList" status="sta"> 
 		    					<ul>
 		    						<li><p>一. ${que.type}</p></li>

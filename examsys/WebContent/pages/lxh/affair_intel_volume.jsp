@@ -154,9 +154,8 @@
 											<td>
 												<span>简单<input type="text" id="diffPercent${st.index}1" value="0" onchange="setTypeDiffPercent(${st.index}, 0, this.value)"/>%</span>
 												<span>一般<input type="text" id="diffPercent${st.index}2" value="0" onchange="setTypeDiffPercent(${st.index}, 1, this.value)"/>%</span>
-												<span>难题
-														 <input type="text" id="diffPercent${st.index}3" value="0" onchange="setTypeDiffPercent(${st.index}, 2, this.value)" />%</span>
-												<span>地狱<input type="text" id="diffPercent${st.index}4" value="0" onchange="setTypeDiffPercent(${st.index}, 3, this.value)"/>%</span>
+												<span>中等<input type="text" id="diffPercent${st.index}3" value="0" onchange="setTypeDiffPercent(${st.index}, 2, this.value)"/>%</span>
+												<span>难题<input type="text" id="diffPercent${st.index}4" value="0" onchange="setTypeDiffPercent(${st.index}, 3, this.value)"/>%</span>
 												<span id='diff_total_percent${st.index}'>还差100%</span>
 											</td>
 											<td>
