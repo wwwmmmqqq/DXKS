@@ -14,28 +14,26 @@
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
-<link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
 		<header>
-		<nav id="top-nav">
+			<nav id="top-nav">
 				<div id="main-nav-content">
 					<a href="student-index.html" clas="logo">
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
-						<div class="navbar-right">
+					<div class="navbar-right">
 						<ul class="user-info">
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>${session.user.name} </span>
+									<span>wmq</span>
 								</a>
 								
 							</li>
 							<div class="dropdown-content">
-		    			<a href="javascript:setPassword()">修改密码</a>
+		    			<a >修改密码</a>
 		    			<a >退出系统</a>
 		    		</div>
 						</ul>
@@ -161,10 +159,9 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				
-				<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
-				</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
@@ -227,12 +224,12 @@
 </footer>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery-confirm.js"></script>
-<script type="text/javascript" src="js/com.js"></script>
-
-
-
 <script type="text/javascript">
+$('.user-info').hover(function(){
+	$('.dropdown-content').css("display","block")
+},function(){
+	$('.dropdown-content').css("display","none")
+}) 
 loadMyExamList(0);
 /*加载考次列表*/
 function loadMyExamList(page) {
@@ -263,8 +260,6 @@ function getExam(obj){
 		+"		</li>";
 	return htm;
 }
-
-
 
 </script>
 </body>
