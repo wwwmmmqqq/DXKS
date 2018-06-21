@@ -147,11 +147,11 @@
 		    			<form class="choose" id="w-question">
 		    				<ul>
 		    				<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
-		    				    <li id="sa">A<input class="form-control " type="text" name="question.content"/></li>
-		    				    <li id="sb">B<input class="form-control " type="text" name="question.content"/></li>
-		    				    <li id="sc">C<input class="form-control " type="text" name="question.content" /></li>
-		    				    <li id="sd">D<input class="form-control " type="text" name="question.content" /></li>
-		    				    <li id="answer" class="answerw">答案&nbsp;
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content"/></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content"/></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
 		    							<span>A</span><input type="checkbox"  class="choose1" name="question.isAnswer"/>
 			    						<span>B</span><input type="checkbox"  class="choose1"  name="question.isAnswer"/>
 			    						<span>C</span><input type="checkbox"  class="choose1"  name="question.isAnswer"/>
@@ -184,7 +184,7 @@
 		    			
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
-		    			<form id="fj-question">
+		    			<form class="choose" id="fj-question">
 		    				<ul>
 		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>		    					
 		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="question.fillsText" /></li>
@@ -197,7 +197,7 @@
 		    			
 		    			<!--解答题录入 start-->
 		    			<div class="answer-question">
-		    			<form id="aquestion">
+		    			<form class="choose" id="aquestion">
 		    				<ul>
 		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>
 		    					<li id="answer">答案<br><textarea name="question.subjectiveText"></textarea></li>
