@@ -126,7 +126,7 @@
 								<th>参加学校</th>
 								<th>考试时间</th>
 								<th>操作</th>
-							</tr>
+							</tr>    
 						</thead>
 						<tbody id="data-box">
 							<tr >
