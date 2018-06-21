@@ -45,14 +45,14 @@
 							<input type="password"  id="password" class="form-control input_password" placeholder="请输入你密码" name="user.psw"/>
 						</div>
 						<div class="input_checkbox">
-							<input type="radio" name="1" id="admin" value="管理员"/>
+							<!-- <input type="radio" name="1" id="admin" value="管理员"/>
 							<span>管理员</span>
 							<input type="radio" name="1" id="administration" value="教务"/>
 							<span>教务</span>
 							<input type="radio" name="1" id="teacher" value="教师"/>
 							<span>教师</span>
 							<input type="radio" name="1" id="student" value="学生"/>
-							<span>学生</span>
+							<span>学生</span> -->
 						</div>
 						<div class="yzm">
 							<input name="XuasYzm" size="9" maxlength="5" class="form-control input_yzm">
@@ -62,7 +62,7 @@
 						</div>
 						
 						<div class="btn_bottom">
-							<button type="button" class="btn btn-primary btn_login" onclick="login()">登录</button>
+							<button type="button" class="btn btn-primary btn_login" onclick="login();">登录</button>
 						</div>
 					</div>
 				</div>
@@ -71,12 +71,13 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js 
-
-"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 	<script type="text/javascript">
 	function login() {
-		var Id = $('#userId').val();
+		setTimeout(function(){window.location.href = "../student/student-main.jsp";}, 300);
+	}
+		
+		/* var Id = $('#userId').val();
 		var password = $('#password').val();
 		var studentType = $('#student').val();
 		var teacherType = $('#teacher').val();
@@ -87,6 +88,7 @@
 			return false;
 		}
 		else {
+			
 			 $.post("login",{"user.userId":Id,"user.psw":password},function(data) {
 				 
 					var user = data.user;
@@ -103,18 +105,8 @@
 						window.location.href = "../gy/admin.jsp?user.userId="+user.userId;
 				 	}
 					
-					
-					
-				/* if(data.result=="未找到该账号！") {
-					alert(data.result);
-				}else if(data.result=="密码错误！") {
-					alert(data.result);
-				}else {
-				 
-				} */
-			  })
-	  	}
-	}
+				
+			  }) */
 </script>
 	</body>
 
