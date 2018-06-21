@@ -1,5 +1,6 @@
 package cn.examsys.lrx.action;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import cn.examsys.bean.Question;
 import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ExamService;
+import cn.examsys.lrx.vo.PaperWithExamVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
@@ -164,12 +166,31 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyHistoryPapers() {
-		//list = service.loadMyHistoryPapers(getSessionUser(), page);
-		try {
-			list = BeanAutoFit.fitBeanArray(Paper.class, Math.random());
-		} catch (Exception e) {
-			e.printStackTrace();
+		list = service.loadMyHistoryPapers(getSessionUser(), page);
+		return aa;
+	}
+	
+	/**
+	 * @return PaperWithExamVO 对象
+	 */
+	@Action(value="/loadInvitedExamPapers"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadInvitedExamPapers() {
+		//list = service.loadInvitedExamPapers(getSessionUser(), page);
+		List<PaperWithExamVO> li = new ArrayList<PaperWithExamVO>();
+		for (int i = 0; i < 20; i++) {
+			Paper a = new Paper();
+			Exam b = new Exam();
+			try {
+				BeanAutoFit.autoFit(a);
+				BeanAutoFit.autoFit(b);
+				li.add(new PaperWithExamVO(a, b));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		list = li;
 		return aa;
 	}
 	
