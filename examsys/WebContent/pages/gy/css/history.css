@@ -27,7 +27,7 @@ body{
 	height: 50px;
 	background-color: white;
 	z-index: 1;
-	
+    /* position: fixed; */
 }
 
 
@@ -70,7 +70,10 @@ body{
 	border: none;
 	cursor: pointer;
 }
-
+.dropbtn.envolope{
+	margin-left:4px;
+	margin-top:4px;
+}
 .dropdown {
 	z-index: 9999;
 	position: relative;
@@ -106,7 +109,6 @@ body{
 }
 .task .envelope{
 	color: black;
-	padding-top:4px;
 }
 
 .banner .notice .noticelabel {
@@ -141,10 +143,15 @@ body{
 /*侧面导航栏*/
 .navbar.bg-light{
 	width: 16.3%;
-	height: 588px;
-  background-color: #454545;
-  float: left;
-  border-radius:0px ;
+    height: 582px;
+    background-color: #454545;
+    float: left;
+    border-radius: 0px;
+    /* position: fixed;
+    top:50px; */
+}
+.side_nav1.now{
+	background-color: #425164;
 }
 .navbar .user-panel{
 	padding: 20px;
@@ -161,9 +168,6 @@ body{
 	height: 50px;
 	border-radius:50% ;
 	float: left;
-}
-.side_nav1.now{
-	background-color: #425164;
 }
 .navbar .info{
 	font-size: 14px;
@@ -200,82 +204,6 @@ p{
 	background: #425164;
 }
 
-/*添加模态框*/
-.modal-header{
-	text-align: center;
-	color: #3c91c8;
-}
-.modal-body{
-	text-align: center;
-}
-
-.modal-body table{
-  width: 500px;
-  height: 200px;
-	margin: auto;  
-}
-.modal-body td{
-	text-align: center;
-	padding: 10px;
-}
-
-.modal-body  input{
-	width: 60%;
-	height: 30px;
-}
-.modal-body .option{
-	width: 30%;
-	height: 30px;
-	border-radius:5px ;
-	border: 1px solid black;
-}
-.modal-body section{
-	border-radius:5px ;
-	border: 1px solid black;
-}
-.modal-body .option:hover{
-	border: 1px solid #0e92cf;
-	border-radius:5px ;
-}
-.modal-footer{
-	width: 590px;
-	height: 80px;
-}
-
-.modal-footer .add{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right: 320px;
-	background-color:  #3c91c8;
-	color: white;
-}
-
-.modal-footer .back{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right: 20px;
-	background-color:white ;
-	color: black;
-	border:1px solid #bbb;
-}
-
-.modal-body input{
-	border-radius:5px ;
-	border: 1px solid black;
-}
-.modal-body .hover:hover{
-	border: 1px solid #0e92cf;
-	border-radius:5px ;
-}
-.modal-header .close1{
-	display: block;
-	position: absolute;
-	top:20px;
-	right:25px;
-}
-
 
 /*中间部分*/
 .main{
@@ -283,6 +211,7 @@ p{
 	/*position:relative; 
 	top:50px;*/
 	width: 83.6%;
+	/* margin: 50px 0%; */
 }
 .main1{
 	width: 90%;
@@ -739,7 +668,10 @@ button{
 	color: black;
 	border:1px solid #bbb;
 }
-
+.modal-body .grade{
+	height:500px;
+	overflow:scroll;
+}
 /*导出历史成绩页码*/
 /*.page_pagination_export .page-link{
 	color: black;

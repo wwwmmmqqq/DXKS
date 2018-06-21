@@ -252,7 +252,7 @@
 					</div>
 
 					<!-- 模态框主体 -->
-					<div class="modal-body">
+					<div class="modal-body grade">
 						<table >
 							<thead >
 							<tr>
