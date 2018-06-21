@@ -11,22 +11,19 @@ var currentPage = 1;
 		}
 	}
 //	获取历史成绩
-/*	var papsersid=getParam("sid");
-	loadHistoryScore(papsersid);
-	function loadHistoryScore(paperSid){
-		 $.post("loadHistoryScore", {
+	var papsersid=getParam("sid");
+	function loadGradesByPaper(paperSid){
+		 $.post("loadGradesByPaper", {
 			  "paper.sid":paperSid
-			  ,"page":currentPage
 		  }, function(data) {
 			  var scoreList = data.list;
 			  var htm = "";
-			  for(var i=0;i<paperList.length;i++) {
-				  html += getScores(i+1, li[i].subjectName, li[i].collegeName, li[i].time);
+			  for(var i=0;i<scoreList.length;i++) {
+				  htm += getScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i);
 			  }
-			  $('#studentScore').html(htm);
+			  $('#studentScore tbody').html(htm);
 		  });
-	}*/
-	
+	}
 /*	获取教师所接受参加过得考试*/
 	var examSid = getParam("sid");
 	loadPapersByExam(examSid);
@@ -59,10 +56,34 @@ var currentPage = 1;
 		+"	<td>"+exam.invitee+"</td>"
 		+"	<td>"+exam.periodStart+"-"+exam.periodEnd+"</td>"
 		+"	<td>"
-		+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' ></i>"
+		+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' onclick='loadGradesByPaper("+paper.sid+")' ></i>"
 		+"	</td>"
 		+"</tr>";
 		return htm;
 	}
-
+	function getScore(paper,user,grade,i){
+		var htm=
+			"<tr>"
+		+"<td>1</td>"
+		+"<td>"+user.userId+"</td>"
+		+"<td>"+user.name+"</td>"
+		+"<td>软件学院</td>"
+		+"<td>"+user.profession+"</td>"
+		+"<td>一班</td>"
+		+"<td>"+paper.subjectName+"</td>"
+		+"<td>"+grade.point+"</td>"
+		+"<td>"+i+"</td>"
+		+"<td>"+(i+1)+"</td>"
+		+"</tr>"
+		return htm;
+	}
+/*成绩导出*/
+	function exportScore(){
+		var tr=$('#studentScore tbody tr');
+		tr.each(function(){
+			$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
+		})
+		$('.all-choose').show();
+		$(this).innerHTML("确认导出 ")
+	}
 	

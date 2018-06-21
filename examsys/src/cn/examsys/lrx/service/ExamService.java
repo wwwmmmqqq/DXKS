@@ -6,6 +6,7 @@ import cn.examsys.bean.Exam;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
+import cn.examsys.lrx.vo.GradeVO;
 import cn.examsys.lrx.vo.PaperWithExamVO;
 
 public interface ExamService {
@@ -38,5 +39,7 @@ public interface ExamService {
 
 
 	List<PaperWithExamVO> loadInvitedExamPapers(User sessionUser, int page);
+	
+	List<GradeVO> loadGradesByPaper(User sessionUser, int sid);
 	
 }

@@ -255,8 +255,13 @@
 					</div>
 
 					<!-- 模态框主体 -->
+<<<<<<< HEAD
 					<div class="modal-body grade">
 						<table >
+=======
+					<div class="modal-body">
+						<table id="studentScore">
+>>>>>>> wmq
 							<thead >
 							<tr>
 							   <th>序号</th>
@@ -271,9 +276,13 @@
 								<th>本校排名</th>
 							</tr>
 							</thead>
-							<tbody id="studentScore">
+							<tbody >
 								<tr>
+<<<<<<< HEAD
 									<td>x</td>
+=======
+								<td>1</td>
+>>>>>>> wmq
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -286,7 +295,11 @@
 									
 								</tr>
 								<tr>
+<<<<<<< HEAD
 									<td>x</td>
+=======
+								<td>1</td>
+>>>>>>> wmq
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -297,6 +310,39 @@
 									<td>xxx</td>
 									<td>xxx</td>
 								</tr>
+								<tr>
+<<<<<<< HEAD
+									<td>x</td>
+=======
+								<td>1</td>
+>>>>>>> wmq
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+								<tr>
+<<<<<<< HEAD
+									<td>x</td>
+=======
+								<td>1</td>
+>>>>>>> wmq
+									<td>15478015</td>
+									<td>慕雪</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+									<td>xxx</td>
+								</tr>
+<<<<<<< HEAD
 								<tr>
 									<td>x</td>
 									<td>15478015</td>
@@ -417,30 +463,10 @@
 									<td>xxx</td>
 									<td>xxx</td>
 								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
+=======
+								
+								
+>>>>>>> wmq
 								
 							</tbody>
 						</table>
@@ -450,8 +476,14 @@
 					</div>
 
 					<!-- 模态框底部 -->
+<<<<<<< HEAD
 					<div class="modal-footer foot">
 					<button type="button" class="btn btn-primary export" >导出</button>
+=======
+					<div class="modal-footer">
+					<button type="button" class="btn btn-primary all-choose"  style="display:none">全选</button>
+					<button type="button" class="btn btn-primary "  onclick="exportScore()">导出</button>
+>>>>>>> wmq
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
