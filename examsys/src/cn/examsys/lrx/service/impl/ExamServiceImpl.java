@@ -30,6 +30,7 @@ import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.ExamDaoImpl;
 import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.vo.AnswerVO;
+import cn.examsys.lrx.vo.GradeVO;
 import cn.examsys.lrx.vo.PaperWithExamVO;
 
 @Service("examService")
@@ -268,6 +269,17 @@ public class ExamServiceImpl implements ExamService {
 			}
 			
 			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<GradeVO> loadGradesByPaper(User sessionUser, int sid) {
+		try {
+			dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
+					+ " from Grade g, User u, Paper p where ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
