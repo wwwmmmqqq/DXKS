@@ -152,6 +152,7 @@
 		    						</p>
 		    						<div class="operation">
 		    							<ul>
+		    							<s:if test="#que.type=="Single"></s:if>
 		    							<!-- 单选模态框 -->
 		    								<li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil">
@@ -184,8 +185,7 @@
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
 		    								</li> -->
-		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
->>>>>>> origin/gy
+		    
 		    							</ul>
 		    						</div>
 		    					</div>
