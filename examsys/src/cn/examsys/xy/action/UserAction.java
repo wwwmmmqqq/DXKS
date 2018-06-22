@@ -83,7 +83,7 @@ public class UserAction extends CommonAction{
 		}
 		else{
 				User loginUser=userService.SelectOneUser(user.getUserId());		//查询用户是否存在
-				System.out.println("1565");
+				System.out.println(getSessionUser().getUserId());
 				if(loginUser!=null){
 					setResult("该用户名已存在");
 				}else{

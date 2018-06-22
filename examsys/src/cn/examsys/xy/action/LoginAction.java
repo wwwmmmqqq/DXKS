@@ -40,10 +40,8 @@ public class LoginAction extends CommonAction{
 		System.out.println("123");
 		if(user.getUserId()==null){
 			setResult("未找到该账号！");
-			return aa;
 		}else if(!pass.equals(user.getPsw())) {
 					setResult("密码错误！");
-					return aa;
 		}
 		else{
 			saveLogin(user);

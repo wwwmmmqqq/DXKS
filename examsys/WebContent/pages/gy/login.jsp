@@ -84,7 +84,11 @@
 			} else { 
 				$.post("login",{"user.userId":Id,"user.psw":password},function(data) {
 					var user = data.user;
-				 	if(user.type=="学生") {
+				 	if(data.result=="未找到该账号！" ||data.result=="密码错误！" ){
+				 		alert(data.result);
+				 		return false;
+				 	}
+					if(user.type=="学生") {
 						window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
 					} else 
 					if(user.type=="教师") {
