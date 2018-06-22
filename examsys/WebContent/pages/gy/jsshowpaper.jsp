@@ -129,6 +129,7 @@
 		    		<section>
 		    			<div class="panel showpaper">
 		    			<s:iterator id="que" value="#request.questionList" status="s1">
+		    			<input type="hidden" value="<s:property value="#que.sid"/>" id="questionid" />
 		    				<div class="panel-body paperpanel">
 		    					<div class="qtype">
 		    					
@@ -151,14 +152,16 @@
 		    						<div class="operation">
 		    							<ul>
 		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button></li>
 		    							</ul>
 		    						</div>
 		    					</div>
 		    					<ul>
 		    						<li class="question"><h4>${que.title}</h4></li>
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
+			    					
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
+			    						
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
 			    						<li>${s2.last?"正确答案：":""}
 				    						<span style="color: red;">

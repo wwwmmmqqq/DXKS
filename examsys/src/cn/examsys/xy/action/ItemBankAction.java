@@ -269,13 +269,14 @@ public class ItemBankAction extends CommonAction{
 	@Action(value="/deleteItemBank"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
-	public String deleteItemBank(){
+public String deleteItemBank(){
 		
 		boolean currentQuestion=itemBankService.deleteQuestion(question);
 		if(!currentQuestion) {
 			setResult("题目删除失败");
 		}
-		for(int i=0;i<question.getChoiceCount();i++){
+		option=itemBankService.selectItemOptionByQuestion(question.getSid());
+		for(int i=0;i<option.size();i++){
 			boolean currentOption=itemBankService.deleteOption(option.get(i));
 			if(!currentOption) {
 				setResult("选项删除失败");
@@ -285,6 +286,7 @@ public class ItemBankAction extends CommonAction{
 		setResult("题目删除成功！");
 		return aa;
 	}
+
 	
 	@Override
 	public String getResult() {
