@@ -1,20 +1,39 @@
-var questionId = getParam("sid");
+function deleteInfo(){
+	var questionId = getParam("sid");
+	$.confirm({
+		title : '确认删除？',
+		smoothContent : false,
+		content : "若确认删除该题将从题库中删除，请小心操作！",
+		buttons : {
+			deleteUser : {
+				btnClass : 'btn-blue',
+				text : '确定',
+				action : function() {
+					var questionId=$('#questionid').val();
+					$.post("deleteItemBank",
+							{
+						  		"question.sid":questionId
+						  		
+						 	},
+							 function(data){
+						 		if(data.result=="题目删除成功！"){
+						 			 location.reload();
+						 		}
+						})
+				}
+			},
+			cancelAction : {
+				btnClass : 'btn-default',
+				text : '取消',
+			}
+		}
+	});
+}
+
 function deleteQuestion(){
-	 deleteItemBank(questionId);
+	deleteInfo();
 }
-function deleteItemBank(questionId){
-	var questionId=$('#questionid').val();
-	$.post("deleteItemBank",
-			{
-		  		"question.sid":questionId
-		  		
-		 	},
-			 function(data){
-		 		if(data.result=="题目删除成功！"){
-		 			 location.reload();
-		 		}
-		}) 
-}
+
 //获取url中的参数
 
 function getParam(name) {

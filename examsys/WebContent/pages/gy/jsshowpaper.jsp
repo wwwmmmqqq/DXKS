@@ -25,6 +25,7 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
+        <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
         
        
 	</head>
@@ -448,6 +449,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/search.js" ></script>
 		<script type="text/javascript" src="js/jsshowpaper.js" ></script>
+		<script type="text/javascript" src="js/jquery-confirm.js"></script>
 	</body>
 	
 </html>
