@@ -102,11 +102,19 @@ public class PersonalAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String updatePsw() {
-		
 		boolean bo = serivce.updatePsw(getSessionUser(), oldPsw, newPsw);
 		if (!bo) {
 			setResult("旧密码错误");
 		}
+		return aa;
+	}
+	
+	@Action(value="/loadPaperByIdWithAnswer"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadPaperByIdWithAnswer() {
+		//TODO 加载试卷内容和答案
+		
 		return aa;
 	}
 	
