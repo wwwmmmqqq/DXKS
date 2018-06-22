@@ -83,7 +83,11 @@ public class UserAction extends CommonAction{
 		}
 		else{
 				User loginUser=userService.SelectOneUser(user.getUserId());		//查询用户是否存在
+<<<<<<< HEAD
 				System.out.println(getSessionUser().getUserId());
+=======
+				System.out.println("1565");
+>>>>>>> origin/lrx-1
 				if(loginUser!=null){
 					setResult("该用户名已存在");
 				}else{
@@ -146,7 +150,13 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String SelectUserList(){
+<<<<<<< HEAD
 		userList=userService.SelectUserList(user.getType(),page);
+=======
+
+		User administration=getSessionUser();
+		userList=userService.SelectUserList(user,page,administration);
+>>>>>>> origin/lrx-1
 		System.out.println("Action页面获取当前用户个数："+userList.size());
 		if(userList==null){
 			setResult("无用户");

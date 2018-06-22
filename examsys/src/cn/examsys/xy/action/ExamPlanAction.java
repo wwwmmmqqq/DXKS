@@ -1,4 +1,4 @@
-package cn.examsys.xy.action;
+	package cn.examsys.xy.action;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;

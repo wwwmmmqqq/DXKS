@@ -109,6 +109,7 @@ function administrationInfo(node) {
 		var user = data.user;
 		var info = getInfoHtml(user);
 		$('#administration-info-box').html(info);
+<<<<<<< HEAD
 		/*$('#administration_psw').val(user.psw);*/
 		
 		$('#administration_name').val(user.name);
@@ -118,6 +119,23 @@ function administrationInfo(node) {
 		$('#administration_email').val(user.email);
 		$('#administration_permission').val(user.permission);
 		$('#administration_phone').val(user.phone);
+=======
+		var permission = user.permission;
+		if(permission!=null && permission.length>0) {
+			var strs=permission.split(" ");
+			var permission_answer = strs[0];
+			var permission_paper = strs[1];
+			$('#administration_permission_answer').val(permission_answer);
+			$('#administration_permission_paper').val(permission_paper);
+		}
+		$('#administration_name').html(user.name);
+		$('#administration_sex').html(user.sex);
+		$('#administration_userId').html(user.userId);
+		$('#administration_collegeName').html(user.collegeName);
+		$('#administration_email').html(user.email);
+		$('#administration_phone').html(user.phone);
+
+>>>>>>> origin/lrx-1
 	})
 }	
 

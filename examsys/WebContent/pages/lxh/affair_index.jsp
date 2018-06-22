@@ -154,6 +154,19 @@
 		    		</div>
 		  
 		    		<div class="jwchaxun">
+<<<<<<< HEAD
+=======
+		    			<div class="operation"> 
+		    				<ul>
+		    					<li>
+		    						<a class="btn btn-default btn-sm pull-right" href="apaper.jsp">查看</a>
+		    					</li>
+		    					<li><button class="btn btn-default btn-xs" onclick="deletefunction()"><i class="fa fa-times"></i></button></li>
+		    					<li><button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modify-paper"><i class="fa fa-pencil"></i></button></li>
+		    				</ul>
+		    			</div>
+		    			<!-- <p>共查询到？条记录</p> -->
+>>>>>>> origin/lrx-1
 		    			<p>共查询到  条记录</p>
 		    			<table class="table jwcxtable">
 		    				<thead>
@@ -362,7 +375,11 @@
 
 				</div>
 			</div>
+<<<<<<< HEAD
 		</div> -->
+=======
+		</div>
+>>>>>>> origin/lrx-1
 	    <!--模态框查看通知-->
 	    <div class="modal fade" id="myModal-invite-notice">
 	    	<div class="modal-dialog">

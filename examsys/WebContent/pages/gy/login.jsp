@@ -89,6 +89,7 @@
 				 		return false;
 				 	}
 					if(user.type=="学生") {
+<<<<<<< HEAD
 						window.location.href = "../student/student-main.jsp?user.userId="+user.userId;
 					} else 
 					if(user.type=="教师") {
@@ -99,6 +100,16 @@
 					} else·
 					if(user.type=="管理员") {
 						window.location.href = "../gy/admin.jsp?user.userId="+user.userId;
+=======
+						window.location.href = "../student/student-main.jsp";
+					} else if(user.type=="教师") {
+						window.location.href = "../gy/jsshowpaper.jsp";
+					} else if(user.type=="教务") {
+						window.location.href = "../lxh/affair_index.jsp";
+					 }
+					else if(user.type=="管理员") {
+						window.location.href = "../gy/admin.jsp";
+>>>>>>> origin/lrx-1
 				 	}
 				});
 			}
