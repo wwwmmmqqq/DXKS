@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="/struts-tags" prefix="s"%>
     <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -69,8 +70,7 @@
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
 
-			  		<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
- 					<!-- <a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a> -->
+					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
 					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
@@ -87,7 +87,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="teacher_showpaper"><i class="fa fa-home"></i> Home</a>
+		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>查看成绩</li>
 		    			</ul>
@@ -96,10 +96,7 @@
 				
 				<div class="top_main">
 					<div class="top_button">
-						<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_export">
-							<i class="fa fa-mail-forward history"></i>
-							导出成绩
-						</button>
+						
 						<button type="button" class="btn btn2" id="find">
 							<i class="fa fa-search-minus"></i>
 							条件搜索
@@ -128,10 +125,16 @@
 								<th>参加学校</th>
 								<th>考试时间</th>
 								<th>操作</th>
-							</tr>
+							</tr>    
 						</thead>
 						<tbody id="data-box">
-							<tr >
+						
+							<%-- <s:iterator id="item" value="#request.list">
+							<tr>
+							分数	${item.point}
+							</tr>
+							</s:iterator> --%>
+							
 								<!-- <td>1</td>
 								<td>数据库概论</td>
 								<td>萍乡学院</td>
@@ -139,7 +142,6 @@
 								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
 									<i class="fa fa-eye" ></i>
 								</td> -->
-							</tr>
 					</tbody>
 				</table>
 				<!--<div class="bottom_button">
@@ -244,7 +246,7 @@
 		
 		<!--查看历史成绩模态框-->
 		<div class="modal fade" id="myModal_correct">
-			<div class="modal-dialog">
+			<div class="modal-dialog history-all">
 				<div class="modal-content">
 
 					<!-- 模态框头部 -->
@@ -254,10 +256,12 @@
 					</div>
 
 					<!-- 模态框主体 -->
-					<div class="modal-body">
-						<table >
+
+					<div class="modal-body grade">
+						<table class="history-table" id="studentScore">
 							<thead >
 							<tr>
+							    <th>序号</th>
 								<th>学号</th>
 								<th>姓名</th>
 								<th>学院</th>
@@ -284,7 +288,6 @@
 					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </button>
 					<button type="button" class="btn btn-success  sureexport"  style="display:none" >确认导出 </button>
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
-
 					</div>
 				</div>
 			</div>
