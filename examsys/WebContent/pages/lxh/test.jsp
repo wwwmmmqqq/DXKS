@@ -608,6 +608,7 @@ function createExamPlan() {
 			        "exam.periodEnd":$('#ex_periodEnd').val(), 
 			        "exam.invitee":$('#ex_invitee').val()
 			},function(data){
+				alert("jj");
 				alert(data.result);    //message为user返回信息
 				location.href="test.jsp";
 			})
