@@ -15,15 +15,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		参数：paper.sid
 		返回值：paper
 	*/
-	 $.post("selectUserList",{"user.type":"学生","page":1,"user.collegeName":"萍乡学院","user.name":"name_2621"},function(data) {
-		  var user=data.userList;
-		  alert(user.length);			//查询出的当前页的用户的总数
-		  alert(data.totalPage);		//查询出的总页数
-		  for(var i=0; i<user.length; i++){
-			  alert(user[i].userId); 	 //第6*10+i位用户的id号
-		  }
-		      
-	  })  
+	$.post("deleteExamPlan",
+			 {	"exam.sid":"1",   //用户名
+		},function(data){
+			alert(data.result);    //result为user返回信息
+		 })	
   </script>
   
   </head>

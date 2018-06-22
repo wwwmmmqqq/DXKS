@@ -421,7 +421,7 @@
 		
 /***********************************考试计划****************************************/
 /**
-		修改试卷接口---先查看再修改
+		创建试卷计划接口---先查看再修改
 		参数：paper.sid
 		返回值：paper
 	*/
@@ -431,6 +431,38 @@
 		},function(data){
 			alert(data.result);    //message为user返回信息
 		 })
+/**
+		修改试卷计划接口---先查看再修改
+		参数：exam任意属性，必须有id
+		返回值：result
+	*/
+	$.post("editExamPlan",
+			 {	"exam.sid":"1",   //用户名
+		},function(data){
+			alert(data.result);    //result为user返回信息
+		 })
+/**
+		查看试卷计划接口---先查看再修改
+		参数：exam.id
+		返回值：exam
+	*/
+	$.post("selectOneExamPlan",
+			 {	"exam.sid":"1",   //用户名
+		},function(data){
+			var exam = data.exam;
+			alert(exam.title);    //result为user返回信息
+		 })	
+/**
+		删除试卷计划接口---先查看再修改
+		参数：exam.id
+		返回值：result
+	*/
+	$.post("deleteExamPlan",
+			 {	"exam.sid":"1",   //用户名
+		},function(data){
+			alert(data.result);    //result为user返回信息
+		 })	
+		 
 	  </script>
   </head>
   
