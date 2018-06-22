@@ -61,6 +61,12 @@ public class ExamPlanAction extends CommonAction {
 		return aa;
 	}
 	
+	/*修改考试计划*/
+	public String editExamPaln() {
+		/*boolean currentExam=examService.editExamPlan(exam);*/
+		return aa;
+	}
+	
 	@Override
 	public String getResult() {
 		// TODO Auto-generated method stub
