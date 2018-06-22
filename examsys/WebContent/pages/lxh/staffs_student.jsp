@@ -73,15 +73,13 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<ul class="side_nav">
-			  		<a href="staffs_student.jsp"><li class="side_nav1">学生信息管理</li></a>
-			  		<a href="staffs_teacher.jsp"><li class="side_nav1">教师信息管理</li></a>	
-			  		<a href="affair_index.jsp"><li class="side_nav1">试卷管理</li></a>
-			  		<a href="affair_hand_volume.jsp"><li class="side_nav1">手动组卷</li></a>
-			  		<a href="affair_intel_volume.jsp"><li class="side_nav1">智能组卷</li></a>
-			  		<a href="history_staffs.jsp"><li class="side_nav1">历史成绩</li></a>	
-			  		<a href="test.jsp"><li class="side_nav1">考次计划</li></a>
-			  	</ul>
+			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
+			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
+			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
+			  		<li class="side_nav1"><a href="jwhandzujuan.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="jwintelzujuan.jsp">智能组卷</a></li>
+			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
+			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
 		  </div>
 		</nav>
@@ -95,7 +93,7 @@
 		    				<li class="active">
 		    					<a href="#"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>学生信息管理</li>
+		    				<li>用户管理</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
@@ -506,9 +504,8 @@
 		    </div>
 		</div>
 		
-
-
-		<!--模态框查看学生详细信息-->
+			
+		<!--模态框查看学生、教师信息-->
 		<div class="modal fade" id="myModal_eye_student">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -733,35 +730,23 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-<<<<<<< HEAD
 			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
 			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
 			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-=======
-<<<<<<< HEAD
-		    +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>" 
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
-=======
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
->>>>>>> XY
->>>>>>> origin/lrx
 			+"</td>"
 			+"</tr>";
 		return htm;
 	}
 	function getLiHtml(index) {
 		if(index==1 && totalPage!=1){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
 		}
 		else if(index>1 && index<totalPage){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
 		}
 		else if(totalPage==1) {
-			var ht="<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+			var ht="<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
 		}
 		else {
 			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
@@ -772,40 +757,12 @@
 		return ht;    
 	}
 	function studentInfo(node) {
-<<<<<<< HEAD
 		var td = node.childNodes;
 		var userId = td[0].id;
-=======
-<<<<<<< HEAD
-		var td =node.parentNode.parentNode.childNodes;
-		var userId = td[2].innerHTML;
-=======
-		var td = node.childNodes;
-		var userId = td[0].id;
->>>>>>> XY
->>>>>>> origin/lrx
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
 			$('#student-info-box').html(info);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/lrx
-			//修改模态框显示学生信息
-			
-			$('#student_name').val(user.name);
-			$('#student_sex').find("."+user.sex).attr("checked", "checked");
-			$('#student_userId').val(user.userId);
-			$('#student_collegeName').val(user.collegeName);
-			$('#student_department').val(user.department);
-			$('#student_profession').val(user.profession);
-			$('#student_classroom').val(user.classroom);
-			$('#student_idcard').val(user.idcard);
-			$('#student_phone').val(user.phone);
-<<<<<<< HEAD
-=======
-=======
 			$('#stu_name').val(user.name);
 			$('#stu_sex').val(user.sex);
 			$('#stu_userId').val(user.userId);
@@ -815,8 +772,6 @@
 			$('#stu_classroom').val(user.classroom);
 			$('#stu_idcard').val(user.idcard);
 			$('#stu_phone').val(user.phone);
->>>>>>> XY
->>>>>>> origin/lrx
 		})
 	}	
 	function getInfoHtml(obj) {
@@ -893,21 +848,7 @@
 	}
 	
 	function editStudent() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/lrx
-		alert(checkInput());
-		if(checkInput()==false){
-			alert("333");
-			return false;
-			} else{
-<<<<<<< HEAD
-=======
-=======
 		/* if(!checkInput()){alert("123"); return false;}  */
->>>>>>> XY
->>>>>>> origin/lrx
 		$.post("editUser",
 					{	
 						"user.name":$('#stu_name').val(),
@@ -921,19 +862,10 @@
 						"user.phone":$('#stu_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-<<<<<<< HEAD
-							alert("修改成功!");
-=======
-<<<<<<< HEAD
-							alert("修改成功!");
-=======
 							alert(data.result);
->>>>>>> XY
->>>>>>> origin/lrx
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
-		}
 	}
 
 	function deleteStudent(node) {
@@ -959,27 +891,5 @@
 		}  
 	}
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/lrx
-	function checkInput() {
-		var filled;
-		$("#editStudent input[type=text]").each(function() {
-			if($(this).val()=="") {
-				alert("请将信息填写完整");
-				filled=false;
-			}else{
-				filled=true;
-			}
-		});
-		return filled;
-	}
-	
-<<<<<<< HEAD
-=======
-=======
->>>>>>> XY
->>>>>>> origin/lrx
 </script>
 </html>

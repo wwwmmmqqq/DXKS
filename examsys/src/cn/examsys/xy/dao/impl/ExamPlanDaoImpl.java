@@ -22,5 +22,12 @@ public class ExamPlanDaoImpl extends DaoAdapter implements ExamPlanDao{
 			return 0;
 		}
 	}
+	/*修改考试计划*/
+	@Override
+	public boolean editExamPlan(Exam exam) {
+		// TODO Auto-generated method stub
+		
+		return false;
+	}
 
 }
