@@ -73,13 +73,15 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
-			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="jwhandzujuan.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="jwintelzujuan.jsp">智能组卷</a></li>
-			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
-			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
+			  		<ul class="side_nav">
+			  		<a href="staffs_student.jsp"><li class="side_nav1">学生信息管理</li></a>
+			  		<a href="staffs_teacher.jsp"><li class="side_nav1">教师信息管理</li></a>	
+			  		<a href="affair_index.jsp"><li class="side_nav1">试卷管理</li></a>
+			  		<a href="affair_hand_volume.jsp"><li class="side_nav1">手动组卷</li></a>
+			  		<a href="affair_intel_volume.jsp"><li class="side_nav1">智能组卷</li></a>
+			  		<a href="history_staffs.jsp"><li class="side_nav1">历史成绩</li></a>	
+			  		<a href="test.jsp"><li class="side_nav1">考次计划</li></a>
+			  	</ul>
 			  	</ul>
 		  </div>
 		</nav>
@@ -93,7 +95,7 @@
 		    				<li class="active">
 		    					<a href="#"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>用户管理</li>
+		    				<li>学生信息管理</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
