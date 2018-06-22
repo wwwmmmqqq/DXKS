@@ -871,6 +871,7 @@
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
+		}
 	}
 
 	function deleteStudent(node) {
@@ -908,5 +909,6 @@
 		});
 		return filled;
 	}
+	
 </script>
 </html>

@@ -41,18 +41,11 @@ public class LoginAction extends CommonAction{
 			setResult("未找到该账号！");
 		}else if(!pass.equals(user.getPsw())) {
 					setResult("密码错误！");
-<<<<<<< HEAD
-					return aa;
-=======
->>>>>>> XY
 		}
 		else{
 			saveLogin(user);
 		}
-<<<<<<< HEAD
-		
-=======
->>>>>>> XY
+
 		return aa;
 	}
 	

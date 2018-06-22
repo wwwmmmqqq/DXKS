@@ -52,12 +52,6 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	}
 	/*用户总页面*/
 	@Override
-<<<<<<< HEAD
-	public int selectUserListCount(String type) {
-		// TODO Auto-generated method stub
-		String hql="from User where (status !='封禁' or status is null) and type=? ";
-		Object[] vals=new Object[]{type};
-=======
 	public int selectUserListCount(User user,User administration) {
 		// TODO Auto-generated method stub
 		String collegeName = administration.getCollegeName();
@@ -75,7 +69,6 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 				j++;
 			}
 		}
->>>>>>> XY
 		try {
 			List<User> userList = findByHql(hql.toString(),vals);
 			int size =userList.size();
@@ -91,12 +84,6 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	}
 	/*查询用户列表*/
 	@Override
-<<<<<<< HEAD
-	public List<User> selectUserList(String type, int page) {
-		// TODO Auto-generated method stub
-		String hql="from User where (status !='封禁' or status is null) and type=?";
-		Object[] vals=new Object[]{type};
-=======
 	public List<User> selectUserList(User user, int page,User administration) {
 		// TODO Auto-generated method stub
 		String collegeName = administration.getCollegeName();
@@ -114,7 +101,6 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 				j++;
 			}
 		}
->>>>>>> XY
 		try {
 			List<User> userList = findByHql(hql.toString(), vals, page);
 			return userList;

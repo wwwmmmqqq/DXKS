@@ -146,21 +146,13 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String SelectUserList(){
-<<<<<<< HEAD
-		userList=userService.SelectUserList(user.getType(),page);
-=======
 		User administration=getSessionUser();
 		userList=userService.SelectUserList(user,page,administration);
->>>>>>> XY
 		System.out.println("Action页面获取当前用户个数："+userList.size());
 		if(userList==null){
 			setResult("无用户");
 		}
-<<<<<<< HEAD
-		totalPage=userService.SelectUserListCount(user.getType());
-=======
 		totalPage=userService.SelectUserListCount(user,administration);
->>>>>>> XY
 		System.out.println("Action页面获取总页面大小："+totalPage);
 		return aa;
 	}
