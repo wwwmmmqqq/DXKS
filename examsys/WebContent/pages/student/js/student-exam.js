@@ -122,4 +122,3 @@ function startTimeCounting(t0, t1) {
 			else return n;
 	}
 }
-

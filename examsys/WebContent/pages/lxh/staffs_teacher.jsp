@@ -27,7 +27,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>muxue <i class="caret"></i></span>
+								<span>${session.user.name } <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -67,7 +67,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, muxue</p>
+					<p>Hello, ${session.user.name }</p>
 				</div>
 
 			</div>

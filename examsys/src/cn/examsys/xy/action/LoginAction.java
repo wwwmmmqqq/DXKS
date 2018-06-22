@@ -37,18 +37,22 @@ public class LoginAction extends CommonAction{
 	public String login(){
 		String pass=user.getPsw();
 		user=loginService.login(user.getUserId());
-		System.out.println("123");
 		if(user.getUserId()==null){
 			setResult("未找到该账号！");
-			return aa;
 		}else if(!pass.equals(user.getPsw())) {
 					setResult("密码错误！");
+<<<<<<< HEAD
 					return aa;
+=======
+>>>>>>> XY
 		}
 		else{
 			saveLogin(user);
 		}
+<<<<<<< HEAD
 		
+=======
+>>>>>>> XY
 		return aa;
 	}
 	

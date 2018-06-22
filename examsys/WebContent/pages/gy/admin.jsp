@@ -98,11 +98,11 @@
 							<option class="option_hide" id="profession">专业</option>
 							<option class="option_hide" id="class">班级</option>
 						</select>
-						<input type="text" class="input_hide2" id="school1" placeholder="学校"/>
-						<input type="text" class="input_hide2" id="institute1" placeholder="学院"/>
-						<input type="text" class="input_hide2" id="profession1" placeholder="专业"/>
-						<input type="text" class="input_hide2" id="class1" placeholder="班级"/>
-						<button type="button" class="btn right_search">搜索</button>
+						<input type="text" class="input_hide2" id="school1" name="collegeName"  placeholder="学校"/>
+						<input type="text" class="input_hide2" id="institute1" name="department" placeholder="学院"/>
+						<input type="text" class="input_hide2" id="profession1" name="profession" placeholder="专业"/>
+						<input type="text" class="input_hide2" id="class1" name="classroom" placeholder="班级"/>
+						<button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
 						<button type="button" class="btn clean">清空搜索</button>
 					</div>
 				
@@ -160,8 +160,8 @@
 					    <li class="page-item"><a class="page-link " href="javascript:void(0)" onclick="loadDatas(2)">2</a></li>
 					    <li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="loadDatas(3)">3</a></li>
 					    <li class="page-item"><a class="page-link" href="javascript:nextPage()" >下一页</a></li> -->
-					    <input class="jump">
-					    <button class="btn btn-primary btn_jump">跳转</button>
+					    <!-- <input class="jump" id="jpage">
+					    <button class="btn btn-primary btn_jump">跳转</button> -->
 				  </ul>
 			  	</div>
 				
@@ -209,13 +209,11 @@
 							        			<tr>
 							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<!-- <div class="input_checkbox" name="sex">
-															<input type="radio" class="choose" name="1"/>
-															<span>男</span>
-															<input type="radio" class="choose1" name="1"/>
-															<span>女</span>
-														</div> -->
-							        					 <input type="text" class="hover"  name="sex"> 
+							        						<select class="form-control" name="sex" id="administrationSex">
+							        							<option value="男">男</option>
+							        							<option value="女">女</option>
+							        						</select>
+							        					 <!-- <input type="text" class="hover"  name="sex">  -->
 							        				</td>
 							        			</tr>
 							        			<tr>
