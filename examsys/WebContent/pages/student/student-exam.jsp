@@ -268,8 +268,7 @@ $(document).ready(function(){
 	});
 });
 </script>
-<!-- 可以去掉了 -->
-<%-- <script type="text/javascript">
+<script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
 /* oneChoice();  */
 function loadQuestionListByPaper(paperSid){
@@ -363,6 +362,6 @@ function getQueItem(n, obj) {
 	return htm;
 }
 
-</script> --%>
+</script>
 </body>
 </html>

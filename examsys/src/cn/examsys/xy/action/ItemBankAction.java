@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Option;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.User;

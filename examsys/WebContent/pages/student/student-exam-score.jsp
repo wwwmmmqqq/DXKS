@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
              <%
@@ -17,6 +16,8 @@
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
 
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
 		<header>
@@ -361,4 +362,6 @@
 		</script>
 		
 </body>
+<script type="text/javascript">
+</script>
 </html>
