@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
              <%
@@ -164,6 +163,7 @@
 				</form>
 			</div>
 			<div class="modal-footer">
+				
 				<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
 				</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -176,6 +176,19 @@
 			</section>
 			<section class="right-section">
 				<div class="right-content">
+				<div class="exam-head">
+						<div class="searchbox">
+							<form id="">
+							
+								<div id="search-button">
+									<input type="submit" class=" search-button btn btn-primary" value="确认" />
+								</div>
+								<div id="search-input">
+									<input type="text" class="search-input form-control" placeholder="请输入搜索的关键字" />
+								</div>
+							</form>
+						</div>
+					</div>
 					<div class="score-list">
 					<table class="score-table table table-striped " id="score-table">
 						<thead>
@@ -362,4 +375,6 @@
 		</script>
 		
 </body>
+<script type="text/javascript">
+</script>
 </html>

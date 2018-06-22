@@ -87,9 +87,7 @@
 		    				<li>
 		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>
-		    					<a href="jsshowpaper.jsp">题库管理</a>
-		    				</li>
+		    				<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
 		    				<li class="active">录入题库</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	

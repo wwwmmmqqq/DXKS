@@ -69,9 +69,9 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
+
 			  		<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
  					<!-- <a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a> -->
-					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
 					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
@@ -88,7 +88,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
+		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>查看成绩</li>
 		    			</ul>
@@ -275,6 +275,7 @@
 							</tr>
 							</thead>
 							<tbody >
+<<<<<<< HEAD
 								<tr>
 									<td>1</td>
 									<td>15478015</td>
@@ -450,14 +451,27 @@
 					<ul>
 						<li class="rate"><b>正确率:50%</b></li>
 					</ul>
+=======
+							</tbody>
+						</table>
+					<div id="rate">
+					
+					</div>
+>>>>>>> wmq
 					</div>
 
 					<!-- 模态框底部 -->
 
 					<div class="modal-footer foot">
+<<<<<<< HEAD
 
 					<button type="button" class="btn btn-primary  all-choose"  style="display:none">全选</button>
 					<button type="button" class="btn btn-primary  export"  onclick="exportScore()">导出</button>
+=======
+					<button type="button" class="btn btn-primary  all-choose"  style="display:none" >全选</button>
+					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </button>
+					<button type="button" class="btn btn-success  sureexport"  style="display:none" >确认导出 </button>
+>>>>>>> wmq
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
@@ -698,6 +712,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 			<script type="text/javascript" src="js/search.js" ></script>
 				<script type="text/javascript" src="js/teacher_history.js" ></script>
+				<script type="text/javascript" src="js/echarts.js"></script>
 	</body>
 
 </html>

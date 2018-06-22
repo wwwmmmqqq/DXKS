@@ -67,7 +67,7 @@ function queClicked(obj, n) {
 	$(obj).addClass('on-click');
 	$(obj).siblings().removeClass('on-click');
 	$(".exam-paper").hide();
-	$("#q-" + n).show();
+	/*$("#q-" + n).show();*/
 	$("#q-" + n).css({"display":"block"});
 }
 /* 下一题 */
@@ -106,8 +106,6 @@ function startTimeCounting(t0, t1) {
 		var hour = Math.floor(dt / 3600 % 60);
 		var min = Math.floor(dt / 60 % 60);
 		var sec = Math.floor(dt % 60);
-		document.getElementById("mss").value 
-		= displayTime(hour) + ":" + displayTime(min) + ":" + displayTime(sec);
 		if(--dt<=0) {
 			alert("时间到，自动提交试卷");
 			window.clearInterval(iid);

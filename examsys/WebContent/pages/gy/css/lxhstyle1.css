@@ -626,7 +626,7 @@ li{
 	border-radius:5px ;
 }
 .modal-footer{
-	width: 590px;
+	/* width: 590px; */
 	height: 80px;
 }
 
@@ -959,4 +959,55 @@ b {
 }
 .ture-or-false .choose1{
 	width: 50px;
+}
+.foot{
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+}
+.fill-and-judgement .choose{
+	width: 100%;
+	padding-left: 100px;
+}
+.answer-question .choose{
+	width:100%;
+	padding-left: 100px;
+}
+.modal-body.form-test{
+	text-algin:center;
+}
+
+/* 单选模态框 */
+.choose .input-pencil{
+	display: inline;
+	margin:10px;
+}
+.choose .answer{
+	width:100%;
+}
+.choose textarea{
+	width:60%;
+	height:60px;
+	margin-left:10px;
+}
+
+.choose span{
+	margin-left:20px;
+}
+.choose .choose1{
+	width:50px;
+	height:10px;
+}
+.foot-pencil{
+	text-align: center;
+}
+.foot-pencil .check-pencil{
+	width:90px;
+	height:40px;
+	margin-right:20px;
+}
+.foot-pencil .back-pencil{
+	width:90px;
+	height:40px;
+	
 }

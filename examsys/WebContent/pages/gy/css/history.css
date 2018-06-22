@@ -721,3 +721,12 @@ button{
 .history-table th{
 	text-align: center;
 }
+/*正确率饼状图*/
+#rate{
+	width: 200px;
+	height: 200px;
+	margin:0 auto;
+}
+.foot .all-choose{
+	float:left;
+}
