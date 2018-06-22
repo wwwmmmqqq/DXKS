@@ -736,15 +736,9 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-<<<<<<< HEAD
 		    +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>" 
 			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
 			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
-=======
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
->>>>>>> XY
 			+"</td>"
 			+"</tr>";
 		return htm;
@@ -769,18 +763,12 @@
 		return ht;    
 	}
 	function studentInfo(node) {
-<<<<<<< HEAD
 		var td =node.parentNode.parentNode.childNodes;
 		var userId = td[2].innerHTML;
-=======
-		var td = node.childNodes;
-		var userId = td[0].id;
->>>>>>> XY
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
 			$('#student-info-box').html(info);
-<<<<<<< HEAD
 			//修改模态框显示学生信息
 			
 			$('#student_name').val(user.name);
@@ -792,17 +780,6 @@
 			$('#student_classroom').val(user.classroom);
 			$('#student_idcard').val(user.idcard);
 			$('#student_phone').val(user.phone);
-=======
-			$('#stu_name').val(user.name);
-			$('#stu_sex').val(user.sex);
-			$('#stu_userId').val(user.userId);
-			$('#stu_collegeName').val(user.collegeName);
-			$('#stu_department').val(user.department);
-			$('#stu_profession').val(user.profession);
-			$('#stu_classroom').val(user.classroom);
-			$('#stu_idcard').val(user.idcard);
-			$('#stu_phone').val(user.phone);
->>>>>>> XY
 		})
 	}	
 	function getInfoHtml(obj) {
@@ -879,15 +856,11 @@
 	}
 	
 	function editStudent() {
-<<<<<<< HEAD
 		alert(checkInput());
 		if(checkInput()==false){
 			alert("333");
 			return false;
 			} else{
-=======
-		/* if(!checkInput()){alert("123"); return false;}  */
->>>>>>> XY
 		$.post("editUser",
 					{	
 						"user.name":$('#stu_name').val(),
@@ -901,11 +874,7 @@
 						"user.phone":$('#stu_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-<<<<<<< HEAD
 							alert("修改成功!");
-=======
-							alert(data.result);
->>>>>>> XY
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
@@ -935,7 +904,6 @@
 		}  
 	}
 	
-<<<<<<< HEAD
 	function checkInput() {
 		var filled;
 		$("#editStudent input[type=text]").each(function() {
@@ -949,7 +917,5 @@
 		return filled;
 	}
 	
-=======
->>>>>>> XY
 </script>
 </html>
