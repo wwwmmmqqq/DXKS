@@ -1,48 +1,47 @@
-function showItemBankList(){
-	$.post("showItemBankListByUser",
-			{
-		  		"user.userId":"123546",
-		  		"page":1
-		 	},
-			 function(data){
-		 		var questionList = data.questionList;       //所有题目的列表
-		 		var optionList = data.map;                  //所有选项的列表
-		 		var totalPage= data.totalPage;				//列表总页数
-		 		for( var i in questionList) {				//循环题目列表
-		 			/**
-		 				题目
-		 			*/
-		 			alert("第"+questionList[i].sid+"道题目："+questionList[i].title);     //获取到第i道题目的具体属性
-		 			var option = optionList["option["+i+"]"];          //获取到的第i个选项对象
-		 			for(var j in option) {                             //循环第i个选项对象
-		 				/**
-		 					选择题，判断题答案
-		 				*/
-		 				if(option[j].type=="Single"||option[j].type=="Mutiple"||option[j].type=="TrueOrFalse") {
-		 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项内容是："+option[j].content);   //相应第i道题目的第j个选项的具体属性
-		 					
-		 					/* option[j].type;option[j].isAnswer */
-		 					
-		 					if(option[j].isAnswer==1) {
-		 						alert("第"+questionList[i].sid+"道题的正确答案是："+option[j].content); //获取到第i道题的正确答案
-		 					}
-		 				}
-		 				
-		 				/**
-		 					填空题答案
-		 				*/
-		 				else if(option[j].type=="Fills") {
-		 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项答案是"+option[j].type+"："+option[j].fillText);   //相应第i道题目的第j个选项的具体属性,这里是填空题答案
-		 				}
-		 				/**
-		 					主观题答案
-		 				*/
-		 				else if(option[j].type=="Subjective") {
-		 					alert("第"+questionList[i].sid+"道题目的第"+j+"个选项答案是"+option[j].type+"："+option[j].subjectiveText);   //相应第i道题目的第j个选项的具体属性,这里是主观题答案
-		 				}continue;
-		 			}
-		 		}
-		})   
+function deleteInfo(){
+	var questionId = getParam("sid");
+	$.confirm({
+		title : '确认删除？',
+		smoothContent : false,
+		content : "若确认删除该题将从题库中删除，请小心操作！",
+		buttons : {
+			deleteUser : {
+				btnClass : 'btn-blue',
+				text : '确定',
+				action : function() {
+					var questionId=$('#questionid').val();
+					$.post("deleteItemBank",
+							{
+						  		"question.sid":questionId
+						  		
+						 	},
+							 function(data){
+						 		if(data.result=="题目删除成功！"){
+						 			 location.reload();
+						 		}
+						})
+				}
+			},
+			cancelAction : {
+				btnClass : 'btn-default',
+				text : '取消',
+			}
+		}
+	});
+}
+
+function deleteQuestion(){
+	deleteInfo();
+}
+
+//获取url中的参数
+
+function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
 }
 function getQuestionData(){
 	var htm=

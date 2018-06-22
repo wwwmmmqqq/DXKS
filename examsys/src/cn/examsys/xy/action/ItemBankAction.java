@@ -269,7 +269,7 @@ public class ItemBankAction extends CommonAction{
 	@Action(value="/deleteItemBank"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
-	public String deleteItemBank(){
+public String deleteItemBank(){
 		
 		boolean currentQuestion=itemBankService.deleteQuestion(question);
 		if(!currentQuestion) {
@@ -286,6 +286,7 @@ public class ItemBankAction extends CommonAction{
 		setResult("题目删除成功！");
 		return aa;
 	}
+
 	
 	@Override
 	public String getResult() {

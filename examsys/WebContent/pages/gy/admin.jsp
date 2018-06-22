@@ -89,6 +89,7 @@
 						</div>
 					</div>
 					<div class="search_hide" id="hide">
+
 						<input type="text" class="input_hide1"  id="name1" placeholder="姓名"/>
 						<input type="text" class="input_hide" id="userId1"  placeholder="工号"/>
 						<select class="select_hide">
@@ -208,11 +209,20 @@
 							        			<tr>
 							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
+<<<<<<< HEAD
+							        				<div class="input_checkbox" name="sex" id="sex">
+							        				<select class="form-control ">
+							        				<option value="男">男</option>
+							        				<option value="女">女</option>
+							        				</select>
+														</div> 
+=======
 							        						<select class="form-control" name="sex" id="administrationSex">
 							        							<option value="男">男</option>
 							        							<option value="女">女</option>
 							        						</select>
 							        					 <!-- <input type="text" class="hover"  name="sex">  -->
+>>>>>>> lrx
 							        				</td>
 							        			</tr>
 							        			<tr>
@@ -636,6 +646,10 @@
 								        			</tr>
 								        			<tr>
 							        				<td >
+<<<<<<< HEAD
+=======
+
+>>>>>>> wmq
 							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
 							        					<select class="option" id="administration_permission_answer"> 
 							        						<option>能查看答案</option>

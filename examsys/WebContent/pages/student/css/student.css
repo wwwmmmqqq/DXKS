@@ -591,10 +591,7 @@ li {
 	margin-left: 45%;
 }
 
-.on-click {
-	background-color: blue;
-	color: white;
-}
+
 /*上一題下一題樣式*/
 /* .pre-next-quetion {
 	 margin-top: 50px; 
@@ -638,7 +635,10 @@ li {
 .has-labled {
 	background-color: #e3be08;
 }
-
+.on-click {
+	background-color: blue;
+	color: white;
+}
 .que-num:hover {
 	background-color: #2B79AD;
 	color: white;
