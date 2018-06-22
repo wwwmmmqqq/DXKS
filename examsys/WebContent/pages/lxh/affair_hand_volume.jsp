@@ -596,6 +596,9 @@
 	function remove() {
 		
 	}
+	
+	
+	
 	/*搜索jquery隐藏显示面板*/
 	$(document).ready(function() {
 	    $("#flip").click(function() {

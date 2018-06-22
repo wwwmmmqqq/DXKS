@@ -9,7 +9,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
   	  <meta charset="utf-8">
 	  <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-	  
 	  <script type="text/javascript">
 	  //获取URL中的参数
 	  function getParam(name) {
