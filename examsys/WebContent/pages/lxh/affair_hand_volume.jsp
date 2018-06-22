@@ -479,7 +479,7 @@
 	    							<td>
 	    								学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
 	    								<input type="text" class="hover">
-	    							</td>
+	    		    			  </td> 
 	    						</tr>
 	    						<tr>
 	    							<td>
