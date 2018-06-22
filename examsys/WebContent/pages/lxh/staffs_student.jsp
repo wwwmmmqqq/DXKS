@@ -75,15 +75,9 @@
 			  	<ul class="side_nav">
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-<<<<<<< HEAD
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
 			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
 			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
-=======
-			  		<li class="side_nav1"><a href="jwindex.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="jwhandzujuan.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="jwintelzujuan.jsp">智能组卷</a></li>
->>>>>>> XY
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -502,11 +496,7 @@
 		</div>
 		
 			
-<<<<<<< HEAD
 		<!--模态框查看学生详细信息-->
-=======
-		<!--模态框查看学生、教师信息-->
->>>>>>> XY
 		<div class="modal fade" id="myModal_eye_student">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -731,23 +721,23 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
+		    +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>" 
+			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
+			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
 			+"</td>"
 			+"</tr>";
 		return htm;
 	}
 	function getLiHtml(index) {
-		if(index==1 && totalPage!=1){
+		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+	
 		}
-		else if(index>1 && index<totalPage){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
-		}
-		else if(totalPage==1) {
-			var ht="<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+		else if(index==totalPage){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+				
 		}
 		else {
 			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";	
@@ -755,21 +745,23 @@
 		return ht;    
 	}
 	function studentInfo(node) {
-		var td = node.childNodes;
-		var userId = td[0].id;
+		var td =node.parentNode.parentNode.childNodes;
+		var userId = td[2].innerHTML;
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
 			$('#student-info-box').html(info);
-			$('#stu_name').val(user.name);
-			$('#stu_sex').val(user.sex);
-			$('#stu_userId').val(user.userId);
-			$('#stu_collegeName').val(user.collegeName);
-			$('#stu_department').val(user.department);
-			$('#stu_profession').val(user.profession);
-			$('#stu_classroom').val(user.classroom);
-			$('#stu_idcard').val(user.idcard);
-			$('#stu_phone').val(user.phone);
+			//修改模态框显示学生信息
+			
+			$('#student_name').val(user.name);
+			$('#student_sex').find("."+user.sex).attr("checked", "checked");
+			$('#student_userId').val(user.userId);
+			$('#student_collegeName').val(user.collegeName);
+			$('#student_department').val(user.department);
+			$('#student_profession').val(user.profession);
+			$('#student_classroom').val(user.classroom);
+			$('#student_idcard').val(user.idcard);
+			$('#student_phone').val(user.phone);
 		})
 	}	
 	function getInfoHtml(obj) {
@@ -847,7 +839,11 @@
 	} */
 	
 	function editStudent() {
-		/* if(!checkInput()){alert("123"); return false;}  */
+		alert(checkInput());
+		if(checkInput()==false){
+			alert("333");
+			return false;
+			} else{
 		$.post("editUser",
 					{	
 						"user.name":$('#student_name').val(),
@@ -861,10 +857,11 @@
 						"user.phone":$('#student_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-							alert(data.result);
+							alert("修改成功!");
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
+		}
 	}
 
 	function deleteStudent(node) {
