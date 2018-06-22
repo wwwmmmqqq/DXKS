@@ -33,7 +33,6 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 	/*查询用户列表*/
-
 	public List<User> SelectUserList(User user,int page,User administration) {
 		// TODO Auto-generated method stub
 		List<User> userList=userDao.selectUserList(user ,page,administration);

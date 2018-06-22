@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.examsys.bean.Grade;
 import cn.examsys.bean.Option;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
@@ -32,17 +31,6 @@ public class PageServiceImpl implements PageService {
 	@Override
 	public List<Question> loadQuestionList(int sid) {
 		return QuestionListTool.queryQuestionList(dao, sid);
-	}
-
-	@Override
-	public List<Grade> loadGrades(User sessionUser, int page) {
-		try {
-			return dao.findByHql("from Grade where userId=? order by sid desc"
-					, new Object[]{sessionUser.getUserId()}, page);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 	
 }

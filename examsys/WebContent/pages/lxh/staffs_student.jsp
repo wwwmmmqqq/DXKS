@@ -331,56 +331,56 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_name" name="user.name">
+										<input type="text" class="hover" id="stu_name" name="user.name">
 									</td>
 								</tr>
 								<td class="choose-sex">
 							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  id="student_sex" name="user.sex">
-							        	<option class="hover 男">男</option>
-							        	<option class="hover 女">女</option>
+							      	<select class="hover"  id="stu_sex" name="user.sex">
+							        	<option class="hover">男</option>
+							        	<option class="hover">女</option>
 							      	 </select>		 
 							    </td>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" readonly="readonly" id="student_userId" name="user.userId">
+										<input type="text" class="hover" readonly="readonly" id="stu_userId" name="user.userId">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_collegeName" name="user.collegeName">
+										<input type="text" class="hover" id="stu_collegeName" name="user.collegeName">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_department" name="user.department">
+										<input type="text" class="hover" id="stu_department" name="user.department">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_profession" name="user.profession">
+										<input type="text" class="hover" id="stu_profession" name="user.profession">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_classroom" name="user.classroom">
+										<input type="text" class="hover" id="stu_classroom" name="user.classroom">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										身份证号&nbsp;
-										<input type="text" class="hover" id="student_idcard" name="user.idcard">
+										<input type="text" class="hover" id="stu_idcard" name="user.idcard">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="student_phone" name="user.phone">
+										<input type="text" class="hover" id="stu_phone" name="user.phone">
 									</td>
 								</tr>
 
@@ -505,17 +505,13 @@
 		</div>
 		
 			
-<<<<<<< HEAD
 		<!--模态框查看学生、教师信息-->
-=======
-		<!--模态框查看学生详细信息-->
->>>>>>> origin/lrx
 		<div class="modal fade" id="myModal_eye_student">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<!-- 模态框头部 -->
 					<div class="modal-header">
-						<h4 class="modal-title">学生详细信息</h4>
+						<h4 class="modal-title">个人信息</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
 
@@ -685,15 +681,17 @@
 	function loadStudentList(page) {
 		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
 			var userList=data.userList;
-			  totalPage=data.totalPage;      
+			  totalPage=data.totalPage;
 			  var htm = "";
 			  var ht = "";
 			  for(var i=0;i<userList.length;i++) {
 				  	var number=(page-1)*10;
 				  	number +=i+1;
 		 			htm += getItemHtml(i, userList[i],number);
+		 			/* alert("123456"); */
 		 		}
 			 $('#student-list-box').html(htm);
+			
 			 for(var j=1;j<=totalPage;j++) {
 				 ht += getLiHtml(j);
 			 }
@@ -732,15 +730,9 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-<<<<<<< HEAD
 			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
 			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
 			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-=======
-		    +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>" 
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
->>>>>>> origin/lrx
 			+"</td>"
 			+"</tr>";
 		return htm;
@@ -765,18 +757,12 @@
 		return ht;    
 	}
 	function studentInfo(node) {
-<<<<<<< HEAD
 		var td = node.childNodes;
 		var userId = td[0].id;
-=======
-		var td =node.parentNode.parentNode.childNodes;
-		var userId = td[2].innerHTML;
->>>>>>> origin/lrx
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
 			$('#student-info-box').html(info);
-<<<<<<< HEAD
 			$('#stu_name').val(user.name);
 			$('#stu_sex').val(user.sex);
 			$('#stu_userId').val(user.userId);
@@ -786,19 +772,6 @@
 			$('#stu_classroom').val(user.classroom);
 			$('#stu_idcard').val(user.idcard);
 			$('#stu_phone').val(user.phone);
-=======
-			//修改模态框显示学生信息
-			
-			$('#student_name').val(user.name);
-			$('#student_sex').find("."+user.sex).attr("checked", "checked");
-			$('#student_userId').val(user.userId);
-			$('#student_collegeName').val(user.collegeName);
-			$('#student_department').val(user.department);
-			$('#student_profession').val(user.profession);
-			$('#student_classroom').val(user.classroom);
-			$('#student_idcard').val(user.idcard);
-			$('#student_phone').val(user.phone);
->>>>>>> origin/lrx
 		})
 	}	
 	function getInfoHtml(obj) {
@@ -866,7 +839,6 @@
 			 	},function(data){
 			 		alert(data.result);    //message为user返回信息
 			 		if(data.result=="用户创建成功"){
-			 			alert(data.result);
 			 			location.href="staffs_student.jsp";
 			 		}else {
 			 			return false;
@@ -876,41 +848,29 @@
 	}
 	
 	function editStudent() {
-<<<<<<< HEAD
 		/* if(!checkInput()){alert("123"); return false;}  */
-=======
-		alert(checkInput());
-		if(checkInput()==false){
-			alert("333");
-			return false;
-			} else{
->>>>>>> origin/lrx
 		$.post("editUser",
 					{	
-						"user.name":$('#student_name').val(),
-						"user.sex":$('#student_sex').val(),
-						"user.userId":$('#student_userId').val(),
-						"user.collegeName":$('#student_collegeName').val(),
-						"user.department":$('#student_department').val(),
-						"user.profession":$('#student_profession').val(),
-						"user.classroom":$('#student_classroom').val(),
-						"user.idcard":$('#student_idcard').val(),
-						"user.phone":$('#student_phone').val()
+						"user.name":$('#stu_name').val(),
+						"user.sex":$('#stu_sex').val(),
+						"user.userId":$('#stu_userId').val(),
+						"user.collegeName":$('#stu_collegeName').val(),
+						"user.department":$('#stu_department').val(),
+						"user.profession":$('#stu_profession').val(),
+						"user.classroom":$('#stu_classroom').val(),
+						"user.idcard":$('#stu_idcard').val(),
+						"user.phone":$('#stu_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-<<<<<<< HEAD
 							alert(data.result);
-=======
-							alert("修改成功!");
->>>>>>> origin/lrx
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
 	}
 
 	function deleteStudent(node) {
-		var td = node.parentNode.parentNode.childNodes;
-		var userId = td[2].innerHTML;
+		var td = node.childNodes;
+		var userId = td[0].id;
 		if(confirm("确定要删除该用户吗？")) {
 			$.post("deleteUser",{"user.userId":userId},function(data) {
 				if(data.result=="删除成功") {
@@ -931,17 +891,5 @@
 		}  
 	}
 	
-	function checkInput() {
-		var filled;
-		$("#editStudent input[type=text]").each(function() {
-			if($(this).val()=="") {
-				alert("请将信息填写完整");
-				filled=false;
-			}else{
-				filled=true;
-			}
-		});
-		return filled;
-	}
 </script>
 </html>

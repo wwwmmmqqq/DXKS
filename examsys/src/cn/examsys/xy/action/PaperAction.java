@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Paper;
 import cn.examsys.common.CommonAction;
 import cn.examsys.common.Tool;

@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeSet;
 
 import org.apache.commons.collections.map.HashedMap;
@@ -30,8 +29,6 @@ import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.ExamDaoImpl;
 import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.vo.AnswerVO;
-import cn.examsys.lrx.vo.GradeVO;
-import cn.examsys.lrx.vo.PaperWithExamVO;
 
 @Service("examService")
 @Transactional
@@ -85,7 +82,6 @@ public class ExamServiceImpl implements ExamService {
 	public boolean todo(User sessionUser, int paperSid
 			, int questionRef, int optionRef, int trueOrFalse
 			, String fillsAnswer, String subjectiveAnswer) {
-		
 		Question q;
 		try {
 			q = dao.findOneByHql("from Question where sid=?", new Object[]{questionRef});
@@ -93,7 +89,6 @@ public class ExamServiceImpl implements ExamService {
 			e1.printStackTrace();
 			return false;
 		}
-		
 		Answersheet answer = null;
 		if (q.getType().equals(Conf.Question_Single)) {
 			//如果是单选题，题目下面的答案都清除掉
@@ -126,7 +121,6 @@ public class ExamServiceImpl implements ExamService {
 		answer.setOptionRef(optionRef);
 		answer.setSubjectiveAnswer(subjectiveAnswer);
 		answer.setType(q.getType());
-		
 		try {
 			//计分
 			Option theOption = dao.findOneByHql("from Option where sid=?"
@@ -246,44 +240,10 @@ public class ExamServiceImpl implements ExamService {
 			return null;
 		}
 	}
-	
 	@Override
-	public List<PaperWithExamVO> loadInvitedExamPapers(User sessionUser, int page) {
-		try {
-			List<Exam> exams = dao.findByHql("from Exam where locate(?, invitee)>0 order by sid desc"
-					, new Object[]{sessionUser.getUserId()}, page);
-			Map<Integer, Exam> examMap = new HashMap<>();
-			StringBuilder examIds = new StringBuilder();
-			
-			for(int i=0;i<exams.size();i++) {
-				examMap.put(exams.get(i).getSid(), exams.get(i));
-				examIds.append(exams.get(i).getSid() + ",");
-			}
-			
-			List<Paper> papers = dao.findByHql("from Paper where locate(examRef, ?)>0"
-					, new Object[]{examIds.toString()});
-			
-			List<PaperWithExamVO> list = new ArrayList<>();
-			for (int i = 0; i < papers.size(); i++) {
-				list.add(new PaperWithExamVO(papers.get(i), examMap.get(papers.get(i).getExamRef())));
-			}
-			
-			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	@Override
-	public List<GradeVO> loadGradesByPaper(User sessionUser, int sid) {
-		try {
-			dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
-					+ " from Grade g, User u, Paper p where ");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+	public boolean todo1() {
+		System.out.println("TODO 1");
+		return false;
 	}
 	
 }

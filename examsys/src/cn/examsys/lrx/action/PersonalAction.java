@@ -12,11 +12,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.examsys.bean.Grade;
-import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
 import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
-import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PersonalService;
 import cn.examsys.lrx.vo.PersonalHomePageVO;
 
@@ -37,9 +35,6 @@ public class PersonalAction extends CommonAction {
 	
 	@Autowired
 	PersonalService serivce;
-	
-	@Autowired
-	ExamService examService;
 	
 	public String loadStuIndexDatas() {
 		serivce.loadStuIndexDatas(getSessionUser());
@@ -83,7 +78,7 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
-	/*@Action(value="/loadMyGrades"
+	@Action(value="/loadMyGrades"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyGrades() {
@@ -94,7 +89,7 @@ public class PersonalAction extends CommonAction {
 			e.printStackTrace();
 		}
 		return aa;
-	}*/
+	}
 	
 	String oldPsw, newPsw;
 	public void setOldPsw(String oldPsw) {
@@ -107,26 +102,13 @@ public class PersonalAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String updatePsw() {
+		
 		boolean bo = serivce.updatePsw(getSessionUser(), oldPsw, newPsw);
 		if (!bo) {
 			setResult("旧密码错误");
 		}
 		return aa;
 	}
-	
-	int paper;
-	public void setPaper(int paper) {
-		this.paper = paper;
-	}
-	
-	/*@Action(value="/loadPaperByIdWithAnswer"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
-	public String loadPaperByIdWithAnswer() {
-		//TODO 加载试卷内容和答案
-		List<Question> li = examService.loadQuestionList(paper);
-		return aa;
-	}*/
 	
 	@Override
 	public String getResult() {

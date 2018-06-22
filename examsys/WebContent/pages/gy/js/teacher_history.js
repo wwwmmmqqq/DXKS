@@ -1,5 +1,11 @@
 //	分页
 var currentPage = 1;
+	loadDatas(2);
+	function loadDatas(page) {
+		$.post("selectUserList",{"user.type":"Single","page":page},callback)
+		currentPage = page;
+	}
+	
 	function nextPage() {
 		currentPage ++;
 		loadDatas(currentPage);
@@ -12,79 +18,42 @@ var currentPage = 1;
 	}
 //	获取历史成绩
 	var papsersid=getParam("sid");
-	function loadGradesByPaper(paperSid){
-		 $.post("loadGradesByPaper", {
+	loadHistoryScore(papsersid);
+	
+	//获取url中的参数
+function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
+}
+	function loadHistoryScore(){
+		 $.post("loadHistoryScore", {
 			  "paper.sid":paperSid
+			  ,"page":currentPage
 		  }, function(data) {
 			  var scoreList = data.list;
 			  var htm = "";
-			  for(var i=0;i<scoreList.length;i++) {
-				  htm += getScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i);
-			  }
-			  $('#studentScore tbody').html(htm);
-		  });
-	}
-/*	获取教师所接受参加过得考试*/
-	var examSid = getParam("sid");
-	loadPapersByExam(examSid);
-	function loadPapersByExam() {
-		  $.post("loadInvitedExamPapers", {
-			  "page":1
-		  }, function(data) {
-			  var list = data.list;
-			  var htm = "";
-			  for(var i=0;i<list.length;i++) {
-				 htm+=getMyExam(i,list[i].exam,list[i].paper);
+			  for(var i=0;i<paperList.length;i++) {
+				  html += getScores(i+1, li[i].subjectName, li[i].collegeName, li[i].time);
 			  }
 			  $('#data-box').html(htm);
 		  });
-	  }
-	
-	
-	//获取url中的参数
-	function getParam(name) {
-	  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
-	  var result = window.location.search.substr(1).match(reg); //匹配目标参数
-	  if (result != null) 
-	  	return decodeURIComponent(result[2]);
-	  return null;
 	}
-	function getMyExam(i,exam,paper) {
+	
+	function getScores(obj) {
 		var htm = "<tr>"
-		+"	<td>"+(i+1)+"</td>"
-		+"	<td>"+paper.subjectName+"</td>"
-		+"	<td>"+exam.invitee+"</td>"
-		+"	<td>"+exam.periodStart+"-"+exam.periodEnd+"</td>"
+		+"	<td>"+obj.index+"</td>"
+		+"	<td>"+obj.subjectName+"</td>"
+		+"	<td>"+obj.collegeName+"</td>"
+		+"	<td>"+obj.time+"</td>"
+		+"	<td class='td_correct' data-toggle='modal' data-target='#myModal_correct'>"
 		+"	<td>"
-		+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' onclick='loadGradesByPaper("+paper.sid+")' ></i>"
+		+"		<i class='fa fa-eye' ></i>"
 		+"	</td>"
 		+"</tr>";
 		return htm;
 	}
-	function getScore(paper,user,grade,i){
-		var htm=
-			"<tr>"
-		+"<td>1</td>"
-		+"<td>"+user.userId+"</td>"
-		+"<td>"+user.name+"</td>"
-		+"<td>软件学院</td>"
-		+"<td>"+user.profession+"</td>"
-		+"<td>一班</td>"
-		+"<td>"+paper.subjectName+"</td>"
-		+"<td>"+grade.point+"</td>"
-		+"<td>"+i+"</td>"
-		+"<td>"+(i+1)+"</td>"
-		+"</tr>"
-		return htm;
-	}
-/*成绩导出*/
-	function exportScore(){
-		var tr=$('#studentScore tbody tr');
-		tr.each(function(){
-			$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
-		})
-		$('.all-choose').show();
-		$(this).html("确认导出 ");
-		$(this).addClss('.sure-export');
-	}
+
 	

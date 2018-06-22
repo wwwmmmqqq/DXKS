@@ -48,7 +48,9 @@ function callback(data) {
 	totalPage=data.totalPage;
 	var li = data.userList;// 学生列表
 	for (var i = 0; i < li.length; i++) {
-		html += getHtmls(i + 1, li[i].name, li[i].userId, li[i].collegeName,
+		var number=(currentPage-1)*10;
+	  	number +=i+1;
+		html += getHtmls(number, li[i].name, li[i].userId, li[i].collegeName,
 				li[i].type, li[i].email);
 	}
 	$('#data-box').html(html);
@@ -81,7 +83,7 @@ function getHtmls(index, name, stuid, collegeName, type, email) {
 			+ "	<td>"
 			+ "		<i class='fa fa-eye see_information'  data-toggle='modal' data-target='#myModal_see_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
 			+ "		<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_correct_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
-			+ "		<i class='fa fa-trash-o' onclick='myFunction1()'></i>"
+			+ "		<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+stuid+"' /></i>"
 			+ "	</td>" + "</tr>";
 	return htm;
 }
@@ -149,11 +151,8 @@ function administrationInfo(node) {
 		$('#administration_collegeName').html(user.collegeName);
 		$('#administration_email').html(user.email);
 		$('#administration_phone').html(user.phone);
-
 	})
 }	
-
-
 
 function getInfoHtml(obj) {
 	var info = "<tr>"

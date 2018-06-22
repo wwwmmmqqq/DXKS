@@ -650,7 +650,7 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
-		$.post("selectUserList",{"user.type":"教师","page":page},function(data) {
+		$.post("selectUserList",{"user.type":"teacher","page":page},function(data) {
 			  var userList=data.userList;
 			  totalPage=data.totalPage;      
 			  var htm = "";
@@ -730,6 +730,7 @@
 			var info = getInfoHtml(user);
 			$('#teacher-info-box').html(info);
 			
+			alert("id:"+user.userId);
 			$('#teacher_name').val(user.name);
 			$('#teacher_sex').find("."+user.sex).attr("checked", "checked");
 			$('#teacher_userId').val(user.userId);
@@ -823,6 +824,7 @@
 						"user.idcard":$('#teacher_idcard').val(),
 						"user.phone":$('#teacher_phone').val()
 					},function(data) {
+						alert("ll");
 						if(data.result=="编辑用户成功") {
 							alert("修改成功！");
 					  	location.href="staffs_teacher.jsp";

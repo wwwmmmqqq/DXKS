@@ -162,7 +162,7 @@
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
-			    						<li>正确答案：
+			    						<li>${s2.last?"正确答案：":""}
 				    						<span style="color: red;">
 				    							${("Single Multiple TrueOrFalse".indexOf(que.type)>0 && queOpt.isAnswer==1)?optionLabel:""}
 				    							${que.type=="Fills"?queOpt.fillsText:""}
@@ -170,7 +170,18 @@
 				    						</span>
 			    						</li>
 		    						</s:iterator>
-		    					
+		    						<%-- <li>正确答案：
+		    							<span style="color: red;">
+				    						${que.type=="Single"?queOpt.isAnswer:""}
+				    						${que.type=="Fills"?queOpt.fillsText:""}
+				    						${que.type=="Multiple"?queOpt.isAnswer:""}
+				    						${que.type=="Subjective"?queOpt.subjectiveText:""}
+				    						${que.type=="TrueOrFalse"?queOpt.isAnswer:""}
+			    						</span>
+		    						</li> --%>
+		    						<%-- <s:if  test="#optque.isAnswer==1">
+		    						<li>正确答案：${optque.content }</li>
+		    						</s:if> --%>
 		    					</ul>
 		    					
 		    					
