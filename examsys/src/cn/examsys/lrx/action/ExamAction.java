@@ -201,9 +201,9 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadGradesByPaper() {
-		//list = service.loadGradesByPaper(getSessionUser(), paper.getSid());
+		list = service.loadGradesByPaper(getSessionUser(), paper.getSid());
 		
-		List<GradeVO> li = new ArrayList<GradeVO>();
+		/*List<GradeVO> li = new ArrayList<GradeVO>();
 		for (int i = 0; i < 10; i++) {
 			Grade grade = new Grade();
 			User user = new User();
@@ -220,7 +220,7 @@ public class ExamAction extends CommonAction {
 				e.printStackTrace();
 			}
 		}
-		list = li;
+		list = li;*/
 		return aa;
 	}
 	

@@ -40,6 +40,7 @@ public class QuestionListTool {
 				questionList.get(i).setOptions(mp.get(questionList.get(i).getSid()));
 			}
 			
+			//题目类型排序
 			Collections.sort(questionList, new Comparator<Question>() {
 				String type_arr[] = new String[] {
 						 Conf.Question_Single
