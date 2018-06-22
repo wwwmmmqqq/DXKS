@@ -260,43 +260,23 @@
 					<div class="modal-body">
 						<table>
 							<tbody>
-							    <tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="te_userId" >
-									</td>
-								</tr>
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="te_name">
+										<input type="text" class="hover" id="teach_name">
 									</td>
 								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover"id="te_collegeName" >
-									</td>
-								</tr>
-								<tr>
-									<td>
-										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="te_profession">
-									</td>
-								</tr>
-								<tr>
-								    <td class="choose-sex">
+								<td class="choose-sex">
 							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  name="user.sex" id="te_sex">
+							      	<select class="hover"  name="user.sex" id="teach_sex">
 							        	<option class="hover">男</option>
 							        	<option class="hover">女</option>
 							      	 </select>		 
-							        </td>
-								</tr>
+							    </td>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="te_phone">
+										<input type="text" class="hover" id="teach_phone">
 									</td>
 								</tr>
 
@@ -812,17 +792,15 @@
 	
 	 function createTeacher() {
 		 $.post("createUser",
-				 {	"user.userId":$('#te_userId').val(),   //用户id
-			        "user.name":$('#te_name').val(),   //用户名
-			        "user.college":$('#te_college').val(),   //用户学校
-			        "user.profession":$('#te_profession').val(),   //用户专业
-			 		"user.type":"教师",					//用户类型
-			 		"user.sex":$('#te_sex').val(),	//用户性别
-			 		"user.phone":$('#te_phone').val(),
+				 {	"user.userId":Math.random()*9999+"",   //用户id
+			        "user.name":$('#teach_name').val(),   //用户名
+			 		"user.type":"teacher",					//用户类型
+			 		"user.sex":$('#teach_sex').val(),	//用户性别
+			 		"user.phone":$('#teach_phone').val(),
 			 		"user.psw":"000000"
 			 	},function(data){
-			 		/* alert("hhh");
-			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone);  */
+			 		alert($('#teach_phone').val());
+			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
 			 		alert(data.result);    //message为user返回信息
 			 		location.href="staffs_teacher.jsp";
 				 }

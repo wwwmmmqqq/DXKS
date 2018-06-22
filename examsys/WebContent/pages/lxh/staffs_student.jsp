@@ -259,40 +259,34 @@
 					<div class="modal-body">
 						<table>
 							<tbody>
-							    <tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="st_userId" >
-									</td>
-								</tr>
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="st_name" >
+										<input type="text" class="hover" id="" >
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="st_collegeName">
+										<input type="text" class="hover" >
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover"  id="st_profession">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover"  id="st_sex">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover"  id="st_phone">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 

@@ -172,7 +172,7 @@
 		</div>
 	</section>
 		<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal_information">
+		<div class="modal fade" id="myModal-information">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
@@ -189,49 +189,49 @@
 								<tr>
 									<td>
 										姓名
-										<div class="tb_information">${session.user.name}</div>
+										<div class="tb_information">慕雪</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										工号
-										<div class="tb_information">${session.user.userId}</div>
+										<div class="tb_information">17001</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										密码
-										<div class="tb_information">${session.user.psw}</div>
+										<div class="tb_information">123456</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学校
-										<div class="tb_information">${session.user.collegeName}</div>
+										<div class="tb_information">萍乡学院</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学院
-										<div class="tb_information">${session.user.department}</div>
+										<div class="tb_information">信计学院</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										性别
-										<div class="tb_information">${session.user.sex}</div>
+										<div class="tb_information">女</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式
-										<div class="tb_information">${session.user.phone}</div>
+										<div class="tb_information">1770313147</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										邮箱
-										<div class="tb_information">${session.user.email}</div>
+										<div class="tb_information">1770313147@qq.com</div>
 									</td>
 								</tr>
 							</tbody>
@@ -620,6 +620,7 @@ var totalPage=1;
 function loadMyExamList(page) {
 	  $.post("loadMyExamList", {"page":page}, function(data) {
 		  var examList = data.list;
+		  alert(examList);
 		  var htm = "";
 		  var ht="";
 		  for(var i=0;i<examList.length;i++) {
@@ -695,24 +696,24 @@ function prevPage() {
 		
 } */
 
-function editTest() {
-	if(checkInput()==false){alert("未做任何修改"); return false;} 
+function editStudent() {
+	if(checkInput()==0){alert("未做任何修改"); return false;} 
 	else{
 	$.post("editUser",
 				{	
-					"user.name":$('#test_title').val(),
-					"user.sex":$('#test_time').val(),
-					"user.userId":$('#test_periodStart').val(),
-					"user.collegeName":$('#test_periodEnd').val(),
-					"user.department":$('#test_invitee').val(),
-					"user.profession":$('#test_profession').val(),
-					"user.classroom":$('#test_classroom').val(),
-					"user.idcard":$('#test_idcard').val(),
-					"user.phone":$('#test_phone').val()
+					"user.name":$('#stu_name').val(),
+					"user.sex":$('#stu_sex').val(),
+					"user.userId":$('#stu_userId').val(),
+					"user.collegeName":$('#stu_collegeName').val(),
+					"user.department":$('#stu_department').val(),
+					"user.profession":$('#stu_profession').val(),
+					"user.classroom":$('#stu_classroom').val(),
+					"user.idcard":$('#stu_idcard').val(),
+					"user.phone":$('#stu_phone').val()
 				},function(data) {
 					if(data.result=="编辑用户成功") {
 						alert("修改成功！");
-				  	location.href="test.jsp";
+				  	location.href="staffs_student.jsp";
 			  	}
 		  });
 	}
@@ -724,7 +725,7 @@ function deleteTest(node) {
 	if(confirm("确定要删除该考次吗？")) {
 		$.post("deleteUser",{"user.userId":userId},function(data) {
 			if(data.result=="删除成功") {
-					location.href="test.jsp";
+					location.href="staffs_student.jsp";
 			}
 	  }); 
 	}  
