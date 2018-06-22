@@ -102,8 +102,8 @@ public class PersonalAction extends CommonAction {
 		this.newPsw = newPsw;
 	}
 	@Action(value="/updatePsw"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
+			, results={@Result(type="json")}
+			, params={"contentType", "text/html"})
 	public String updatePsw() {
 		
 		boolean bo = serivce.updatePsw(getSessionUser(), oldPsw, newPsw);
