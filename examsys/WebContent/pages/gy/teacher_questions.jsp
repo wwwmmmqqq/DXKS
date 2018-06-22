@@ -85,9 +85,7 @@
 		    	<div class="bred">
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread">
-		    				<li>
-		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
-		    				</li>
+		    				<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
 		    				<li>
 		    					<a href="jsshowpaper.jsp">题库管理</a>
 		    				</li>

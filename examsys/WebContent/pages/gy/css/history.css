@@ -727,3 +727,6 @@ button{
 	height: 200px;
 	margin:0 auto;
 }
+.foot .all-choose{
+	float:left;
+}
