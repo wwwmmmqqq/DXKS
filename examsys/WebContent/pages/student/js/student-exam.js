@@ -95,7 +95,7 @@ function markClick() {
 }
 
 /* 倒计时 */
-/*function startTimeCounting(t0, t1) {
+function startTimeCounting(t0, t1) {
 	var a = new Date(t0);
 	var b = new Date(t1);
 	var dms = b.valueOf() - a.valueOf();//结束时间减去当前时间=剩余时间
@@ -120,4 +120,7 @@ function markClick() {
 			else return n;
 	}
 }
+<<<<<<< HEAD
 */
+=======
+>>>>>>> origin/lrx

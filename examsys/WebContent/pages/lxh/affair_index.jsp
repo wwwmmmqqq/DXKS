@@ -154,6 +154,7 @@
 		    		</div>
 		  
 		    		<div class="jwchaxun">
+		    			<p>共查询到  条记录</p>
 		    			<div class="operation"> 
 		    				<ul>
 		    					<li>

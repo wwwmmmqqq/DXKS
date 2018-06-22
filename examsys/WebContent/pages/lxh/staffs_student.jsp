@@ -505,7 +505,7 @@
 		</div>
 		
 			
-		<!--模态框查看学生、教师信息-->
+		<!--模态框查看学生详细信息-->
 		<div class="modal fade" id="myModal_eye_student">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -763,15 +763,17 @@
 			var user = data.user;
 			var info = getInfoHtml(user);
 			$('#student-info-box').html(info);
-			$('#stu_name').val(user.name);
-			$('#stu_sex').val(user.sex);
-			$('#stu_userId').val(user.userId);
-			$('#stu_collegeName').val(user.collegeName);
-			$('#stu_department').val(user.department);
-			$('#stu_profession').val(user.profession);
-			$('#stu_classroom').val(user.classroom);
-			$('#stu_idcard').val(user.idcard);
-			$('#stu_phone').val(user.phone);
+			//修改模态框显示学生信息
+			
+			$('#student_name').val(user.name);
+			$('#student_sex').find("."+user.sex).attr("checked", "checked");
+			$('#student_userId').val(user.userId);
+			$('#student_collegeName').val(user.collegeName);
+			$('#student_department').val(user.department);
+			$('#student_profession').val(user.profession);
+			$('#student_classroom').val(user.classroom);
+			$('#student_idcard').val(user.idcard);
+			$('#student_phone').val(user.phone);
 		})
 	}	
 	function getInfoHtml(obj) {
@@ -848,7 +850,11 @@
 	}
 	
 	function editStudent() {
-		/* if(!checkInput()){alert("123"); return false;}  */
+		alert(checkInput());
+		if(checkInput()==false){
+			alert("333");
+			return false;
+			} else{
 		$.post("editUser",
 					{	
 						"user.name":$('#stu_name').val(),
@@ -862,10 +868,11 @@
 						"user.phone":$('#stu_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-							alert(data.result);
+							alert("修改成功!");
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
+		}
 	}
 
 	function deleteStudent(node) {
@@ -889,6 +896,19 @@
 				}
 		  });
 		}  
+	}
+	
+	function checkInput() {
+		var filled;
+		$("#editStudent input[type=text]").each(function() {
+			if($(this).val()=="") {
+				alert("请将信息填写完整");
+				filled=false;
+			}else{
+				filled=true;
+			}
+		});
+		return filled;
 	}
 	
 </script>
