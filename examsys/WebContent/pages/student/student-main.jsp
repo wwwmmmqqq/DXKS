@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%
@@ -16,12 +15,13 @@
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 		<header>
 		<nav id="top-nav">
 				<div id="main-nav-content">
-					<a href="student-index.html" class="logo">
+					<a href="student-index.html" clas="logo">
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
@@ -268,5 +268,4 @@ function getExam(obj){
 
 </script>
 </body>
-
 </html>
