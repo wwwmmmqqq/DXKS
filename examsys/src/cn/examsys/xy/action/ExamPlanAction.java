@@ -50,15 +50,20 @@ public class ExamPlanAction extends CommonAction {
 	public String createExamPlan() {
 		exam.setUserId(getSessionUserId());
 		exam.setState(0);
-		exam.setTime(Tool.time());
 		user=userService.SelectOneUser(getSessionUserId());
-		exam.setInvitee(user.getCollegeName());
+		exam.setInvitee(user.getCollegeName()+" "+exam.getInvitee());
 		boolean ex=examPlanService.createExamPlan(exam);
 		if(!ex) {
 			setResult("创建失败");
 		}else {
 			setResult("创建成功");
 		}
+		return aa;
+	}
+	
+	/*修改考试计划*/
+	public String editExamPaln() {
+		/*boolean currentExam=examService.editExamPlan(exam);*/
 		return aa;
 	}
 	

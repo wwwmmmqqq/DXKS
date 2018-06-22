@@ -99,7 +99,7 @@ public class JumpAction extends CommonAction {
 	}
 	
 	@Action(value="/showItemBankListByUserJump"
-			,results={@Result(name="success",location="/pages/gy/teacher_showpaper.jsp")})
+			,results={@Result(name="success",location="/pages/gy/jsshowpaper.jsp")})
 	public String showItemBankListByUser(){
 		/**
 		 * 数据测试
@@ -138,7 +138,43 @@ public class JumpAction extends CommonAction {
 		return SUCCESS;
 	}
 	
-
+	@Action(value="/showItemBankListByTypeJump",results={@Result(name="success",location="/pages/gy/affair_hand_volume.jsp")})
+	public String showItemBankListByType(){
+		
+		if(getSessionUser().getType().contains("admin")) {              //管理员查看类型所有
+			System.out.println("Action按类型查看"+question.getType());
+			questionList=itemBankService.selectItemQuestionListByType(question.getType(),page);
+			/*题目类型列表总页数*/
+			totalPage=itemBankService.selectItemQuestionListToalPageByType(question.getType());
+			System.out.println("Action question Number"+questionList.size());
+			
+		}else { 
+			System.out.println("Action层教师查看");           //教师查看自己的
+			questionList=itemBankService.selectTeacherItemQuestionListByType(question.getType(),getSessionUserId(),page);
+                                                                           		
+			/*教师题目列表总页数*/
+			totalPage=itemBankService.selectTeacherItemQuestionListToalPageByType(question.getType(),getSessionUserId());
+			System.out.println("Action question Number"+questionList.size());
+		}
+		
+		
+		/*查看对应question的option*/
+		for(int i=0;i<questionList.size();i++){
+			option=itemBankService.selectItemOptionByQuestion(questionList.get(i).getSid());
+			System.out.println(option.size());
+			map.put("option["+i+"]", option);
+		}
+		System.out.println("Action option Number"+map.size());
+		
+		if(map.isEmpty()||questionList.isEmpty()){
+			System.out.println("题库查看失败！");
+			setResult("题库查看失败！");
+		}
+		System.out.println("题库查看成功！");
+		setResult("题库查看成功！");
+		return SUCCESS;
+	}
+	
 	/*@Action(value="/loginOutJump"
 			,results={@Result(name="aa",location="/pages/gy/gy_login.jsp")})
 	public String loginOut() {

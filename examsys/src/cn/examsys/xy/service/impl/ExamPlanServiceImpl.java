@@ -13,6 +13,7 @@ import cn.examsys.xy.service.ExamPlanService;
 public class ExamPlanServiceImpl implements ExamPlanService {
 	@Autowired
 	ExamPlanDao examPlanDao;
+	
 	@Override
 	public boolean createExamPlan(Exam exam) {
 		// TODO Auto-generated method stub

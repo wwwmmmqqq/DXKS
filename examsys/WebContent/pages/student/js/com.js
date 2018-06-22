@@ -1,5 +1,5 @@
 $(function (){
-	modifyInfo();
+	/*modifyInfo();
 	function modifyInfo(){
 		
 		var sname=$('.basic-info input[name="name"]').val();
@@ -14,14 +14,13 @@ $(function (){
 		  fields:["name","sex","collegeName","department","profession","idcard","phone","email"],
 		  values:[sname,ssex,scollegeName,sdepartment,sprofession,sidcard,sphone,semail]
 	  }, function(data) {
-		  alert("s")
 		  if(data.result == 'success') {
 			  alert('修改成功');
 		  } else {
 			  alert('修改失败');
 		  }
 	  });
-	}
+	}*/
  
 })
   function setPassword(){

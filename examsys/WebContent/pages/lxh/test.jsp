@@ -74,13 +74,14 @@
 			</div>
 		  	<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
-			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
-			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
-			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
+			  		<ul class="side_nav">
+			  		<a href="staffs_student.jsp"><li class="side_nav1">学生信息管理</li></a>
+			  		<a href="staffs_teacher.jsp"><li class="side_nav1">教师信息管理</li></a>	
+			  		<a href="affair_index.jsp"><li class="side_nav1">试卷管理</li></a>
+			  		<a href="affair_hand_volume.jsp"><li class="side_nav1">手动组卷</li></a>
+			  		<a href="affair_intel_volume.jsp"><li class="side_nav1">智能组卷</li></a>
+			  		<a href="history_staffs.jsp"><li class="side_nav1">历史成绩</li></a>	
+			  		<a href="test.jsp"><li class="side_nav1">考次计划</li></a>
 			  	</ul>
 		  </div>
 		</nav>
@@ -92,7 +93,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="#"><i class="fa fa-home"></i> Home</a>
+		    					<a href="staffs_student.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>考次计划</li>
 		    			</ul>
@@ -544,67 +545,58 @@
 		    </div>
   		</div>
 			
-		<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal-information">
+		<!--模态框修改考次信息 -->
+		<div class="modal fade" id="myModal_check">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
 					<!-- 模态框头部 -->
 					<div class="modal-header">
-						<h4 class="modal-title">个人信息</h4>
+						<h4 class="modal-title">修改考次信息</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
 
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
-							<tbody>
+							<tbody id="editStudent">
 								<tr>
 									<td>
-										姓名
-										<div class="tb_information">慕雪</div>
+										考试计划名称:
+										<input type="text" class="hover" id="test_title" name="user.name">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										工号
-										<div class="tb_information">17001</div>
+										计&nbsp;&nbsp;划&nbsp;&nbsp;时&nbsp;&nbsp;间:
+										<input type="text" class="hover" id="test_time" name="user.name">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										密码
-										<div class="tb_information">123456</div>
+										计划开始时间:
+										<input type="text" class="hover" id="test_periodStart" name="user.name">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										学校
-										<div class="tb_information">萍乡学院</div>
+										计划结束时间:
+										<input type="text" class="hover" id="test_periodEnd" name="user.name">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										学院
-										<div class="tb_information">信计学院</div>
+										受&nbsp;&nbsp;邀&nbsp;&nbsp;学&nbsp;&nbsp;校:
+										<input type="text" class="hover" id="test_invitee" name="user.name">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										性别
-										<div class="tb_information">女</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										联系方式
-										<div class="tb_information">1770313147</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										邮箱
-										<div class="tb_information">1770313147@qq.com</div>
+										&nbsp;&nbsp;是&nbsp;&nbsp;否&nbsp;&nbsp;完&nbsp;&nbsp;成:&nbsp;&nbsp;&nbsp;&nbsp;
+										<select class="hover"  id="test_state" name="user.sex">
+							        	<option class="hover">是</option>
+							        	<option class="hover">否</option>
+							      	 </select>	
 									</td>
 								</tr>
 							</tbody>
@@ -614,12 +606,13 @@
 
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary add" onclick="editTest();">修改</button>
 					</div>
+
 				</div>
 			</div>
 		</div>
-	</div>
 	</body>
 <script>
 loadMyExamList(1);
@@ -692,7 +685,7 @@ function prevPage() {
 	if(currentPage>=2) 
 		loadStudentList(--currentPage);
 }
-function jumpPage() {
+/* function jumpPage() {
 	var juPage=$('#jpage').html();
 	alert(juPage);
 	if(currentPage==juPage || juPage<1 || juPage>totalPage){
@@ -702,6 +695,62 @@ function jumpPage() {
 		
 	}
 		
+} */
+
+function editStudent() {
+	if(checkInput()==0){alert("未做任何修改"); return false;} 
+	else{
+	$.post("editUser",
+				{	
+					"user.name":$('#stu_name').val(),
+					"user.sex":$('#stu_sex').val(),
+					"user.userId":$('#stu_userId').val(),
+					"user.collegeName":$('#stu_collegeName').val(),
+					"user.department":$('#stu_department').val(),
+					"user.profession":$('#stu_profession').val(),
+					"user.classroom":$('#stu_classroom').val(),
+					"user.idcard":$('#stu_idcard').val(),
+					"user.phone":$('#stu_phone').val()
+				},function(data) {
+					if(data.result=="编辑用户成功") {
+						alert("修改成功！");
+				  	location.href="staffs_student.jsp";
+			  	}
+		  });
+	}
+}
+
+function deleteTest(node) {
+	var td = node.parentNode.parentNode.childNodes;
+	var userId = td[2].innerHTML;
+	if(confirm("确定要删除该考次吗？")) {
+		$.post("deleteUser",{"user.userId":userId},function(data) {
+			if(data.result=="删除成功") {
+					location.href="staffs_student.jsp";
+			}
+	  }); 
+	}  
+	return false;
+}
+
+function Out() {
+	if(confirm("确定要退出吗？")) {
+		$.post("loginOut",null,function(data) {
+			if(data.result=="成功退出") {
+					location.href="../gy/gy_login.jsp";
+			}
+	  });
+	}  
+}
+
+function checkInput() {
+	var fill=ture;
+	$("#editStudent input[type=text]").each(function() {
+		if($(this).val()=="") {
+			alert("请将信息填写完整");
+			fill=ture;
+		}
+	});
 }
 </script>
 </html>
