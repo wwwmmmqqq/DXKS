@@ -83,7 +83,7 @@ function addJw() {
 var jname=$('.add-jw input[name="name"]').val();
 var juserid=$('.add-jw input[name="userid"]').val();
 var jcollegeName=$('.add-jw input[name="collegeName"]').val();
-var jsex=$("input[name='rd']:checked").val();
+var jsex=$("#sex").val();
 var jphone=$('.add-jw input[name="phone"]').val();
 var jmail=$('.add-jw input[name="email"]').val();
 $.post("createUser",

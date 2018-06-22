@@ -78,13 +78,108 @@ var currentPage = 1;
 		return htm;
 	}
 /*成绩导出*/
-	function exportScore(){
+	$('.export').click(function(){
+			var tr=$('#studentScore tbody tr');
+		tr.each(function(){
+			$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
+		})
+		$(this).hide();
+		$('.sureexport').show();
+		$('.all-choose').show();
+		$('.export').removeClass('btn-primary')
+		$('.export').addClass('btn-success sure-export')
+	})
+	/*function exportScore(){
 		var tr=$('#studentScore tbody tr');
 		tr.each(function(){
 			$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
 		})
 		$('.all-choose').show();
-		$(this).html("确认导出 ");
-		$(this).addClss('.sure-export');
-	}
+		$('.export').innerHTML="确认导出"
+		$('.export').removeClass('btn-primary')
+		$('.export').addClass('btn-success')
+			
+	}*/
+	
+/*全选*/
+	$('.all-choose').click(function(){
+		$(' input[name="check"]').each(function(){
+			if ($(this).attr("checked")) {
+				$(this).removeAttr("checked");
+			} else {
+				$(this).attr("checked", "true");
+			}
+		})
+	})
+	/*function allChoose(){
+		$(' input[name="check"]').each(function(){
+			if ($(this).attr("checked")) {
+				$(this).removeAttr("checked");
+			} else {
+				$(this).attr("checked", "true");
+			}
+		})
+	}*/
+
+	/*考试结果正确率判断*/
+	$(function() {
+		var scoreRate = echarts.init(document.getElementById("rate"));
+		scoreRate.setOption({
+			title : {
+				text : "正确率"
+			},
+			backgroundColor : "transparent",
+			itemStyle : {
+				emphasis : {
+					shadowBlur : 200,
+					shadowColor : "rgb(254,67,101)"
+				}
+			},
+			legend : {
+				orient : 'vertical',
+				x : 'left',
+				top : 40,
+				itemWidth : 20,
+				itemHeight : 10,
+				formatter : '{name}',
+				textStyle : {
+					color : '#00000'
+				},
+				data : [ {
+					name : '正确',
+					icon : 'rect'
+				}, {
+					name : '错误',
+					icon : 'rect'
+				} ]
+			},
+			series : [ {
+				name : '正确率',
+				type : 'pie',
+				radius : '55%',
+				center : [ '50%', '60%' ],
+				label : { // 饼图图形上的文本标签
+					normal : {
+						show : true,
+						position : 'inner', // 标签的位置
+						textStyle : {
+							fontWeight : 300,
+							fontSize : 16
+						// 文字的字体大小
+						},
+						formatter : '{d}%'
+
+					}
+				},
+				data : [ {
+					value : 200,
+					name : '正确'
+				}, {
+					value : 800,
+					name : '错误'
+				} ],
+
+			} ]
+		});
+	});
 	

@@ -209,13 +209,12 @@
 							        			<tr>
 							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<!-- <div class="input_checkbox" name="sex">
-															<input type="radio" class="choose" name="1"/>
-															<span>男</span>
-															<input type="radio" class="choose1" name="1"/>
-															<span>女</span>
-														</div> -->
-							        					 <input type="text" class="hover"  name="sex"> 
+							        				<div class="input_checkbox" name="sex" id="sex">
+							        				<select class="form-control ">
+							        				<option value="男">男</option>
+							        				<option value="女">女</option>
+							        				</select>
+														</div> 
 							        				</td>
 							        			</tr>
 							        			<tr>

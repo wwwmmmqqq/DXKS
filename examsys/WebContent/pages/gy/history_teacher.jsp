@@ -273,189 +273,19 @@
 							</tr>
 							</thead>
 							<tbody >
-								<tr>
-									<td>1</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-				
 							</tbody>
 						</table>
-					<ul>
-						<li class="rate"><b>正确率:50%</b></li>
-					</ul>
+					<div id="rate">
+					
+					</div>
 					</div>
 
 					<!-- 模态框底部 -->
 
 					<div class="modal-footer foot">
-
-					<button type="button" class="btn btn-primary  all-choose"  style="display:none">全选</button>
-					<button type="button" class="btn btn-primary  export"  onclick="exportScore()">导出</button>
+					<button type="button" class="btn btn-primary  all-choose"  style="display:none" >全选</button>
+					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </button>
+					<button type="button" class="btn btn-success  sureexport"  style="display:none" >确认导出 </button>
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
@@ -696,6 +526,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 			<script type="text/javascript" src="js/search.js" ></script>
 				<script type="text/javascript" src="js/teacher_history.js" ></script>
+				<script type="text/javascript" src="js/echarts.js"></script>
 	</body>
 
 </html>
