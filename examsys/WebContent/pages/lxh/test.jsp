@@ -32,7 +32,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-							<a href="#">退出系统</a>
+							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -77,8 +77,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
+			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -395,10 +395,66 @@
 							</table> 
 						</div>
 							   
+					 <!-- 模态框底部 -->
+					<div class="modal-footer">
+					   <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
+					  <button type="button" class="btn btn-primary add" onclick="createExamPlan();">添加</button>
+					</div>
+						   
+			   </div>
+		  </div>
+		</div>
+		
+		<!--模态框修改考次-->
+		<div class="modal fade" id="myModal_addexam">
+			<div class="modal-dialog">
+				<div class="modal-content">
+						   
+					<!-- 模态框头部 -->
+					<div class="modal-header">
+						<h4 class="modal-title">修改考次</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+							   
+					 <!-- 模态框主体 -->
+					<div class="modal-body">
+						<table >
+							<tbody>
+							    <tr>
+							        <td >
+							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
+							        	<input type="text" class="hover" id="exam_title">
+							        </td>
+							    </tr>
+							    <tr>			        				
+							        <td >
+							        	
+							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
+							        	<input type="text" class="hover" id="exam_periodStart">
+							        </td>
+							    </tr>
+							     <tr>			        				
+							        <td >
+							        	
+							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
+							        	<input type="text" class="hover" id="exam_periodEnd">
+							        </td>
+							     </tr>
+							        <tr>
+							        	<td >
+							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
+							        		<input type="text" class="hover" id="exam_invitee">
+							        	</td>
+							        </tr>
+							       
+							    </tbody>
+							</table> 
+						</div>
+							   
 							        <!-- 模态框底部 -->
 							        <div class="modal-footer">
 							          <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-							          <button type="button" class="btn btn-primary add" onclick="createExamPlan();">添加</button>
+							          <button type="button" class="btn btn-primary add" onclick="editExamPlan();">添加</button>
 							        </div>
 						   
 						      </div>
@@ -608,7 +664,6 @@ function createExamPlan() {
 			        "exam.periodEnd":$('#ex_periodEnd').val(), 
 			        "exam.invitee":$('#ex_invitee').val()
 			},function(data){
-				alert("jj");
 				alert(data.result);    //message为user返回信息
 				location.href="test.jsp";
 			})
