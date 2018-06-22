@@ -27,12 +27,12 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>${session.user.name} <i class="caret"></i></span>
+								<span>muxue <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
-							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-							<a href="javascript:Out()">退出系统</a>
+							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
+							<a href="#">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -67,21 +67,19 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, ${session.user.name}</p>
+					<p>Hello, muxue</p>
 				</div>
 
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<ul class="side_nav">
-			  		<a href="staffs_student.jsp"><li class="side_nav1">学生信息管理</li></a>
-			  		<a href="staffs_teacher.jsp"><li class="side_nav1">教师信息管理</li></a>	
-			  		<a href="affair_index.jsp"><li class="side_nav1">试卷管理</li></a>
-			  		<a href="affair_hand_volume.jsp"><li class="side_nav1">手动组卷</li></a>
-			  		<a href="affair_intel_volume.jsp"><li class="side_nav1">智能组卷</li></a>
-			  		<a href="history_staffs.jsp"><li class="side_nav1">历史成绩</li></a>	
-			  		<a href="test.jsp"><li class="side_nav1">考次计划</li></a>
-			  	</ul>
+			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
+			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
+			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
+			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
+			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
+			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
 		  </div>
 		</nav>
@@ -95,13 +93,13 @@
 		    				<li class="active">
 		    					<a href="#"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>学生信息管理</li>
+		    				<li>用户管理</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
 				<div class="top_main">
 					<div class="top_button">
-						<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal">
+						<button class="btn btn1" type="button" data-toggle="modal" data-target="#">
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 						</button>
@@ -129,7 +127,20 @@
 					</tr>
 				</thead>
 				<tbody id="student-list-box">
-					
+					<tr class="tb_width">
+						<td>1</td>
+						<td>慕雪</td>
+						<td>15478015</td>
+						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
+						<td>软件工程</td>
+						<td>1班</td>
+						<td>
+							<i class="fa fa-eye see" data-toggle="modal" data-target="#myModal_eye_student"></i>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+				        </td>
+					</tr>
 				</tbody>
 			</table>
 			<!--<div class="bottom_button">
@@ -143,21 +154,22 @@
 				<!--页码-->
 				<div class="page_pagination">
 					<ul class="pagination">
-					   <!--  <li class="page-item"><a class="page-link" href="#">上一页</a></li>
+					    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
 					    <li class="page-item"><a class="page-link" href="#">1</a></li>
 					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
 					    <li class="page-item"><a class="page-link" href="#">3</a></li>
-					    <li class="page-item"><a class="page-link" href="#">下一页</a></li> -->
-					    <input class="jump" id="jpage" type="text">
-					    <button class="btn btn-primary btn_jump">跳转</button>
+					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+					   <!--  <input class="jump">
+				       <button class="btn btn-primary btn_jump">跳转</button> -->
 				  </ul>
+				 
 			  	</div>
 			</div>
 		</div>
 		</div>	
 			
 		<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal-information">
+		<div class="modal fade" id="myModal_information">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
@@ -181,6 +193,12 @@
 									<td>
 										工号
 										<div class="tb_information">${session.user.userId}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										密码
+										<div class="tb_information">${session.user.psw}</div>
 									</td>
 								</tr>
 								<tr>
@@ -227,7 +245,7 @@
 		</div>
 		
 		<!-- 模态框添加学生信息 -->
-		<div class="modal fade" id="myModal">
+		<div class="modal fade" id="myModal_addstudent">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
@@ -244,59 +262,31 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="name">
-									</td>
-								</tr>
-								<tr>
-									<td class="choose-sex">
-								      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-								      	<select class="hover"  name="sex" id="sex">
-								        	<option class="hover">男</option>
-								        	<option class="hover">女</option>
-								      	 </select>
-								        					 
-								    </td>
-								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="userId">
+										<input type="text" class="hover" id="" >
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="collegeName">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="department">
+										<input type="text" class="hover" >
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="profession">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 								<tr>
 									<td>
-										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="classoom">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										身份证号&nbsp;
-										<input type="text" class="hover" id="idcard">
+										性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="phone">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 
@@ -308,14 +298,14 @@
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary add" onclick="createStudent();">添加</button>
+						<button type="button" class="btn btn-primary add" onclick="createStudent()">添加</button>
 					</div>
 
 				</div>
 			</div>
 		</div>
-
-<!--模态框修改学生信息 -->
+		
+		<!--模态框修改学生信息 -->
 		<div class="modal fade" id="myModal_check">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -333,56 +323,56 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="stu_name" name="user.name">
+										<input type="text" class="hover" id="student_name" name="user.name">
 									</td>
 								</tr>
 								<td class="choose-sex">
 							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  id="stu_sex" name="user.sex">
-							        	<option class="hover">男</option>
-							        	<option class="hover">女</option>
+							      	<select class="hover"  id="student_sex" name="user.sex">
+							        	<option class="hover 男">男</option>
+							        	<option class="hover 女">女</option>
 							      	 </select>		 
 							    </td>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" readonly="readonly" id="stu_userId" name="user.userId">
+										<input type="text" class="hover" readonly="readonly" id="student_userId" name="user.userId">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="stu_collegeName" name="user.collegeName">
+										<input type="text" class="hover" id="student_collegeName" name="user.collegeName">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="stu_department" name="user.department">
+										<input type="text" class="hover" id="student_department" name="user.department">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="stu_profession" name="user.profession">
+										<input type="text" class="hover" id="student_profession" name="user.profession">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="stu_classroom" name="user.classroom">
+										<input type="text" class="hover" id="student_classroom" name="user.classroom">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										身份证号&nbsp;
-										<input type="text" class="hover" id="stu_idcard" name="user.idcard">
+										<input type="text" class="hover" id="student_idcard" name="user.idcard">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="stu_phone" name="user.phone">
+										<input type="text" class="hover" id="student_phone" name="user.phone">
 									</td>
 								</tr>
 
@@ -400,7 +390,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!--模态框邀请老师组卷-->
 		<div class="modal fade" id="myModal_invite_teacher">
 		    <div class="modal-dialog">
@@ -506,15 +495,14 @@
 		    </div>
 		</div>
 		
-
-
+			
 		<!--模态框查看学生详细信息-->
 		<div class="modal fade" id="myModal_eye_student">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<!-- 模态框头部 -->
 					<div class="modal-header">
-						<h4 class="modal-title">个人信息</h4>
+						<h4 class="modal-title">学生详细信息</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
 
@@ -682,19 +670,18 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
+	
 		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
 			var userList=data.userList;
-			  totalPage=data.totalPage;
+			  totalPage=data.totalPage;      
 			  var htm = "";
 			  var ht = "";
 			  for(var i=0;i<userList.length;i++) {
 				  	var number=(page-1)*10;
 				  	number +=i+1;
 		 			htm += getItemHtml(i, userList[i],number);
-		 			/* alert("123456"); */
 		 		}
 			 $('#student-list-box').html(htm);
-			
 			 for(var j=1;j<=totalPage;j++) {
 				 ht += getLiHtml(j);
 			 }
@@ -712,8 +699,9 @@
 		if(currentPage>=2) 
 			loadStudentList(--currentPage);
 	}
-	function jumpPage() {
-		var juPage=$('#jpage').val();
+	/* function jumpPage() {
+		var juPage=$('#jpage').html();
+		alert(juPage);
 		if(currentPage==juPage || juPage<1 || juPage>totalPage){
 			loadStudentList(currentPage);
 		} else{
@@ -721,7 +709,7 @@
 			
 		}
 			
-	}
+	} */
 	
 	function getItemHtml(index, obj,number) {
 		var htm = "<tr class='tb_width'>"
@@ -733,65 +721,36 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-<<<<<<< HEAD
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-=======
-<<<<<<< HEAD
 		    +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>" 
 			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
 			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
-=======
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+obj.userId+"' /></i>"
->>>>>>> XY
->>>>>>> origin/lrx
 			+"</td>"
 			+"</tr>";
 		return htm;
 	}
 	function getLiHtml(index) {
-		if(index==1 && totalPage!=1){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+		if(index==1){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+	
 		}
-		else if(index>1 && index<totalPage){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
-		}
-		else if(totalPage==1) {
-			var ht="<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+		else if(index==totalPage){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+				
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>"
-				+"<input class='jump' id='jpage' type='text'>"
-				+"<button class='btn btn-primary btn_jump' onclick='jumpPage()'>跳转</button>";;
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";	
 		}
 		return ht;    
 	}
 	function studentInfo(node) {
-<<<<<<< HEAD
-		var td = node.childNodes;
-		var userId = td[0].id;
-=======
-<<<<<<< HEAD
 		var td =node.parentNode.parentNode.childNodes;
 		var userId = td[2].innerHTML;
-=======
-		var td = node.childNodes;
-		var userId = td[0].id;
->>>>>>> XY
->>>>>>> origin/lrx
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
 			$('#student-info-box').html(info);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/lrx
 			//修改模态框显示学生信息
 			
 			$('#student_name').val(user.name);
@@ -803,20 +762,6 @@
 			$('#student_classroom').val(user.classroom);
 			$('#student_idcard').val(user.idcard);
 			$('#student_phone').val(user.phone);
-<<<<<<< HEAD
-=======
-=======
-			$('#stu_name').val(user.name);
-			$('#stu_sex').val(user.sex);
-			$('#stu_userId').val(user.userId);
-			$('#stu_collegeName').val(user.collegeName);
-			$('#stu_department').val(user.department);
-			$('#stu_profession').val(user.profession);
-			$('#stu_classroom').val(user.classroom);
-			$('#stu_idcard').val(user.idcard);
-			$('#stu_phone').val(user.phone);
->>>>>>> XY
->>>>>>> origin/lrx
 		})
 	}	
 	function getInfoHtml(obj) {
@@ -829,7 +774,7 @@
 			+"<tr>"
 			+"<td>"
 			+"学号"
-			+"<div class='tb_information'>"+obj.userId+"17001</div>"
+			+"<div class='tb_information'>"+obj.userId+"</div>"
 			+"</td>"
 			+"</tr>"
 			+"<tr>"
@@ -867,69 +812,52 @@
 			+"</td></tr>";
 		return info;
 	}
-	
+	/* 
 	function createStudent() {
 		 $.post("createUser",
 				 {	
-			 		"user.name":$('#name').val(),
-			 		"user.userId":$('#userId').val(),   //用户名
+			 		"user.name":$('#').val(),//用户名
+			 		"user.userId":$('#').val(), //学号  
 				 	"user.collegeName":$('#collegeName').val(),
 				 	"user.department":$('#department').val(),
 				 	"user.profession":$('#profession').val(),
-				 	"user.classroom":$('#classroom').val(),
-			 		"user.type":"学生",					//用户类型
+				 	"user.classroom":$('#').val(),//班级
+			 		"user.type":"student",					//用户类型
 			 		"user.sex":$('#sex').val(),						//用户性别
 			 		"user.phone":$('#phone').val(),
 			 		"user.idcard":$('#idcard').val()
 			 	},function(data){
 			 		alert(data.result);    //message为user返回信息
 			 		if(data.result=="用户创建成功"){
+			 			alert(data.result);
 			 			location.href="staffs_student.jsp";
 			 		}else {
 			 			return false;
 			 		}
 				 }
 			)
-	}
+	} */
 	
 	function editStudent() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/lrx
 		alert(checkInput());
 		if(checkInput()==false){
 			alert("333");
 			return false;
 			} else{
-<<<<<<< HEAD
-=======
-=======
-		/* if(!checkInput()){alert("123"); return false;}  */
->>>>>>> XY
->>>>>>> origin/lrx
 		$.post("editUser",
 					{	
-						"user.name":$('#stu_name').val(),
-						"user.sex":$('#stu_sex').val(),
-						"user.userId":$('#stu_userId').val(),
-						"user.collegeName":$('#stu_collegeName').val(),
-						"user.department":$('#stu_department').val(),
-						"user.profession":$('#stu_profession').val(),
-						"user.classroom":$('#stu_classroom').val(),
-						"user.idcard":$('#stu_idcard').val(),
-						"user.phone":$('#stu_phone').val()
+						"user.name":$('#student_name').val(),
+						"user.sex":$('#student_sex').val(),
+						"user.userId":$('#student_userId').val(),
+						"user.collegeName":$('#student_collegeName').val(),
+						"user.department":$('#student_department').val(),
+						"user.profession":$('#student_profession').val(),
+						"user.classroom":$('#student_classroom').val(),
+						"user.idcard":$('#student_idcard').val(),
+						"user.phone":$('#student_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-<<<<<<< HEAD
 							alert("修改成功!");
-=======
-<<<<<<< HEAD
-							alert("修改成功!");
-=======
-							alert(data.result);
->>>>>>> XY
->>>>>>> origin/lrx
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
@@ -937,8 +865,8 @@
 	}
 
 	function deleteStudent(node) {
-		var td = node.childNodes;
-		var userId = td[0].id;
+		var td = node.parentNode.parentNode.childNodes;
+		var userId = td[2].innerHTML;
 		if(confirm("确定要删除该用户吗？")) {
 			$.post("deleteUser",{"user.userId":userId},function(data) {
 				if(data.result=="删除成功") {
@@ -953,16 +881,12 @@
 		if(confirm("确定要退出吗？")) {
 			$.post("loginOut",null,function(data) {
 				if(data.result=="成功退出") {
-						location.href="../gy/login.jsp";
+						location.href="../gy/gy_login.jsp";
 				}
 		  });
 		}  
 	}
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/lrx
 	function checkInput() {
 		var filled;
 		$("#editStudent input[type=text]").each(function() {
@@ -975,11 +899,5 @@
 		});
 		return filled;
 	}
-	
-<<<<<<< HEAD
-=======
-=======
->>>>>>> XY
->>>>>>> origin/lrx
 </script>
 </html>

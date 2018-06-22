@@ -3,6 +3,7 @@
     <% String path=request.getContextPath();
    String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
 %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,7 +25,7 @@
      
         <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="js/jwhandzujuan.js" ></script>
+		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -144,6 +145,37 @@
 		    	
 		    	
 		    	<div class="papermanage">
+		    	
+		    	    <div id="flip">条件搜索</div>
+		    		<div id="panel">
+		    			<form>
+		    				<div class="searchpanel">
+		    					<ul>
+		    						<li id="qtype"><label>选择试题类型</label>
+		    							<select>
+		    								<option>单选题</option>
+		    								<option>多选题</option>
+		    								<option>填空题</option>
+		    								<option>判断题</option>
+		    								<option>解答题</option>
+		    							</select>
+		    						</li>	    
+		    						<li id="qdiffer"><label>难易程度</label>
+		    							<select>
+		    								<option>简单</option>
+		    								<option>一般</option>
+		    								<option>难</option>
+		    								<option>较难</option>
+		    							</select>
+		    						</li>
+		    						<li id="qknow"><label>知识点</label>
+		    							<input type="text" />
+		    						</li>
+		    						<li id><button type="submit" class="btn btn-default searchbtn"><i class="fa fa-search"></i></button></li>
+		    					</ul>		    					
+		    				</div>		    		
+		    			</form>		
+		    		</div>
 		    		<!-- 试卷管理 start -->
 		    		<div class="panel showpaperpanel">
 		    			<header class="panel-heading" >
@@ -152,15 +184,16 @@
 		    			<div class="panel-body panelbod">
 		    				<div class="searchlist">
 		    					<ul>
+		    					 <s:iterator id="que" value="#request.questionList" status="sta">
 		    						<li>
 		    							<div class="search-exam">
 		    								<div class="exam-head">
 		    									<p class="exam-head-left">
-		    									    <span>题型：单选题</span>
+		    									    <span>题型： ${que.type}</span>
 		    									    <i class="line"></i>
-		    									    <span>难易度：简单</span>
+		    									    <span>难易度： ${que.difficultValue}</span>
 		    									    <i class="line"></i>
-		    									    <span>知识点：java语言</span>
+		    									    <span>知识点：${que.knowledge}</span>
 		    								    </p>
 		    								</div>
 		    							    <div class="exam-con">
@@ -170,15 +203,17 @@
 		    							    	<div class="exam-qlist"> 
 		    							    		<div class="exam-con">
 		    							    			<div class="exam-q">
-		    							    				1.下列说法正确的是(&nbsp;&nbsp;)
+		    							    				${sta.index}.${que.title}(&nbsp;&nbsp;)
 		    							    			</div>
-		    							    			
+		    			     </s:iterator>	
 		    							    		    <div class="exam-s">
+		    							    		    <s:iterator id="opt" value="#request.optionList" status="st">
 		    							    			    <span class="op-item">
-		    							    			    	<span>A.</span> 
-		    							    			    	<span>Update software</span>
+		    							    			    	<span>${st.index}.</span> 
+		    							    			    	<span>${opt.content}</span>
 		    							    			    </span>
-		    							    			    <span class="op-item">
+		    							    			</s:iterator>
+		    							    			    <%-- <span class="op-item">
 		    							    			    	<span>B.</span> 
 		    							    			    	<span>Update software</span>
 		    							    			    </span>
@@ -189,7 +224,7 @@
 		    							    			    <span class="op-item">
 		    							    			    	<span>D.</span> 
 		    							    			    	<span>Update software</span>
-		    							    			    </span>
+		    							    			    </span> --%>
 		    							    		    </div>
 		    							    		</div>
 		    							    		<div class="exam-foot">
@@ -544,6 +579,24 @@
 	    </div>
 		
 	<script >
+	var questionList = [];
+	function addQuestion(sid) {
+		questionList.push(sid);
+	}
+	function remove() {
+		
+	}
+	/*搜索jquery隐藏显示面板*/
+	$(document).ready(function() {
+	    $("#flip").click(function() {
+	        $("#panel").slideDown("slow");
+	    });
+	});
+
+	/*删除按钮*/
+	function deletefunction(){
+		confirm("确定要删除吗");
+	}
 	
 	</script>
 	</body>

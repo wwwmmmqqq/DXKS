@@ -27,7 +27,7 @@ body{
 	height: 50px;
 	background-color: white;
 	z-index: 1;
-	
+    /* position: fixed; */
 }
 
 
@@ -70,7 +70,10 @@ body{
 	border: none;
 	cursor: pointer;
 }
-
+.dropbtn.envolope{
+	margin-left:4px;
+	margin-top:4px;
+}
 .dropdown {
 	z-index: 9999;
 	position: relative;
@@ -106,7 +109,6 @@ body{
 }
 .task .envelope{
 	color: black;
-	margin-top: 4px;
 }
 
 .banner .notice .noticelabel {
@@ -138,14 +140,18 @@ body{
 		
 }
 
-
 /*侧面导航栏*/
 .navbar.bg-light{
 	width: 16.3%;
-	height: 588px;
-  background-color: #454545;
-  float: left;
-  border-radius:0px ;
+    height: 582px;
+    background-color: #454545;
+    float: left;
+    border-radius: 0px;
+    /* position: fixed;
+    top:50px; */
+}
+.side_nav1.now{
+	background-color: #425164;
 }
 .navbar .user-panel{
 	padding: 20px;
@@ -162,9 +168,6 @@ body{
 	height: 50px;
 	border-radius:50% ;
 	float: left;
-}
-.side_nav1.now{
-	background-color: #425164;
 }
 .navbar .info{
 	font-size: 14px;
@@ -201,13 +204,14 @@ p{
 	background: #425164;
 }
 
+
 /*中间部分*/
 .main{
 	float:right;
 	/*position:relative; 
 	top:50px;*/
 	width: 83.6%;
-	display:none;
+	/* margin: 50px 0%; */
 }
 .main1{
 	width: 90%;

@@ -149,7 +149,7 @@
 									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />
 								${optItem.content}
 							</s:elseif>
-							<s:elseif test="#item.type == 'Fills'">
+							<s:elseif test="#item.type== 'Fills'">
 								<div>${st1.index+1}. ${optItem.content}</div>
 								<input type="text" class="opt-input"
 									 onchange="doit(${item.sid}, ${optItem.sid}, this)">

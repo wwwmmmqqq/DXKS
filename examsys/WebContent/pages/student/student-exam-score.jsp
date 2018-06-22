@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
              <%
@@ -163,7 +164,6 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				
 				<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
 				</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭

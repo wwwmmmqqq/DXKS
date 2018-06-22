@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%
@@ -15,6 +16,7 @@
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 		<header>
