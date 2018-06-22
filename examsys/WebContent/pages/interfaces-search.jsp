@@ -13,10 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  function searchQuestions() {
 		  $.post("searchQuestions", {
 			  "keys[0]":"title",//搜索的字段1
-			  "values[0]":"题目标题1",//搜索的关键字1
-			  "keys[1]":"time",//搜索的字段2
-			  "values[1]":"2018-06-22"//搜索的关键字2 
-			  //.....
+			  "values[0]":"题目标题",//搜索的关键字1
 		  }, function(data) {
 			  alert(data.result);
 			  alert(data.list);
