@@ -89,17 +89,7 @@ var currentPage = 1;
 		$('.export').removeClass('btn-primary')
 		$('.export').addClass('btn-success sure-export')
 	})
-	/*function exportScore(){
-		var tr=$('#studentScore tbody tr');
-		tr.each(function(){
-			$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
-		})
-		$('.all-choose').show();
-		$('.export').innerHTML="确认导出"
-		$('.export').removeClass('btn-primary')
-		$('.export').addClass('btn-success')
-			
-	}*/
+	
 	
 /*全选*/
 	$('.all-choose').click(function(){
@@ -111,16 +101,7 @@ var currentPage = 1;
 			}
 		})
 	})
-	/*function allChoose(){
-		$(' input[name="check"]').each(function(){
-			if ($(this).attr("checked")) {
-				$(this).removeAttr("checked");
-			} else {
-				$(this).attr("checked", "true");
-			}
-		})
-	}*/
-
+	
 	/*考试结果正确率判断*/
 	$(function() {
 		var scoreRate = echarts.init(document.getElementById("rate"));
