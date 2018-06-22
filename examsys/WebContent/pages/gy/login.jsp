@@ -91,8 +91,13 @@
 						window.location.href = "../gy/jsshowpaper.jsp";
 					} else 
 					if(user.type=="教务") {
+<<<<<<< HEAD
 						window.location.href = "../lxh/affair_index.jsp";
 					 }
+=======
+						window.location.href = "../lxh/affair_index.jsp?";
+					} else
+>>>>>>> origin/lrx
 					if(user.type=="管理员") {
 						window.location.href = "../gy/admin.jsp";
 				 	}

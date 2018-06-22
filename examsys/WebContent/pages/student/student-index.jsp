@@ -330,6 +330,7 @@ function ready(paperSid) {
 }
 
 function startExam() {
+<<<<<<< HEAD
 	location.href="startExam?paper.sid="+readyPaperSid;
 }
 
@@ -343,5 +344,20 @@ function getParam(name) {
 }
 
 </script>
+=======
+	location.href="startExam?paper.sid="+readyPaperSid;
+}
+
+//获取url中的参数
+function getParam(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+  if (result != null) 
+  	return decodeURIComponent(result[2]);
+  return null;
+}
+
+</script>
+>>>>>>> origin/lrx
 </body>
 </html>

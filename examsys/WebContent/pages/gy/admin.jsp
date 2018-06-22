@@ -35,7 +35,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
-							<a href="#" onclick="Out()" value="退出系统">退出系统</a>
+							<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
 						</div>
 					</div>
 				</div>
@@ -89,8 +89,13 @@
 						</div>
 					</div>
 					<div class="search_hide" id="hide">
+<<<<<<< HEAD
 						<input type="text" class="input_hide1"  id="name1" placeholder="姓名"/>
 						<input type="text" class="input_hide" id="userId1"  placeholder="工号"/>
+=======
+						<input type="text" class="input_hide1"  placeholder="姓名"/>
+						<input type="text" class="input_hide"  placeholder="工号"/>
+>>>>>>> origin/lrx
 						<select class="select_hide">
 							<option class="option_hide" selected="selected">全部</option>
 							<option class="option_hide" id="school">学校</option>
@@ -261,37 +266,37 @@
 												<tbody >
 								        			<tr>
 								        				<td >
-								        					用户名<div class="tb_information">${session.user.userId}</div>
+								        					用户名<div class="tb_information">慕雪</div>
 								        				</td>
 								        			</tr>
 								        			<tr>			        				
 								        				<td >
-								        					密码<div class="tb_information">${session.user.psw}</div>
+								        					密码<div class="tb_information">145681</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					姓名<div class="tb_information">${session.user.name}</div>
+								        					姓名<div class="tb_information">慕雪</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					性别<div class="tb_information">${session.user.sex} </div>
+								        					性别<div class="tb_information">女 </div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					电话<div class="tb_information">${session.user.phone}</div>
+								        					电话<div class="tb_information">15574014263</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					所属大学<div class="tb_information">${session.user.collegeName}</div>
+								        					所属大学<div class="tb_information">萍乡学院</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					邮箱<div class="tb_information">${session.user.email}</div>
+								        					邮箱<div class="tb_information">1770313147@qq.com</div>
 								        				</td>
 								        			</tr>
 								        			
@@ -634,11 +639,11 @@
 								        			<tr>
 							        				<td >
 							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<select class="option" id="administration_permission_answer"> 
+							        					<select class="option" id="administration_permission"> 
 							        						<option>能查看答案</option>
 							        						<option>不能查看答案</option>
 							        					</select>
-							        					<select class="option" id="administration_permission_paper"> 
+							        					<select class="option"> 
 							        						<option>能够阅卷</option>
 							        						<option>不能阅卷</option>
 							        					</select>
@@ -651,7 +656,7 @@
 					   
 								        <!-- 模态框底部 -->
 								        <div class="modal-footer">
-								        	<button type="button" class="btn btn-primary add_invite" data-dismiss="modal" onclick="editStudent()">确认</button>
+								        	<button type="button" class="btn btn-primary add_invite" data-dismiss="modal">确认</button>
 								          <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
 								        </div>
 							      	</div>

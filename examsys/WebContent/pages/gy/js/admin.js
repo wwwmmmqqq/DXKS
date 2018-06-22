@@ -48,9 +48,7 @@ function callback(data) {
 	totalPage=data.totalPage;
 	var li = data.userList;// 学生列表
 	for (var i = 0; i < li.length; i++) {
-		var number=(currentPage-1)*10;
-	  	number +=i+1;
-		html += getHtmls(number, li[i].name, li[i].userId, li[i].collegeName,
+		html += getHtmls(i + 1, li[i].name, li[i].userId, li[i].collegeName,
 				li[i].type, li[i].email);
 	}
 	$('#data-box').html(html);
@@ -83,7 +81,7 @@ function getHtmls(index, name, stuid, collegeName, type, email) {
 			+ "	<td>"
 			+ "		<i class='fa fa-eye see_information'  data-toggle='modal' data-target='#myModal_see_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
 			+ "		<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_correct_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
-			+ "		<i class='fa fa-trash-o' onclick='deleteStudent(this)'><input type='hidden' id='"+stuid+"' /></i>"
+			+ "		<i class='fa fa-trash-o' onclick='myFunction1()'></i>"
 			+ "	</td>" + "</tr>";
 	return htm;
 }
@@ -124,8 +122,13 @@ $.post("createUser",
 	 		"user.email":jmail
 	 	},function(data){
 	 		if(data.result=="用户创建成功") {   //result为user返回信息
+<<<<<<< HEAD
 			  	alert(data.result);
 			  	location.href="../gy/admin.jsp";
+=======
+	 			toastr.success("成功添加用户");
+	 			location.href="admin.jsp";
+>>>>>>> origin/lrx
 		  	}   
 		 }
 	)
@@ -137,6 +140,7 @@ function administrationInfo(node) {
 		var user = data.user;
 		var info = getInfoHtml(user);
 		$('#administration-info-box').html(info);
+<<<<<<< HEAD
 		var permission = user.permission;
 		if(permission!=null && permission.length>0) {
 			var strs=permission.split(" ");
@@ -151,8 +155,21 @@ function administrationInfo(node) {
 		$('#administration_collegeName').html(user.collegeName);
 		$('#administration_email').html(user.email);
 		$('#administration_phone').html(user.phone);
+=======
+		/*$('#administration_psw').val(user.psw);*/
+		
+		$('#administration_name').val(user.name);
+		$('#administration_sex').val(user.sex);
+		$('#administration_userId').val(user.userId);
+		$('#administration_collegeName').val(user.collegeName);
+		$('#administration_email').val(user.email);
+		$('#administration_permission').val(user.permission);
+		$('#administration_phone').val(user.phone);
+>>>>>>> origin/lrx
 	})
 }	
+
+
 
 function getInfoHtml(obj) {
 	var info = "<tr>"
@@ -190,6 +207,7 @@ function getInfoHtml(obj) {
 		+"</td></tr>"
 		;
 	return info;
+<<<<<<< HEAD
 }
 
 
@@ -235,3 +253,6 @@ function Out() {
 	}  
 }
 
+=======
+}
+>>>>>>> origin/lrx

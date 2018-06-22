@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%
@@ -15,9 +16,14 @@
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+<<<<<<< HEAD
+=======
+
+</head>
+>>>>>>> origin/lrx
 <body>
 		<header>
-			<nav id="top-nav">
+		<nav id="top-nav">
 				<div id="main-nav-content">
 					<a href="student-index.html" class="logo">
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
@@ -159,9 +165,10 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button>
+				
 				<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
+				</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
@@ -225,17 +232,15 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/lrx
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
 
 
 
 <script type="text/javascript">
-$('.user-info').hover(function(){
-	$('.dropdown-content').css("display","block")
-},function(){
-	$('.dropdown-content').css("display","none")
-}) 
 loadMyExamList(0);
 /*加载考次列表*/
 function loadMyExamList(page) {
@@ -267,6 +272,9 @@ function getExam(obj){
 	return htm;
 }
 
+
+
 </script>
 </body>
+
 </html>

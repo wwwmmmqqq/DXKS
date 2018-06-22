@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
              <%
@@ -16,8 +17,11 @@
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
 
+<<<<<<< HEAD
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+=======
+>>>>>>> origin/lrx
 </head>
 <body>
 		<header>
@@ -163,6 +167,10 @@
 				</form>
 			</div>
 			<div class="modal-footer">
+<<<<<<< HEAD
+=======
+				
+>>>>>>> origin/lrx
 				<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
 				</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -322,6 +330,4 @@
 		<script type="text/javascript" src="js/com.js"></script>
 		
 </body>
-<script type="text/javascript">
-</script>
 </html>

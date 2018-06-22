@@ -14,8 +14,6 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ModelDriven;
 
-import cn.examsys.adapters.DaoAdapter;
-import cn.examsys.adapters.IDaoAdapter;
 import cn.examsys.bean.User;
 import cn.examsys.common.CommonAction;
 import cn.examsys.xy.service.UserService;
@@ -85,10 +83,11 @@ public class UserAction extends CommonAction{
 		}
 		else{
 				User loginUser=userService.SelectOneUser(user.getUserId());		//查询用户是否存在
+				System.out.println("1565");
 				if(loginUser!=null){
 					setResult("该用户名已存在");
 				}else{
-					if(getSessionUserId().contains("admin")){
+					if(getSessionUser().getUserId().contains("admin")){
 						user.setType("教务");
 					}
 					user.setPsw("000000");
@@ -147,6 +146,7 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String SelectUserList(){
+
 		User administration=getSessionUser();
 		userList=userService.SelectUserList(user,page,administration);
 		System.out.println("Action页面获取当前用户个数："+userList.size());
@@ -171,7 +171,6 @@ public class UserAction extends CommonAction{
 				}else {
 					user.setUserId(getSessionUserId());
 					user.setPsw(rePsw);
-					user.setUserId(getSessionUserId());
 					userService.editUser(user);
 					setResult("密码修改成功");
 				}

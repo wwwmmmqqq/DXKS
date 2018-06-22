@@ -1,6 +1,11 @@
 package cn.examsys.lrx.service.impl;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -10,10 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.bean.Constitute;
+import cn.examsys.bean.Option;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
 import cn.examsys.common.Conf;
+import cn.examsys.common.QuestionListTool;
 import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.ConstituteDaoImpl;
 import cn.examsys.lrx.service.ConstituteService;
@@ -203,6 +210,75 @@ public class ConstituteServiceImpl implements ConstituteService {
 		try {
 			return dao.findByHql("select new Map(type as type, count(*) as count) from Question where subjectRef=? group by type"
 					, new Object[]{subjectRef});
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Question> searchQuestion(User sessionUser, List<String> keys, List<String> vals) {
+		try {
+			StringBuilder hql = new StringBuilder("from Question ");
+			
+			if (keys != null && keys.size() != 0) {
+				hql.append(" where ");
+			}
+			for (int i = 0; vals!=null && i < vals.size(); i++) {
+				vals.set(i, "%"+vals.get(i)+"%");
+			}
+			for (int i = 0; i < keys.size()-1; i++) {
+				hql.append(keys.get(i) + "=?");
+			}
+			if (keys != null && keys.size() != 0) {
+				hql.append(keys.get(keys.size()-1) + " like ?");
+			}
+			
+			List<Question> questionList = dao.findByHql(hql.toString(), vals.toArray());
+			
+			String questionIds = "";
+			for (int i = 0; i < questionList.size(); i++) {
+				questionIds += questionList.get(i).getSid() + ",";
+			}
+			List<Option> optionList = dao.findByHql("from Option where locate(?, questionRef)>0"
+					, new Object[]{questionIds});
+			HashMap<Integer, List<Option>> mp = new HashMap<>();
+			for (int i = 0; i < optionList.size(); i++) {
+				if (mp.containsKey(optionList.get(i).getQuestionRef())) {
+					mp.get(optionList.get(i).getQuestionRef()).add(optionList.get(i));
+				} else {
+					List<Option> li = new ArrayList<Option>();
+					li.add(optionList.get(i));
+					mp.put(optionList.get(i).getQuestionRef(), li);
+				}
+			}
+			
+			//将选项列表存入到Question对象中
+			for (int i = 0; i < questionList.size(); i++) {
+				questionList.get(i).setOptions(mp.get(questionList.get(i).getSid()));
+			}
+			
+			//题目类型排序
+			Collections.sort(questionList, new Comparator<Question>() {
+				String type_arr[] = new String[] {
+						 Conf.Question_Single
+						,Conf.Question_Multiple
+						,Conf.Question_TrueOrFalse
+						,Conf.Question_Fills
+						,Conf.Question_Subjective
+				};
+				int getTypeIndex(Question q) {
+					for (int i = 0; i < type_arr.length; i++)
+						if (type_arr[i].equals(q.getType()))
+							return i;
+					return 0;
+				}
+				@Override
+				public int compare(Question o1, Question o2) {
+					return -(getTypeIndex(o2) - getTypeIndex(o1));
+				}
+			});
+			return questionList;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

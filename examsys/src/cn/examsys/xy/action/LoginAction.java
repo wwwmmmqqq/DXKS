@@ -52,6 +52,7 @@ public class LoginAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loginOut() {
+		System.out.println("1225555");
 		if(!isLogin()){
 			setResult("请先登录");
 		}
