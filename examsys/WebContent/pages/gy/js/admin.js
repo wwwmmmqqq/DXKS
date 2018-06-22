@@ -122,14 +122,9 @@ $.post("createUser",
 	 		"user.email":jmail
 	 	},function(data){
 	 		if(data.result=="用户创建成功") {   //result为user返回信息
-<<<<<<< HEAD
 			  	alert(data.result);
 			  	location.href="../gy/admin.jsp";
-=======
-	 			toastr.success("成功添加用户");
-	 			location.href="admin.jsp";
->>>>>>> origin/lrx
-		  	}   
+	 		}
 		 }
 	)
 }
@@ -140,7 +135,6 @@ function administrationInfo(node) {
 		var user = data.user;
 		var info = getInfoHtml(user);
 		$('#administration-info-box').html(info);
-<<<<<<< HEAD
 		var permission = user.permission;
 		if(permission!=null && permission.length>0) {
 			var strs=permission.split(" ");
@@ -155,17 +149,7 @@ function administrationInfo(node) {
 		$('#administration_collegeName').html(user.collegeName);
 		$('#administration_email').html(user.email);
 		$('#administration_phone').html(user.phone);
-=======
-		/*$('#administration_psw').val(user.psw);*/
-		
-		$('#administration_name').val(user.name);
-		$('#administration_sex').val(user.sex);
-		$('#administration_userId').val(user.userId);
-		$('#administration_collegeName').val(user.collegeName);
-		$('#administration_email').val(user.email);
-		$('#administration_permission').val(user.permission);
-		$('#administration_phone').val(user.phone);
->>>>>>> origin/lrx
+
 	})
 }	
 
@@ -207,7 +191,6 @@ function getInfoHtml(obj) {
 		+"</td></tr>"
 		;
 	return info;
-<<<<<<< HEAD
 }
 
 
@@ -253,6 +236,3 @@ function Out() {
 	}  
 }
 
-=======
-}
->>>>>>> origin/lrx

@@ -86,18 +86,11 @@
 					var user = data.user;
 				 	if(user.type=="学生") {
 						window.location.href = "../student/student-main.jsp";
-					} else 
-					if(user.type=="教师") {
+					} else if(user.type=="教师") {
 						window.location.href = "../gy/jsshowpaper.jsp";
-					} else 
-					if(user.type=="教务") {
-<<<<<<< HEAD
+					} else if(user.type=="教务") {
 						window.location.href = "../lxh/affair_index.jsp";
 					 }
-=======
-						window.location.href = "../lxh/affair_index.jsp?";
-					} else
->>>>>>> origin/lrx
 					if(user.type=="管理员") {
 						window.location.href = "../gy/admin.jsp";
 				 	}
