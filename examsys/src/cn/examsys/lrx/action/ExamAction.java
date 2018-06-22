@@ -68,6 +68,7 @@ public class ExamAction extends CommonAction {
 		DaoAdapter.COUNT_PER_PAGE = 5;
 		list = service.loadMyExamsList(getSessionUser(), page);
 		DaoAdapter.COUNT_PER_PAGE = 10;
+		System.out.println(getSessionUser());
 		//list = service.loadMyExamsList(getSessionUser(), page);
 		/*try {
 			//TODO 测试数据
@@ -223,7 +224,6 @@ public class ExamAction extends CommonAction {
 		list = li;
 		return aa;
 	}
-	
 	
 	
 	private void setCurrentPaperSid(int paperSid) {

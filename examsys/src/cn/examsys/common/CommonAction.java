@@ -27,6 +27,7 @@ public abstract class CommonAction extends ActionSupport {
 		user.setPermission("");
 		user.setSex("男");
 		saveLogin(user);*/
+
 		session.setAttribute("Time", Tool.time());//服务器时间
 	}
 	

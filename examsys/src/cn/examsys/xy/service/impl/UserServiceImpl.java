@@ -1,6 +1,7 @@
 package cn.examsys.xy.service.impl;
 
 import java.lang.reflect.Field;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,33 +34,40 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 	/*查询用户列表*/
-
-	public List<User> SelectUserList(User user,int page,User administration) {
+	public List<User> SelectUserList(String type,int page) {
 		// TODO Auto-generated method stub
-		List<User> userList=userDao.selectUserList(user ,page,administration);
+		List<User> userList=userDao.selectUserList(type,page);
+		/*Iterator<User> iter = userList.iterator();
+		while (iter.hasNext()) {
+		   User it = iter.next();
+		   if("封禁".equals(it.getStatus())) {
+		    	iter.remove();
+		    	System.out.println("封禁");
+		   }
+		}*/
 		return userList;
 	}
 	/*查询用户列表总页数*/
 	@Override
-	public int SelectUserListCount(User user, User administration) {
+	public int SelectUserListCount(String type) {
 		// TODO Auto-generated method stub
-		return userDao.selectUserListCount(user , administration);
+		return userDao.selectUserListCount(type);
 	}
 	/*编辑用户信息*/
 	@Override
 	public boolean editUser(User user) {
 		// TODO Auto-generated method stub
-		User currentUser=userDao.findOneUser(user.getUserId());  
-		Field[] field = currentUser.getClass().getDeclaredFields(); 
-		Field[] f = user.getClass().getDeclaredFields();	
 		try {
+				User currentUser=userDao.findOneUser(user.getUserId());  
+				Field[] field = currentUser.getClass().getDeclaredFields(); 
+				Field[] f = user.getClass().getDeclaredFields();	
 				for(int i=0;i<field.length;i++) {
 					field[i].setAccessible(true);     
 					f[i].setAccessible(true);		
 					Object vals = f[i].get(user);
 					Object val = field[i].get(currentUser);
 					String type = f[i].getType().toString();
-					if(vals==null || "".equals(vals)) {
+					if(vals==null) {
 						vals=val;
 						f[i].set(user, vals);
 					}else if(type.endsWith("int")) {

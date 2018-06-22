@@ -35,7 +35,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
-							<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
+							<a href="#" onclick="Out()" value="退出系统">退出系统</a>
 						</div>
 					</div>
 				</div>
@@ -119,6 +119,7 @@
 			        <th>学校</th>
 			        <th>学院</th>
 			        <th>邮箱</th>
+			        <th>权限</th>
 			        <th>操作</th>
 			      </tr>
 			    </thead>
@@ -208,20 +209,11 @@
 							        			<tr>
 							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-<<<<<<< HEAD
-							        				<div class="input_checkbox" name="sex" id="sex">
-							        				<select class="form-control ">
-							        				<option value="男">男</option>
-							        				<option value="女">女</option>
-							        				</select>
-														</div> 
-=======
 							        						<select class="form-control" name="sex" id="administrationSex">
 							        							<option value="男">男</option>
 							        							<option value="女">女</option>
 							        						</select>
 							        					 <!-- <input type="text" class="hover"  name="sex">  -->
->>>>>>> lrx
 							        				</td>
 							        			</tr>
 							        			<tr>
@@ -269,37 +261,37 @@
 												<tbody >
 								        			<tr>
 								        				<td >
-								        					用户名<div class="tb_information">慕雪</div>
+								        					用户名<div class="tb_information">${session.user.userId}</div>
 								        				</td>
 								        			</tr>
 								        			<tr>			        				
 								        				<td >
-								        					密码<div class="tb_information">145681</div>
+								        					密码<div class="tb_information">${session.user.psw}</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					姓名<div class="tb_information">慕雪</div>
+								        					姓名<div class="tb_information">${session.user.name}</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					性别<div class="tb_information">女 </div>
+								        					性别<div class="tb_information">${session.user.sex} </div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					电话<div class="tb_information">15574014263</div>
+								        					电话<div class="tb_information">${session.user.phone}</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					所属大学<div class="tb_information">萍乡学院</div>
+								        					所属大学<div class="tb_information">${session.user.collegeName}</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					邮箱<div class="tb_information">1770313147@qq.com</div>
+								        					邮箱<div class="tb_information">${session.user.email}</div>
 								        				</td>
 								        			</tr>
 								        			
@@ -596,7 +588,7 @@
 							   
 								        <!-- 模态框头部 -->
 								        <div class="modal-header">
-								          <h4 class="modal-title">修改信息</h4>
+								          <h4 class="modal-title">个人信息</h4>
 								          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
 								        </div>
 								   
@@ -606,57 +598,47 @@
 												<tbody>
 								        			<tr>
 								        				<td >
-								        					用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名<input type="text" class="tb_information " id="administration_userId">
+								        					用户名<div class="tb_information" id="administration_userId">慕雪</div>
 								        				</td>
 								        			</tr>
 								        			<tr>			        				
 								        				<td >
-								        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;<input class="tb_information" id="administration_psw">
+								        					密码<div class="tb_information" id="administration_psw">145681</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_name">
+								        					姓名<div class="tb_information" id="administration_name">慕雪</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_sex">
+								        					性别<div class="tb_information" id="administration_sex">女 </div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_phone">
+								        					电话<div class="tb_information" id="administration_phone">15574014263</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					所属&nbsp;大学&nbsp;<input class="tb_information" id="administration_collegeName">
+								        					所属大学<div class="tb_information" id="administration_collegeName">萍乡学院</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_email">
+								        					邮箱<div class="tb_information" id="administration_email">1770313147@qq.com</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 							        				<td >
-<<<<<<< HEAD
-							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<select class="option" id="administration_permission"> 
-=======
-
 							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
 							        					<select class="option" id="administration_permission_answer"> 
->>>>>>> wmq
 							        						<option>能查看答案</option>
 							        						<option>不能查看答案</option>
 							        					</select>
-							        					<select class="option"> 
+							        					<select class="option" id="administration_permission_paper"> 
 							        						<option>能够阅卷</option>
 							        						<option>不能阅卷</option>
 							        					</select>
@@ -669,7 +651,7 @@
 					   
 								        <!-- 模态框底部 -->
 								        <div class="modal-footer">
-								        	<button type="button" class="btn btn-primary add_invite" data-dismiss="modal">确认</button>
+								        	<button type="button" class="btn btn-primary add_invite" data-dismiss="modal" onclick="editStudent()">确认</button>
 								          <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
 								        </div>
 							      	</div>
