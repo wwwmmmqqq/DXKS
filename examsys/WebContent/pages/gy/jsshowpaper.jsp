@@ -25,9 +25,7 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/popper.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+        
        
 	</head>
 	<body>
@@ -442,6 +440,11 @@
 		    		</div>
 	    </section>
 	</div>	
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/search.js" ></script>
+		<script type="text/javascript" src="js/jsshowpaper.js" ></script>
 	</body>
-	<script type="text/javascript" src="js/search.js" ></script>
+	
 </html>
