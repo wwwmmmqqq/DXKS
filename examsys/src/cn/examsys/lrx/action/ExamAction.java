@@ -231,7 +231,12 @@ public class ExamAction extends CommonAction {
 	}
 	
 	private int getCurrentPaperSid() {
-		return (int) session.getAttribute("currentPaper");
+		Object obj = session.getAttribute("currentPaper");
+		if (obj != null) {
+			return (Integer) obj;
+		} else {
+			return -1;
+		}
 	}
 	
 	@Override
