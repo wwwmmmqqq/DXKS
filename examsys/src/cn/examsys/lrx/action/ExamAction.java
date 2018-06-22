@@ -221,9 +221,10 @@ public class ExamAction extends CommonAction {
 			}
 		}
 		list = li;
-		
 		return aa;
 	}
+	
+	
 	
 	private void setCurrentPaperSid(int paperSid) {
 		session.setAttribute("currentPaper", paperSid);
