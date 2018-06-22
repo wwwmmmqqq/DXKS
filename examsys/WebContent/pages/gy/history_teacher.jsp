@@ -68,12 +68,9 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
-<<<<<<< HEAD
+
 			  		<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
  					<!-- <a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a> -->
-=======
-					<a href="jsshowpaper.jsp"><li class="side_nav1 ">题库管理</li></a>
->>>>>>> XY
 					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
 					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
@@ -90,7 +87,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
+		    					<a href="teacher_showpaper"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>查看成绩</li>
 		    			</ul>
