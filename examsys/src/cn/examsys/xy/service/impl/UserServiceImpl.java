@@ -1,7 +1,6 @@
 package cn.examsys.xy.service.impl;
 
 import java.lang.reflect.Field;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.bean.User;
-import cn.examsys.common.CommonAction;
 import cn.examsys.xy.dao.UserDao;
 import cn.examsys.xy.service.UserService;
 @Service(value="userService")
@@ -35,34 +33,32 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 	/*查询用户列表*/
-	public List<User> SelectUserList(String type,int page,User administration) {
+	public List<User> SelectUserList(User user,int page,User administration) {
 		// TODO Auto-generated method stub
-		List<User> userList=userDao.selectUserList(type,page,administration);
+		List<User> userList=userDao.selectUserList(user ,page,administration);
 		return userList;
 	}
 	/*查询用户列表总页数*/
 	@Override
-	public int SelectUserListCount(String type, User administration) {
+	public int SelectUserListCount(User user, User administration) {
 		// TODO Auto-generated method stub
-		String collegeName = administration.getCollegeName();
-		System.out.println(collegeName);
-		return userDao.selectUserListCount(type , collegeName);
+		return userDao.selectUserListCount(user , administration);
 	}
 	/*编辑用户信息*/
 	@Override
 	public boolean editUser(User user) {
 		// TODO Auto-generated method stub
+		User currentUser=userDao.findOneUser(user.getUserId());  
+		Field[] field = currentUser.getClass().getDeclaredFields(); 
+		Field[] f = user.getClass().getDeclaredFields();	
 		try {
-				User currentUser=userDao.findOneUser(user.getUserId());  
-				Field[] field = currentUser.getClass().getDeclaredFields(); 
-				Field[] f = user.getClass().getDeclaredFields();	
 				for(int i=0;i<field.length;i++) {
 					field[i].setAccessible(true);     
 					f[i].setAccessible(true);		
 					Object vals = f[i].get(user);
 					Object val = field[i].get(currentUser);
 					String type = f[i].getType().toString();
-					if(vals==null) {
+					if(vals==null || "".equals(vals)) {
 						vals=val;
 						f[i].set(user, vals);
 					}else if(type.endsWith("int")) {

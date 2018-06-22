@@ -148,12 +148,12 @@ public class UserAction extends CommonAction{
 			,params={"contentType", "text/html"})
 	public String SelectUserList(){
 		User administration=getSessionUser();
-		userList=userService.SelectUserList(user.getType(),page,administration);
+		userList=userService.SelectUserList(user,page,administration);
 		System.out.println("Action页面获取当前用户个数："+userList.size());
 		if(userList==null){
 			setResult("无用户");
 		}
-		totalPage=userService.SelectUserListCount(user.getType(),administration);
+		totalPage=userService.SelectUserListCount(user,administration);
 		System.out.println("Action页面获取总页面大小："+totalPage);
 		return aa;
 	}
