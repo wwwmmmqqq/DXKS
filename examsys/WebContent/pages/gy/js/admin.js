@@ -55,7 +55,7 @@ function getHtmls(index, name, stuid, collegeName, type, email) {
 			+ "	<td>"
 			+ email
 			+ "</td>"
-			+ "	<td class='see' data-toggle='modal' data-target='#myModal_see'>查看权限</td>"
+			
 			+ "	<td>"
 			+ "		<i class='fa fa-eye see_information'  data-toggle='modal' data-target='#myModal_see_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
 			+ "		<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_correct_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
