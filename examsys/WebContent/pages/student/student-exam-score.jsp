@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
              <%
@@ -176,7 +175,7 @@
 			<section class="right-section">
 				<div class="right-content">
 					<div class="score-list">
-					<table class="score-table table table-striped ">
+					<table class="score-table table table-striped " id="score-table">
 						<thead>
 							<tr>
 							<th>序号</th>
@@ -189,7 +188,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<!-- <tr>
 								<td>1</td>
 								<td>软件工程导论</td>
 								<td>100分</td>
@@ -278,7 +277,7 @@
 								<td>85分</td>
 								<td>80%</td>
 								<td>2018-06-04</td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 					</div>
@@ -320,6 +319,45 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 		<script type="text/javascript" src="js/com.js"></script>
+		<script>
+	/* 获取我的历史成绩 */
+	var paperSid=getParam("sid");
+	loadMyHistoryScore(paperSid);
+		function loadMyHistoryScore(paperSid){
+			 $.post("loadGradesByPaper", {
+				  "paper.sid":paperSid
+			  }, function(data) {
+				  var scoreList = data.list;
+				  var htm = "";
+				  for(var i=0;i<scoreList.length;i++) {
+					  htm += getMyScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i);
+				  }
+				  $('#score-table tbody').html(htm);
+			  });
+		}
+		//获取url中的参数
+		function getParam(name) {
+		  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+		  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+		  if (result != null) 
+		  	return decodeURIComponent(result[2]);
+		  return null;
+		}
+		function getMyScore(paper,user,grade,i){
+			var htm=
+				"<tr>"
+			+"<td>1</td>"
+			+"<td>"+paper.subjectName+"</td>"
+			+"<td>"+grade.totalScore+"</td>"
+			+"<td>"+grade.totalScore*0.6+"</td>"
+			+"<td>"+grade.score+"</td>"
+			+"<td>80%</td>"
+			+"<td>"+paper.time+"</td>"
+			+"</tr>"
+			return htm;
+		
+		}
+		</script>
 		
 </body>
 </html>

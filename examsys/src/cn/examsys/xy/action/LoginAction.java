@@ -37,7 +37,7 @@ public class LoginAction extends CommonAction{
 	public String login(){
 		String pass=user.getPsw();
 		user=loginService.login(user.getUserId());
-		System.out.println("123");
+		System.out.println("Action:"+user.getName());
 		if(user.getUserId()==null){
 			setResult("未找到该账号！");
 			return aa;
