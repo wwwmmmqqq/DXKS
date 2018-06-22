@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.bean.Grade;
+import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
+import cn.examsys.common.QuestionListTool;
 import cn.examsys.lrx.dao.PersonalDao;
 import cn.examsys.lrx.dao.impl.PersonalDaoImpl;
 import cn.examsys.lrx.service.PersonalService;
@@ -63,6 +65,24 @@ public class PersonalServiceImpl implements PersonalService {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public List<Question> loadResponsibleQuestions(User sessionUser, int page) {
+		/*List<Question> questionList = dao.findByHql("from Question where ");
+		StringBuilder qRefs = new StringBuilder();
+		for (int i = 0; i < questionList.size(); i++) {
+			qRefs.append(questionList.get(i).getSid() + ",");
+		}
+		return null;*/
+		try {
+			List<Question> questionList = dao.findByHql("from Question", 1);
+			QuestionListTool.fillOptionsFromQuestionList(dao, questionList);
+			return questionList;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
