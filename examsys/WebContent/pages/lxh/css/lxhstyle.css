@@ -231,7 +231,7 @@
 	min-height: 40px;
 }
 
-/*jwindex*/
+/*affair_index*/
 .papermanage #panel,#flip {
 	padding:5px;
 	text-align:center;
@@ -243,10 +243,14 @@
 	display:none;
 }
 .papermanage .searchpanel {
-	width: 85%;
 	float: left;
+	margin_top: -15px;
 }
 .searchpanel li {
+	float: left;
+}
+.searchpanel #qtype , #startTime {
+	margin: 0px 30px;
 	float: left;
 }
 .searchpanel .searchbtn {
@@ -410,6 +414,13 @@ li{
 .content .testpanel textarea {
 	width: 700px;
 	min-height: 30px;
+}
+.searchpanel #qtype , #qdiffer {
+	float :left;
+	margin: 0px 30px;
+}
+.searchpanel select {
+	width: 80px;
 }
 
 .cant .basket {
@@ -675,6 +686,13 @@ a:focus {
 
 
 /*apaper*/
+
+.operation li {
+	float: left;
+}
+.opration .loadPaper {
+	float: right;
+}
 
 .exam-qlist .exam-question,
 .search-exam>.exam-content>.exam-question {

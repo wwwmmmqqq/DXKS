@@ -72,7 +72,7 @@
 					</div>
 					<div class="light_bottom">
 						<ul class="side_nav">
-							<a href="jsshowpaper.jsp">
+							<a href="showItemBankListByUserJump?page=1">
 								<li class="side_nav1 ">题库管理</li>
 							</a>
 							<a href="history_teacher.jsp">
@@ -93,8 +93,8 @@
 						<!--breadcrumbs start -->
 						<ul class="breadcrumb mybread position">
 							<li class="active">
-		    					<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
-		    				</li>
+								<a href="jsshowpaper.html"><i class="fa fa-home"></i> Home</a>
+							</li>
 							<li>批阅试卷</li>
 						</ul>
 						<!--breadcrumbs end -->

@@ -79,7 +79,7 @@ function getHtmls(index, name, stuid, collegeName, type, email) {
 			+ "	<td>"
 			+ email
 			+ "</td>"
-			
+			+ "	<td class='see' data-toggle='modal' data-target='#myModal_see'>查看权限</td>"
 			+ "	<td>"
 			+ "		<i class='fa fa-eye see_information'  data-toggle='modal' data-target='#myModal_see_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
 			+ "		<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_correct_information' onclick='administrationInfo(this)'><input type='hidden' id='"+stuid+"' /></i>"
@@ -112,7 +112,6 @@ function addJw() {
 var jname=$('.add-jw input[name="name"]').val();
 var juserid=$('.add-jw input[name="userid"]').val();
 var jcollegeName=$('.add-jw input[name="collegeName"]').val();
-
 var jsex=$('#administrationSex').val();
 var jphone=$('.add-jw input[name="phone"]').val();
 var jmail=$('.add-jw input[name="email"]').val();

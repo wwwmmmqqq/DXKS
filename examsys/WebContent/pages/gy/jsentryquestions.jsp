@@ -20,6 +20,7 @@
             <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
             <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
             <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+            <link href="css/toastr.css" rel="stylesheet" type="text/css" />
             
 	</head>
 	<body>
@@ -74,7 +75,7 @@
 					<ul class="side_nav">
 						<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
 						<a href="history_teacher.jsp"><li class="side_nav1 n">查看成绩</li></a>
-						<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
+						<a href="teacher_read.jsp"><li class="side_nav1 ">查看成绩</li></a>
 					</ul>
 				</div>
 			</nav>
@@ -85,10 +86,10 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread">
 		    				<li>
-		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
+		    					<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>
-		    					<a href="jsshowpaper.jsp">题库管理</a>
+		    					<a href="showItemBankListByUserJump?page=1">题库管理</a>
 		    				</li>
 		    				<li class="active">录入题库</li>
 		    			</ul>
@@ -98,25 +99,16 @@
 		    	<div class="entryquestions">
 		    		<div class="shaixuan">
 		    			<ul class="question-type">
-		    				<li><button type="button" class="btn btn-danger newq">+新题目</button>
-		    					<form>请选择题目类型 ：
-		    						<input type="radio"  id="single-choice" value="single-choice" name="1" checked="checked"/><label>单选题</label>
-		    						<input type="radio"  id="mutiple-choice"  name="1"/><label>多选题</label>
-		    						<input type="radio"  id="ture-or-false"  name="1"/><label>判断题</label>
-		    						<input type="radio"  id="fill-in" name="1"/><label>填空题</label>
-		    						<input type="radio"  id="answer-questions" name="1"/><label>解答题</label>
+		    			<li>
+		    					<form >请选择题目类型 ：
+		    						<input type="radio"  id="single-choice" value="single" name="1" checked="checked"/><label>单选题</label>
+		    						<input type="radio"  id="mutiple-choice" value="mutiple" name="1"/><label>多选题</label>
+		    						<input type="radio"  id="ture-or-false" value="TrueOrFalse" name="1"/><label>判断题</label>
+		    						<input type="radio"  id="fill-in" name="1" value="Fills"/><label>填空题</label>
+		    						<input type="radio"  id="answer-questions" name="1" value="Subjective"/><label>解答题</label>
 		    					</form>
 		    				</li>
-		    				<li>请选择科目：
-		    					<select>
-		    						<option>高数</option>
-		    						<option>英语</option>
-		    						<option>政治</option>
-		    						<option>计算机</option>
-		    						<option>物理</option>
-		    						<option>化学</option>
-		    					</select>
-		    				</li>
+		    				
 		    			</ul>
 		    		</div>
 		    		<div class="entry">
@@ -124,7 +116,17 @@
 		    			<!--单选题录入 start-->
 		    			<div class="choices">
 		    			<form class="choose" id="s-question">
+		    			<input type="hidden" value="single" name="question.type">
 		    				<ul>
+		    				<li>请选择科目：
+		    					<select name="question.subjectName">
+		    						<option value="高等数学">高等数学</option>
+		    						<option value="大学英语">大学英语</option>
+		    						<option value="思想政治">"思想政治"</option>
+		    						<option value="计算机">计算机</option>
+		    						<option value="大学物理">"大学物理"</option>
+		    					</select>
+		    				</li>
 		    				<li id="dry">题干<br>
 		    				<textarea name="question.title" id="question"></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
@@ -145,13 +147,23 @@
 		    			<!-- 多选录入 -->
 		    			<div class=" choicesw">
 		    			<form class="choose" id="w-question">
+		    			<input type="hidden" value="Multiple" name="question.type">
 		    				<ul>
+		    				<li>请选择科目：
+		    					<select name="question.subjectName">
+		    						<option value="高等数学">高等数学</option>
+		    						<option value="大学英语">大学英语</option>
+		    						<option value="思想政治">"思想政治"</option>
+		    						<option value="计算机">计算机</option>
+		    						<option value="大学物理">"大学物理"</option>
+		    					</select>
+		    				</li>
 		    				<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
-		    				    <li id="sa">A<input class="form-control " type="text" name="question.content"/></li>
-		    				    <li id="sb">B<input class="form-control " type="text" name="question.content"/></li>
-		    				    <li id="sc">C<input class="form-control " type="text" name="question.content" /></li>
-		    				    <li id="sd">D<input class="form-control " type="text" name="question.content" /></li>
-		    				    <li id="answer" class="answerw">答案&nbsp;
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content"/></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content"/></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
 		    							<span>A</span><input type="checkbox"  class="choose1" name="question.isAnswer"/>
 			    						<span>B</span><input type="checkbox"  class="choose1"  name="question.isAnswer"/>
 			    						<span>C</span><input type="checkbox"  class="choose1"  name="question.isAnswer"/>
@@ -168,7 +180,17 @@
 		    			<!--判断-->
 		    			<div class="ture-or-false">
 		    			<form class="choose" id="tf-question">
+		    			<input type="hidden" value="TrueOrFalse" name="question.type">
 		    				<ul>
+		    				<li>请选择科目：
+		    					<select name="question.subjectName">
+		    						<option value="高等数学">高等数学</option>
+		    						<option value="大学英语">大学英语</option>
+		    						<option value="思想政治">"思想政治"</option>
+		    						<option value="计算机">计算机</option>
+		    						<option value="大学物理">"大学物理"</option>
+		    					</select>
+		    				</li>
 		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
@@ -185,7 +207,18 @@
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
 		    			<form id="fj-question">
+		    			<input type="hidden" value="Fills" name="question.type">
+
 		    				<ul>
+		    				<li>请选择科目：
+		    					<select name="question.subjectName">
+		    						<option value="高等数学">高等数学</option>
+		    						<option value="大学英语">大学英语</option>
+		    						<option value="思想政治">"思想政治"</option>
+		    						<option value="计算机">计算机</option>
+		    						<option value="大学物理">"大学物理"</option>
+		    					</select>
+		    				</li>
 		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>		    					
 		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="question.fillsText" /></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="question.knowledge"/></li>
@@ -198,15 +231,25 @@
 		    			<!--解答题录入 start-->
 		    			<div class="answer-question">
 		    			<form id="aquestion">
+		    			<input type="hidden" value="Subjective" name="question.type">
+
 		    				<ul>
+		    				<li>请选择科目：
+		    					<select name="question.subjectName">
+		    						<option value="高等数学">高等数学</option>
+		    						<option value="大学英语">大学英语</option>
+		    						<option value="思想政治">"思想政治"</option>
+		    						<option value="计算机">计算机</option>
+		    						<option value="大学物理">"大学物理"</option>
+		    					</select>
+		    				</li>
 		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>
 		    					<li id="answer">答案<br><textarea name="question.subjectiveText"></textarea></li>
 		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
 		    			</div>
-		    			<div  class="foot">
-		    				<button type="button" class="btn btn-warning clearall">清空</button>
+		    			<div>
 		    				<button type="submit" class="btn btn-primary submitbtn" onclick="importQuestion()">提交</button>
 		    			</div>
 		    		</div>
@@ -218,8 +261,12 @@
 		    
 		    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		    <script type="text/javascript" src="js/jquery-confirm.js"></script>
+		    <script type="text/javascript" src="js/toastr.js"></script>
             <script type="text/javascript" src="js/jsentryquestions.js" ></script>
             <script>
+            
+            
+              /* 修改密码 */
             function modifyPassword(){
              	var str = '<form id="user_setting" action="">' +
          		'<table style="width:100%;">' +
@@ -248,7 +295,12 @@
         			btnClass : 'btn-blue',
         			text : '修改',
         			action : function() {
-        				/* 放post方法 */
+        				var oldpwd=$('#user_setting input[name="user.oldpwd"]').val();
+        				var newpwd=$('#user_setting input[name="user.newpwd"]').val();
+        				var repwd=$('#user_setting input[name="user.repwd"]').val();
+        				$.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
+        					toastr.success("密码修改成功");
+        			  })
         			}
         		},
         		cancelAction : {

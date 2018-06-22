@@ -89,13 +89,8 @@
 						</div>
 					</div>
 					<div class="search_hide" id="hide">
-<<<<<<< HEAD
-						<input type="text" class="input_hide1"  placeholder="姓名"/>
-						<input type="text" class="input_hide"  placeholder="工号"/>
-=======
 						<input type="text" class="input_hide1"  id="name1" placeholder="姓名"/>
 						<input type="text" class="input_hide" id="userId1"  placeholder="工号"/>
->>>>>>> XY
 						<select class="select_hide">
 							<option class="option_hide" selected="selected">全部</option>
 							<option class="option_hide" id="school">学校</option>
@@ -124,6 +119,7 @@
 			        <th>学校</th>
 			        <th>学院</th>
 			        <th>邮箱</th>
+			        <th>权限</th>
 			        <th>操作</th>
 			      </tr>
 			    </thead>
@@ -213,20 +209,11 @@
 							        			<tr>
 							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-<<<<<<< HEAD
-							        				<div class="input_checkbox" name="sex" id="sex">
-							        				<select class="form-control ">
-							        				<option value="男">男</option>
-							        				<option value="女">女</option>
-							        				</select>
-														</div> 
-=======
 							        						<select class="form-control" name="sex" id="administrationSex">
 							        							<option value="男">男</option>
 							        							<option value="女">女</option>
 							        						</select>
 							        					 <!-- <input type="text" class="hover"  name="sex">  -->
->>>>>>> lrx
 							        				</td>
 							        			</tr>
 							        			<tr>
@@ -601,7 +588,7 @@
 							   
 								        <!-- 模态框头部 -->
 								        <div class="modal-header">
-								          <h4 class="modal-title">修改信息</h4>
+								          <h4 class="modal-title">个人信息</h4>
 								          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
 								        </div>
 								   
@@ -611,46 +598,41 @@
 												<tbody>
 								        			<tr>
 								        				<td >
-								        					用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名<input type="text" class="tb_information " id="administration_userId">
+								        					用户名<div class="tb_information" id="administration_userId">慕雪</div>
 								        				</td>
 								        			</tr>
 								        			<tr>			        				
 								        				<td >
-								        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;<input class="tb_information" id="administration_psw">
+								        					密码<div class="tb_information" id="administration_psw">145681</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_name">
+								        					姓名<div class="tb_information" id="administration_name">慕雪</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_sex">
+								        					性别<div class="tb_information" id="administration_sex">女 </div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_phone">
+								        					电话<div class="tb_information" id="administration_phone">15574014263</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					所属&nbsp;大学&nbsp;<input class="tb_information" id="administration_collegeName">
+								        					所属大学<div class="tb_information" id="administration_collegeName">萍乡学院</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_email">
+								        					邮箱<div class="tb_information" id="administration_email">1770313147@qq.com</div>
 								        				</td>
 								        			</tr>
 								        			<tr>
 							        				<td >
-
 							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
 							        					<select class="option" id="administration_permission_answer"> 
 							        						<option>能查看答案</option>

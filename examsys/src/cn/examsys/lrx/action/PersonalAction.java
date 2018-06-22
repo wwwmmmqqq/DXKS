@@ -11,15 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.examsys.bean.Grade;
-import cn.examsys.bean.Option;
-import cn.examsys.bean.Question;
-import cn.examsys.bean.User;
-import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
-import cn.examsys.common.Tool;
+import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PersonalService;
-import cn.examsys.lrx.vo.PersonalHomePageVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
@@ -38,6 +32,9 @@ public class PersonalAction extends CommonAction {
 	
 	@Autowired
 	PersonalService serivce;
+	
+	@Autowired
+	ExamService examService;
 	
 	public String loadStuIndexDatas() {
 		serivce.loadStuIndexDatas(getSessionUser());
@@ -81,7 +78,7 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
-	@Action(value="/loadMyGrades"
+	/*@Action(value="/loadMyGrades"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyGrades() {
@@ -92,7 +89,7 @@ public class PersonalAction extends CommonAction {
 			e.printStackTrace();
 		}
 		return aa;
-	}
+	}*/
 	
 	String oldPsw, newPsw;
 	public void setOldPsw(String oldPsw) {
@@ -105,7 +102,6 @@ public class PersonalAction extends CommonAction {
 			, results={@Result(type="json")}
 			, params={"contentType", "text/html"})
 	public String updatePsw() {
-		
 		boolean bo = serivce.updatePsw(getSessionUser(), oldPsw, newPsw);
 		if (!bo) {
 			setResult("旧密码错误");

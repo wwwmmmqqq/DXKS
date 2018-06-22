@@ -13,9 +13,7 @@ body{
 } 
 .modal{
 	overflow: auto !important;
-} 
-
-
+}
 .all{
 	width: 100%;
 	height: 100%;
@@ -27,7 +25,7 @@ body{
 	height: 50px;
 	background-color: white;
 	z-index: 1;
-    /* position: fixed; */
+	
 }
 
 
@@ -71,8 +69,7 @@ body{
 	cursor: pointer;
 }
 .dropbtn.envolope{
-	margin-left:4px;
-	margin-top:4px;
+	padding-right: 18px;
 }
 .dropdown {
 	z-index: 9999;
@@ -129,36 +126,31 @@ body{
 	margin-top:15px;
 	margin-right: 20px;
 }
-.banner .success1{
-	width: 6px;
-	height: 6px;
+.banner .label-success{
+	width: 10px;
+	height: 10px;
 	position: absolute;
-	top: 14px;
+	top: 13px;
 	border-radius: 50%;
 	text-align: center;
-	background: red;
-		
+	color: white;
+	background-color: #f05050;
 }
 
 /*侧面导航栏*/
 .navbar.bg-light{
 	width: 16.3%;
-    height: 582px;
-    background-color: #454545;
-    float: left;
-    border-radius: 0px;
-    /* position: fixed;
-    top:50px; */
-}
-.side_nav1.now{
-	background-color: #425164;
+	height: 588px;
+  background-color: #454545;
+  float: left;
+  border-radius:0px ;
 }
 .navbar .user-panel{
 	padding: 20px;
 	margin-bottom: 20px;
 	padding-bottom: 80px;
 }
-.navbar .image {
+.navbar .image{
 	width: 45%;
 	height: 50px;
 	float: left;
@@ -170,8 +162,10 @@ body{
 	float: left;
 }
 .navbar .info{
-	font-size: 14px;
-	float: left;
+	width: 80px;
+	height: 50px;
+	float: right;
+	text-align: center;
 }
 p{
 	width: 45px;
@@ -204,14 +198,147 @@ p{
 	background: #425164;
 }
 
+/*添加模态框*/
+.modal-header{
+	text-align: center;
+	color: #3c91c8;
+}
+.modal-body{
+	text-align: center;
+}
 
+.modal-body table{
+  width: 500px;
+  height: 200px;
+	margin: auto;  
+}
+.modal-body td{
+	text-align: center;
+	padding: 10px;
+}
+
+.modal-body  input{
+	width: 60%;
+	height: 30px;
+}
+.modal-body .option{
+	width: 30%;
+	height: 30px;
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body section{
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body .option:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.modal-footer{
+	width: 590px;
+	height: 80px;
+}
+
+.modal-footer .add{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 320px;
+	background-color:  #3c91c8;
+	color: white;
+}
+
+.modal-footer .back{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 20px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+
+.modal-body input{
+	border-radius:5px ;
+	border: 1px solid black;
+}
+.modal-body .hover:hover{
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
+}
+.modal-header .close1{
+	display: block;
+	position: absolute;
+	top:20px;
+	right:25px;
+}
+
+/*查看个人信息模态框*/
+.modal-body .tb_information{
+	width: 200px;
+	height: 45px;
+	margin-left:15px ;
+	display: inline;  /*让他具有行级元素的性质*/
+}
+.modal-footer .back_information{
+	width: 90px;
+	height: 40px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+/*邀请通知模态框*/
+.modal-body .email{
+	display: block;
+	width: 500px;
+	height: 60px;
+	padding: 20px;
+	font: 15px/20px ;
+	text-align: center;
+	margin: auto;
+	border-bottom:1px solid #bbb ;	
+}
+.modal-body .accept{
+	margin-right:20px ;
+	margin-left:20px ;	
+}
+.modal-body .refuse{
+	margin-right:20px ;
+	
+}
+.modal-footer .back-email{
+	width: 90px;
+	height: 40px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
+/*阅卷通知*/
+.modal-footer .add_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 180px;
+	background-color:  #3c91c8;
+	color: white;
+}
+
+.modal-footer .back_invite{
+	width: 90px;
+	height: 40px;
+	position: relative;
+	right: 120px;
+	background-color:white ;
+	color: black;
+	border:1px solid #bbb;
+}
 /*中间部分*/
 .main{
 	float:right;
 	/*position:relative; 
 	top:50px;*/
 	width: 83.6%;
-	/* margin: 50px 0%; */
 }
 .main1{
 	width: 90%;
@@ -228,15 +355,13 @@ p{
 }
 .main .position{
 	width: 100%%;
-	height: 36px;
 	color: #999;
 }
-.bred .position {
-    margin-top: 20px;
-    background-color: #fff;
-    width: 100%;
+.bred .position{
+	margin-top: 20px;
+	background-color:#fff ;
+	width: 100%;
 }
-
 /*.main .top_position{
 	margin-top: 20px;
 	margin-left:0px ;
@@ -255,7 +380,7 @@ p{
 }
 .main .btn2{
 	
-	margin-top: 8px;
+	margin-left: 10px;
 }
 .main .top_search{
 	margin-top: 10px;
@@ -273,16 +398,14 @@ p{
 	border-radius:5px ;
 }
 .main .top_button{
-	width: 95%;
+	width: 95%px;
 	height: 50px;
 	margin-top: 10px;
-	margin: 0 auto;
 }
 .main .top_main{
 	height: 100%;
 	margin-top:20px ;
 	background-color:white ;
-	border-radius: 5px;
 }
 /*表格*/
 .tip{
@@ -380,7 +503,7 @@ th {
 }
 .modal-body td{
 	text-align: center;
-	padding: 10px;
+	ping: 10px;
 }
 
 .modal-body  input{
@@ -449,284 +572,23 @@ th {
 .modal-footer .back_information{
 	width: 90px;
 	height: 40px;
-	background-color:white ;
-	color: black;
-	border:1px solid #bbb;
-}
-/*添加考次模态框*/
-.modal-header{
-	text-align: center;
-	color: #3c91c8;
-}
-.modal-body{
-	text-align: center;
-}
-
-.modal-body table{
-  width: 500px;
-  height: 200px;
-	margin: auto;  
-}
-.modal-body td{
-	text-align: center;
-	padding: 10px;
-}
-.tb_width th{
-	text-align: center;
-}
-.modal-body  input{
-	width: 60%;
-	height: 30px;
-}
-.modal-footer{
-	width: 590px;
-	height: 80px;
-}
-
-.modal-footer .add{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right: 275px;
-	background-color:  #3c91c8;
-	color: white;
-}
-
-.modal-footer .back{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right: 20px;
-	background-color:white ;
-	color: black;
-	border:1px solid #bbb;
-}
-.modal-body input{
-	border-radius:5px ;
-	border: 1px solid black;
-}
-.modal-body .hover:hover{
-	border: 1px solid #0e92cf;
-	border-radius:5px ;
-}
-.modal-header .close1{
-	display: block;
-	position: absolute;
-	top:20px;
-	right:25px;
-}
-/*历史成绩模态框*/
-.modal-footer .add_correct{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right:170px;
-}
-.modal-footer .back_correct{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right:120px;
-}
-/*邀请模态框*/
-.modal-footer .add_invite{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right:170px;
-}
-.modal-footer .back_invite{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right:120px;
-}
-/*历史成绩模态框*/
-.modal-body th{
-	/* text-align: center; */
-}
-
-.tb1 .td_correct:hover{
-	color: blue;
-	cursor: pointer;
-}
-.modal-footer .back-information{
-	width: 90px;
-	height: 40px;
-	background-color:white ;
-	color: black;
-	border:1px solid #bbb;
-}
-ul{
-
-	list-style-type:none
-}
-
-/*查看个人信息模态框*/
-.modal-body .tb_information{
-	width: 200px;
-	height: 45px;
-	margin-left:15px ;
-	display: inline;  /*让他具有行级元素的性质*/
-}
-.modal-footer .back_information{
-	width: 90px;
-	height: 40px;
-	background-color:white ;
-	color: black;
-	border:1px solid #bbb;
-}
-/*邀请通知模态框*/
-.modal-body .email{
-	display: block;
-	width: 500px;
-	height: 60px;
-	padding: 20px;
-	font: 15px/20px ;
-	text-align: center;
-	margin: auto;
-	border-bottom:1px solid #bbb ;	
-}
-.modal-body .accept{
-	margin-right:20px ;
-	margin-left:20px ;	
-}
-.modal-body .refuse{
-	margin-right:20px ;
 	
-}
-.modal-footer .back-email{
-	width: 90px;
-	height: 40px;
 	background-color:white ;
 	color: black;
 	border:1px solid #bbb;
 }
-/*阅卷通知*/
 .modal-footer .add_invite{
 	width: 90px;
 	height: 40px;
 	position: relative;
-	right: 180px;
-	background-color:  #3c91c8;
-	color: white;
+	right:170px;
 }
-
 .modal-footer .back_invite{
 	width: 90px;
 	height: 40px;
 	position: relative;
-	right: 120px;
-	background-color:white ;
-	color: black;
-	border:1px solid #bbb;
-}
-/*查看权限模态框*/
-.see{
-	cursor: pointer;
-}
-.see:hover{
-	color: blue;
-}
-/*操作栏查看权限模态框*/
-.see_information{
-	cursor:pointer ;
-}
-.see_information:hover{
-	color: blue;
+	right:120px;
 }
 button{
 	color: #999;
-}
-
-
-/*导出历史成绩模态框*/
-.modal-body .export{
-	width: 80%;
-}
-.modal-body td tr th{
-	text-align: center;
-}
-.modal-body .btn_choose{
-	height: 35px;
-	margin-top:20px ;
-	background: white;
-	margin-right: 20px;
-	color: black;
-	border:1px solid black ;
-}
-.modal-footer .btn_export{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right:220px;
-}
-.modal-footer .back_close{
-	width: 90px;
-	height: 40px;
-	position: relative;
-	right:120px;
-	background-color:white ;
-	color: black;
-	border:1px solid #bbb;
-}
-.modal-body.grade{
-	height: 400px;
-	overflow: auto;
-}
-.grade .rate{
-	color:#2b9dfa;
-	text-algin:center;
-	font-size:20px;
-}
-.modal-footer .export{
-	width:90px;
-	height:40px;
-}
-.modal-footer.foot{
-	width:900px;
-	display: block;
-	text-align: center;
-}
-.modal-footer .export{
-	margin-right:40px;
-}
-/*导出历史成绩页码*/
-/*.page_pagination_export .page-link{
-	color: black;
-	
-}
-
-.page_pagination_export{
-	width: 35%;
-	margin: auto;
-}
-.page_pagination_export .jump{
-	margin-left: 5px;
-	width:50px;
-	height:32px;
-}
-.page_pagination_export .btn_jump{
-	margin-left: 5px;
-	width: 50px;
-	height: 32px;
-	float: right;
-}*/
-.modal-body .history-table{
-	width:900px;
-}
-.history-all {
-	width:900px !important;
-}
-.history-table th{
-	text-align: center;
-}
-/*正确率饼状图*/
-#rate{
-	width: 200px;
-	height: 200px;
-	margin:0 auto;
-}
-.foot .all-choose{
-	float:left;
 }

@@ -26,7 +26,7 @@ import cn.examsys.lrx.vo.ConstituteVO;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"}) 
 public class JunitTest extends AbstractJUnit4SpringContextTests {
-	
+	 
 	@Autowired
 	private LrxService service;
 	 
@@ -164,6 +164,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 				, Grade.class
 				, Notice.class
 				/*, Option.class*/
+				/*, Paper.class*/
 				, Paper.class
 				, Profession.class
 				/*, Question.class*/
