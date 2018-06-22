@@ -72,7 +72,7 @@
 					</div>
 					<div class="light_bottom">
 						<ul class="side_nav">
-							<a href="showItemBankListByUserJump?page=1">
+							<a href="jsshowpaper.jsp">
 								<li class="side_nav1 ">题库管理</li>
 							</a>
 							<a href="history_teacher.jsp">

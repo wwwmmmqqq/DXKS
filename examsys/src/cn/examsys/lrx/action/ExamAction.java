@@ -1,6 +1,6 @@
+
 package cn.examsys.lrx.action;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,15 +15,11 @@ import org.springframework.stereotype.Controller;
 import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Exam;
-import cn.examsys.bean.Grade;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
-import cn.examsys.bean.User;
 import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ExamService;
-import cn.examsys.lrx.vo.GradeVO;
-import cn.examsys.lrx.vo.PaperWithExamVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
@@ -169,62 +165,14 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyHistoryPapers() {
-		list = service.loadMyHistoryPapers(getSessionUser(), page);
-		return aa;
-	}
-	
-	/**
-	 * @return PaperWithExamVO 对象
-	 */
-	@Action(value="/loadInvitedExamPapers"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
-	public String loadInvitedExamPapers() {
-		//list = service.loadInvitedExamPapers(getSessionUser(), page);
-		List<PaperWithExamVO> li = new ArrayList<PaperWithExamVO>();
-		for (int i = 0; i < 20; i++) {
-			Paper a = new Paper();
-			Exam b = new Exam();
-			try {
-				BeanAutoFit.autoFit(a);
-				BeanAutoFit.autoFit(b);
-				li.add(new PaperWithExamVO(a, b));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		//list = service.loadMyHistoryPapers(getSessionUser(), page);
+		try {
+			list = BeanAutoFit.fitBeanArray(Paper.class, Math.random());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		list = li;
 		return aa;
 	}
-	
-	@Action(value="/loadGradesByPaper"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
-	public String loadGradesByPaper() {
-		list = service.loadGradesByPaper(getSessionUser(), paper.getSid());
-		
-		/*List<GradeVO> li = new ArrayList<GradeVO>();
-		for (int i = 0; i < 10; i++) {
-			Grade grade = new Grade();
-			User user = new User();
-			Paper pp = new Paper();
-			try {
-				BeanAutoFit.autoFit(grade);
-				grade.setPaperRef(paper.getSid());
-				BeanAutoFit.autoFit(user);
-				BeanAutoFit.autoFit(pp);
-				pp.setSid(paper.getSid());
-				GradeVO vo = new GradeVO(grade, user, pp);
-				li.add(vo);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		list = li;*/
-		return aa;
-	}
-	
-	
 	
 	private void setCurrentPaperSid(int paperSid) {
 		session.setAttribute("currentPaper", paperSid);

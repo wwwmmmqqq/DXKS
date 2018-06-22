@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="/struts-tags" prefix="s"%>
     <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -69,8 +68,12 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
+<<<<<<< HEAD
 			  		<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
  					<!-- <a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a> -->
+=======
+					<a href="jsshowpaper.jsp"><li class="side_nav1 ">题库管理</li></a>
+>>>>>>> XY
 					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
 					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
@@ -96,7 +99,10 @@
 				
 				<div class="top_main">
 					<div class="top_button">
-						
+						<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_export">
+							<i class="fa fa-mail-forward history"></i>
+							导出成绩
+						</button>
 						<button type="button" class="btn btn2" id="find">
 							<i class="fa fa-search-minus"></i>
 							条件搜索
@@ -125,16 +131,10 @@
 								<th>参加学校</th>
 								<th>考试时间</th>
 								<th>操作</th>
-							</tr>    
+							</tr>
 						</thead>
 						<tbody id="data-box">
-						
-							<%-- <s:iterator id="item" value="#request.list">
-							<tr>
-							分数	${item.point}
-							</tr>
-							</s:iterator> --%>
-							
+							<tr >
 								<!-- <td>1</td>
 								<td>数据库概论</td>
 								<td>萍乡学院</td>
@@ -142,6 +142,7 @@
 								<td class="td_correct" data-toggle="modal" data-target="#myModal_correct">
 									<i class="fa fa-eye" ></i>
 								</td> -->
+							</tr>
 					</tbody>
 				</table>
 				<!--<div class="bottom_button">
@@ -246,7 +247,7 @@
 		
 		<!--查看历史成绩模态框-->
 		<div class="modal fade" id="myModal_correct">
-			<div class="modal-dialog history-all">
+			<div class="modal-dialog">
 				<div class="modal-content">
 
 					<!-- 模态框头部 -->
@@ -256,12 +257,10 @@
 					</div>
 
 					<!-- 模态框主体 -->
-
-					<div class="modal-body grade">
-						<table class="history-table" id="studentScore">
+					<div class="modal-body">
+						<table >
 							<thead >
 							<tr>
-							    <th>序号</th>
 								<th>学号</th>
 								<th>姓名</th>
 								<th>学院</th>
@@ -273,9 +272,8 @@
 								<th>本校排名</th>
 							</tr>
 							</thead>
-							<tbody >
+							<tbody>
 								<tr>
-									<td>1</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -288,7 +286,6 @@
 									
 								</tr>
 								<tr>
-									<td>1</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -300,7 +297,6 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
-									<td>1</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -312,7 +308,6 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
-									<td>1</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -324,7 +319,6 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
-									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -336,7 +330,6 @@
 									<td>xxx</td>
 								</tr>
 								<tr>
-									<td>x</td>
 									<td>15478015</td>
 									<td>慕雪</td>
 									<td>xxx</td>
@@ -347,117 +340,17 @@
 									<td>xxx</td>
 									<td>xxx</td>
 								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>x</td>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-				
+								
 							</tbody>
 						</table>
 					<ul>
-						<li class="rate"><b>正确率:50%</b></li>
+						<li>正确率:50%</li>
 					</ul>
 					</div>
 
 					<!-- 模态框底部 -->
-
-					<div class="modal-footer foot">
-
-					<button type="button" class="btn btn-primary  all-choose"  style="display:none">全选</button>
-					<button type="button" class="btn btn-primary  export"  onclick="exportScore()">导出</button>
-					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
 			</div>

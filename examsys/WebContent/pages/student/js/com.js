@@ -15,9 +15,9 @@ $(function (){
 		  values:[sname,ssex,scollegeName,sdepartment,sprofession,sidcard,sphone,semail]
 	  }, function(data) {
 		  if(data.result == 'success') {
-			  toastr.success("修改成功！");
+			  alert('修改成功');
 		  } else {
-			  toastr.warning("修改失败！");
+			  alert('修改失败');
 		  }
 	  });
 	}*/
@@ -55,7 +55,7 @@ $(function (){
 				var newpwd=$('#user_setting input[name="user.newpwd"]').val();
 				var repwd=$('#user_setting input[name="user.repwd"]').val();
 				$.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
-					toastr.success("密码修改成功！");
+					alert(data.result);
 			  })
 			}
 		},
