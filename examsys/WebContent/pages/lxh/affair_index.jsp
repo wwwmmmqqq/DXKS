@@ -144,10 +144,7 @@
 		    		</div>
 		  
 		    		<div class="jwchaxun">
-<<<<<<< HEAD
 		    			<p>共查询到  条记录</p>
-=======
->>>>>>> XY
 		    			<div class="operation"> 
 		    				<ul>
 		    					<li>

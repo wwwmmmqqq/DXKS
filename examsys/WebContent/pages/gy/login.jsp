@@ -92,8 +92,6 @@
 						window.location.href = "../student/student-main.jsp";
 					} else if(user.type=="教师") {
 						window.location.href = "../gy/jsshowpaper.jsp";
-					} else
-					if(user.type=="管理员") {
 					} else if(user.type=="教务") {
 						window.location.href = "../lxh/affair_index.jsp";
 					 }
