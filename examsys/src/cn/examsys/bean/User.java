@@ -44,6 +44,19 @@ public class User {
 	
 	String status;
 	
+	Grade grade;
+	
+	public Grade getGrade() {
+		return grade;
+	}
+
+
+	public void setGrade(Grade grade) {
+		this.grade = grade;
+	}
+
+
+
 	public String getStatus() {
 		return status;
 	}

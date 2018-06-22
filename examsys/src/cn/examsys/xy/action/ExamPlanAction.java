@@ -64,10 +64,17 @@ public class ExamPlanAction extends CommonAction {
 	
 	/*修改考试计划*/
 	public String editExamPaln() {
-		/*boolean currentExam=examService.editExamPlan(exam);*/
+		exam.setUserId(getSessionUserId());
+		exam.setState(0);
+		exam.setTime(Tool.time());
+		boolean currentExam=examPlanService.editExamPlan(exam);
 		return aa;
 	}
-	
+	/*查看一条考试信息*/
+	/*public String selectOneExamPlan() {
+		Exam exam = examPlanService.selectOneExamPlan(exam.getSid());
+		return aa;
+	}*/
 	@Override
 	public String getResult() {
 		// TODO Auto-generated method stub
