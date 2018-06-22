@@ -508,3 +508,7 @@ button{
 	color: #999;
 }
 
+.modal-body .tb_information{
+	width:60%;
+	height:30px;
+}

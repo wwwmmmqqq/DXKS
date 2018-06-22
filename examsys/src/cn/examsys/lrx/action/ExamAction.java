@@ -179,11 +179,11 @@ public class ExamAction extends CommonAction {
 	}
 	
 	private int getCurrentPaperSid() {
-		Object o = session.getAttribute("currentPaper");
-		if (o == null) {
-			return 0;
+		Object obj = session.getAttribute("currentPaper");
+		if (obj != null) {
+			return (Integer) obj;
 		} else {
-			return (Integer) o;
+			return -1;
 		}
 	}
 	
