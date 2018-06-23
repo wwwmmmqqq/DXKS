@@ -862,7 +862,7 @@ b {
 .shaixuan select {
 	width: 150px;
 	height: 40px;
-	margin: 20px 50px;
+	margin: 10px 10px;
 }
 .shaixuan input {
 	width: 20px;
@@ -1010,4 +1010,7 @@ b {
 	width:90px;
 	height:40px;
 	
+}
+.question-type .sub{
+	display:inline;
 }

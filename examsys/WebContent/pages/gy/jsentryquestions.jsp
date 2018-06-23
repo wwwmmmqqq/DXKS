@@ -46,11 +46,11 @@
 		
 				<div class="dropdown notice">
 					<button class="dropbtn">
-		    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		    				<i class="fa fa-envelope"></i>
-		    				<span class="label-success success1"></span>
-		    			</a>
-		    	    </button>
+   			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+   			    				<i class="fa fa-envelope"></i>
+   			    				<span class="label-success success1"></span>
+   			    			</a>
+   			    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal_read">阅卷通知</a>
@@ -432,8 +432,6 @@
 		    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		    <script type="text/javascript" src="js/jquery-confirm.js"></script>
             <script type="text/javascript" src="js/jsentryquestions.js" ></script>
-            <script type="text/javascript" src="js/popper.min.js" ></script>
-			<script type="text/javascript" src="js/bootstrap.min.js"></script>
             <script>
             function modifyPassword(){
              	var str = '<form id="user_setting" action="">' +
