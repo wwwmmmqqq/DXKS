@@ -156,7 +156,7 @@ public class PersonalServiceImpl implements PersonalService {
 				return "success";
 			} catch (Exception e) {
 				e.printStackTrace();
-				return "fail"
+				return "fail";
 			}
 		} else {
 			return "exist";
