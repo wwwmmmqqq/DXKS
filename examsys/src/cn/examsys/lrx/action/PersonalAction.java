@@ -13,10 +13,12 @@ import org.springframework.stereotype.Controller;
 
 import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Question;
+import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.common.Conf;
 import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PersonalService;
+import cn.examsys.lrx.vo.QuestionCheckVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
@@ -118,8 +120,21 @@ public class PersonalAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadResponsibleQuestions() {
-		list = serivce.loadResponsibleQuestions(getSessionUser(), page);
-		
+		//list = serivce.loadResponsibleQuestions(getSessionUser(), page);
+		List<QuestionCheckVO> li = new ArrayList<QuestionCheckVO>();
+		for (int i = 0; i < 10; i++) {
+			Question q = new Question();
+			Answersheet a = new Answersheet();
+			try {
+				BeanAutoFit.autoFit(q);
+				BeanAutoFit.autoFit(a);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			QuestionCheckVO vo = new QuestionCheckVO(q, a);
+			li.add(vo);
+		}
+		list = li;
 		/*List<Question> list = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			Question q = new Question();
@@ -144,7 +159,9 @@ public class PersonalAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyHistoryGrades() {
+		
 		list = serivce.loadHistoryGrades(getSessionUser(), page);
+		
 		return aa;
 	}
 	
