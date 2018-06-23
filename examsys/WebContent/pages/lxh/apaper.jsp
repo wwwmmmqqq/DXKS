@@ -3,6 +3,7 @@
     <% String path=request.getContextPath();
    String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
 %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,7 +48,7 @@
 				    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="#">退出系统</a>
+						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
 				<div class="dropdown task">
@@ -99,12 +100,12 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-						<li class="side_nav1">
+						<!-- <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li>
+						</li> -->
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -130,14 +131,60 @@
 		    	<div class="papermanage">
 		    		<!-- 试卷管理 start -->
 		    		<div class="panel showpaperpanel">
-		    			<header class="panel-heading" >
-		    				样卷
+		    			<header class="panel-heading operation">
+		    				<ul>
+		    				    <li>样卷</li>
+		    				    <li>
+		    				       <button type="button" class="btn btn-primary loadPaper">导出试卷</button>
+		    				    </li>
+		    				</ul>
 		    			</header>
 		    			<div class="panel-body ">
 		    				<div class="exam-list">
+		    				<%-- <s:if(){}></s:if> --%>
+		    				<s:if test="1=1 && 2=2">
+		    					
+		    				</s:if>
+		    					<s:iterator id="que" value="#request.questionList" status="sta"> 
 		    					<ul>
-		    						<li><p>一.单选题</p></li>
+		    						<li><p>一. ${que.type}</p></li>
 		    						<li>
+		    						 
+		    							<div class="exam-content">
+		    								<!-- <div class="exam-question">		    							    
+		    								</div> -->
+		    								<div class="exam-qlist">
+		    									<div class="exam-content">
+		    										<div class="exam-question">
+		    											${sta.index}.${que.title}(<input type="text" class="xz-que" size="5" placeholder=""/>)
+		    										</div>
+		    						
+		    										<div class="exam-selection">
+		    										<s:iterator id="opt" value="#request.optionList" status="st">
+		    											<span class="op-item">
+		    									    	   <span>${st.index}.</span>
+		    											   <span>${opt.content}</span>
+		    											</span>
+		    										</s:iterator>	
+		    										    <!-- <span class="op-item">
+		    							                	<span>B.</span>
+		    											   <span>Update software</span>
+		    											</span>
+		    											<span class="op-item">
+		    									    	    <span>C.</span>
+		    											<span>Update software</span>
+		    											</span>
+		    											<span class="op-item">
+		    									    		<span>D.</span>
+		    											<span>Update software</span>
+		    											</span> -->
+		    										</div>
+		    									</div>
+		    									
+		    								</div>
+		    							</div>
+                                    </li>
+                                   <%--  <li>
 		    							<div class="exam-content">
 		    								<div class="exam-question">
 		    							    
@@ -172,44 +219,9 @@
 		    							</div>
 		    							
 		      
-                                    </li>
-                                    <li>
-		    							<div class="exam-content">
-		    								<div class="exam-question">
-		    							    
-		    								</div>
-		    								<div class="exam-qlist">
-		    									<div class="exam-content">
-		    										<div class="exam-question">
-		    											1.下列说法正确的是(<input type="text" class="xz-que" size="5" placeholder=""/>)
-		    										</div>
-		    							
-		    										<div class="exam-selection">
-		    											<span class="op-item">
-		    									    	   <span>A.</span>
-		    											   <span>Update software</span>
-		    											</span>
-		    										    <span class="op-item">
-		    							                	<span>B.</span>
-		    											   <span>Update software</span>
-		    											</span>
-		    											<span class="op-item">
-		    									    	    <span>C.</span>
-		    											<span>Update software</span>
-		    											</span>
-		    											<span class="op-item">
-		    									    		<span>D.</span>
-		    											<span>Update software</span>
-		    											</span>
-		    										</div>
-		    									</div>
-		    									
-		    								</div>
-		    							</div>
-		    							
-		      
-                                    </li>
+                                    </li> --%>
                                </ul>
+                              </s:iterator>
                                <ul>
                                     <li>二.填空题</li>
 		    						<li>

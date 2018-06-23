@@ -91,8 +91,8 @@
 						<!--breadcrumbs start -->
 						<ul class="breadcrumb mybread position">
 							<li class="active">
-		    					<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
-		    				</li>
+								<a href="jsshowpaper.html"><i class="fa fa-home"></i> Home</a>
+							</li>
 							<li>批阅试卷</li>
 						</ul>
 						<!--breadcrumbs end -->

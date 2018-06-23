@@ -1,6 +1,7 @@
 package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -87,6 +88,14 @@ public class ConstituteAction extends CommonAction {
 			,params={"contentType", "text/html"})
 	public String createPaperAuto() {
 		
+		System.out.println(single);
+		System.out.println(trueOrFalse);
+		System.out.println(multiple);
+		System.out.println(fills);
+		System.out.println(subjective);
+		System.out.println(paper);
+		
+		
 		int sid = service.createPaperAuto(paper.getExamRef()
 				, paper.getSubjectRef()//科目id
 				, paper.getName()//试卷标题名
@@ -138,6 +147,35 @@ public class ConstituteAction extends CommonAction {
 		countListMap = service.loadQuestionCountByType(paper.getSubjectRef());
 		System.out.println(countListMap.size());
 		
+		return aa;
+	}
+	
+	List<?> list = new ArrayList<>();
+	List<String> keys = new ArrayList<String>();
+	List<String> values = new ArrayList<String>();
+	public List<?> getList() {
+		return list;
+	}
+	public List<String> getKeys() {
+		return keys;
+	}
+	public List<String> getValues() {
+		return values;
+	}
+	public void setKeys(List<String> keys) {
+		this.keys = keys;
+	}
+	public void setValues(List<String> values) {
+		this.values = values;
+	}
+	@Action(value="/searchQuestions"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String searchQuestions() {
+		System.out.println(Arrays.toString(keys.toArray()));
+		System.out.println(Arrays.toString(values.toArray()));
+		list = service.searchQuestion(getSessionUser(), keys, values);
+		System.out.println(list.size());
 		return aa;
 	}
 	

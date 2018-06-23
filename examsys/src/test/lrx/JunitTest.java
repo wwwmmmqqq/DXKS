@@ -164,6 +164,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 				, Grade.class
 				, Notice.class
 				/*, Option.class*/
+				/*, Paper.class*/
 				, Paper.class
 				, Profession.class
 				/*, Question.class*/

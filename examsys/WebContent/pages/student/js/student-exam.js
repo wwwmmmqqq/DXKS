@@ -67,7 +67,7 @@ function queClicked(obj, n) {
 	$(obj).addClass('on-click');
 	$(obj).siblings().removeClass('on-click');
 	$(".exam-paper").hide();
-	$("#q-" + n).show();
+	/*$("#q-" + n).show();*/
 	$("#q-" + n).css({"display":"block"});
 }
 /* 下一题 */
@@ -120,3 +120,4 @@ function startTimeCounting(t0, t1) {
 			else return n;
 	}
 }
+

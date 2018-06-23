@@ -46,7 +46,7 @@
 					    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="#">退出系统</a>
+						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
 				<div class="dropdown task">
@@ -89,15 +89,28 @@
 				</div>
 				<div class="light_bottom">
 					<ul class="side_nav">
-			  		<ul class="side_nav">
-			  		<a href="staffs_student.jsp"><li class="side_nav1">学生信息管理</li></a>
-			  		<a href="staffs_teacher.jsp"><li class="side_nav1">教师信息管理</li></a>	
-			  		<a href="affair_index.jsp"><li class="side_nav1">试卷管理</li></a>
-			  		<a href="affair_hand_volume.jsp"><li class="side_nav1">手动组卷</li></a>
-			  		<a href="affair_intel_volume.jsp"><li class="side_nav1">智能组卷</li></a>
-			  		<a href="history_staffs.jsp"><li class="side_nav1">历史成绩</li></a>	
-			  		<a href="test.jsp"><li class="side_nav1">考次计划</li></a>
-			  	</ul>
+						<li class="side_nav1">
+							<a href="staffs_student.jsp">学生信息管理</a>
+						</li>
+						<li class="side_nav1">
+							<a href="staffs_teacher.jsp">教师信息管理</a>
+						</li>
+						<li class="side_nav1">
+							<a href="affair_index.jsp">试卷管理 </a>
+						</li>
+						<!-- <li class="side_nav1">
+							<a href="affair_hand_volume.jsp">手动组卷</a>
+						</li>
+						<li class="side_nav1">
+							<a href="affair_intel_volume.jsp">智能组卷</a>
+						</li> -->
+						<li class="side_nav1">
+							<a href="history_staffs.jsp">历史成绩</a>
+						</li>
+						<li class="side_nav1">
+							<a href="test.jsp">考次计划</a>
+						</li>
+					</ul>
 				</div>
 			</nav>
 			<!-- sidebar end -->
@@ -106,9 +119,9 @@
 				<div class="bred">
 					<!--breadcrumbs start -->
 					<ul class="breadcrumb mybread">
-							<li class="active">
-		    					<a href="staffs_student.jsp"><i class="fa fa-home"></i> Home</a>
-		    				</li>
+						<li>
+							<a href="#"><i class="fa fa-home"></i> Home</a>
+						</li>
 						<!--<li>
 		    					<a href="#">Dashboard</a>
 		    				</li>-->
@@ -116,7 +129,6 @@
 					</ul>
 					<!--breadcrumbs end -->
 				</div>
-				<div><input type="text" id="paperName" style="margin-left: 50px" placeholder="输入试卷名" /></div>
 				<section class="papermanage">
 					<!-- 智能组卷 start-->
 						<div class="autocompose">
@@ -141,9 +153,8 @@
 											<td>
 												<span>简单<input type="text" id="diffPercent${st.index}1" value="0" onchange="setTypeDiffPercent(${st.index}, 0, this.value)"/>%</span>
 												<span>一般<input type="text" id="diffPercent${st.index}2" value="0" onchange="setTypeDiffPercent(${st.index}, 1, this.value)"/>%</span>
-												<span>难题
-														 <input type="text" id="diffPercent${st.index}3" value="0" onchange="setTypeDiffPercent(${st.index}, 2, this.value)" />%</span>
-												<span>地狱<input type="text" id="diffPercent${st.index}4" value="0" onchange="setTypeDiffPercent(${st.index}, 3, this.value)"/>%</span>
+												<span>中等<input type="text" id="diffPercent${st.index}3" value="0" onchange="setTypeDiffPercent(${st.index}, 2, this.value)"/>%</span>
+												<span>难题<input type="text" id="diffPercent${st.index}4" value="0" onchange="setTypeDiffPercent(${st.index}, 3, this.value)"/>%</span>
 												<span id='diff_total_percent${st.index}'>还差100%</span>
 											</td>
 											<td>
@@ -535,7 +546,7 @@ function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
 }
 
 $('#submitBtn').bind().click(function() {
-	var params = createPaperAutoParams(examSid, 0, $('#paperName').val(), "2018-06-20 20:39:00", "2018-06-20 22:39:00");
+	var params = createPaperAutoParams(examSid, 0, "XX考试", "2018-06-20 20:39:00", "2018-06-20 22:39:00");
 	$.post("createPaperAuto", params, function(data) {
 		if(data.result != 'fail') {
 			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);

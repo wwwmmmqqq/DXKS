@@ -1,6 +1,5 @@
 package cn.examsys.lrx.action;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +67,7 @@ public class ExamAction extends CommonAction {
 		DaoAdapter.COUNT_PER_PAGE = 5;
 		list = service.loadMyExamsList(getSessionUser(), page);
 		DaoAdapter.COUNT_PER_PAGE = 10;
+		System.out.println(getSessionUser());
 		//list = service.loadMyExamsList(getSessionUser(), page);
 		/*try {
 			//TODO 测试数据
