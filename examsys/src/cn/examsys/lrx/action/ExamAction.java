@@ -1,6 +1,5 @@
 package cn.examsys.lrx.action;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -224,6 +223,7 @@ public class ExamAction extends CommonAction {
 		list = li;
 		return aa;
 	}
+	
 	
 	
 	private void setCurrentPaperSid(int paperSid) {

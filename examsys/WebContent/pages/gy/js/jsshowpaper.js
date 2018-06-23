@@ -1,3 +1,4 @@
+	var questionId=$('#questionid').val();
 function deleteInfo(){
 	var questionId = getParam("sid");
 	$.confirm({
@@ -9,11 +10,9 @@ function deleteInfo(){
 				btnClass : 'btn-blue',
 				text : '确定',
 				action : function() {
-					var questionId=$('#questionid').val();
 					$.post("deleteItemBank",
 							{
 						  		"question.sid":questionId
-						  		
 						 	},
 							 function(data){
 						 		if(data.result=="题目删除成功！"){
@@ -29,10 +28,25 @@ function deleteInfo(){
 		}
 	});
 }
-
+/*删除题库*/
 function deleteQuestion(){
 	deleteInfo();
 }
+/*修改题库*/
+/*function editItemBankByUser(){
+	alert("ddd")
+	 $.post("editItemBankByUser",
+				{
+		 "question.sid":questionId
+			 	},
+				 function(data){
+			 		$('#dry textarea').val(data.qustion);
+			 		$('.que-option').find('input,textarea').each(function(){
+			 		$(this).val(data.option);
+			 		})
+			}) 
+	
+}*/
 
 //获取url中的参数
 

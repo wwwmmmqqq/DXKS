@@ -25,7 +25,7 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
-        <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+         <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
         
        
 	</head>
@@ -82,8 +82,7 @@
 					<ul class="side_nav">
 					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
-					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
-				</ul>
+					<a href="teacher_read_jump.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</div>
 			</nav>
 			<!-- sidebar end -->
@@ -92,8 +91,8 @@
 		    	<div class="bred">
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread">
-		    				<li>
-		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
+		    				<li class="active">
+		    					<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>
 		    					题库管理
@@ -130,7 +129,6 @@
 		    		<section>
 		    			<div class="panel showpaper">
 		    			<s:iterator id="que" value="#request.questionList" status="s1">
-		    			<input type="hidden" value="<s:property value="#que.sid"/>" id="questionid" />
 		    				<div class="panel-body paperpanel">
 		    					<div class="qtype">
 		    					
@@ -152,51 +150,67 @@
 		    						</p>
 		    						<div class="operation">
 		    							<ul>
-		    							<s:if test="#que.type=="Single"></s:if>
-		    							<!-- 单选模态框 -->
+		    							<s:if test="#que.type=='Single'">
 		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil">
+		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil" onclick="editItemBankByUser()">
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
-		    								</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button></li>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
 		    							
-		    								<!-- 多选模态框 -->
-		    								<!-- <li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-chooses">
+		    							</s:if>
+		    							<s:if test="#que.type=='Multiple'">
+		    								<li>
+		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-choosesl">
 		    										<i class="fa fa-pencil"></i>
-		    									</button>
-		    								</li> -->
-		    								<!-- 判断模态框 -->
-		    								<!-- <li>
+		    								</button>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='TrueOrFalse'">
+		    								<li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-true-or-flase">
 		    										<i class="fa fa-pencil"></i>
-		    									</button>
-		    								</li> -->
-		    								<!-- 填空 模态框 -->
-		    								<!-- <li>
+		    								</button>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='Fills'">
+		    								<li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-fill-and-judgement">
 		    										<i class="fa fa-pencil"></i>
-		    									</button>
-		    								</li> -->
-		    								<!-- 解答 模态框 -->
-		    								<!-- <li>
+		    								</button>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='Subjective'">
+		    								<li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-answer-question">
 		    										<i class="fa fa-pencil"></i>
-		    									</button>
-		    								</li> -->
-		    
+		    								</button>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							
 		    							</ul>
 		    						</div>
+
 		    					</div>
 		    					<ul>
 		    						<li class="question"><h4>${que.title}</h4></li>
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
-			    					
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
-			    						
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
-			    						<li>正确答案：
+			    						<li>${s2.last?"正确答案：":""}
 				    						<span style="color: red;">
 				    							${("Single Multiple TrueOrFalse".indexOf(que.type)>0 && queOpt.isAnswer==1)?optionLabel:""}
 				    							${que.type=="Fills"?queOpt.fillsText:""}
@@ -204,7 +218,18 @@
 				    						</span>
 			    						</li>
 		    						</s:iterator>
-		    					
+		    						<%-- <li>正确答案：
+		    							<span style="color: red;">
+				    						${que.type=="Single"?queOpt.isAnswer:""}
+				    						${que.type=="Fills"?queOpt.fillsText:""}
+				    						${que.type=="Multiple"?queOpt.isAnswer:""}
+				    						${que.type=="Subjective"?queOpt.subjectiveText:""}
+				    						${que.type=="TrueOrFalse"?queOpt.isAnswer:""}
+			    						</span>
+		    						</li> --%>
+		    						<%-- <s:if  test="#optque.isAnswer==1">
+		    						<li>正确答案：${optque.content }</li>
+		    						</s:if> --%>
 		    					</ul>
 		    					
 		    					
@@ -590,7 +615,7 @@
 		        <div class="modal-body">
 		          	<div class="email">
 		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept" >接受</button>
+		          		<button class="btn btn-primary accept" onclick="window.location='teacher_read.jsp'">接受</button>
 		          		<button class="btn btn-danger refuse"  >拒绝</button>
 		          	</div>
 		          	<div class="email">
@@ -659,7 +684,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/search.js" ></script>
 		<script type="text/javascript" src="js/jsshowpaper.js" ></script>
-		<script type="text/javascript" src="js/jquery-confirm.js"></script>
+		<script type="text/javascript" src="js/jquery-confirm.js" ></script>
 	</body>
 	
 </html>

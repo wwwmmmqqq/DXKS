@@ -191,25 +191,25 @@
 							        			<tr>
 							        				<td>
 							        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover" name="name">
+							        					<input type="text" class="hover form-control" name="name">
 							        				</td>
 							        			</tr>
 							        			<tr>			        				
 							        				<td >
 							        					工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover" name="userid">
+							        					<input type="text" class="hover form-control" name="userid">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover" name="collegeName">
+							        					<input type="text" class="hover form-control" name="collegeName">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							        						<select class="form-control" name="sex" id="administrationSex">
+							        						<select class=" input-checkbox form-control" name="sex" id="administrationSex">
 							        							<option value="男">男</option>
 							        							<option value="女">女</option>
 							        						</select>
@@ -219,13 +219,13 @@
 							        			<tr>
 							        				<td >
 							        					联系方式&nbsp;
-							        					<input type="text" class="hover"  name="phone">
+							        					<input type="text" class="hover form-control"  name="phone">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover"  name="email">
+							        					<input type="text" class="hover form-control"  name="email">
 							        				</td>
 							        			</tr>	
 							        		</tbody>

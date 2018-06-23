@@ -2,7 +2,7 @@ var currentPage = 1;
 loadDatas(1);
 var totalPage=1;
 function loadDatas(page) {
-	var Lname = $('#name1').val();
+	var Lname =$('#name1').val();
 	var LuserId = $('#userId1').val();
 	var LcollegeName = $('#school1').val();
 	var Ldepartment = $('#institute1').val();
