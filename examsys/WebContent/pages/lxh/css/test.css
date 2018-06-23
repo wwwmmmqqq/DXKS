@@ -407,6 +407,15 @@ p{
 	margin-top:20px ;
 	background-color:white ;
 }
+.top_main .search_hide {
+	display: none;
+}
+.search_hide input ,select , button {
+	margin: 0px  15px;
+	border-radius: 5px;
+}
+
+
 /*表格*/
 .tip{
 	width: 95%;

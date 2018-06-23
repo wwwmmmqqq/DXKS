@@ -14,6 +14,7 @@
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/test.js" ></script>
 	</head>
 	<body>
 		
@@ -104,14 +105,21 @@
 							<i class="fa fa-plus-circle"></i>
 							添加考次
 						</button>
-						<div class="top_search">
-							
-							<button type="button" class="btn btn2">
-								<i class="fa fa-search-minus"></i>
-								条件搜索
-							</button>
-						</div>
+						<button type="button" class="btn btn2" id="find">
+						<i class="fa fa-search-minus"></i>
+							       条件搜索
+						</button>
 					</div>
+	         
+			   <div class="search_hide" id="hide">
+                   <input type="text" class="input_hide1"  id="name1" placeholder="考试计划名称"/>
+				   <input type="text" class="input_hide" id="userId1"  placeholder="计划时间"/>
+				   <input type="text" class="input_hide" id="userId1"  placeholder="受邀学校"/>
+				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
+				   <input type="reset" class="btn clean">
+			   </div>
+           </div>
+					
 			
 			<!--表格-->
 			<div class="tip">考试计划</div>
@@ -167,7 +175,7 @@
 			
 			</div>
 		</div>
-	</section>
+	
 			<!--模态框查看个人信息-->
 		<div class="modal fade" id="myModal_information">
 			<div class="modal-dialog">
@@ -574,8 +582,7 @@
 		      </div>
 		    </div>
   		</div>
-			
-	</div>
+
 	</body>
 <script>
 loadMyExamList(2);
@@ -716,5 +723,23 @@ function checkInput() {
 		}
 	});
 }
+
+$("#find").click(function(){alert("0o0");
+	$("#hide").slideToggle("slow");
+		/* $("#school").click(function(){
+			$("#school1").slideToggle("slow");
+		});
+		$("#institute").click(function(){
+			$("#institute1").slideToggle("slow");
+		});
+		$("#profession").click(function(){
+			$("#profession1").slideToggle("slow");
+		});
+		$("#class").click(function(){
+			$("#class1").slideToggle("slow");
+		}); */
+});
+
 </script>
+<script type="text/javascript" src="js/test.js" ></script>
 </html>

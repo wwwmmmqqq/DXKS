@@ -76,7 +76,7 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<<!-- li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
 			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
@@ -103,14 +103,25 @@
 							<i class="fa fa-plus-circle"></i>
 							添加教师
 						</button>
-						<div class="top_search">
-							
-							<button type="button" class="btn btn2">
+						<button type="button" class="btn btn2" id="find">
 								<i class="fa fa-search-minus"></i>
 								条件搜索
-							</button>
-						</div>
+						</button>	
 					</div>
+					<div class="search_hide" id="hide">
+                        <input type="text" class="input_hide1"  id="name1" placeholder="用户名"/>
+				        <input type="text" class="input_hide" id="userId1"  placeholder="专业"/>
+				        <input type="text" class="input_hide" id="userId1"  placeholder="学校"/>
+				                 性别:
+				        <select>
+				             <option>男</option>
+				             <option>女</option>
+				        </select>
+				        <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
+				        <input type="reset" class="btn clean">
+			        </div>
+              </div>
+              
 			<!--table-->
 			<div class="tip">教师信息</div>
 			<table class="table table-striped tb1">
@@ -653,8 +664,6 @@
 		          		<button class="btn btn-danger refuse">拒绝</button>
 		          	</div>
 		        </div>
-		   
-		       
 		        <div class="modal-footer">
 		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
 		        </div>
@@ -662,8 +671,6 @@
 		    </div>
   		</div>
 		
-		
-	</div>	
 	</body>
 <script type="text/javascript">
 	loadStudentList(1);
@@ -884,8 +891,23 @@
 			}else{
 				return true;
 			}
-		});
-		
+		});	
 	}
+	//搜索隐藏
+	$("#find").click(function(){
+	$("#hide").slideToggle("slow");
+	/*$("#school").click(function(){
+			$("#school1").slideToggle("slow");
+		});
+		$("#institute").click(function(){
+			$("#institute1").slideToggle("slow");
+		});
+		$("#profession").click(function(){
+			$("#profession1").slideToggle("slow");
+		});
+		$("#class").click(function(){
+			$("#class1").slideToggle("slow");
+		});*/
+});
 </script>
 </html>

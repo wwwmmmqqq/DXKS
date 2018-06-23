@@ -103,14 +103,26 @@
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 						</button> -->
-						<div class="top_search">
-							
-							<button type="button" class="btn btn2">
+						<button type="button" class="btn btn2" id="find">
 								<i class="fa fa-search-minus"></i>
 								条件搜索
-							</button>
-						</div>
+						</button>	
 					</div>
+					<div class="search_hide" id="hide">
+                        <input type="text" class="input_hide1"  id="name1" placeholder="学号"/>
+				        <input type="text" class="input_hide" id="userId1"  placeholder="姓名"/>
+				        <input type="text" class="input_hide" id="userId1"  placeholder="学院"/>
+				        <input type="text" class="input_hide" id="userId1"  placeholder="专业"/>
+				                 性别:
+				        <select>
+				             <option>男</option>
+				             <option>女</option>
+				        </select>
+				        <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
+				        <input type="reset" class="btn clean">
+			        </div>
+              </div>
+              
 			<!--table-->
 			<div class="tip">学生信息</div>
 			<table class="table table-striped tb1">
@@ -899,5 +911,10 @@
 		});
 		return filled;
 	}
+	
+//搜索隐藏
+	$("#find").click(function(){
+	$("#hide").slideToggle("slow");
+	})
 </script>
 </html>
