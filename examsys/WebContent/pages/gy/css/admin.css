@@ -421,11 +421,18 @@ th {
 	border: 1px solid #0e92cf;
 	border-radius:5px ;
 }
+.add-jw .hover{
+	display: inline;
+}
 .modal-header .close1{
 	display: block;
 	position: absolute;
 	top:20px;
 	right:25px;
+}
+.choose-sex .input-checkbox{
+	width: 60%;
+	display: inline;
 }
 
 /*查看个人信息模态框*/
