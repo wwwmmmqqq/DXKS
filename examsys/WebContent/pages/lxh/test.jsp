@@ -419,7 +419,7 @@
 					 <!-- 模态框主体 -->
 					<div class="modal-body">
 						<table >
-							<tbody>
+							<tbody id="examPlan_info_box">
 							    <tr>
 							        <td >
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
@@ -612,8 +612,8 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.explication+"</td>"
 	+"<td>"+obj.state+"</td>"
 	+"<td>"
-	+"<i class='fa fa-pencil check'></i>"
-	+"<i class='fa fa-trash-o'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
+	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
+	+"<i class='fa fa-trash-o' onclick='deleteExam()'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
 	+"</td>"
 	+"</tr>";
 		
@@ -622,27 +622,27 @@ function getItemHtml(index,obj,number){
 function getLiHtml(index) {
 	if(index==1){
 		var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-			+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";			
+			+"<li class='page-item'><a class='page-link' href='javascript:loadExamList("+index+")'>"+index+"</a></li>";			
 	}
 	else if(index==totalPage){
-		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadExamList("+index+")'>"+index+"</a></li>"
 			+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
 			
 	}
 	else {
-		var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+		var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadExamList("+index+")'>"+index+"</a></li>";
 	}
 	return ht;    
 }
 
 function nextPage() {
 	if(currentPage<totalPage) 
-		loadStudentList(++currentPage);
+		loadExamList(++currentPage);
 }
 
 function prevPage() {
 	if(currentPage>=2) 
-		loadStudentList(--currentPage);
+		loadExamList(--currentPage);
 }
 /* function jumpPage() {
 	var juPage=$('#jpage').html();
@@ -655,6 +655,21 @@ function prevPage() {
 	}
 		
 } */
+function examPlanInfo(node) {
+	var td = node.parentNode.parentNode.childNodes;
+	var userId = td[2].innerHTML;
+	$.post("showUser",{"user.userId":userId},function(data) {
+		var examplan = data.examplan;
+		var info = getInfoHtml(user);
+		$('#examPlan-info-box').html(info);
+		
+		$('#exam_title').val(user.name);
+		$('#exam_periodStart').val(user.name);
+		$('#exam_periodEnd').val(user.userId);
+		$('#exam_invitee').val(user.collegeName);
+	})
+}	
+
 
 function createExamPlan() {
 		$.post("createExamPlan",
@@ -673,7 +688,7 @@ function deleteTest(node) {
 	var td = node.parentNode.parentNode.childNodes;
 	var userId = td[2].innerHTML;
 	if(confirm("确定要删除该考次吗？")) {
-		$.post("deleteUser",{"user.userId":userId},function(data) {
+		$.post("deleteTest",{"user.userId":userId},function(data) {
 			if(data.result=="删除成功") {
 					location.href="test.jsp";
 			}

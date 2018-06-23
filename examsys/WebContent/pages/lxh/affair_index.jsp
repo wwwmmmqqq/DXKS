@@ -128,7 +128,7 @@
 		   
 		    	
 		    	<div class="papermanage">
-		    		<div id="flip">条件搜索</div>
+		    		<div id="flip"><i class="fa fa-search-minus"></i>条件搜索</div>
 		    		<div id="panel">
 		    			<form>
 		    				<div class="searchpanel">
@@ -608,8 +608,6 @@
 		return htm;
 	}
 	
-
-editePaper();
 function editePaper() {
 		$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
 		alert(data.result);
