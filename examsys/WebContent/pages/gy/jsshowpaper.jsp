@@ -25,7 +25,6 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
-        <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
         
        
 	</head>
@@ -91,8 +90,8 @@
 		    	<div class="bred">
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread">
-		    				<li>
-		    					<a href="jsshowpaper.jsp"><i class="fa fa-home"></i> Home</a>
+		    				<li class="active">
+		    					<a href="showItemBankListByUserJump?page=1"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>
 		    					题库管理
@@ -129,7 +128,6 @@
 		    		<section>
 		    			<div class="panel showpaper">
 		    			<s:iterator id="que" value="#request.questionList" status="s1">
-		    			<input type="hidden" value="<s:property value="#que.sid"/>" id="questionid" />
 		    				<div class="panel-body paperpanel">
 		    					<div class="qtype">
 		    					
@@ -151,63 +149,46 @@
 		    						</p>
 		    						<div class="operation">
 		    							<ul>
-		    							<s:if test="#que.type=='Single'">
+		    							<!-- 单选模态框 -->
 		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil" onclick="editItemBankByUser()">
+		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil">
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
 		    								</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button></li>
-		    							
-		    							</s:if>
-		    							<s:if test="#que.type=='Multiple'">
-		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-choosesl">
+		    								<!-- 多选模态框 -->
+		    								<!-- <li>
+		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-chooses">
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
-		    								</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button></li>
-		    							
-		    							</s:if>
-		    							<s:if test="#que.type=='TrueOrFalse'">
-		    								<li>
+		    								</li> -->
+		    								<!-- 判断模态框 -->
+		    								<!-- <li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-true-or-flase">
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
-		    								</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button></li>
-		    							
-		    							</s:if>
-		    							<s:if test="#que.type=='Fills'">
-		    								<li>
+		    								</li> -->
+		    								<!-- 填空 模态框 -->
+		    								<!-- <li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-fill-and-judgement">
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
-		    								</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button></li>
-		    							
-		    							</s:if>
-		    							<s:if test="#que.type=='Subjective'">
-		    								<li>
+		    								</li> -->
+		    								<!-- 解答 模态框 -->
+		    								<!-- <li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-answer-question">
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
-		    								</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button></li>
-		    							
-		    							</s:if>
-		    							
+		    								</li> -->
+		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
 		    							</ul>
 		    						</div>
 		    					</div>
 		    					<ul>
 		    						<li class="question"><h4>${que.title}</h4></li>
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
-			    					
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
-			    						
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
-			    						<li>正确答案：
+			    						<li>${s2.last?"正确答案：":""}
 				    						<span style="color: red;">
 				    							${("Single Multiple TrueOrFalse".indexOf(que.type)>0 && queOpt.isAnswer==1)?optionLabel:""}
 				    							${que.type=="Fills"?queOpt.fillsText:""}
@@ -215,7 +196,18 @@
 				    						</span>
 			    						</li>
 		    						</s:iterator>
-		    					
+		    						<%-- <li>正确答案：
+		    							<span style="color: red;">
+				    						${que.type=="Single"?queOpt.isAnswer:""}
+				    						${que.type=="Fills"?queOpt.fillsText:""}
+				    						${que.type=="Multiple"?queOpt.isAnswer:""}
+				    						${que.type=="Subjective"?queOpt.subjectiveText:""}
+				    						${que.type=="TrueOrFalse"?queOpt.isAnswer:""}
+			    						</span>
+		    						</li> --%>
+		    						<%-- <s:if  test="#optque.isAnswer==1">
+		    						<li>正确答案：${optque.content }</li>
+		    						</s:if> --%>
 		    					</ul>
 		    					
 		    					
@@ -266,19 +258,22 @@
 				      	<form class="choose" id="s-question">
 		    				<ul>
 		    				<li id="dry" >题干
-		    				<textarea name="question.title" id="question" ></textarea></li>	
-		    				<ul class="que-option">
-		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
+		    				<textarea name="question.title" id="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class=" input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-		    						<input type="text" name="question.isAnswer" />
+		    							<span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>B</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>C</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>D</span><input type="radio" name="question.isAnswer" class="choose1"/>
 		    					</li>
-		    					</ul>
-		    				    <li id="knowledge">知识点<input class="input-pencil form-control" type="text" name="question.knowledge"  /></li>
+		    					
+		    				    <li id="knowledge">知识点<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
 		    			    </ul>
 		    			 </form>
+				 
 				      <!-- 模态框底部 -->
 				      <div class="modal-footer foot-pencil">
 				      	<button type="bttton" class="btn btn-primary check-pencil">修改</button>
@@ -594,7 +589,7 @@
 		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
 		        </div>
 		   
-		          
+		        
 		        <div class="modal-body">
 		          	<div class="email">
 		          		来自xx学校xx学院xx老师的邀请
@@ -667,7 +662,6 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/search.js" ></script>
 		<script type="text/javascript" src="js/jsshowpaper.js" ></script>
-		<script type="text/javascript" src="js/jquery-confirm.js"></script>
 	</body>
 	
 </html>
