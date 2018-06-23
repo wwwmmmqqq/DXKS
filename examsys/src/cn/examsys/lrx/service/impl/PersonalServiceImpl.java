@@ -2,17 +2,28 @@ package cn.examsys.lrx.service.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.criterion.CriteriaQuery;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.engine.spi.TypedValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.examsys.bean.Exam;
 import cn.examsys.bean.Grade;
+import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
+import cn.examsys.common.QLBuilder;
 import cn.examsys.common.QuestionListTool;
 import cn.examsys.lrx.dao.PersonalDao;
 import cn.examsys.lrx.dao.impl.PersonalDaoImpl;
 import cn.examsys.lrx.service.PersonalService;
+import cn.examsys.lrx.vo.GradeVO;
+import cn.examsys.lrx.vo.HistoryGradeVO;
 import cn.examsys.lrx.vo.PersonalHomePageVO;
 
 @Service("personalService")
@@ -79,6 +90,30 @@ public class PersonalServiceImpl implements PersonalService {
 			List<Question> questionList = dao.findByHql("from Question", 1);
 			QuestionListTool.fillOptionsFromQuestionList(dao, questionList);
 			return questionList;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<GradeVO> loadHistoryGrades(User sessionUser, int page) {
+		try {
+			return dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, p) from Paper p, Grade g"
+					+ " where g.paperRef=p.sid and g.userId=?"
+					, new Object[]{sessionUser.getUserId()}, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Exam> loadExams(User sessionUser, int page) {
+		try {
+			return dao.findByHql("from Exam where locate(?, invitee)>0 or locate(?, invitee)>0"
+					, new Object[]{sessionUser.getCollegeName()
+							, sessionUser.getCollegeRef()}, page);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
