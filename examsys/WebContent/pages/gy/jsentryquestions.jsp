@@ -107,7 +107,25 @@
 		    						<input type="radio"  id="answer-questions" name="1" value="Subjective"/><label>解答题</label>
 		    					</form>
 		    				</li>
+
+		    				<li>请选择科目：
+		    					<select class="sub form-control">
+		    						<option>高数</option>
+		    						<option>英语</option>
+		    						<option>政治</option>
+		    						<option>计算机</option>
+		    						<option>物理</option>
+		    						<option>化学</option>
+		    					</select>
 		    				
+		    					难易程度
+		    					<select class="sub form-control">
+		    						<option>简单</option>
+		    						<option>中等</option>
+		    						<option>一般</option>
+		    						<option>困难</option>
+		    					</select>
+		    				</li>
 		    			</ul>
 		    		</div>
 		    		<div class="entry">
@@ -124,6 +142,13 @@
 		    						<option>思想政治</option>
 		    						<option>计算机</option>
 		    						<option >大学物理</option>
+		    					</select>
+		    					难易程度
+		    					<select class="sub form-control">
+		    						<option>简单</option>
+		    						<option>中等</option>
+		    						<option>一般</option>
+		    						<option>困难</option>
 		    					</select>
 		    				</li>
 		    				<li id="dry">题干<br>
@@ -155,6 +180,13 @@
 		    						<option value="思想政治">"思想政治"</option>
 		    						<option value="计算机">计算机</option>
 		    						<option value="大学物理">"大学物理"</option>
+		    					</select>
+		    					难易程度
+		    					<select class="sub form-control">
+		    						<option>简单</option>
+		    						<option>中等</option>
+		    						<option>一般</option>
+		    						<option>困难</option>
 		    					</select>
 		    				</li>
 		    				<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
@@ -189,6 +221,13 @@
 		    						<option value="计算机">计算机</option>
 		    						<option value="大学物理">"大学物理"</option>
 		    					</select>
+		    					难易程度
+		    					<select class="sub form-control">
+		    						<option>简单</option>
+		    						<option>中等</option>
+		    						<option>一般</option>
+		    						<option>困难</option>
+		    					</select>
 		    				</li>
 		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
@@ -217,6 +256,13 @@
 		    						<option value="计算机">计算机</option>
 		    						<option value="大学物理">"大学物理"</option>
 		    					</select>
+		    					难易程度
+		    					<select class="sub form-control">
+		    						<option>简单</option>
+		    						<option>中等</option>
+		    						<option>一般</option>
+		    						<option>困难</option>
+		    					</select>
 		    				</li>
 		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>		    					
 		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="question.fillsText" /></li>
@@ -239,6 +285,13 @@
 		    						<option value="思想政治">"思想政治"</option>
 		    						<option value="计算机">计算机</option>
 		    						<option value="大学物理">"大学物理"</option>
+		    					</select>
+		    					难易程度
+		    					<select class="sub form-control">
+		    						<option>简单</option>
+		    						<option>中等</option>
+		    						<option>一般</option>
+		    						<option>困难</option>
 		    					</select>
 		    				</li>
 		    					<li id="dry">题&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>
@@ -475,6 +528,7 @@
 		    <script type="text/javascript" src="js/jquery-confirm.js"></script>
 		    <script type="text/javascript" src="js/toastr.js"></script>
             <script type="text/javascript" src="js/jsentryquestions.js" ></script>
+            <script type="text/javascript" src="js/jquery-confirm.js" ></script>
             <script>
             
             
@@ -526,4 +580,5 @@
         </script>  
         
 	</body>
+	
 </html>
