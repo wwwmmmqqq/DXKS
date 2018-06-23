@@ -26,7 +26,7 @@ public class TheDoor extends StrutsPrepareAndExecuteFilter {
 		/*HttpSession session = request.getSession();
 		if (session.getAttribute("user") == null && !url.contains("login.jsp")) {
 			HttpServletResponse response = (HttpServletResponse) res;
-			response.sendRedirect("pages/gy/login.jsp"url.substring(0, url.indexOf("/examsys") + "/examsys".length()) 
+			response.sendRedirect(url.substring(0, url.indexOf("/examsys") + "/examsys".length()) 
 					+ "/pages/gy/login.jsp");
 		}*/
 		

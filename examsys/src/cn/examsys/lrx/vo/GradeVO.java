@@ -17,6 +17,11 @@ public class GradeVO {
 		this.paper = paper;
 	}
 	
+	public GradeVO(Grade grade, Paper paper) {
+		this.grade = grade;
+		this.paper = paper;
+	}
+	
 	public Grade getGrade() {
 		return grade;
 	}

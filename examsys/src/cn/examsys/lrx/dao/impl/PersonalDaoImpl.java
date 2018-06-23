@@ -16,9 +16,4 @@ public class PersonalDaoImpl extends DaoAdapter implements PersonalDao {
 		return null;
 	}
 
-	@Override
-	public void updateEntityFields(Class<User> claz, Object[] fields, Object[] values) {
-		updateEntityFields(claz, fields, values);
-	}
-	
 }
