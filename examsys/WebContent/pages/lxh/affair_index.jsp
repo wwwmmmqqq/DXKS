@@ -96,12 +96,12 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-						<!-- <li class="side_nav1">
+					  <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li> -->
+						</li> 
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -219,7 +219,7 @@
 		    			</div>
 		    		</div>
 		        </div>  
-		        <!--papermanange end -->	    
+		        
 		    </div>
 		    <!--cant end -->	
 		   

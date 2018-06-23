@@ -161,8 +161,9 @@
 		    			<form>
 		    				<div class="searchpanel">
 		    					<ul>
-		    						<li id="qtype"><label>选择试题类型</label>
+		    						<li id="qtype">
 		    							<select id="question_type">
+		    							    <option>选择试题类型</option>
 		    								<option>单选题</option>
 		    								<option>多选题</option>
 		    								<option>填空题</option>
@@ -199,9 +200,23 @@
 		    							<div class="search-exam">
 		    								<div class="exam-head">
 		    									<p class="exam-head-left">
-		    									    <span>题型： ${que.type}</span>
+		    									    <span>题型：  ${que.type}
+		    									             ${(que.type=="Single")?"(单选题)":""}
+											                 ${(que.type=="Multiple")?"(多选题)":""}
+											                 ${(que.type=="TrueOrFalse")?"(判断题)":""}
+										                     ${(que.type=="Fills")?"(填空题)":""}
+										                     ${(que.type=="Subjective")?"(解答题)":""}
+		    									    </span>
 		    									    <i class="line"></i>
-		    									    <span>难易度： ${que.difficultValue}</span>
+		    									    <span>所属科目：${que.subjectRef}</span>
+		    									    
+		    									    <i class="line"></i>
+		    									    <span>难易度： <%-- ${que.difficultValue} --%>
+		    									            ${que.difficultyValue==1?"简单":""}
+		    								                ${que.difficultyValue==2?"一般":""}
+		    							                    ${que.difficultyValue==3?"中等":""}
+		    								                ${que.difficultyValue==4?"较难":""}
+		    									    </span>
 		    									    <i class="line"></i>
 		    									    <span>知识点：${que.knowledge}</span>
 		    								    </p>
@@ -215,14 +230,16 @@
 		    							    			<div class="exam-q">
 		    							    				${sta.index}.${que.title}(&nbsp;&nbsp;)
 		    							    			</div>
-		    			     </s:iterator>	
+		    							    				
 		    							    		    <div class="exam-s">
+		    							    		    <s:if test="#que.type=='Single' || ${#que.type}=='多选题'">	    							    		    		    				                        	
 		    							    		    <s:iterator id="opt" value="#request.optionList" status="st">
 		    							    			    <span class="op-item">
 		    							    			    	<span>${st.index}.</span> 
 		    							    			    	<span>${opt.content}</span>
 		    							    			    </span>
 		    							    			</s:iterator>
+		    							    			</s:if>
 		    							    			    <%-- <span class="op-item">
 		    							    			    	<span>B.</span> 
 		    							    			    	<span>Update software</span>
@@ -243,7 +260,7 @@
 		    							    				<a class="" href="#">查看解析</a>
 		    							    			</p>
 		    							    			<p class="exam-foot-right">
-		    							    				<button type="button" class="btn btn-primary" id="addtobasket">+选题</button>
+		    							    				<button type="button" class="btn btn-primary" id="addtobasket" onclick="addQuestion('${que.type}')">+选题</button>
 		    							    			</p>
 		    							    		</div>
 		    							    	</div>
@@ -251,7 +268,8 @@
 		    							    
 		    							</div>
 		    						</li>
-		    						<li>
+		    					 </s:iterator>
+		    						<%-- <li>
 		    							<div class="search-exam">
 		    								<div class="exam-head">
 		    									<p class="exam-head-left">
@@ -305,7 +323,7 @@
 		    							    
 		    							</div>
 		    						</li>
-		    						
+		    						 --%>
 		    					</ul>
 		    						
 		    				</div>
@@ -335,13 +353,7 @@
 		    					<button class="btn btn-primary btn_jump">跳转</button>
 		    				</ul>
 		    			</div>
-		    			
-		    			
-		    		</div>	
-		    	</div>
-		    </div>
-		    
-	    </div>
+
 		
 	    <!--模态框-->
 	    <!--模态框查看个人信息-->
@@ -592,14 +604,19 @@
 	
 	function searchQuestions() {
 		  $.post("searchQuestions", {
-			  "keys[0]":"title",//搜索的字段1
-			  "values[0]":$('#question_knowledge').val()//搜索的关键字1
-		  }, function(data) {
+			  "question.type":$('#question_type').val(),//搜索的字段1
+			  "question.difficultValue":$('#question_difficultValue').val(),
+			  "question.knowledge":$('#question_knowledge').val()//搜索的关键字1
+			  
+		  }, function(data) {alert("ooo");
 			  alert(data.result);
 			  alert(data.list);
+			 var questionList=data.list; 
 		  });
 	  }
-	var questionList = [];
+	
+	
+	var questionBasketList = [];
 	function addQuestion(sid) {
 		questionList.push(sid);
 	}
@@ -613,7 +630,7 @@
 		  $.post("createPaperHand", {
 			  "examStart":examStart //考试开始
 			  ,"examEnd":examEnd //考试结束
-			  ,"examName":examStart //考试名字
+			  ,"examName":title //考试名字
 			  ,"qids[0]":qids[0]//第一题ID
 			  ,"qids[1]":qids[1]//第二题ID
 			  ,"qids[2]":qids[2]//第三题ID
@@ -630,7 +647,7 @@
 	/*搜索jquery隐藏显示面板*/
 	$(document).ready(function() {
 	    $("#flip").click(function() {
-	        $("#panel").slideDown("slow");
+	        $("#panel").slidetoggle("slow");
 	    });
 	});
 
