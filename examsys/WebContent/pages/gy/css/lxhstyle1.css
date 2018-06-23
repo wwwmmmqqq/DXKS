@@ -863,11 +863,12 @@ b {
 	height: 150px;
 	padding: 10px;
 	background-color: #e3dded;
+	text-align:center;
 }
 .shaixuan select {
 	width: 150px;
 	height: 40px;
-	margin: 20px 50px;
+	margin: 10px 10px;
 }
 .shaixuan input {
 	width: 20px;
@@ -881,7 +882,10 @@ b {
 }
 .entryquestions .entry {
 	width: 100%;
-	min-height: 450px;
+
+	height:80%;
+	position:relative;
+	top:-25px;
 	padding: 10px;
 	background:#e3dded;
 }
@@ -986,7 +990,7 @@ b {
 	width:100%;
 }
 .choose textarea{
-	width:60%;
+	width:70%;
 	height:60px;
 	margin-left:10px;
 }
@@ -1010,4 +1014,8 @@ b {
 	width:90px;
 	height:40px;
 	
+}
+
+.question-type .sub{
+	display:inline;
 }

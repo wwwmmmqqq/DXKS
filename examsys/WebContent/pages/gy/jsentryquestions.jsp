@@ -47,15 +47,14 @@
 		
 				<div class="dropdown notice">
 					<button class="dropbtn">
-				    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				    			    				<i class="fa fa-envelope"></i>
-				    			    				<span class="label-success success1"></span>
-				    			    			</a>
-				    			    	    </button>
+   			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+   			    				<i class="fa fa-envelope"></i>
+   			    				<span class="label-success success1"></span>
+   			    			</a>
+   			    	    </button>
 					<div class="dropdown-content">
-						<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
-						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
-
+						<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
+						<a href="#" data-toggle="modal" data-target="#myModal_read">阅卷通知</a>
 					</div>
 				</div>
 			</div>
@@ -128,6 +127,7 @@
 		    					</select>
 		    				</li>
 		    				<li id="dry">题干<br>
+
 		    				<textarea name="question.title" id="question"></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
@@ -206,7 +206,7 @@
 		    			
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
-		    			<form id="fj-question">
+		    			<form id="fj-question" class="choose">
 		    			<input type="hidden" value="Fills" name="question.type">
 
 		    				<ul>
@@ -221,7 +221,7 @@
 		    				</li>
 		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>		    					
 		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="question.fillsText" /></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="question.knowledge"/></li>
+		    					<li id="knowledge">涉及知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
 		    			</div>
@@ -230,9 +230,8 @@
 		    			
 		    			<!--解答题录入 start-->
 		    			<div class="answer-question">
-		    			<form id="aquestion">
+		    			<form id="aquestion" class="choose">
 		    			<input type="hidden" value="Subjective" name="question.type">
-
 		    				<ul>
 		    				<li>请选择科目：
 		    					<select name="question.subjectName">
@@ -243,9 +242,9 @@
 		    						<option value="大学物理">"大学物理"</option>
 		    					</select>
 		    				</li>
-		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>
-		    					<li id="answer">答案<br><textarea name="question.subjectiveText"></textarea></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="question.knowledge"/></li>
+		    					<li id="dry">题&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>
+		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.subjectiveText"></textarea></li>
+		    					<li id="knowledge">涉及知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
 		    			</div>
@@ -526,5 +525,6 @@
              }
            
         </script>  
+        
 	</body>
 </html>
