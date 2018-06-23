@@ -142,5 +142,26 @@ public class PersonalServiceImpl implements PersonalService {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public String registUser(String userId, String psw, String email) {
+		User u = dao.findEntity(User.class, userId);
+		if (u == null) {
+			User user = new User();
+			user.setUserId(userId);
+			user.setPsw(psw);
+			user.setEmail(email);
+			try {
+				dao.saveEntity(user);
+				return "success";
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "fail"
+			}
+		} else {
+			return "exist";
+		}
+		
+	}
 	
 }

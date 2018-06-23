@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Question;
+import cn.examsys.bean.User;
 import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.common.Conf;
@@ -191,6 +192,19 @@ public class PersonalAction extends CommonAction {
 		if (!bo) {
 			setResult("fail");
 		}
+		return aa;
+	}
+	
+	User user = new User();
+	public User getUser() {
+		return user;
+	}
+	@Action(value="/registUser"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String registUser() {
+		String rst = serivce.registUser(user.getUserId(), user.getPsw(), user.getEmail());
+		setResult(rst);
 		return aa;
 	}
 	
