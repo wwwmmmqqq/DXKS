@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Question;
 import cn.examsys.common.CommonAction;
+import cn.examsys.common.Conf;
 import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PersonalService;
 
@@ -32,10 +34,6 @@ public class PersonalAction extends CommonAction {
 		return list;
 	}
 	
-	Question question;
-	public Question getQuestion() {
-		return question;
-	}
 	
 	@Autowired
 	PersonalService serivce;
@@ -159,13 +157,23 @@ public class PersonalAction extends CommonAction {
 	}
 	
 	
+	Answersheet answer = new Answersheet();
+	public Answersheet getAnswer() {
+		return answer;
+	}
+	
+	//批改题目
 	@Action(value="/checkQuestion"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String checkQuestion() {
-		
-		//serivce.checkQuestion(question.getSid(), );
-		
+		//sid, scoring
+		boolean bo = serivce.checkQuestion(getSessionUserId()//改卷的老师
+				, answer.getSid(), answer.getScoring()
+				, Conf.Question_Subjective);
+		if (!bo) {
+			setResult("fail");
+		}
 		return aa;
 	}
 	
