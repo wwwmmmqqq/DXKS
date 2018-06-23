@@ -135,6 +135,7 @@ public class JumpAction extends CommonAction {
 		}*/
 		System.out.println("题库查看成功！");
 		setResult("题库查看成功！");
+		
 		return SUCCESS;
 	}
 	

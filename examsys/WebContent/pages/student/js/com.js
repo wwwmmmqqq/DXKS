@@ -1,5 +1,5 @@
 $(function (){
-	modifyInfo();
+	/*modifyInfo();
 	function modifyInfo(){
 		
 		var sname=$('.basic-info input[name="name"]').val();
@@ -22,7 +22,7 @@ $(function (){
 		  }
 	  });
 	}
- 
+ */
 })
   function setPassword(){
 	   var str = '<form id="user_setting" action="">' +

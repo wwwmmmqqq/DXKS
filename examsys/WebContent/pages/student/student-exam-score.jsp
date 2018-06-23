@@ -203,96 +203,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!-- <tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr> -->
+						
 						</tbody>
 					</table>
 					</div>
@@ -361,13 +272,13 @@
 		function getMyScore(paper,grade,i){
 			var htm=
 				"<tr>"
-			+"<td>1</td>"
-			+"<td>"+paper.subjectName+"</td>"
-			+"<td>"+grade.totalScore+"</td>"
-			+"<td>"+grade.totalScore*0.6+"</td>"
+			+"<td>"+(i+1)+"</td>"
+			+"<td>"+grade.subjectName+"</td>"
+			+"<td>"+paper.totalScore+"</td>"
+			+"<td>"+paper.totalScore*0.6+"</td>"
 			+"<td>"+grade.score+"</td>"
 			+"<td>"+grade.score/grade.totalScore+"</td>"
-			+"<td>"+paper.time+"</td>"
+			+"<td>"+grade.time+"</td>"
 			+"</tr>"
 			return htm;
 		
