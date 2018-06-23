@@ -337,15 +337,15 @@
 		<script>
 	/* 获取我的历史成绩 */
 	var paperSid=getParam("sid");
-	loadMyHistoryScore(paperSid);
-		function loadMyHistoryScore(paperSid){
-			 $.post("loadGradesByPaper", {
+	loadMyHistoryGrades(paperSid);
+		function loadMyHistoryGrades(paperSid){
+			 $.post("loadMyHistoryGrades", {
 				  "paper.sid":paperSid
 			  }, function(data) {
 				  var scoreList = data.list;
 				  var htm = "";
 				  for(var i=0;i<scoreList.length;i++) {
-					  htm += getMyScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i);
+					  htm += getMyScore(scoreList[i].paper,scoreList[i].grade,i);
 				  }
 				  $('#score-table tbody').html(htm);
 			  });
@@ -358,7 +358,7 @@
 		  	return decodeURIComponent(result[2]);
 		  return null;
 		}
-		function getMyScore(paper,user,grade,i){
+		function getMyScore(paper,grade,i){
 			var htm=
 				"<tr>"
 			+"<td>1</td>"
@@ -366,7 +366,7 @@
 			+"<td>"+grade.totalScore+"</td>"
 			+"<td>"+grade.totalScore*0.6+"</td>"
 			+"<td>"+grade.score+"</td>"
-			+"<td>80%</td>"
+			+"<td>"+grade.score/grade.totalScore+"</td>"
 			+"<td>"+paper.time+"</td>"
 			+"</tr>"
 			return htm;
