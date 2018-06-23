@@ -81,7 +81,7 @@
 				<div class="light_bottom">
 					<ul class="side_nav">
 					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
-					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
+					<a href="teacher_history.jsp"><li class="side_nav1 ">查看成绩</li></a>
 					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
 				</div>
@@ -152,7 +152,7 @@
 		    						</p>
 		    						<div class="operation">
 		    							<ul>
-		    							<s:if test="#que.type=="Single"></s:if>
+		    							<s:if test="#que.type=='Single'"></s:if>
 		    							<!-- 单选模态框 -->
 		    								<li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil">
