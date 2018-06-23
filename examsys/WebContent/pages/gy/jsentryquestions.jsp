@@ -108,24 +108,7 @@
 		    					</form>
 		    				</li>
 
-		    				<li>请选择科目：
-		    					<select class="sub form-control">
-		    						<option>高数</option>
-		    						<option>英语</option>
-		    						<option>政治</option>
-		    						<option>计算机</option>
-		    						<option>物理</option>
-		    						<option>化学</option>
-		    					</select>
 		    				
-		    					难易程度
-		    					<select class="sub form-control">
-		    						<option>简单</option>
-		    						<option>中等</option>
-		    						<option>一般</option>
-		    						<option>困难</option>
-		    					</select>
-		    				</li>
 		    			</ul>
 		    		</div>
 		    		<div class="entry" >
@@ -144,11 +127,11 @@
 		    						<option >大学物理</option>
 		    					</select>
 		    					难易程度
-		    					<select class="sub form-control">
-		    						<option>简单</option>
-		    						<option>中等</option>
-		    						<option>一般</option>
-		    						<option>困难</option>
+		    					<select class="sub form-control" name="question.difficultyValue">
+		    						<option  value="1">简单</option>
+		    						<option  value="2">中等</option>
+		    						<option  value="3">一般</option>
+		    						<option  value="4">困难</option>
 		    					</select>
 		    				</li>
 		    				<li id="dry">题干<br>
@@ -171,7 +154,10 @@
 		    			
 
 		    </div>	
-		    
+		    <div>
+		    				<button type="submit" class="btn btn-primary submitbtn" onclick="importQuestion()">提交</button>
+		    			</div>
+		    </div>
 		    			<!--模态框-->
 			<!--模态框查看个人信息-->
 			<div class="modal fade" id="myModal-information">
