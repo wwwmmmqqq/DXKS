@@ -109,7 +109,6 @@
 									<li>${item.option.subjectText}</li>
 								</ul>
 							</s:iterator>
-								
 
 							</div>
 

@@ -259,7 +259,7 @@ function getExam(obj){
 		+"					<span>"+obj.title+"</span>"
 		+"				</div>"
 		+"				<div class='exam-type-info'>"
-		+"					<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>"
+		+"					<p>参与学校：<span>"+obj.invitee+"</span></p>"
 		+"					<p>考试时间：<span>"+obj.periodStart+" - "+obj.periodEnd+"</span></p>"
 		+"				</div>"
 		+"			</div>"

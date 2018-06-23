@@ -26,7 +26,7 @@
         <!-- Theme style -->
         <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
          <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
-        
+            <link href="css/toastr.css" rel="stylesheet" type="text/css" />
        
 	</head>
 	<body>
@@ -207,8 +207,10 @@
 		    					</div>
 		    					<ul>
 		    						<li class="question"><h4>${que.title}</h4></li>
+		    						<input type="hidden" value='<s:property value="#que.sid" id="questionid"/>'/>
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
+			    						
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
 			    						<li>${s2.last?"正确答案：":""}
 				    						<span style="color: red;">
@@ -685,6 +687,7 @@
 		<script type="text/javascript" src="js/search.js" ></script>
 		<script type="text/javascript" src="js/jsshowpaper.js" ></script>
 		<script type="text/javascript" src="js/jquery-confirm.js" ></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 	</body>
 	
 </html>
