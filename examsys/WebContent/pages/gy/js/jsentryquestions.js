@@ -62,7 +62,6 @@ function importQuestion() {
 	var formData3 = new FormData(tfquestion);
 	var formData4 = new FormData(fjquestion);
 	var formData5 = new FormData(answerquestion);
-	
 	xhr.open("POST", "createItemBank");
 	
 	var radios=document.getElementsByName("1");

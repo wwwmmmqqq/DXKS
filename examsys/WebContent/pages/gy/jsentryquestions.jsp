@@ -119,15 +119,14 @@
 		    				<ul>
 		    				<li>请选择科目：
 		    					<select name="question.subjectName">
-		    						<option value="高等数学">高等数学</option>
-		    						<option value="大学英语">大学英语</option>
-		    						<option value="思想政治">"思想政治"</option>
-		    						<option value="计算机">计算机</option>
-		    						<option value="大学物理">"大学物理"</option>
+		    						<option >高等数学</option>
+		    						<option >大学英语</option>
+		    						<option>思想政治</option>
+		    						<option>计算机</option>
+		    						<option >大学物理</option>
 		    					</select>
 		    				</li>
 		    				<li id="dry">题干<br>
-
 		    				<textarea name="question.title" id="question"></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
