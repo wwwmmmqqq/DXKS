@@ -107,13 +107,21 @@
 		    					</form>
 		    				</li>
 		    				<li>请选择科目：
-		    					<select>
+		    					<select class="sub form-control">
 		    						<option>高数</option>
 		    						<option>英语</option>
 		    						<option>政治</option>
 		    						<option>计算机</option>
 		    						<option>物理</option>
 		    						<option>化学</option>
+		    					</select>
+		    				
+		    					难易程度
+		    					<select class="sub form-control">
+		    						<option>简单</option>
+		    						<option>中等</option>
+		    						<option>一般</option>
+		    						<option>困难</option>
 		    					</select>
 		    				</li>
 		    			</ul>
@@ -432,6 +440,7 @@
 		    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		    <script type="text/javascript" src="js/jquery-confirm.js"></script>
             <script type="text/javascript" src="js/jsentryquestions.js" ></script>
+            <script type="text/javascript" src="js/jquery-confirm.js" ></script>
             <script>
             function modifyPassword(){
              	var str = '<form id="user_setting" action="">' +
@@ -475,4 +484,5 @@
         </script>  
         
 	</body>
+	
 </html>
