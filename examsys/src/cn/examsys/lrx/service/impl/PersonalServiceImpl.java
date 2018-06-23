@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Exam;
 import cn.examsys.bean.Grade;
 import cn.examsys.bean.Paper;
@@ -25,6 +26,7 @@ import cn.examsys.lrx.service.PersonalService;
 import cn.examsys.lrx.vo.GradeVO;
 import cn.examsys.lrx.vo.HistoryGradeVO;
 import cn.examsys.lrx.vo.PersonalHomePageVO;
+import cn.examsys.lrx.vo.QuestionCheckVO;
 
 @Service("personalService")
 @Transactional
@@ -43,11 +45,6 @@ public class PersonalServiceImpl implements PersonalService {
 	public PersonalHomePageVO loadStuIndexDatas(User sessionUser) {
 		
 		return null;
-	}
-
-	@Override
-	public void updateStuInfos(User sessionUser, Object[] fields, Object[] values) {
-		dao.updateEntityFields(User.class, fields, values);
 	}
 
 	@Override
@@ -79,17 +76,17 @@ public class PersonalServiceImpl implements PersonalService {
 	}
 
 	@Override
-	public List<Question> loadResponsibleQuestions(User sessionUser, int page) {
-		/*List<Question> questionList = dao.findByHql("from Question where ");
-		StringBuilder qRefs = new StringBuilder();
-		for (int i = 0; i < questionList.size(); i++) {
-			qRefs.append(questionList.get(i).getSid() + ",");
-		}
-		return null;*/
+	public List<QuestionCheckVO> loadResponsibleQuestions(User sessionUser, int page) {
 		try {
-			List<Question> questionList = dao.findByHql("from Question", 1);
-			QuestionListTool.fillOptionsFromQuestionList(dao, questionList);
-			return questionList;
+			List<QuestionCheckVO> li = dao.findByHql("select new cn.examsys.lrx.vo.QuestionCheckVO(q, a) "
+					+ " from Question q, Answersheet a, Constitute c where a.questionRef=q.sid"
+					+ " and (a.checker!=? and c.responsibleUser=?) and c.questionRef=q.sid"
+					, new Object[]{sessionUser.getUserId(), sessionUser.getUserId()});
+			for (int i = 0; li!=null && i < li.size(); i++) {
+				QuestionCheckVO vo = li.get(i);
+				
+			}
+			return li;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,6 +115,32 @@ public class PersonalServiceImpl implements PersonalService {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean checkQuestion(String checker, int sid, float scoring,
+			String questionType) {
+		try {
+			dao.updateEntity(Answersheet.class, sid
+					, new String[]{"checker", "scoring"}
+					, new Object[]{checker, scoring});
+			/*dao.updateBySql("update answer_tb set checker=?, scroing=? where sid=?"
+					, new Object[]{checker, scoring, sid});*/
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public void updateStuInfos(User sessionUser, Object[] fields, Object[] values) {
+		try {
+			dao.updateEntity(User.class, sessionUser.getUserId()
+					, (String[]) fields, values);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
