@@ -33,7 +33,7 @@ function deleteQuestion(){
 	deleteInfo();
 }
 /*修改题库*/
-function editItemBankByUser(){
+/*function editItemBankByUser(){
 	alert("ddd")
 	 $.post("editItemBankByUser",
 				{
@@ -41,12 +41,12 @@ function editItemBankByUser(){
 			 	},
 				 function(data){
 			 		$('#dry textarea').val(data.qustion);
-			 		$('.choose').find('input,textarea').each(function(){
-			 		$(this).val(data)
+			 		$('.que-option').find('input,textarea').each(function(){
+			 		$(this).val(data.option);
 			 		})
 			}) 
 	
-}
+}*/
 
 //获取url中的参数
 

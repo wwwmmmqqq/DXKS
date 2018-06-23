@@ -25,6 +25,7 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
+         <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
         
        
 	</head>
@@ -149,39 +150,60 @@
 		    						</p>
 		    						<div class="operation">
 		    							<ul>
-		    							<!-- 单选模态框 -->
+		    							<s:if test="#que.type=='Single'">
 		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil">
+		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil" onclick="editItemBankByUser()">
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
-		    								</li>
-		    								<!-- 多选模态框 -->
-		    								<!-- <li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-chooses">
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='Multiple'">
+		    								<li>
+		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-choosesl">
 		    										<i class="fa fa-pencil"></i>
-		    									</button>
-		    								</li> -->
-		    								<!-- 判断模态框 -->
-		    								<!-- <li>
+		    								</button>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='TrueOrFalse'">
+		    								<li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-true-or-flase">
 		    										<i class="fa fa-pencil"></i>
-		    									</button>
-		    								</li> -->
-		    								<!-- 填空 模态框 -->
-		    								<!-- <li>
+		    								</button>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='Fills'">
+		    								<li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-fill-and-judgement">
 		    										<i class="fa fa-pencil"></i>
-		    									</button>
-		    								</li> -->
-		    								<!-- 解答 模态框 -->
-		    								<!-- <li>
+		    								</button>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='Subjective'">
+		    								<li>
 		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-answer-question">
 		    										<i class="fa fa-pencil"></i>
-		    									</button>
-		    								</li> -->
-		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
+		    								</button>
+		    									</li>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							
 		    							</ul>
 		    						</div>
+
 		    					</div>
 		    					<ul>
 		    						<li class="question"><h4>${que.title}</h4></li>
@@ -662,6 +684,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/search.js" ></script>
 		<script type="text/javascript" src="js/jsshowpaper.js" ></script>
+		<script type="text/javascript" src="js/jquery-confirm.js" ></script>
 	</body>
 	
 </html>
