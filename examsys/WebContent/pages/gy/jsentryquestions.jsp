@@ -99,7 +99,7 @@
 		    			<ul class="question-type">
 		    				<li><button type="button" class="btn btn-danger newq">+新题目</button>
 		    					<form>请选择题目类型 ：
-		    						<input type="radio"  id="single-choice" value="single-choice" name="1" checked="checked"/><label>单选题</label>
+		    						<input type="radio"  id="single-choice" value="single-choice" name="1" checked="checked" /><label>单选题</label>
 		    						<input type="radio"  id="mutiple-choice"  name="1"/><label>多选题</label>
 		    						<input type="radio"  id="ture-or-false"  name="1"/><label>判断题</label>
 		    						<input type="radio"  id="fill-in" name="1"/><label>填空题</label>
@@ -126,10 +126,10 @@
 		    				</li>
 		    			</ul>
 		    		</div>
-		    		<div class="entry">
-
+		    		<div class="entry" >
+						<div class=entryw id="que">
 		    			<!--单选题录入 start-->
-		    			<div class="choices">
+		    			 <div class="choices">
 		    			<form class="choose" id="s-question">
 		    				<ul>
 		    				<li id="dry">题干
@@ -150,7 +150,7 @@
 		    			    </form>
 		    			</div>	
 		    			<!-- 多选录入 -->
-		    			<div class=" choicesw">
+		    			<!-- <div class=" choicesw">
 		    			<form class="choose" id="w-question">
 		    				<ul>
 		    				<li id="dry">题干&nbsp;<textarea name="question.title"></textarea></li>	
@@ -168,12 +168,12 @@
 		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="question.knowlege"/></li>
 		    			    </ul>
 		    			    	</form>
-		    			</div>
+		    			</div> -->
 		    			
 		    					    			<!--多选题录入 end-->
 		    			
 		    			<!--判断-->
-		    			<div class="ture-or-false">
+		    			<!-- <div class="ture-or-false">
 		    			<form class="choose" id="tf-question">
 		    				<ul>
 		    					<li id="dry">题干<textarea name="question.title"></textarea></li>	
@@ -186,11 +186,11 @@
 		    				    <li id="knowledge">知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    			    </ul>
 		    			    </form>
-		    			</div>	
+		    			</div>	 -->
 		    			
 		    			
-		    			<!--填空、判断题录入 start-->
-		    			<div class="fill-and-judgement">
+		    			<!--填空题录入 start-->
+		    			<!-- <div class="fill-and-judgement">
 		    			<form class="choose" id="fj-question">
 		    				<ul>
 		    					<li id="dry">题&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>		    					
@@ -198,12 +198,12 @@
 		    					<li id="knowledge">涉及知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
-		    			</div>
+		    			</div> -->
 		    			
-		    			<!--填空、判断题录入 end-->
+		    			<!--填空录入 end-->
 		    			
 		    			<!--解答题录入 start-->
-		    			<div class="answer-question">
+		    			<!-- <div class="answer-question">
 		    			<form class="choose" id="aquestion">
 		    				<ul>
 		    					<li id="dry">题&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>
@@ -211,7 +211,8 @@
 		    					<li id="knowledge">涉及知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
-		    			</div>
+		    			</div> -->
+		    		</div>
 		    			<div  class="foot">
 		    				<button type="button" class="btn btn-warning clearall">清空</button>
 		    				<button type="submit" class="btn btn-primary submitbtn" onclick="importQuestion()">提交</button>
@@ -441,6 +442,7 @@
 		    <script type="text/javascript" src="js/jquery-confirm.js"></script>
             <script type="text/javascript" src="js/jsentryquestions.js" ></script>
             <script type="text/javascript" src="js/jquery-confirm.js" ></script>
+            <script type="text/javascript" src="js/bootstrap.min.js"></script>
             <script>
             function modifyPassword(){
              	var str = '<form id="user_setting" action="">' +
