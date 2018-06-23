@@ -128,6 +128,7 @@ public class PersonalAction extends CommonAction {
 			try {
 				BeanAutoFit.autoFit(q);
 				BeanAutoFit.autoFit(a);
+				System.out.println(a);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

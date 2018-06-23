@@ -119,7 +119,7 @@
 		    			<input type="hidden" value="single" name="question.type">
 		    				<ul>
 		    				<li>请选择科目：
-		    					<select name="question.subjectName">
+		    					<select class="sub form-control" name="question.subjectName">
 		    						<option >高等数学</option>
 		    						<option >大学英语</option>
 		    						<option>思想政治</option>
@@ -134,7 +134,7 @@
 		    						<option  value="4">困难</option>
 		    					</select>
 		    				</li>
-		    				<li id="dry">题干<br>
+		    				<li id="dry">题干
 		    				<textarea name="question.title" id="question"></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
@@ -151,13 +151,12 @@
 		    			    </ul>
 		    			    </form>
 		    			</div>	
-		    			
-
-		    </div>	
-		    <div>
+		    		</div>	
+		    			<div class="foot">
 		    				<button type="submit" class="btn btn-primary submitbtn" onclick="importQuestion()">提交</button>
 		    			</div>
 		    </div>
+		    			
 		    			<!--模态框-->
 			<!--模态框查看个人信息-->
 			<div class="modal fade" id="myModal-information">
