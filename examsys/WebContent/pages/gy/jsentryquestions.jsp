@@ -125,7 +125,7 @@
 		    			<div class="choices">
 		    			<form class="choose" id="s-question">
 		    				<ul>
-		    				<li id="dry">题干<br>
+		    				<li id="dry">题干
 		    				<textarea name="question.title" id="question"></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
@@ -146,11 +146,11 @@
 		    			<div class=" choicesw">
 		    			<form class="choose" id="w-question">
 		    				<ul>
-		    				<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
-		    				    <li id="sa">A<input class="form-control " type="text" name="question.content"/></li>
-		    				    <li id="sb">B<input class="form-control " type="text" name="question.content"/></li>
-		    				    <li id="sc">C<input class="form-control " type="text" name="question.content" /></li>
-		    				    <li id="sd">D<input class="form-control " type="text" name="question.content" /></li>
+		    				<li id="dry">题干&nbsp;<textarea name="question.title"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content"/></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content"/></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="answer" class="answerw">答案&nbsp;
 		    							<span>A</span><input type="checkbox"  class="choose1" name="question.isAnswer"/>
 			    						<span>B</span><input type="checkbox"  class="choose1"  name="question.isAnswer"/>
@@ -169,7 +169,7 @@
 		    			<div class="ture-or-false">
 		    			<form class="choose" id="tf-question">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>	
+		    					<li id="dry">题干<textarea name="question.title"></textarea></li>	
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control " type="text" name="question.content" /></li>
 		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
@@ -184,11 +184,11 @@
 		    			
 		    			<!--填空、判断题录入 start-->
 		    			<div class="fill-and-judgement">
-		    			<form id="fj-question">
+		    			<form class="choose" id="fj-question">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>		    					
+		    					<li id="dry">题&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>		    					
 		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control" type="text" name="question.fillsText" /></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="question.knowledge"/></li>
+		    					<li id="knowledge">涉及知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
 		    			</div>
@@ -197,11 +197,11 @@
 		    			
 		    			<!--解答题录入 start-->
 		    			<div class="answer-question">
-		    			<form id="aquestion">
+		    			<form class="choose" id="aquestion">
 		    				<ul>
-		    					<li id="dry">题干<br><textarea name="question.title"></textarea></li>
-		    					<li id="answer">答案<br><textarea name="question.subjectiveText"></textarea></li>
-		    					<li id="knowledge">涉及知识点:<input class="form-control" type="text" name="question.knowledge"/></li>
+		    					<li id="dry">题&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>
+		    					<li id="answer">答&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.subjectiveText"></textarea></li>
+		    					<li id="knowledge">涉及知识点<input class="form-control" type="text" name="question.knowledge"/></li>
 		    				</ul>
 		    				</form>
 		    			</div>
