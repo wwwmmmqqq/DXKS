@@ -59,7 +59,7 @@
 						</div>
 						
 						<div class="btn_bottom">
-							<button type="button" class="btn btn-primary btn_login">注册</button>
+							<button type="button" class="btn btn-primary btn_login" onclick="register_ajax()">注册</button>
 						</div>
 					</div>
 				</div>
