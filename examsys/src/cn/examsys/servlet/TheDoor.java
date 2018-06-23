@@ -23,13 +23,12 @@ public class TheDoor extends StrutsPrepareAndExecuteFilter {
 		String url = request.getRequestURL().toString();
 		System.out.println("visit:" + url);
 		
-		HttpSession session = request.getSession();
-		if (session.getAttribute("user") == null && !url.contains("pages/gy/login.jsp")) {
+		/*HttpSession session = request.getSession();
+		if (session.getAttribute("user") == null && !url.contains("login.jsp")) {
 			HttpServletResponse response = (HttpServletResponse) res;
-			response.sendRedirect("pages/gy/login.jsp");
-			response.getWriter().write("<script>alert('请先登录');</script>");
-			response.getWriter().flush();
-		}
+			response.sendRedirect("pages/gy/login.jsp"url.substring(0, url.indexOf("/examsys") + "/examsys".length()) 
+					+ "/pages/gy/login.jsp");
+		}*/
 		
 		super.doFilter(req, res, chain);
 	}
