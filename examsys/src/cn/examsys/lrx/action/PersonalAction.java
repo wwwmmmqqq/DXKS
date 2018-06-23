@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Question;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PersonalService;
@@ -25,9 +26,15 @@ public class PersonalAction extends CommonAction {
 	public void setPage(int page) {
 		this.page = page;
 	}
+	
 	List<?> list;
 	public List<?> getList() {
 		return list;
+	}
+	
+	Question question;
+	public Question getQuestion() {
+		return question;
 	}
 	
 	@Autowired
@@ -135,7 +142,32 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
+	@Action(value="/loadMyHistoryGrades"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadMyHistoryGrades() {
+		list = serivce.loadHistoryGrades(getSessionUser(), page);
+		return aa;
+	}
 	
+	@Action(value="/loadMyExams"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadMyExams() {
+		list = serivce.loadExams(getSessionUser(), page);
+		return aa;
+	}
+	
+	
+	@Action(value="/checkQuestion"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String checkQuestion() {
+		
+		//serivce.checkQuestion(question.getSid(), );
+		
+		return aa;
+	}
 	
 	@Override
 	public String getResult() {
