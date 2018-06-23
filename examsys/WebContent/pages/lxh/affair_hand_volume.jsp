@@ -44,7 +44,7 @@
 							    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="#">退出系统</a>
+						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
 				<div class="dropdown task">
@@ -97,12 +97,12 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-						<li class="side_nav1">
+						<!-- <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li>
+						</li> -->
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -162,7 +162,7 @@
 		    				<div class="searchpanel">
 		    					<ul>
 		    						<li id="qtype"><label>选择试题类型</label>
-		    							<select>
+		    							<select id="question_type">
 		    								<option>单选题</option>
 		    								<option>多选题</option>
 		    								<option>填空题</option>
@@ -171,7 +171,7 @@
 		    							</select>
 		    						</li>	    
 		    						<li id="qdiffer"><label>难易程度</label>
-		    							<select>
+		    							<select id="question_difficultValue">
 		    								<option>简单</option>
 		    								<option>一般</option>
 		    								<option>难</option>
@@ -179,9 +179,9 @@
 		    							</select>
 		    						</li>
 		    						<li id="qknow"><label>知识点</label>
-		    							<input type="text" />
+		    							<input type="text" id="question_knowledge" />
 		    						</li>
-		    						<li id><button type="submit" class="btn btn-default searchbtn"><i class="fa fa-search"></i></button></li>
+		    						<li><button type="submit" class="btn btn-default searchbtn" onclick="searchQuestions()"><i class="fa fa-search"></i></button></li>
 		    					</ul>		    					
 		    				</div>		    		
 		    			</form>		
@@ -589,6 +589,16 @@
 	    </div>
 		
 	<script >
+	
+	function searchQuestions() {
+		  $.post("searchQuestions", {
+			  "keys[0]":"title",//搜索的字段1
+			  "values[0]":$('#question_knowledge').val()//搜索的关键字1
+		  }, function(data) {
+			  alert(data.result);
+			  alert(data.list);
+		  });
+	  }
 	var questionList = [];
 	function addQuestion(sid) {
 		questionList.push(sid);
@@ -596,6 +606,27 @@
 	function remove() {
 		
 	}
+	
+	
+	 function constituteByHand(qids, examStart, examEnd, examName) {
+		  //手动组卷接口
+		  $.post("createPaperHand", {
+			  "examStart":examStart //考试开始
+			  ,"examEnd":examEnd //考试结束
+			  ,"examName":examStart //考试名字
+			  ,"qids[0]":qids[0]//第一题ID
+			  ,"qids[1]":qids[1]//第二题ID
+			  ,"qids[2]":qids[2]//第三题ID
+			  ,"qids[3]":qids[3]//到总题目数量 的ID 
+		  }, function(data) {
+			  if("fail" == data.result) {
+				  alert("失败");
+			  } else {
+				  var paperSid = data.result;//返回试卷的ID
+				  
+			  }
+		  });
+	  }
 	/*搜索jquery隐藏显示面板*/
 	$(document).ready(function() {
 	    $("#flip").click(function() {

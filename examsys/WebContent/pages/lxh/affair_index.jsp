@@ -44,7 +44,7 @@
 		    	    </button>
 		    		<div class="dropdown-content">
 		    			<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
-		    			<a href="#">退出系统</a>
+		    			<a href="#" onclick="Out()">退出系统</a>
 		    		</div>
 		    	</div>
 		    	<div class="dropdown task">
@@ -96,12 +96,12 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-						<li class="side_nav1">
+						<!-- <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li>
+						</li> -->
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -128,7 +128,7 @@
 		   
 		    	
 		    	<div class="papermanage">
-		    		<div id="flip">条件搜索</div>
+		    		<div id="flip"><i class="fa fa-search-minus"></i>条件搜索</div>
 		    		<div id="panel">
 		    			<form>
 		    				<div class="searchpanel">
@@ -154,7 +154,7 @@
 		    		</div>
 		  
 		    		<div class="jwchaxun">
-		    			<div class="operation"> 
+		    			<!-- <div class="operation"> 
 		    				<ul>
 		    					<li>
 		    						<a class="btn btn-default btn-sm pull-right" href="apaper.jsp">查看</a>
@@ -162,7 +162,7 @@
 		    					<li><button class="btn btn-default btn-xs" onclick="deletefunction()"><i class="fa fa-times"></i></button></li>
 		    					<li><button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modify-paper"><i class="fa fa-pencil"></i></button></li>
 		    				</ul>
-		    			</div>
+		    			</div> -->
 		    			<!-- <p>共查询到？条记录</p> -->
 		    			<p>共查询到  条记录</p>
 		    			<table class="table jwcxtable">
@@ -301,7 +301,9 @@
 				</div>
 			</div>
 		</div>
-	   <!--  <!--模态框修改试卷信息 -->
+      
+      
+       <!--模态框修改试卷信息 -->
 		<div class="modal fade" id="myModal_check">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -319,43 +321,43 @@
 								<tr>
 									<td>
 										所&nbsp;&nbsp;在&nbsp;&nbsp;考&nbsp;&nbsp;次:&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_name" name="user.name">
+										<input type="text" class="hover" id="paper_examRef" name="user.name">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										试&nbsp;&nbsp;卷&nbsp;&nbsp;科&nbsp;&nbsp;目:&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_name" name="user.name">
+										<input type="text" class="hover" id="paper_subjectRef" name="user.name">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										标&nbsp;&nbsp;&nbsp;&nbsp;题&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" readonly="readonly" id="student_userId" name="user.userId">
+										<input type="text" class="hover" id="paper_name" name="user.userId">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										总&nbsp;&nbsp;&nbsp;&nbsp;分；&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_collegeName" name="user.collegeName">
+										<input type="text" class="hover" id="paper_totalScore" name="user.collegeName">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										总&nbsp;&nbsp;&nbsp;&nbsp;时&nbsp;&nbsp;&nbsp;&nbsp;间:&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_department" name="user.department">
+										<input type="text" class="hover" id="paper_totalTime" name="user.department">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										开&nbsp;&nbsp;始&nbsp;&nbsp;时&nbsp;&nbsp;间:&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_name" name="user.name">
+										<input type="text" class="hover" id="paper_examStart" name="user.name">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										结&nbsp;&nbsp;束&nbsp;&nbsp;时&nbsp;&nbsp;间:&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_name" name="user.name">
+										<input type="text" class="hover" id="paper_examEnd" name="user.name">
 									</td>
 								</tr>
 								
@@ -545,39 +547,7 @@
 	    	</div>
 	    </div>
 	    
-	    <!-- 修改试卷信息模态框 -->
-	    <div class="modal fade "  id="modify-paper" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    	<div class="modal-dialog">
-	    		<div class="modal-content">
-	    			<div class="modal-header">
-	    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-	    					&times;
-	    				</button>
-	    				<h4 class="modal-title" id="myModalLabel">
-	    					修改试卷信息
-	    				</h4>
-	    			</div>
-	    			<div class="modal-body modify-body">
-	    		        	<div>所在考次:<input type="text" /></div>
-	    		        	<div>试卷科目:<input type="text" /></div>
-	    		        	<div>标&nbsp;&nbsp;&nbsp;&nbsp;题:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" /></div>
-	    		        	<div>科&nbsp;&nbsp;&nbsp;&nbsp;目:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" /></div>
-	    		        	<div>总&nbsp;&nbsp;&nbsp;&nbsp;分:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" /></div>
-	    		        	<div>开始时间:<input type="text" /></div>
-	    		        	<div>结束时间:<input type="text" /></div>           
-	    		           
-	    			</div>
-	    			<div class="modal-footer">
-	    				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-	    				</button>
-	    				<button type="button" class="btn btn-primary">
-	    					提交更改
-	    				</button>
-	    			</div>
-	    		</div>
-	    		<!-- /.modal-content -->
-	    	</div>
-	    	<!-- /.modal -->
+	   
 	    </div>
 	</body>
 	
@@ -622,20 +592,36 @@
 	function getItemHtml(index, obj) {
 		var htm = "<tr id=''>"
 			+"	<td>"+obj.sid+"</td>"
-			+"	<td>第一次联考</td>"
+			+"	<td>"+obj.examRef+"</td>"
+			+"	<td>"+obj.subjectRef+"</td>"
 			+"	<td>"+obj.name+"</td>"
-			+"	<td>2018年高等数学第一次联考</td>"
 			+"	<td>"+obj.totalScore+"</td>"
 			+"	<td>"+obj.totalTime+"</td>"
 			+"	<td>"+obj.examStart+"</td>"
 			+"	<td>"+obj.examEnd+"</td>"
 			+"  <td>"
-		    +"  <a href='apaper.jsp?"+obj.sid+"'><i class='fa fa-eye see'></i></a>" 
-			+"  </td>"
+			+"  <a href='apaper.jsp?"+obj.sid+"'><i class='fa fa-eye see'></i></a>" 
+			/* +"  <i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='paperInfo(this)'></i>"
+			+"  <i class='fa fa-trash-o' onclick='deletePaper(this)'></i>" */
+			+" </td>"
 			+"</tr>";
 		return htm;
 	}
 	
+function editePaper() {
+		$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
+		alert(data.result);
+	})
 	
+}
+function Out() {
+	if(confirm("确定要退出吗？")) {
+		$.post("loginOut",null,function(data) {
+			if(data.result=="成功退出") {
+					location.href="../gy/gy_login.jsp";
+			}
+	  });
+	}  
+}
 	</script>
 </html>

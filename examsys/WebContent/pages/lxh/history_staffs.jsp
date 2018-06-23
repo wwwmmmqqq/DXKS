@@ -34,7 +34,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-							<a href="#">退出系统</a>
+							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -79,8 +79,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li>
+			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -116,27 +116,34 @@
 						</button>
 						
 					</div>
-					<!--table-->
+					
 					<div class="tip">历史成绩</div>
 					<table class="table table-striped tb1">
 						<thead class="thead-light">
 							<tr>
 								<th>序号</th>
+								<th>试卷名称</th>
 								<th>科目</th>
-								<th>参加学校</th>
+								<th>总分</th>
+								<th>及格率</th>
 								<th>考试时间</th>
 								<th>操作</th>
 							</tr>
-						</thead>
-						<tbody>
-					</tbody>
+					    </thead>
+					    <tbody id="score_list_box">
+					        <tr>
+				               <td>1</td>
+				               <td>第一次联考</td>
+					           <td>数据库概论</td>
+					           <td>100</td>
+					           <td>80%</td>
+				               <td>2018-10-10</td>
+					           <td class="td_correct" data-toggle="modal" data-target="#myModal_eye_score">
+				                   <i class="fa fa-eye"></i>
+					           </td>
+				           </tr>
+				      </tbody>
 				</table>
-				<!--<div class="bottom_button">
-					<button class="btn btn3" type="button" >全选</button>
-					<button class="btn btn4" type="button" >全不选</button>
-					<button class="btn btn5" type="button" >反选</button>
-				</div>-->
-				
 				
 				<!--页码-->
 				<div class="page_pagination">
@@ -156,7 +163,7 @@
 		
 		
 		<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal-information">
+		<div class="modal fade" id="myModal_information">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
@@ -173,49 +180,49 @@
 								<tr>
 									<td>
 										姓名
-										<div class="tb_information">慕雪</div>
+										<div class="tb_information">${session.user.name}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										工号
-										<div class="tb_information">17001</div>
+										<div class="tb_information">${session.user.userId}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										密码
-										<div class="tb_information">123456</div>
+										<div class="tb_information">${session.user.psw}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学校
-										<div class="tb_information">萍乡学院</div>
+										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学院
-										<div class="tb_information">信计学院</div>
+										<div class="tb_information">${session.user.department}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										性别
-										<div class="tb_information">女</div>
+										<div class="tb_information">${session.user.sex}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式
-										<div class="tb_information">1770313147</div>
+										<div class="tb_information">${session.user.phone}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										邮箱
-										<div class="tb_information">1770313147@qq.com</div>
+										<div class="tb_information">${session.user.email}</div>
 									</td>
 								</tr>
 							</tbody>
@@ -231,11 +238,11 @@
 			</div>
 		</div>
 		
+		
 		<!--查看历史成绩模态框-->
-		<div class="modal fade" id="myModal_correct">
+		<div class="modal fade" id="myModal_eye_score">
 			<div class="modal-dialog">
 				<div class="modal-content">
-
 					<!-- 模态框头部 -->
 					<div class="modal-header">
 						<h4 class="modal-title correct1">历史成绩</h4>
@@ -245,15 +252,13 @@
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table >
-							<thead >
+							<thead>
 							<tr>
-								<th>学号</th>
-								<th>姓名</th>
-								<th>学院</th>
-								<th>专业</th>
-								<th>班级</th>
+								<th>试卷名称</th>
 								<th>考试科目</th>
-								<th>成绩</th>
+								<th>总分</th>
+								<th>平均分</th>
+								<th>及格率</th>
 								<th>总排名</th>
 								<th>本校排名</th>
 							</tr>
@@ -267,70 +272,12 @@
 									<td>xxx</td>
 									<td>xxx</td>
 									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
 								</tr>
 								
 							</tbody>
 						</table>
 					<ul>
-						<li>正确率:50%</li>
+						<li>优秀率:50%</li>
 					</ul>
 					</div>
 
@@ -633,17 +580,72 @@
 	var currentPage = 1;
 	var totalPage = 3;
 	
-	function getHtmls(index, a) {
-		var htm = "<tr>"
-				+"	<td>1</td>"
-				+"	<td>数据库概论</td>"
-				+"	<td>萍乡学院</td>"
-				+"	<td>2018-10-10</td>"
-				+"	<td class='td_correct' data-toggle='modal' data-target='#myModal_correct'>"
-				+"	<i class='fa fa-eye'></i>"
-				+"	</td>"
-				+"</tr>";
-		return htm;
+	function nextPage() {
+		if(currentPage<totalPage) 
+			loadStudentList(++currentPage);
 	}
+	
+	function prevPage() {
+		if(currentPage>=2) 
+			loadStudentList(--currentPage);
+	}
+	
+	/* 获取历史成绩 */
+	/* var paperSid=getParam("sid"); */
+	loadMyHistoryScore(3);
+		function loadMyHistoryScore(paperSid){
+			 $.post("loadGradesByPaper", {
+				  "paper.sid":paperSid
+			  }, function(data) {
+				  var scoreList = data.list;
+				  var htm = "";
+				  for(var i=0;i<scoreList.length;i++) {
+					  htm += getMyScore(scoreList[i].paper,scoreList[i].grade,index);
+				  }
+				  $('#score_list_box').html(htm);
+			  });
+		}
+		
+		//获取url中的参数
+		function getParam(name) {
+		  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+		  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+		  if (result != null) 
+		  	return decodeURIComponent(result[2]);
+		    return null;
+		}
+		function getMyScore(paper,grade,index){
+			var htm="<tr>"
+			+"<td>"+index+"</td>"
+			+"<td>"+paper.name+"</td>"
+			+"<td>"+paper.subjectName+"</td>"
+			+"<td>"+grade.totalScore+"</td>"
+			+"<td>"+grade.totalScore*0.6+"</td>"
+			+"<td>"+paper.time+"</td>"
+			+"</tr>"
+			return htm;
+		
+		}
+
+		
+	function getLiHtml(index) {
+		if(index==1){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+		}
+		else if(index==totalPage){
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+		}
+		else {
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+			
+		}
+		return ht;    
+	}
+
+	
+	
+		
 	</script>
 </html>

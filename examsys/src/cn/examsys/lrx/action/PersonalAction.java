@@ -11,14 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.examsys.bean.Grade;
-import cn.examsys.bean.Question;
-import cn.examsys.bean.User;
-import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PersonalService;
-import cn.examsys.lrx.vo.PersonalHomePageVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
@@ -104,8 +99,8 @@ public class PersonalAction extends CommonAction {
 		this.newPsw = newPsw;
 	}
 	@Action(value="/updatePsw"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
+			, results={@Result(type="json")}
+			, params={"contentType", "text/html"})
 	public String updatePsw() {
 		boolean bo = serivce.updatePsw(getSessionUser(), oldPsw, newPsw);
 		if (!bo) {
@@ -114,19 +109,31 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
-	int paper;
-	public void setPaper(int paper) {
-		this.paper = paper;
-	}
-	
-	/*@Action(value="/loadPaperByIdWithAnswer"
+	@Action(value="/loadResponsibleQuestions"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
-	public String loadPaperByIdWithAnswer() {
-		//TODO 加载试卷内容和答案
-		List<Question> li = examService.loadQuestionList(paper);
+	public String loadResponsibleQuestions() {
+		list = serivce.loadResponsibleQuestions(getSessionUser(), page);
+		
+		/*List<Question> list = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			Question q = new Question();
+			try {
+				BeanAutoFit.autoFit(q);
+				List<Option> options = new ArrayList<>();
+				for (int j = 0; j < Tool.getIntRnd(5)+1; j++) {
+					Option o = new Option();
+					BeanAutoFit.autoFit(o);
+					options.add(o);
+				}
+				q.setOptions(options);
+				list.add(q);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}*/
 		return aa;
-	}*/
+	}
 	
 	@Override
 	public String getResult() {
