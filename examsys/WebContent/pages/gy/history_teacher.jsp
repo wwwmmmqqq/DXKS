@@ -73,7 +73,7 @@
 			  		<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
  					<!-- <a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a> -->
 					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
-					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
+					<a href="teacher_read_jump.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
 		  </div>
 		</nav>
@@ -380,7 +380,7 @@
 		        <div class="modal-body">
 		          	<div class="email">
 		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept" >接受</button>
+		          		<button class="btn btn-primary accept" onclick="window.location='teacher_read.jsp'" >接受</button>
 		          		<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_read_refuse" >拒绝</button>
 		          	</div>
 		          	<div class="email">
@@ -524,11 +524,12 @@
 		
 	</div>
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/popper.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="js/search.js" ></script>
-				<script type="text/javascript" src="js/teacher_history.js" ></script>
-				<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="js/popper.min.js" ></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/search.js" ></script>
+	<script type="text/javascript" src="js/teacher_history.js" ></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	
 	</body>
 
 </html>
