@@ -76,153 +76,13 @@
 							<a href="history_teacher.jsp">
 								<li class="side_nav1 ">查看成绩</li>
 							</a>
-							<a href="teacher_read.jsp">
-								<li class="side_nav1 now">批阅试卷</li>
-							</a>
+							<a href="teacher_read_jump.jsp"><li class="side_nav1 now">批阅试卷</li></a>
 						</ul>
 					</div>
 				</nav>
 			</div>
-
-			<!--中间部分-->
-			<section class="main main_teacher">
-				<div class="main1">
-					<div class="bred position">
-						<!--breadcrumbs start -->
-						<ul class="breadcrumb mybread position">
-							<li class="active">
-								<a href="jsshowpaper.html"><i class="fa fa-home"></i> Home</a>
-							</li>
-							<li>批阅试卷</li>
-						</ul>
-						<!--breadcrumbs end -->
-					</div>
-
-					<div class="read">
-						<div class="read_left">
-							<div class="question" id="find">查看试题</div>
-							<div class="answer" id="hide">
-								<ul>
-									<div class="answer_span"><span>题目</span></div>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<div class="answer_span"><span>参考答案</span></div>
-									<li>独孤皇后不不不可口可乐看了看看近几年经济</li>
-								</ul>
-								<ul>
-									<div class="answer_span"><span>题目</span></div>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<div class="answer_span"><span>参考答案</span></div>
-									<li>独孤皇后不不不可口可乐看了看看近几年经济</li>
-								</ul>
-
-								<ul>
-									<div class="answer_span"><span>题目</span></div>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<div class="answer_span"><span>参考答案</span></div>
-									<li>独孤皇后不不不可口可乐看了看看近几年经济</li>
-								</ul>
-
-							</div>
-
-						</div>
-
-						<div class="read_right">
-							<div class="question">学生试卷</div>
-							<div class="answer1">
-								<ul>
-									<li>
-										<div class="answer_span">题目</div>
-									</li>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<li>
-										<div class="answer_span">学生答案</div>
-									</li>
-									<li>好好看看分开时改变不吵不闹才能你上次暮色苍茫，，注册，这卡的肯德基房间诶飞吻</li>
-									<li>
-										<div class="num">
-											<input type="text" class="form-control input_num" />
-											<span>分数</span>
-										</div>
-									</li>
-								</ul>
-								<ul>
-									<li>
-										<div class="answer_span">题目</div>
-									</li>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<li>
-										<div class="answer_span">学生答案</div>
-									</li>
-									<li>好好看看分开时改变不吵不闹才能你上次暮色苍茫，，注册，这卡的肯德基房间诶飞吻</li>
-									<li>
-										<div class="num">
-											<input type="text" class="form-control input_num" />
-											<span>分数</span>
-										</div>
-									</li>
-								</ul>
-								<ul>
-									<li>
-										<div class="answer_span">题目</div>
-									</li>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<li>
-										<div class="answer_span">学生答案</div>
-									</li>
-									<li>好好看看分开时改变不吵不闹才能你上次暮色苍茫，，注册，这卡的肯德基房间诶飞吻</li>
-									<li>
-										<div class="num">
-											<input type="text" class="form-control input_num" />
-											<span>分数</span>
-										</div>
-									</li>
-								</ul>
-								<!--页码-->
-								<div>
-									<div class="page_pagination">
-										<ul class="pagination">
-											<li class="page-item">
-												<a class="page-link" href="#">上一页</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">1</a>
-											</li>
-											<li class="page-item active">
-												<a class="page-link " href="#">2</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">3</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">下一页</a>
-											</li>
-											<li>
-											<div class="page_jump">
-												<input class="jump">
-												<button class="btn btn-primary btn_jump">跳转</button>
-											</div>
-											
-											</li>
-										</ul>
-										
-									</div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-			</section>
-
-			<!--模态框-->
+	
+				<!--模态框-->
 			<!--模态框查看个人信息-->
 			<div class="modal fade" id="myModal-information">
 				<div class="modal-dialog">
@@ -434,16 +294,11 @@
 					</div>
 				</div>
 			</div>
-
-			</div>
+	
+	
 	</body>
 
 	<script type="text/javascript" src="js/search.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#accept").click(function(){
-				$(".main_teacher").show();
-			});
-		});
+	
 	</script>
 </html>
