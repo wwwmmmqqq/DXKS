@@ -1,24 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-                <%
+    <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
-
-
 </head>
 <body>
+
 
 		<header>
 
@@ -256,7 +258,6 @@ function loadMyHistoryPapersByexam(){
 		  "page":currentPage
 	  }, function(data) {
 		  var paperHistoryList = data.list;
-		  alert(paperHistoryList)   
 		  var htm = "";
 		  for(var i=0;i<paperHistoryList.length;i++) {
 			htm+=getMyHistoryPaper(paperHistoryList[i])
@@ -264,7 +265,7 @@ function loadMyHistoryPapersByexam(){
 		  $('.history-paper').html(htm);
 	  });
 }
-function getMyHistoryPaper(grade,paper){
+function getMyHistoryPaper(obj){
 	var htm=
 		"<ul class='paper-item'>"
 		+"	<li>"

@@ -855,19 +855,19 @@ b {
 /*jsentryquestions*/
 .cant .entryquestions {
 	width: 90%;
-	background-color: #FFFFFF;
 	margin: 100px 50px;
 }
 .entryquestions .shaixuan {
 	width: 100%;
-	height: 150px;
+	height: 60px;
 	padding: 10px;
 	background-color: #e3dded;
+	text-align:center;
 }
 .shaixuan select {
 	width: 150px;
 	height: 40px;
-	margin: 20px 50px;
+	margin: 10px 10px;
 }
 .shaixuan input {
 	width: 20px;
@@ -881,7 +881,7 @@ b {
 }
 .entryquestions .entry {
 	width: 100%;
-	min-height: 450px;
+	height:80%;
 	padding: 10px;
 	background:#e3dded;
 }
@@ -890,28 +890,28 @@ b {
 }
 
 .entry .choicesw {
-	display: none;
+/* 	display: none; */
 }
 .entry .ture-or-false {
-	display: none;
+	/* display: none; */
 }
 
 .entry .fill-and-judgement {
-	display: none;
+	/* display: none; */
 }
 .entry .answer-question {
-	display: none;
+	/* display: none; */
 }
 .entry ul {
-	margin: 50px 20px;
+	margin: 0px 20px;
 }
 .entry li {
 	margin-top: 10px;
 	margin-bottom: 20px;
-	margin-left: 20px;
+	
 }
 .entry input {
-	width: 70%;
+	width: 78%;
     display: inline-block;
 	
 }
@@ -924,7 +924,7 @@ b {
 	margin-left: 250px;
 }
 .entry .submitbtn {
-	margin-left: 200px;
+	/* margin-left: 200px; */
 }
 
 .btn-in{
@@ -940,7 +940,7 @@ b {
 
 .choices .choose{
 	width: 70%;
-	padding-left: 100px;
+	margin: auto;
 }
 .choices .choose1{
 	width: 50px;
@@ -948,14 +948,14 @@ b {
 
 .choicesw .choose{
 	width: 70%;
-	padding-left: 100px;
+	margin: auto;
 }
 .choicesw .choose1{
 	width: 50px;
 }
 .ture-or-false .choose{
 	width: 70%;
-	padding-left: 100px;
+	margin: auto;
 }
 .ture-or-false .choose1{
 	width: 50px;
@@ -966,12 +966,12 @@ b {
 	text-align:center;
 }
 .fill-and-judgement .choose{
-	width: 100%;
-	padding-left: 100px;
+	width: 70%;
+	margin: auto;
 }
 .answer-question .choose{
-	width:100%;
-	padding-left: 100px;
+	width: 70%;
+	margin: auto;
 }
 .modal-body.form-test{
 	text-algin:center;
@@ -986,7 +986,7 @@ b {
 	width:100%;
 }
 .choose textarea{
-	width:60%;
+	width:78%;
 	height:60px;
 	margin-left:10px;
 }
@@ -1010,4 +1010,16 @@ b {
 	width:90px;
 	height:40px;
 	
+}
+
+.entry .sub{
+	display:inline;
+	width:30%;
+}
+.foot{
+	margin:auto;
+	margin-bottom:20px;
+}
+.question-type{
+	margin-left:-10%;
 }
