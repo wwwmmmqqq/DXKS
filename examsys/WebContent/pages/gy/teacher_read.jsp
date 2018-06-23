@@ -184,36 +184,7 @@
 									</li>
 								</ul>
 								<!--页码-->
-								<div>
-									<div class="page_pagination">
-										<ul class="pagination">
-											<li class="page-item">
-												<a class="page-link" href="#">上一页</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">1</a>
-											</li>
-											<li class="page-item active">
-												<a class="page-link " href="#">2</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">3</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">下一页</a>
-											</li>
-											<li>
-											<div class="page_jump">
-												<input class="jump">
-												<button class="btn btn-primary btn_jump">跳转</button>
-											</div>
-											
-											</li>
-										</ul>
-										
-									</div>
-
-								</div>
+								
 
 							</div>
 

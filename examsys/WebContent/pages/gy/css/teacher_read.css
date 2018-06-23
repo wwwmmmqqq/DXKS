@@ -264,6 +264,8 @@ p{
 .read .answer{
 	display: none;
 	width: 99.9%;
+	height: 400px;
+	overflow: auto;
 	border: 1px solid #dadada;
 	margin-top: 0px;
 	background: white;
@@ -315,7 +317,8 @@ p{
 }
 .read .answer1{
 	width: 99.9%;
-	min-height: 350px;	
+	height: 580px;	
+	overflow: auto;
 	border: 1px solid #dadada;
 	margin-top: 0px;
 	background: white;
