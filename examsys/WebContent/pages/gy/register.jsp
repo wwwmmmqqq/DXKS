@@ -42,10 +42,10 @@
 					<div class="login_right">
 						<input type="text" class="form-control input_name" name="user_name" placeholder="请输入用户名"/>
 						<div class="input_bottom">
-							<input type="text" class="form-control input_password" name="user_psw" placeholder="请输入密码"/>
+							<input type="password" class="form-control input_password" name="user_psw" placeholder="请输入密码"/>
 						</div>
 						<div class="input_bottom">
-							<input type="text" class="form-control input_password" name="user_psw1" placeholder="确认密码"/>
+							<input type="password" class="form-control input_password" name="user_psw1" placeholder="确认密码"/>
 						</div>
 						<div class="input_bottom">
 							<input type="text" class="form-control input_password" name="user_email" placeholder="请输入邮箱"/>
