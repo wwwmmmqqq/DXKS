@@ -127,6 +127,7 @@
 		    		<section>
 		    			<div class="panel showpaper">
 		    			<s:iterator id="que" value="questionList" status="s1">
+		    			
 		    				<div class="panel-body paperpanel">
 		    					<div class="qtype">
 		    					
@@ -150,51 +151,65 @@
 		    							<ul>
 		    							<s:if test="#que.type=='Single'">
 		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-pencil" onclick="editItemBankByUser()">
+		    								<input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    									<button  class="btn btn-default btn-xs modi-btn" data-toggle="modal" data-target="#myModal-pencil" >
 		    										<i class="fa fa-pencil"></i>
 		    									</button>
 		    									</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    							    <li>
+		    							    <input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    							    <button class="btn btn-default btn-xs delete-btn "><i class="fa fa-times"></i></button>
 		    									</li>
-		    							
 		    							</s:if>
 		    							<s:if test="#que.type=='Multiple'">
 		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-choosesl">
+		    								<input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    									<button class="btn btn-default btn-xs modi-btn" data-toggle="modal" data-target="#myModal-chooses"  >
 		    										<i class="fa fa-pencil"></i>
 		    								</button>
 		    									</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    							    <li>
+		    							    <input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    							    <button class="btn btn-default btn-xs delete-btn" ><i class="fa fa-times"></i></button>
 		    									</li>
 		    							
 		    							</s:if>
 		    							<s:if test="#que.type=='TrueOrFalse'">
 		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-true-or-flase">
+		    								<input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    									<button class="btn btn-default btn-xs modi-btn" data-toggle="modal" data-target="#myModal-true-or-flase" >
 		    										<i class="fa fa-pencil"></i>
 		    								</button>
 		    									</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    							    <li>
+		    							    <input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    							    <button class="btn btn-default btn-xs delete-btn" ><i class="fa fa-times"></i></button>
 		    									</li>
 		    							
 		    							</s:if>
 		    							<s:if test="#que.type=='Fills'">
 		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-fill-and-judgement">
+		    								<input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    									<button class="btn btn-default btn-xs modi-btn" data-toggle="modal" data-target="#myModal-fill-and-judgement" >
 		    										<i class="fa fa-pencil"></i>
 		    								</button>
 		    									</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    							    <li>
+		    							    <input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    							    <button class="btn btn-default btn-xs delete-btn" ><i class="fa fa-times"></i></button>
 		    									</li>
 		    							
 		    							</s:if>
 		    							<s:if test="#que.type=='Subjective'">
 		    								<li>
-		    									<button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal-answer-question">
+		    								<input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    									<button class="btn btn-default btn-xs modi-btn" data-toggle="modal" data-target="#myModal-answer-question" >
 		    										<i class="fa fa-pencil"></i>
 		    								</button>
 		    									</li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion()"><i class="fa fa-times"></i></button>
+		    							    <li>
+		    							    <input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    							    <button class="btn btn-default btn-xs delete-btn" ><i class="fa fa-times"></i></button>
 		    									</li>
 		    							
 		    							</s:if>
@@ -205,8 +220,9 @@
 		    					</div> 
 		    					<ul>
 		    						<li class="question"><h4>${que.title}</h4></li>
-		    						<input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
+		    						
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
+			    					
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
 			    						<li>${s2.last?"正确答案：":""}
@@ -280,18 +296,21 @@
 		    				<ul>
 		    				<li id="dry" >题干
 		    				<textarea name="question.title" id="question"></textarea></li>	
+		    				<ul id="options">
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class=" input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
-		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-		    							<span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
+		    				    </ul>
+		    				    <li  id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+		    				    <input type="text" name="option.content" />
+		    				    <input type="hidden" type="text" value="1"></input>
+		    							<%-- <span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
 			    						<span>B</span><input type="radio" name="question.isAnswer" class="choose1"/>
 			    						<span>C</span><input type="radio" name="question.isAnswer" class="choose1"/>
-			    						<span>D</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>D</span><input type="radio" name="question.isAnswer" class="choose1"/> --%>
 		    					</li>
-		    					
-		    				    <li id="knowledge">知识点<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+		    				    <li id="knowledge">知识点<input  class="input-pencil form-control" type="text" name="question.knowledge"/></li>
 		    			    </ul>
 		    			 </form>
 				 
@@ -322,18 +341,23 @@
 		    				<ul>
 		    				<li id="dry" >题干
 		    				<textarea name="question.title" id="question"></textarea></li>	
+		    				    <ul id="options">
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class=" input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
-		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-		    							<span>A</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
+		    				   </ul>
+		    				    <li  id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+		    				      <input   type="text" name="option.content" />
+		    								    <input type="hidden" type="text" value="1"></input>
+		    								    
+		    							<%-- <span>A</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
 			    						<span>B</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
 			    						<span>C</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
-			    						<span>D</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
+			    						<span>D</span><input type="checkbox" name="question.isAnswer" class="choose1"/> --%>
 		    					</li>
 		    					
-		    				    <li id="knowledge">知识点<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+		    				    <li id="knowledge" >知识点<input  class="input-pencil form-control" type="text" name="question.knowledge"/></li>
 		    			    </ul>
 		    			 </form>
 				 
@@ -364,14 +388,17 @@
 		    				<ul>
 		    				<li id="dry" >题干
 		    				<textarea name="question.title" id="question"></textarea></li>	
+		    				   <ul id="options">
 		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class=" input-pencil form-control " type="text" name="question.content" /></li>
 		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
-		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
-		    							<span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
-			    						<span>B</span><input type="radio" name="question.isAnswer" class="choose1"/>
+		    				    </ul>
+		    				    <li  id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+		    				      <input   type="text" name="option.content" />
+		    								    <input type="hidden" type="text" value="1"></input>
+		    							<%-- <span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>B</span><input type="radio" name="question.isAnswer" class="choose1"/> --%>
 		    					</li>
-		    					
-		    				    <li id="knowledge">知识点<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+		    				    <li id="knowledge">知识点<input  class="input-pencil form-control" type="text" name="question.knowledge"/></li>
 		    			    </ul>
 		    			 </form>
 				 
@@ -402,8 +429,9 @@
 	    				<ul>
 	    					<li id="dry">
 	    					题&nbsp;&nbsp;&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>		    					
-	    					<li id="answer">答&nbsp;&nbsp;&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control" type="text" name="question.fillsText" /></li>
-	    					<li id="knowledge">涉及知识点:<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+	    						    <input type="hidden" type="text" value="1"></input>
+	    					<li id="answer">答&nbsp;&nbsp;&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  class="input-pencil form-control" type="text" name="question.fillsText" /></li>
+	    					<li id="knowledge">知识点:<input  class="input-pencil form-control" type="text" name="question.knowledge"/></li>
 	    				</ul>
 		    		</form>
 		      </div>
@@ -435,8 +463,8 @@
 	    				<ul>
 	    					<li id="dry">
 	    					题&nbsp;&nbsp;&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>		    					
-	    					<li id="answer">答&nbsp;&nbsp;&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control" type="text" name="question.fillsText" /></li>
-	    					<li id="knowledge">涉及知识点:<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+	    					<li  id="answer">答&nbsp;&nbsp;&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea class="input-pencil form-control" name="question.subjectiveText" ></textarea></li>
+	    					<li id="knowledge">涉及知识点:<input  class="input-pencil form-control" type="text" name="question.knowledge"/></li>
 	    				</ul>
 		    		</form>
 		      </div>
@@ -687,4 +715,6 @@
 		<script type="text/javascript" src="js/toastr.js"></script>
 	</body>
 	
+	
+
 </html>
