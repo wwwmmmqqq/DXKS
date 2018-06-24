@@ -17,7 +17,7 @@ public abstract class CommonAction extends ActionSupport {
 	
 	protected String aa = "success";
 	
-	public CommonAction() {
+	/*public CommonAction() {
 		User user = new User();
 		user.setUserId("admin");
 		user.setPsw("123");
@@ -29,7 +29,7 @@ public abstract class CommonAction extends ActionSupport {
 		saveLogin(user);
 
 		session.setAttribute("Time", Tool.time());//服务器时间
-	}
+	}*/
 	
 	public void saveLogin(User user) {
 		session.setAttribute("user", user);

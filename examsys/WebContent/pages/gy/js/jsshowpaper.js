@@ -1,7 +1,6 @@
 	var questionId=$('#questionid').val();
 function deleteInfo(){
 	alert(questionId)
-	var questionId = getParam("sid");
 	$.confirm({
 		title : '确认删除？',
 		smoothContent : false,

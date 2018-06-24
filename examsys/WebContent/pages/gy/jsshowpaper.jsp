@@ -7,14 +7,12 @@
 			+ path + "/";
 %>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<meta charset="UTF-8">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />。
 		<title></title>
-		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <meta name="description" content="Developed By M Abdur Rokib Promy">
-        <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+		
         <!-- bootstrap 3.0.2 -->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
@@ -82,7 +80,7 @@
 					<ul class="side_nav">
 					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
-					<a href="teacher_read_jump.jsp"><li class="side_nav1 ">批阅试卷</li></a>
+					<a href="loadResponsibleQuestions1?page=1"><li class="side_nav1 ">批阅试卷</li></a>
 				</div>
 			</nav>
 			<!-- sidebar end -->
@@ -128,7 +126,7 @@
 		    		<!--  浏览试卷 start -->
 		    		<section>
 		    			<div class="panel showpaper">
-		    			<s:iterator id="que" value="#request.questionList" status="s1">
+		    			<s:iterator id="que" value="questionList" status="s1">
 		    				<div class="panel-body paperpanel">
 		    					<div class="qtype">
 		    					
@@ -204,13 +202,12 @@
 		    							</ul>
 		    						</div>
 
-		    					</div>
+		    					</div> 
 		    					<ul>
 		    						<li class="question"><h4>${que.title}</h4></li>
-		    						<input type="hidden" value='<s:property value="#que.sid" id="questionid"/>'/>
+		    						<input id="questionid" type="hidden" value='<s:property value="#que.sid" />'/>
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
-			    						
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
 			    						<li>${s2.last?"正确答案：":""}
 				    						<span style="color: red;">

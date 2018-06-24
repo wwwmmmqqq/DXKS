@@ -89,7 +89,6 @@
 				 		return false;
 				 	}
 					if(user.type=="学生") {
-
 						window.location.href = "../student/student-main.jsp";
 					} else if(user.type=="教师") {
 						window.location.href = "../gy/showItemBankListByUserJump";
