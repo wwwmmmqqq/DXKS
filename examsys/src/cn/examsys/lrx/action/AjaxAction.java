@@ -81,6 +81,38 @@ public class AjaxAction extends CommonAction {
 		return aa;
 	}
 	
+	@Action(value="/delPaper"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String delPaper() {
+		boolean bo = service.delPaper(getSessionUser(), sid);
+		if (!bo) {
+			setResult("fail");
+		}
+		return aa;
+	}
+	
+	@Action(value="/invite"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String invite() {
+		boolean bo = service.invite(getSessionUser(), sid, text);
+		if (!bo) {
+			setResult("fail");
+		}
+		return aa;
+	}
+	@Action(value="/delExam"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String delExam() {
+		boolean bo = service.delExam(getSessionUser(), sid);
+		if (!bo) {
+			setResult("fail");
+		}
+		return aa;
+	}
+	
 	@Override
 	public String getResult() {
 		return result;

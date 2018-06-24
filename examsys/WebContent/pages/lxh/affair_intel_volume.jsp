@@ -492,6 +492,7 @@ function setTypeDiffPoint(typeIndex, diff, value) {
 	updateShows(typeIndex);
 }
 
+
 function updateShows(typeIndex) {
 	for(var i=0;i<type_diff_percent[typeIndex].length;i++) {
 		var val = type_set_count[typeIndex] * type_diff_percent[typeIndex][i] / 100;
