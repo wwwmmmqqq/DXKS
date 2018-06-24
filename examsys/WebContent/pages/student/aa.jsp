@@ -1,16 +1,18 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-      <%
+    <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页-考次</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
@@ -18,7 +20,10 @@
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+
+
 		<header>
+
 			<nav id="top-nav">
 				<div id="main-nav-content">
 					<a href="student-index.html" clas="logo">
@@ -49,7 +54,7 @@
 				<i class="fa fa-circle-o"></i> 位置：
 				<a href="student-index.jsp">首页</a>
 				<b>></b>
-				<a href="/">在线考试</a>
+				<a href="/">我的考试</a>
 			</div>
 			<section class="left-section">
 				<div class="left-menu">
@@ -62,8 +67,8 @@
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
 					</div>
-					<ul class="sider-menu">
-						<li class="active">
+				<ul class="sider-menu">
+						<li onclick="javascript:window.location.href='student-main.jsp'">
 							<span >
 								在线考试
 							</span>
@@ -73,7 +78,7 @@
 								在线练习
 							</span>
 						</li>
-						<li  onclick="javascript:window.location.href='student-all-exam.jsp'">
+						<li  class="active">
 							<span>
 								我的考试
 							</span>
@@ -171,25 +176,45 @@
 				</div>
 				</div>
 			</section>
-			
 			<section class="right-section">
 				<div class="right-content">
 					<div class="exam-head">
-						<div class="exam-title">
+						<div class="exam-info">
 							<ul>
-								<li class="exam-title-active ">
-									待参加的考次
+								<li class="info-active">
+									<span>全部</span>
+									<span>(10)</span>
+								</li>
+								<li>
+									<span>待完成</span>
+									<span>(1)</span>
+								</li>
+								<li>
+									<span>未通过</span>
+									<span>(1)</span>
+								</li>
+								<li>
+									<span>已通过</span>
+									<span>(1)</span>
 								</li>
 							</ul>
 						</div>
-					</div>
-					<div class="student-exam">
-						<div class="all-student-exam">
-							<ul class="exam-box">
-								
-							</ul>
+						<div class="searchbox">
+							<form id="">
+
+								<div id="search-button">
+									<input type="submit" class=" search-button btn btn-primary" value="确认" />
+								</div>
+								<div id="search-input">
+									<input type="text" class="search-input form-control" placeholder="请输入搜索的关键字" />
+								</div>
+							</form>
 						</div>
-						<ul class="exam-page pagination pagination-sm">
+					</div>
+					<div class="history-paper">
+					
+					</div>
+					<ul class="exam-page pagination pagination-sm">
 						<li>
 							<a href="#">&laquo;</a>
 						</li>
@@ -209,65 +234,59 @@
 							<a href="#">5</a>
 						</li>
 						<li>
+							<a href="#">&raquo;</a>
+						</li>
+						<li>
 							<input type="text" class="form-control page-input" />
 							<button class=" btn btn-primary fa fa-search sure-search-btn"></button>
 						</li>
-						<li>
-							<a href="#">&raquo;</a>
-						</li>
 					</ul>
-					</div>
 				</div>
 			</section>
 		</div>
-		<footer>
-	<div class="footer-section">
-	</div>
-</footer>
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
 
 
-
 <script type="text/javascript">
-$('.user-info').hover(function(){
-	$('.dropdown-content').css("display","block")
-},function(){
-	$('.dropdown-content').css("display","none")
-}) 
-loadMyExamList(0);
-/*加载考次列表*/
-function loadMyExamList(page) {
-	  $.post("loadMyExamList", {"page":page}, function(data){
-		  var examList = data.list;
+loadMyHistoryPapersByexam();
+var currentPage = 1;
+function loadMyHistoryPapersByexam(){
+	  $.post("loadMyHistoryPapers", {
+		  "page":currentPage
+	  }, function(data) {
+		  var paperHistoryList = data.list;
 		  var htm = "";
-		  for(var i=0;i<examList.length;i++){
-			  htm+=getExam(examList[i]);  
+		  for(var i=0;i<paperHistoryList.length;i++) {
+			htm+=getMyHistoryPaper(paperHistoryList[i])
 		  }
-		  $('.exam-box').html(htm);
+		  $('.history-paper').html(htm);
 	  });
 }
-
-function getExam(obj){
+function getMyHistoryPaper(obj){
 	var htm=
-		"		<li onclick='javascript:location.href=\"student-index.jsp?sid="+obj.sid+"\"'>"
-		+"			<div class='exam-type'>"
-		+"				<div class='icon paper-picture-qm '>"
-		+"				</div>"
-		+"				<div class='exam-type-title'>"
-		+"					<span>"+obj.title+"</span>"
-		+"				</div>"
-		+"				<div class='exam-type-info'>"
-		+"					<p>参与学校：<span>萍乡学院，南昌大学，湖南大学</span></p>"
-		+"					<p>考试时间：<span>"+obj.periodStart+" - "+obj.periodEnd+"</span></p>"
-		+"				</div>"
+		"<ul class='paper-item'>"
+		+"	<li>"
+		+"		<div class='icon paper-picture'></div>"
+		+"		<div class='paper-intro'>"
+		+"			<div class='paper-title'>"
+		+"				<span>"+obj.subjectName+"</span>"
 		+"			</div>"
-		+"		</li>";
-	return htm;
+		+"			<div class='paper-body'>"
+		+"				<span>总分："+obj.totalScore+"分</span>"
+		+"				<span>及格："+obj.totalScore*0.6+"分</span>"
+		+"				<span>考试时间："+obj.totalTime/60+"分钟</span>"
+		+"			</div>"
+		+"		</div>"
+		+"		<div class='exam-button'>"
+		+"			<button class='btn btn-primary'>查看</button>"
+		+"		</div>"
+		+"	</li>"
+		+"</ul>"
+		return htm;
 }
-
 </script>
 </body>
 </html>

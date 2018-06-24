@@ -203,96 +203,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<!-- <tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>软件工程导论</td>
-								<td>100分</td>
-								<td>60分</td>
-								<td>85分</td>
-								<td>80%</td>
-								<td>2018-06-04</td>
-							</tr> -->
+						
 						</tbody>
 					</table>
 					</div>
@@ -337,15 +248,15 @@
 		<script>
 	/* 获取我的历史成绩 */
 	var paperSid=getParam("sid");
-	loadMyHistoryScore(paperSid);
-		function loadMyHistoryScore(paperSid){
-			 $.post("loadGradesByPaper", {
+	loadMyHistoryGrades(paperSid);
+		function loadMyHistoryGrades(paperSid){
+			 $.post("loadMyHistoryGrades", {
 				  "paper.sid":paperSid
 			  }, function(data) {
 				  var scoreList = data.list;
 				  var htm = "";
 				  for(var i=0;i<scoreList.length;i++) {
-					  htm += getMyScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i);
+					  htm += getMyScore(scoreList[i].paper,scoreList[i].grade,i);
 				  }
 				  $('#score-table tbody').html(htm);
 			  });
@@ -358,16 +269,16 @@
 		  	return decodeURIComponent(result[2]);
 		  return null;
 		}
-		function getMyScore(paper,user,grade,i){
+		function getMyScore(paper,grade,i){
 			var htm=
 				"<tr>"
-			+"<td>1</td>"
-			+"<td>"+paper.subjectName+"</td>"
-			+"<td>"+grade.totalScore+"</td>"
-			+"<td>"+grade.totalScore*0.6+"</td>"
+			+"<td>"+(i+1)+"</td>"
+			+"<td>"+grade.subjectName+"</td>"
+			+"<td>"+paper.totalScore+"</td>"
+			+"<td>"+paper.totalScore*0.6+"</td>"
 			+"<td>"+grade.score+"</td>"
-			+"<td>80%</td>"
-			+"<td>"+paper.time+"</td>"
+			+"<td>"+grade.score/grade.totalScore+"</td>"
+			+"<td>"+grade.time+"</td>"
 			+"</tr>"
 			return htm;
 		
