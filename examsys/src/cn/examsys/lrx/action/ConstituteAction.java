@@ -168,7 +168,7 @@ public class ConstituteAction extends CommonAction {
 	public void setValues(List<String> values) {
 		this.values = values;
 	}
-	@Action(value="/searchQuestions"
+	/*@Action(value="/searchQuestions"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String searchQuestions() {
@@ -177,7 +177,7 @@ public class ConstituteAction extends CommonAction {
 		list = service.searchQuestion(getSessionUser(), keys, values);
 		System.out.println(list.size());
 		return aa;
-	}
+	}*/
 	
 	@Override
 	public String getResult() {

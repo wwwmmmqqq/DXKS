@@ -74,7 +74,7 @@
 							<a href="history_teacher.jsp">
 								<li class="side_nav1 ">查看成绩</li>
 							</a>
-							<a href="loadResponsibleQuestions1?page=1">
+							<a href="loadResponsibleQuestions?page=1">
 								<li class="side_nav1 now">批阅试卷</li>
 							</a>
 						</ul>
@@ -106,7 +106,7 @@
 									<li>${item.question.title}</li>
 
 									<div class="answer_span"><span>参考答案</span></div>
-									<%-- <li>${item.option.subjectText}</li> --%>
+									<li>${item.option.subjectiveText}</li>
 								</ul>
 							</s:iterator>
 
@@ -123,7 +123,12 @@
 										<div class="answer_span">题目</div>
 									</li>
 									<li>${item.question.title}</li>
-
+									<li>
+										<div class="answer_span">参考答案</div>
+									</li>
+									<li>
+									${item.option.subjectiveText}
+									</li>
 									<li>
 										<div class="answer_span">学生答案</div>
 									</li>
@@ -134,7 +139,7 @@
 										<div class="num">
 										<input type="hidden" id="answerid" value='<s:property  value="#item.answer.sid"/>'>
 											<input type="text" id="sanswer" class="form-control input_num" />
-											<span>分数</span>
+											<span>得分</span>
 										</div>
 									</li>
 								</ul>

@@ -6,6 +6,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.apache.struts2.json.annotations.JSON;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -200,7 +201,7 @@ public class User {
 	}
 
 
-
+	@Formula(value="(select name from college_tb tb where tb.sid=collegeRef)")
 	public String getCollegeName() {
 		return collegeName;
 	}

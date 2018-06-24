@@ -1,7 +1,6 @@
 	var questionId=$('#questionid').val();
-function deleteInfo(){
-	alert(questionId)
-	var questionId = getParam("sid");
+function deleteInfo(sid){
+	var questionId = sid;
 	$.confirm({
 		title : '确认删除？',
 		smoothContent : false,
@@ -11,14 +10,15 @@ function deleteInfo(){
 				btnClass : 'btn-blue',
 				text : '确定',
 				action : function() {
-					$.post("deleteItemBank",
-							{
-						  		"question.sid":questionId
+					$.post("delQuestion",{
+						  		"sid":questionId
 						 	},
 							 function(data){
-						 		if(data.result=="题目删除成功！"){
-						 			toastr.success("题目删除成功！")
-						 			 location.reload();
+						 		if(data.result=="success"){
+						 			toastr.success("题目删除成功！");
+						 			$("#question" + sid).remove();
+						 		} else {
+						 			toastr.success("删除失败");
 						 		}
 						})
 				}
@@ -31,8 +31,8 @@ function deleteInfo(){
 	});
 }
 /*删除题库*/
-function deleteQuestion(){
-	deleteInfo();
+function deleteQuestion(sid){
+	deleteInfo(sid);
 }
 /*修改题库*/
 /*function editItemBankByUser(){

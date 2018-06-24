@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="s" uri="/struts-tags" %>
     <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -100,7 +101,7 @@
 		    			<ul class="question-type">
 
 		    					<form>请选择题目类型 ：
-		    						<input type="radio"  id="single-choice" value="single-choice" name="1" checked="checked" /><label>单选题</label>
+		    						<input type="radio"  id="single-choice" value="single-choice" name="1"/><label>单选题</label>
 		    						<input type="radio"  id="mutiple-choice"  name="1"/><label>多选题</label>
 		    						<input type="radio"  id="ture-or-false"  name="1"/><label>判断题</label>
 		    						<input type="radio"  id="fill-in" name="1"/><label>填空题</label>
@@ -120,11 +121,6 @@
 		    				<ul>
 		    				<li>请选择科目：
 		    					<select class="sub form-control" name="question.subjectName">
-		    						<option >高等数学</option>
-		    						<option >大学英语</option>
-		    						<option>思想政治</option>
-		    						<option>计算机</option>
-		    						<option >大学物理</option>
 		    					</select>
 		    					难易程度
 		    					<select class="sub form-control" name="question.difficultyValue">
