@@ -77,11 +77,11 @@ function getQuestion1(str){
 			+ optionsHtml
 			+"</select>"
 			+"难易程度"
-			+"<select class='sub form-control'>"
-			+"<option name='question.difficultyValue' value='1'>简单</option>"
-			+"<option name='question.difficultyValue' value='2'>中等</option>"
-			+"<option name='question.difficultyValue' value='3'>一般</option>"
-			+"<option name='question.difficultyValue' value='4'>困难</option>"
+			+"<select class='sub form-control' name='question.difficultyValue'>"
+			+"<option  value='1'>简单</option>"
+			+"<option  value='2'>中等</option>"
+			+"<option  value='3'>一般</option>"
+			+"<option  value='4'>困难</option>"
 			+"</select>"
 			+"</li>"
 				+"<li id='dry'>题干"
@@ -114,11 +114,11 @@ function getQuestion2(str){
 				+ optionsHtml
 				+"</select>"
 				+"难易程度"
-				+"<select class='sub form-control'>"
-				+"<option name='question.difficultyValue' value='1'>简单</option>"
-				+"<option name='question.difficultyValue' value='2'>中等</option>"
-				+"<option name='question.difficultyValue' value='3'>一般</option>"
-				+"<option name='question.difficultyValue' value='4'>困难</option>"
+				+"<select class='sub form-control' name='question.difficultyValue'>"
+				+"<option  value='1'>简单</option>"
+				+"<option  value='2'>中等</option>"
+				+"<option  value='3'>一般</option>"
+				+"<option  value='4'>困难</option>"
 				+"</select>"
 				+"</li>"
 				+"<li id='dry'>题干&nbsp;<textarea name='question.title'></textarea></li>"
@@ -150,11 +150,11 @@ function getQuestion3(str){
 			+ optionsHtml
 			+"</select>"
 			+"难易程度"
-			+"<select class='sub form-control'>"
-			+"<option name='question.difficultyValue' value='1'>简单</option>"
-			+"<option name='question.difficultyValue' value='2'>中等</option>"
-			+"<option name='question.difficultyValue' value='3'>一般</option>"
-			+"<option name='question.difficultyValue' value='4'>困难</option>"
+			+"<select class='sub form-control' name='question.difficultyValue'>"
+			+"<option  value='1'>简单</option>"
+			+"<option  value='2'>中等</option>"
+			+"<option  value='3'>一般</option>"
+			+"<option  value='4'>困难</option>"
 			+"</select>"
 			+"</li>"
 					+"<li id='dry'>题干<textarea name='question.title'></textarea></li>"
@@ -182,11 +182,11 @@ function getQuestion4(str){
 			+ optionsHtml
 			+"</select>"
 			+"难易程度"
-			+"<select class='sub form-control'>"
-			+"<option name='question.difficultyValue' value='1'>简单</option>"
-			+"<option name='question.difficultyValue' value='2'>中等</option>"
-			+"<option name='question.difficultyValue' value='3'>一般</option>"
-			+"<option name='question.difficultyValue' value='4'>困难</option>"
+			+"<select class='sub form-control' name='question.difficultyValue'>"
+			+"<option  value='1'>简单</option>"
+			+"<option  value='2'>中等</option>"
+			+"<option  value='3'>一般</option>"
+			+"<option  value='4'>困难</option>"
 			+"</select>"
 			+"</li>"
 					+"<li id='dry'>题&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name='question.title'></textarea></li>"    					
@@ -209,11 +209,11 @@ function getQuestion5(str){
 			+ optionsHtml
 			+"</select>"
 			+"难易程度"
-			+"<select class='sub form-control'>"
-			+"<option name='question.difficultyValue' value='1'>简单</option>"
-			+"<option name='question.difficultyValue' value='2'>中等</option>"
-			+"<option name='question.difficultyValue' value='3'>一般</option>"
-			+"<option name='question.difficultyValue' value='4'>困难</option>"
+			+"<select class='sub form-control' name='question.difficultyValue'>"
+			+"<option  value='1'>简单</option>"
+			+"<option  value='2'>中等</option>"
+			+"<option  value='3'>一般</option>"
+			+"<option  value='4'>困难</option>"
 			+"</select>"
 			+"</li>"
 					+"<li id='dry'>题&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name='question.title'></textarea></li>"
@@ -241,7 +241,6 @@ function importQuestion() {
 		if (xhr.readyState == 4) {
 			if (xhr.status == 200) {
 				console.debug(xhr.responseText)
-
 			} else {
 			}
 		}
