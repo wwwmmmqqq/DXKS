@@ -591,14 +591,14 @@
 	}
 	
 	/* 获取历史成绩 */
-	/* var paperSid=getParam("sid"); */
-	loadMyHistoryScore(3);
-	alert("88");
-		function loadMyHistoryScore(paperSid){
+	 /* var paperSid=getParam("sid");  */
+	loadGradesByPaper(1);
+		function loadGradesByPaper(page){
 			 $.post("loadGradesByPaper", {
-				  "paper.sid":paperSid
+				  "page":page
 			  }, function(data) {
 				  var scoreList = data.list;
+				  alert(scoreList);
 				  var htm = "";
 				  for(var i=0;i<scoreList.length;i++) {
 					  htm += getMyScore(scoreList[i].paper,scoreList[i].grade,index);

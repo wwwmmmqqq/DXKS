@@ -758,7 +758,7 @@
 	}
 	function studentInfo(node) {
 		var td =node.parentNode.parentNode.childNodes;
-		var userId = td[2].innerHTML;
+		var userId = td[2].innerHTML;alert(userId);
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
