@@ -106,7 +106,7 @@
 									<li>${item.question.title}</li>
 
 									<div class="answer_span"><span>参考答案</span></div>
-									<li>${item.option.subjectText}</li>
+									<%-- <li>${item.option.subjectText}</li> --%>
 								</ul>
 							</s:iterator>
 
