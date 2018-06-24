@@ -18,6 +18,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  alert(data.result);
 			  alert(data.list);
 		  });
+		  
+		  $.post("registUser", {
+			  "user.userId":"asdfasdf",//
+			  "user.psw":"xclgkjadslfj",//
+			  "user.email":"xclgkjadslfj"//
+		  }, function(data) {
+			  alert(data.result);//success fail exist
+		  });
 	  }
 	  searchQuestions();
 	  </script>

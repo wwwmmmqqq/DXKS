@@ -30,6 +30,8 @@ public class BeanAutoFit {
 					&& (f.getType().equals(int.class)||f.getType().equals(Integer.class))) {
 				//如果是主键
 				continue;
+			} else if (f.getAnnotation(javax.persistence.Transient.class) != null) {
+				continue;
 			}
 			
 			if (f.getName().contains("difficultyValue")) {

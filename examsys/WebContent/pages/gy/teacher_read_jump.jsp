@@ -76,7 +76,7 @@
 							<a href="history_teacher.jsp">
 								<li class="side_nav1 ">查看成绩</li>
 							</a>
-							<a href="teacher_read_jump.jsp"><li class="side_nav1 now">批阅试卷</li></a>
+							<a href="loadResponsibleQuestions"><li class="side_nav1 now">批阅试卷</li></a>
 						</ul>
 					</div>
 				</nav>

@@ -33,4 +33,6 @@ public interface PersonalService {
 	boolean checkQuestion(String checker, int sid, float scoring,
 			String question_Subjective);
 
+	String registUser(String userId, String psw, String email);
+
 }

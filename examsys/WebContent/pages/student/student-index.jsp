@@ -293,7 +293,7 @@ function loadPapersByExam(examSid){
 		  var paperList = data.list;
 		  var htm = "";
 		  for(var i=0;i<paperList.length;i++) {
-			  htm+=getP  aper(paperList[i]);
+			  htm+=getPaper(paperList[i]);
 		  }
 		  $('.paper-exam').html(htm);
 	  }); 

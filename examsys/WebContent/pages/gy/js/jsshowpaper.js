@@ -13,7 +13,6 @@ $(function(){
 					action : function() {
 						$.post("deleteItemBank",
 								{
-							
 							  		"question.sid":questionId
 							 	},
 								 function(data){
@@ -27,10 +26,10 @@ $(function(){
 				cancelAction : {
 					btnClass : 'btn-default',
 					text : '取消',
+
 				}
 			}
 		});
-
 	})
 })
 

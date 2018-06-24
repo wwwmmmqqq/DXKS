@@ -1,3 +1,17 @@
+var optionsHtml = "";
+loadSubjects();
+function loadSubjects() {
+	$.post("loadSubjects", null, function(data) {
+		var list = data.list;
+		var s = "";
+		for(var i=0;i<list.length;i++) {
+			var item = list[i];
+			s += "<option value='"+item.sid+"'>"+item.name+"</option>"
+		}
+		optionsHtml = s;
+	});
+}
+
 //单选
 $(function(){
 	/*$("#single-choice").click();*/
@@ -49,6 +63,8 @@ $(function(){
 		$("#que").html(htm4);
 	}
 });
+
+
 function getQuestion1(str){
 
 	var htm=
@@ -57,12 +73,8 @@ function getQuestion1(str){
 			+"<input type='hidden' value='Single' name='question.type'>"
 			+"<ul>"
 			+"<li>请选择科目："
-			+"<select class='sub form-control' name='question.subjectName'>"
-			+"<option >高等数学</option>"
-			+"<option >大学英语</option>"
-			+"<option>思想政治</option>"
-			+"<option>计算机</option>"
-			+"<option >大学物理</option>"
+			+"<select class='sub form-control' name='question.subjectRef'>"
+			+ optionsHtml
 			+"</select>"
 			+"难易程度"
 			+"<select class='sub form-control'>"
@@ -98,12 +110,8 @@ function getQuestion2(str){
 			+"<input type='hidden' value='Multiple' name='question.type'>"
 				+"<ul>"
 				+"<li>请选择科目："
-				+"<select  class='sub form-control' name='question.subjectName'>"
-				+"<option >高等数学</option>"
-				+"<option >大学英语</option>"
-				+"<option>思想政治</option>"
-				+"<option>计算机</option>"
-				+"<option >大学物理</option>"
+				+"<select  class='sub form-control' name='question.subjectRef'>"
+				+ optionsHtml
 				+"</select>"
 				+"难易程度"
 				+"<select class='sub form-control'>"
@@ -138,12 +146,8 @@ function getQuestion3(str){
 			+"<input type='hidden' value='TrueOrFalse' name='question.type'>"
 			+"<ul>"
 			+"<li>请选择科目："
-			+"<select class='sub form-control' name='question.subjectName'>"
-			+"<option >高等数学</option>"
-			+"<option >大学英语</option>"
-			+"<option>思想政治</option>"
-			+"<option>计算机</option>"
-			+"<option >大学物理</option>"
+			+"<select class='sub form-control' name='question.subjectRef'>"
+			+ optionsHtml
 			+"</select>"
 			+"难易程度"
 			+"<select class='sub form-control'>"
@@ -174,12 +178,8 @@ function getQuestion4(str){
 			+"<input type='hidden' value='Fills' name='question.type'>"
 			+"<ul>"
 			+"<li>请选择科目："
-			+"<select class='sub form-control' name='question.subjectName'>"
-			+"<option >高等数学</option>"
-			+"<option >大学英语</option>"
-			+"<option>思想政治</option>"
-			+"<option>计算机</option>"
-			+"<option >大学物理</option>"
+			+"<select class='sub form-control' name='question.subjectRef'>"
+			+ optionsHtml
 			+"</select>"
 			+"难易程度"
 			+"<select class='sub form-control'>"
@@ -205,12 +205,8 @@ function getQuestion5(str){
 			+"<input type='hidden' value='Subjective' name='question.type'>"
 			+"<ul>"
 			+"<li>请选择科目："
-			+"<select class='sub form-control' name='question.subjectName'>"
-			+"<option >高等数学</option>"
-			+"<option >大学英语</option>"
-			+"<option>思想政治</option>"
-			+"<option>计算机</option>"
-			+"<option >大学物理</option>"
+			+"<select class='sub form-control' name='question.subjectRef'>"
+			+ optionsHtml
 			+"</select>"
 			+"难易程度"
 			+"<select class='sub form-control'>"
@@ -268,27 +264,27 @@ function importQuestion() {
 		if(radios[0].checked){
 			xhr.send(formData1);
 			toastr.success("单选题录入成功");
-			squestion.reset();
+			//squestion.reset();
 		}
 		if(radios[1].checked){
 			xhr.send(formData2);
 			toastr.success("多选题录入成功");
-			wquestion.reset();
+			//wquestion.reset();
 		}
 		if(radios[2].checked){
 			xhr.send(formData3);
 			toastr.success("判断题录入成功");
-			tfquestion.reset();
+			//tfquestion.reset();
 		}
 		if(radios[3].checked){
 			xhr.send(formData4);
 			toastr.success("填空题录入成功");
-			fjquestion.reset();
+			//fjquestion.reset();
 		}
 		if(radios[4].checked){
 			xhr.send(formData5);
 			toastr.success("简答题录入成功");
-			answerquestion.reset();
+			//answerquestion.reset();
 		}
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Question;
+import cn.examsys.bean.User;
 import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.common.Conf;
@@ -116,7 +117,7 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
-	@Action(value="/loadResponsibleQuestions"
+	/*@Action(value="/loadResponsibleQuestions"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadResponsibleQuestions() {
@@ -136,33 +137,14 @@ public class PersonalAction extends CommonAction {
 			li.add(vo);
 		}
 		list = li;
-		/*List<Question> list = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			Question q = new Question();
-			try {
-				BeanAutoFit.autoFit(q);
-				List<Option> options = new ArrayList<>();
-				for (int j = 0; j < Tool.getIntRnd(5)+1; j++) {
-					Option o = new Option();
-					BeanAutoFit.autoFit(o);
-					options.add(o);
-				}
-				q.setOptions(options);
-				list.add(q);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}*/
 		return aa;
-	}
+	}*/
 	
 	@Action(value="/loadMyHistoryGrades"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyHistoryGrades() {
-		
 		list = serivce.loadHistoryGrades(getSessionUser(), page);
-		
 		return aa;
 	}
 	
@@ -192,6 +174,19 @@ public class PersonalAction extends CommonAction {
 		if (!bo) {
 			setResult("fail");
 		}
+		return aa;
+	}
+	
+	User user = new User();
+	public User getUser() {
+		return user;
+	}
+	@Action(value="/registUser"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String registUser() {
+		String rst = serivce.registUser(user.getUserId(), user.getPsw(), user.getEmail());
+		setResult(rst);
 		return aa;
 	}
 	

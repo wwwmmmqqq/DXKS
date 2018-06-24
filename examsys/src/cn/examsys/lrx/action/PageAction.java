@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.examsys.bean.Answersheet;
+import cn.examsys.bean.Option;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.common.BeanAutoFit;
@@ -67,42 +68,56 @@ public class PageAction extends CommonAction {
 	}
 	
 	
-	@Action(value="/loadResponsibleQuestions1", results={
+	@Action(value="/loadResponsibleQuestions", results={
 			@Result(name="success", location="/pages/gy/teacher_read.jsp")})
 	public String loadResponsibleQuestions() {
-		//list = serivce.loadResponsibleQuestions(getSessionUser(), page);
-		List<QuestionCheckVO> li = new ArrayList<QuestionCheckVO>();
+		//list = service.loadResponsibleQuestions(getSessionUser(), page);
+		list = service.loadResponsibleQuestions(getSessionUser()
+				, paper.getSid(), page);
+		System.out.println(list.size());
+		/*List<QuestionCheckVO> li = new ArrayList<QuestionCheckVO>();
 		for (int i = 0; i < 10; i++) {
 			Question q = new Question();
 			Answersheet a = new Answersheet();
+			Option o = new Option();
 			try {
 				BeanAutoFit.autoFit(q);
 				BeanAutoFit.autoFit(a);
-				System.out.println(a);
+				BeanAutoFit.autoFit(o);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			QuestionCheckVO vo = new QuestionCheckVO(q, a);
+			QuestionCheckVO vo = new QuestionCheckVO(q, a, o);
 			li.add(vo);
 		}
-		list = li;
-		/*List<Question> list = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			Question q = new Question();
-			try {
-				BeanAutoFit.autoFit(q);
-				List<Option> options = new ArrayList<>();
-				for (int j = 0; j < Tool.getIntRnd(5)+1; j++) {
-					Option o = new Option();
-					BeanAutoFit.autoFit(o);
-					options.add(o);
-				}
-				q.setOptions(options);
-				list.add(q);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}*/
+		list = li;*/
+		return aa;
+	}
+	
+	String type;
+	String key;
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+	
+	@Action(value="/searchQuestions", results={
+			@Result(name="success", location="/pages/gy/jsshowpaper.jsp")})
+	public String searchQuestions() {
+		if (page == 0) {
+			page = 1;
+		}
+		System.out.println(key + ", " + type);
+		list = service.searchQuestions(getSessionUser(), type, key, page);
+		System.out.println(list.size());
 		return aa;
 	}
 	

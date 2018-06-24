@@ -263,7 +263,7 @@ public class DaoAdapter implements IDaoAdapter {
 	}
 
 	@Override
-	public void updateEntity(Class<?> claz, Serializable id, String[] fieldNames, Object[] values) throws Exception {
+	public void updateEntity(Class<?> claz, Serializable id, Object[] fieldNames, Object[] values) throws Exception {
 		if (fieldNames == null || fieldNames.length == 0) {
 			return;
 		}

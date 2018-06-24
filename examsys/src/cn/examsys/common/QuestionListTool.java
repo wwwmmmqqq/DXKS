@@ -68,7 +68,8 @@ public class QuestionListTool {
 	}
 	
 	
-	public static List<Question> fillOptionsFromQuestionList(IDaoAdapter dao, List<Question> questionList) {
+	public static List<Question> fillOptionsFromQuestionList(IDaoAdapter dao
+			, List<Question> questionList) {
 		try {
 			
 			StringBuilder qRefs = new StringBuilder();
