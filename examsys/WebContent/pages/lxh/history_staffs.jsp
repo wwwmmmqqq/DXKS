@@ -593,6 +593,7 @@
 	/* 获取历史成绩 */
 	/* var paperSid=getParam("sid"); */
 	loadMyHistoryScore(3);
+	alert("88");
 		function loadMyHistoryScore(paperSid){
 			 $.post("loadGradesByPaper", {
 				  "paper.sid":paperSid

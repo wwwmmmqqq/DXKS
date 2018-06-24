@@ -12,5 +12,7 @@ public interface ExamPlanService {
 	boolean editExamPlan(Exam exam);
 	/*查看一条考试信息*/
 	Exam selectOneExamPlan(int sid);
+	/*删除一条考试信息*/
+	boolean deleteExamPlan(int sid);
 	
 }

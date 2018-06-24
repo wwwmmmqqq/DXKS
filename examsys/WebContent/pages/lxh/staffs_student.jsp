@@ -853,7 +853,6 @@
 	function editStudent() {
 		alert(checkInput());
 		if(checkInput()==false){
-			alert("333");
 			return false;
 			} else{
 		$.post("editUser",

@@ -146,8 +146,8 @@
 				        <td>考试说明</td>
 				        <td>状态</td>
 				        <td>
-				        	<i class="fa fa-eye see" data-toggle="modal" data-target="#myModal_eye_Exam"></i>
-			        	    <i class='fa fa-pencil check'></i>"
+				           <i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check'></i>
+	                       <i class='fa fa-trash-o' onclick='deleteExamPlan()'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>
 			        	</td>
 			        </tr>
 				</tbody>
@@ -414,7 +414,7 @@
 		</div>
 		
 		<!--模态框修改考次-->
-		<div class="modal fade" id="myModal_addexam">
+		<div class="modal fade" id="myModal_check">
 			<div class="modal-dialog">
 				<div class="modal-content">
 						   
@@ -462,7 +462,7 @@
 							        <!-- 模态框底部 -->
 							        <div class="modal-footer">
 							          <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-							          <button type="button" class="btn btn-primary add" onclick="editExamPlan();">添加</button>
+							          <button type="button" class="btn btn-primary add" onclick="editExamPlan();">修改</button>
 							        </div>
 						   
 						      </div>
@@ -619,7 +619,7 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.explication+"</td>"
 	+"<td>"+obj.state+"</td>"
 	+"<td>"
-	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
+	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)'></i>"
 	+"<i class='fa fa-trash-o' onclick='deleteExam()'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
 	+"</td>"
 	+"</tr>";
@@ -664,16 +664,16 @@ function prevPage() {
 } */
 function examPlanInfo(node) {
 	var td = node.parentNode.parentNode.childNodes;
-	var userId = td[2].innerHTML;
-	$.post("showUser",{"user.userId":userId},function(data) {
+	var sid = td[0].innerHTML;
+	$.post("selectOneExamPlan",{"exam.sid":sid},function(data) {
 		var examplan = data.examplan;
-		var info = getInfoHtml(user);
+		var info = getInfoHtml(examplan);
 		$('#examPlan-info-box').html(info);
 		
-		$('#exam_title').val(user.name);
-		$('#exam_periodStart').val(user.name);
-		$('#exam_periodEnd').val(user.userId);
-		$('#exam_invitee').val(user.collegeName);
+		$('#exam_title').val(examplan.title);
+		$('#exam_periodStart').val(examplan.periodStart);
+		$('#exam_periodEnd').val(examplan.periodEnd);
+		$('#exam_invitee').val(examplan.invitee);
 	})
 }	
 
@@ -688,17 +688,33 @@ function createExamPlan() {
 			},function(data){
 				alert(data.result);    //message为user返回信息
 				location.href="test.jsp";
+			
 			})
 }
-
-function deleteTest(node) {
+function editExamPlan() {
+	alert("555");
+	$.post("editExamPlan",
+				{	
+					"exam.title":$('#exam_title').val(),
+					"exam.periodStart":$('#exam_periodStart').val(),
+					"exam.periodEnd":$('#exam_periodEnd').val(),
+					"exam.invitee":$('#exam_invitee').val(),
+				},function(data) {
+					alert("ooo");
+					alert(data.result);
+				  	location.href="test.jsp";
+				
+		  })
+	
+}
+function deleteExamPlan(node) {
 	var td = node.parentNode.parentNode.childNodes;
-	var userId = td[2].innerHTML;
+	var examPlanId = td[2].innerHTML;
 	if(confirm("确定要删除该考次吗？")) {
-		$.post("deleteTest",{"user.userId":userId},function(data) {
-			if(data.result=="删除成功") {
+		$.post("deleteExamPlan",{"exam.sid":examPlanId},function(data) {
+			        alert(data.result);
 					location.href="test.jsp";
-			}
+			
 	  }); 
 	}  
 	return false;
@@ -724,7 +740,7 @@ function checkInput() {
 	});
 }
 
-$("#find").click(function(){alert("0o0");
+$("#find").click(function(){
 	$("#hide").slideToggle("slow");
 		/* $("#school").click(function(){
 			$("#school1").slideToggle("slow");
