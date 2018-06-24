@@ -15,4 +15,10 @@ public interface LrxService {
 	boolean editQuestion(User sessionUser, int sid, List<String> fields, List<String> values);
 
 	List<Subject> loadSubjects();
+
+	boolean delPaper(User sessionUser, int sid);
+
+	boolean invite(User sessionUser, int sid, String text);
+
+	boolean delExam(User sessionUser, int sid);
 }

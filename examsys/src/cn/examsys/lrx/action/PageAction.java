@@ -121,6 +121,15 @@ public class PageAction extends CommonAction {
 		return aa;
 	}
 	
+
+	//试卷管理
+	@Action(value="/loadAPaper", results={
+				@Result(name="success", location="/pages/lxh/apaper.jsp") })
+	public String loadAPaper() {
+		list = service.loadQuestionList(getSessionUser(), paper.getSid());
+		return aa;
+	}
+	
 	@Override
 	public String getResult() {
 		return result;

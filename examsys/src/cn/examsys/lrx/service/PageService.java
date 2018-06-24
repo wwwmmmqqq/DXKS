@@ -20,5 +20,7 @@ public interface PageService {
 
 	List<Question> searchQuestions(User sessionUser, String type, String key, int page);
 
+	List<Question> loadQuestionList(User sessionUser, int sid);
+
 	
 }

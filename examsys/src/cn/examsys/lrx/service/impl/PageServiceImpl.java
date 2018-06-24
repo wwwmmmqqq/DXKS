@@ -90,5 +90,15 @@ public class PageServiceImpl implements PageService {
 		}
 		return null;
 	}
+
+	@Override
+	public List<Question> loadQuestionList(User sessionUser, int sid) {
+		try {
+			return QuestionListTool.queryQuestionList(dao, sid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }
