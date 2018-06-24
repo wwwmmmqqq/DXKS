@@ -1,5 +1,6 @@
 	var questionId=$('#questionid').val();
 function deleteInfo(){
+	alert(questionId)
 	var questionId = getParam("sid");
 	$.confirm({
 		title : '确认删除？',
@@ -16,6 +17,7 @@ function deleteInfo(){
 						 	},
 							 function(data){
 						 		if(data.result=="题目删除成功！"){
+						 			toastr.success("题目删除成功！")
 						 			 location.reload();
 						 		}
 						})

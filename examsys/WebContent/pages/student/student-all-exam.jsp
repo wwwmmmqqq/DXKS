@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
                 <%
@@ -257,7 +256,6 @@ function loadMyHistoryPapersByexam(){
 		  "page":currentPage
 	  }, function(data) {
 		  var paperHistoryList = data.list;
-		  alert(paperHistoryList)   
 		  var htm = "";
 		  for(var i=0;i<paperHistoryList.length;i++) {
 			htm+=getMyHistoryPaper(paperHistoryList[i])
