@@ -11,7 +11,7 @@ var currentPage = 1;
 		}
 	}
 //	获取历史成绩
-	var papsersid=getParam("sid");
+	var paperSid=getParam("sid");
 	function loadGradesByPaper(paperSid){
 		 $.post("loadGradesByPaper", {
 			  "paper.sid":paperSid

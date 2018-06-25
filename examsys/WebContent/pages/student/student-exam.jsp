@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+<link href="css/toastr.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -194,6 +195,7 @@
 <script type="text/javascript" src="js/student-exam.js"></script>
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/toastr.js"></script>
 
 
 <script type="text/javascript">
@@ -271,6 +273,8 @@ $(document).ready(function(){
 <script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
 /* oneChoice();  */
+ 
+
 function loadQuestionListByPaper(paperSid){
 	  $.post("loadQuestionList", {
 		  "paper.sid":paperSid
@@ -280,12 +284,34 @@ function loadQuestionListByPaper(paperSid){
 		  for(var i=0;i<queList.length;i++){
 			  htm+=getQueItem(i, queList[i]);
 		  }
+		   size=queList.length;
+		  
 		  $('#paper-box').html(htm);
 	  });
 }
-
+/* 下一题 */
+ var size='${request.queList.size()}'
+function nextPage() {
+	if(currentItemId>size){
+		toastr.error("已经是最后一题了！")
+		return;
+	}
+	currentItemId++;
+		$('#abc' + currentItemId).click();
+}
+/* 上一题 */
+function prePage() {
+	if(currentItemId<1){
+		toastr.error("已经是第一题了！")
+		return;
+	}
+	currentItemId--;
+		$('#abc' + currentItemId).click();
+	
+}
 /*答题 题目id，选项id， 填空题答案，主观题答案*/
 function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse) {
+	
 	$.post("todo", {
 	  "answer.questionRef":questionSid//题目ID
 	  ,"answer.optionRef":optionSid//选项ID
@@ -306,7 +332,8 @@ function doit(questionId, optId, inputObj, trueOrFalse) {
 		trueOrFalse = inputObj.checked?1:0;
 	}
 	todo(questionId, optId, inputObj.value, inputObj.value, trueOrFalse);
-	$('#abc'+currentItemId).addClass('has-que-num ');
+	$('#abc'+currentItemId).addClass('has-que-num');
+	
 }
 
 $(document).ready(function(){

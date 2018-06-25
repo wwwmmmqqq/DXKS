@@ -70,17 +70,7 @@ function queClicked(obj, n) {
 	/*$("#q-" + n).show();*/
 	$("#q-" + n).css({"display":"block"});
 }
-/* 下一题 */
-function nextPage() {
-	currentItemId++;
-	$('#abc' + currentItemId).click();
 
-}
-/* 上一题 */
-function prePage() {
-	currentItemId--;
-	$('#abc' + currentItemId).click();
-}
 
 /* 点击标记图片 */
 function markClick() {
