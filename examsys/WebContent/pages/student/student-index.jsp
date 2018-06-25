@@ -25,23 +25,25 @@
 
 			<nav id="top-nav">
 				<div id="main-nav-content">
-					<a href="student-index.html" clas="logo">
+					<a href="student-main.jsp" clas="logo">
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
 					<div class="navbar-right">
-						<ul>
+						<ul class="user-info">
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="fa fa-user"></i>
-									<span>${session.user.name}</span>
+									<span>${session.user.name} </span>
 								</a>
+								
 							</li>
-								<div class="dropdown-content">
+							<div class="dropdown-content">
 		    			<a href="javascript:setPassword()">修改密码</a>
 		    			<a >退出系统</a>
 		    		</div>
 						</ul>
+						
 					</div>
 				</div>
 			</nav>

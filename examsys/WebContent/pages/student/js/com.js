@@ -1,28 +1,5 @@
 $(function (){
-	/*modifyInfo();
-	function modifyInfo(){
-		
-		var sname=$('.basic-info input[name="name"]').val();
-		var ssex=$('.basic-info input[name="sex"]').val();
-		var scollegeName=$('.basic-info input[name="collegeName"]').val();
-		var sdepartment=$('.basic-info input[name="department"]').val();
-		var sprofession=$('.basic-info input[name="profession"]').val();
-		var sidcard=$('.basic-info input[name="idcard"]').val();
-		var sphone=$('.basic-info input[name="phone"]').val();
-		var semail=$('.basic-info input[name="email"]').val();
-		 $.post("updateStuInfos", {
-		  fields:["name","sex","collegeName","department","profession","idcard","phone","email"],
-		  values:[sname,ssex,scollegeName,sdepartment,sprofession,sidcard,sphone,semail]
-	  }, function(data) {
-		  alert("s")
-		  if(data.result == 'success') {
-			  toastr.success("修改成功！");
-		  } else {
-			  toastr.warning("修改失败！");
-		  }
-	  });
-	}
- */
+
 })
   function setPassword(){
 	   var str = '<form id="user_setting" action="">' +
@@ -30,15 +7,15 @@ $(function (){
 		'<tbody>' +
 		'<tr>' +
 		'<td>旧密码</td>' +
-		'<td><input type="text"class="form-control" name="user.oldpwd"/></td>' +
+		'<td><input type="text" class="form-control" name="user.oldpwd"/></td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>新密码</td>' +
-		'<td><input type="text"class="form-control"name="user.newpwd"/></td>' +
+		'<td><input type="password" class="form-control"name="user.newpwd"/></td>' +
 		'</tr>' +
 		'<tr>' +
 		'<td>确认密码</td>' +
-		'<td><input type="text"class="form-control"name="user.repwd"/></td>' +
+		'<td><input type="password" class="form-control"name="user.repwd"/></td>' +
 		'</tr>' +
 		'</tbody>' +
 		'</table>' +
@@ -107,3 +84,14 @@ function showInfo(){
 		})
 	})
 }
+/*退出系统*/
+function Out() {
+	if(confirm("确定要退出吗？")) {
+		$.post("loginOut",null,function(data) {
+			if(data.result=="成功退出") {
+					location.href="../gy/login.jsp";
+			}
+	  });
+	}  
+}
+
