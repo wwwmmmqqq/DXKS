@@ -467,6 +467,9 @@ th {
 	color: black;
 	border:1px solid #bbb;
 }
+#myModal_email_refuse textarea {
+	width: 80%;
+}
 
 /*邀请老师组卷*/
 .modal-footer .add_invite{

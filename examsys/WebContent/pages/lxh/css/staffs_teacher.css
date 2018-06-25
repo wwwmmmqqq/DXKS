@@ -625,6 +625,10 @@ th {
 	color: black;
 	border:1px solid #bbb;
 }
+#myModal_email_refuse textarea {
+	width: 80%;
+}
+
 /*查看权限模态框*/
 .see{
 	cursor: pointer;
