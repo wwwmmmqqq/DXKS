@@ -126,4 +126,15 @@ public class LrxServiceImpl implements LrxService {
 		return false;
 	}
 
+	@Override
+	public List<User> loadUsers(User sessionUser) {
+		try {
+			return dao.findByHql("from User where collegeRef=?"
+					, new Object[]{sessionUser.getCollegeRef()});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

@@ -1,5 +1,6 @@
 package cn.examsys.lrx.service.impl;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -160,6 +161,27 @@ public class ExamServiceImpl implements ExamService {
 	 */
 	@Override
 	public int submitPaper(User sessionUser, int paperSid, int timeComsuming) {
+		
+		try {
+			BigInteger bi = dao.findOneBySql("select count(sid) from constitute_tb where paperRef=? and responsibleUser=?"
+					, new Object[]{paperSid, sessionUser.getUserId()});
+			if (bi != null && bi.intValue()>0) {
+				//如果有指定responsibleUser
+				//则暂时保存Grade ，等阅卷完毕后再算分
+				Grade g = new Grade();
+				g.setPaperRef(paperSid);
+				g.setPoint(0);
+				g.setTime(Tool.time());
+				g.setUserId(sessionUser.getUserId());
+				g.setTimeComsuming(timeComsuming);
+				int gradeSid = (Integer) dao.saveEntity(g);
+				System.out.println("-2");
+				return -2;
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
 		try {
 			List<String> questionIdList = dao.findBySql("select questionRef from constitute_tb where paperRef=?"
 					, new Object[]{paperSid});

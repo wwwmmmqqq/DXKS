@@ -24,4 +24,6 @@ public interface LrxService {
 
 	boolean delExam(User sessionUser, int sid);
 
+	List<User> loadUsers(User sessionUser);
+
 }

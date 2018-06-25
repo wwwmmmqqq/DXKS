@@ -256,8 +256,12 @@ function submitPaper(paperSid) {
 			  $(".exam-result").html("交卷失败，该试卷已被提交过！");
 			  $("#submitPaperBtn").html("提交试卷");
 		  } else {
-			  //$("#examResult").text("交卷成功 成绩ID=" + data.result);//成绩ID
-			  $(".exam-result").text("${session.user.name}本次考试最终得分：" + data.result + "分");
+			  alert(data.result);
+			  if(data.result == "-2") {
+				  $(".exam-result").text("试卷已经提交，等待阅卷老师批改");
+			  } else {
+				  $(".exam-result").text("${session.user.name}本次考试最终得分：" + data.result + "分");
+			  }
 			  $("#submitPaperBtn").html("已交卷");
 			  $("#submitPaperBtn").attr("disabled", "disabled");
 		  }

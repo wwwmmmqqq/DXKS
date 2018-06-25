@@ -1,5 +1,6 @@
 package cn.examsys.lrx.service.impl;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -118,14 +119,40 @@ public class PersonalServiceImpl implements PersonalService {
 	}
 
 	@Override
-	public boolean checkQuestion(String checker, int sid, float scoring,
+	public boolean checkQuestion(String checker, int answerSid, float scoring,
 			String questionType) {
 		try {
-			dao.updateEntity(Answersheet.class, sid
+			//批改成绩 (修改scoring)
+			dao.updateEntity(Answersheet.class, answerSid
 					, new String[]{"checker", "scoring"}
 					, new Object[]{checker, scoring});
-			/*dao.updateBySql("update answer_tb set checker=?, scroing=? where sid=?"
-					, new Object[]{checker, scoring, sid});*/
+			
+			Answersheet a = dao.findEntity(Answersheet.class, answerSid);
+			String userId = a.getUserId();
+			int paperSid = a.getPaperRef();
+			System.out.println("paperSid:" + paperSid);
+			/*BigInteger bi = dao.findOneBySql("select count(sid) from answersheet_tb"
+					+ " where (checker!=? or checker is NULL) and paperRef=? and userId=?"
+					, new Object[]{checker, paperSid, userId});*/
+			
+			
+			Long bi = dao.findOneByHql("select count(c.sid)"
+					+ " from Constitute c, Answersheet a, Question q, Option o "
+					+ " where c.responsibleUser=? and (a.checker!=? or a.checker is NULL) and c.questionRef=q.sid and o.questionRef=q.sid and a.optionRef=o.sid"
+					, new Object[]{checker, checker});
+			
+			boolean hasQuestionsToCheck = bi != null && bi.intValue()>0;
+			System.out.println("hasQuestionsToCheck:" + hasQuestionsToCheck + "," + bi.intValue());
+			if (!hasQuestionsToCheck) {
+				//如果题目全部都被改完了 则 计算总成绩
+				Grade g = dao.findOneByHql("from Grade where paperRef=? and userId=?"
+						, new Object[]{paperSid, userId});
+				Double totalScoreBi = dao.findOneBySql("select sum(scoring) from answersheet_tb"
+						+ "	where paperRef=? and userId=?", new Object[]{paperSid, userId});
+				g.setPoint(totalScoreBi.intValue());
+				g.setState(1);
+				dao.updateEntity(g);
+			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

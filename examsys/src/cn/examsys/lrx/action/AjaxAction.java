@@ -116,7 +116,13 @@ public class AjaxAction extends CommonAction {
 		return aa;
 	}
 	
-	
+	@Action(value="/loadTeachers"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadTeachers() {
+		list = service.loadUsers(getSessionUser());
+		return aa;
+	}
 	
 	@Override
 	public String getResult() {

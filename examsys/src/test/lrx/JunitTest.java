@@ -42,6 +42,16 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	
 	@Test
 	public void teste() {
+
+		try {
+			List<QuestionCheckVO> li = dao.findByHql("select new cn.examsys.lrx.vo.QuestionCheckVO(q, a, o)"
+					+ " from Constitute c, Answersheet a, Question q, Option o "
+					+ " where c.responsibleUser=? and (a.checker!=? or a.checker is NULL) and c.questionRef=q.sid and o.questionRef=q.sid and a.optionRef=o.sid"
+					, new Object[]{"a2", "a2"});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		/*try {
 			List<Map<String, Object>> li = daoAdapter.findByHql("select new Map(userId as userId, psw as psw, name as name) from User");
 			System.out.println(li.size());
@@ -52,7 +62,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		List<Question> li;
+		/*List<Question> li;
 		try {
 			li = dao.findByHql("select q from Question q, Constitute c where c.paperRef=? and c.questionRef=q.sid"
 					, new Object[]{28});
@@ -60,6 +70,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 		
 	}
 	

@@ -138,6 +138,11 @@
 						<select id="subjectSel" onchange="loadDiffCounts()">
 							<optgroup label="选择科目" id="subjectOpts"></optgroup>
 						</select>
+						<select id="teacherSels">
+							<optgroup label="指定解答题批改老师" id="teacherOptions">
+							
+							</optgroup>
+						</select>
 					</div>
 						<div class="autocompose">
 							<table class="table table-hover mytable">
@@ -537,13 +542,14 @@ $('tr input').blur(function() {
 })
 </script>
 <script type="text/javascript">
-function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
+function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd, responser) {
 	var params = {
 			  "paper.examRef":examRef //考试ID
 			, "paper.subjectRef":subjectRef //考试ID
 			, "paper.name":name //试卷标题名
 			, "paper.examStart":examStart //考试开始时间
 			, "paper.examEnd":examEnd //考试结束时间
+			, "responser": responser
 	};
 	var types = ["single", "multiple", "trueOrFalse", "fills", "subjective"];
 	for(var i=0;i<types.length;i++) {
@@ -560,7 +566,8 @@ function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
 
 //var newPaperSid = -1;
 $('#submitBtn').bind().click(function() {
-	var params = createPaperAutoParams(examSid, subjectSel.value, $("#title").val(), $("#startTime").val(), $("#endTime").val());
+	var params = createPaperAutoParams(examSid, subjectSel.value, $("#title").val()
+					, $("#startTime").val(), $("#endTime").val(), $("#teacherSels").val());
 	$.post("createPaperAuto", params, function(data) {
 		if(data.result != 'fail') {
 			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
@@ -585,6 +592,19 @@ function loadSubjects() {
 			subjectOpts.appendChild(opt);
 		}
 		loadDiffCounts();
+	});
+}
+
+loadTeachers();
+function loadTeachers() {
+	$.post("loadTeachers", null, function(data) {
+		var li = data.list;
+		for(var i=0;i<li.length;i++) {
+			var opt = document.createElement("option");
+			opt.value = li[i].userId;
+			opt.innerText = li[i].name;
+			teacherOptions.appendChild(opt);
+		}
 	});
 }
 

@@ -31,6 +31,16 @@ public class Grade {
 	
 	String subjectName;
 	
+	int state;//成绩的状态 0:waiting 1:checked
+	
+	public int getState() {
+		return state;
+	}
+	
+	public void setState(int state) {
+		this.state = state;
+	}
+	
 	public int getSid() {
 		return sid;
 	}

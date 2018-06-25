@@ -117,8 +117,6 @@ public class PageAction extends CommonAction {
 		return aa;
 	}
 	
-	
-	
 	Question question = new Question();
 	List<Option> options = new ArrayList<>();
 	public List<Option> getOptions() {
