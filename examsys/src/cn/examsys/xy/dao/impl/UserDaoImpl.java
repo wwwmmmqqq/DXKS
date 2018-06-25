@@ -55,8 +55,8 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	public int selectUserListCount(User user,User administration) {
 		// TODO Auto-generated method stub
 		String collegeName = administration.getCollegeName();
-		String tag[] = new String[]{"type","collegeName","userId","name","collegeName","department","profession","classroom"};
-		String[] value = new String[]{user.getType(),collegeName,user.getUserId(),user.getName(),user.getCollegeName(),user.getDepartment(),user.getProfession(),user.getClassroom()};
+		String tag[] = new String[]{"type","collegeName","userId","name","collegeName","department","profession","classroom","sex"};
+		String[] value = new String[]{user.getType(),collegeName,user.getUserId(),user.getName(),user.getCollegeName(),user.getDepartment(),user.getProfession(),user.getClassroom(),user.getSex()};
 		Object[] vals= new Object[7];
 		StringBuilder hql = new StringBuilder("from User ");
 		if(tag!=null) {

@@ -21,21 +21,13 @@ public class Export {
 		System.out.println("UserList"+userList.size());
 		
 		HSSFWorkbook wb=new HSSFWorkbook();    //创建工作簿对象
-		
 		HSSFSheet sheet=wb.createSheet(title);   //创建表
 		HSSFRow row=sheet.createRow(0);                //在索引2的位置创建行(最顶端的行开始的第二行)
-		
 		HSSFCellStyle style = wb.createCellStyle();    //创建样式
-		/*style.setWrapText(true);     //自动换行
-		HSSFFont font = wb.createFont();
-        font.setFontName("仿宋_GB2312");
-        font.setFontHeightInPoints((short) 12);
-        style.setFont(font);*/
-        String[] column = new String[]{"学号","姓名","学院","专业","班级","考试科目","成绩","总排名","本校排名"};
-		String[] paper = new String[]{"试卷名称","总时间","总分值","科目","单选题","多选题","填空题","判断题","简答题"};
+		style.setWrapText(true);  
+        
+		String[] column = new String[]{"学号","姓名","学院","专业","班级","考试科目","成绩","总排名","本校排名"};
 		//设置表头
-		/*String type="";
-		if(type=="成绩") {*/
 			for(int i=0;i<column.length;i++) {
 				HSSFCell cell=row.createCell(i);
 				cell.setCellValue(column[i]);
@@ -54,27 +46,6 @@ public class Export {
 					}
 				} 
 			}
-		/*}*/
-		/*if(type=="试卷") {
-			for(int i=0;i<column.length;i++) {
-				HSSFCell cell=row.createCell(i);
-				cell.setCellValue(column[i]);
-			}
-			//填写实体数据，实际上这些是从数据库中得到
-			for(int i=0;i<userList.size();i++){
-				row=sheet.createRow(i+1);     //第i行
-				//创建单元格并设置值
-				Object[] user = new Object[]{userList.get(i).getUserId(),userList.get(i).getName(),userList.get(i).getDepartment(),userList.get(i).getProfession(),userList.get(i).getClassroom(),userList.get(i).getGrade().getSubjectName(),userList.get(i).getGrade().getPoint(),"总排名","本校排名"};
-				for(int j=0;j<user.length;j++) {
-					row.createCell(j).setCellValue((user[j]+"").toString());    //第i行第j列
-					if(user[j]  instanceof Integer) {
-						sheet.setColumnWidth(j, (user[j]+"").toString().getBytes().length*5*256);
-					}else{
-						sheet.setColumnWidth(j, (user[j]+"").toString().getBytes().length*2*256);
-					}
-				} 
-			}
-		}*/
 	    try {  
 	    	HttpServletResponse response = ServletActionContext.getResponse();//初始化HttpServletResponse对象  
 	    	title = new String( title.getBytes("gb2312"), "ISO8859-1" );       
