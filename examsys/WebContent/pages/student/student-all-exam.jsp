@@ -88,7 +88,7 @@
 							</span>
 						</li>
 
-						<li data-toggle="modal" data-target="#myinfo">
+						<li data-toggle="modal" data-target="#myinfo" onclick="showInfo()">
 							<span>
 								我的信息
 							</span>
@@ -121,9 +121,7 @@
 								<tr>
 									<td>姓名：</td>
 									<td>
-										<input type="text" class="form-control" name="user.name 
-
-"/>
+										<input type="text" class="form-control" name="user.name"/>
 									</td>
 								</tr>
 								<tr>
@@ -174,7 +172,6 @@
 						</table>
 					</div>
 				</form>
-
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭

@@ -66,13 +66,11 @@ $(function (){
 		}
 	}
 });
-   }
+}
 
 function modiInfo(){
 	var sid=$('.info-body input[name="user.userId"]').val();
-	var sname=$('.info-body input[name="user.name 
-
-"]').val();
+	var sname=$('.info-body input[name="user.name"]').val();
 	var ssex=$('.info-body input[name="user.sex"]').val();
 	var scollegeName=$('.info-body input[name="user.collegeName"]').val();
 	var sdepartment=$('.info-body input[name="user.permission"]').val();
@@ -80,11 +78,10 @@ function modiInfo(){
 	var sidcard=$('.info-body input[name="user.idcard"]').val();
 	var sphone=$('.info-body input[name="user.phone"]').val();
 	var semail=$('.info-body input[name="user.email"]').val();
+	
 	$.post("editUser", {
 		"user.userId" : sid,
-		"user.name 
-
-" : sname,
+		"user.name" : sname,
 		"user.sex":ssex,
 		"user.collegeName":scollegeName,
 		"user.permission":sdepartment,
@@ -94,5 +91,19 @@ function modiInfo(){
 		"user.email":semail
 	}, function(data) {
 		toastr.success("密码修改成功！");
+	})
+}
+
+
+/*修改信息前显示信息*/
+function showInfo(){
+	var userid=$('.basic-info input').val();
+	$.post("showUser", {
+		"user.userId" :userid
+	}, function(data) {
+		$('#my-info').find('input').each(function(){
+			var na = $(this).attr('name').split(".")[1];
+			$(this).val(data.user[na]);
+		})
 	})
 }
