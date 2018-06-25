@@ -23,7 +23,7 @@
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
        
-       <script type="text/javascript" src="js/jquery.min.js" ></script>  
+       
        <script type="text/javascript" src="js/affair_index.js" ></script>
 	</head>
 	<body>
@@ -54,8 +54,8 @@
 		    			</a>
 		    	    </button>
 		    		<div class="dropdown-content">
-		    			<a href="#" data-toggle="modal" data-target="#myModal-invite-teacher">邀请老师出卷</a>
-		    			<a href="#" data-toggle="modal" data-target="#myModal-invite-school">邀请学校考试</a>
+		    			<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
+		    			<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
 		    		</div>
 		    	</div>
 		    
@@ -67,8 +67,8 @@
 		    			    			</a>
 		    			    	    </button>
 		    		<div class="dropdown-content">
-		    			<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
-		    			<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">考试通知</a>
+		    			<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
+		    			<a href="#" data-toggle="modal" data-target="#myModal-read">阅卷通知</a>
 		    		</div>
 		    	</div>
 		    	
@@ -407,8 +407,8 @@
 		    </div>
 		</div>
       
-      	<!--模态框阅卷邀请通知-->
-		<div class="modal fade" id="myModal_read">
+      	<!--模态框查看邀请通知-->
+		<div class="modal fade" id="myModal-email">
 		    	<div class="modal-dialog">
 		      	<div class="modal-content">
 		   
@@ -417,16 +417,13 @@
 		          <h4 class="modal-title">通知</h4>
 		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
 		        </div>
-		        <div class="modal-body" id="notice-box">
+		   
+		        
+		        <div class="modal-body">
 		          	<div class="email">
 		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<!-- <div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
+		          		<button class="btn btn-primary accept" >接受</button>
+		          		<button class="btn btn-danger refuse"  >拒绝</button>
 		          	</div>
 		          	<div class="email">
 		          		来自xx学校xx学院xx老师的邀请
@@ -437,8 +434,15 @@
 		          		来自xx学校xx学院xx老师的邀请
 		          		<button class="btn btn-primary accept">接受</button>
 		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div> -->
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
 		        </div>
+		   
+		       
 		        <div class="modal-footer">
 		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
 		        </div>
@@ -446,6 +450,48 @@
 		    </div>
   		</div>
 		
+		<!--模态框查看阅卷通知-->
+		<div class="modal fade" id="myModal-read">
+		    	<div class="modal-dialog">
+		      	<div class="modal-content">
+		   
+		        
+		        <div class="modal-header">
+		          <h4 class="modal-title">通知</h4>
+		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		        </div>
+		   
+		        
+		        <div class="modal-body">
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept" >接受</button>
+		          		<button class="btn btn-danger refuse"  >拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		        </div>
+		   
+		       
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+		        </div>
+		      </div>
+		    </div>
+  		</div>
       
        <!--模态框修改试卷信息 -->
 		<div class="modal fade" id="myModal_check">
@@ -566,7 +612,7 @@
 	    			<div class="modal-header">
 	    				<h4 class="modal-title">邀请老师组卷</h4>
 	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-	    			</div>-->
+	    			</div>
 	    
 	    			<!-- 模态框主体 -->
 	    			<div class="modal-body">
