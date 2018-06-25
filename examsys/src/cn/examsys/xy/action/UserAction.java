@@ -96,7 +96,6 @@ public class UserAction extends CommonAction{
 					if(!currentUser){
 						System.out.println("用户创建失败");
 						setResult("用户创建失败");
-						return aa;
 					}
 					System.out.println("用户创建成功");
 					setResult("用户创建成功");

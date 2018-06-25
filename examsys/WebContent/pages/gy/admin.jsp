@@ -600,11 +600,6 @@
 								        					用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名<input type="text" class="tb_information " id="administration_userId">
 								        				</td>
 								        			</tr>
-								        			<tr>			        				
-								        				<td >
-								        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;<input class="tb_information" id="administration_psw">
-								        				</td>
-								        			</tr>
 								        			<tr>
 								        				<td >
 								        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;

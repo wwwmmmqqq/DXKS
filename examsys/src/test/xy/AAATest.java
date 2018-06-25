@@ -10,11 +10,17 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.examsys.bean.Grade;
 import cn.examsys.bean.User;
+import cn.examsys.common.Export;
+import cn.examsys.xy.service.UserService;
 
-public class AAATest{
+public class AAATest extends Export{
+	
+	@Autowired
+	UserService userService;
 	@Test
 	public void test1() {
 		System.out.println("111");
@@ -74,5 +80,11 @@ public class AAATest{
 			}
 
 		}
+	}
+	
+	@Test
+	public void test4() {
+		/*userService.SelectUserList(user, administration);*/
+		/*ExportUserScore("学生成绩表", out, userList);*/
 	}
 }

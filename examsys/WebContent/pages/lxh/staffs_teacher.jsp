@@ -32,7 +32,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
-							<a href="#">退出系统</a>
+							<a href="javascript:Out()" >退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">

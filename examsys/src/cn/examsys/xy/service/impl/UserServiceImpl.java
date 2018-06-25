@@ -93,5 +93,10 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userDao.findUser(userId,psw);
 	}
+	@Override
+	public List<User> findAllUser(String collegeName, String type) {
+		// TODO Auto-generated method stub
+		return userDao.findAllUser(collegeName,type);
+	}
 
 }

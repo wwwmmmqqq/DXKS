@@ -11,9 +11,11 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
+		<link rel="stylesheet" href="css/search.css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/search.js" ></script>
 	</head>
 
 	<body>
@@ -110,6 +112,23 @@
 								条件搜索
 							</button>
 						</div>
+					</div>
+					<div class="search_hide" id="hide">
+						<input type="text" class="input_hide1"  id="name1" placeholder="姓名"/>
+						<input type="text" class="input_hide" id="userId1"  placeholder="工号"/>
+						<select class="select_hide">
+							<option class="option_hide" selected="selected">全部</option>
+							<option class="option_hide" id="school">学校</option>
+							<option class="option_hide" id="institute">学院</option>
+							<option class="option_hide" id="profession">专业</option>
+							<option class="option_hide" id="class">班级</option>
+						</select>
+						<input type="text" class="input_hide2" id="school1" name="collegeName"  placeholder="学校"/>
+						<input type="text" class="input_hide2" id="institute1" name="department" placeholder="学院"/>
+						<input type="text" class="input_hide2" id="profession1" name="profession" placeholder="专业"/>
+						<input type="text" class="input_hide2" id="class1" name="classroom" placeholder="班级"/>
+						<button type="button" class="btn right_search" onclick="loadStudentList(1)">搜索</button>
+						<button type="button" class="btn clean">清空搜索</button>
 					</div>
 			<!--table-->
 			<div class="tip">学生信息</div>
@@ -282,7 +301,7 @@
 								<tr>
 									<td>
 										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="classoom">
+										<input type="text" class="hover" id="classroom">
 									</td>
 								</tr>
 								<tr>
@@ -679,7 +698,22 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
-		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
+		var Lname = $('#name1').val();
+		var LuserId = $('#userId1').val();
+		var LcollegeName = $('#school1').val();
+		var Ldepartment = $('#institute1').val();
+		var Lprofession = $('#profession1').val();
+		var Lclassroom = $('#class1').val();
+		$.post("selectUserList",{
+			"user.type":"学生",
+			"page":page,
+			"user.name":Lname,
+			"user.userId":LuserId,
+			"user.collegeName":LcollegeName,
+			"user.department":Ldepartment,
+			"user.profession":Lprofession,
+			"user.classroom":Lclassroom
+			},function(data) {
 			var userList=data.userList;
 			  totalPage=data.totalPage;
 			  var htm = "";

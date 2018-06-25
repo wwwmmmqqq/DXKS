@@ -22,8 +22,10 @@ function loadDatas(page) {
 }
 
 function nextPage() {
-	currentPage++;
-	loadDatas(currentPage);
+	if(currentPage<totalPage) {
+		currentPage++;
+		loadDatas(currentPage);
+	}
 }
 function prevPage() {
 	if (currentPage >= 2) {
@@ -126,6 +128,8 @@ $.post("createUser",
 	 		if(data.result=="用户创建成功") {   //result为user返回信息
 			  	alert(data.result);
 			  	location.href="../gy/admin.jsp";
+	 		}else{
+	 			alert(data.result);
 	 		}
 		 }
 	)
@@ -145,12 +149,13 @@ function administrationInfo(node) {
 			$('#administration_permission_answer').val(permission_answer);
 			$('#administration_permission_paper').val(permission_paper);
 		}
-		$('#administration_name').html(user.name);
-		$('#administration_sex').html(user.sex);
-		$('#administration_userId').html(user.userId);
-		$('#administration_collegeName').html(user.collegeName);
-		$('#administration_email').html(user.email);
-		$('#administration_phone').html(user.phone);
+		
+		$('#administration_name').val(user.name);
+		$('#administration_sex').val(user.sex);
+		$('#administration_userId').val(user.userId);
+		$('#administration_collegeName').val(user.collegeName);
+		$('#administration_email').val(user.email);
+		$('#administration_phone').val(user.phone);
 	})
 }	
 
@@ -197,13 +202,13 @@ function editStudent() {
 	var permission = $('#administration_permission_answer').val()+" "+$('#administration_permission_paper').val();
 	$.post("editUser",
 				{	
-					"user.name":$('#administration_name').text(),
-					"user.sex":$('#administration_sex').text(),
-					"user.userId":$('#administration_userId').text(),
-					"user.collegeName":$('#administration_collegeName').text(),
-					"user.email":$('#administration_email').text(),
+					"user.name":$('#administration_name').val(),
+					"user.sex":$('#administration_sex').val(),
+					"user.userId":$('#administration_userId').val(),
+					"user.collegeName":$('#administration_collegeName').val(),
+					"user.email":$('#administration_email').val(),
 					"user.permission":permission,
-					"user.phone":$('#administration_phone').text()
+					"user.phone":$('#administration_phone').val()
 				},function(data) {
 					if(data.result=="编辑用户成功") {
 						alert(data.result);

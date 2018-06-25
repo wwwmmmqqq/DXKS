@@ -115,8 +115,9 @@ public class ItemBankAction extends CommonAction{
 		/*创建选项*/
 		int count=question.getChoiceCount();   //判断题型决定option对象的个数
 		System.out.println("Action显示count："+count);
-
-		for(int i=0;i<question.getChoiceCount();i++){
+		/*System.out.println("option个数："+option.size());
+*/
+		for(int i=0;i<option.size();i++){
 			option.get(i).setQuestionRef(sid);                  //set对应题目的ID，即指向题目
 			option.get(i).setTime(Tool.time());
 			boolean currentAnswer=itemBankService.createOption(option.get(i));      //添加获取到第[i]个option对象
