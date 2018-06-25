@@ -44,7 +44,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
+							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
 						</div>
 					</div>
 					<div class="dropdown task" >
@@ -129,11 +129,12 @@
 			        <th>考试计划编号</th>
 			        <th>考试计划名称</th>
 			        <th>计划时间</th>
-			        <th>考试计划开始时间</th>
-			        <th>考试计划结束时间</th>
+			        <th>计划开始时间</th>
+			        <th>计划结束时间</th>
 			        <th>受邀学校</th>
 			        <th>考试说明</th>
-			         <th>状态</th>
+			        <th>状态</th>
+			        <th>组卷</th>
 			        <th>操作</th>
 			      </tr>
 			    </thead>
@@ -146,6 +147,7 @@
 				        <td>2018-8-8</td>
 				        <td>萍乡学院</td>
 				        <td>考试说明</td>
+				        <td>组卷</td>
 				        <td>状态</td>
 				        <td>
 				           <i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check'></i>
@@ -695,13 +697,14 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.invitee+"</td>"
 	+"<td>"+obj.explication+"</td>"
 	+"<td>"+obj.state+"</td>"
-	+"<td>"
+	+"<td id='volume'>"
+	+"<a href='affair_hand_volume.jsp?exam.sid="+obj.sid+"'>手动组卷</a></li>"
+	+"<a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a></li>"
+	+"</td>"
+	+"<td id='operate'>"
 	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)'></i>"
-	+"<i class='fa fa-trash-o' onclick='deleteExamPlan(this)'></i>"
-	+"<selcet>"
-	+"<option><a href='affair_hand_volume.jsp?exam.sid="+obj.sid+"'>手动组卷</a></option>"
-	+"<option><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a></option>"		
-	+"</select>"
+	+"<i class='fa fa-trash-o' onclick='deleteExamPlan(this)'></i><br>"
+	+"<a href='#' data-toggle='modal' data-target='#myModal_invite_school'>邀请学校</a>"
 	+"</td>"
 	+"</tr>";
 		
@@ -834,7 +837,7 @@ function Out() {
 	if(confirm("确定要退出吗？")) {
 		$.post("loginOut",null,function(data) {
 			if(data.result=="成功退出") {
-					location.href="../gy/gy_login.jsp";
+					location.href="../gy/login.jsp";
 			}
 	  });
 	}  

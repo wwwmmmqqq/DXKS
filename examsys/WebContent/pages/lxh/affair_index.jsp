@@ -164,7 +164,6 @@
 		    				</ul>
 		    			</div> -->
 		    			<!-- <p>共查询到？条记录</p> -->
-		    			<p>共查询到  条记录</p>
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
@@ -830,6 +829,22 @@ function loadNoticeList(page) {
 		  }
 		  $('#notice-box').html(html);
 	  });
+}
+
+function getLiHtml(index) {
+	if(index==1){
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+			+"<li class='page-item active'><a class='page-link' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>";			
+	}
+	else if(index==totalPage){
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>"
+			+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+			
+	}
+	else {
+		var ht = "<li class='page-item'><a class='page-link ' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>";
+	}
+	return ht;    
 }
 
 /*搜索jquery隐藏显示面板*/

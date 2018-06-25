@@ -436,6 +436,15 @@ p{
 .tb_width i{
 	margin: 5px;
 }
+.tb_width td{
+	width: 10%;
+}
+.tb_width #volume {
+	width: 8px;
+}
+.tb_width #operate {
+	width: 8px;
+}
 th,td{
 	height: 44px;
 	text-align: center;
@@ -445,8 +454,7 @@ th,td{
 	margin: auto;
 }
 .thead-light th{
-	text-align: center;
-	
+	text-align: center;	
 }
 th {
 	text-align: center;
@@ -466,6 +474,10 @@ th {
 	margin-left:10px ;
 	
 }
+#tplan-list-box td {
+	vertical-align: middle;
+}
+
 
 /*分页*/
 /*.pagination{
