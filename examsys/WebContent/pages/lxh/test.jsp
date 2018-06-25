@@ -602,8 +602,10 @@ function loadMyExamList(page) {
 		 		currentPage = page;
 	  });
 }
+
+
 function getItemHtml(index,obj,number){
-	var htm="<tr class='tb_width'>"
+	var htm="<tr class='tb_width' id='exam"+obj.sid+"'>"
 	+"<td>"+obj.title+"</td>"
 	+"<td>"+obj.time+"</td>"
 	+"<td>"+obj.periodStart+"</td>"
@@ -613,11 +615,10 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.state+"</td>"
 	+"<td>"
 	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
-	+"<i class='fa fa-trash-o' onclick='deleteExam()'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
-	+"</td>"
-	+"</tr>";
-		
-     return htm;
+	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
+	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
+	+"</tr>"; 
+    return htm;
 }
 function getLiHtml(index) {
 	if(index==1){
@@ -634,6 +635,7 @@ function getLiHtml(index) {
 	}
 	return ht;    
 }
+
 
 function nextPage() {
 	if(currentPage<totalPage) 
@@ -705,6 +707,39 @@ function Out() {
 			}
 	  });
 	}  
+}
+
+function inviteCollege(sid, colleges) {
+	var college = prompt("添加邀请的学校");
+	if(colleges.indexOf(college)>=0) {
+		alert(college + "已被邀请");
+	} else {
+		if(college != null) {
+			$.post("invite", {
+				"sid":sid,
+				"text":college
+			}, function(data) {
+				if(data.result == "success") {
+					alert("邀请成功");
+					location.reload();
+				}
+			});
+		}
+	}
+}
+
+function deleteExam(sid) {
+	if(confirm("确认删除?")) {
+		$.post("delExam",{
+			"sid":sid
+		},function(data) {
+			if(data.result == "success") {
+				$("#exam"+sid).remove();
+			} else {
+				alert("删除失败");
+			}
+		});
+	}
 }
 
 function checkInput() {

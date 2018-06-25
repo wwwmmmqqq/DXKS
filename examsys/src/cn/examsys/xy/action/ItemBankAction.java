@@ -101,7 +101,7 @@ public class ItemBankAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createItemBank(){
-		
+		System.out.println(question.getSubjectRef());
 		question.setUserId(getSessionUserId());     //老师的UserId
 		/*创建问题*/
 		question.setTime(Tool.time());

@@ -45,7 +45,7 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public List<Exam> loadMyExamsList(User sessionUser, int page) {
 		try {
-			return dao.findByHql("from Exam where invitee=?"
+			return dao.findByHql("from Exam where locate(?, invitee)>0"
 					, new Object[]{sessionUser.getCollegeName()}
 					, page);
 		} catch (Exception e) {
@@ -251,7 +251,7 @@ public class ExamServiceImpl implements ExamService {
 	public List<PaperWithExamVO> loadInvitedExamPapers(User sessionUser, int page) {
 		try {
 			List<Exam> exams = dao.findByHql("from Exam where locate(?, invitee)>0 order by sid desc"
-					, new Object[]{sessionUser.getUserId()}, page);
+					, new Object[]{sessionUser.getCollegeName()}, page);
 			Map<Integer, Exam> examMap = new HashMap<>();
 			StringBuilder examIds = new StringBuilder();
 			
@@ -278,8 +278,22 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public List<GradeVO> loadGradesByPaper(User sessionUser, int sid) {
 		try {
-			dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
-					+ " from Grade g, User u, Paper p where ");
+			List<GradeVO> vos = dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
+					+ " from Grade g, User u, Paper p where p.sid=? and u.userId=g.userId and g.paperRef=?"
+					+ " order by g.point"
+					, new Object[]{sid, sid});
+			List<GradeVO> vos_order_inner_college = dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
+					+ " from Grade g, User u, Paper p where p.sid=? and u.userId=g.userId and g.paperRef=? and u.collegeRef=?"
+					+ " order by g.point"
+					, new Object[]{sid, sid, sessionUser.getCollegeRef()});
+			for (int i = 0; i < vos.size(); i++) {
+				for (int j = 0; j < vos_order_inner_college.size(); j++) {
+					if(vos.get(i).getUser().getUserId().equals(vos_order_inner_college.get(j).getUser().getUserId())) {
+						vos.get(i).setOrder(i+1);
+					}
+				}
+			}
+			return vos;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

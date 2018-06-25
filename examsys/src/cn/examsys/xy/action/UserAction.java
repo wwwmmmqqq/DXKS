@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ModelDriven;
 
+import cn.examsys.adapters.DaoAdapter;
+import cn.examsys.adapters.IDaoAdapter;
 import cn.examsys.bean.User;
 import cn.examsys.common.CommonAction;
 import cn.examsys.xy.service.UserService;
@@ -83,11 +85,10 @@ public class UserAction extends CommonAction{
 		}
 		else{
 				User loginUser=userService.SelectOneUser(user.getUserId());		//查询用户是否存在
-				System.out.println(getSessionUser().getUserId());
 				if(loginUser!=null){
 					setResult("该用户名已存在");
 				}else{
-					if(getSessionUser().getUserId().contains("admin")){
+					if(getSessionUserId().contains("admin")){
 						user.setType("教务");
 					}
 					user.setPsw("000000");
@@ -95,7 +96,6 @@ public class UserAction extends CommonAction{
 					if(!currentUser){
 						System.out.println("用户创建失败");
 						setResult("用户创建失败");
-						return aa;
 					}
 					System.out.println("用户创建成功");
 					setResult("用户创建成功");
@@ -146,12 +146,13 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String SelectUserList(){
-		userList=userService.SelectUserList(user.getType(),page);
+		User administration=getSessionUser();
+		userList=userService.SelectUserList(user,page,administration);
 		System.out.println("Action页面获取当前用户个数："+userList.size());
 		if(userList==null){
 			setResult("无用户");
 		}
-		totalPage=userService.SelectUserListCount(user.getType());
+		totalPage=userService.SelectUserListCount(user,administration);
 		System.out.println("Action页面获取总页面大小："+totalPage);
 		return aa;
 	}
@@ -169,6 +170,7 @@ public class UserAction extends CommonAction{
 				}else {
 					user.setUserId(getSessionUserId());
 					user.setPsw(rePsw);
+					user.setUserId(getSessionUserId());
 					userService.editUser(user);
 					setResult("密码修改成功");
 				}

@@ -1,19 +1,18 @@
 package cn.examsys.lrx.vo;
 
-import java.util.List;
-
 import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Option;
 import cn.examsys.bean.Question;
 
 public class QuestionCheckVO {
 	Question question;
-	List<Option> options;
 	Answersheet answer;
+	Option option;
 	
-	public QuestionCheckVO(Question question, Answersheet answer) {
+	public QuestionCheckVO(Question question, Answersheet answer, Option currectAnswer) {
 		this.question = question;
 		this.answer = answer;
+		this.option = currectAnswer;
 	}
 	
 	public Question getQuestion() {
@@ -28,11 +27,11 @@ public class QuestionCheckVO {
 	public void setAnswer(Answersheet answer) {
 		this.answer = answer;
 	}
-	public List<Option> getOptions() {
-		return options;
+	public Option getOption() {
+		return option;
 	}
-	public void setOptions(List<Option> options) {
-		this.options = options;
+	public void setOption(Option option) {
+		this.option = option;
 	}
 	
 }

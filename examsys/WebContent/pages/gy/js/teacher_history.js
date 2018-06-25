@@ -19,7 +19,7 @@ var currentPage = 1;
 			  var scoreList = data.list;
 			  var htm = "";
 			  for(var i=0;i<scoreList.length;i++) {
-				  htm += getScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i);
+				  htm += getScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i,scoreList[i].order);
 			  }
 			  $('#studentScore tbody').html(htm);
 		  });
@@ -61,7 +61,7 @@ var currentPage = 1;
 		+"</tr>";
 		return htm;
 	}
-	function getScore(paper,user,grade,i){
+	function getScore(paper,user,grade,i, order){
 		var htm=
 			"<tr>"
 		+"<td>1</td>"
@@ -72,9 +72,9 @@ var currentPage = 1;
 		+"<td>一班</td>"
 		+"<td>"+paper.subjectName+"</td>"
 		+"<td>"+grade.point+"</td>"
-		+"<td>"+i+"</td>"
 		+"<td>"+(i+1)+"</td>"
-		+"</tr>"
+		+"<td>"+order+"</td>"
+		+"</tr>";
 		return htm;
 	}
 /*成绩导出*/

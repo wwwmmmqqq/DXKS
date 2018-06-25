@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Formula;
+
 @Entity
 @Table(name="question_tb")
 public class Question {
@@ -28,9 +30,19 @@ public class Question {
 	
 	int subjectRef;//所属科目
 	
+	@Formula(value="(select tb.name from subject_tb tb where tb.sid=subjectRef)")
+	String subjectName;//科目名称 formula
+	
 	String knowledge;//涉及知识点
 	
 	String time;
+	
+	public String getSubjectName() {
+		return subjectName;
+	}
+	public void setSubjectName(String subjectName) {
+		this.subjectName = subjectName;
+	}
 	
 	public int getSid() {
 		return sid;
@@ -126,7 +138,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "q"+sid+" " + options!=null?Arrays.toString(options.toArray()):"nil";
+		return "q"+sid+" " + ((options!=null)?Arrays.toString(options.toArray()):"nil");
 	}
 	
 }

@@ -74,7 +74,7 @@ public interface IDaoAdapter {
 	 * @param values 值数组
 	 * @throws Exception
 	 */
-	public void updateEntity(Class<?> claz, Serializable id, String[] fieldNames, Object[] values) throws Exception;
+	public void updateEntity(Class<?> claz, Serializable id, Object[] fieldNames, Object[] values) throws Exception;
 	
 	/**
 	 * 更新某个实体的单个字段的值

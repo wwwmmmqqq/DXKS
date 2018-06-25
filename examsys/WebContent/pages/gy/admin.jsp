@@ -119,7 +119,6 @@
 			        <th>学校</th>
 			        <th>学院</th>
 			        <th>邮箱</th>
-			        <th>权限</th>
 			        <th>操作</th>
 			      </tr>
 			    </thead>
@@ -191,25 +190,25 @@
 							        			<tr>
 							        				<td>
 							        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover form-control" name="name">
+							        					<input type="text" class="hover" name="name">
 							        				</td>
 							        			</tr>
 							        			<tr>			        				
 							        				<td >
 							        					工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover form-control" name="userid">
+							        					<input type="text" class="hover" name="userid">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover form-control" name="collegeName">
+							        					<input type="text" class="hover" name="collegeName">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							        						<select class=" input-checkbox form-control" name="sex" id="administrationSex">
+							        						<select class="form-control" name="sex" id="administrationSex">
 							        							<option value="男">男</option>
 							        							<option value="女">女</option>
 							        						</select>
@@ -219,13 +218,13 @@
 							        			<tr>
 							        				<td >
 							        					联系方式&nbsp;
-							        					<input type="text" class="hover form-control"  name="phone">
+							        					<input type="text" class="hover"  name="phone">
 							        				</td>
 							        			</tr>
 							        			<tr>
 							        				<td >
 							        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
-							        					<input type="text" class="hover form-control"  name="email">
+							        					<input type="text" class="hover"  name="email">
 							        				</td>
 							        			</tr>	
 							        		</tbody>
@@ -588,7 +587,7 @@
 							   
 								        <!-- 模态框头部 -->
 								        <div class="modal-header">
-								          <h4 class="modal-title">个人信息</h4>
+								          <h4 class="modal-title">修改信息</h4>
 								          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
 								        </div>
 								   
@@ -598,37 +597,41 @@
 												<tbody>
 								        			<tr>
 								        				<td >
-								        					用户名<div class="tb_information" id="administration_userId">慕雪</div>
+								        					用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名<input type="text" class="tb_information " id="administration_userId">
 								        				</td>
 								        			</tr>
 								        			<tr>			        				
 								        				<td >
-								        					密码<div class="tb_information" id="administration_psw">145681</div>
+								        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;<input class="tb_information" id="administration_psw">
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					姓名<div class="tb_information" id="administration_name">慕雪</div>
+								        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
+								        					<input class="tb_information" id="administration_name">
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					性别<div class="tb_information" id="administration_sex">女 </div>
+								        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
+								        					<input class="tb_information" id="administration_sex">
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					电话<div class="tb_information" id="administration_phone">15574014263</div>
+								        					电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;&nbsp;&nbsp;&nbsp;
+								        					<input class="tb_information" id="administration_phone">
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					所属大学<div class="tb_information" id="administration_collegeName">萍乡学院</div>
+								        					所属&nbsp;大学&nbsp;<input class="tb_information" id="administration_collegeName">
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					邮箱<div class="tb_information" id="administration_email">1770313147@qq.com</div>
+								        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
+								        					<input class="tb_information" id="administration_email">
 								        				</td>
 								        			</tr>
 								        			<tr>

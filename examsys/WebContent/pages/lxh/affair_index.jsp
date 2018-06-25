@@ -590,7 +590,7 @@
 	}
 	
 	function getItemHtml(index, obj) {
-		var htm = "<tr id=''>"
+		var htm = "<tr id='item"+obj.sid+"'>"
 			+"	<td>"+obj.sid+"</td>"
 			+"	<td>"+obj.examRef+"</td>"
 			+"	<td>"+obj.subjectRef+"</td>"
@@ -600,20 +600,31 @@
 			+"	<td>"+obj.examStart+"</td>"
 			+"	<td>"+obj.examEnd+"</td>"
 			+"  <td>"
-			+"  <a href='apaper.jsp?"+obj.sid+"'><i class='fa fa-eye see'></i></a>" 
-			/* +"  <i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='paperInfo(this)'></i>"
-			+"  <i class='fa fa-trash-o' onclick='deletePaper(this)'></i>" */
+			+"  <a href='loadAPaper?paper.sid="+obj.sid+"'><i class='fa fa-eye see'></i></a>&nbsp;" 
+			+"  <i class='fa fa-trash-o' onclick='deletePaper("+obj.sid+")'></i>"
 			+" </td>"
 			+"</tr>";
 		return htm;
 	}
 	
 function editePaper() {
-		$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
+	$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
 		alert(data.result);
-	})
-	
+	});
 }
+
+function deletePaper(n) {
+	if(confirm("确认删除？")) {
+		$.post("delPaper",{"sid":n},function(data) {
+			if(data.result == "success") {
+				$('#item' + n).remove();
+			} else {
+				alert("删除失败");
+			}
+		});
+	}
+}
+
 function Out() {
 	if(confirm("确定要退出吗？")) {
 		$.post("loginOut",null,function(data) {

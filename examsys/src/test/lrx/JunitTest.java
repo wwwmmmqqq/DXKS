@@ -22,13 +22,14 @@ import cn.examsys.lrx.service.ConstituteService;
 import cn.examsys.lrx.service.LrxService;
 import cn.examsys.lrx.vo.AnswerVO;
 import cn.examsys.lrx.vo.ConstituteVO;
+import cn.examsys.lrx.vo.QuestionCheckVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"}) 
 public class JunitTest extends AbstractJUnit4SpringContextTests {
 	 
 	@Autowired
-	private LrxService service;
+	LrxService service;
 	 
 	@Autowired
 	LrxDaoImpl daoAdapter;
@@ -51,8 +52,17 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+		List<Question> li;
+		try {
+			li = dao.findByHql("select q from Question q, Constitute c where c.paperRef=? and c.questionRef=q.sid"
+					, new Object[]{28});
+			System.out.println(li.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
+	
 	
 	@Test
 	public void addQuestion() {

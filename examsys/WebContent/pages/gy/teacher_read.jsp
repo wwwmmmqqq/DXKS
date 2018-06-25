@@ -70,11 +70,11 @@
 					</div>
 					<div class="light_bottom">
 						<ul class="side_nav">
-							<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
+							<a href="searchQuestions"><li class="side_nav1 ">题库管理</li></a>
 							<a href="history_teacher.jsp">
 								<li class="side_nav1 ">查看成绩</li>
 							</a>
-							<a href="teacher_read.jsp">
+							<a href="loadResponsibleQuestions?page=1">
 								<li class="side_nav1 now">批阅试卷</li>
 							</a>
 						</ul>
@@ -106,10 +106,9 @@
 									<li>${item.question.title}</li>
 
 									<div class="answer_span"><span>参考答案</span></div>
-									<li>独孤皇后不不不可口可乐看了看看近几年经济</li>
+									<li>${item.option.subjectiveText}</li>
 								</ul>
 							</s:iterator>
-								
 
 							</div>
 
@@ -124,7 +123,12 @@
 										<div class="answer_span">题目</div>
 									</li>
 									<li>${item.question.title}</li>
-
+									<li>
+										<div class="answer_span">参考答案</div>
+									</li>
+									<li>
+									${item.option.subjectiveText}
+									</li>
 									<li>
 										<div class="answer_span">学生答案</div>
 									</li>
@@ -133,96 +137,18 @@
 									</li>
 									<li>
 										<div class="num">
-										<input type="hidden" id="answerid" value='<s:property  value="#item.answer.sid"/>'>
-											<input type="text" id="sanswer" class="form-control input_num" />
-											<span>分数</span>
+											<input type="hidden" id="answerid" value='<s:property value="#item.answer.sid"/>'>
+											<input type="text" id="sanswer" class="form-control input_num" onchange="checkQuestion(${item.answer.sid}, this.value)" />
+											<span>得分</span>
 										</div>
 									</li>
 								</ul>
 							</s:iterator>
-								<!-- <ul>
-									<li>
-										<div class="answer_span">题目</div>
-									</li>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<li>
-										<div class="answer_span">学生答案</div>
-									</li>
-									<li>好好看看分开时改变不吵不闹才能你上次暮色苍茫，，注册，这卡的肯德基房间诶飞吻</li>
-									<li>
-										<div class="num">
-											<input type="text" class="form-control input_num" />
-											<span>分数</span>
-										</div>
-									</li>
-								</ul>
-								<ul>
-									<li>
-										<div class="answer_span">题目</div>
-									</li>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<li>
-										<div class="answer_span">学生答案</div>
-									</li>
-									<li>好好看看分开时改变不吵不闹才能你上次暮色苍茫，，注册，这卡的肯德基房间诶飞吻</li>
-									<li>
-										<div class="num">
-											<input type="text" class="form-control input_num" />
-											<span>分数</span>
-										</div>
-									</li>
-								</ul>
-								<ul>
-									<li>
-										<div class="answer_span">题目</div>
-									</li>
-									<li>(5分)独孤皇后不不不可口可乐看了看看近几年经济</li>
-
-									<li>
-										<div class="answer_span">学生答案</div>
-									</li>
-									<li>好好看看分开时改变不吵不闹才能你上次暮色苍茫，，注册，这卡的肯德基房间诶飞吻</li>
-									<li>
-										<div class="num">
-											<input type="text" class="form-control input_num" />
-											<span>分数</span>
-										</div>
-									</li>
-								</ul> -->
-								<!--页码-->
 								<div>
 								<button class="btn btn-primary" type="submit" onclick="importScore()">提交</button>
 								</div>
 								<div>
-									<div class="page_pagination">
-										<ul class="pagination">
-											<li class="page-item">
-												<a class="page-link" href="#">上一页</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">1</a>
-											</li>
-											<li class="page-item active">
-												<a class="page-link " href="#">2</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">3</a>
-											</li>
-											<li class="page-item">
-												<a class="page-link" href="#">下一页</a>
-											</li>
-											<li>
-											<div class="page_jump">
-												<input class="jump">
-												<button class="btn btn-primary btn_jump">跳转</button>
-											</div>
-											
-											</li>
-										</ul>
-										
-									</div>
+								
 
 								</div>
 
@@ -459,6 +385,17 @@
 				$(".main_teacher").show();
 			});
 		});
+		
+		function checkQuestion(sid, point) {
+			$.post("checkQuestion", {
+				"answer.sid":sid
+				,"answer.scoring":point
+			}, function(data) {
+				alert(data.result);
+			});
+		}
+		
+		
 	</script>
 	</body>
 
