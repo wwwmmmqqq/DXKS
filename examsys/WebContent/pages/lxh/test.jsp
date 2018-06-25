@@ -32,7 +32,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-							<a href="#">退出系统</a>
+							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -74,14 +74,13 @@
 			</div>
 		  	<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<ul class="side_nav">
-			  		<a href="staffs_student.jsp"><li class="side_nav1">学生信息管理</li></a>
-			  		<a href="staffs_teacher.jsp"><li class="side_nav1">教师信息管理</li></a>	
-			  		<a href="affair_index.jsp"><li class="side_nav1">试卷管理</li></a>
-			  		<a href="affair_hand_volume.jsp"><li class="side_nav1">手动组卷</li></a>
-			  		<a href="affair_intel_volume.jsp"><li class="side_nav1">智能组卷</li></a>
-			  		<a href="history_staffs.jsp"><li class="side_nav1">历史成绩</li></a>	
-			  		<a href="test.jsp"><li class="side_nav1">考次计划</li></a>
+			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
+			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
+			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
+			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
+			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
 		  </div>
 		</nav>
@@ -93,7 +92,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="staffs_student.jsp"><i class="fa fa-home"></i> Home</a>
+		    					<a href="#"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>考次计划</li>
 		    			</ul>
@@ -101,7 +100,7 @@
 		    	</div>
 				<div class="top_main">
 					<div class="top_button">
-						<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal">
+						<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addexam">
 							<i class="fa fa-plus-circle"></i>
 							添加考次
 						</button>
@@ -119,15 +118,13 @@
 			<table class="table table-striped tb1">
 				<thead class="thead-light">
 			      <tr class="tb_width">
-			      
 			        <th>考试计划名称</th>
 			        <th>计划时间</th>
 			        <th>考试计划开始时间</th>
 			        <th>考试计划结束时间</th>
 			        <th>受邀学校</th>
-			        <th>出题老师</th>
-			        <th>是否完成</th>
-			        <th>参考专业</th>
+			        <th>考试说明</th>
+			         <th>状态</th>
 			        <th>操作</th>
 			      </tr>
 			    </thead>
@@ -138,12 +135,11 @@
 				        <td>2018-8-8</td>
 				        <td>2018-8-8</td>
 				        <td>萍乡学院</td>
-				        <td>xxx</td>
-				        <td>完成</td>
-				        <td>软件工程</td>
+				        <td>考试说明</td>
+				        <td>状态</td>
 				        <td>
-				        	<i class="fa fa-pencil check"></i>
-				        	<i class="fa fa-trash-o"></i>
+				        	<i class="fa fa-eye see" data-toggle="modal" data-target="#myModal_eye_Exam"></i>
+			        	    <i class='fa fa-pencil check'></i>"
 			        	</td>
 			        </tr>
 				</tbody>
@@ -172,8 +168,8 @@
 			</div>
 		</div>
 	</section>
-		<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal-information">
+			<!--模态框查看个人信息-->
+		<div class="modal fade" id="myModal_information">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
@@ -190,49 +186,49 @@
 								<tr>
 									<td>
 										姓名
-										<div class="tb_information">慕雪</div>
+										<div class="tb_information">${session.user.name}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										工号
-										<div class="tb_information">17001</div>
+										<div class="tb_information">${session.user.userId}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										密码
-										<div class="tb_information">123456</div>
+										<div class="tb_information">${session.user.psw}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学校
-										<div class="tb_information">萍乡学院</div>
+										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学院
-										<div class="tb_information">信计学院</div>
+										<div class="tb_information">${session.user.department}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										性别
-										<div class="tb_information">女</div>
+										<div class="tb_information">${session.user.sex}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式
-										<div class="tb_information">1770313147</div>
+										<div class="tb_information">${session.user.phone}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										邮箱
-										<div class="tb_information">1770313147@qq.com</div>
+										<div class="tb_information">${session.user.email}</div>
 									</td>
 								</tr>
 							</tbody>
@@ -247,7 +243,7 @@
 				</div>
 			</div>
 		</div>
-			
+				
 		<!--模态框邀请老师组卷-->
 		<div class="modal fade" id="myModal_invite_teacher">
 		    <div class="modal-dialog">
@@ -354,7 +350,7 @@
 		</div>
 	
 		<!--模态框添加考次-->
-		<div class="modal fade" id="myModal">
+		<div class="modal fade" id="myModal_addexam">
 			<div class="modal-dialog">
 				<div class="modal-content">
 						   
@@ -371,52 +367,86 @@
 							    <tr>
 							        <td >
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
-							        	<input type="text" class="hover">
+							        	<input type="text" class="hover" id="ex_title">
 							        </td>
 							    </tr>
 							    <tr>			        				
 							        <td >
 							        	
+							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
+							        	<input type="text" class="hover" id="ex_periodStart">
+							        </td>
+							    </tr>
+							     <tr>			        				
+							        <td >
+							        	
 							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover">
+							        	<input type="text" class="hover" id="ex_periodEnd">
 							        </td>
-							    </tr>
-							    <tr>
-							        <td >
-							        	考试计划开始时间
-							        	<input type="text" class="hover">
-							        </td>
-							    </tr>
-							    <tr>
-							        <td >
-							        	考试计划结束时间
-							        	<input type="text" class="hover">
-							        </td>
-							    </tr>
+							     </tr>
 							        <tr>
 							        	<td >
 							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
-							        		<input type="text" class="hover">
+							        		<input type="text" class="hover" id="ex_invitee">
 							        	</td>
 							        </tr>
+							       
+							    </tbody>
+							</table> 
+						</div>
+							   
+					 <!-- 模态框底部 -->
+					<div class="modal-footer">
+					   <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
+					  <button type="button" class="btn btn-primary add" onclick="createExamPlan();">添加</button>
+					</div>
+						   
+			   </div>
+		  </div>
+		</div>
+		
+		<!--模态框修改考次-->
+		<div class="modal fade" id="myModal_addexam">
+			<div class="modal-dialog">
+				<div class="modal-content">
+						   
+					<!-- 模态框头部 -->
+					<div class="modal-header">
+						<h4 class="modal-title">修改考次</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+							   
+					 <!-- 模态框主体 -->
+					<div class="modal-body">
+						<table >
+							<tbody id="examPlan_info_box">
+							    <tr>
+							        <td >
+							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
+							        	<input type="text" class="hover" id="exam_title">
+							        </td>
+							    </tr>
+							    <tr>			        				
+							        <td >
+							        	
+							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
+							        	<input type="text" class="hover" id="exam_periodStart">
+							        </td>
+							    </tr>
+							     <tr>			        				
+							        <td >
+							        	
+							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
+							        	<input type="text" class="hover" id="exam_periodEnd">
+							        </td>
+							     </tr>
 							        <tr>
 							        	<td >
-							        		出&nbsp;&nbsp;&nbsp;&nbsp;卷&nbsp;&nbsp;&nbsp;&nbsp;老&nbsp;&nbsp;&nbsp;&nbsp;师&nbsp;&nbsp;
-							        		<input type="text" class="hover">
+							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
+							        		<input type="text" class="hover" id="exam_invitee">
 							        	</td>
 							        </tr>
-							        <tr>
-							        	<td >
-							        		是&nbsp;&nbsp;&nbsp;&nbsp;否&nbsp;&nbsp;&nbsp;&nbsp;完&nbsp;&nbsp;&nbsp;&nbsp;成&nbsp;&nbsp;
-							        		<input type="text" class="hover">
-							        	</td>
-							        </tr>
-							        <tr>
-							        		<td >
-							        			参&nbsp;&nbsp;&nbsp;&nbsp;考&nbsp;&nbsp;&nbsp;&nbsp;专&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;
-							        			<input type="text" class="hover">
-							        		</td>
-							        </tr>
+							       
 							    </tbody>
 							</table> 
 						</div>
@@ -424,7 +454,7 @@
 							        <!-- 模态框底部 -->
 							        <div class="modal-footer">
 							          <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-							          <button type="button" class="btn btn-primary add">添加</button>
+							          <button type="button" class="btn btn-primary add" onclick="editExamPlan();">添加</button>
 							        </div>
 						   
 						      </div>
@@ -545,83 +575,15 @@
 		    </div>
   		</div>
 			
-		<!--模态框修改考次信息 -->
-		<div class="modal fade" id="myModal_check">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					<!-- 模态框头部 -->
-					<div class="modal-header">
-						<h4 class="modal-title">修改考次信息</h4>
-						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-					</div>
-
-					<!-- 模态框主体 -->
-					<div class="modal-body">
-						<table>
-							<tbody id="editStudent">
-								<tr>
-									<td>
-										考试计划名称:
-										<input type="text" class="hover" id="test_title" name="user.name">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										计&nbsp;&nbsp;划&nbsp;&nbsp;时&nbsp;&nbsp;间:
-										<input type="text" class="hover" id="test_time" name="user.name">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										计划开始时间:
-										<input type="text" class="hover" id="test_periodStart" name="user.name">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										计划结束时间:
-										<input type="text" class="hover" id="test_periodEnd" name="user.name">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										受&nbsp;&nbsp;邀&nbsp;&nbsp;学&nbsp;&nbsp;校:
-										<input type="text" class="hover" id="test_invitee" name="user.name">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										&nbsp;&nbsp;是&nbsp;&nbsp;否&nbsp;&nbsp;完&nbsp;&nbsp;成:&nbsp;&nbsp;&nbsp;&nbsp;
-										<select class="hover"  id="test_state" name="user.sex">
-							        	<option class="hover">是</option>
-							        	<option class="hover">否</option>
-							      	 </select>	
-									</td>
-								</tr>
-							</tbody>
-						</table>
-
-					</div>
-
-					<!-- 模态框底部 -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary add" onclick="editTest();">修改</button>
-					</div>
-
-				</div>
-			</div>
-		</div>
+	</div>
 	</body>
 <script>
-loadMyExamList(1);
+loadMyExamList(2);
 var currentPage=1;
-var totalPage=1;
+var totalPage=3;
 function loadMyExamList(page) {
 	  $.post("loadMyExamList", {"page":page}, function(data) {
 		  var examList = data.list;
-		  alert(examList);
 		  var htm = "";
 		  var ht="";
 		  for(var i=0;i<examList.length;i++) {
@@ -640,50 +602,49 @@ function loadMyExamList(page) {
 		 		currentPage = page;
 	  });
 }
+
+
 function getItemHtml(index,obj,number){
-	var htm="<tr class='tb_width'>"
+	var htm="<tr class='tb_width' id='exam"+obj.sid+"'>"
 	+"<td>"+obj.title+"</td>"
 	+"<td>"+obj.time+"</td>"
 	+"<td>"+obj.periodStart+"</td>"
 	+"<td>"+obj.periodEnd+"</td>"
 	+"<td>"+obj.invitee+"</td>"
-	+"<td>xxx</td>"
+	+"<td>"+obj.explication+"</td>"
 	+"<td>"+obj.state+"</td>"
-	+"<td>软件工程</td>"
 	+"<td>"
-	+"<i class='fa fa-pencil check'></i>"
-	+"<i class='fa fa-trash-o'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
-	+"</td>"
-	+"</tr>";
-		
-     return htm;
+	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
+	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
+	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
+	+"</tr>"; 
+    return htm;
 }
 function getLiHtml(index) {
 	if(index==1){
 		var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-			+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-			+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
+			+"<li class='page-item'><a class='page-link' href='javascript:loadExamList("+index+")'>"+index+"</a></li>";			
 	}
 	else if(index==totalPage){
-		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-			+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>"
-			+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadExamList("+index+")'>"+index+"</a></li>"
+			+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+			
 	}
 	else {
-		var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
-		+"<input class='jump'>"+"<button class='btn btn-primary btn_jump'>跳转</button>";
+		var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadExamList("+index+")'>"+index+"</a></li>";
 	}
 	return ht;    
 }
 
+
 function nextPage() {
 	if(currentPage<totalPage) 
-		loadStudentList(++currentPage);
+		loadExamList(++currentPage);
 }
 
 function prevPage() {
 	if(currentPage>=2) 
-		loadStudentList(--currentPage);
+		loadExamList(--currentPage);
 }
 /* function jumpPage() {
 	var juPage=$('#jpage').html();
@@ -696,37 +657,42 @@ function prevPage() {
 	}
 		
 } */
+function examPlanInfo(node) {
+	var td = node.parentNode.parentNode.childNodes;
+	var userId = td[2].innerHTML;
+	$.post("showUser",{"user.userId":userId},function(data) {
+		var examplan = data.examplan;
+		var info = getInfoHtml(user);
+		$('#examPlan-info-box').html(info);
+		
+		$('#exam_title').val(user.name);
+		$('#exam_periodStart').val(user.name);
+		$('#exam_periodEnd').val(user.userId);
+		$('#exam_invitee').val(user.collegeName);
+	})
+}	
 
-function editStudent() {
-	if(checkInput()==0){alert("未做任何修改"); return false;} 
-	else{
-	$.post("editUser",
-				{	
-					"user.name":$('#stu_name').val(),
-					"user.sex":$('#stu_sex').val(),
-					"user.userId":$('#stu_userId').val(),
-					"user.collegeName":$('#stu_collegeName').val(),
-					"user.department":$('#stu_department').val(),
-					"user.profession":$('#stu_profession').val(),
-					"user.classroom":$('#stu_classroom').val(),
-					"user.idcard":$('#stu_idcard').val(),
-					"user.phone":$('#stu_phone').val()
-				},function(data) {
-					if(data.result=="编辑用户成功") {
-						alert("修改成功！");
-				  	location.href="staffs_student.jsp";
-			  	}
-		  });
-	}
+
+function createExamPlan() {
+		$.post("createExamPlan",
+				 {	
+			        "exam.title":$('#ex_title').val(), 
+			        "exam.periodStart":$('#ex_periodStart').val(), 
+			        "exam.periodEnd":$('#ex_periodEnd').val(), 
+			        "exam.invitee":$('#ex_invitee').val()
+			},function(data){
+				alert(data.result);    //message为user返回信息
+				location.href="test.jsp";
+			})
 }
 
 function deleteTest(node) {
 	var td = node.parentNode.parentNode.childNodes;
 	var userId = td[2].innerHTML;
 	if(confirm("确定要删除该考次吗？")) {
-		$.post("deleteUser",{"user.userId":userId},function(data) {
+		$.post("deleteTest",{"user.userId":userId},function(data) {
 			if(data.result=="删除成功") {
-					location.href="staffs_student.jsp";
+					location.href="test.jsp";
 			}
 	  }); 
 	}  
@@ -741,6 +707,39 @@ function Out() {
 			}
 	  });
 	}  
+}
+
+function inviteCollege(sid, colleges) {
+	var college = prompt("添加邀请的学校");
+	if(colleges.indexOf(college)>=0) {
+		alert(college + "已被邀请");
+	} else {
+		if(college != null) {
+			$.post("invite", {
+				"sid":sid,
+				"text":college
+			}, function(data) {
+				if(data.result == "success") {
+					alert("邀请成功");
+					location.reload();
+				}
+			});
+		}
+	}
+}
+
+function deleteExam(sid) {
+	if(confirm("确认删除?")) {
+		$.post("delExam",{
+			"sid":sid
+		},function(data) {
+			if(data.result == "success") {
+				$("#exam"+sid).remove();
+			} else {
+				alert("删除失败");
+			}
+		});
+	}
 }
 
 function checkInput() {

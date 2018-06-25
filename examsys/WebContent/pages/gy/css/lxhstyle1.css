@@ -1,4 +1,8 @@
 /*navgationandhead   */
+.navgationandhead{
+	width:100%;
+	height:50px;
+}
 .navgationandhead .logo {
    width: 16.34%; 
    height: 50px; 
@@ -146,6 +150,9 @@ html{
 	font-size: 16px;
 	border: none;
 	cursor: pointer;
+}
+.dropbtn.envolope{
+	margin:4px;
 }
 .banner .success1{
 	width: 6px;
@@ -619,7 +626,7 @@ li{
 	border-radius:5px ;
 }
 .modal-footer{
-	width: 590px;
+	/* width: 590px; */
 	height: 80px;
 }
 
@@ -848,20 +855,19 @@ b {
 /*jsentryquestions*/
 .cant .entryquestions {
 	width: 90%;
-	/* background-color: #FFFFFF; */
-	margin: 80px 50px;
+	margin: 100px 50px;
 }
 .entryquestions .shaixuan {
 	width: 100%;
-	/* height: 150px; */
-	height:20%;
+	height: 60px;
 	padding: 10px;
 	background-color: #e3dded;
+	text-align:center;
 }
 .shaixuan select {
 	width: 150px;
 	height: 40px;
-	margin: 20px 50px;
+	margin: 10px 10px;
 }
 .shaixuan input {
 	width: 20px;
@@ -876,8 +882,6 @@ b {
 .entryquestions .entry {
 	width: 100%;
 	height:80%;
-	position:relative;
-	top:-40px;
 	padding: 10px;
 	background:#e3dded;
 }
@@ -886,20 +890,17 @@ b {
 }
 
 .entry .choicesw {
-	display: none;
-}
-.entry span{
-	margin-left:60px;
+/* 	display: none; */
 }
 .entry .ture-or-false {
-	display: none;
+	/* display: none; */
 }
 
 .entry .fill-and-judgement {
-	display: none;
+	/* display: none; */
 }
 .entry .answer-question {
-	display: none;
+	/* display: none; */
 }
 .entry ul {
 	margin: 0px 20px;
@@ -907,10 +908,10 @@ b {
 .entry li {
 	margin-top: 10px;
 	margin-bottom: 20px;
-	margin-left: 20px;
+	
 }
 .entry input {
-	width: 70%;
+	width: 78%;
     display: inline-block;
 	
 }
@@ -920,7 +921,7 @@ b {
 	min-height: 100px;
 }
 .entry .clearall {
-	margin-right: 50px;
+	margin-left: 250px;
 }
 .entry .submitbtn {
 	/* margin-left: 200px; */
@@ -938,23 +939,23 @@ b {
 
 
 .choices .choose{
-	width: 100%;
-	padding-left: 100px;
+	width: 70%;
+	margin: auto;
 }
 .choices .choose1{
 	width: 50px;
 }
 
 .choicesw .choose{
-	width: 100%;
-	padding-left: 100px;
+	width: 70%;
+	margin: auto;
 }
 .choicesw .choose1{
 	width: 50px;
 }
 .ture-or-false .choose{
-	width: 100%;
-	padding-left: 100px;
+	width: 70%;
+	margin: auto;
 }
 .ture-or-false .choose1{
 	width: 50px;
@@ -965,10 +966,60 @@ b {
 	text-align:center;
 }
 .fill-and-judgement .choose{
-	width: 100%;
-	padding-left: 100px;
+	width: 70%;
+	margin: auto;
 }
 .answer-question .choose{
+	width: 70%;
+	margin: auto;
+}
+.modal-body.form-test{
+	text-algin:center;
+}
+
+/* 单选模态框 */
+.choose .input-pencil{
+	display: inline;
+	margin:10px;
+}
+.choose .answer{
 	width:100%;
-	padding-left: 100px;
+}
+.choose textarea{
+	width:78%;
+	height:60px;
+	margin-left:10px;
+}
+
+.choose span{
+	margin-left:20px;
+}
+.choose .choose1{
+	width:50px;
+	height:10px;
+}
+.foot-pencil{
+	text-align: center;
+}
+.foot-pencil .check-pencil{
+	width:90px;
+	height:40px;
+	margin-right:20px;
+}
+.foot-pencil .back-pencil{
+	width:90px;
+	height:40px;
+	
+}
+
+.entry .sub{
+	display:inline;
+	width:30%;
+}
+.foot{
+	margin:auto;
+	margin-bottom:20px;
+}
+.question-type{
+	margin-left:-10%;
 }

@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.examsys.bean.Grade;
+import cn.examsys.bean.Answersheet;
+import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
 import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
+import cn.examsys.common.Conf;
+import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PersonalService;
-import cn.examsys.lrx.vo.PersonalHomePageVO;
+import cn.examsys.lrx.vo.QuestionCheckVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
@@ -28,13 +31,18 @@ public class PersonalAction extends CommonAction {
 	public void setPage(int page) {
 		this.page = page;
 	}
+	
 	List<?> list;
 	public List<?> getList() {
 		return list;
 	}
 	
+	
 	@Autowired
 	PersonalService serivce;
+	
+	@Autowired
+	ExamService examService;
 	
 	public String loadStuIndexDatas() {
 		serivce.loadStuIndexDatas(getSessionUser());
@@ -78,7 +86,7 @@ public class PersonalAction extends CommonAction {
 		return aa;
 	}
 	
-	@Action(value="/loadMyGrades"
+	/*@Action(value="/loadMyGrades"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyGrades() {
@@ -89,7 +97,7 @@ public class PersonalAction extends CommonAction {
 			e.printStackTrace();
 		}
 		return aa;
-	}
+	}*/
 	
 	String oldPsw, newPsw;
 	public void setOldPsw(String oldPsw) {
@@ -99,14 +107,86 @@ public class PersonalAction extends CommonAction {
 		this.newPsw = newPsw;
 	}
 	@Action(value="/updatePsw"
-			,results={@Result(type="json")}
-			,params={"contentType", "text/html"})
+			, results={@Result(type="json")}
+			, params={"contentType", "text/html"})
 	public String updatePsw() {
-		
 		boolean bo = serivce.updatePsw(getSessionUser(), oldPsw, newPsw);
 		if (!bo) {
 			setResult("旧密码错误");
 		}
+		return aa;
+	}
+	
+	/*@Action(value="/loadResponsibleQuestions"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadResponsibleQuestions() {
+		//list = serivce.loadResponsibleQuestions(getSessionUser(), page);
+		List<QuestionCheckVO> li = new ArrayList<QuestionCheckVO>();
+		for (int i = 0; i < 10; i++) {
+			Question q = new Question();
+			Answersheet a = new Answersheet();
+			try {
+				BeanAutoFit.autoFit(q);
+				BeanAutoFit.autoFit(a);
+				System.out.println(a);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			QuestionCheckVO vo = new QuestionCheckVO(q, a);
+			li.add(vo);
+		}
+		list = li;
+		return aa;
+	}*/
+	
+	@Action(value="/loadMyHistoryGrades"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadMyHistoryGrades() {
+		list = serivce.loadHistoryGrades(getSessionUser(), page);
+		return aa;
+	}
+	
+	@Action(value="/loadMyExams"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadMyExams() {
+		list = serivce.loadExams(getSessionUser(), page);
+		return aa;
+	}
+	
+	
+	Answersheet answer = new Answersheet();
+	public Answersheet getAnswer() {
+		return answer;
+	}
+	
+	//批改题目
+	@Action(value="/checkQuestion"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String checkQuestion() {
+		//sid, scoring
+		boolean bo = serivce.checkQuestion(getSessionUserId()//改卷的老师
+				, answer.getSid(), answer.getScoring()
+				, Conf.Question_Subjective);
+		if (!bo) {
+			setResult("fail");
+		}
+		return aa;
+	}
+	
+	User user = new User();
+	public User getUser() {
+		return user;
+	}
+	@Action(value="/registUser"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String registUser() {
+		String rst = serivce.registUser(user.getUserId(), user.getPsw(), user.getEmail());
+		setResult(rst);
 		return aa;
 	}
 	

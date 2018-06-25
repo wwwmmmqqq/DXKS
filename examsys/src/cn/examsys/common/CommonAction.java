@@ -19,7 +19,7 @@ public abstract class CommonAction extends ActionSupport {
 	
 	public CommonAction() {
 		/*User user = new User();
-		user.setUserId("admin");
+		user.setUserId("a2");
 		user.setPsw("123");
 		user.setType("admin");
 		user.setName("nick");
@@ -27,7 +27,9 @@ public abstract class CommonAction extends ActionSupport {
 		user.setPermission("");
 		user.setSex("男");
 		saveLogin(user);*/
+		
 		session.setAttribute("Time", Tool.time());//服务器时间
+		
 	}
 	
 	public void saveLogin(User user) {

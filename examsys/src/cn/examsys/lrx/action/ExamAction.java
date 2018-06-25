@@ -1,4 +1,3 @@
-
 package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
@@ -15,11 +14,15 @@ import org.springframework.stereotype.Controller;
 import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Exam;
+import cn.examsys.bean.Grade;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
+import cn.examsys.bean.User;
 import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ExamService;
+import cn.examsys.lrx.vo.GradeVO;
+import cn.examsys.lrx.vo.PaperWithExamVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
@@ -64,6 +67,7 @@ public class ExamAction extends CommonAction {
 		DaoAdapter.COUNT_PER_PAGE = 5;
 		list = service.loadMyExamsList(getSessionUser(), page);
 		DaoAdapter.COUNT_PER_PAGE = 10;
+		System.out.println(getSessionUser());
 		//list = service.loadMyExamsList(getSessionUser(), page);
 		/*try {
 			//TODO 测试数据
@@ -165,25 +169,63 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyHistoryPapers() {
-		//list = service.loadMyHistoryPapers(getSessionUser(), page);
-		try {
-			list = BeanAutoFit.fitBeanArray(Paper.class, Math.random());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		list = service.loadMyHistoryPapers(getSessionUser(), page);
 		return aa;
 	}
 	
+	/**
+	 * @return PaperWithExamVO 对象
+	 */
+	@Action(value="/loadInvitedExamPapers"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadInvitedExamPapers() {
+		list = service.loadInvitedExamPapers(getSessionUser(), page);
+		return aa;
+	}
+	
+	@Action(value="/loadGradesByPaper"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadGradesByPaper() {
+		list = service.loadGradesByPaper(getSessionUser(), paper.getSid());
+		System.out.println(list.size());
+		/*
+		List<GradeVO> li = new ArrayList<GradeVO>();
+		for (int i = 0; i < 10; i++) {
+			Grade grade = new Grade();
+			User user = new User();
+			Paper pp = new Paper();
+			try {
+				BeanAutoFit.autoFit(grade);
+				grade.setPaperRef(paper.getSid());
+				BeanAutoFit.autoFit(user);
+				BeanAutoFit.autoFit(pp);
+				pp.setSid(paper.getSid());
+				GradeVO vo = new GradeVO(grade, user, pp);
+				li.add(vo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		list = li;*/
+		return aa;
+	}
+	
+	
+	
 	private void setCurrentPaperSid(int paperSid) {
+		System.out.println(paperSid);
 		session.setAttribute("currentPaper", paperSid);
 	}
 	
 	private int getCurrentPaperSid() {
 		Object obj = session.getAttribute("currentPaper");
-		if (obj != null) {
-			return (Integer) obj;
-		} else {
+		System.out.println(obj);
+		if (obj == null) {
 			return -1;
+		} else {
+			return (int) obj;
 		}
 	}
 	

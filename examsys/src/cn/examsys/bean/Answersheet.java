@@ -35,6 +35,16 @@ public class Answersheet {
 	int trueOrFalse;//判断题档案 1 true 0 false
 	
 	float scoring;//得分 浮点型
+	
+	String checker;//改卷的老师
+	
+	public String getChecker() {
+		return checker;
+	}
+	
+	public void setChecker(String checker) {
+		this.checker = checker;
+	}
 
 	public String getUserId() {
 		return userId;

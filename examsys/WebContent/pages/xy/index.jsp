@@ -14,11 +14,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		修改试卷接口---先查看再修改
 		参数：paper.sid
 		返回值：paper
-	/* */
-	 $.post("showUser",{"user.userId":"userId_17540"},function(data) {
-		 	alert("UserName="+data.user.userId+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
-			alert(data.result);
-	  })
+		*/
+	$.post("createExamPlan",
+			 {	"exam.title":"1",   //用户名
+		 		"user.userId":"34"				//用户类型
+		 	},function(data){
+		 		alert(data.result);    //message为user返回信息
+			 }
+		)
   </script>
   
   </head>

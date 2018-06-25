@@ -27,7 +27,7 @@ public class DaoAdapter implements IDaoAdapter {
 		Query query = session.createQuery(hql);
 		if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
-				if(vals[i]!=null) {
+				if (vals[i] != null) {
 					if(vals[i] instanceof Integer) {
 						query.setInteger(i, (Integer)vals[i]);
 					} else {
@@ -60,10 +60,12 @@ public class DaoAdapter implements IDaoAdapter {
 		SQLQuery query = session.createSQLQuery(sql);
 		if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
-				if(vals[i] instanceof Integer) {
-					query.setInteger(i, (Integer) vals[i]);
-				} else {
-					query.setString(i, vals[i].toString());
+				if (vals[i] != null) {
+					if(vals[i] instanceof Integer) {
+						query.setInteger(i, (Integer) vals[i]);
+					} else {
+						query.setString(i, vals[i].toString());
+					}
 				}
 			}
 		}
@@ -138,10 +140,12 @@ public class DaoAdapter implements IDaoAdapter {
 		Query query = session.createQuery(hql);
 		if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
-				if(vals[i] instanceof Integer) {
-					query.setInteger(i, (Integer)vals[i]);
-				} else {
-					query.setString(i, vals[i].toString());
+				if (vals[i] != null) {
+					if(vals[i] instanceof Integer) {
+						query.setInteger(i, (Integer)vals[i]);
+					} else {
+						query.setString(i, vals[i].toString());
+					}
 				}
 			}
 		}
@@ -163,10 +167,12 @@ public class DaoAdapter implements IDaoAdapter {
 		SQLQuery query = session.createSQLQuery(sql);
 		if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
-				if(vals[i] instanceof Integer) {
-					query.setInteger(i, (Integer)vals[i]);
-				} else {
-					query.setString(i, vals[i].toString());
+				if (vals[i] != null) {
+					if(vals[i] instanceof Integer) {
+						query.setInteger(i, (Integer)vals[i]);
+					} else {
+						query.setString(i, vals[i].toString());
+					}
 				}
 			}
 		}
@@ -265,7 +271,7 @@ public class DaoAdapter implements IDaoAdapter {
 	}
 
 	@Override
-	public void updateEntity(Class<?> claz, Serializable id, String[] fieldNames, Object[] values) throws Exception {
+	public void updateEntity(Class<?> claz, Serializable id, Object[] fieldNames, Object[] values) throws Exception {
 		if (fieldNames == null || fieldNames.length == 0) {
 			return;
 		}

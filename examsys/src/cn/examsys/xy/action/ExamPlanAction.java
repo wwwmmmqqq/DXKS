@@ -52,7 +52,7 @@ public class ExamPlanAction extends CommonAction {
 		exam.setState(0);
 		exam.setTime(Tool.time());
 		user=userService.SelectOneUser(getSessionUserId());
-		exam.setInvitee(user.getCollegeName()+" "+exam.getInvitee());
+		exam.setInvitee(user.getCollegeName());
 		boolean ex=examPlanService.createExamPlan(exam);
 		if(!ex) {
 			setResult("创建失败");

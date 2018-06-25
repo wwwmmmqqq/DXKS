@@ -25,9 +25,8 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/popper.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+         <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+            <link href="css/toastr.css" rel="stylesheet" type="text/css" />
        
 	</head>
 	<body>
@@ -81,10 +80,9 @@
 				</div>
 				<div class="light_bottom">
 					<ul class="side_nav">
-					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
+					<a href="searchQuestions"><li class="side_nav1 now">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
-					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
-				</ul>
+					<a href="teacher_read_jump.jsp"><li class="side_nav1 ">批阅试卷</li></a>
 				</div>
 			</nav>
 			<!-- sidebar end -->
@@ -106,23 +104,23 @@
 		    	<div>
 		    	
 			    	<div class="search">
-		    		<form class="form-inline searchform" role="form">
-		    			<select class="form-control" id="">
-		    				<option>选择题型</option>
-		    				<option>单选题</option>
-		    				<option>多题选</option>
-		    				<option>填空题</option>
-		    				<option>判断题</option>
-		    			    <option>解答题</option>
+		    		<div class="form-inline searchform" role="form">
+		    			<select class="form-control" onchange="searchType(this.value)">
+		    				<option value="">所有题型</option>
+		    				<option value="Single" ${type=='Single'?'selected':''}>单选题</option>
+		    				<option value="Multiple" ${type=='Multiple'?'selected':''}>多题选</option>
+		    				<option value="Fills" ${type=='Fills'?'selected':''}>填空题</option>
+		    				<option value="TrueOrFalse" ${type=="TrueOrFalse"?"selected":""}>判断题</option>
+		    			    <option value="Subjective" ${type=='Subjective'?'selected':''}>解答题</option>
 		    			</select>
 		    			<div class="form-group">
 		    				<label class="sr-only" for="name">关键字</label>
-		    				<input type="text" class="form-control myinput" id="name" placeholder="请输入关键字搜索">
+		    				<input type="text" class="form-control myinput" id="keyInput" placeholder="请输入关键字搜索">
 		    				
 		    			</div>
-		    			<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+		    			<button type="submit" class="btn btn-default" onclick="searchKey(keyInput.value)"><i class="fa fa-search"></i></button>
 			    		<a href="jsentryquestions.jsp"><button type="button" class="btn btn-in">录入题库</button></a>
-		    		</form>
+		    		</div>
 		    	</div>
 		    		
 		    	</div>
@@ -130,10 +128,9 @@
 		    		<!--  浏览试卷 start -->
 		    		<section>
 		    			<div class="panel showpaper">
-		    			<s:iterator id="que" value="#request.questionList" status="s1">
-		    				<div class="panel-body paperpanel">
+		    			<s:iterator id="que" value="#request.list" status="s1">
+		    				<div class="panel-body paperpanel" id="question${que.sid}">
 		    					<div class="qtype">
-		    					
 		    						<p class="information">
 		    							<span>选择题型：
 		    								${(que.type=="Single")?"(单选题)":""}
@@ -149,20 +146,82 @@
 		    								${que.difficultyValue==4?"较难":""}
 		    							</span>
 		    							<span>知识点：${que.knowledge}</span>
+		    							<span>科目：${que.subjectName}</span>
 		    						</p>
 		    						<div class="operation">
 		    							<ul>
-		    								<li><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modify-"><i class="fa fa-pencil"></i></button></li>
-		    							    <li><button class="btn btn-default btn-xs" onclick="myFunction1()"><i class="fa fa-times"></i></button></li>
+		    							<s:if test="#que.type=='Single'">
+		    								<%-- <li>
+		    									<button class="btn btn-default btn-xs" data-toggle="modal" 
+		    										data-target="#myModal-pencil" onclick="editQuestion(${que.sid})">
+		    										<i class="fa fa-pencil"></i>
+		    									</button>
+		    									</li> --%>
+		    							    <li><button class="btn btn-default btn-xs" onclick="deleteQuestion(${que.sid})"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='Multiple'">
+		    								<%-- <li>
+		    									<button class="btn btn-default btn-xs" data-toggle="modal"
+		    										 data-target="#myModal-choosesl" onclick="editQuestion(${que.sid})" >
+		    										<i class="fa fa-pencil"></i>
+		    								</button>
+		    									</li> --%>
+		    							    <li><button class="btn btn-default btn-xs" 
+		    							    		onclick="deleteQuestion(${que.sid})"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='TrueOrFalse'">
+		    								<%-- <li>
+		    									<button class="btn btn-default btn-xs" data-toggle="modal"
+		    									 data-target="#myModal-true-or-flase" onclick="editQuestion(${que.sid})">
+		    										<i class="fa fa-pencil"></i>
+		    								</button>
+		    									</li> --%>
+		    							    <li><button class="btn btn-default btn-xs"
+		    							    		 onclick="deleteQuestion(${que.sid})"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='Fills'">
+		    								<%-- <li>
+		    									<button class="btn btn-default btn-xs"  onclick="editQuestion(${que.sid})"
+		    										data-toggle="modal" data-target="#myModal-fill-and-judgement">
+		    										<i class="fa fa-pencil"></i>
+		    								</button>
+		    									</li> --%>
+		    							    <li><button class="btn btn-default btn-xs"
+		    							    		 onclick="deleteQuestion(${que.sid})"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							<s:if test="#que.type=='Subjective'">
+		    								<%-- <li>
+		    									<button class="btn btn-default btn-xs"  onclick="editQuestion(${que.sid})"
+		    										data-toggle="modal" data-target="#myModal-answer-question">
+		    										<i class="fa fa-pencil"></i>
+		    								</button>
+		    									</li> --%>
+		    							    <li><button class="btn btn-default btn-xs"
+		    							    		 onclick="deleteQuestion(${que.sid})"><i class="fa fa-times"></i></button>
+		    									</li>
+		    							
+		    							</s:if>
+		    							
 		    							</ul>
 		    						</div>
+
 		    					</div>
 		    					<ul>
 		    						<li class="question"><h4>${que.title}</h4></li>
+		    						<input type="hidden" value='<s:property value="#que.sid"/>'/>
 			    					<s:iterator id="queOpt" value="#que.options" status="s2">
 			    					<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("s2")).getIndex()+'A')); %>
+			    						
 			    						<li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
-			    						<li>${s2.last?"正确答案：":""}
+			    						<li>
 				    						<span style="color: red;">
 				    							${("Single Multiple TrueOrFalse".indexOf(que.type)>0 && queOpt.isAnswer==1)?optionLabel:""}
 				    							${que.type=="Fills"?queOpt.fillsText:""}
@@ -215,6 +274,195 @@
 		        
 		        
 		    		<!--模态框-->
+		
+				<!-- 修改单选 模态框-->
+				<div class="modal fade" id="myModal-pencil">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				 
+				      <!-- 模态框头部 -->
+				      <div class="modal-header">
+				        <h4 class="modal-title">修改题库</h4>
+				        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+				      </div>
+				 
+				      <!-- 模态框主体 -->
+				      <div class="modal-body">
+				      	<form class="choose" id="s-question">
+		    				<ul>
+		    				<li id="dry" >题干
+		    				<textarea name="question.title" id="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class=" input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+		    							<span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>B</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>C</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>D</span><input type="radio" name="question.isAnswer" class="choose1"/>
+		    					</li>
+		    					
+		    				    <li id="knowledge">知识点<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+		    			    </ul>
+		    			 </form>
+				 
+				      <!-- 模态框底部 -->
+				      <div class="modal-footer foot-pencil">
+				      	<button type="bttton" class="btn btn-primary check-pencil edit-btn">修改</button>
+				        <button type="button" class="btn btn-secondary back-pencil" data-dismiss="modal">关闭</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>   		
+		    		
+				<!-- 修改多选 模态框-->
+				<div class="modal fade" id="myModal-chooses">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				 
+				      <!-- 模态框头部 -->
+				      <div class="modal-header">
+				        <h4 class="modal-title">修改题库</h4>
+				        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+				      </div>
+				 
+				      <!-- 模态框主体 -->
+				      <div class="modal-body">
+				      	<form class="choose" id="s-question">
+		    				<ul>
+		    				<li id="dry" >题干
+		    				<textarea name="question.title" id="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class=" input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="sc">C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="sd">D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+		    							<span>A</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
+			    						<span>B</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
+			    						<span>C</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
+			    						<span>D</span><input type="checkbox" name="question.isAnswer" class="choose1"/>
+		    					</li>
+		    					
+		    				    <li id="knowledge">知识点<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+		    			    </ul>
+		    			 </form>
+				 
+				      <!-- 模态框底部 -->
+				      <div class="modal-footer foot-pencil">
+				      	<button type="bttton" class="btn btn-primary check-pencil edit-btn">修改</button>
+				        <button type="button" class="btn btn-secondary back-pencil" data-dismiss="modal">关闭</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>   		
+		    		
+				<!-- 修改判断模态框-->
+				<div class="modal fade" id="myModal-true-or-flase">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				 
+				      <!-- 模态框头部 -->
+				      <div class="modal-header">
+				        <h4 class="modal-title">修改题库</h4>
+				        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+				      </div>
+				 
+				      <!-- 模态框主体 -->
+				      <div class="modal-body">
+				      	<form class="choose" id="s-question">
+		    				<ul>
+		    				<li id="dry" >题干
+		    				<textarea name="question.title" id="question"></textarea></li>	
+		    				    <li id="sa">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class=" input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="sb">B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control " type="text" name="question.content" /></li>
+		    				    <li id="answer" class="answerw">答&nbsp;&nbsp;案&nbsp;
+		    							<span>A</span><input type="radio" name="question.isAnswer" class="choose1"/>
+			    						<span>B</span><input type="radio" name="question.isAnswer" class="choose1"/>
+		    					</li>
+		    					
+		    				    <li id="knowledge">知识点<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+		    			    </ul>
+		    			 </form>
+				 
+				      <!-- 模态框底部 -->
+				      <div class="modal-footer foot-pencil">
+				      	<button type="button" class="btn btn-primary check-pencil edit-btn" >修改</button>
+				        <button type="button" class="btn btn-secondary back-pencil" data-dismiss="modal">关闭</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>   		
+		
+		<!-- 修改填空题模态框 -->
+		<div class="modal fade" id="myModal-fill-and-judgement">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		 
+		      <!-- 模态框头部 -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">修改题库</h4>
+		        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		      </div>
+		 
+		      <!-- 模态框主体 -->
+		      <div class="modal-body">
+		      		<form class="choose" id="fj-question">
+	    				<ul>
+	    					<li id="dry">
+	    					题&nbsp;&nbsp;&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>		    					
+	    					<li id="answer">答&nbsp;&nbsp;&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control" type="text" name="question.fillsText" /></li>
+	    					<li id="knowledge">涉及知识点:<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+	    				</ul>
+		    		</form>
+		      </div>
+		 
+		      <!-- 模态框底部 -->
+		      <div class="modal-footer foot-pencil">
+		      	<button type="button" class="btn btn-primary check-pencil edit-btn">修改</button>
+		        <button type="button" class="btn btn-secondary back-pencil" data-dismiss="modal">关闭</button>
+		      </div>
+		 
+		    </div>
+		  </div>
+		</div>
+	
+	<!-- 修改解答题模态框 -->
+		<div class="modal fade" id="myModal-answer-question">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		 
+		      <!-- 模态框头部 -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">修改题库</h4>
+		        <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		      </div>
+		 
+		      <!-- 模态框主体 -->
+		      <div class="modal-body">
+		      		<form class="choose" id="fj-question">
+	    				<ul>
+	    					<li id="dry">
+	    					题&nbsp;&nbsp;&nbsp;&nbsp;干&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="question.title"></textarea></li>		    					
+	    					<li id="answer">答&nbsp;&nbsp;&nbsp;&nbsp;案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input-pencil form-control" type="text" name="question.fillsText" /></li>
+	    					<li id="knowledge">涉及知识点:<input class="input-pencil form-control" type="text" name="question.knowledge"/></li>
+	    				</ul>
+		    		</form>
+		      </div>
+		 
+		      <!-- 模态框底部 -->
+		      <div class="modal-footer foot-pencil">
+		      	<button type="button" class="btn btn-primary check-pencil edit-btn">修改</button>
+		        <button type="button" class="btn btn-secondary back-pencil" data-dismiss="modal">关闭</button>
+		      </div>
+		 
+		    </div>
+		  </div>
+		</div>
+		
 		    		<!--模态框查看通知-->
 		<div class="modal fade" id="myModal-email">
 			    	<div class="modal-dialog">
@@ -378,7 +626,7 @@
 		        <div class="modal-body">
 		          	<div class="email">
 		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept" >接受</button>
+		          		<button class="btn btn-primary accept" onclick="window.location='teacher_read.jsp'">接受</button>
 		          		<button class="btn btn-danger refuse"  >拒绝</button>
 		          	</div>
 		          	<div class="email">
@@ -442,6 +690,42 @@
 		    		</div>
 	    </section>
 	</div>	
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/search.js" ></script>
+		<script type="text/javascript" src="js/jsshowpaper.js" ></script>
+		<script type="text/javascript" src="js/jquery-confirm.js" ></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
+		<script type="text/javascript">
+		var sid;
+		function editQuestion(n) {
+			sid = n;
+		}
+		
+		$(".edit-btn").click(function() {
+			alert(sid);
+		});
+		
+		var page = 1;
+		var key = "";
+		var type = "";
+		
+		function searchKey(s) {
+			key = s;
+			search();
+		}
+		
+		function searchType(s) {
+			type = s;
+			search();
+		}
+		
+		function search() {
+			location.href = "searchQuestions?page="+page+"&key="+key+"&type="+type;
+		}
+		
+		</script>
 	</body>
-	<script type="text/javascript" src="js/search.js" ></script>
+	
 </html>

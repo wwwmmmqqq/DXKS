@@ -3,6 +3,7 @@
     <% String path=request.getContextPath();
    String basePath=request.getScheme() + "://" +request.getServerName() + ":" +request.getServerPort() + path + "/";
 %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,7 +48,7 @@
 				    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="#">退出系统</a>
+						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
 				<div class="dropdown task">
@@ -99,12 +100,12 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-						<li class="side_nav1">
+						<!-- <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li>
+						</li> -->
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -130,14 +131,77 @@
 		    	<div class="papermanage">
 		    		<!-- 试卷管理 start -->
 		    		<div class="panel showpaperpanel">
-		    			<header class="panel-heading" >
-		    				样卷
+		    			<header class="panel-heading operation">
+		    				<ul>
+		    				    <li>
+		    				    	<button type="button" class="btn btn-primary loadPaper" onclick="delPaper()">删除样卷 </button>
+		    				    </li>
+		    				    <li>
+		    				       <button type="button" class="btn btn-primary loadPaper">导出试卷</button>
+		    				    </li>
+		    				</ul>
 		    			</header>
 		    			<div class="panel-body ">
 		    				<div class="exam-list">
+		    					<s:iterator id="que" value="#request.list" status="sta">
 		    					<ul>
-		    						<li><p>一.单选题</p></li>
 		    						<li>
+			    						
+									</li>
+		    						<li>
+		    						 
+		    							<div class="exam-content">
+		    								<!-- <div class="exam-question">		    							    
+		    								</div> -->
+		    								<div class="exam-qlist">
+		    									<div class="exam-content">
+		    										<div class="exam-question">
+		    											<h5>
+		    											<s:if test="#request.lastType != #request.que.type">
+						 									<p style="font-size: 24px">
+						 									${(que.type=="Single")?"单选题":""}
+															${(que.type=="Multiple")?"多选题":""}
+															${(que.type=="TrueOrFalse")?"判断题":""}
+															${(que.type=="Fills")?"填空题":""}
+															${(que.type=="Subjective")?"解答题":""}
+															</p>
+														</s:if>
+		    											${sta.index+1}. ${que.title}
+		    											</h5>
+		    										</div>
+		    						
+		    										<div class="exam-selection">
+		    										<s:iterator id="opt" value="#que.options" status="st">
+		    											<span class="op-item">
+		    											   <s:if test="'Single Multiple'.indexOf(#que.type)>=0">
+		    											        <%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("st")).getIndex()+'A')); %>
+		    											   		<span>${optionLabel}. ${opt.content} </span>
+		    											   </s:if>
+		    											   <s:else>
+		    											   	<div>${st.index+1}. ${opt.content} </div>
+		    											   	<div><textarea class="xz-que" readonly="readonly" cols="30" rows="3"></textarea></div>
+		    											   </s:else>
+		    											</span>
+		    										</s:iterator>	
+		    										    <!-- <span class="op-item">
+		    							                	<span>B.</span>
+		    											   <span>Update software</span>
+		    											</span>
+		    											<span class="op-item">
+		    									    	    <span>C.</span>
+		    											<span>Update software</span>
+		    											</span>
+		    											<span class="op-item">
+		    									    		<span>D.</span>
+		    											<span>Update software</span>
+		    											</span> -->
+		    										</div>
+		    									</div>
+		    									
+		    								</div>
+		    							</div>
+                                    </li>
+                                   <%--  <li>
 		    							<div class="exam-content">
 		    								<div class="exam-question">
 		    							    
@@ -172,108 +236,14 @@
 		    							</div>
 		    							
 		      
-                                    </li>
-                                    <li>
-		    							<div class="exam-content">
-		    								<div class="exam-question">
-		    							    
-		    								</div>
-		    								<div class="exam-qlist">
-		    									<div class="exam-content">
-		    										<div class="exam-question">
-		    											1.下列说法正确的是(<input type="text" class="xz-que" size="5" placeholder=""/>)
-		    										</div>
-		    							
-		    										<div class="exam-selection">
-		    											<span class="op-item">
-		    									    	   <span>A.</span>
-		    											   <span>Update software</span>
-		    											</span>
-		    										    <span class="op-item">
-		    							                	<span>B.</span>
-		    											   <span>Update software</span>
-		    											</span>
-		    											<span class="op-item">
-		    									    	    <span>C.</span>
-		    											<span>Update software</span>
-		    											</span>
-		    											<span class="op-item">
-		    									    		<span>D.</span>
-		    											<span>Update software</span>
-		    											</span>
-		    										</div>
-		    									</div>
-		    									
-		    								</div>
-		    							</div>
-		    							
-		      
-                                    </li>
+                                    </li> --%>
                                </ul>
-                               <ul>
-                                    <li>二.填空题</li>
-		    						<li>
-		    							<div class="exam-content">
-		    								<div class="exam-question">
-		    						
-		    								</div>
-		    								<div class="exam-qlist">
-		    									<div class="exam-content">
-		    										<div class="exam-question">
-		    											1.统一资源定位符URL完整格式是<input type="text" class="tk-que" size="12" placeholder=""/>
-		    										</div>
-		    						
-		    										
-		    									</div>
-		    						
-		    								</div>
-		    							</div>
-		    						
-		    						</li>
-		    						<li>
-		    							<div class="exam-content">
-		    								<div class="exam-question">
-		    						
-		    								</div>
-		    								<div class="exam-qlist">
-		    									<div class="exam-content">
-		    										<div class="exam-question">
-		    											1.统一资源定位符URL完整格式是<input type="text" class="tk-que" size="12" placeholder=""/>
-		    										</div>
-		    						
-		    									</div>
-		    						
-		    								</div>
-		    							</div>
-		    						
-		    						</li>
-		    				    </ul>
-		    				    <ul>
-		    				    	<li>三 .解答题</li>
-		    						<li>
-		    							<div class="exam-content">
-		    								<div class="exam-question">
-		    						            
-		    								</div>
-		    								<div class="exam-qlist">
-		    									<div class="exam-content">
-		    										<div class="exam-question">
-		    											1.已知函数f(x)＝lnx²+2a/x(a∈R)
-		    											<br>(1)当a=-2时，求曲线y=f(x)在点(1,f(1))处的切线方程. 
-		    											<br>(2)当a＞0时.   
-		    											<br>  （i）讨论函数f(x)的单调性；   
-		    											<br>  （ii）若函数f(x)在区间[1,e]上最小的值是3，求a的值.  
-		    										</div>
-		    						
-		    										
-		    									</div>
-		    						
-		    								</div>
-		    							</div>
-		    						
-		    						</li>
-		    					</ul>
-		    						
+                               <%
+                               cn.examsys.bean.Question question = (cn.examsys.bean.Question)request.getAttribute("que");
+                               if(question!=null)
+                            	   request.setAttribute("lastType", question.getType());
+                               %>
+                              </s:iterator>
 		    				</div>
 		    	
 		    			</div>
@@ -555,4 +525,15 @@
 	    </div>
 		
 	</body>
+	
+	<script type="text/javascript">
+	function delPaper() {
+		$.post("delPaper", {"sid":${paper.sid}}, function(data) {
+			if(data.result == "success") {
+				alert("删除成功!");
+				window.close();
+			}
+		});
+	}
+	</script>
 </html>

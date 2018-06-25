@@ -43,11 +43,13 @@
 	margin-right: 10px;
 	height: 30px;
 	text-align: center;
+	color:black;
 }
 .search_hide .clean{
 	margin-top:-5px ;
 	height: 30px;
 	text-align: center;
+	color:black;
 }
 .search_hide .input_hide2{
 	display: none;

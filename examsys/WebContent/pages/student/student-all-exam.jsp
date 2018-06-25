@@ -5,16 +5,17 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/student.css" />
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+<link href="css/toastr.css" rel="stylesheet" type="text/css" />
 
 
 </head>
@@ -61,7 +62,7 @@
 							<img src="<%=basePath%>img/user.jpg" class="img-circle" alt="User Image" />
 						</div>
 						<div class="pull-left info">
-							<p>Hello, wmq</p>
+							<p>Hello,${session.user.name}</p>
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
 					</div>
@@ -113,51 +114,60 @@
 								<tr class="basic-info">
 									<td>学号：</td>
 									<td>
-										<input type="text" class="form-control"/>
+								
+										<input type="text" class="form-control" disabled="disabled" name="user.userId" value='${session.user.userId}'/>
 									</td>
 								</tr>
 								<tr>
 									<td>姓名：</td>
 									<td>
-										<input type="text" class="form-control"/>
+										<input type="text" class="form-control" name="user.name"/>
 									</td>
 								</tr>
 								<tr>
 									<td>性别：</td>
 									<td>
-										<input type="text" class="form-control"/>
+										<input type="text" class="form-control" name="user.sex"/>
+									</td>
+								</tr>
+								<tr>
+									<td>学校：</td>
+									<td>
+										<input type="text" class="form-control" name="user.collegeName"/>
+									</td>
+								</tr>
+								<tr>
+									<td>学院：</td>
+									<td>
+										<input type="text" class="form-control" name="user.permission"/>
+									</td>
+								</tr>
+								<tr>
+									<td>专业：</td>
+									<td>
+										<input type="text" class="form-control" name="user.profession"/>
 									</td>
 								</tr>
 								<tr>
 									<td>邮箱：</td>
 									<td>
-										<input type="text" class="form-control"/>
+										<input type="text" class="form-control" name="user.email"/>
 									</td>
 								</tr>
 								<tr>
 									<td>电话：</td>
 									<td>
-										<input type="text" class="form-control"/>
+										<input type="text" class="form-control" name="user.phone"/>
 									</td>
 								</tr>
-								<tr>
-									<td>密码：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
+								
 								<tr>
 									<td>身份证号：</td>
 									<td>
-										<input type="text" class="form-control"/>
+										<input type="text" class="form-control" name="user.idcard"/>
 									</td>
 								</tr>
-								<tr>
-									<td>注册日期：</td>
-									<td>
-										<input type="text" class="form-control"/>
-									</td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>
@@ -212,31 +222,12 @@
 					<div class="history-paper">
 					
 					</div>
-					<ul class="exam-page pagination pagination-sm">
-						<li>
-							<a href="#">&laquo;</a>
+					<ul class="pager">
+						<li class="previous">
+							<a href="javascript:prePage()">&larr; 上一页</a>
 						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">&raquo;</a>
-						</li>
-						<li>
-							<input type="text" class="form-control page-input" />
-							<button class=" btn btn-primary fa fa-search sure-search-btn"></button>
+						<li class="next">
+							<a href="javascript:nextPage()">下一页&rarr;</a>
 						</li>
 					</ul>
 				</div>
@@ -246,6 +237,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/toastr.js"></script>
 
 
 <script type="text/javascript">
@@ -263,7 +255,7 @@ function loadMyHistoryPapersByexam(){
 		  $('.history-paper').html(htm);
 	  });
 }
-function getMyHistoryPaper(obj){
+function getMyHistoryPaper(grade,paper){
 	var htm=
 		"<ul class='paper-item'>"
 		+"	<li>"

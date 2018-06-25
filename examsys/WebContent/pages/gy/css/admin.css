@@ -27,7 +27,7 @@ body{
 	height: 50px;
 	background-color: white;
 	z-index: 1;
-	
+    /* position: fixed; */
 }
 
 
@@ -140,10 +140,12 @@ body{
 /*侧面导航栏*/
 .navbar.bg-light{
 	width: 16.3%;
-	height: 588px;
-  background-color: #454545;
-  float: left;
-  border-radius:0px ;
+    height: 582px;
+    background-color: #454545;
+    float: left;
+    border-radius: 0px;
+    /* position: fixed;
+    top:50px; */
 }
 .side_nav1.now{
 	background-color: #425164;
@@ -206,6 +208,7 @@ p{
 	/*position:relative; 
 	top:50px;*/
 	width: 83.6%;
+	/* margin: 50px 0%; */
 }
 .main1{
 	width: 90%;
@@ -421,11 +424,18 @@ th {
 	border: 1px solid #0e92cf;
 	border-radius:5px ;
 }
+.add-jw .hover{
+	display: inline;
+}
 .modal-header .close1{
 	display: block;
 	position: absolute;
 	top:20px;
 	right:25px;
+}
+.choose-sex .input-checkbox{
+	width: 60%;
+	display: inline;
 }
 
 /*查看个人信息模态框*/
@@ -508,7 +518,3 @@ button{
 	color: #999;
 }
 
-.modal-body .tb_information{
-	width:60%;
-	height:30px;
-}

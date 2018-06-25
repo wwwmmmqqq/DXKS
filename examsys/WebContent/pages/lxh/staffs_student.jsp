@@ -76,8 +76,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		 <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<!--<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -103,7 +103,13 @@
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 						</button> -->
+<<<<<<< HEAD
 						<button type="button" class="btn btn2" id="find">
+=======
+						<div class="top_search">
+							
+							<button type="button" class="btn btn2">
+>>>>>>> lrx-0624-1(合并06-23-07-wmq)
 								<i class="fa fa-search-minus"></i>
 								条件搜索
 						</button>	
@@ -758,7 +764,7 @@
 	}
 	function studentInfo(node) {
 		var td =node.parentNode.parentNode.childNodes;
-		var userId = td[2].innerHTML;alert(userId);
+		var userId = td[2].innerHTML;
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);

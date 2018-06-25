@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/ionicons.min.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+<link href="css/toastr.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -149,7 +150,7 @@
 									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />
 								${optItem.content}
 							</s:elseif>
-							<s:elseif test="#item.type == 'Fills'">
+							<s:elseif test="#item.type== 'Fills'">
 								<div>${st1.index+1}. ${optItem.content}</div>
 								<input type="text" class="opt-input"
 									 onchange="doit(${item.sid}, ${optItem.sid}, this)">
@@ -194,13 +195,15 @@
 <script type="text/javascript" src="js/student-exam.js"></script>
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 <script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/toastr.js"></script>
 
 
 <script type="text/javascript">
 var paperSid=${request.paper.sid};
 window.onload = function() {
 	var now = "${session.Time}";//服务器当前时间
-	var examEnd = "2018-06-25 10:00:00";//这趟考试结束时间
+	alert("${request.paper}")
+	var examEnd = "${request.paper.examEnd}";//这趟考试结束时间
 	//开始倒计时
 	startTimeCounting(now, examEnd);
 };
@@ -304,9 +307,12 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 function doit(questionId, optId, inputObj, trueOrFalse) {
 	if(inputObj.type == 'checkbox') {
 		trueOrFalse = inputObj.checked?1:0;
+		
 	}
+	
 	todo(questionId, optId, inputObj.value, inputObj.value, trueOrFalse);
 	$('#abc'+currentItemId).addClass('has-que-num ');
+	
 }
 
 $(document).ready(function(){

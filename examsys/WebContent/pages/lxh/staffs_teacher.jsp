@@ -27,12 +27,12 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>${session.user.name } <i class="caret"></i></span>
+								<span>muxue <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
-							<a href="javascript:Out()" >退出系统</a>
+							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -67,19 +67,19 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, ${session.user.name }</p>
+					<p>Hello, muxue</p>
 				</div>
 
 			</div>
 		  	<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<a href="staffs_student.jsp"><li class="side_nav1">学生信息管理</li></a>
-			  		<a href="staffs_teacher.jsp"><li class="side_nav1">教师信息管理</li></a>	
-			  		<a href="affair_index.jsp"><li class="side_nav1">试卷管理</li></a>
-			  		<a href="affair_hand_volume.jsp"><li class="side_nav1">手动组卷</li></a>
-			  		<a href="affair_intel_volume.jsp"><li class="side_nav1">智能组卷</li></a>
-			  		<a href="history_staffs.jsp"><li class="side_nav1">历史成绩</li></a>	
-			  		<a href="test.jsp"><li class="side_nav1">考次计划</li></a>
+			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
+			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
+			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
+			  		<<!-- li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
+			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
 		  </div>
 		</nav>
@@ -91,9 +91,9 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="staffs_student.jsp"><i class="fa fa-home"></i> Home</a>
+		    					<a href="#"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>教师信息管理</li>
+		    				<li>用户管理</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
@@ -260,23 +260,43 @@
 					<div class="modal-body">
 						<table>
 							<tbody>
+							    <tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" id="te_userId" >
+									</td>
+								</tr>
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="teach_name">
+										<input type="text" class="hover" id="te_name">
 									</td>
 								</tr>
-								<td class="choose-sex">
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover"id="te_collegeName" >
+									</td>
+								</tr>
+								<tr>
+									<td>
+										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" id="te_profession">
+									</td>
+								</tr>
+								<tr>
+								    <td class="choose-sex">
 							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  name="user.sex" id="teach_sex">
+							      	<select class="hover"  name="user.sex" id="te_sex">
 							        	<option class="hover">男</option>
 							        	<option class="hover">女</option>
 							      	 </select>		 
-							    </td>
+							        </td>
+								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="teach_phone">
+										<input type="text" class="hover" id="te_phone">
 									</td>
 								</tr>
 
@@ -650,7 +670,7 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
-		$.post("selectUserList",{"user.type":"teacher","page":page},function(data) {
+		$.post("selectUserList",{"user.type":"教师","page":page},function(data) {
 			  var userList=data.userList;
 			  totalPage=data.totalPage;      
 			  var htm = "";
@@ -700,7 +720,7 @@
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-			 +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_teacher' onclick='teacherInfo(this)'></i>" 
+			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_teacher' onclick='teacherInfo(this)'></i>" 
 			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='teacherInfo(this)'></i>"
 			+"<i class='fa fa-trash-o' onclick='deleteTeacher(this)'></i>"
 			+"</td>"
@@ -730,7 +750,6 @@
 			var info = getInfoHtml(user);
 			$('#teacher-info-box').html(info);
 			
-			alert("id:"+user.userId);
 			$('#teacher_name').val(user.name);
 			$('#teacher_sex').find("."+user.sex).attr("checked", "checked");
 			$('#teacher_userId').val(user.userId);
@@ -793,15 +812,17 @@
 	
 	 function createTeacher() {
 		 $.post("createUser",
-				 {	"user.userId":Math.random()*9999+"",   //用户id
-			        "user.name":$('#teach_name').val(),   //用户名
-			 		"user.type":"teacher",					//用户类型
-			 		"user.sex":$('#teach_sex').val(),	//用户性别
-			 		"user.phone":$('#teach_phone').val(),
+				 {	"user.userId":$('#te_userId').val(),   //用户id
+			        "user.name":$('#te_name').val(),   //用户名
+			        "user.college":$('#te_college').val(),   //用户学校
+			        "user.profession":$('#te_profession').val(),   //用户专业
+			 		"user.type":"教师",					//用户类型
+			 		"user.sex":$('#te_sex').val(),	//用户性别
+			 		"user.phone":$('#te_phone').val(),
 			 		"user.psw":"000000"
 			 	},function(data){
-			 		alert($('#teach_phone').val());
-			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone); 
+			 		/* alert("hhh");
+			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone);  */
 			 		alert(data.result);    //message为user返回信息
 			 		location.href="staffs_teacher.jsp";
 				 }
@@ -824,7 +845,6 @@
 						"user.idcard":$('#teacher_idcard').val(),
 						"user.phone":$('#teacher_phone').val()
 					},function(data) {
-						alert("ll");
 						if(data.result=="编辑用户成功") {
 							alert("修改成功！");
 					  	location.href="staffs_teacher.jsp";

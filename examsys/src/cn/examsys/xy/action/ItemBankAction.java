@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Option;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.User;
@@ -102,7 +101,7 @@ public class ItemBankAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createItemBank(){
-		
+		System.out.println(question.getSubjectRef());
 		question.setUserId(getSessionUserId());     //老师的UserId
 		/*创建问题*/
 		question.setTime(Tool.time());
@@ -270,7 +269,7 @@ public class ItemBankAction extends CommonAction{
 	@Action(value="/deleteItemBank"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
-	public String deleteItemBank(){
+public String deleteItemBank(){
 		
 		boolean currentQuestion=itemBankService.deleteQuestion(question);
 		if(!currentQuestion) {
@@ -287,6 +286,7 @@ public class ItemBankAction extends CommonAction{
 		setResult("题目删除成功！");
 		return aa;
 	}
+
 	
 	@Override
 	public String getResult() {
