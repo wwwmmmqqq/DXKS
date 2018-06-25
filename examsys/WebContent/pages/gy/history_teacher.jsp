@@ -281,7 +281,6 @@
 					</div>
 
 					<!-- 模态框底部 -->
-
 					<div class="modal-footer foot">
 					<button type="button" class="btn btn-primary  all-choose"  style="display:none" >全选</button>
 					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </button>
