@@ -244,7 +244,7 @@ p{
 	margin-bottom: 10px;
 }
 .main .btn2{
-	
+	margin-top:10px;
 	margin-left: 10px;
 }
 .main .top_search{
@@ -267,11 +267,27 @@ p{
 	height: 50px;
 	margin-top: 10px;
 }
+.top_button .btn2 {
+	margin-top: 10px;
+}
 .main .top_main{
 	height: 100%;
 	margin-top:20px ;
 	background-color:white ;
 }
+.top_main .search_hide {
+	display: none;
+}
+.top_main .search_hide {
+	display: none;
+}
+.search_hide input ,select , button {
+	margin: 0px  15px;
+	border-radius: 5px;
+}
+
+
+
 /*表格*/
 .tip{
 	width: 95%;

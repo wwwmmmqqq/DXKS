@@ -43,7 +43,7 @@
 					<button class="dropbtn">
 				    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				    				<i class="fa fa-user"></i>
-				    				<span>Jane Doe <i class="caret"></i></span>
+				    				<span>${session.user.userId} <i class="caret"></i></span>
 				    			</a>    		
 				    	    </button>
 					<div class="dropdown-content">
@@ -86,7 +86,7 @@
 						<img class="user1" src="img/1098.jpg" alt="User Image">
 					</div>
 					<div class="info">
-						<p>Hello, 教务周</p>
+						<p>Hello, ${session.user.userId}v</p>
 					</div>
 				</div>
 				<div class="light_bottom">
@@ -122,7 +122,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread">
 		    				<li class="active">
-		    					<a href="jwindex.html"><i class="fa fa-home"></i>Home</a>
+		    					<a href="affair_index.jsp"><i class="fa fa-home"></i>Home</a>
 		    				</li>
 		    	
 		    			</ul>

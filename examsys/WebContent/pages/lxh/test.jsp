@@ -14,6 +14,7 @@
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/test.js" ></script>
 	</head>
 	<body>
 		
@@ -27,7 +28,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>muxue <i class="caret"></i></span>
+								<span>${session.user.userId} <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -43,7 +44,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
+							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
 						</div>
 					</div>
 					<div class="dropdown task" >
@@ -68,7 +69,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, muxue</p>
+					<p>Hello, ${session.user.userId}</p>
 				</div>
 
 			</div>
@@ -77,8 +78,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<!--<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		 <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -92,7 +93,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="#"><i class="fa fa-home"></i> Home</a>
+		    					<a href="affair_index.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>考次计划</li>
 		    			</ul>
@@ -104,42 +105,53 @@
 							<i class="fa fa-plus-circle"></i>
 							添加考次
 						</button>
-						<div class="top_search">
-							
-							<button type="button" class="btn btn2">
-								<i class="fa fa-search-minus"></i>
-								条件搜索
-							</button>
-						</div>
+						<button type="button" class="btn btn2" id="find">
+						<i class="fa fa-search-minus"></i>
+							       条件搜索
+						</button>
 					</div>
+	         
+			   <div class="search_hide" id="hide">
+                   <input type="text" class="input_hide1"  id="name1" placeholder="考试计划名称"/>
+				   <input type="text" class="input_hide" id="userId1"  placeholder="计划时间"/>
+				   <input type="text" class="input_hide" id="userId1"  placeholder="受邀学校"/>
+				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
+				   <input type="reset" class="btn clean">
+			   </div>
+           </div>
+					
 			
 			<!--表格-->
 			<div class="tip">考试计划</div>
 			<table class="table table-striped tb1">
 				<thead class="thead-light">
 			      <tr class="tb_width">
+			        <th>考试计划编号</th>
 			        <th>考试计划名称</th>
 			        <th>计划时间</th>
-			        <th>考试计划开始时间</th>
-			        <th>考试计划结束时间</th>
+			        <th>计划开始时间</th>
+			        <th>计划结束时间</th>
 			        <th>受邀学校</th>
 			        <th>考试说明</th>
-			         <th>状态</th>
+			        <th>状态</th>
+			        <th>组卷</th>
 			        <th>操作</th>
 			      </tr>
 			    </thead>
 				<tbody  id="tplan-list-box">
-					<tr class="tb_width">	
+					<tr class="tb_width">
+					    <td>1</td>	
 				        <td>四六级</td>
 				        <td>2018-8-8</td>
 				        <td>2018-8-8</td>
 				        <td>2018-8-8</td>
 				        <td>萍乡学院</td>
 				        <td>考试说明</td>
+				        <td>组卷</td>
 				        <td>状态</td>
 				        <td>
-				        	<i class="fa fa-eye see" data-toggle="modal" data-target="#myModal_eye_Exam"></i>
-			        	    <i class='fa fa-pencil check'></i>"
+				           <i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check'></i>
+	                       <i class='fa fa-trash-o' onclick='deleteExamPlan()'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>
 			        	</td>
 			        </tr>
 				</tbody>
@@ -167,7 +179,7 @@
 			
 			</div>
 		</div>
-	</section>
+	
 			<!--模态框查看个人信息-->
 		<div class="modal fade" id="myModal_information">
 			<div class="modal-dialog">
@@ -406,7 +418,7 @@
 		</div>
 		
 		<!--模态框修改考次-->
-		<div class="modal fade" id="myModal_addexam">
+		<div class="modal fade" id="myModal_check">
 			<div class="modal-dialog">
 				<div class="modal-content">
 						   
@@ -420,6 +432,13 @@
 					<div class="modal-body">
 						<table >
 							<tbody id="examPlan_info_box">
+							    <tr>			        				
+							        <td >
+							        	
+							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;编&nbsp;号&nbsp;
+							        	<input type="text" class="hover" readonly="readonly" id="exam_sid">
+							        </td>
+							    </tr>
 							    <tr>
 							        <td >
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
@@ -454,12 +473,81 @@
 							        <!-- 模态框底部 -->
 							        <div class="modal-footer">
 							          <button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-							          <button type="button" class="btn btn-primary add" onclick="editExamPlan();">添加</button>
+							          <button type="button" class="btn btn-primary add" onclick="editExamPlan(this);">修改</button>
 							        </div>
 						   
 						      </div>
 						    </div>
 						</div>
+		
+		<!--模态框查看考次计划详细信息-->
+		<div class="modal fade" id="myModal_eye_examPlan">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- 模态框头部 -->
+					<div class="modal-header">
+						<h4 class="modal-title">学生详细信息</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- 模态框主体 -->
+					<div class="modal-body">
+						<table>
+							<tbody id="examPlan-info-box">
+								<tr>
+									<td>
+										计划编号
+										<div class="tb_information">1</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										考试计划名称
+										<div class="tb_information">XXX考试2</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										时间
+										<div class="tb_information">2018-06-17 22:59:37</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										考试开始时间
+										<div class="tb_information">2018-06-17 20:59:37</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										考试结束时间
+										<div class="tb_information">2018-06-17 22:59:37</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+									    邀请学校
+										<div class="tb_information">萍乡学院</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										状态
+										<div class="tb_information">0</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+					<!-- 模态框底部 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		<!--模态框查看通知-->
 		<div class="modal fade" id="myModal-email">
@@ -574,11 +662,10 @@
 		      </div>
 		    </div>
   		</div>
-			
-	</div>
+
 	</body>
 <script>
-loadMyExamList(2);
+loadMyExamList(1);
 var currentPage=1;
 var totalPage=3;
 function loadMyExamList(page) {
@@ -590,11 +677,9 @@ function loadMyExamList(page) {
 			  //其他信息详见cn.examsys.bean.Exam.java文件
 			  var number=(page-1)*10;
 		      number +=i+1;	
-			  htm +=getItemHtml(i,examList[i],number); 
-				
+			  htm +=getItemHtml(i,examList[i],number); 		
 		  }
-		  $('#tplan-list-box').html(htm);
-		  
+		  $('#tplan-list-box').html(htm);		  
 		  for(var j=1;j<=totalPage;j++) {
 				 ht += getLiHtml(j);
 			 }
@@ -606,6 +691,7 @@ function loadMyExamList(page) {
 
 function getItemHtml(index,obj,number){
 	var htm="<tr class='tb_width' id='exam"+obj.sid+"'>"
+
 	+"<td>"+obj.title+"</td>"
 	+"<td>"+obj.time+"</td>"
 	+"<td>"+obj.periodStart+"</td>"
@@ -619,19 +705,20 @@ function getItemHtml(index,obj,number){
 	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
 	+"</tr>"; 
     return htm;
+
 }
 function getLiHtml(index) {
 	if(index==1){
 		var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-			+"<li class='page-item'><a class='page-link' href='javascript:loadExamList("+index+")'>"+index+"</a></li>";			
+			+"<li class='page-item active'><a class='page-link' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>";			
 	}
 	else if(index==totalPage){
-		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadExamList("+index+")'>"+index+"</a></li>"
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>"
 			+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
 			
 	}
 	else {
-		var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadExamList("+index+")'>"+index+"</a></li>";
+		var ht = "<li class='page-item'><a class='page-link ' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>";
 	}
 	return ht;    
 }
@@ -639,12 +726,12 @@ function getLiHtml(index) {
 
 function nextPage() {
 	if(currentPage<totalPage) 
-		loadExamList(++currentPage);
+		loadMyExamList(++currentPage);
 }
 
 function prevPage() {
 	if(currentPage>=2) 
-		loadExamList(--currentPage);
+		loadMyExamList(--currentPage);
 }
 /* function jumpPage() {
 	var juPage=$('#jpage').html();
@@ -659,20 +746,51 @@ function prevPage() {
 } */
 function examPlanInfo(node) {
 	var td = node.parentNode.parentNode.childNodes;
-	var userId = td[2].innerHTML;
-	$.post("showUser",{"user.userId":userId},function(data) {
-		var examplan = data.examplan;
-		var info = getInfoHtml(user);
-		$('#examPlan-info-box').html(info);
+	var sid = td[0].innerHTML;
+	$.post("selectOneExamPlan",{"exam.sid":sid},function(data) {
+		var exam = data.exam;
+		/*  var info = getInfoHtml(exam);
+		$('#examPlan-info-box').html(info);  */
 		
-		$('#exam_title').val(user.name);
-		$('#exam_periodStart').val(user.name);
-		$('#exam_periodEnd').val(user.userId);
-		$('#exam_invitee').val(user.collegeName);
+		$('#exam_sid').val(exam.sid);
+		$('#exam_title').val(exam.title);
+		$('#exam_periodStart').val(exam.periodStart);
+		$('#exam_periodEnd').val(exam.periodEnd);
+		$('#exam_invitee').val(exam.invitee);
 	})
 }	
-
-
+ /* function getInfoHtml(obj) {
+	var info ="<tr>"
+	    +"<td>计划编号<div class='tb_information'>"+obj.sid+"</div>"
+	    +"</td>"
+	    +"</tr>"
+	    +"<tr>"
+	    +"<td>考试计划名称<div class='tb_information'>"+obj.title+"</div>"
+	    +"</td>"
+	    +"</tr>"
+	    +"<tr>"
+	    +"<td>时间<div class='tb_information'>"+obj.time+"</div>"
+	    +"</td>"
+	    +"</tr>"
+	    +"<tr>"
+	    +"<td>考试开始时间<div class='tb_information'>"+obj.periodStart+"</div>"
+	    +"</td>"
+	    +"</tr>"
+	    +"<tr>"
+	    +"<td>考试结束时间<div class='tb_information'>"+obj.periodEnd+"</div>"
+	    +"</td>"
+	    +"</tr>"
+	    +"<tr>"
+	    +"<td>邀请学校<div class='tb_information'>"+obj.invitee+"</div>"
+	    +"</td>"
+	    +"</tr>"
+	    +"<tr>"
+	    +"<td>状态<div class='tb_information'>"+obj.state+"</div>"
+	    +"</td>"
+	    +"</tr>";
+	return info;
+} 
+ */
 function createExamPlan() {
 		$.post("createExamPlan",
 				 {	
@@ -683,17 +801,31 @@ function createExamPlan() {
 			},function(data){
 				alert(data.result);    //message为user返回信息
 				location.href="test.jsp";
+			
 			})
 }
-
-function deleteTest(node) {
+function editExamPlan() {
+	$.post("editExamPlan",
+				{	"exam.sid":$('#exam_sid').val(),
+					"exam.title":$('#exam_title').val(),
+					"exam.periodStart":$('#exam_periodStart').val(),
+					"exam.periodEnd":$('#exam_periodEnd').val(),
+					"exam.invitee":$('#exam_invitee').val(),
+				},function(data) {
+					alert(data.result);
+				  	location.href="test.jsp";
+				
+		  })
+	
+}
+function deleteExamPlan(node) {
 	var td = node.parentNode.parentNode.childNodes;
-	var userId = td[2].innerHTML;
+	var sid = td[0].innerHTML;alert(sid);
 	if(confirm("确定要删除该考次吗？")) {
-		$.post("deleteTest",{"user.userId":userId},function(data) {
-			if(data.result=="删除成功") {
-					location.href="test.jsp";
-			}
+		$.post("deleteExamPlan",{"exam.sid":sid},function(data) {
+			     alert(data.result);
+				location.href="test.jsp";
+			
 	  }); 
 	}  
 	return false;
@@ -703,7 +835,7 @@ function Out() {
 	if(confirm("确定要退出吗？")) {
 		$.post("loginOut",null,function(data) {
 			if(data.result=="成功退出") {
-					location.href="../gy/gy_login.jsp";
+					location.href="../gy/login.jsp";
 			}
 	  });
 	}  
@@ -751,5 +883,23 @@ function checkInput() {
 		}
 	});
 }
+
+$("#find").click(function(){
+	$("#hide").slideToggle("slow");
+		/* $("#school").click(function(){
+			$("#school1").slideToggle("slow");
+		});
+		$("#institute").click(function(){
+			$("#institute1").slideToggle("slow");
+		});
+		$("#profession").click(function(){
+			$("#profession1").slideToggle("slow");
+		});
+		$("#class").click(function(){
+			$("#class1").slideToggle("slow");
+		}); */
+});
+
 </script>
+<script type="text/javascript" src="js/test.js" ></script>
 </html>
