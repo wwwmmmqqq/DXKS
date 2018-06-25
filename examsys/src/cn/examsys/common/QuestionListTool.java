@@ -14,15 +14,16 @@ import cn.examsys.bean.Question;
 public class QuestionListTool {
 	public static List<Question> queryQuestionList(IDaoAdapter dao, int paperSid) {
 		try {
-			List<String> qlist = dao.findBySql("select questionRef from constitute_tb where paperRef=?", new Object[]{paperSid});
+			List<Question> questionList = dao.findByHql("select q from Question q, Constitute c where c.paperRef=? and c.questionRef=q.sid"
+					, new Object[]{paperSid});
 			
-			String qRefs = Arrays.toString(qlist.toArray());
-			
-			List<Question> questionList = dao.findByHql("from Question where locate(sid, ?)>0"
-					, new Object[]{qRefs});
+			StringBuilder qRefs = new StringBuilder();
+			for (int i = 0; i < questionList.size(); i++) {
+				qRefs.append(questionList.get(i).getSid() + ",");
+			}
 			
 			List<Option> optionList = dao.findByHql("from Option where locate(questionRef, ?)>0"
-					, new Object[]{qRefs});
+					, new Object[]{qRefs.toString()});
 			
 			HashMap<Integer, List<Option>> mp = new HashMap<>();
 			for (int i = 0; i < optionList.size(); i++) {

@@ -91,22 +91,21 @@ public class ConstituteServiceImpl implements ConstituteService {
 		//难度
 		int difficulty_arr[] = new int[] {
 				 Conf.Difficulty_1
-				,Conf.Difficulty_2
-				,Conf.Difficulty_3
-				,Conf.Difficulty_4
+				, Conf.Difficulty_2
+				, Conf.Difficulty_3
+				, Conf.Difficulty_4
 		};
 		
 		
 		for (int i = 0; i < vos.length; i++) {
-			ConstituteVO vo = vos[i];
-			
 			//四个难度对应的题目数量
 			int diff_n_count_arr[] = {
-					 Math.round(vos[i].getCount() * vos[i].getDiff1Percent()) / 100 
+					  Math.round(vos[i].getCount() * vos[i].getDiff1Percent()) / 100 
 					, Math.round(vos[i].getCount() * vos[i].getDiff2Percent()) / 100 
 					, Math.round(vos[i].getCount() * vos[i].getDiff3Percent()) / 100 
 					, Math.round(vos[i].getCount() * vos[i].getDiff4Percent()) / 100 
 			};
+			System.out.println(type_arr[i] + "难度数量： " + Arrays.toString(diff_n_count_arr));
 			
 			//四个难度对应的题目分值
 			int diff_n_point_arr[] = {
@@ -115,6 +114,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 					,vos[i].getDiff3Point()
 					,vos[i].getDiff4Point()
 			};
+			
 			/**
 			 * TODO
 			 * 组卷 还需要一个条件
@@ -123,6 +123,9 @@ public class ConstituteServiceImpl implements ConstituteService {
 			int no = 0;//题目序号
 			//遍历四个难度
 			for (int j = 0; j < difficulty_arr.length; j++) {
+				if (diff_n_count_arr[j] == 0) {
+					continue;
+				}
 				List<Question> tmp = dao.findNByHql("from Question where type=? and difficultyValue=? ORDER BY RAND()"
 						, new Object[]{type_arr[i], difficulty_arr[j]}
 						, diff_n_count_arr[j]);
@@ -134,6 +137,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 					
 					Constitute con = new Constitute();
 					con.setNo(++no);//题目序号
+					System.out.println(no);
 					con.setPaperRef(paperSid);//试卷ID
 					con.setQuestionRef(q.getSid());//指向题目
 					con.setType(q.getType());//题目类型
@@ -284,6 +288,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 			return null;
 		}
 	}
+
 	
 }
 	

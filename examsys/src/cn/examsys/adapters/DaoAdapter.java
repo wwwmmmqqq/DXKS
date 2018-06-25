@@ -27,10 +27,12 @@ public class DaoAdapter implements IDaoAdapter {
 		Query query = session.createQuery(hql);
 		if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
-				if(vals[i] instanceof Integer) {
-					query.setInteger(i, (Integer)vals[i]);
-				} else {
-					query.setString(i, vals[i].toString());
+				if (vals[i] != null) {
+					if(vals[i] instanceof Integer) {
+						query.setInteger(i, (Integer)vals[i]);
+					} else {
+						query.setString(i, vals[i].toString());
+					}
 				}
 			}
 		}
@@ -58,10 +60,12 @@ public class DaoAdapter implements IDaoAdapter {
 		SQLQuery query = session.createSQLQuery(sql);
 		if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
-				if(vals[i] instanceof Integer) {
-					query.setInteger(i, (Integer) vals[i]);
-				} else {
-					query.setString(i, vals[i].toString());
+				if (vals[i] != null) {
+					if(vals[i] instanceof Integer) {
+						query.setInteger(i, (Integer) vals[i]);
+					} else {
+						query.setString(i, vals[i].toString());
+					}
 				}
 			}
 		}
@@ -136,10 +140,12 @@ public class DaoAdapter implements IDaoAdapter {
 		Query query = session.createQuery(hql);
 		if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
-				if(vals[i] instanceof Integer) {
-					query.setInteger(i, (Integer)vals[i]);
-				} else {
-					query.setString(i, vals[i].toString());
+				if (vals[i] != null) {
+					if(vals[i] instanceof Integer) {
+						query.setInteger(i, (Integer)vals[i]);
+					} else {
+						query.setString(i, vals[i].toString());
+					}
 				}
 			}
 		}
@@ -161,10 +167,12 @@ public class DaoAdapter implements IDaoAdapter {
 		SQLQuery query = session.createSQLQuery(sql);
 		if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
-				if(vals[i] instanceof Integer) {
-					query.setInteger(i, (Integer)vals[i]);
-				} else {
-					query.setString(i, vals[i].toString());
+				if (vals[i] != null) {
+					if(vals[i] instanceof Integer) {
+						query.setInteger(i, (Integer)vals[i]);
+					} else {
+						query.setString(i, vals[i].toString());
+					}
 				}
 			}
 		}

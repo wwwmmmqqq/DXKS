@@ -133,7 +133,9 @@
 		    		<div class="panel showpaperpanel">
 		    			<header class="panel-heading operation">
 		    				<ul>
-		    				    <li>样卷</li>
+		    				    <li>
+		    				    	<button type="button" class="btn btn-primary loadPaper" onclick="delPaper()">删除样卷 </button>
+		    				    </li>
 		    				    <li>
 		    				       <button type="button" class="btn btn-primary loadPaper">导出试卷</button>
 		    				    </li>
@@ -523,4 +525,15 @@
 	    </div>
 		
 	</body>
+	
+	<script type="text/javascript">
+	function delPaper() {
+		$.post("delPaper", {"sid":${paper.sid}}, function(data) {
+			if(data.result == "success") {
+				alert("删除成功!");
+				window.close();
+			}
+		});
+	}
+	</script>
 </html>

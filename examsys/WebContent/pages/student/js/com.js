@@ -67,3 +67,32 @@ $(function (){
 	}
 });
    }
+
+function modiInfo(){
+	var sid=$('.info-body input[name="user.userId"]').val();
+	var sname=$('.info-body input[name="user.name 
+
+"]').val();
+	var ssex=$('.info-body input[name="user.sex"]').val();
+	var scollegeName=$('.info-body input[name="user.collegeName"]').val();
+	var sdepartment=$('.info-body input[name="user.permission"]').val();
+	var sprofession=$('.info-body input[name="user.profession"]').val();
+	var sidcard=$('.info-body input[name="user.idcard"]').val();
+	var sphone=$('.info-body input[name="user.phone"]').val();
+	var semail=$('.info-body input[name="user.email"]').val();
+	$.post("editUser", {
+		"user.userId" : sid,
+		"user.name 
+
+" : sname,
+		"user.sex":ssex,
+		"user.collegeName":scollegeName,
+		"user.permission":sdepartment,
+		"user.profession":sprofession,
+		"user.idcard":sidcard,
+		"user.phone":sphone,
+		"user.email":semail
+	}, function(data) {
+		toastr.success("密码修改成功！");
+	})
+}

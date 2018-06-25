@@ -53,6 +53,8 @@ public class PageAction extends CommonAction {
 	public String startExam() {
 		
 		queList = service.loadQuestionList(paper.getSid());
+		session.setAttribute("currentPaper", paper.getSid());
+		
 		
 		return SUCCESS;
 	}
@@ -71,26 +73,8 @@ public class PageAction extends CommonAction {
 	@Action(value="/loadResponsibleQuestions", results={
 			@Result(name="success", location="/pages/gy/teacher_read.jsp")})
 	public String loadResponsibleQuestions() {
-		//list = service.loadResponsibleQuestions(getSessionUser(), page);
 		list = service.loadResponsibleQuestions(getSessionUser()
 				, paper.getSid(), page);
-		System.out.println(list.size());
-		/*List<QuestionCheckVO> li = new ArrayList<QuestionCheckVO>();
-		for (int i = 0; i < 10; i++) {
-			Question q = new Question();
-			Answersheet a = new Answersheet();
-			Option o = new Option();
-			try {
-				BeanAutoFit.autoFit(q);
-				BeanAutoFit.autoFit(a);
-				BeanAutoFit.autoFit(o);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			QuestionCheckVO vo = new QuestionCheckVO(q, a, o);
-			li.add(vo);
-		}
-		list = li;*/
 		return aa;
 	}
 	
@@ -127,6 +111,7 @@ public class PageAction extends CommonAction {
 				@Result(name="success", location="/pages/lxh/apaper.jsp") })
 	public String loadAPaper() {
 		list = service.loadQuestionList(getSessionUser(), paper.getSid());
+		System.out.println(list.size());
 		return aa;
 	}
 	

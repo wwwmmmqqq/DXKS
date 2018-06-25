@@ -82,6 +82,7 @@ public class LrxServiceImpl implements LrxService {
 	public boolean delPaper(User sessionUser, int sid) {
 		try {
 			dao.deleteEntity(Paper.class, sid);
+			dao.updateByHql("delete Constitute where paperRef=?", new Object[]{sid});
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
