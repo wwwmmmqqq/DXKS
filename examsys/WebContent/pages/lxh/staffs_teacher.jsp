@@ -27,7 +27,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>muxue <i class="caret"></i></span>
+								<span>${session.user.userId}<i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -67,7 +67,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, muxue</p>
+					<p>Hello, ${session.user.userId}</p>
 				</div>
 
 			</div>
@@ -76,8 +76,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		 <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<!--<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -91,7 +91,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="#"><i class="fa fa-home"></i> Home</a>
+		    					<a href="affair_index.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>用户管理</li>
 		    			</ul>
@@ -109,15 +109,16 @@
 						</button>	
 					</div>
 					<div class="search_hide" id="hide">
-                        <input type="text" class="input_hide1"  id="name1" placeholder="用户名"/>
-				        <input type="text" class="input_hide" id="userId1"  placeholder="专业"/>
-				        <input type="text" class="input_hide" id="userId1"  placeholder="学校"/>
+					    <input type="text" class="input_hide1"  id="userId2" placeholder="工号"/>
+                        <input type="text" class="input_hide1"  id="name2" placeholder="姓名"/>
+				        <input type="text" class="input_hide" id="profession2"  placeholder="专业"/>
+				        <input type="text" class="input_hide" id="college2"  placeholder="学校"/>
 				                 性别:
-				        <select>
+				        <select id="sex2">
 				             <option>男</option>
 				             <option>女</option>
 				        </select>
-				        <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
+				        <button type="button" class="btn right_search" onclick="loadTeacherList(1)">搜索</button>
 				        <input type="reset" class="btn clean">
 			        </div>
               </div>
@@ -128,7 +129,7 @@
 				<thead class="thead-light">
 					<tr class="tb_width">
 						<th>序号</th>
-						<th>用户名</th>
+						<th>工号</th>
 						<th>姓名</th>
 						<th>学校</th>						
 						<th>专业</th>
@@ -341,6 +342,12 @@
 					<div class="modal-body">
 						<table>
 							<tbody id="editTeacher">
+							    <tr>
+									<td>
+										工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" readonly="readonly" disabled id="teacher_userId" name="user.userId">
+									</td>
+								</tr>
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
@@ -354,12 +361,7 @@
 							        	<option class="hover 女">女</option>
 							      	 </select>		 
 							    </td>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" readonly="readonly" id="teacher_userId" name="user.userId">
-									</td>
-								</tr>
+								
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
@@ -673,11 +675,26 @@
 		
 	</body>
 <script type="text/javascript">
-	loadStudentList(1);
+	loadTeacherList(1);
 	var currentPage=1;
 	var totalPage=1;
-	function loadStudentList(page) {
-		$.post("selectUserList",{"user.type":"教师","page":page},function(data) {
+	function loadTeacherList(page) {
+		var userId=$('#userId2').val();
+		var name=$('#name2').val();
+		var profession=$('#profession2').val();
+		var collegeName=$('#college2').val();
+		var sex=$('#sex2').val();
+		
+		$.post("selectUserList",{
+			"user.type":"教师",
+			"page":page,
+			"user.userId":userId,
+			"user.name":name,
+			"user.collegeName":collegeName,
+			"user.profession":profession,
+			"user.sex":sex
+			
+		},function(data) {
 			  var userList=data.userList;
 			  totalPage=data.totalPage;      
 			  var htm = "";
@@ -698,20 +715,20 @@
 	
 	function nextPage() {
 		if(currentPage<totalPage) 
-			loadStudentList(++currentPage);
+			loadTeacherList(++currentPage);
 	}
 	
 	function prevPage() {
 		if(currentPage>=2) 
-			loadStudentList(--currentPage);
+			loadTeacherList(--currentPage);
 	}
 	/* function jumpPage() {
 		var juPage=$('#jpage').html();
 		alert(juPage);
 		if(currentPage==juPage || juPage<1 || juPage>totalPage){
-			loadStudentList(currentPage);
+			loadTeacherList(currentPage);
 		} else{
-			loadStudentList(currentPage+(juPage-currentPage));
+			loadTeacherList(currentPage+(juPage-currentPage));
 			
 		}
 			
@@ -737,14 +754,14 @@
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+				+"<li class='page-item'><a class='page-link' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>";
 		}
 		else if(index==totalPage){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>"
 				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>";
 			
 		}
 		return ht;    
@@ -853,7 +870,7 @@
 						"user.phone":$('#teacher_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-							alert("修改成功！");
+							alert("修改成功!");
 					  	location.href="staffs_teacher.jsp";
 				  	}
 			  });
@@ -892,6 +909,15 @@
 				return true;
 			}
 		});	
+	}
+	
+	
+	function clean() {
+		$("#userId1").val('');
+		$('#name1').val('');
+		$('#department1').val('');
+		$('#profession1').val('');
+		$('#sex1').val('');
 	}
 	//搜索隐藏
 	$("#find").click(function(){

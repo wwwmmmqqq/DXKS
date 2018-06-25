@@ -33,7 +33,7 @@ public class Export {
 		//填写数据
 		
 		//填写实体数据，实际上这些是从数据库中得到
-		for(int i=0;i<3;i++) {
+		/*for(int i=0;i<3;i++) {
 			User user1 =new User();
 			user1.setUserId("15478"+i);
 			user1.setName("name"+i);
@@ -63,6 +63,6 @@ public class Export {
 			        e.printStackTrace();  
 			}
 
-		}
+		}*/
 	}
 }

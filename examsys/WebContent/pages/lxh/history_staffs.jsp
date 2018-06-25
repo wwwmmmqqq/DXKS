@@ -29,7 +29,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>muxue <i class="caret"></i></span>
+								<span>${session.user.userId} <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -70,7 +70,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, muxue</p>
+					<p>Hello, ${session.user.userId}</p>
 				</div>
 
 			</div>
@@ -79,8 +79,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<!-- <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<!--<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		 <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -97,7 +97,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="#"><i class="fa fa-home"></i> Home</a>
+		    					<a href="affair_index.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>历史成绩</li>
 		    			</ul>
@@ -249,7 +249,7 @@
 					<!-- 模态框主体 -->
 
 					<div class="modal-body grade">
-						<table class="history-table" id="studentScore">
+						<table class="history-table">
 							<thead >
 							<tr>
 							    <th>序号</th>
@@ -285,70 +285,81 @@
 		</div>	
 
 		
-		<!--模态框查看个人信息-->
+			<!--模态框查看个人信息-->
 		<div class="modal fade" id="myModal_information">
-							    <div class="modal-dialog">
-							      	<div class="modal-content">
-							   
-								        <!-- 模态框头部 -->
-								        <div class="modal-header">
-								          <h4 class="modal-title">个人信息</h4>
-								          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
-								        </div>
-								   
-								        <!-- 模态框主体 -->
-								        <div class="modal-body">
-											<table >
-												<tbody >
-								        			<tr>
-								        				<td >
-								        					用户名<div class="tb_information">慕雪</div>
-								        				</td>
-								        			</tr>
-								        			<tr>			        				
-								        				<td >
-								        					密码<div class="tb_information">145681</div>
-								        				</td>
-								        			</tr>
-								        			<tr>
-								        				<td >
-								        					姓名<div class="tb_information">慕雪</div>
-								        				</td>
-								        			</tr>
-								        			<tr>
-								        				<td >
-								        					性别<div class="tb_information">女 </div>
-								        				</td>
-								        			</tr>
-								        			<tr>
-								        				<td >
-								        					电话<div class="tb_information">15574014263</div>
-								        				</td>
-								        			</tr>
-								        			<tr>
-								        				<td >
-								        					所属大学<div class="tb_information">萍乡学院</div>
-								        				</td>
-								        			</tr>
-								        			<tr>
-								        				<td >
-								        					邮箱<div class="tb_information">1770313147@qq.com</div>
-								        				</td>
-								        			</tr>
-								        			
-												</tbody>
-											</table>
-								        
-								        </div>
-					   
-								        <!-- 模态框底部 -->
-								        <div class="modal-footer">
-								          <button type="button" class="btn btn-secondary back_information" data-dismiss="modal">关闭</button>
-								        </div>
-							      	</div>
-							    </div>
-							</div>	
-				
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- 模态框头部 -->
+					<div class="modal-header">
+						<h4 class="modal-title">个人信息</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- 模态框主体 -->
+					<div class="modal-body">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										姓名
+										<div class="tb_information">${session.user.name}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										工号
+										<div class="tb_information">${session.user.userId}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										密码
+										<div class="tb_information">${session.user.psw}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学校
+										<div class="tb_information">${session.user.collegeName}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学院
+										<div class="tb_information">${session.user.department}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										性别
+										<div class="tb_information">${session.user.sex}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										联系方式
+										<div class="tb_information">${session.user.phone}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										邮箱
+										<div class="tb_information">${session.user.email}</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+					<!-- 模态框底部 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!--模态框查看通知-->
 		<div class="modal fade" id="myModal-email">
 			    	<div class="modal-dialog">
@@ -619,12 +630,11 @@
 		} */
 //		获取历史成绩
 		var paperSid=getParam("sid"); 
-		function loadGradesByPaper(paperSid){alert(paperSid);
+		function loadGradesByPaper(paperSid){
 			 $.post("loadGradesByPaper", {
 				  "paper.sid":paperSid
 			  }, function(data) {
 				  var scoreList = data.list;
-				  alert(scoreList);
 				  var htm = "";
 				  for(var i=0;i<scoreList.length;i++) {
 					  htm += getScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i);
@@ -632,6 +642,16 @@
 				  $('#studentScore').html(htm);
 			  });
 		}
+		
+		//获取url中的参数
+		function getParam(name) {
+		  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+		  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+		  if (result != null) 
+		  	return decodeURIComponent(result[2]);
+		  return null;
+		}
+		
 	/*	获取教师所接受参加过得考试*/
 		var examSid = getParam("sid"); 
 		loadPapersByExam(examSid);
@@ -648,15 +668,6 @@
 			  });
 		  }
 		
-		
-		//获取url中的参数
-		function getParam(name) {
-		  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
-		  var result = window.location.search.substr(1).match(reg); //匹配目标参数
-		  if (result != null) 
-		  	return decodeURIComponent(result[2]);
-		  return null;
-		}
 		function getMyExam(i,exam,paper) {
 			var htm = "<tr>"
 			+"	<td>"+(i+1)+"</td>"

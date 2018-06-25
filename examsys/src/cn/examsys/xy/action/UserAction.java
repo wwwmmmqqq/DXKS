@@ -140,8 +140,8 @@ public class UserAction extends CommonAction{
 		setResult("删除成功");
 		return aa;
 	}
-	
-	/*查询用户列表*/
+	/*
+	查询用户列表
 	@Action(value="/selectUserList"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
@@ -154,7 +154,25 @@ public class UserAction extends CommonAction{
 		totalPage=userService.SelectUserListCount(user.getType());
 		System.out.println("Action页面获取总页面大小："+totalPage);
 		return aa;
+	}*/
+	@Action(value="/selectUserList"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String SelectUserList(){
+		User administration=getSessionUser();
+		userList=userService.SelectUserList(user,page,administration);
+		System.out.println("Action页面获取当前用户个数："+userList.size());
+		if(userList==null){
+			setResult("无用户");
+		}
+		totalPage=userService.SelectUserListCount(user,administration);
+		System.out.println("Action页面获取总页面大小："+totalPage);
+		return aa;
 	}
+
+	
+	
+	
 	
 	/*修改密码*/
 	@Action(value="/changePsw"

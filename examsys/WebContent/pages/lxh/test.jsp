@@ -28,7 +28,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>muxue <i class="caret"></i></span>
+								<span>${session.user.userId} <i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -69,7 +69,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, muxue</p>
+					<p>Hello, ${session.user.userId}</p>
 				</div>
 
 			</div>
@@ -78,8 +78,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<!-- <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<!--<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		 <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -93,7 +93,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="#"><i class="fa fa-home"></i> Home</a>
+		    					<a href="affair_index.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>考次计划</li>
 		    			</ul>
@@ -697,7 +697,11 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.state+"</td>"
 	+"<td>"
 	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)'></i>"
-	+"<i class='fa fa-trash-o' onclick='deleteExamPlan(this)'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
+	+"<i class='fa fa-trash-o' onclick='deleteExamPlan(this)'></i>"
+	+"<selcet>"
+	+"<option><a href='affair_hand_volume.jsp?exam.sid="+obj.sid+"'>手动组卷</a></option>"
+	+"<option><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a></option>"		
+	+"</select>"
 	+"</td>"
 	+"</tr>";
 		
@@ -741,12 +745,13 @@ function prevPage() {
 } */
 function examPlanInfo(node) {
 	var td = node.parentNode.parentNode.childNodes;
-	var sid = td[0].innerHTML;alert("sid"+sid);
-	$.post("selectOneExamPlan",{"exam.sid":sid},function(data) {alert("66");
-		var exam = data.exam;alert(exam);
+	var sid = td[0].innerHTML;
+	$.post("selectOneExamPlan",{"exam.sid":sid},function(data) {
+		var exam = data.exam;
 		/*  var info = getInfoHtml(exam);
 		$('#examPlan-info-box').html(info);  */
 		
+		$('#exam_sid').val(exam.sid);
 		$('#exam_title').val(exam.title);
 		$('#exam_periodStart').val(exam.periodStart);
 		$('#exam_periodEnd').val(exam.periodEnd);
