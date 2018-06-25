@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Option;
+import cn.examsys.bean.Question;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.LrxService;
 
@@ -113,6 +115,8 @@ public class AjaxAction extends CommonAction {
 		}
 		return aa;
 	}
+	
+	
 	
 	@Override
 	public String getResult() {

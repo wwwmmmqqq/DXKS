@@ -2,6 +2,8 @@ package cn.examsys.lrx.service;
 
 import java.util.List;
 
+import cn.examsys.bean.Option;
+import cn.examsys.bean.Question;
 import cn.examsys.bean.Subject;
 import cn.examsys.bean.User;
 
@@ -21,4 +23,5 @@ public interface LrxService {
 	boolean invite(User sessionUser, int sid, String text);
 
 	boolean delExam(User sessionUser, int sid);
+
 }
