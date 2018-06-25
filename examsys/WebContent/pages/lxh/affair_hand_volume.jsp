@@ -97,12 +97,12 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-						<!-- <li class="side_nav1">
+						 <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li> -->
+						</li>
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -131,7 +131,7 @@
 		    	<div class="basket active" id="J_Basket">
 		    		<div class="basket-tit">
 		    			<p><i class="fa fa-shopping-cart"></i>试题篮<b class="basket-num" id="subj-amount">0</b>
-		    				<span><i class="fa fa-hand-o-right"></i></span>
+		    				<span onclick="basketSlide()"><i class="fa fa-hand-o-right"></i></span>
 		    			</p>
 		    		</div>
 		    		<div class="basket-con">
@@ -145,7 +145,7 @@
 		    			</div>
 		    			<div class="basket-foot">
 		    				<a id="to-paper-admin-edit" data-method="post" class="basket-btn" href="" style="display: none">编辑</a>
-		    				<a id="to-paper-edit" data-method="post" class="basket-btn" href="" >生成试卷</a>
+		    				<a id="to-paper-edit" data-method="post" class="basket-btn" href="apaper.jsp">生成试卷</a>
 		    				<a id="to-paper-admin-cancel" class="basket-btn" href="" style="display: none">取消</a>
 		    			</div>
 		    		</div>
@@ -156,7 +156,7 @@
 		    	
 		    	<div class="papermanage">
 		    	
-		    	    <div id="flip">条件搜索</div>
+		    	    <div id="flip"><i class="fa fa-search-minus"></i>条件搜索</div>
 		    		<div id="panel">
 		    			<form>
 		    				<div class="searchpanel">
@@ -232,14 +232,18 @@
 		    							    			</div>
 		    							    				
 		    							    		    <div class="exam-s">
-		    							    		    <s:if test="#que.type=='Single' || ${#que.type}=='多选题'">	    							    		    		    				                        	
+		    							    		    	    							    		    		    				                        	
 		    							    		    <s:iterator id="opt" value="#request.optionList" status="st">
-		    							    			    <span class="op-item">
-		    							    			    	<span>${st.index}.</span> 
-		    							    			    	<span>${opt.content}</span>
-		    							    			    </span>
+		    							    			 <li>${("Single Multiple TrueOrFalse".indexOf(que.type))>0?optionLabel:(s2.index+1)}. ${queOpt.content}</li>
+			    						                 <li>${s2.last?"正确答案：":""}
+				    					              	  <span style="color: red;">
+				    							           ${("Single Multiple TrueOrFalse".indexOf(que.type)>0 && queOpt.isAnswer==1)?optionLabel:""}
+				    							           ${que.type=="Fills"?queOpt.fillsText:""}
+				    							           ${que.type=="Subjective"?queOpt.subjectiveText:""}
+				    						              </span>
+			    						                 </li>
 		    							    			</s:iterator>
-		    							    			</s:if>
+		    							    		
 		    							    			    <%-- <span class="op-item">
 		    							    			    	<span>B.</span> 
 		    							    			    	<span>Update software</span>
@@ -356,76 +360,81 @@
 
 		
 	    <!--模态框-->
-	    <!--模态框查看个人信息-->
-	    <div class="modal fade" id="myModal-information">
-	    	<div class="modal-dialog">
-	    		<div class="modal-content">
-	    
-	    			<!-- 模态框头部 -->
-	    			<div class="modal-header">
-	    				<h4 class="modal-title">个人信息</h4>
-	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-	    			</div>
-	    
-	    			<!-- 模态框主体 -->
-	    			<div class="modal-body">
-	    				<table>
-	    					<tbody>
-	    						<tr>
-	    							<td>
-	    								用户名
-	    								<div class="tb_information">Mary Doe</div>
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								密码
-	    								<div class="tb_information">123456</div>
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								姓名
-	    								<div class="tb_information">教师XXX</div>
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								性别
-	    								<div class="tb_information">女 </div>
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								电话
-	    								<div class="tb_information">15574014263</div>
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								所属大学
-	    								<div class="tb_information">萍乡学院</div>
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								邮箱
-	    								<div class="tb_information">1770313147@qq.com</div>
-	    							</td>
-	    						</tr>
-	    
-	    					</tbody>
-	    				</table>
-	    
-	    			</div>
-	    
-	    			<!-- 模态框底部 -->
-	    			<div class="modal-footer">
-	    				<button type="button" class="btn btn-secondary back_information" data-dismiss="modal">关闭</button>
-	    			</div>
-	    		</div>
-	    	</div>
-	    </div>
+	   <!--模态框查看个人信息-->
+		<div class="modal fade" id="myModal_information">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- 模态框头部 -->
+					<div class="modal-header">
+						<h4 class="modal-title">个人信息</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- 模态框主体 -->
+					<div class="modal-body">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										姓名
+										<div class="tb_information">${session.user.name}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										工号
+										<div class="tb_information">${session.user.userId}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										密码
+										<div class="tb_information">${session.user.psw}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学校
+										<div class="tb_information">${session.user.collegeName}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学院
+										<div class="tb_information">${session.user.department}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										性别
+										<div class="tb_information">${session.user.sex}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										联系方式
+										<div class="tb_information">${session.user.phone}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										邮箱
+										<div class="tb_information">${session.user.email}</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+					<!-- 模态框底部 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	    
 	    <!--模态框查看通知-->
 	    <div class="modal fade" id="myModal-invite-notice">
@@ -639,23 +648,14 @@
 			  if("fail" == data.result) {
 				  alert("失败");
 			  } else {
-				  var paperSid = data.result;//返回试卷的ID
-				  
+				  var paperSid = data.result;//返回试卷的ID  
 			  }
 		  });
+	 }
+	 
+	  function basketSlide(){
+		 $('#basketright').hide();
 	  }
-	/*搜索jquery隐藏显示面板*/
-	$(document).ready(function() {
-	    $("#flip").click(function() {
-	        $("#panel").slidetoggle("slow");
-	    });
-	});
-
-	/*删除按钮*/
-	function deletefunction(){
-		confirm("确定要删除吗");
-	}
-	
 	</script>
 	</body>
 </html>

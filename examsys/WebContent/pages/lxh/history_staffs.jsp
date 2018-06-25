@@ -79,8 +79,8 @@
 			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<!-- <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
 			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
 			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
 			  	</ul>
@@ -122,21 +122,17 @@
 						<thead class="thead-light">
 							<tr>
 								<th>序号</th>
-								<th>试卷名称</th>
 								<th>科目</th>
-								<th>总分</th>
-								<th>及格率</th>
+								<th>邀请学校</th>
 								<th>考试时间</th>
 								<th>操作</th>
 							</tr>
 					    </thead>
-					    <tbody id="score_list_box">
+					    <tbody id="paper_list_box">
 					        <tr>
-				               <td>1</td>
-				               <td>第一次联考</td>
+				               <td>1</td>				               
 					           <td>数据库概论</td>
-					           <td>100</td>
-					           <td>80%</td>
+					           <td>萍乡学院</td>
 				               <td>2018-10-10</td>
 					           <td class="td_correct" data-toggle="modal" data-target="#myModal_eye_score">
 				                   <i class="fa fa-eye"></i>
@@ -240,54 +236,54 @@
 		
 		
 		<!--查看历史成绩模态框-->
-		<div class="modal fade" id="myModal_eye_score">
-			<div class="modal-dialog">
+		<div class="modal fade" id="myModal_correct">
+			<div class="modal-dialog history-all">
 				<div class="modal-content">
+
 					<!-- 模态框头部 -->
 					<div class="modal-header">
 						<h4 class="modal-title correct1">历史成绩</h4>
-						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</NOtton>
 					</div>
 
 					<!-- 模态框主体 -->
-					<div class="modal-body">
-						<table >
-							<thead>
+
+					<div class="modal-body grade">
+						<table class="history-table" id="studentScore">
+							<thead >
 							<tr>
-								<th>试卷名称</th>
+							    <th>序号</th>
+								<th>学号</th>
+								<th>姓名</th>
+								<th>学院</th>
+								<th>专业</th>
+								<th>班级</th>
 								<th>考试科目</th>
-								<th>总分</th>
-								<th>平均分</th>
-								<th>及格率</th>
+								<th>成绩</th>
 								<th>总排名</th>
 								<th>本校排名</th>
 							</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<td>15478015</td>
-									<td>慕雪</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-									<td>xxx</td>
-								</tr>
-								
+							<tbody id="studentScore">
 							</tbody>
 						</table>
-					<ul>
-						<li>优秀率:50%</li>
-					</ul>
+					<div id="rate">
+					
+					</div>
 					</div>
 
 					<!-- 模态框底部 -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
+
+					<div class="modal-footer foot">
+					<button type="button" class="btn btn-primary  all-choose"  style="display:none" >全选</NOtton>
+					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </NOtton>
+					<button type="button" class="btn btn-success  sureexport"  style="display:none" >确认导出 </NOtton>
+					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</NOtton>
 					</div>
 				</div>
 			</div>
 		</div>	
+
 		
 		<!--模态框查看个人信息-->
 		<div class="modal fade" id="myModal_information">
@@ -582,62 +578,200 @@
 	
 	function nextPage() {
 		if(currentPage<totalPage) 
-			loadStudentList(++currentPage);
+			loadPapersByExam(++currentPage);
 	}
 	
 	function prevPage() {
 		if(currentPage>=2) 
-			loadStudentList(--currentPage);
+			loadPapersByExam(--currentPage);
 	}
 	
-	/* 获取历史成绩 */
-	 /* var paperSid=getParam("sid");  */
-	loadGradesByPaper(1);
-		function loadGradesByPaper(page){
-			 $.post("loadGradesByPaper", {
-				  "page":page
-			  }, function(data) {
-				  var scoreList = data.list;
-				  alert(scoreList);
-				  var htm = "";
-				  for(var i=0;i<scoreList.length;i++) {
-					  htm += getMyScore(scoreList[i].paper,scoreList[i].grade,index);
-				  }
-				  $('#score_list_box').html(htm);
-			  });
-		}
-		
-		function getMyScore(paper,grade,index){
-			var htm="<tr>"
-			+"<td>"+index+"</td>"
-			+"<td>"+paper.name+"</td>"
-			+"<td>"+paper.subjectName+"</td>"
-			+"<td>"+grade.totalScore+"</td>"
-			+"<td>"+grade.totalScore*0.6+"</td>"
-			+"<td>"+paper.time+"</td>"
-			+"</tr>"
-			return htm;
-		
-		}
-
+	 
+	
 		
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList(1)'>"+index+"</a></li>";
+				+"<li class='page-item'><a class='page-link' href='javascript:loadPapersByExam(1)'>"+index+"</a></li>";
 		}
 		else if(index==totalPage){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadPapersByExam("+index+")'>"+index+"</a></li>"
 				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadPapersByExam("+index+")'>"+index+"</a></li>";
 			
 		}
 		return ht;    
 	}
 
-	
+/* //	分页
+	var currentPage = 1;
+		function nextPage() {
+			currentPage ++;
+			loadDatas(currentPage);
+		}
+		function prevPage() {
+			if(currentPage>=2) {
+				currentPage --;
+				loadDatas(currentPage);
+			}
+		} */
+//		获取历史成绩
+		var paperSid=getParam("sid"); 
+		function loadGradesByPaper(paperSid){alert(paperSid);
+			 $.post("loadGradesByPaper", {
+				  "paper.sid":paperSid
+			  }, function(data) {
+				  var scoreList = data.list;
+				  alert(scoreList);
+				  var htm = "";
+				  for(var i=0;i<scoreList.length;i++) {
+					  htm += getScore(scoreList[i].paper,scoreList[i].user,scoreList[i].grade,i);
+				  }
+				  $('#studentScore').html(htm);
+			  });
+		}
+	/*	获取教师所接受参加过得考试*/
+		var examSid = getParam("sid"); 
+		loadPapersByExam(examSid);
+		function loadPapersByExam() {
+			  $.post("loadInvitedExamPapers", {
+				  "page":1
+			  }, function(data) {
+				  var list = data.list;
+				  var htm = "";
+				  for(var i=0;i<list.length;i++) {
+					 htm+=getMyExam(i,list[i].exam,list[i].paper);
+				  }
+				  $('#paper_list_box').html(htm);
+			  });
+		  }
+		
+		
+		//获取url中的参数
+		function getParam(name) {
+		  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
+		  var result = window.location.search.substr(1).match(reg); //匹配目标参数
+		  if (result != null) 
+		  	return decodeURIComponent(result[2]);
+		  return null;
+		}
+		function getMyExam(i,exam,paper) {
+			var htm = "<tr>"
+			+"	<td>"+(i+1)+"</td>"
+			+"	<td>"+paper.subjectName+"</td>"
+			+"	<td>"+exam.invitee+"</td>"
+			+"	<td>"+exam.periodStart+"-"+exam.periodEnd+"</td>"
+			+"	<td>"
+			+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' onclick='loadGradesByPaper("+paper.sid+")' ></i>"
+			+"	</td>"
+			+"</tr>";
+			return htm;
+		}
+		function getScore(paper,user,grade,i){
+			var htm=
+				"<tr>"
+			+"<td>1</td>"
+			+"<td>"+user.userId+"</td>"
+			+"<td>"+user.name+"</td>"
+			+"<td>软件学院</td>"
+			+"<td>"+user.profession+"</td>"
+			+"<td>一班</td>"
+			+"<td>"+paper.subjectName+"</td>"
+			+"<td>"+grade.point+"</td>"
+			+"<td>"+i+"</td>"
+			+"<td>"+(i+1)+"</td>"
+			+"</tr>"
+			return htm;
+		}
+	/*成绩导出*/
+		$('.export').click(function(){
+				var tr=$('#studentScore tbody tr');
+			tr.each(function(){
+				$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
+			})
+			$(this).hide();
+			$('.sureexport').show();
+			$('.all-choose').show();
+			$('.export').removeClass('btn-primary')
+			$('.export').addClass('btn-success sure-export')
+		})
+		
+		
+	/*全选*/
+		$('.all-choose').click(function(){
+			$(' input[name="check"]').each(function(){
+				if ($(this).attr("checked")) {
+					$(this).removeAttr("checked");
+				} else {
+					$(this).attr("checked", "true");
+				}
+			})
+		})
+		
+		/*考试结果正确率判断*/
+		$(function() {
+			var scoreRate = echarts.init(document.getElementById("rate"));
+			scoreRate.setOption({
+				title : {
+					text : "正确率"
+				},
+				backgroundColor : "transparent",
+				itemStyle : {
+					emphasis : {
+						shadowBlur : 200,
+						shadowColor : "rgb(254,67,101)"
+					}
+				},
+				legend : {
+					orient : 'vertical',
+					x : 'left',
+					top : 40,
+					itemWidth : 20,
+					itemHeight : 10,
+					formatter : '{name}',
+					textStyle : {
+						color : '#00000'
+					},
+					data : [ {
+						name : '正确',
+						icon : 'rect'
+					}, {
+						name : '错误',
+						icon : 'rect'
+					} ]
+				},
+				series : [ {
+					name : '正确率',
+					type : 'pie',
+					radius : '55%',
+					center : [ '50%', '60%' ],
+					label : { // 饼图图形上的文本标签
+						normal : {
+							show : true,
+							position : 'inner', // 标签的位置
+							textStyle : {
+								fontWeight : 300,
+								fontSize : 16
+							// 文字的字体大小
+							},
+							formatter : '{d}%'
+
+						}
+					},
+					data : [ {
+						value : 200,
+						name : '正确'
+					}, {
+						value : 800,
+						name : '错误'
+					} ],
+
+				} ]
+			});
+		});
+		
 	
 		
 	</script>
