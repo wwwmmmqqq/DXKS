@@ -3,6 +3,7 @@ package cn.examsys.lrx.service;
 import java.util.List;
 
 import cn.examsys.bean.Grade;
+import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.Subject;
 import cn.examsys.bean.User;
@@ -21,6 +22,8 @@ public interface PageService {
 	List<Question> searchQuestions(User sessionUser, String type, String key, int page);
 
 	List<Question> loadQuestionList(User sessionUser, int sid);
+
+	Paper loadPaper(int sid);
 
 	
 }

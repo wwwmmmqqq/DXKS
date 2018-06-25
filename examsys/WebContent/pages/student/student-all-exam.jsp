@@ -62,7 +62,7 @@
 							<img src="<%=basePath%>img/user.jpg" class="img-circle" alt="User Image" />
 						</div>
 						<div class="pull-left info">
-							<p>Hello, wmq</p>
+							<p>Hello,${session.user.name}</p>
 							<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 						</div>
 					</div>
@@ -88,7 +88,7 @@
 							</span>
 						</li>
 
-						<li data-toggle="modal" data-target="#myinfo" onclick="showInfo()">
+						<li data-toggle="modal" data-target="#myinfo">
 							<span>
 								我的信息
 							</span>
@@ -222,31 +222,12 @@
 					<div class="history-paper">
 					
 					</div>
-					<ul class="exam-page pagination pagination-sm">
-						<li>
-							<a href="#">&laquo;</a>
+					<ul class="pager">
+						<li class="previous">
+							<a href="javascript:prePage()">&larr; 上一页</a>
 						</li>
-						<li>
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">&raquo;</a>
-						</li>
-						<li>
-							<input type="text" class="form-control page-input" />
-							<button class=" btn btn-primary fa fa-search sure-search-btn"></button>
+						<li class="next">
+							<a href="javascript:nextPage()">下一页&rarr;</a>
 						</li>
 					</ul>
 				</div>

@@ -566,7 +566,7 @@ $('#submitBtn').bind().click(function() {
 			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
 			//newPaperSid = data.result;
 			//$("#submitBtn").get(0).innerText = "不满意生成的试卷"+newPaperSid+"，重新组卷";
-			window.open("http://localhost:8080/examsys/pages/lxh/loadAPaper?paper.sid=" + data.result);     
+			window.open("loadAPaper?paper.sid=" + data.result);     
 		}
 	});
 	//window.open('apaper.html')

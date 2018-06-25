@@ -137,8 +137,8 @@
 									</li>
 									<li>
 										<div class="num">
-										<input type="hidden" id="answerid" value='<s:property  value="#item.answer.sid"/>'>
-											<input type="text" id="sanswer" class="form-control input_num" />
+											<input type="hidden" id="answerid" value='<s:property value="#item.answer.sid"/>'>
+											<input type="text" id="sanswer" class="form-control input_num" onchange="checkQuestion(${item.answer.sid}, this.value)" />
 											<span>得分</span>
 										</div>
 									</li>
@@ -385,6 +385,17 @@
 				$(".main_teacher").show();
 			});
 		});
+		
+		function checkQuestion(sid, point) {
+			$.post("checkQuestion", {
+				"answer.sid":sid
+				,"answer.scoring":point
+			}, function(data) {
+				alert(data.result);
+			});
+		}
+		
+		
 	</script>
 	</body>
 

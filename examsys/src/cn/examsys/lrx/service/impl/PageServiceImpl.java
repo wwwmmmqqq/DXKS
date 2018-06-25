@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.bean.Grade;
 import cn.examsys.bean.Option;
+import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.Subject;
 import cn.examsys.bean.User;
@@ -95,6 +96,16 @@ public class PageServiceImpl implements PageService {
 	public List<Question> loadQuestionList(User sessionUser, int sid) {
 		try {
 			return QuestionListTool.queryQuestionList(dao, sid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Paper loadPaper(int sid) {
+		try {
+			return dao.findOneByHql("from Paper where sid=?", new Object[]{sid});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

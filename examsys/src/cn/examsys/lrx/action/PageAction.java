@@ -53,6 +53,7 @@ public class PageAction extends CommonAction {
 	public String startExam() {
 		
 		queList = service.loadQuestionList(paper.getSid());
+		paper = service.loadPaper(paper.getSid());
 		session.setAttribute("currentPaper", paper.getSid());
 		
 		

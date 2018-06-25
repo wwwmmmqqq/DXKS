@@ -299,6 +299,14 @@
 	</body>
 
 	<script type="text/javascript" src="js/search.js"></script>
-	
+	<script type="text/javascript">
+	function checkQuestion(sid, point) {
+		$.post("checkQuestion", {
+			"sid":sid
+			,"scoring":point
+		}, function(data) {
+			alert(data.result);
+		});
+	}
 	</script>
 </html>
