@@ -758,7 +758,11 @@
 		    					opt.value = li[i].sid;
 		    					opt.innerText = li[i].name;
 		    					subjectGroup.appendChild(opt);
-		    					paperSubjectGroup.appendChild(opt);
+		    					
+		    					var opt1 = document.createElement("option");
+		    					opt1.value = li[i].sid;
+		    					opt1.innerText = li[i].name;
+		    					paperSubjectGroup.appendChild(opt1);
 		    				}
 		    			});
 		    		}
