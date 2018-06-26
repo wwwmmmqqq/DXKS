@@ -24,4 +24,5 @@ Array.prototype.remove = function (obj) {
 		}
 		this.length--;
 	}
+	return i;
 };

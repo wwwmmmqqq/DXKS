@@ -155,7 +155,7 @@
 		    			</div>
 		    			<div class="basket-foot">
 		    				<a id="to-paper-admin-edit" data-method="post" class="basket-btn" href="" style="display: none">编辑</a>
-		    				<a id="to-paper-edit" data-method="post" class="basket-btn" href="apaper.jsp">生成试卷</a>
+		    				<a id="to-paper-edit" data-method="post" class="basket-btn" href="javascript:void(0)">生成试卷</a>
 		    				<a id="to-paper-admin-cancel" class="basket-btn" href="" style="display: none">取消</a>
 		    			</div>
 		    		</div>
@@ -163,16 +163,24 @@
 		    
 		    	<!--试题篮  end -->
 		    	
-		    	
 		    	<div class="papermanage">
-		    	
+		    		<div>
+		    			<label>试卷名称：<input id="paperName" type='text' placeholder="试卷名称"></label>
+		    			<label>考试科目：
+		    				<select id="paperSubject">
+		    					<optgroup label="考试科目" id="paperSubjectGroup"></optgroup>
+		    				</select>
+		    			</label>
+		    			<label>开始时间：<input id="examStart" type='text' placeholder="开始时间"></label>
+		    			<label>结束时间：<input id="examEnd" type='text' placeholder="结束时间"></label>
+		    		</div>
 		    	    <div id="flip"><i class="fa fa-search-minus">
-		    	    </i>条件搜索</div>
+		    	    </i>搜索条件</div>
 		    		<div id="panel">
 	    				<div class="searchpanel" style="float: left;">
 	    					<ul>
 	    						<li id="qtype">
-	    							<label>题目类型</label>
+	    							<label>搜索类型</label>
 	    							<select id="typeSels" onchange="selType(this.value)">
 	    							    <optgroup label="选择试题类型">
 		    								<option value="">全部</option>
@@ -196,7 +204,7 @@
 	    							</select>
 	    						</li>
 	    						<li id="qdiffer"><label>科目</label>
-	    							<select id="subjectSels" onchange="selSubject(this.value)">
+	    							<select class="subjectSels" onchange="selSubject(this.value)">
 	    								<optgroup label="科目" id="subjectGroup">
 	    									<option value="">全部</option>
 	    								</optgroup>
@@ -220,6 +228,10 @@
 		    		<script type="text/javascript">
 		    		
 		    		var questionIds = [];
+		    		var points = {};
+		    		
+		    		var teacherNames = [];
+		    		var teacherIds = [];
 		    		
 		    		var type = "Single";
 		    		var diff = "";
@@ -227,6 +239,7 @@
 		    		var title = "";
 		    		var knowledge = "";
 		    		var jsons = {
+		    			"page":1,
 		    			"examSid":"${examSid}",
 		    			"keys[0]":"type",
 		    			"keys[1]":"difficultyValue",
@@ -264,6 +277,8 @@
 		    			jsons["vals[4]"] = s;
 		    			doSearch();
 		    		}
+		    		loadTeachers();
+		    		loadSubjects();
 		    		doSearch();
 		    		function doSearch() {
 		    			$.post("searchQuestionsHandConstitute",jsons, function(data) {
@@ -276,7 +291,6 @@
 		    			});
 		    		}
 		    		
-		    		loadSubjects();
 		    		function loadSubjects() {
 		    			$.post("loadSubjects", null, function(data) {
 		    				var li = data.list;
@@ -285,6 +299,7 @@
 		    					opt.value = li[i].sid;
 		    					opt.innerText = li[i].name;
 		    					subjectGroup.appendChild(opt);
+		    					paperSubjectGroup.appendChild(opt);
 		    				}
 		    				loadDiffCounts();
 		    			});
@@ -328,6 +343,19 @@
 		    				cssstyle = "style='background-color:green;border-color:green'";
 		    				btnText = "减选题";
 		    			}
+		    			
+		    			var checkerHtml = "<input type='hidden' id='teacherSel"+q.sid+"' />";
+		    			try {
+		    				if(q.type=='Subjective') {
+				    			checkerHtml = "指定老师批改<select id='teacherSel"+q.sid+"'><optGroup label='指定老师批改'>";
+				    			for(var i=0;i<teacherIds.length;i++) 
+					    			checkerHtml+="<option value='"+teacherIds[i]+"'>"+teacherNames[i]+"</option>";
+				    			checkerHtml += "</optGroup></select>";
+		    				}
+		    			}catch(e) {
+		    				alert(e);
+		    			}
+		    			
 		    			var htm = "<li id='q-item-"+q.sid+"' class='q-item-class'>"
 		    				+"	<div class='search-exam'>"
 		    				+"		<div class='exam-head'>"
@@ -356,7 +384,10 @@
 		    				+"						<a href='javascript:void(0)'>答案："+answer+"</a>"
 		    				+"					</p>"
 		    				+"					<p class='exam-foot-right'>"
-		    				+"						<button type='button' class='btn btn-primary' "+cssstyle+" onclick='addQuestion(this, "+q.sid+")'>"+btnText+"</button>"
+		    				+checkerHtml
+		    				+"分值<input id='point_"+q.sid+"' placeholder='分值' style='width:48px' type='number' value='1'>"
+		    				+"						<button type='button' class='btn btn-primary' "
+		    				+								cssstyle+" onclick='addQuestion(this, "+q.sid+", point_"+q.sid+".value, teacherSel"+q.sid+".value)'>"+btnText+"</button>"
 		    				+"					</p>"
 		    				+"				</div>"
 		    				+"			</div>"
@@ -366,8 +397,14 @@
 		    				return htm;
 		    		}
 		    		
-		    		
-		    		function addQuestion(self, n) {
+		    		function addQuestion(self, n, point, teacherId) {
+		    			if(point == '') {
+		    				alert("请输入分值");
+		    				return;
+		    			}
+		    			points[n+""] = point;
+		    			teacherIds[n+""] = teacherId;
+		    			
 		    			if(!questionIds.contains(n)) {
 		    				questionIds.push(n);
 		    				$(self).css({
@@ -395,21 +432,60 @@
 		    			}
 		    			$(".baskrt-list").html(basketHtml);
 		    			
-		    			
-		    			$(".little-box").hover(function() {
-			    			$("#q-item-" + $(this).text()).show();
-			    		}, function() {
-			    			$("#q-item-" + $(this).text()).hide();
-			    		});
+		    			var lastClicked = null;
+		    			var lastBox = null;
+		    			$(".little-box").click(function() {
+		    				if(lastClicked == $(this).text()) {
+		    					$("#q-item-" + $(this).text()).hide();
+			    				$(".searchlist").show();
+			    				lastClicked = null;
+			    				lastBox = null;
+			    				$(this).css({"background-color":"white"});
+		    				} else {
+		    					$("#q-item-" + $(this).text()).show();
+			    				$(".searchlist").hide();
+			    				$("#q-item-"+lastClicked).hide();
+			    				$(lastBox).css({"background-color":"white"});
+		    					$(this).css({"background-color":"rgba(100,100,100,0.4)"});
+		    					lastClicked = $(this).text();
+		    					lastBox = $(this);
+		    				}
+		    			});
 		    			
 		    		}
 		    		
+		    		function loadTeachers() {
+		    			$.post("loadTeachers", null, function(data) {
+		    				var li = data.list;
+		    				for(var i=0;i<li.length;i++) {
+		    					teacherIds.push(li[i].userId);
+		    					teacherNames.push(li[i].name);
+		    				}
+		    			});
+		    		}
 		    		
-		    		function submitHandVolume() {
-		    			$("createPaperHand", {
-		    				
-		    			}, function(data) {
-		    				
+		    		$("#to-paper-edit").click(function() {
+		    			submitHandVolume($("#paperName").val(), $("#examStart").val()
+		    						, $("#examEnd").val(), $("#paperSubject").val());
+		    		});
+		    		
+		    		function submitHandVolume(title, examStart, examEnd, subjectRef) {
+		    			var jsonDatas = {
+		    					"paper.examRef":"${examSid}",
+		    					"paper.name":title,
+		    					"paper.examStart":examStart,
+		    					"paper.examEnd":examEnd,
+		    					"paper.subjectRef":subjectRef
+		    			};
+		    			
+		    			for(var i=0;i<questionIds.length;i++) {
+		    				jsonDatas["qids["+i+"]"] = questionIds[i];
+		    				jsonDatas["points["+i+"]"] = points[questionIds[i]+''];
+		    				jsonDatas["userIds["+i+"]"] = teacherIds[questionIds[i]+''];
+		    			}
+		    			
+		    			$.post("createPaperHand", jsonDatas, function(data) {
+		    				window.open("loadAPaper?paper.sid=" + data.result);
 		    			});
 		    		}
 		    		</script>
@@ -419,8 +495,10 @@
 		    				试题列表
 		    			</header>
 		    			<div class="panel-body panelbod">
-		    				<div class="searchlist">
+		    				<ul>
 		    					<div id="choosedQuestionBox"></div>
+		    				</ul>
+		    				<div class="searchlist">
 		    					<ul id="question-box">
 		    						<li>
 		    							<div class="search-exam">
@@ -453,7 +531,7 @@
 		    							    				<a href="javascript:void(0)">答案：</a>
 		    							    			</p>
 		    							    			<p class="exam-foot-right">
-		    							    				<button type="button" class="btn btn-primary" onclick="addQuestion(this, 0)" >+选题</button>
+		    							    				<button type="button" class="btn btn-primary" onclick="addQuestion(this, 0, 2)" >+选题</button>
 		    							    			</p>
 		    							    		</div>
 		    							    	</div>

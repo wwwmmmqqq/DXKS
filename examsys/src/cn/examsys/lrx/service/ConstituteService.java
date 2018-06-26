@@ -14,12 +14,16 @@ public interface ConstituteService {
 			ConstituteVO single, ConstituteVO trueOrFalse,
 			ConstituteVO multiple, ConstituteVO fills, ConstituteVO subjective);
 
-	int createPaperHand(User sessionUser, List<Integer> qids, int sid,
+	/*int createPaperHand(User sessionUser, List<Integer> qids, int sid,
 			List<Integer> points, String examStart, String examEnd,
-			String name, int examRef, int subjectRef);
+			String name, int examRef, int subjectRef);*/
 
 	List<Map<String, Integer>> loadQuestionCountByType(int subjectRef);
 
 	List<Question> searchQuestion(User sessionUser, List<String> keys, List<String> values);
+
+	int createPaperHand(User sessionUser, List<Integer> qids,
+			List<Integer> points, List<String> userIds, String examStart,
+			String examEnd, String name, int examRef, int subjectRef);
 
 }
