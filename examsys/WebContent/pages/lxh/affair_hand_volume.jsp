@@ -727,7 +727,8 @@
 		    					htmls += getItemHtm(li[i]);
 		    				}
 		    				$("#question-box").html(htmls);
-		    				callback(data.list.length > 0);
+		    				if(callback != null)
+		    					callback(data.list.length > 0);
 		    			});
 		    		}
 		    		
@@ -756,7 +757,6 @@
 		    					subjectGroup.appendChild(opt);
 		    					paperSubjectGroup.appendChild(opt);
 		    				}
-		    				loadDiffCounts();
 		    			});
 		    		}
 		    		

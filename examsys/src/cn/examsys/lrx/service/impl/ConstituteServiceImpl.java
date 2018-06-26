@@ -189,6 +189,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 			return -1;
 		}
 		Paper paper = new Paper();
+		paper.setSid(-1);
 		paper.setExamRef(examRef);
 		paper.setName(name);
 		paper.setSubjectRef(subjectRef);
@@ -215,13 +216,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 				e.printStackTrace();
 			}
 		}
-		
-		try {
-			return (Integer) dao.saveEntity(paper);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
+		return paper.getSid();
 	}
 
 	@Override
