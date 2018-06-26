@@ -177,6 +177,7 @@ public class PersonalServiceImpl implements PersonalService {
 			User user = new User();
 			user.setUserId(userId);
 			user.setPsw(psw);
+			user.setType("学生");
 			user.setEmail(email);
 			try {
 				dao.saveEntity(user);
