@@ -964,3 +964,12 @@ body {
 	border: 0px;
 	width: 60%;
 }
+.now{
+	background-color: #425164;
+}
+#date-wrapper{
+	display: block ;
+	width: 50% !important;
+	margin-left: -20% !important;
+	z-index: 100000 !important;
+}

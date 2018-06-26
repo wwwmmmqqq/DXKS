@@ -709,6 +709,7 @@ ul{
 button{
 	color: #999;
 }
+<<<<<<< HEAD
 
 
 /*导出历史成绩模态框*/
@@ -780,3 +781,8 @@ button{
 .foot .all-choose{
 	float:left;
 }
+=======
+.now{
+	background-color: #425164;
+}
+>>>>>>> origin/gy-625

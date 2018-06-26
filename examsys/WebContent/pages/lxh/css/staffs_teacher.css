@@ -406,10 +406,9 @@ th {
 }
 .modal-body input{
 	border-radius:5px ;
-	border: 1px solid black;
+	
 }
 .modal-body .hover:hover{
-	border: 1px solid #0e92cf;
 	border-radius:5px ;
 }
 .modal-header .close1{
@@ -529,7 +528,6 @@ th {
 	border: 1px solid black;
 }
 .modal-body .option:hover{
-	border: 1px solid #0e92cf;
 	border-radius:5px ;
 }
 .modal-footer{
@@ -558,10 +556,9 @@ th {
 
 .modal-body input{
 	border-radius:5px ;
-	border: 1px solid black;
 }
 .modal-body .hover:hover{
-	border: 1px solid #0e92cf;
+	
 	border-radius:5px ;
 }
 .modal-header .close1{
@@ -655,4 +652,15 @@ th {
 }
 button{
 	color: #999;
+}
+.now{
+	background-color: #425164;
+}
+
+.choose-sex .hover{
+	width:60%;
+	display:inline;
+}
+.modal-body input{
+	display:inline;
 }

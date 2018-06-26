@@ -11,10 +11,13 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
+		<link rel="stylesheet" href="css/inviteSchool.css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/test.js" ></script>
+
 	</head>
 	<body>
 		
@@ -74,15 +77,40 @@
 
 			</div>
 		  	<div class="light_bottom"> 
-			  	<ul class="side_nav">
-			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
-			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<!--<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		 <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
-			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
-			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
-			  	</ul>
+
+			  	 <ul class="side_nav">
+		    			<a href="staffs_student.jsp">
+			    			<li class="side_nav1 ">
+								学生信息管理
+							</li>
+						</a>
+						<a href="staffs_teacher.jsp">
+							<li class="side_nav1">
+								教师信息管理
+							</li>
+						</a>
+						<a href="affair_index.jsp">
+							<li class="side_nav1">
+								试卷管理
+							</li> 
+						</a>
+						<!-- <li class="side_nav1">
+							<a href="affair_hand_volume.jsp">手动组卷</a>
+						</li>
+						<li class="side_nav1">
+							<a href="affair_intel_volume.jsp">智能组卷</a>
+						</li> -->
+						<a href="history_staffs.jsp">
+							<li class="side_nav1">
+								历史成绩
+							</li>
+						</a>
+						<a href="test.jsp">
+							<li class="side_nav1 now">
+								考次计划
+							</li>
+						</a>
+		    		</ul>
 		  </div>
 		</nav>
 		
@@ -112,6 +140,7 @@
 					</div>
 	         
 			   <div class="search_hide" id="hide">
+<<<<<<< HEAD
                    <input type="text" class="input_hide1"  id="name1" placeholder="考试计划名称"/>
 				   <input type="text" class="input_hide" id="userId1"  placeholder="计划时间"/>
 				   <input type="text" class="input_hide" id="userId1"  placeholder="受邀学校"/>
@@ -119,9 +148,32 @@
 				   <input type="reset" class="btn clean">
 			   </div>
            </div>
+=======
+                   <input type="text" class="input_hide1 form-control "  id="name1" placeholder="考试计划名称"/>
+				   <input type="text" class="input_hide form-control mydate" id="userId1"  placeholder="计划时间"/>
+				   <input type="text" class="input_hide form-control" id="userId1"  placeholder="受邀学校"/>
+				   <input type="text" class="stext hover form-control" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper">
+											<div id="choose-box">
+												<div id="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province"></div>
+												<div id="choose-a-school"></div>
+												<div id="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
+				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
+				   <input type="reset" class="btn clean">
+			   </div>
+          
+>>>>>>> origin/gy-625
 					
 			
 			<!--表格-->
+			<div>
 			<div class="tip">考试计划</div>
 			<table class="table table-striped tb1">
 				<thead class="thead-light">
@@ -156,6 +208,7 @@
 			        </tr>
 				</tbody>
 			</table>
+			 </div>
 				<!--<div class="bottom_button">
 					<button class="btn btn3" type="button" >全选</button>
 					<button class="btn btn4" type="button" >全不选</button>
@@ -379,27 +432,30 @@
 							    <tr>
 							        <td >
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
-							        	<input type="text" class="hover" id="ex_title">
+							        	<input type="text" class="hover form-control" id="ex_title">
 							        </td>
 							    </tr>
 							    <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover" id="ex_periodStart">
+							        	<input type="text" class="hover form-control mydate" id="add-start">
+							        	
+							        	
 							        </td>
 							    </tr>
 							     <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover" id="ex_periodEnd">
+							        	<input type="text" class="hover form-control mydate"  id="add-end">
+							        	
 							        </td>
 							     </tr>
 							        <tr>
 							        	<td >
 							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
-							        		<input type="text" class="hover" id="ex_invitee">
+							        		<input type="text" class="hover form-control" id="ex_invitee">
 							        	</td>
 							        </tr>
 							       
@@ -436,33 +492,37 @@
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;编&nbsp;号&nbsp;
+<<<<<<< HEAD
 							        	<input type="text" class="hover" readonly="readonly" id="exam_sid">
+=======
+							        	<input type="text" class="hover form-control" readonly="readonly" id="exam_sid">
+>>>>>>> origin/gy-625
 							        </td>
 							    </tr>
 							    <tr>
 							        <td >
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
-							        	<input type="text" class="hover" id="exam_title">
+							        	<input type="text" class="hover form-control" id="exam_title">
 							        </td>
 							    </tr>
 							    <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover" id="exam_periodStart">
+							        	<input type="text" class="hover form-control mydate" id="exam_periodStart">
 							        </td>
 							    </tr>
 							     <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover" id="exam_periodEnd">
+							        	<input type="text" class=" hover form-control mydate" id="exam_periodEnd">
 							        </td>
 							     </tr>
 							        <tr>
 							        	<td >
 							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
-							        		<input type="text" class="hover" id="exam_invitee">
+							        		<input type="text" class="hover form-control" id="exam_invitee">
 							        	</td>
 							        </tr>
 							       
@@ -549,8 +609,13 @@
 			</div>
 		</div>
 		
+<<<<<<< HEAD
 		<!--邀请通知-->
 		<div class="modal fade" id="myModal-invite-notice">
+=======
+		<!--模态框查看通知-->
+		<div class="modal fade" id="myModal-email">
+>>>>>>> origin/gy-625
 			    	<div class="modal-dialog">
 			      	<div class="modal-content">
 			   
@@ -657,7 +722,56 @@
 		    </div>
 		  </div>
 		
+<<<<<<< HEAD
+=======
+		<!--模态框阅卷邀请通知-->
+		<div class="modal fade" id="myModal_read">
+		    	<div class="modal-dialog">
+		      	<div class="modal-content">
+		   
+		        
+		        <div class="modal-header">
+		          <h4 class="modal-title">通知</h4>
+		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		        </div>
+		   
+		        
+		        <div class="modal-body">
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept" >接受</button>
+		          		<button class="btn btn-danger refuse"  >拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		        </div>
+		   
+		       
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+		        </div>
+		      </div>
+		    </div>
+  		</div>
+
+>>>>>>> origin/gy-625
 	</body>
+	<script type="text/javascript" src="js/jquery.date.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
 <script>
 loadMyExamList(1);
 var currentPage=1;
@@ -686,7 +800,10 @@ function loadMyExamList(page) {
 function getItemHtml(index,obj,number){
 	var htm="<tr class='tb_width' id='exam"+obj.sid+"'>"
 
+<<<<<<< HEAD
 	+"<td>"+obj.sid+"</td>"
+=======
+>>>>>>> origin/gy-625
 	+"<td>"+obj.title+"</td>"
 	+"<td>"+obj.time+"</td>"
 	+"<td>"+obj.periodStart+"</td>"
@@ -701,6 +818,7 @@ function getItemHtml(index,obj,number){
 	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
 	+"</tr>"; 
     return htm;
+
 }
 function getLiHtml(index) {
 	if(index==1){
@@ -895,6 +1013,25 @@ $("#find").click(function(){
 		}); */
 });
 
+<<<<<<< HEAD
 </script>
+=======
+$.datetimepicker.setLocale('ch');
+$('.mydate').datetimepicker({
+	yearStart : 1990, // 设置最小年份
+	yearEnd : 2050, // 设置最大年份
+	yearOffset : 0, // 年偏差
+	timepicker : false, // 关闭时间选项
+	format : 'Y-m-d', // 格式化日期年-月-日
+	minDate : '1990/01/01', // 设置最小日期
+	maxDate : '2030/01/01', // 设置最大日期
+});
+
+
+
+</script>
+<script type="text/javascript" src="js/school.js"></script>
+<script type="text/javascript" src="js/inviteSchool.js" ></script>
+>>>>>>> origin/gy-625
 <script type="text/javascript" src="js/test.js" ></script>
 </html>
