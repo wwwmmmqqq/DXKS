@@ -140,15 +140,7 @@
 					</div>
 	         
 			   <div class="search_hide" id="hide">
-<<<<<<< HEAD
-                   <input type="text" class="input_hide1"  id="name1" placeholder="考试计划名称"/>
-				   <input type="text" class="input_hide" id="userId1"  placeholder="计划时间"/>
-				   <input type="text" class="input_hide" id="userId1"  placeholder="受邀学校"/>
-				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
-				   <input type="reset" class="btn clean">
-			   </div>
-           </div>
-=======
+
                    <input type="text" class="input_hide1 form-control "  id="name1" placeholder="考试计划名称"/>
 				   <input type="text" class="input_hide form-control mydate" id="userId1"  placeholder="计划时间"/>
 				   <input type="text" class="input_hide form-control" id="userId1"  placeholder="受邀学校"/>
@@ -169,7 +161,6 @@
 				   <input type="reset" class="btn clean">
 			   </div>
           
->>>>>>> origin/gy-625
 					
 			
 			<!--表格-->

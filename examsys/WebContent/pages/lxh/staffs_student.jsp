@@ -12,9 +12,9 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
 		<link rel="stylesheet" href="css/inviteSchool.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
+		
+		
 	</head>
 
 	<body>
@@ -129,16 +129,13 @@
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 						</button> -->
-<<<<<<< HEAD
-						<button type="button" class="btn btn2" id="find">
-=======
+
 						<div class="top_search">
 							<!-- <button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addstudent">
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 							</button> -->
 							<button type="button" class="btn btn2">
->>>>>>> origin/gy-625
 								<i class="fa fa-search-minus"></i>
 								条件搜索
 						</button>	
@@ -761,7 +758,10 @@
 	    	</div>
 	    </div>
 	    
-		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 	</body>
 	
 	<script type="text/javascript" src="js/school.js"></script>
@@ -794,9 +794,8 @@
 				  	number +=i+1;
 		 			htm += getItemHtml(i, userList[i],number);
 		 		}
-			 $('#student-list-box').html(htm);alert("lb");
-			 for(var j=1;j<=totalPage;j++) {alert("ll");
-				 alert(j);
+			 $('#student-list-box').html(htm);
+			 for(var j=1;j<=totalPage;j++) {
 				 ht += getLiHtml(j);
 			 }
 			 $('.pagination').html(ht);
@@ -843,7 +842,6 @@
 		return htm;
 	}
 	function getLiHtml(index) {
-		alert(index);
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
 				+"<li class='page-item active'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
@@ -971,7 +969,7 @@
 						"user.phone":$('#student_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-							alert("修改成功!");
+							toastr.success("修改成功!");
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });

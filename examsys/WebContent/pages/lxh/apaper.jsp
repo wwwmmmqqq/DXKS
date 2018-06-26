@@ -27,9 +27,8 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
-        
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+        <link href="css/toastr.css" rel="stylesheet" type="text/css" />
+     
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -573,14 +572,16 @@
 	    		</div>
 	    	</div>
 	    </div>
-		
+		 <script type="text/javascript" src="js/toastr.js"></script>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 	</body>
 	
 	<script type="text/javascript">
 	function delPaper() {
 		$.post("delPaper", {"sid":${paper.sid}}, function(data) {
 			if(data.result == "success") {
-				alert("删除成功!");
+				toastr.success("删除成功!");
 				window.close();
 			}
 		});

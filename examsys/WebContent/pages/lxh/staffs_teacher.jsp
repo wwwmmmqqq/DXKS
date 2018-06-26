@@ -11,9 +11,8 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
+		
 	</head>
 
 	<body>
@@ -731,7 +730,10 @@
 	    	</div>
 	    </div>
 	    
-		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="js/toastr.js"></script>
 	</body>
 <script type="text/javascript">
 	loadTeacherList(1);
@@ -894,16 +896,11 @@
 			 		"user.phone":$('#te_phone').val(),
 			 		"user.psw":"000000"
 			 	},function(data){
-			 		/* alert("hhh");
-			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone);  */
-			 		alert(data.result);    //message为user返回信息
 			 		location.href="staffs_teacher.jsp";
 				 }
 			)}
-<<<<<<< HEAD
 	
-	function editTeacher() {
-		/* alert("checkInput()"+checkInput()); */
+	/* function editTeacher() {
 		if(checkInput()==false){
 			return false;
 			} else{
@@ -924,8 +921,7 @@
 					  	location.href="staffs_teacher.jsp";
 				  	}
 			  });
-			}
-=======
+			} */
 	 
 	 
 	 
@@ -938,11 +934,11 @@
 			console.log(myreg.test(mobile));
 			//手机的格式
 		        if (!myreg.test(mobile)) {   			//如果手机号码的格式与正则的不符合，就提醒
-		            alert("手机号格式有误");        
+		            toastr.error("手机号格式有误");        
 		               return false;
 		           }
 		        else if(!myid.test(id)) {   			//如果手机号码的格式与正则的不符合，就提醒
-		            alert("身份证格式有误");        
+		        	toastr.error("身份证格式有误");        
 		               return false;
 		           }
 		        
@@ -967,14 +963,13 @@
 		        							"user.phone":$('#teacher_phone').val()
 		        						},function(data) {
 		        							if(data.result=="编辑用户成功") {
-		        								alert("修改成功！");
+		        								toastr.success("修改成功！");
 		        						  	location.href="staffs_teacher.jsp";
 		        					  	}
 		        				  });
 		        				}
 		        			}
 		           }
->>>>>>> origin/gy-625
 		}
 	 
 	 
@@ -1006,7 +1001,7 @@
 	function checkInput() {
 		$("#editTeacher input[type=text]").each(function() {
 			if($(this).val()=="") {	
-				alert("请将信息填写完整");
+				toastr.warning("请将信息填写完整");
 				return false;
 			}else{
 				return true;
@@ -1014,7 +1009,6 @@
 		});	
 	}
 	
-<<<<<<< HEAD
 	//搜索重置
 	function clean() {
 		$("#userId1").val('');
@@ -1039,12 +1033,5 @@
 			$("#class1").slideToggle("slow");
 		});*/
 });
-=======
-	
-	
-	
-
-	
->>>>>>> origin/gy-625
 </script>
 </html>

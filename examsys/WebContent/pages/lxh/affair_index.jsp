@@ -933,7 +933,6 @@
 	}
 	function jumpPage() {
 		var juPage=$('#jpage').html();
-		alert(juPage);
 		if(currentPage==juPage || juPage<1 || juPage>totalPage){
 			showPaperList(currentPage);
 		} else{
@@ -964,7 +963,6 @@
 	
 function editePaper() {
 		$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
-		alert(data.result);
 	})
 	
 }

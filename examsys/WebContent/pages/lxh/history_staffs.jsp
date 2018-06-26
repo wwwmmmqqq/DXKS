@@ -76,15 +76,7 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
-<<<<<<< HEAD
-			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
-			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<!--<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		 <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
-			  		<li class="side_nav1 now"><a href="history_staffs.jsp">历史成绩</a></li>	
-			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
-=======
+
 			  		<ul class="side_nav">
 		    			<a href="staffs_student.jsp">
 			    			<li class="side_nav1 ">
@@ -118,7 +110,6 @@
 							</li>
 						</a>
 		    		</ul>
->>>>>>> origin/gy-625
 			  	</ul>
 		  </div>
 		</nav>
@@ -730,10 +721,7 @@
 				  "page":1
 			  }, function(data) {
 				  var list = data.list;
-<<<<<<< HEAD
-=======
-				  alert(list);
->>>>>>> origin/gy-625
+
 				  var htm = "";
 				  for(var i=0;i<list.length;i++) {
 					 htm+=getMyExam(i,list[i].exam,list[i].paper);
