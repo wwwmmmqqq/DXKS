@@ -302,8 +302,8 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 		voSubjective.setDiff3Point(13);
 		voSubjective.setDiff4Point(15);
 		
-		constitute.createPaperAuto(examRef, subjectRef, paperName, Tool.time(), Tool.time()
-				, voSingle, voTrueOrFalse, voMultiple, voFills, voSubjective);
+		/*constitute.createPaperAuto(examRef, subjectRef, paperName, Tool.time(), Tool.time()
+				, voSingle, voTrueOrFalse, voMultiple, voFills, voSubjective);*/
 		
 	}
 	

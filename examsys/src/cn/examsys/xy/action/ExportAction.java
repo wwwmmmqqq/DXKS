@@ -30,15 +30,13 @@ import cn.examsys.common.Export;
 import cn.examsys.xy.service.GradeService;
 import cn.examsys.xy.service.UserService;
 @Namespace("/")
-@ParentPackage("json-default")
+@ParentPackage("struts-default")
 @Controller("exportAction")
 @Scope("prototype")
 public class ExportAction extends Export {
 	@Autowired
 	UserService userService;
-	@Autowired
-	GradeService gradeService;
-	
+
 	String title;
 	Paper paper;
 	
@@ -60,13 +58,14 @@ public class ExportAction extends Export {
 		this.title = title;
 	}
 
-	@Action(value="/export",results={@Result(type="json")},params={"contentType","text/html"})
+	@Action(value="/export")
 	public String ExportAction() {
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		try {
+		try { 
 			OutputStream out = ServletActionContext.getResponse().getOutputStream();
-			User user=(User) session.getAttribute("user");
-			List<User> userList = userService.findAllUser(paper.getSid(),user.getCollegeName());
+			/*User user=(User) session.getAttribute("user");
+			user.setCollegeName("萍乡学院");*/
+			List<User> userList = userService.findAllUser(paper.getSid(),"萍乡学院");
 			title="成绩导出";
 			ExportUserScore(title, userList,out);
 			return null;
@@ -74,6 +73,6 @@ public class ExportAction extends Export {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "success";
+		return null;
 	}
 }
