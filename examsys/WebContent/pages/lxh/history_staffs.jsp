@@ -693,16 +693,16 @@
 			  $.post("loadInvitedExamPapers", {
 				  "page":1
 			  }, function(data) {
-				  var list = data.list;
+				  var list = data.list; 
 				  var htm = "";
-				  for(var i=0;i<list.length;i++) {
+				  for(var i=0;i<list.length;i++) { 
 					 htm+=getMyExam(i,list[i].exam,list[i].paper);
 				  }
 				  $('#paper_list_box').html(htm);
 			  });
 		  }
 		
-		function getMyExam(i,exam,paper) {
+		function getMyExam(i,exam,paper) {alert("i"+i);alert("exam"+exam);alert("paper"+paper);
 			var htm = "<tr>"
 			+"	<td>"+(i+1)+"</td>"
 			+"	<td>"+paper.subjectName+"</td>"

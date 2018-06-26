@@ -178,7 +178,7 @@
 		    						<th>查看</th>
 		    					</tr>
 		    				</thead>
-		    				<tbody id="paper-list-box">
+		    				<tbody id="paper-list-box" class="tlist">
 		    					<tr id=''>
 			    					<td id=''>
 			    						1
@@ -748,7 +748,7 @@
 			+"	<td>"+obj.examStart+"</td>"
 			+"	<td>"+obj.examEnd+"</td>"
 			+"  <td>"
-			+"  <a href='loadAPaper?paper.sid="+obj.sid+"'><i class='fa fa-eye see'></i></a>&nbsp;" 
+			+"  <a href='loadAPaper?paper.sid="+obj.sid+"'><i class='fa fa-eye eye'></i></a>&nbsp;" 
 			+"  <i class='fa fa-trash-o' onclick='deletePaper("+obj.sid+")'></i>"
 			+" </td>"
 			+"</tr>";

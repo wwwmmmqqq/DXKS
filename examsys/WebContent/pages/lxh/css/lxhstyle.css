@@ -351,6 +351,10 @@ li{
 	margin: 20px 20px 0px 0px;
 	float: left;
 }
+.tlist .eye {
+	color: black;
+}
+
 /*autocompose*/
 .autocompose {
 	width: auto;
