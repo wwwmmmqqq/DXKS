@@ -107,7 +107,7 @@
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
-						<li class="side_nav1">
+						<li class="side_nav1 now">
 							<a href="test.jsp">考次计划</a>
 						</li>
 					</ul>

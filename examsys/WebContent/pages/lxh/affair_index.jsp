@@ -94,7 +94,7 @@
 							<a href="staffs_teacher.jsp">教师信息管理</a>
 						</li>
 						<li class="side_nav1">
-							<a href="affair_index.jsp">试卷管理 </a>
+							<a href="affair_index.jsp now">试卷管理 </a>
 						</li>
 					  <!--   <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>

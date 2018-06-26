@@ -11,7 +11,9 @@
    background-color: black;
 }
 
-
+.now{
+	background-color: #425164;
+}
 /*侧面导航栏*/
 
 .navbar.bg-light {

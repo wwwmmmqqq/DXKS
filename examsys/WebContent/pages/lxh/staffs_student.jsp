@@ -73,7 +73,7 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
+			  		<li class="side_nav1 now"><a href="staffs_student.jsp">学生信息管理</a></li>
 			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
 			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
 			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
