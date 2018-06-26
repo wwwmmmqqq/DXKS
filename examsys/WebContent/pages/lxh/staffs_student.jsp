@@ -928,7 +928,7 @@
 		if(confirm("确定要退出吗？")) {
 			$.post("loginOut",null,function(data) {
 				if(data.result=="成功退出") {
-						location.href="../gy/gy_login.jsp";
+						location.href="../gy/login.jsp";
 				}
 		  });
 		}  
