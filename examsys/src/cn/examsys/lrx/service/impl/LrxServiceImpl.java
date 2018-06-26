@@ -146,13 +146,13 @@ public class LrxServiceImpl implements LrxService {
 	@Override
 	public List<Question> searchQuestionsHandConstitute(User sessionUser,
 			List<String> keys, List<String> vals, int page) {
-		
 		try {
 			for (int i = 0; i < vals.size(); i++) {
-				if (!"".equals(vals.get(i).trim())) 
-					vals.set(i, "%"+vals.get(i).trim()+"%");
-				else 
+				if ("".equals(vals.get(i).trim())) {
 					vals.set(i, "%");
+				} else {
+					vals.set(i, "%"+vals.get(i).trim()+"%");
+				}
 			}
 			String hql = QLBuilder.builderHQL(keys, Question.class, QLBuilder.MODE_LIKE, QLBuilder.LOGICAL_AND);
 			System.out.println(hql);
