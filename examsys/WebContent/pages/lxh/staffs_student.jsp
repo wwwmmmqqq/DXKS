@@ -128,7 +128,10 @@
 							添加学生
 						</button> -->
 						<div class="top_search">
-							
+							<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addstudent">
+							<i class="fa fa-plus-circle"></i>
+							添加学生
+							</button>
 							<button type="button" class="btn btn2">
 								<i class="fa fa-search-minus"></i>
 								条件搜索
@@ -292,25 +295,25 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" >
+										<input type="text" class="hover form-control" >
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover"  id="">
+										<input type="text" class="hover form-control "  id="">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover"  id="">
+										<input type="text" class="hover form-control"  id="">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover"  id="">
+										<input type="text" class="hover form-control"  id="">
 									</td>
 								</tr>
 
