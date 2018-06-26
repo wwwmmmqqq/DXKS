@@ -244,15 +244,11 @@ p{
 	margin-bottom: 10px;
 }
 .main .btn2{
-<<<<<<< HEAD
 	margin-top:10px;
-=======
-	margin-top: 10px;
->>>>>>> origin/gy-625
 	margin-left: 10px;
 }
 .main .top_search{
-	
+	margin-top: 10px;
 	float: left;
 	margin-left: 16px;
 }
@@ -417,10 +413,12 @@ th {
 	border:1px solid #bbb;
 }
 .modal-body input{
-	
+	border-radius:5px ;
+	border: 1px solid black;
 }
 .modal-body .hover:hover{
-	
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
 }
 .modal-header .close1{
 	display: block;
@@ -552,10 +550,12 @@ th {
 }
 
 .modal-body input{
-	
+	border-radius:5px ;
+	border: 1px solid black;
 }
 .modal-body .hover:hover{
-	
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
 }
 .modal-header .close1{
 	display: block;
@@ -644,10 +644,4 @@ th {
 }
 button{
 	color: #999;
-}
-.now{
-	background-color: #425164;
-}
-.modal-body input{
-	display:inline;
 }

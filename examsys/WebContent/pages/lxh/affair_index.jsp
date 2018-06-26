@@ -22,12 +22,9 @@
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
-<<<<<<< HEAD
        
        
        <script type="text/javascript" src="js/affair_index.js" ></script>
-=======
->>>>>>> origin/gy-625
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -58,11 +55,7 @@
 		    	    </button>
 		    		<div class="dropdown-content">
 		    			<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-<<<<<<< HEAD
 		    			<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
-=======
-		    			<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
->>>>>>> origin/gy-625
 		    		</div>
 		    	</div>
 		    
@@ -74,13 +67,8 @@
 		    			    			</a>
 		    			    	    </button>
 		    		<div class="dropdown-content">
-<<<<<<< HEAD
 		    			<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 		    			<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
-=======
-		    			<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
-		    			<a href="#" data-toggle="modal" data-target="#myModal-read">阅卷通知</a>
->>>>>>> origin/gy-625
 		    		</div>
 		    	</div>
 		    	
@@ -108,7 +96,11 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp now">试卷管理 </a>
 						</li>
-
+					  <!--   <li class="side_nav1">
+							<a href="affair_hand_volume.jsp">手动组卷</a>
+						</li>
+						<li class="side_nav1">
+							<a href="affair_intel_volume.jsp">智能组卷</a>
 						</li>  -->
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
@@ -116,7 +108,6 @@
 						<li class="side_nav1">
 							<a href="test.jsp">考次计划</a>
 						</li>
-
 		    		</ul>
 		    	</div>
 		    </nav>
@@ -151,10 +142,10 @@
 		    							</select>
 		    						</li>	    
 		    						<li id="startTime"><label>开始时间</label>
-		    							<input type="text" id="date3" data-options="{'type':'YYYY-MM-DD hh:mm','beginYear':2010,'endYear':2088}" style="width:166px;">
+		    							<input type="text" />
 		    						</li>
 		    						<li><label>结束时间</label>
-		    							<input type="text" id="date4" data-options="{'type':'YYYY-MM-DD hh:mm','beginYear':2010,'endYear':2088}" style="width:166px;">
+		    							<input type="text" />
 		    						</li>
 		    						<li><button type="submit" class="btn btn-default searchbtn"><i class="fa fa-search"></i></button></li>
 		    					</ul>		    					
@@ -322,201 +313,6 @@
 		   
 		        <!-- 模态框主体 -->
 		        <div class="modal-body">
-<<<<<<< HEAD
-=======
-						<table>
-							<tbody>
-								<tr>
-									<td>
-										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-		        </div>
-		   
-		        <!-- 模态框底部 -->
-		        <div class="modal-footer">
-		        	<button type="button" class="btn btn-primary add_invite">邀请</button>
-		            <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
-		        </div>
-		   
-		      </div>
-		    </div>
-		</div>
-
-		<!--模态框邀请学校参加考试-->
-		<div class="modal fade" id="myModal_invite_school">
-		    <div class="modal-dialog">
-		      <div class="modal-content">
-		   
-		        <!-- 模态框头部 -->
-		        <div class="modal-header">
-		          <h4 class="modal-title">邀请学校参加考试</h4>
-		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
-		        </div>
-		   
-		        <!-- 模态框主体 -->
-		        <div class="modal-body">
-						<table>
-							<tbody>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
-									</td>
-								</tr>
-								<tr>
-									<td>
-										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-		        </div>
-		   
-		        <!-- 模态框底部 -->
-		        <div class="modal-footer">
-		        	<button type="button" class="btn btn-primary add_invite">邀请</button>
-		            <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
-		        </div>
-		   
-		      </div>
-		    </div>
-		</div>
-      
-      	<!--模态框查看邀请通知-->
-		<div class="modal fade" id="myModal-email">
-		    	<div class="modal-dialog">
-		      	<div class="modal-content">
-		   
-		        
-		        <div class="modal-header">
-		          <h4 class="modal-title">通知</h4>
-		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
-		        </div>
-		   
-		        
-		        <div class="modal-body">
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept" >接受</button>
-		          		<button class="btn btn-danger refuse"  >拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		        </div>
-		   
-		       
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
-		        </div>
-		      </div>
-		    </div>
-  		</div>
-		
-		<!--模态框查看阅卷通知-->
-		<div class="modal fade" id="myModal-read">
-		    	<div class="modal-dialog">
-		      	<div class="modal-content">
-		   
-		        
-		        <div class="modal-header">
-		          <h4 class="modal-title">通知</h4>
-		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
-		        </div>
-		   
-		        
-		        <div class="modal-body">
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept" >接受</button>
-		          		<button class="btn btn-danger refuse"  >拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		        </div>
-		   
-		       
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
-		        </div>
-		      </div>
-		    </div>
-  		</div>
-      
-       <!--模态框修改试卷信息 -->
-		<div class="modal fade" id="myModal_check">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					模态框头部
-					<div class="modal-header">
-						<h4 class="modal-title">修改试卷信息</h4>
-						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-					</div>
-
-					模态框主体
-					<div class="modal-body">
->>>>>>> origin/gy-625
 						<table>
 							<tbody>
 								<tr>
@@ -904,9 +700,7 @@
 </body>
 	
 	
-	<script type="text/javascript" src="js/jquery.date.js" ></script>
 	<script type="text/javascript">
-	
 	showPaperList(1);
 	var currentPage = 1;
 	var totalPage = 3;
@@ -943,7 +737,7 @@
 	}
 	
 	function getItemHtml(index, obj) {
-		var htm = "<tr id=''>"
+		var htm = "<tr id='item"+obj.sid+"'>"
 			+"	<td>"+obj.sid+"</td>"
 			+"	<td>"+obj.examRef+"</td>"
 			+"	<td>"+obj.subjectRef+"</td>"
@@ -953,19 +747,37 @@
 			+"	<td>"+obj.examStart+"</td>"
 			+"	<td>"+obj.examEnd+"</td>"
 			+"  <td>"
-			+"  <a href='apaper.jsp?"+obj.sid+"'><i class='fa fa-eye see'></i></a>" 
-			/* +"  <i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='paperInfo(this)'></i>"
-			+"  <i class='fa fa-trash-o' onclick='deletePaper(this)'></i>" */
+			+"  <a href='loadAPaper?paper.sid="+obj.sid+"'><i class='fa fa-eye see'></i></a>&nbsp;" 
+			+"  <i class='fa fa-trash-o' onclick='deletePaper("+obj.sid+")'></i>"
 			+" </td>"
 			+"</tr>";
 		return htm;
 	}
 	
 function editePaper() {
+<<<<<<< HEAD
 		$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
 	})
 	
+=======
+	$.post("editPaper",{"paper.sid":1,"paper.name":"第一次考试"},function(data) {
+		alert(data.result);
+	});
 }
+
+function deletePaper(n) {
+	if(confirm("确认删除？")) {
+		$.post("delPaper",{"sid":n},function(data) {
+			if(data.result == "success") {
+				$('#item' + n).remove();
+			} else {
+				alert("删除失败");
+			}
+		});
+	}
+>>>>>>> parent of 93e94f9... Merge remote-tracking branch 'origin/gy-625' into wmq-06-26-2
+}
+
 function Out() {
 	if(confirm("确定要退出吗？")) {
 		$.post("loginOut",null,function(data) {
@@ -994,7 +806,6 @@ function loadNoticeList(page) {
 	  });
 }
 
-<<<<<<< HEAD
 function getLiHtml(index) {
 	if(index==1){
 		var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
@@ -1011,8 +822,6 @@ function getLiHtml(index) {
 	return ht;    
 }
 
-=======
->>>>>>> origin/gy-625
 /*搜索jquery隐藏显示面板*/
 $(document).ready(function() {
     $("#flip").click(function() {
@@ -1020,11 +829,5 @@ $(document).ready(function() {
     });
 });
 
-<<<<<<< HEAD
-=======
-$.date('#date3');
-$.date('#date4');
-
->>>>>>> origin/gy-625
 	</script>
 </html>

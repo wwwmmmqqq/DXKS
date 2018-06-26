@@ -11,10 +11,16 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
+<<<<<<< HEAD
 		<link rel="stylesheet" href="css/inviteSchool.css" />
 		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
 		
 		
+=======
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+>>>>>>> parent of 93e94f9... Merge remote-tracking branch 'origin/gy-625' into wmq-06-26-2
 	</head>
 
 	<body>
@@ -73,40 +79,15 @@
 
 			</div>
 			<div class="light_bottom"> 
-
-			  <ul class="side_nav">
-		    			<a href="staffs_student.jsp">
-			    			<li class="side_nav1 now">
-								学生信息管理
-							</li>
-						</a>
-						<a href="staffs_teacher.jsp">
-							<li class="side_nav1">
-								教师信息管理
-							</li>
-						</a>
-						<a href="affair_index.jsp">
-							<li class="side_nav1">
-								试卷管理
-							</li> 
-						</a>
-						<!-- <li class="side_nav1">
-							<a href="affair_hand_volume.jsp">手动组卷</a>
-						</li>
-						<li class="side_nav1">
-							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li> -->
-						<a href="history_staffs.jsp">
-							<li class="side_nav1">
-								历史成绩
-							</li>
-						</a>
-						<a href="test.jsp">
-							<li class="side_nav1">
-								考次计划
-							</li>
-						</a>
-		    		</ul>
+			  	<ul class="side_nav">
+			  		<li class="side_nav1 now"><a href="staffs_student.jsp">学生信息管理</a></li>
+			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
+			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
+			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
+			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
+			  	</ul>
 		  </div>
 		</nav>
 
@@ -119,7 +100,7 @@
 		    				<li class="active">
 		    					<a href="affair_index.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>学生信息管理</li>
+		    				<li>用户管理</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
@@ -129,6 +110,7 @@
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 						</button> -->
+<<<<<<< HEAD
 
 						<div class="top_search">
 							<!-- <button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addstudent">
@@ -136,6 +118,9 @@
 							添加学生
 							</button> -->
 							<button type="button" class="btn btn2">
+=======
+						<button type="button" class="btn btn2" id="find">
+>>>>>>> parent of 93e94f9... Merge remote-tracking branch 'origin/gy-625' into wmq-06-26-2
 								<i class="fa fa-search-minus"></i>
 								条件搜索
 						</button>	
@@ -306,7 +291,7 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control" id="" >
+										<input type="text" class="hover" id="" >
 									</td>
 								</tr>
 								<tr>
@@ -435,7 +420,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<!--模态框邀请老师组卷-->
 		<div class="modal fade" id="myModal_invite_teacher">
 		    <div class="modal-dialog">
@@ -453,43 +437,31 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
-										<div id="choose-box-wrapper" class="choose-box-wrapper">
-											<div id="choose-box" class="choose-box">
-												<div id="choose-box-title" class="choose-box-title">
-													<span>选择学校</span>
-												</div>
-												<div id="choose-a-province" class="choose-a-province"></div>
-												<div id="choose-a-school" class="choose-a-school"></div>
-												<div id="choose-box-bottom" class="choose-box-bottom">
-													<input type="botton" onclick="hide()" value="关闭" />
-												</div>
-											</div>
-										</div>
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 							</tbody>
@@ -524,34 +496,19 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										
-										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
-										<div id="choose-box-wrapper" class="choose-box-wrapper">
-											<div id="choose-box" class="choose-box">
-												<div id="choose-box-title" class="choose-box-title">
-													<span>选择学校</span>
-												</div>
-												<div id="choose-a-province" class="choose-a-province"></div>
-												<div id="choose-a-school" class="choose-a-school"></div>
-												<div id="choose-box-bottom" class="choose-box-bottom">
-													<input type="botton" onclick="hide()" value="关闭" />
-												</div>
-											</div>
-										</div>
-									
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
-										
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 							</tbody>
@@ -763,10 +720,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/toastr.js"></script>
 	</body>
-	
-	<script type="text/javascript" src="js/school.js"></script>
-	<script type="text/javascript" src="js/inviteSchool.js" ></script>
-	<script type="text/javascript">
+<script type="text/javascript">
 	loadStudentList(1);
 	var currentPage=1;
 	var totalPage=2;
@@ -993,7 +947,7 @@
 		if(confirm("确定要退出吗？")) {
 			$.post("loginOut",null,function(data) {
 				if(data.result=="成功退出") {
-						location.href="../gy/login.jsp";
+						location.href="../gy/gy_login.jsp";
 				}
 		  });
 		}  

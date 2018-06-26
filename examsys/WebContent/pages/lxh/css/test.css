@@ -260,7 +260,8 @@ p{
 }
 
 .modal-body input{
-	display:inline;
+	border-radius:5px ;
+	border: 1px solid black;
 }
 .modal-body .hover:hover{
 	border: 1px solid #0e92cf;
@@ -573,10 +574,12 @@ th {
 }
 
 .modal-body input{
-	display:center;
+	border-radius:5px ;
+	border: 1px solid black;
 }
 .modal-body .hover:hover{
-	
+	border: 1px solid #0e92cf;
+	border-radius:5px ;
 }
 .modal-header .close1{
 	display: block;
@@ -614,45 +617,7 @@ th {
 button{
 	color: #999;
 }
-<<<<<<< HEAD
 
 
 
 
-=======
-.now{
-	background-color: #425164;
-}
-#date-wrapper{
-	display: block ;
-	width: 50% !important;
-	margin-left: -20% !important;
-}
-.search_hide input{
-	display:inline;
-	width:150px;
-	margin-left:15px;
-}
-.search_hide .clean{
-	width:50px;
-	
-}
-.search_hide .right_search{
-	width:50px;
-	color:black;
-	margin-left:25px;
-}
-.search_hide .input_hide1{
-	margin-left:25px;
-}
-.search_hide{
-	margin-top:10px;
-	margin-bottom:10px;
-}
-.main_tab{
-	background:white;
-}
-.navbar-static-top{
-	z-index:0 !important;
-}
->>>>>>> origin/gy-625
