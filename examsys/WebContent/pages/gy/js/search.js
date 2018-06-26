@@ -77,5 +77,7 @@ $(document).ready(function(e){
     $('.clean').click(function(){
         $('.search_hide input').val('');
         $('#clearTbody tbody').html('');
+        loadDatas(1);
     });
+    
 });

@@ -84,7 +84,6 @@ public class AAATest extends Export{
 	
 	@Test
 	public void test4() {
-		/*userService.SelectUserList(user, administration);*/
-		/*ExportUserScore("学生成绩表", out, userList);*/
+		
 	}
 }

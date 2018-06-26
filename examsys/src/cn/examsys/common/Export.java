@@ -18,8 +18,6 @@ import cn.examsys.bean.User;
 
 public class Export {
 	public void ExportUserScore(String title, List<User> userList, OutputStream out) {
-		System.out.println("UserList"+userList.size());
-		
 		HSSFWorkbook wb=new HSSFWorkbook();    //创建工作簿对象
 		HSSFSheet sheet=wb.createSheet(title);   //创建表
 		HSSFRow row=sheet.createRow(0);                //在索引2的位置创建行(最顶端的行开始的第二行)
@@ -27,7 +25,10 @@ public class Export {
 		style.setWrapText(true);  
         
 		String[] column = new String[]{"学号","姓名","学院","专业","班级","考试科目","成绩","总排名","本校排名"};
+		String[] paper = new String[]{"标题","科目","总时长","总分值","单选题","多选题","填空题","判断题","简答题"};
+		
 		//设置表头
+		if(title.contains("成绩")) {
 			for(int i=0;i<column.length;i++) {
 				HSSFCell cell=row.createCell(i);
 				cell.setCellValue(column[i]);
@@ -46,6 +47,31 @@ public class Export {
 					}
 				} 
 			}
+		}
+		
+		
+		
+		
+		if(title.contains("试卷")) {
+			for(int i=0;i<paper.length;i++) {
+				HSSFCell cell=row.createCell(i);
+				cell.setCellValue(paper[i]);
+			}
+			//填写实体数据，实际上这些是从数据库中得到
+			for(int i=0;i<userList.size();i++){
+				row=sheet.createRow(i+1);     //第i行
+				//创建单元格并设置值
+				Object[] user = new Object[]{userList.get(i).getUserId(),userList.get(i).getName(),userList.get(i).getDepartment(),userList.get(i).getProfession(),userList.get(i).getClassroom(),userList.get(i).getGrade().getSubjectName(),userList.get(i).getGrade().getPoint(),"总排名","本校排名"};
+				for(int j=0;j<user.length;j++) {
+					row.createCell(j).setCellValue((user[j]+"").toString());    //第i行第j列
+					if(user[j]  instanceof Integer) {
+						sheet.setColumnWidth(j, (user[j]+"").toString().getBytes().length*5*256);
+					}else{
+						sheet.setColumnWidth(j, (user[j]+"").toString().getBytes().length*2*256);
+					}
+				} 
+			}
+		}	
 	    try {  
 	    	HttpServletResponse response = ServletActionContext.getResponse();//初始化HttpServletResponse对象  
 	    	title = new String( title.getBytes("gb2312"), "ISO8859-1" );       

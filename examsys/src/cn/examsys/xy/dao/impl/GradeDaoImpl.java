@@ -1,5 +1,7 @@
 package cn.examsys.xy.dao.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import cn.examsys.adapters.DaoAdapter;
@@ -14,6 +16,19 @@ public class GradeDaoImpl extends DaoAdapter implements GradeDao {
 		String hql= "from Grade where userId=?";
 		try {
 			return findOneByHql(hql, new Object[]{userId});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Grade> findAllgrade(int paperRef) {
+		// TODO Auto-generated method stub
+		String hql="from Grade where paperRef=?";
+		try {
+			return findByHql(hql, new Object[]{paperRef});
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

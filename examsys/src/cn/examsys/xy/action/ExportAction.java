@@ -22,7 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Exam;
 import cn.examsys.bean.Grade;
+import cn.examsys.bean.Paper;
 import cn.examsys.bean.User;
 import cn.examsys.common.Export;
 import cn.examsys.xy.service.GradeService;
@@ -38,6 +40,17 @@ public class ExportAction extends Export {
 	GradeService gradeService;
 	
 	String title;
+	Paper paper;
+	
+	@JSON(serialize=false)
+	public Paper getPaper() {
+		return paper;
+	}
+
+	public void setPaper(Paper paper) {
+		this.paper = paper;
+	}
+
 	@JSON(serialize=false)
 	public String getTitle() {
 		return title;
@@ -47,25 +60,16 @@ public class ExportAction extends Export {
 		this.title = title;
 	}
 
-	/*OutputStream out = resp.getOutputStream();*/
 	@Action(value="/export",results={@Result(type="json")},params={"contentType","text/html"})
 	public String ExportAction() {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		try {
 			OutputStream out = ServletActionContext.getResponse().getOutputStream();
 			User user=(User) session.getAttribute("user");
-			List<User> userList11 = userService.findAllUser("萍乡学院","学生");
-			List<User> userList = new ArrayList<>();
-			for(User i : userList11) {
-				Grade grade = gradeService.findGradeByUserId(i.getUserId());
-				if(grade!=null){
-					i.setGrade(grade);
-					userList.add(i);
-				}
-			}
-			/*System.out.println("User"+userList.get(18).getUserId()+"~~grade:"+userList.get(18).getGrade().getPoint());*/
+			List<User> userList = userService.findAllUser(paper.getSid(),user.getCollegeName());
 			title="成绩导出";
 			ExportUserScore(title, userList,out);
+			return null;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

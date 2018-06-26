@@ -151,4 +151,16 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 			return null;
 		}
 	}
+	@Override
+	public User findGradeUser(String userId, String collegeName) {
+		// TODO Auto-generated method stub
+		String hql = "from User where userId=? and collegeName=?";
+		try {
+			return findOneByHql(hql, new Object[]{userId,collegeName});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

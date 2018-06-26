@@ -22,4 +22,6 @@ public interface UserDao {
 	int findUser(String userId, String psw);
 	/*显示所有用户*/
 	List<User> findAllUser(String collegeName, String type);
+	/*根据成绩查询*/
+	User findGradeUser(String userId, String collegeName);
 }

@@ -15,13 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		参数：paper.sid
 		返回值：paper
 		*/
-	$.post("createExamPlan",
-			 {	"exam.title":"1",   //用户名
-		 		"user.userId":"34"				//用户类型
-		 	},function(data){
-		 		alert(data.result);    //message为user返回信息
-			 }
-		)
+		/* $.post("export", null,function(data){ })	 */
   </script>
   
   </head>
@@ -37,8 +31,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("input[name=selectedRow]").prop("checked", $("#selAll").is(":checked"));        
         } */
  
-    function doExportExcel(){
-          window.open("export.action");
+   function doExportExcel(){
+          window.open("export?paper.sid=1");
       }
     </script>
 
