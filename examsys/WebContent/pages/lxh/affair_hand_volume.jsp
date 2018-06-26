@@ -22,7 +22,7 @@
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
-     
+     	<link rel="stylesheet" href="css/inviteSchool.css" />
         <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
@@ -55,9 +55,9 @@
 							    			</a>
 							    	    </button>
 					<div class="dropdown-content">
-						<a href="#" data-toggle="modal" data-target="#myModal-invite-teacher">邀请老师出卷</a>
-						<a href="#" data-toggle="modal" data-target="#myModal-invite-school">邀请学校考试</a>
-					</div>
+							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
+							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
+						</div>
 				</div>
 		
 				<div class="dropdown notice" style="float:right;">
@@ -88,7 +88,7 @@
 				</div>
 				<div class="light_bottom">
 					<ul class="side_nav">
-						<ul class="side_nav">
+						
 		    			<a href="staffs_student.jsp">
 			    			<li class="side_nav1">
 								学生信息管理
@@ -116,7 +116,7 @@
 							</li>
 						</a>
 						<a href="test.jsp">
-							<li class="side_nav1">
+							<li class="side_nav1 now">
 								考次计划
 							</li>
 						</a>
@@ -468,110 +468,138 @@
 	    </div>
 	    
 	    <!--模态框邀请老师组卷-->
-	    <div class="modal fade" id="myModal-invite-teacher">
-	    	<div class="modal-dialog">
-	    		<div class="modal-content">
-	    			<!-- 模态框头部 -->
-	    			<div class="modal-header">
-	    				<h4 class="modal-title">邀请老师组卷</h4>
-	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-	    			</div>
-	    
-	    			<!-- 模态框主体 -->
-	    			<div class="modal-body">
-	    				<table>
-	    					<tbody>
-	    						<tr>
-	    							<td>
-	    								姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-	    								<input type="text" class="hover">
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-	    								<input type="text" class="hover">
-	    		    			  </td> 
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-	    								<input type="text" class="hover">
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-	    								<input type="text" class="hover">
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-	    								<input type="text" class="hover">
-	    							</td>
-	    						</tr>
-	    					</tbody>
-	    				</table>
-	    			</div>
-	    
-	    			<!-- 模态框底部 -->
-	    			<div class="modal-footer">
-	    				<button type="button" class="btn btn-primary add_invite">邀请</button>
-	    				<button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
-	    			</div>
-	    
-	    		</div>
-	    	</div>
-	    </div>
-	    
-	    <!--模态框邀请学校参加考试-->
-	    <div class="modal fade" id="myModal-invite-school">
-	    	<div class="modal-dialog">
-	    		<div class="modal-content">
-	    
-	    			<!-- 模态框头部 -->
-	    			<div class="modal-header">
-	    				<h4 class="modal-title">邀请学校参加考试</h4>
-	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-	    			</div>
-	    
-	    			<!-- 模态框主体 -->
-	    			<div class="modal-body">
-	    				<table>
-	    					<tbody>
-	    						<tr>
-	    							<td>
-	    								学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-	    								<input type="text" class="hover">
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-	    								<input type="text" class="hover">
-	    							</td>
-	    						</tr>
-	    						<tr>
-	    							<td>
-	    								专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-	    								<input type="text" class="hover">
-	    							</td>
-	    						</tr>
-	    					</tbody>
-	    				</table>
-	    			</div>
-	    
-	    			<!-- 模态框底部 -->
-	    			<div class="modal-footer">
-	    				<button type="button" class="btn btn-primary add_invite">邀请</button>
-	    				<button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
-	    			</div>
-	    
-	    		</div>
-	    	</div>
-	    </div>
-	    
+		<div class="modal fade" id="myModal_invite_teacher">
+		    <div class="modal-dialog">
+		      <div class="modal-content">
+		        <!-- 模态框头部 -->
+		        <div class="modal-header">
+		          <h4 class="modal-title">邀请老师组卷</h4>
+		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		        </div>
+		   
+		        <!-- 模态框主体 -->
+		        <div class="modal-body">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover form-control">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper" class="choose-box-wrapper">
+											<div id="choose-box" class="choose-box">
+												<div id="choose-box-title" class="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province" class="choose-a-province"></div>
+												<div id="choose-a-school" class="choose-a-school"></div>
+												<div id="choose-box-bottom" class="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover form-control">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover form-control">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover form-control">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+		        </div>
+		   
+		        <!-- 模态框底部 -->
+		        <div class="modal-footer">
+		        	<button type="button" class="btn btn-primary add_invite">邀请</button>
+		            <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
+		        </div>
+		   
+		      </div>
+		    </div>
+		</div>
+
+		<!--模态框邀请学校参加考试-->
+		<div class="modal fade" id="myModal_invite_school">
+		    <div class="modal-dialog">
+		      <div class="modal-content">
+		   
+		        <!-- 模态框头部 -->
+		        <div class="modal-header">
+		          <h4 class="modal-title">邀请学校参加考试</h4>
+		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		        </div>
+		   
+		        <!-- 模态框主体 -->
+		        <div class="modal-body">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
+										
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper" class="choose-box-wrapper">
+											<div id="choose-box" class="choose-box">
+												<div id="choose-box-title" class="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province" class="choose-a-province"></div>
+												<div id="choose-a-school" class="choose-a-school"></div>
+												<div id="choose-box-bottom" class="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
+									
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover form-control">
+										
+									</td>
+								</tr>
+								<tr>
+									<td>
+										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover form-control">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+		        </div>
+		   
+		        <!-- 模态框底部 -->
+		        <div class="modal-footer">
+		        	<button type="button" class="btn btn-primary add_invite">邀请</button>
+		            <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
+		        </div>
+		   
+		      </div>
+		    </div>
+		</div>
+		
+	        
 	    <!--邀请组卷拒绝模态框-->
 	    <div class="modal fade" id="myModal_email_refuse">
 	    	<div class="modal-dialog modal-sm">
@@ -652,5 +680,7 @@
 	}
 	
 	</script>
+	<script type="text/javascript" src="js/school.js"></script>
+<script type="text/javascript" src="js/inviteSchool.js" ></script>
 	</body>
 </html>

@@ -853,13 +853,11 @@ body {
 }
 
 .modal-body input{
-	border-radius:5px ;
-	border: 1px solid black;
+	display:inline;
 	margin: 10px 0px;
 }
 .modal-body .hover:hover{
-	border: 1px solid #0e92cf;
-	border-radius:5px ;
+	
 }
 .modal-header .close1{
 	display: block;

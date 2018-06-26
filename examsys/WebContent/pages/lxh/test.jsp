@@ -141,19 +141,6 @@
                    <input type="text" class="input_hide1 form-control "  id="name1" placeholder="考试计划名称"/>
 				   <input type="text" class="input_hide form-control mydate" id="userId1"  placeholder="计划时间"/>
 				   <input type="text" class="input_hide form-control" id="userId1"  placeholder="受邀学校"/>
-				   <input type="text" class="stext hover form-control" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
-										<div id="choose-box-wrapper">
-											<div id="choose-box">
-												<div id="choose-box-title">
-													<span>选择学校</span>
-												</div>
-												<div id="choose-a-province"></div>
-												<div id="choose-a-school"></div>
-												<div id="choose-box-bottom">
-													<input type="botton" onclick="hide()" value="关闭" />
-												</div>
-											</div>
-										</div>
 				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
 				   <input type="reset" class="btn clean">
 			   </div>
@@ -314,33 +301,45 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper" class="choose-box-wrapper">
+											<div id="choose-box" class="choose-box">
+												<div id="choose-box-title" class="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province" class="choose-a-province"></div>
+												<div id="choose-a-school" class="choose-a-school"></div>
+												<div id="choose-box-bottom" class="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
-								</tr>
+								</tr> -->
 							</tbody>
 						</table>
 		        </div>
@@ -441,7 +440,7 @@
 							        </td>
 							     </tr>
 							        <tr>
-							        	<td >
+							        	<td>
 							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
 							        		<input type="text" class="hover form-control" id="ex_invitee">
 							        	</td>

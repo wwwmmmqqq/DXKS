@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
+		<link rel="stylesheet" href="css/inviteSchool.css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -429,6 +430,7 @@
 			    </div>
 	  		</div>
 				
+		
 		<!--模态框邀请老师组卷-->
 		<div class="modal fade" id="myModal_invite_teacher">
 		    <div class="modal-dialog">
@@ -446,31 +448,43 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper" class="choose-box-wrapper">
+											<div id="choose-box" class="choose-box">
+												<div id="choose-box-title" class="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province" class="choose-a-province"></div>
+												<div id="choose-a-school" class="choose-a-school"></div>
+												<div id="choose-box-bottom" class="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 							</tbody>
@@ -505,19 +519,34 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper" class="choose-box-wrapper">
+											<div id="choose-box" class="choose-box">
+												<div id="choose-box-title" class="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province" class="choose-a-province"></div>
+												<div id="choose-a-school" class="choose-a-school"></div>
+												<div id="choose-box-bottom" class="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
+									
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
+										
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 							</tbody>
@@ -533,6 +562,7 @@
 		      </div>
 		    </div>
 		</div>
+		
 		
 		<!--邀请通知-->
 		<div class="modal fade" id="myModal-invite-notice">
@@ -847,4 +877,6 @@
 	
 		
 	</script>
+	<script type="text/javascript" src="js/school.js"></script>
+<script type="text/javascript" src="js/inviteSchool.js" ></script>
 </html>
