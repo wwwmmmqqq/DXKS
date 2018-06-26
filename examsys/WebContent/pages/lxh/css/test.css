@@ -313,6 +313,10 @@ p{
 	color: black;
 	border:1px solid #bbb;
 }
+#myModal_email_refuse textarea {
+	width: 80%;
+}
+
 /*阅卷通知*/
 .modal-footer .add_invite{
 	width: 90px;

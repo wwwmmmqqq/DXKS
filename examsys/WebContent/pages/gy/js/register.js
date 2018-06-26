@@ -24,7 +24,17 @@ function register_ajax(){
 					processData:false,
 					contentType:false,
 					success: function (data){
-						alert(data.result);//success fail exist
+						//alert(data.result);//success fail exist
+						if("exist"==data.result) {
+							toastr.warning("用户已被注册！");
+						} else if("fail"==data.result) {
+							toastr.error("注册失败！");
+						} else if("success"==data.result) {
+							toastr.success("注册成功！");
+							setTimeout(function(){
+								location.href = "login.jsp";
+							}, 500);
+						}
 					}
 				});
 			}else{

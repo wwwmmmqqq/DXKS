@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		
+		<link rel="stylesheet" href="css/toastr.css" />
 		<title></title>
 	</head>
 
@@ -97,7 +97,7 @@
 					</div>
 
 					<div class="read">
-						<div class="read_left">
+						<%-- <div class="read_left">
 							<div class="question" id="find">查看试题</div>
 							<div class="answer" id="hide">
 							<s:iterator id="item" value="#request.list" status="s1">
@@ -112,13 +112,13 @@
 
 							</div>
 
-						</div>
+						</div> --%>
 
 						<div class="read_right">
-							<div class="question">学生试卷</div>
+							<div class="question">待批阅题目列表</div>
 							<div class="answer1">
 							<s:iterator id="item" value="#request.list" status="s1">
-							<ul>
+							<ul id="questionItem${item.answer.sid}">
 									<li>
 										<div class="answer_span">题目</div>
 									</li>
@@ -136,17 +136,17 @@
 									${item.answer.subjectiveAnswer}
 									</li>
 									<li>
-										<div class="num">
-											<input type="hidden" id="answerid" value='<s:property value="#item.answer.sid"/>'>
-											<input type="text" id="sanswer" class="form-control input_num" onchange="checkQuestion(${item.answer.sid}, this.value)" />
-											<span>得分</span>
+										<div class="num" style="width: 170px">
+											<input id="point${item.answer.sid}" type="text" 
+												id="sanswer" class="form-control input_num"  placeholder="得分" />
+											<button class="btn btn-default" onclick="checkQuestion(${item.answer.sid}, point${item.answer.sid}.value,'${item.question.title}')">确定</button>
 										</div>
 									</li>
 								</ul>
 							</s:iterator>
-								<div>
+								<!-- <div>
 								<button class="btn btn-primary" type="submit" onclick="importScore()">提交</button>
-								</div>
+								</div> -->
 								<div>
 								
 
@@ -378,6 +378,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/search.js"></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 			<script type="text/javascript" src="js/teacher_read.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -386,12 +387,15 @@
 			});
 		});
 		
-		function checkQuestion(sid, point) {
+		function checkQuestion(sid, point, tastrTitle) {
 			$.post("checkQuestion", {
 				"answer.sid":sid
 				,"answer.scoring":point
 			}, function(data) {
-				alert(data.result);
+				if(data.result == "success") {
+					toastr.success("已批改 [" + tastrTitle + "]");
+					$("#questionItem" + sid).fadeOut();
+				}
 			});
 		}
 		

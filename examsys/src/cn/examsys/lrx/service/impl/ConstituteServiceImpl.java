@@ -35,7 +35,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 	
 	@Override
 	public int createPaperAuto(int examRef, int subjectRef, String name
-			, String examStart, String examEnd,
+			, String examStart, String examEnd, String responser,
 			ConstituteVO single, ConstituteVO trueOrFalse,
 			ConstituteVO multiple, ConstituteVO fills, ConstituteVO subjective) {
 		
@@ -141,7 +141,11 @@ public class ConstituteServiceImpl implements ConstituteService {
 					con.setPaperRef(paperSid);//试卷ID
 					con.setQuestionRef(q.getSid());//指向题目
 					con.setType(q.getType());//题目类型
-					//con.setResponsibleUser(null);//负责批改此题目的教师
+					
+					if (Conf.Question_Subjective.equals(q.getType())) {
+						//解答题
+						con.setResponsibleUser(responser);//负责批改此题目的教师
+					}
 					
 					con.setPoint(diff_n_point_arr[j]);
 					try {
@@ -177,10 +181,10 @@ public class ConstituteServiceImpl implements ConstituteService {
 	}
 	
 	
-	
-	public int createPaperHand(User sessionUser, List<Integer> qids, int paperSid,
-		List<Integer> points, String examStart, String examEnd,
-		String name, int examRef, int subjectRef) {
+	@Override
+	public int createPaperHand(User sessionUser, List<Integer> qids, 
+			List<Integer> points, List<String> userIds, String examStart,
+			String examEnd, String name, int examRef, int subjectRef) {
 		if (qids.size() != points.size()) {
 			return -1;
 		}
@@ -192,13 +196,19 @@ public class ConstituteServiceImpl implements ConstituteService {
 		paper.setExamEnd(examEnd);
 		paper.setTime(Tool.time());//试卷创建时间
 		
+		try {
+			paper.setSid((Integer) dao.saveEntity(paper));
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
 		for (int i = 0; i < qids.size(); i++) {
 			Constitute con = new Constitute();
 			con.setNo(i);
-			con.setPaperRef(paperSid);
+			con.setPaperRef(paper.getSid());
 			con.setPoint(points.get(i));
 			con.setQuestionRef(qids.get(i));
-			//con.setResponsibleUser(responsibleUser);
+			con.setResponsibleUser(userIds.get(i));
 			try {
 				dao.saveEntity(con);
 			} catch (Exception e) {
@@ -206,7 +216,12 @@ public class ConstituteServiceImpl implements ConstituteService {
 			}
 		}
 		
-		return 0;
+		try {
+			return (Integer) dao.saveEntity(paper);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 	@Override
