@@ -28,5 +28,7 @@ public interface PageService {
 
 	boolean saveQuestion(User sessionUser, Question question, List<Option> options);
 
+	List<Question> searchQuestionsHandConstitute(User sessionUser, String type, String key, int page);
+
 	
 }

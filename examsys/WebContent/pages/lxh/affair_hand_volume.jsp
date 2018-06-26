@@ -26,6 +26,17 @@
         <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
+		
+		<script type="text/javascript" src="js/array.js"></script>
+		<style type="text/css">
+		.little-box {
+   			width: 25px;height:25px;line-height:25px;border: 1px solid rgba(100,100,100,0.5);
+   			cursor: pointer;
+   			color: gray;float: left;
+   			text-align: center;
+   		}
+   		.little-box:hover{background-color: rgba(100,100,100,0.5);}
+		</style>
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -139,8 +150,7 @@
 		    				<div class="basket-head">
 		    					共计：（<span id="subject-amount">0</span>）道题
 		    				</div>
-		    				<div class="baskrt-list">
-		    	
+		    				<div class="baskrt-list" style="overflow: auto;max-height: 100px;">
 		    				</div>
 		    			</div>
 		    			<div class="basket-foot">
@@ -156,37 +166,253 @@
 		    	
 		    	<div class="papermanage">
 		    	
-		    	    <div id="flip"><i class="fa fa-search-minus"></i>条件搜索</div>
+		    	    <div id="flip"><i class="fa fa-search-minus">
+		    	    </i>条件搜索</div>
 		    		<div id="panel">
-		    			<form>
-		    				<div class="searchpanel">
-		    					<ul>
-		    						<li id="qtype">
-		    							<select id="question_type">
-		    							    <option>选择试题类型</option>
-		    								<option>单选题</option>
-		    								<option>多选题</option>
-		    								<option>填空题</option>
-		    								<option>判断题</option>
-		    								<option>解答题</option>
-		    							</select>
-		    						</li>	    
-		    						<li id="qdiffer"><label>难易程度</label>
-		    							<select id="question_difficultValue">
-		    								<option>简单</option>
-		    								<option>一般</option>
-		    								<option>难</option>
-		    								<option>较难</option>
-		    							</select>
-		    						</li>
-		    						<li id="qknow"><label>知识点</label>
-		    							<input type="text" id="question_knowledge" />
-		    						</li>
-		    						<li><button type="submit" class="btn btn-default searchbtn" onclick="searchQuestions()"><i class="fa fa-search"></i></button></li>
-		    					</ul>		    					
-		    				</div>		    		
-		    			</form>		
+	    				<div class="searchpanel" style="float: left;">
+	    					<ul>
+	    						<li id="qtype">
+	    							<label>题目类型</label>
+	    							<select id="typeSels" onchange="selType(this.value)">
+	    							    <optgroup label="选择试题类型">
+		    								<option value="">全部</option>
+		    								<option value="Single">单选题</option>
+		    								<option value="Multiple">多选题</option>
+		    								<option value="Fills">填空题</option>
+		    								<option value="TrueOrFalse">判断题</option>
+		    								<option value="Subjective">解答题</option>
+	    								</optgroup>
+	    							</select>
+	    						</li>	    
+	    						<li id="qdiffer"><label>难易程度</label>
+	    							<select id="difficultValueSels" onchange="selDiff(this.value)">
+	    								<optgroup label="题目难度筛选">
+	    									<option value="">全部</option>
+		    								<option value="1">简单</option>
+		    								<option value="2">一般</option>
+		    								<option value="3">难</option>
+		    								<option value="4">较难</option>
+	    								</optgroup>
+	    							</select>
+	    						</li>
+	    						<li id="qdiffer"><label>科目</label>
+	    							<select id="subjectSels" onchange="selSubject(this.value)">
+	    								<optgroup label="科目" id="subjectGroup">
+	    									<option value="">全部</option>
+	    								</optgroup>
+	    							</select>
+	    						</li>
+	    						<li id="qknow">
+	    							<label>题目标题</label>
+	    							<input type="text" id="titleIpt" onchange="selTitle(this.value)" />
+	    						</li>
+	    						<li id="qknow">
+	    							<label>知识点</label>
+	    							<input type="text" id="knowledgeIpt" onchange="selKnowledge(this.value)" />
+	    						</li>
+	    						<li><button type="submit" class="btn btn-default searchbtn" 
+	    							onclick="doSearch()"><i class="fa fa-search"></i></button>
+	    						</li>
+	    					</ul>
+	    				</div>
 		    		</div>
+		    		
+		    		<script type="text/javascript">
+		    		
+		    		var questionIds = [];
+		    		
+		    		var type = "Single";
+		    		var diff = "";
+		    		var subject = "";
+		    		var title = "";
+		    		var knowledge = "";
+		    		var jsons = {
+		    			"examSid":"${examSid}",
+		    			"keys[0]":"type",
+		    			"keys[1]":"difficultyValue",
+		    			"keys[2]":"subjectRef",
+		    			"keys[3]":"title",
+		    			"keys[4]":"knowledge",
+		    			"vals[0]":type,
+		    			"vals[1]":diff,
+		    			"vals[2]":subject,
+		    			"vals[3]":title,
+		    			"vals[4]":knowledge
+		    		};
+		    		function selType(s) {
+		    			type = s;
+		    			jsons["vals[0]"] = s;
+		    			doSearch();
+		    		}
+		    		function selDiff(s) {
+		    			diff = s;
+		    			jsons["vals[1]"] = s;
+		    			doSearch();
+		    		}
+		    		function selSubject(n) {
+		    			subject = n;
+		    			jsons["vals[2]"] = n;
+		    			doSearch();
+		    		}
+		    		function selTitle(s) {
+		    			title = s;
+		    			jsons["vals[3]"] = s;
+		    			doSearch();
+		    		}
+		    		function selKnowledge(s) {
+		    			knowledge = s;
+		    			jsons["vals[4]"] = s;
+		    			doSearch();
+		    		}
+		    		doSearch();
+		    		function doSearch() {
+		    			$.post("searchQuestionsHandConstitute",jsons, function(data) {
+		    				var li = data.list;
+		    				var htmls = "";
+		    				for(var i=0;i<li.length;i++) {
+		    					htmls += getItemHtm(li[i]);
+		    				}
+		    				$("#question-box").html(htmls);
+		    			});
+		    		}
+		    		
+		    		loadSubjects();
+		    		function loadSubjects() {
+		    			$.post("loadSubjects", null, function(data) {
+		    				var li = data.list;
+		    				for(var i=0;i<li.length;i++) {
+		    					var opt = document.createElement("option");
+		    					opt.value = li[i].sid;
+		    					opt.innerText = li[i].name;
+		    					subjectGroup.appendChild(opt);
+		    				}
+		    				loadDiffCounts();
+		    			});
+		    		}
+		    		
+		    		function getItemHtm(q) {
+		    			var options = q.options;
+		    			var optHtmls = "";
+		    			var answer = "";
+		    			for(var i=0;i<options.length;i++) {
+		    				var label = String.fromCharCode("A".charCodeAt() + i);
+		    				if("Fills Subjective TrueOrFalse".indexOf(q.type)>=0) {
+		    					label = i+1;
+		    					if("Fills" == q.type) {
+		    						answer = options[i].fillsText;
+		    					} else if("Subjective" == q.type) {
+		    						answer = options[i].subjectiveText;
+		    					} else if("TrueOrFalse" == q.type) {
+		    						answer = options[i].isAnswer=='1'?"正确":"错误";
+		    					}
+		    				}else if(options[i].isAswer) {
+		    					answer += label;
+		    				}
+		    				optHtmls += "<span class='op-item'>"
+		    						+"		<span>"+label+".</span>"
+		    						+"		<span>"+options[i].content+"</span>"
+		    						+"	 </span>";
+		    			}
+		    			
+		    			var diffText = ["","简单","一般","中等","较难"][q.difficultyValue];
+		    			var questionTypeName = {
+		    					"Single":"单选题",
+		    					"Multiple":"多选题",
+		    					"Fills":"填空题",
+		    					"TrueOrFalse":"判断题",
+		    					"Subjective":"解答题"
+		    				}[q.type];
+		    			var cssstyle = "";
+		    			var btnText = "加选题";
+		    			if(questionIds.contains(q.sid)) {
+		    				cssstyle = "style='background-color:green;border-color:green'";
+		    				btnText = "减选题";
+		    			}
+		    			var htm = "<li id='q-item-"+q.sid+"' class='q-item-class'>"
+		    				+"	<div class='search-exam'>"
+		    				+"		<div class='exam-head'>"
+		    				+"			<p class='exam-head-left'>"
+		    				+"				<span>题型："+questionTypeName+"</span>"
+		    				+"				<i class='line'></i>"
+		    				+"				<span>难易度："+diffText+"</span>"
+		    				+"				<i class='line'></i>"
+		    				+"				<span>知识点："+q.knowledge+"</span>"
+		    				+"			</p>"
+		    				+"		</div>"
+		    				+"		<div class='exam-con'>"
+		    				+"			<div class='exam-q'></div>"
+		    				+"			<div class='exam-qlist'>"
+		    				+"				<div class='exam-con'>"
+		    				+"					<div class='exam-q'>"
+		    				+"						"+(q.sid)+"."+q.title+"(&nbsp;&nbsp;)"
+		    				+"					</div>"
+		    				+"					<div class='exam-s'>"
+		    				+ optHtmls
+		    				+"					</div>"
+		    				+"				</div>"
+		    				+"				<div class='exam-foot'>"
+		    				+"					<p class='exam-foot-left'>"
+		    				+"						<i class='fa fa-hand-pointer-o'></i>"
+		    				+"						<a href='javascript:void(0)'>答案："+answer+"</a>"
+		    				+"					</p>"
+		    				+"					<p class='exam-foot-right'>"
+		    				+"						<button type='button' class='btn btn-primary' "+cssstyle+" onclick='addQuestion(this, "+q.sid+")'>"+btnText+"</button>"
+		    				+"					</p>"
+		    				+"				</div>"
+		    				+"			</div>"
+		    				+"		</div>"
+		    				+"	</div>"
+		    				+"</li>";
+		    				return htm;
+		    		}
+		    		
+		    		
+		    		function addQuestion(self, n) {
+		    			if(!questionIds.contains(n)) {
+		    				questionIds.push(n);
+		    				$(self).css({
+		    					"background-color":"green"
+		    					,"border-color":"green"
+		    				});
+		    				$(self).text("减选题");
+			    			$("#choosedQuestionBox").html($("#choosedQuestionBox").html() + $("#q-item-" + n).get(0).outerHTML);
+			    			$("#choosedQuestionBox").find("#q-item-" + n).hide();
+		    			} else {
+		    				questionIds.remove(n);
+		    				$(self).css({
+		    					"background-color":"#428bca"
+		    					,"border-color":"#357ebd"
+		    				});
+		    				$(self).text("加选题");
+		    				$("#choosedQuestionBox").find("#q-item-" + n).remove();
+		    			}
+		    			
+		    			$("#subj-amount").text(questionIds.length);
+		    			$("#subject-amount").text(questionIds.length);
+		    			var basketHtml = "";
+		    			for(var i=0;i<questionIds.length;i++) {
+		    				basketHtml += "<div class='little-box'>"+questionIds[i]+"</div>";
+		    			}
+		    			$(".baskrt-list").html(basketHtml);
+		    			
+		    			
+		    			$(".little-box").hover(function() {
+			    			$("#q-item-" + $(this).text()).show();
+			    		}, function() {
+			    			$("#q-item-" + $(this).text()).hide();
+			    		});
+		    			
+		    		}
+		    		
+		    		
+		    		function submitHandVolume() {
+		    			$("createPaperHand", {
+		    				
+		    			}, function(data) {
+		    				
+		    			});
+		    		}
+		    		</script>
 		    		<!-- 试卷管理 start -->
 		    		<div class="panel showpaperpanel">
 		    			<header class="panel-heading" >
@@ -194,8 +420,48 @@
 		    			</header>
 		    			<div class="panel-body panelbod">
 		    				<div class="searchlist">
-		    					<ul>
-		    					 <s:iterator id="que" value="#request.questionList" status="sta">
+		    					<div id="choosedQuestionBox"></div>
+		    					<ul id="question-box">
+		    						<li>
+		    							<div class="search-exam">
+		    								<div class="exam-head">
+		    									<p class="exam-head-left">
+		    									    <span>题型：单选题</span>
+		    									    <i class="line"></i>
+		    									    <span>难易度：简单</span>
+		    									    <i class="line"></i>
+		    									    <span>知识点：java语言</span>
+		    								    </p>
+		    								</div>
+		    							    <div class="exam-con">
+		    							    	<div class="exam-q"></div>
+		    							    	<div class="exam-qlist"> 
+		    							    		<div class="exam-con">
+		    							    			<div class="exam-q">
+		    							    				1.下列说法正确的是(&nbsp;&nbsp;)
+		    							    			</div>
+		    							    		    <div class="exam-s">
+		    							    			    <span class="op-item">
+		    							    			    	<span>A.</span> 
+		    							    			    	<span>Update software</span>
+		    							    			    </span>
+		    							    		    </div>
+		    							    		</div>
+		    							    		<div class="exam-foot">
+		    							    			<p class="exam-foot-left">
+		    							    				<i class="fa fa-hand-pointer-o"></i>
+		    							    				<a href="javascript:void(0)">答案：</a>
+		    							    			</p>
+		    							    			<p class="exam-foot-right">
+		    							    				<button type="button" class="btn btn-primary" onclick="addQuestion(this, 0)" >+选题</button>
+		    							    			</p>
+		    							    		</div>
+		    							    	</div>
+		    							    </div>
+		    							</div>
+		    						</li>
+		    					
+		    					 <%-- <s:iterator id="que" value="#request.list" status="sta">
 		    						<li>
 		    							<div class="search-exam">
 		    								<div class="exam-head">
@@ -211,7 +477,7 @@
 		    									    <span>所属科目：${que.subjectRef}</span>
 		    									    
 		    									    <i class="line"></i>
-		    									    <span>难易度： <%-- ${que.difficultValue} --%>
+		    									    <span>难易度： ${que.difficultValue}
 		    									            ${que.difficultyValue==1?"简单":""}
 		    								                ${que.difficultyValue==2?"一般":""}
 		    							                    ${que.difficultyValue==3?"中等":""}
@@ -244,7 +510,7 @@
 			    						                 </li>
 		    							    			</s:iterator>
 		    							    		
-		    							    			    <%-- <span class="op-item">
+		    							    			    <span class="op-item">
 		    							    			    	<span>B.</span> 
 		    							    			    	<span>Update software</span>
 		    							    			    </span>
@@ -255,7 +521,7 @@
 		    							    			    <span class="op-item">
 		    							    			    	<span>D.</span> 
 		    							    			    	<span>Update software</span>
-		    							    			    </span> --%>
+		    							    			    </span>
 		    							    		    </div>
 		    							    		</div>
 		    							    		<div class="exam-foot">
@@ -272,62 +538,8 @@
 		    							    
 		    							</div>
 		    						</li>
-		    					 </s:iterator>
-		    						<%-- <li>
-		    							<div class="search-exam">
-		    								<div class="exam-head">
-		    									<p class="exam-head-left">
-		    									    <span>题型：单选题</span>
-		    									    <i class="line"></i>
-		    									    <span>难易度：简单</span>
-		    									    <i class="line"></i>
-		    									    <span>知识点：java语言</span>
-		    								    </p>
-		    								</div>
-		    							    <div class="exam-con">
-		    							    	<div class="exam-q"> 
-		    							    		
-		    							    	</div>
-		    							    	<div class="exam-qlist"> 
-		    							    		<div class="exam-con">
-		    							    			<div class="exam-q">
-		    							    				1.下列说法正确的是(&nbsp;&nbsp;)
-		    							    			</div>
-		    							    		
-		    							    		    <div class="exam-s">
-		    							    			    <span class="op-item">
-		    							    			    	<span>A.</span> 
-		    							    			    	<span>Update software</span>
-		    							    			    </span>
-		    							    			    <span class="op-item">
-		    							    			    	<span>B.</span> 
-		    							    			    	<span>Update software</span>
-		    							    			    </span>
-		    							    			    <span class="op-item">
-		    							    			    	<span>C.</span> 
-		    							    			    	<span>Update software</span>
-		    							    			    </span>
-		    							    			    <span class="op-item">
-		    							    			    	<span>D.</span> 
-		    							    			    	<span>Update software</span>
-		    							    			    </span>
-		    							    		    </div>
-		    							    		</div>
-		    							    		<div class="exam-foot">
-		    							    			<p class="exam-foot-left">
-		    							    				<i class="fa fa-hand-pointer-o"></i>
-		    							    				<a class="" href="#">查看解析</a>
-		    							    			</p>
-		    							    			<p class="exam-foot-right">
-		    							    				<button type="button" class="btn btn-primary">+选题</button>
-		    							    			</p>
-		    							    		</div>
-		    							    	</div>
-		    							    </div>
-		    							    
-		    							</div>
-		    						</li>
-		    						 --%>
+		    					 </s:iterator> --%>
+		    						
 		    					</ul>
 		    						
 		    				</div>
@@ -650,7 +862,7 @@
 	    </div>
 		
 	<script >
-	
+	/* 
 	function searchQuestions() {
 		  $.post("searchQuestions", {
 			  "question.type":$('#question_type').val(),//搜索的字段1
@@ -663,16 +875,7 @@
 			 var questionList=data.list; 
 		  });
 	  }
-	
-	
-	var questionBasketList = [];
-	function addQuestion(sid) {
-		questionList.push(sid);
-	}
-	function remove() {
-		
-	}
-	
+	 */
 	
 	 function constituteByHand(qids, examStart, examEnd, examName) {
 		  //手动组卷接口

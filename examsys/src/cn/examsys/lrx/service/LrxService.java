@@ -26,4 +26,6 @@ public interface LrxService {
 
 	List<User> loadUsers(User sessionUser);
 
+	List<Question> searchQuestionsHandConstitute(User sessionUser, List<String> keys, List<String> vals, int page);
+
 }

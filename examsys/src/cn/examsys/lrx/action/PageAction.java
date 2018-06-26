@@ -107,6 +107,22 @@ public class PageAction extends CommonAction {
 		return aa;
 	}
 	
+	int examSid;
+	public int getExamSid() {
+		return examSid;
+	}
+	public void setExamSid(int examSid) {
+		this.examSid = examSid;
+	}
+	@Action(value="/loadHandConstitutePage", results={
+			@Result(name="success", location="/pages/lxh/affair_hand_volume.jsp")})
+	public String loadHandConstitutePage() {
+		if (page == 0) {
+			page = 1;
+		}
+		return aa;
+	}
+	
 
 	//试卷管理
 	@Action(value="/loadAPaper", results={
