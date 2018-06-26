@@ -1,7 +1,6 @@
 package cn.examsys.xy.service.impl;
 
 import java.lang.reflect.Field;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,17 +73,17 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean editUser(User user) {
 		// TODO Auto-generated method stub
+		User currentUser=userDao.findOneUser(user.getUserId());  
+		Field[] field = currentUser.getClass().getDeclaredFields(); 
+		Field[] f = user.getClass().getDeclaredFields();	
 		try {
-				User currentUser=userDao.findOneUser(user.getUserId());  
-				Field[] field = currentUser.getClass().getDeclaredFields(); 
-				Field[] f = user.getClass().getDeclaredFields();	
 				for(int i=0;i<field.length;i++) {
 					field[i].setAccessible(true);     
 					f[i].setAccessible(true);		
 					Object vals = f[i].get(user);
 					Object val = field[i].get(currentUser);
 					String type = f[i].getType().toString();
-					if(vals==null) {
+					if(vals==null || "".equals(vals)) {
 						vals=val;
 						f[i].set(user, vals);
 					}else if(type.endsWith("int")) {
@@ -118,6 +117,11 @@ public class UserServiceImpl implements UserService{
 	public int findUser(String userId, String psw) {
 		// TODO Auto-generated method stub
 		return userDao.findUser(userId,psw);
+	}
+	@Override
+	public List<User> findAllUser(String collegeName, String type) {
+		// TODO Auto-generated method stub
+		return userDao.findAllUser(collegeName,type);
 	}
 
 }

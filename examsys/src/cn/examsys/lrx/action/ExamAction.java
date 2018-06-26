@@ -180,20 +180,7 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadInvitedExamPapers() {
-		//list = service.loadInvitedExamPapers(getSessionUser(), page);
-		List<PaperWithExamVO> li = new ArrayList<PaperWithExamVO>();
-		for (int i = 0; i < 20; i++) {
-			Paper a = new Paper();
-			Exam b = new Exam();
-			try {
-				BeanAutoFit.autoFit(a);
-				BeanAutoFit.autoFit(b);
-				li.add(new PaperWithExamVO(a, b));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		list = li;
+		list = service.loadInvitedExamPapers(getSessionUser(), page);
 		return aa;
 	}
 	
@@ -201,8 +188,9 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadGradesByPaper() {
-		//list = service.loadGradesByPaper(getSessionUser(), paper.getSid());
-		
+		list = service.loadGradesByPaper(getSessionUser(), paper.getSid());
+		System.out.println(list.size());
+		/*
 		List<GradeVO> li = new ArrayList<GradeVO>();
 		for (int i = 0; i < 10; i++) {
 			Grade grade = new Grade();
@@ -220,18 +208,25 @@ public class ExamAction extends CommonAction {
 				e.printStackTrace();
 			}
 		}
-		list = li;
+		list = li;*/
 		return aa;
 	}
 	
 	
 	
 	private void setCurrentPaperSid(int paperSid) {
+		System.out.println(paperSid);
 		session.setAttribute("currentPaper", paperSid);
 	}
 	
 	private int getCurrentPaperSid() {
-		return (int) session.getAttribute("currentPaper");
+		Object obj = session.getAttribute("currentPaper");
+		System.out.println(obj);
+		if (obj == null) {
+			return -1;
+		} else {
+			return (int) obj;
+		}
 	}
 	
 	@Override

@@ -684,7 +684,7 @@ function loadMyExamList(page) {
 
 
 function getItemHtml(index,obj,number){
-	var htm="<tr class='tb_width'>"
+	var htm="<tr class='tb_width' id='exam"+obj.sid+"'>"
 	+"<td>"+obj.sid+"</td>"
 	+"<td>"+obj.title+"</td>"
 	+"<td>"+obj.time+"</td>"
@@ -693,17 +693,13 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.invitee+"</td>"
 	+"<td>"+obj.explication+"</td>"
 	+"<td>"+obj.state+"</td>"
-	+"<td id='volume'>"
-	+"<a href='affair_hand_volume.jsp?exam.sid="+obj.sid+"'>手动组卷</a></li>"
-	+"<a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a></li>"
-	+"</td>"
-	+"<td id='operate'>"
+	+"<td>"
 	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
-	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><br>"
-	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a>"
-	+"</td></tr>"; 
+	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a>"
+	+" <a href='loadHandConstitutePage?examSid="+obj.sid+"'>手动组卷</a>"
+	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
+	+"</tr>"; 
     return htm;
-
 }
 function getLiHtml(index) {
 	if(index==1){

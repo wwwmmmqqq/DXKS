@@ -1,6 +1,7 @@
 package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,12 +14,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Answersheet;
+import cn.examsys.bean.Option;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
+import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PageService;
 import cn.examsys.lrx.service.impl.ExamServiceImpl;
+import cn.examsys.lrx.vo.QuestionCheckVO;
 
 @Namespace("/")
 @ParentPackage("struts-default")//非json时，则为"struts-default"
@@ -49,6 +54,9 @@ public class PageAction extends CommonAction {
 	public String startExam() {
 		
 		queList = service.loadQuestionList(paper.getSid());
+		paper = service.loadPaper(paper.getSid());
+		session.setAttribute("currentPaper", paper.getSid());
+		
 		
 		return SUCCESS;
 	}
@@ -60,6 +68,88 @@ public class PageAction extends CommonAction {
 			@Result(name="success", location="/pages/gy/history_teacher.jsp")})
 	public String loadMyGrades() {
 		list = service.loadGrades(getSessionUser(), page);
+		return aa;
+	}
+	
+	
+	@Action(value="/loadResponsibleQuestions", results={
+			@Result(name="success", location="/pages/gy/teacher_read.jsp")})
+	public String loadResponsibleQuestions() {
+		list = service.loadResponsibleQuestions(getSessionUser()
+				, paper.getSid(), page);
+		return aa;
+	}
+	
+	String type;
+	String key;
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+	
+	@Action(value="/searchQuestions", results={
+			@Result(name="success", location="/pages/gy/jsshowpaper.jsp")})
+	public String searchQuestions() {
+		if (page == 0) {
+			page = 1;
+		}
+		System.out.println(key + ", " + type);
+		list = service.searchQuestions(getSessionUser(), type, key, page);
+		System.out.println(list.size());
+		return aa;
+	}
+	
+	int examSid;
+	public int getExamSid() {
+		return examSid;
+	}
+	public void setExamSid(int examSid) {
+		this.examSid = examSid;
+	}
+	@Action(value="/loadHandConstitutePage", results={
+			@Result(name="success", location="/pages/lxh/affair_hand_volume.jsp")})
+	public String loadHandConstitutePage() {
+		if (page == 0) {
+			page = 1;
+		}
+		return aa;
+	}
+	
+
+	//试卷管理
+	@Action(value="/loadAPaper", results={
+				@Result(name="success", location="/pages/lxh/apaper.jsp") })
+	public String loadAPaper() {
+		list = service.loadQuestionList(getSessionUser(), paper.getSid());
+		System.out.println(list.size());
+		return aa;
+	}
+	
+	Question question = new Question();
+	List<Option> options = new ArrayList<>();
+	public List<Option> getOptions() {
+		return options;
+	}
+	public Question getQuestion() {
+		return question;
+	}
+	
+	@Action(value="/createNewQuestion", results={
+			@Result(name="success", location="/pages/gy/jsentryquestions.jsp") })
+	public String createNewQuestion() {
+		System.out.println(Arrays.toString(options.toArray()));
+		boolean bo = service.saveQuestion(getSessionUser(), question, options);
+		if (!bo) {
+			setResult("fail");
+		}
 		return aa;
 	}
 	

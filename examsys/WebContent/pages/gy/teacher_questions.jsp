@@ -98,11 +98,11 @@
 		    			<ul class="question-type">
 		    				<li><button type="button" class="btn btn-danger newq">+新题目</button>
 		    					<form>请选择题目类型 ：
-		    						<input type="radio"  id="single-choice" value="single-choice" name="1" checked="checked"/><label>单选题</label>
-		    						<input type="radio"  id="mutiple-choice"  name="1"/><label>多选题</label>
-		    						<input type="radio"  id="ture-or-false"  name="1"/><label>判断题</label>
-		    						<input type="radio"  id="fill-in" name="1"/><label>填空题</label>
-		    						<input type="radio"  id="answer-questions" name="1"/><label>解答题</label>
+		    						<input type="radio" id="single-choice" value="single-choice" name="1" checked="checked"/><label>单选题</label>
+		    						<input type="radio" id="mutiple-choice"  name="1"/><label>多选题</label>
+		    						<input type="radio" id="ture-or-false"  name="1"/><label>判断题</label>
+		    						<input type="radio" id="fill-in" name="1"/><label>填空题</label>
+		    						<input type="radio" id="answer-questions" name="1"/><label>解答题</label>
 		    					</form>
 		    				</li>
 		    				<li>请选择科目：

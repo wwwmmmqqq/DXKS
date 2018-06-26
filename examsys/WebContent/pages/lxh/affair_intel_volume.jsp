@@ -131,6 +131,19 @@
 				</div>
 				<section class="papermanage">
 					<!-- 智能组卷 start-->
+					<div>
+						<input type="text" id="title" placeholder="输入试卷标题" />
+						 <input type="text" id="startTime" placeholder="输入开始时间" />
+						<input type="text" id="endTime" placeholder="输入结束时间" />
+						<select id="subjectSel" onchange="loadDiffCounts()">
+							<optgroup label="选择科目" id="subjectOpts"></optgroup>
+						</select>
+						<select id="teacherSels">
+							<optgroup label="指定解答题批改老师" id="teacherOptions">
+							
+							</optgroup>
+						</select>
+					</div>
 						<div class="autocompose">
 							<table class="table table-hover mytable">
 								<thead>
@@ -490,17 +503,21 @@ function getParam(name) {
 var examSid = getParam("exam.sid");//拿到考次
 </script>
 <script type="text/javascript">
-loadDiffCounts();
 var type_count = [0, 0, 0, 0, 0];
 function loadDiffCounts() {
 	$.post("loadQuestionCountByType", {
-		"paper.subjectRef":0
+		"paper.subjectRef":subjectSel.value
 	}, function(data) {
 		for(var i=0;i<data.countListMap.length;i++) {
 			type_count[i] = data.countListMap[i]["count"];
 			$("#leamount" + (i+1)).text("共"+type_count[i] + "题");
 		}
-	});
+		if(data.countListMap.length == 0) {
+			for(var i=0;i<5;i++) {
+				$("#leamount" + (i+1)).text("共0题");
+			}
+		}
+ 	});
 }
 </script>
 
@@ -536,6 +553,7 @@ function setTypeDiffPoint(typeIndex, diff, value) {
 	updateShows(typeIndex);
 }
 
+
 function updateShows(typeIndex) {
 	for(var i=0;i<type_diff_percent[typeIndex].length;i++) {
 		var val = type_set_count[typeIndex] * type_diff_percent[typeIndex][i] / 100;
@@ -568,13 +586,14 @@ $('tr input').blur(function() {
 })
 </script>
 <script type="text/javascript">
-function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
+function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd, responser) {
 	var params = {
 			  "paper.examRef":examRef //考试ID
 			, "paper.subjectRef":subjectRef //考试ID
 			, "paper.name":name //试卷标题名
 			, "paper.examStart":examStart //考试开始时间
 			, "paper.examEnd":examEnd //考试结束时间
+			, "responser": responser
 	};
 	var types = ["single", "multiple", "trueOrFalse", "fills", "subjective"];
 	for(var i=0;i<types.length;i++) {
@@ -589,15 +608,49 @@ function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
 	return params;
 }
 
+//var newPaperSid = -1;
 $('#submitBtn').bind().click(function() {
-	var params = createPaperAutoParams(examSid, 0, "XX考试", "2018-06-20 20:39:00", "2018-06-20 22:39:00");
+	var params = createPaperAutoParams(examSid, subjectSel.value, $("#title").val()
+					, $("#startTime").val(), $("#endTime").val(), $("#teacherSels").val());
 	$.post("createPaperAuto", params, function(data) {
 		if(data.result != 'fail') {
 			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
-			location.href = "../student/student-index.jsp?sid=" + examSid;
+			//newPaperSid = data.result;
+			//$("#submitBtn").get(0).innerText = "不满意生成的试卷"+newPaperSid+"，重新组卷";
+			window.open("loadAPaper?paper.sid=" + data.result);     
 		}
 	});
 	//window.open('apaper.html')
 });
+</script>
+
+<script type="text/javascript">
+loadSubjects();
+function loadSubjects() {
+	$.post("loadSubjects", null, function(data) {
+		var li = data.list;
+		for(var i=0;i<li.length;i++) {
+			var opt = document.createElement("option");
+			opt.value = li[i].sid;
+			opt.innerText = li[i].name;
+			subjectOpts.appendChild(opt);
+		}
+		loadDiffCounts();
+	});
+}
+
+loadTeachers();
+function loadTeachers() {
+	$.post("loadTeachers", null, function(data) {
+		var li = data.list;
+		for(var i=0;i<li.length;i++) {
+			var opt = document.createElement("option");
+			opt.value = li[i].userId;
+			opt.innerText = li[i].name;
+			teacherOptions.appendChild(opt);
+		}
+	});
+}
+
 </script>
 </html>

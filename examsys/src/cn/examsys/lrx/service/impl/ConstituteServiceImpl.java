@@ -35,7 +35,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 	
 	@Override
 	public int createPaperAuto(int examRef, int subjectRef, String name
-			, String examStart, String examEnd,
+			, String examStart, String examEnd, String responser,
 			ConstituteVO single, ConstituteVO trueOrFalse,
 			ConstituteVO multiple, ConstituteVO fills, ConstituteVO subjective) {
 		
@@ -91,22 +91,21 @@ public class ConstituteServiceImpl implements ConstituteService {
 		//难度
 		int difficulty_arr[] = new int[] {
 				 Conf.Difficulty_1
-				,Conf.Difficulty_2
-				,Conf.Difficulty_3
-				,Conf.Difficulty_4
+				, Conf.Difficulty_2
+				, Conf.Difficulty_3
+				, Conf.Difficulty_4
 		};
 		
 		
 		for (int i = 0; i < vos.length; i++) {
-			ConstituteVO vo = vos[i];
-			
 			//四个难度对应的题目数量
 			int diff_n_count_arr[] = {
-					 Math.round(vos[i].getCount() * vos[i].getDiff1Percent()) / 100 
+					  Math.round(vos[i].getCount() * vos[i].getDiff1Percent()) / 100 
 					, Math.round(vos[i].getCount() * vos[i].getDiff2Percent()) / 100 
 					, Math.round(vos[i].getCount() * vos[i].getDiff3Percent()) / 100 
 					, Math.round(vos[i].getCount() * vos[i].getDiff4Percent()) / 100 
 			};
+			System.out.println(type_arr[i] + "难度数量： " + Arrays.toString(diff_n_count_arr));
 			
 			//四个难度对应的题目分值
 			int diff_n_point_arr[] = {
@@ -115,6 +114,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 					,vos[i].getDiff3Point()
 					,vos[i].getDiff4Point()
 			};
+			
 			/**
 			 * TODO
 			 * 组卷 还需要一个条件
@@ -123,6 +123,9 @@ public class ConstituteServiceImpl implements ConstituteService {
 			int no = 0;//题目序号
 			//遍历四个难度
 			for (int j = 0; j < difficulty_arr.length; j++) {
+				if (diff_n_count_arr[j] == 0) {
+					continue;
+				}
 				List<Question> tmp = dao.findNByHql("from Question where type=? and difficultyValue=? ORDER BY RAND()"
 						, new Object[]{type_arr[i], difficulty_arr[j]}
 						, diff_n_count_arr[j]);
@@ -134,10 +137,15 @@ public class ConstituteServiceImpl implements ConstituteService {
 					
 					Constitute con = new Constitute();
 					con.setNo(++no);//题目序号
+					System.out.println(no);
 					con.setPaperRef(paperSid);//试卷ID
 					con.setQuestionRef(q.getSid());//指向题目
 					con.setType(q.getType());//题目类型
-					//con.setResponsibleUser(null);//负责批改此题目的教师
+					
+					if (Conf.Question_Subjective.equals(q.getType())) {
+						//解答题
+						con.setResponsibleUser(responser);//负责批改此题目的教师
+					}
 					
 					con.setPoint(diff_n_point_arr[j]);
 					try {
@@ -173,10 +181,10 @@ public class ConstituteServiceImpl implements ConstituteService {
 	}
 	
 	
-	
-	public int createPaperHand(User sessionUser, List<Integer> qids, int paperSid,
-		List<Integer> points, String examStart, String examEnd,
-		String name, int examRef, int subjectRef) {
+	@Override
+	public int createPaperHand(User sessionUser, List<Integer> qids, 
+			List<Integer> points, List<String> userIds, String examStart,
+			String examEnd, String name, int examRef, int subjectRef) {
 		if (qids.size() != points.size()) {
 			return -1;
 		}
@@ -188,13 +196,19 @@ public class ConstituteServiceImpl implements ConstituteService {
 		paper.setExamEnd(examEnd);
 		paper.setTime(Tool.time());//试卷创建时间
 		
+		try {
+			paper.setSid((Integer) dao.saveEntity(paper));
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
 		for (int i = 0; i < qids.size(); i++) {
 			Constitute con = new Constitute();
 			con.setNo(i);
-			con.setPaperRef(paperSid);
+			con.setPaperRef(paper.getSid());
 			con.setPoint(points.get(i));
 			con.setQuestionRef(qids.get(i));
-			//con.setResponsibleUser(responsibleUser);
+			con.setResponsibleUser(userIds.get(i));
 			try {
 				dao.saveEntity(con);
 			} catch (Exception e) {
@@ -202,7 +216,12 @@ public class ConstituteServiceImpl implements ConstituteService {
 			}
 		}
 		
-		return 0;
+		try {
+			return (Integer) dao.saveEntity(paper);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 	@Override
@@ -284,6 +303,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 			return null;
 		}
 	}
+
 	
 }
 	

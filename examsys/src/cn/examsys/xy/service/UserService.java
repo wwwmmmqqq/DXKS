@@ -27,4 +27,6 @@ public interface UserService {
 	User SelectOneUser(String userId);
 	/*找回密码*/
 	int findUser(String userId, String psw);
+	/*显示所有用户*/
+	List<User> findAllUser(String collegeName, String type);
 }

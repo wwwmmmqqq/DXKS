@@ -1,5 +1,6 @@
 package cn.examsys.lrx.service.impl;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,7 +46,7 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public List<Exam> loadMyExamsList(User sessionUser, int page) {
 		try {
-			return dao.findByHql("from Exam where invitee=?"
+			return dao.findByHql("from Exam where locate(?, invitee)>0"
 					, new Object[]{sessionUser.getCollegeName()}
 					, page);
 		} catch (Exception e) {
@@ -160,6 +161,27 @@ public class ExamServiceImpl implements ExamService {
 	 */
 	@Override
 	public int submitPaper(User sessionUser, int paperSid, int timeComsuming) {
+		
+		try {
+			BigInteger bi = dao.findOneBySql("select count(sid) from constitute_tb where paperRef=? and responsibleUser=?"
+					, new Object[]{paperSid, sessionUser.getUserId()});
+			if (bi != null && bi.intValue()>0) {
+				//如果有指定responsibleUser
+				//则暂时保存Grade ，等阅卷完毕后再算分
+				Grade g = new Grade();
+				g.setPaperRef(paperSid);
+				g.setPoint(0);
+				g.setTime(Tool.time());
+				g.setUserId(sessionUser.getUserId());
+				g.setTimeComsuming(timeComsuming);
+				int gradeSid = (Integer) dao.saveEntity(g);
+				System.out.println("-2");
+				return -2;
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
 		try {
 			List<String> questionIdList = dao.findBySql("select questionRef from constitute_tb where paperRef=?"
 					, new Object[]{paperSid});
@@ -251,7 +273,7 @@ public class ExamServiceImpl implements ExamService {
 	public List<PaperWithExamVO> loadInvitedExamPapers(User sessionUser, int page) {
 		try {
 			List<Exam> exams = dao.findByHql("from Exam where locate(?, invitee)>0 order by sid desc"
-					, new Object[]{sessionUser.getUserId()}, page);
+					, new Object[]{sessionUser.getCollegeName()}, page);
 			Map<Integer, Exam> examMap = new HashMap<>();
 			StringBuilder examIds = new StringBuilder();
 			
@@ -278,8 +300,22 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public List<GradeVO> loadGradesByPaper(User sessionUser, int sid) {
 		try {
-			dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
-					+ " from Grade g, User u, Paper p where ");
+			List<GradeVO> vos = dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
+					+ " from Grade g, User u, Paper p where p.sid=? and u.userId=g.userId and g.paperRef=?"
+					+ " order by g.point"
+					, new Object[]{sid, sid});
+			List<GradeVO> vos_order_inner_college = dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
+					+ " from Grade g, User u, Paper p where p.sid=? and u.userId=g.userId and g.paperRef=? and u.collegeRef=?"
+					+ " order by g.point"
+					, new Object[]{sid, sid, sessionUser.getCollegeRef()});
+			for (int i = 0; i < vos.size(); i++) {
+				for (int j = 0; j < vos_order_inner_college.size(); j++) {
+					if(vos.get(i).getUser().getUserId().equals(vos_order_inner_college.get(j).getUser().getUserId())) {
+						vos.get(i).setOrder(i+1);
+					}
+				}
+			}
+			return vos;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,7 @@
 package cn.examsys.xy.action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +102,8 @@ public class ItemBankAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createItemBank(){
-		
+		System.out.println(question.getSubjectRef());
+		System.out.println(option.size());
 		question.setUserId(getSessionUserId());     //老师的UserId
 		/*创建问题*/
 		question.setTime(Tool.time());

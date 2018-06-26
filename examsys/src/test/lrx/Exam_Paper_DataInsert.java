@@ -1,6 +1,7 @@
 package test.lrx;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -10,14 +11,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import cn.examsys.bean.College;
 import cn.examsys.bean.Exam;
 import cn.examsys.bean.Option;
 import cn.examsys.bean.Question;
+import cn.examsys.bean.Subject;
+import cn.examsys.bean.User;
 import cn.examsys.common.Conf;
 import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.LrxDaoImpl;
 import cn.examsys.lrx.service.ConstituteService;
 import cn.examsys.lrx.vo.ConstituteVO;
+import cn.examsys.lrx.vo.QuestionCheckVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"})
@@ -30,29 +35,81 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 	ConstituteService constitute;
 	
 	@Test
-	public void addExams() {
-		for (int i = 0; i < 6; i++) {
-			Exam e = new Exam();
-			e.setInvitee("萍乡学院");
-			e.setTitle("XXX考试" + (i+1));
-			e.setUserId("admin");
-			e.setExplication("考试说明" + i);
-			e.setTime(Tool.time());
-			e.setPeriodStart(Tool.time());
-			e.setPeriodEnd(Tool.time());
+	public void addSubjectAndColleges() {
+		String colleges[] = new String[]{
+				 "萍乡学院"
+				,"宜春学院"
+				,"新余学院"
+				,"南昌大学"
+				,"江西师大"
+		};
+		
+		String subjects[] = new String[]{
+				 "数学"
+				,"英语"
+				,"C语言"
+				,"Java语言"
+				,"HTML/CSS"
+		};
+		
+		for (int i = 0; i < subjects.length; i++) {
+			Subject sub = new Subject();
+			sub.setName(subjects[i]);
 			try {
-				e.setSid((Integer) daoAdapter.saveEntity(e));
-				//fillPapers(e.getSid());
-			} catch (Exception e1) {
-				e1.printStackTrace();
+				daoAdapter.saveEntity(sub);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
+		for (int i = 0; i < colleges.length; i++) {
+			College c = new College();
+			c.setName(colleges[i]);
+			try {
+				daoAdapter.saveEntity(c);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	@Test
+	public void addUsers() {
+		List<College> co = null;
+		try {
+			co = daoAdapter.findByHql("from College");
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		//10个学生
+		for (int i = 0; i < 10; i++) {
+			User u = new User();
+			u.setUserId("a" + i);
+			u.setPsw("123");
+			int cref = Tool.getIntRnd(co.size());
+			u.setCollegeName(co.get(cref).getName());
+			u.setCollegeRef(cref);
+			u.setName("name" + i);
+			try {
+				daoAdapter.saveEntity(u);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	@Test
 	public void createQuestions() {
-		for (int i = 0; i < 50; i++) {
-			addQeustion(i);
+		List<Subject> sub = null;
+		try {
+			sub = daoAdapter.findByHql("from Subject");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < 200; i++) {
+			addQeustion(i, sub);
 		}
 	}
 	
@@ -70,19 +127,64 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 	}
 	
 	@Test
+	public void addExams() {
+		List<User> userLi = null;
+		List<College> co = null;
+		try {
+			userLi = daoAdapter.findByHql("from User");
+			co = daoAdapter.findByHql("from College");
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+		
+		for (int i = 0; i < 6; i++) {
+			Exam e = new Exam();
+			
+			for (int j = 0; j < Tool.getIntRnd(co.size())+1; j++) {
+				e.setInvitee(e.getInvitee()==null?"萍乡学院 ":e.getInvitee() + " "
+						+ co.get(Tool.getIntRnd(co.size())).getName());
+			}
+			
+			e.setTitle("考试名称" + (i+1));
+			e.setState(0);
+			e.setUserId(userLi.get(Tool.getIntRnd(userLi.size())).getUserId());
+			e.setExplication("考试说明" + i);
+			e.setTime(Tool.time());
+			e.setPeriodStart(Tool.time());
+			e.setPeriodEnd(Tool.time());
+			try {
+				e.setSid((Integer) daoAdapter.saveEntity(e));
+				//fillPapers(e.getSid());
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	@Test
 	public void constitutePaper() {
 		try {
 			List<Exam> li = daoAdapter.findByHql("from Exam");
+			
+			List<Subject> sub = daoAdapter.findByHql("from Subject");
+			
 			for (int i = 0; i < li.size(); i++) {
-				constutePaper(li.get(i).getSid());
+				constutePaper(li.get(i).getSid(), sub.get(Tool.getIntRnd(sub.size())).getSid()
+						, "试卷名称" + i, "admin");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	@Test
+	public void userDoQuestions() {
+		
+	}
+	
 	//题库
-	private void addQeustion(int index) {
+	private void addQeustion(int index, List<Subject> sub) {
+		
 		String qtype[] = new String[] {
 				  Conf.Question_Single
 				, Conf.Question_Multiple
@@ -98,6 +200,7 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 		q.setTitle("题目标题" + index);
 		q.setType(rndType);
 		q.setUserId("admin");
+		q.setSubjectRef(Tool.getIntRnd(sub.size()));
 		q.setTime(Tool.time());
 		try {
 			q.setSid((Integer) daoAdapter.saveEntity(q));
@@ -143,7 +246,7 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 	}
 	
 	//组卷
-	private void constutePaper(int examRef) {
+	private void constutePaper(int examRef, int subjectRef, String paperName, String responser) {
 		ConstituteVO voSingle = new ConstituteVO();
 		voSingle.setCount(15);
 		voSingle.setDiff1Percent(50);
@@ -199,31 +302,9 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 		voSubjective.setDiff3Point(13);
 		voSubjective.setDiff4Point(15);
 		
-		constitute.createPaperAuto(examRef, 1, "XXX试卷", Tool.time(), Tool.time()
-				, voSingle, voTrueOrFalse, voMultiple, voFills, voSubjective);
+		constitute.createPaperAuto(examRef, subjectRef, paperName, Tool.time(), Tool.time()
+				, responser, voSingle, voTrueOrFalse, voMultiple, voFills, voSubjective);
 		
-	}
-
-	private void fillPaper(int sid) {
-		int paperCount = Tool.getIntRnd(13) + 1;//随机数量
-		for (int i = 0; i < paperCount; i++) {
-			
-			/*constitute.createPaperAuto(sid, 1, "XX试卷" + i, 120, Tool.time(), Tool.time()
-					, single, trueOrFalse, multiple, fills, subjective);*/
-			/*Paper paper = new Paper();
-			paper.setExamRef(sid);
-			paper.setExamStart(Tool.time());
-			paper.setExamEnd(Tool.time());
-			paper.setName("模拟考试" + i);
-			paper.setTotalScore(120);
-			paper.setTotalTime(120 * 60);
-			paper.setTime(Tool.time());
-			try {
-				paper.setSid((Integer) daoAdapter.saveEntity(paper));
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}*/
-		}
 	}
 	
 }
