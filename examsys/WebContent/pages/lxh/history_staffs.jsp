@@ -733,7 +733,7 @@
 			var htm = "<tr>"
 			+"	<td>"+(i+1)+"</td>"
 			+"	<td>"+paper.subjectName+"</td>"
-			+"	<td>"+exam.invitee+"</td>"
+			+"	<td>"+exam.invitee+"</td>" 
 			+"	<td>"+exam.periodStart+"-"+exam.periodEnd+"</td>"
 			+"	<td>"
 			+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' onclick='loadGradesByPaper("+paper.sid+")' ></i>"
