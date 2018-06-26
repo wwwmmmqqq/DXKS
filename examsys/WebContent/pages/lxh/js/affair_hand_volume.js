@@ -1,15 +1,18 @@
 
-/*退出登录*/
-function exit(){
-	confirm("确定要退出系统吗？");
-}
-/*点击隐藏试题篮*/
+/*搜索jquery隐藏显示面板*/
+$(document).ready(function() {
+    $("#flip").click(function() {
+        $("#panel").slideToggle("slow");
+    });
+});
+
+/*点击隐藏试题篮
     fun();
     function fun(){
 		$('#basketbtn').click(function(){
-  		   $('#basketright').toggle("slide");
+  		   $('#basketright').slideToggle("slow");
     	});
-	}
+	}*/
 
 /*加入试题篮
  $(document).ready(function(){
@@ -37,7 +40,5 @@ function exit(){
       		$("#subject-amount").text(a);
       		$("#addtobasket").html("+选题");
     	}
-      	});
-    	
-      	
+      	});    	
     });

@@ -44,9 +44,9 @@ public class User {
 	String classroom;//班级
 	
 	String status;
+	
 	@Transient
 	Grade grade;
-	@Transient
 	public Grade getGrade() {
 		return grade;
 	}
@@ -55,7 +55,7 @@ public class User {
 	public void setGrade(Grade grade) {
 		this.grade = grade;
 	}
-
+	
 
 
 	public String getStatus() {

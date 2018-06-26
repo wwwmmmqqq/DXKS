@@ -1,6 +1,7 @@
 package cn.examsys.lrx.action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -113,6 +114,26 @@ public class PageAction extends CommonAction {
 	public String loadAPaper() {
 		list = service.loadQuestionList(getSessionUser(), paper.getSid());
 		System.out.println(list.size());
+		return aa;
+	}
+	
+	Question question = new Question();
+	List<Option> options = new ArrayList<>();
+	public List<Option> getOptions() {
+		return options;
+	}
+	public Question getQuestion() {
+		return question;
+	}
+	
+	@Action(value="/createNewQuestion", results={
+			@Result(name="success", location="/pages/gy/jsentryquestions.jsp") })
+	public String createNewQuestion() {
+		System.out.println(Arrays.toString(options.toArray()));
+		boolean bo = service.saveQuestion(getSessionUser(), question, options);
+		if (!bo) {
+			setResult("fail");
+		}
 		return aa;
 	}
 	

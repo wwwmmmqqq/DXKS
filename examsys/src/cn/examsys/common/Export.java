@@ -49,13 +49,27 @@ public class Export {
 			}
 		}
 		
-		
-		
-		
-		if(title.contains("试卷")) {
-			for(int i=0;i<paper.length;i++) {
-				HSSFCell cell=row.createCell(i);
-				cell.setCellValue(paper[i]);
+		//填写实体数据，实际上这些是从数据库中得到
+		/*for(int i=0;i<3;i++) {
+			User user1 =new User();
+			user1.setUserId("15478"+i);
+			user1.setName("name"+i);
+			user1.setDepartment("department"+i);
+			user1.setProfession("department"+i);
+			user1.setClassroom("classroom"+i);
+			grade.setSubjectName("subjectName"+i);
+			grade.setPoint(i);
+			user1.setGrade(grade);
+			System.out.println(user1);
+			userList.add(user1);
+		}
+		for(int i=0;i<userList.size();i++){
+			row=sheet.createRow(i+1);     //第i行
+			//创建单元格并设置值
+			Object[] user = new Object[]{userList.get(i).getUserId(),userList.get(i).getName(),userList.get(i).getDepartment(),userList.get(i).getProfession(),userList.get(i).getClassroom(),userList.get(i).getGrade().getSubjectName(),userList.get(i).getGrade().getPoint(),"总排名","本校排名"};
+			for(int j=0;j<user.length;j++) {
+				row.createCell(j).setCellValue((user[j]+"").toString());    //第i行第j列
+				sheet.setColumnWidth(j, (user[j]+"").toString().getBytes().length*2*256);
 			}
 			//填写实体数据，实际上这些是从数据库中得到
 			for(int i=0;i<userList.size();i++){
@@ -71,7 +85,7 @@ public class Export {
 					}
 				} 
 			}
-		}	
+		}*/	
 	    try {  
 	    	HttpServletResponse response = ServletActionContext.getResponse();//初始化HttpServletResponse对象  
 	    	title = new String( title.getBytes("gb2312"), "ISO8859-1" );       

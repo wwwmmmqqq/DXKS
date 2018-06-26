@@ -20,6 +20,7 @@ import cn.examsys.bean.Subject;
 import cn.examsys.bean.User;
 import cn.examsys.common.Conf;
 import cn.examsys.common.QuestionListTool;
+import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.PageDaoImpl;
 import cn.examsys.lrx.service.ExamService;
 import cn.examsys.lrx.service.PageService;
@@ -66,9 +67,14 @@ public class PageServiceImpl implements PageService {
 	@Override
 	public List<QuestionCheckVO> loadResponsibleQuestions(User sessionUser, int sid, int page) {
 		try {
-			List<QuestionCheckVO> li = dao.findByHql("select new cn.examsys.lrx.vo.QuestionCheckVO(q, a, o) "
+			/*List<QuestionCheckVO> li = dao.findByHql("select new cn.examsys.lrx.vo.QuestionCheckVO(q, a, o) "
 					+ " from Constitute c, Answersheet a, Question q, Option o "
 					+ " where c.questionRef=q.sid and c.questionRef=q.sid and o.questionRef=q.sid and a.optionRef=o.sid");
+			return li;*/
+			List<QuestionCheckVO> li = dao.findByHql("select new cn.examsys.lrx.vo.QuestionCheckVO(q, a, o)"
+					+ " from Constitute c, Answersheet a, Question q, Option o "
+					+ " where c.responsibleUser=? and (a.checker!=? or a.checker is NULL) and c.questionRef=q.sid and o.questionRef=q.sid and a.optionRef=o.sid"
+					, new Object[]{sessionUser.getUserId(), sessionUser.getUserId()});
 			return li;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,6 +116,32 @@ public class PageServiceImpl implements PageService {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	
+	@Override
+	public boolean saveQuestion(User sessionUser, Question question, List<Option> options) {
+		try {
+			
+			question.setUserId(sessionUser.getUserId());
+			question.setTime(Tool.time());
+			question.setChoiceCount(options.size());
+			
+			int qsid = (Integer) dao.saveEntity(question);
+			
+			for (int i = 0; i < options.size(); i++) {
+				options.get(i).setQuestionRef(qsid);
+				options.get(i).setTime(Tool.time());
+				options.get(i).setType(question.getType());
+				dao.saveEntity(options.get(i));
+			}
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 }

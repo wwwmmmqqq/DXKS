@@ -25,9 +25,22 @@ public class DaoAdapter implements IDaoAdapter {
 		org.hibernate.Transaction tx = session.beginTransaction(); 
 		
 		Query query = session.createQuery(hql);
-		if(vals != null) {
+		/*if(vals != null) {
 			for(int i=0;i<vals.length;i++) {
 				if (vals[i] != null) {
+					if(vals[i] instanceof Integer) {
+						query.setInteger(i, (Integer)vals[i]);
+					} else {
+						query.setString(i, vals[i].toString());
+					}
+				}
+			}
+		}
+		*/
+		
+		if(vals != null) {
+			for(int i=0;i<vals.length;i++) {
+				if(vals[i]!=null) {
 					if(vals[i] instanceof Integer) {
 						query.setInteger(i, (Integer)vals[i]);
 					} else {
@@ -69,6 +82,10 @@ public class DaoAdapter implements IDaoAdapter {
 				}
 			}
 		}
+		
+		
+
+		
 		
 		if(page>0) {
 			query.setFirstResult((page-1)*COUNT_PER_PAGE);

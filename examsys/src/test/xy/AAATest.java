@@ -49,7 +49,7 @@ public class AAATest extends Export{
 		
 		//填写实体数据，实际上这些是从数据库中得到
 		/*List list = fileOutExcel.getWork();*/
-		for(int i=0;i<3;i++) {
+		/*for(int i=0;i<3;i++) {
 			User user1 =new User();
 			user1.setUserId("15478"+i);
 			user1.setName("name"+i);
@@ -61,8 +61,8 @@ public class AAATest extends Export{
 			user1.setGrade(grade);
 			System.out.println(user1);
 			userList.add(user1);
-		}
-		for(int i=0;i<userList.size();i++){
+		}*/
+		/*for(int i=0;i<userList.size();i++){
 			row=sheet.createRow(i+1);     //第i行
 			//创建单元格并设置值
 			Object[] user = new Object[]{userList.get(i).getUserId(),userList.get(i).getName(),userList.get(i).getDepartment(),userList.get(i).getProfession(),userList.get(i).getClassroom(),userList.get(i).getGrade().getSubjectName(),userList.get(i).getGrade().getPoint(),"总排名","本校排名"};
@@ -79,7 +79,7 @@ public class AAATest extends Export{
 			        e.printStackTrace();  
 			}
 
-		}
+		}*/
 	}
 	
 	@Test

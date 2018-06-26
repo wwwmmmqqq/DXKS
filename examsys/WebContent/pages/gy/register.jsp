@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<script type="text/javascript" src="js/register.js" ></script>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script src="js/popper.min.js"></script>
@@ -42,10 +41,10 @@
 					<div class="login_right">
 						<input type="text" class="form-control input_name" name="user_name" placeholder="请输入用户名"/>
 						<div class="input_bottom">
-							<input type="text" class="form-control input_password" name="user_psw" placeholder="请输入密码"/>
+							<input type="password" class="form-control input_password" name="user_psw" placeholder="请输入密码"/>
 						</div>
 						<div class="input_bottom">
-							<input type="text" class="form-control input_password" name="user_psw1" placeholder="确认密码"/>
+							<input type="password" class="form-control input_password" name="user_psw1" placeholder="确认密码"/>
 						</div>
 						<div class="input_bottom">
 							<input type="text" class="form-control input_password" name="user_email" placeholder="请输入邮箱"/>
@@ -59,7 +58,7 @@
 						</div>
 						
 						<div class="btn_bottom">
-							<button type="button" class="btn btn-primary btn_login">注册</button>
+							<button type="button" class="btn btn-primary btn_login" onclick="register_ajax()">注册</button>
 						</div>
 					</div>
 				</div>
@@ -67,5 +66,7 @@
 			
 		</div>
 	</body>
-	<script type="text/javascript" src="js/login.js" ></script>
+	<link rel="stylesheet" href="css/toastr.css" />
+	<script type="text/javascript" src="js/toastr.js"></script>
+	<script type="text/javascript" src="js/register.js" ></script>
 </html>

@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.examsys.bean.Option;
+import cn.examsys.bean.Question;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.LrxService;
 
@@ -111,6 +113,14 @@ public class AjaxAction extends CommonAction {
 		if (!bo) {
 			setResult("fail");
 		}
+		return aa;
+	}
+	
+	@Action(value="/loadTeachers"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadTeachers() {
+		list = service.loadUsers(getSessionUser());
 		return aa;
 	}
 	

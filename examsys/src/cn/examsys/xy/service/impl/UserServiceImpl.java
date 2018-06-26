@@ -40,6 +40,27 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 	/*查询用户列表*/
+	/*public List<User> SelectUserList(String type,int page) {
+		// TODO Auto-generated method stub
+		List<User> userList=userDao.selectUserList(type,page);*/
+		/*Iterator<User> iter = userList.iterator();
+		while (iter.hasNext()) {
+		   User it = iter.next();
+		   if("封禁".equals(it.getStatus())) {
+		    	iter.remove();
+		    	System.out.println("封禁");
+		   }
+		}*/
+	/*	return userList;
+	}*/
+	/*查询用户列表总页数*/
+	/*@Override
+	public int SelectUserListCount(String type) {
+		// TODO Auto-generated method stub
+		return userDao.selectUserListCount(type);
+	}*/
+	
+	/*查询用户列表*/
 	public List<User> SelectUserList(User user,int page,User administration) {
 		// TODO Auto-generated method stub
 		List<User> userList=userDao.selectUserList(user ,page,administration);
@@ -51,6 +72,10 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userDao.selectUserListCount(user , administration);
 	}
+
+	
+	
+	
 	/*编辑用户信息*/
 	@Override
 	public boolean editUser(User user) {

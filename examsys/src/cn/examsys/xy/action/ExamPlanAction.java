@@ -84,6 +84,7 @@ public class ExamPlanAction extends CommonAction {
 			,params={"contentType", "text/html"})
 	public String selectOneExamPlan() {
 		exam = examPlanService.selectOneExamPlan(exam.getSid());
+		System.out.println("999"+exam);
 		if(exam==null) {
 			setResult("查询失败");
 		}
@@ -94,7 +95,7 @@ public class ExamPlanAction extends CommonAction {
 	@Action(value="/deleteExamPlan"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
-	public String deleteExamPlan() {
+	public String deleteExamPlan() {System.out.println(exam.getSid());
 		boolean currentExam = examPlanService.deleteExamPlan(exam.getSid());
 		if(!currentExam) {
 			setResult("删除失败");

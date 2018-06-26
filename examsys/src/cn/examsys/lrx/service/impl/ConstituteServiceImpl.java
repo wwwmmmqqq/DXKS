@@ -35,7 +35,7 @@ public class ConstituteServiceImpl implements ConstituteService {
 	
 	@Override
 	public int createPaperAuto(int examRef, int subjectRef, String name
-			, String examStart, String examEnd,
+			, String examStart, String examEnd, String responser,
 			ConstituteVO single, ConstituteVO trueOrFalse,
 			ConstituteVO multiple, ConstituteVO fills, ConstituteVO subjective) {
 		
@@ -141,7 +141,11 @@ public class ConstituteServiceImpl implements ConstituteService {
 					con.setPaperRef(paperSid);//试卷ID
 					con.setQuestionRef(q.getSid());//指向题目
 					con.setType(q.getType());//题目类型
-					//con.setResponsibleUser(null);//负责批改此题目的教师
+					
+					if (Conf.Question_Subjective.equals(q.getType())) {
+						//解答题
+						con.setResponsibleUser(responser);//负责批改此题目的教师
+					}
 					
 					con.setPoint(diff_n_point_arr[j]);
 					try {
