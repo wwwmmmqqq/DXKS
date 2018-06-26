@@ -225,270 +225,6 @@
 	    				</div>
 		    		</div>
 		    		
-		    		<script type="text/javascript">
-		    		
-		    		var questionIds = [];
-		    		var points = {};
-		    		
-		    		var teacherNames = [];
-		    		var teacherIds = [];
-		    		
-		    		var type = "Single";
-		    		var diff = "";
-		    		var subject = "";
-		    		var title = "";
-		    		var knowledge = "";
-		    		var jsons = {
-		    			"page":1,
-		    			"examSid":"${examSid}",
-		    			"keys[0]":"type",
-		    			"keys[1]":"difficultyValue",
-		    			"keys[2]":"subjectRef",
-		    			"keys[3]":"title",
-		    			"keys[4]":"knowledge",
-		    			"vals[0]":type,
-		    			"vals[1]":diff,
-		    			"vals[2]":subject,
-		    			"vals[3]":title,
-		    			"vals[4]":knowledge
-		    		};
-		    		function selType(s) {
-		    			type = s;
-		    			jsons["vals[0]"] = s;
-		    			doSearch();
-		    		}
-		    		function selDiff(s) {
-		    			diff = s;
-		    			jsons["vals[1]"] = s;
-		    			doSearch();
-		    		}
-		    		function selSubject(n) {
-		    			subject = n;
-		    			jsons["vals[2]"] = n;
-		    			doSearch();
-		    		}
-		    		function selTitle(s) {
-		    			title = s;
-		    			jsons["vals[3]"] = s;
-		    			doSearch();
-		    		}
-		    		function selKnowledge(s) {
-		    			knowledge = s;
-		    			jsons["vals[4]"] = s;
-		    			doSearch();
-		    		}
-		    		loadTeachers();
-		    		loadSubjects();
-		    		doSearch();
-		    		function doSearch() {
-		    			$.post("searchQuestionsHandConstitute",jsons, function(data) {
-		    				var li = data.list;
-		    				var htmls = "";
-		    				for(var i=0;i<li.length;i++) {
-		    					htmls += getItemHtm(li[i]);
-		    				}
-		    				$("#question-box").html(htmls);
-		    			});
-		    		}
-		    		
-		    		function loadSubjects() {
-		    			$.post("loadSubjects", null, function(data) {
-		    				var li = data.list;
-		    				for(var i=0;i<li.length;i++) {
-		    					var opt = document.createElement("option");
-		    					opt.value = li[i].sid;
-		    					opt.innerText = li[i].name;
-		    					subjectGroup.appendChild(opt);
-		    					paperSubjectGroup.appendChild(opt);
-		    				}
-		    				loadDiffCounts();
-		    			});
-		    		}
-		    		
-		    		function getItemHtm(q) {
-		    			var options = q.options;
-		    			var optHtmls = "";
-		    			var answer = "";
-		    			for(var i=0;i<options.length;i++) {
-		    				var label = String.fromCharCode("A".charCodeAt() + i);
-		    				if("Fills Subjective TrueOrFalse".indexOf(q.type)>=0) {
-		    					label = i+1;
-		    					if("Fills" == q.type) {
-		    						answer = options[i].fillsText;
-		    					} else if("Subjective" == q.type) {
-		    						answer = options[i].subjectiveText;
-		    					} else if("TrueOrFalse" == q.type) {
-		    						answer = options[i].isAnswer=='1'?"正确":"错误";
-		    					}
-		    				}else if(options[i].isAswer) {
-		    					answer += label;
-		    				}
-		    				optHtmls += "<span class='op-item'>"
-		    						+"		<span>"+label+".</span>"
-		    						+"		<span>"+options[i].content+"</span>"
-		    						+"	 </span>";
-		    			}
-		    			
-		    			var diffText = ["","简单","一般","中等","较难"][q.difficultyValue];
-		    			var questionTypeName = {
-		    					"Single":"单选题",
-		    					"Multiple":"多选题",
-		    					"Fills":"填空题",
-		    					"TrueOrFalse":"判断题",
-		    					"Subjective":"解答题"
-		    				}[q.type];
-		    			var cssstyle = "";
-		    			var btnText = "加选题";
-		    			if(questionIds.contains(q.sid)) {
-		    				cssstyle = "style='background-color:green;border-color:green'";
-		    				btnText = "减选题";
-		    			}
-		    			
-		    			var checkerHtml = "<input type='hidden' id='teacherSel"+q.sid+"' />";
-		    			try {
-		    				if(q.type=='Subjective') {
-				    			checkerHtml = "指定老师批改<select id='teacherSel"+q.sid+"'><optGroup label='指定老师批改'>";
-				    			for(var i=0;i<teacherIds.length;i++) 
-					    			checkerHtml+="<option value='"+teacherIds[i]+"'>"+teacherNames[i]+"</option>";
-				    			checkerHtml += "</optGroup></select>";
-		    				}
-		    			}catch(e) {
-		    				alert(e);
-		    			}
-		    			
-		    			var htm = "<li id='q-item-"+q.sid+"' class='q-item-class'>"
-		    				+"	<div class='search-exam'>"
-		    				+"		<div class='exam-head'>"
-		    				+"			<p class='exam-head-left'>"
-		    				+"				<span>题型："+questionTypeName+"</span>"
-		    				+"				<i class='line'></i>"
-		    				+"				<span>难易度："+diffText+"</span>"
-		    				+"				<i class='line'></i>"
-		    				+"				<span>知识点："+q.knowledge+"</span>"
-		    				+"			</p>"
-		    				+"		</div>"
-		    				+"		<div class='exam-con'>"
-		    				+"			<div class='exam-q'></div>"
-		    				+"			<div class='exam-qlist'>"
-		    				+"				<div class='exam-con'>"
-		    				+"					<div class='exam-q'>"
-		    				+"						"+(q.sid)+"."+q.title+"(&nbsp;&nbsp;)"
-		    				+"					</div>"
-		    				+"					<div class='exam-s'>"
-		    				+ optHtmls
-		    				+"					</div>"
-		    				+"				</div>"
-		    				+"				<div class='exam-foot'>"
-		    				+"					<p class='exam-foot-left'>"
-		    				+"						<i class='fa fa-hand-pointer-o'></i>"
-		    				+"						<a href='javascript:void(0)'>答案："+answer+"</a>"
-		    				+"					</p>"
-		    				+"					<p class='exam-foot-right'>"
-		    				+checkerHtml
-		    				+"分值<input id='point_"+q.sid+"' placeholder='分值' style='width:48px' type='number' value='1'>"
-		    				+"						<button type='button' class='btn btn-primary' "
-		    				+								cssstyle+" onclick='addQuestion(this, "+q.sid+", point_"+q.sid+".value, teacherSel"+q.sid+".value)'>"+btnText+"</button>"
-		    				+"					</p>"
-		    				+"				</div>"
-		    				+"			</div>"
-		    				+"		</div>"
-		    				+"	</div>"
-		    				+"</li>";
-		    				return htm;
-		    		}
-		    		
-		    		function addQuestion(self, n, point, teacherId) {
-		    			if(point == '') {
-		    				alert("请输入分值");
-		    				return;
-		    			}
-		    			points[n+""] = point;
-		    			teacherIds[n+""] = teacherId;
-		    			
-		    			if(!questionIds.contains(n)) {
-		    				questionIds.push(n);
-		    				$(self).css({
-		    					"background-color":"green"
-		    					,"border-color":"green"
-		    				});
-		    				$(self).text("减选题");
-			    			$("#choosedQuestionBox").html($("#choosedQuestionBox").html() + $("#q-item-" + n).get(0).outerHTML);
-			    			$("#choosedQuestionBox").find("#q-item-" + n).hide();
-		    			} else {
-		    				questionIds.remove(n);
-		    				$(self).css({
-		    					"background-color":"#428bca"
-		    					,"border-color":"#357ebd"
-		    				});
-		    				$(self).text("加选题");
-		    				$("#choosedQuestionBox").find("#q-item-" + n).remove();
-		    			}
-		    			
-		    			$("#subj-amount").text(questionIds.length);
-		    			$("#subject-amount").text(questionIds.length);
-		    			var basketHtml = "";
-		    			for(var i=0;i<questionIds.length;i++) {
-		    				basketHtml += "<div class='little-box'>"+questionIds[i]+"</div>";
-		    			}
-		    			$(".baskrt-list").html(basketHtml);
-		    			
-		    			var lastClicked = null;
-		    			var lastBox = null;
-		    			$(".little-box").click(function() {
-		    				if(lastClicked == $(this).text()) {
-		    					$("#q-item-" + $(this).text()).hide();
-			    				$(".searchlist").show();
-			    				lastClicked = null;
-			    				lastBox = null;
-			    				$(this).css({"background-color":"white"});
-		    				} else {
-		    					$("#q-item-" + $(this).text()).show();
-			    				$(".searchlist").hide();
-			    				$("#q-item-"+lastClicked).hide();
-			    				$(lastBox).css({"background-color":"white"});
-		    					$(this).css({"background-color":"rgba(100,100,100,0.4)"});
-		    					lastClicked = $(this).text();
-		    					lastBox = $(this);
-		    				}
-		    			});
-		    			
-		    		}
-		    		
-		    		function loadTeachers() {
-		    			$.post("loadTeachers", null, function(data) {
-		    				var li = data.list;
-		    				for(var i=0;i<li.length;i++) {
-		    					teacherIds.push(li[i].userId);
-		    					teacherNames.push(li[i].name);
-		    				}
-		    			});
-		    		}
-		    		
-		    		$("#to-paper-edit").click(function() {
-		    			submitHandVolume($("#paperName").val(), $("#examStart").val()
-		    						, $("#examEnd").val(), $("#paperSubject").val());
-		    		});
-		    		
-		    		function submitHandVolume(title, examStart, examEnd, subjectRef) {
-		    			var jsonDatas = {
-		    					"paper.examRef":"${examSid}",
-		    					"paper.name":title,
-		    					"paper.examStart":examStart,
-		    					"paper.examEnd":examEnd,
-		    					"paper.subjectRef":subjectRef
-		    			};
-		    			
-		    			for(var i=0;i<questionIds.length;i++) {
-		    				jsonDatas["qids["+i+"]"] = questionIds[i];
-		    				jsonDatas["points["+i+"]"] = points[questionIds[i]+''];
-		    				jsonDatas["userIds["+i+"]"] = teacherIds[questionIds[i]+''];
-		    			}
-		    			
-		    			$.post("createPaperHand", jsonDatas, function(data) {
-		    				window.open("loadAPaper?paper.sid=" + data.result);
-		    			});
-		    		}
-		    		</script>
 		    		<!-- 试卷管理 start -->
 		    		<div class="panel showpaperpanel">
 		    			<header class="panel-heading" >
@@ -629,22 +365,11 @@
 		    			<div class="page_pagination">
 		    				<ul class="pagination">
 		    					<li class="page-item">
-		    						<a class="page-link" href="#">上一页</a>
+		    						<a class="page-link" href="javascript:prevPage()">上一页</a>
 		    					</li>
 		    					<li class="page-item">
-		    						<a class="page-link" href="#">1</a>
+		    						<a class="page-link" href="javascript:nextPage()">下一页</a>
 		    					</li>
-		    					<li class="page-item active">
-		    						<a class="page-link " href="#">2</a>
-		    					</li>
-		    					<li class="page-item">
-		    						<a class="page-link" href="#">3</a>
-		    					</li>
-		    					<li class="page-item">
-		    						<a class="page-link" href="#">下一页</a>
-		    					</li>
-		    					<input class="jump">
-		    					<button class="btn btn-primary btn_jump">跳转</button>
 		    				</ul>
 		    			</div>
 
@@ -938,7 +663,287 @@
 	    		</div>
 	    	</div>
 	    </div>
-		
+				<script type="text/javascript">
+		    		var currentPage = 1;
+		    		var questionIds = [];
+		    		var points = {};
+		    		
+		    		var teacherNames = [];
+		    		var teacherIds = [];
+		    		
+		    		var type = "Single";
+		    		var diff = "";
+		    		var subject = "";
+		    		var title = "";
+		    		var knowledge = "";
+		    		var jsons = {
+		    			"page":currentPage,
+		    			"examSid":"${examSid}",
+		    			"keys[0]":"type",
+		    			"keys[1]":"difficultyValue",
+		    			"keys[2]":"subjectRef",
+		    			"keys[3]":"title",
+		    			"keys[4]":"knowledge",
+		    			"vals[0]":type,
+		    			"vals[1]":diff,
+		    			"vals[2]":subject,
+		    			"vals[3]":title,
+		    			"vals[4]":knowledge
+		    		};
+		    		function selType(s) {
+		    			type = s;
+		    			jsons["vals[0]"] = s;
+		    			doSearch();
+		    		}
+		    		function selDiff(s) {
+		    			diff = s;
+		    			jsons["vals[1]"] = s;
+		    			doSearch();
+		    		}
+		    		function selSubject(n) {
+		    			subject = n;
+		    			jsons["vals[2]"] = n;
+		    			doSearch();
+		    		}
+		    		function selTitle(s) {
+		    			title = s;
+		    			jsons["vals[3]"] = s;
+		    			doSearch();
+		    		}
+		    		function selKnowledge(s) {
+		    			knowledge = s;
+		    			jsons["vals[4]"] = s;
+		    			doSearch();
+		    		}
+		    		loadTeachers();
+		    		loadSubjects();
+		    		doSearch();
+		    		function doSearch(callback) {
+		    			jsons["page"] = currentPage;
+		    			$.post("searchQuestionsHandConstitute",jsons, function(data) {
+		    				var li = data.list;
+		    				var htmls = "";
+		    				for(var i=0;i<li.length;i++) {
+		    					htmls += getItemHtm(li[i]);
+		    				}
+		    				$("#question-box").html(htmls);
+		    				callback(data.list.length > 0);
+		    			});
+		    		}
+		    		
+		    		function nextPage() {
+		    			currentPage += 1;
+		    			doSearch(function(hasNext) {
+		    				if(hasNext)
+		    					currentPage ++;
+		    			});
+		    			currentPage -= 1;
+		    		}
+		    		function prevPage() {
+		    			if(currentPage > 1) {
+		    				currentPage --;
+		    				doSearch();
+		    			}
+		    		}
+		    		
+		    		function loadSubjects() {
+		    			$.post("loadSubjects", null, function(data) {
+		    				var li = data.list;
+		    				for(var i=0;i<li.length;i++) {
+		    					var opt = document.createElement("option");
+		    					opt.value = li[i].sid;
+		    					opt.innerText = li[i].name;
+		    					subjectGroup.appendChild(opt);
+		    					paperSubjectGroup.appendChild(opt);
+		    				}
+		    				loadDiffCounts();
+		    			});
+		    		}
+		    		
+		    		function getItemHtm(q) {
+		    			var options = q.options;
+		    			var optHtmls = "";
+		    			var answer = "";
+		    			for(var i=0;i<options.length;i++) {
+		    				var label = String.fromCharCode("A".charCodeAt() + i);
+		    				if("Fills Subjective TrueOrFalse".indexOf(q.type)>=0) {
+		    					label = i+1;
+		    					if("Fills" == q.type) {
+		    						answer = options[i].fillsText;
+		    					} else if("Subjective" == q.type) {
+		    						answer = options[i].subjectiveText;
+		    					} else if("TrueOrFalse" == q.type) {
+		    						answer = options[i].isAnswer=='1'?"正确":"错误";
+		    					}
+		    				}else if(options[i].isAswer) {
+		    					answer += label;
+		    				}
+		    				optHtmls += "<span class='op-item'>"
+		    						+"		<span>"+label+".</span>"
+		    						+"		<span>"+options[i].content+"</span>"
+		    						+"	 </span>";
+		    			}
+		    			
+		    			var diffText = ["","简单","一般","中等","较难"][q.difficultyValue];
+		    			var questionTypeName = {
+		    					"Single":"单选题",
+		    					"Multiple":"多选题",
+		    					"Fills":"填空题",
+		    					"TrueOrFalse":"判断题",
+		    					"Subjective":"解答题"
+		    				}[q.type];
+		    			var cssstyle = "";
+		    			var btnText = "加选题";
+		    			if(questionIds.contains(q.sid)) {
+		    				cssstyle = "style='background-color:green;border-color:green'";
+		    				btnText = "减选题";
+		    			}
+		    			
+		    			var checkerHtml = "<input type='hidden' id='teacherSel"+q.sid+"' />";
+		    			try {
+		    				if(q.type=='Subjective') {
+				    			checkerHtml = "指定老师批改<select id='teacherSel"+q.sid+"'><optGroup label='指定老师批改'>";
+				    			for(var i=0;i<teacherIds.length;i++) 
+					    			checkerHtml+="<option value='"+teacherIds[i]+"'>"+teacherNames[i]+"</option>";
+				    			checkerHtml += "</optGroup></select>";
+		    				}
+		    			}catch(e) {
+		    				alert(e);
+		    			}
+		    			
+		    			var htm = "<li id='q-item-"+q.sid+"' class='q-item-class'>"
+		    				+"	<div class='search-exam'>"
+		    				+"		<div class='exam-head'>"
+		    				+"			<p class='exam-head-left'>"
+		    				+"				<span>题型："+questionTypeName+"</span>"
+		    				+"				<i class='line'></i>"
+		    				+"				<span>难易度："+diffText+"</span>"
+		    				+"				<i class='line'></i>"
+		    				+"				<span>知识点："+q.knowledge+"</span>"
+		    				+"			</p>"
+		    				+"		</div>"
+		    				+"		<div class='exam-con'>"
+		    				+"			<div class='exam-q'></div>"
+		    				+"			<div class='exam-qlist'>"
+		    				+"				<div class='exam-con'>"
+		    				+"					<div class='exam-q'>"
+		    				+"						"+(q.sid)+"."+q.title+"(&nbsp;&nbsp;)"
+		    				+"					</div>"
+		    				+"					<div class='exam-s'>"
+		    				+ optHtmls
+		    				+"					</div>"
+		    				+"				</div>"
+		    				+"				<div class='exam-foot'>"
+		    				+"					<p class='exam-foot-left'>"
+		    				+"						<i class='fa fa-hand-pointer-o'></i>"
+		    				+"						<a href='javascript:void(0)'>答案："+answer+"</a>"
+		    				+"					</p>"
+		    				+"					<p class='exam-foot-right'>"
+		    				+checkerHtml
+		    				+"分值<input id='point_"+q.sid+"' placeholder='分值' style='width:48px' type='number' value='1'>"
+		    				+"						<button type='button' class='btn btn-primary' "
+		    				+								cssstyle+" onclick='addQuestion(this, "+q.sid+", point_"+q.sid+".value, teacherSel"+q.sid+".value)'>"+btnText+"</button>"
+		    				+"					</p>"
+		    				+"				</div>"
+		    				+"			</div>"
+		    				+"		</div>"
+		    				+"	</div>"
+		    				+"</li>";
+		    				return htm;
+		    		}
+		    		
+		    		function addQuestion(self, n, point, teacherId) {
+		    			if(point == '') {
+		    				alert("请输入分值");
+		    				return;
+		    			}
+		    			points[n+""] = point;
+		    			teacherIds[n+""] = teacherId;
+		    			
+		    			if(!questionIds.contains(n)) {
+		    				questionIds.push(n);
+		    				$(self).css({
+		    					"background-color":"green"
+		    					,"border-color":"green"
+		    				});
+		    				$(self).text("减选题");
+			    			$("#choosedQuestionBox").html($("#choosedQuestionBox").html() + $("#q-item-" + n).get(0).outerHTML);
+			    			$("#choosedQuestionBox").find("#q-item-" + n).hide();
+		    			} else {
+		    				questionIds.remove(n);
+		    				$(self).css({
+		    					"background-color":"#428bca"
+		    					,"border-color":"#357ebd"
+		    				});
+		    				$(self).text("加选题");
+		    				$("#choosedQuestionBox").find("#q-item-" + n).remove();
+		    			}
+		    			
+		    			$("#subj-amount").text(questionIds.length);
+		    			$("#subject-amount").text(questionIds.length);
+		    			var basketHtml = "";
+		    			for(var i=0;i<questionIds.length;i++) {
+		    				basketHtml += "<div class='little-box'>"+questionIds[i]+"</div>";
+		    			}
+		    			$(".baskrt-list").html(basketHtml);
+		    			
+		    			var lastClicked = null;
+		    			var lastBox = null;
+		    			$(".little-box").click(function() {
+		    				if(lastClicked == $(this).text()) {
+		    					$("#q-item-" + $(this).text()).hide();
+			    				$(".searchlist").show();
+			    				lastClicked = null;
+			    				lastBox = null;
+			    				$(this).css({"background-color":"white"});
+		    				} else {
+		    					$("#q-item-" + $(this).text()).show();
+			    				$(".searchlist").hide();
+			    				$("#q-item-"+lastClicked).hide();
+			    				$(lastBox).css({"background-color":"white"});
+		    					$(this).css({"background-color":"rgba(100,100,100,0.4)"});
+		    					lastClicked = $(this).text();
+		    					lastBox = $(this);
+		    				}
+		    			});
+		    			
+		    		}
+		    		
+		    		function loadTeachers() {
+		    			$.post("loadTeachers", null, function(data) {
+		    				var li = data.list;
+		    				for(var i=0;i<li.length;i++) {
+		    					teacherIds.push(li[i].userId);
+		    					teacherNames.push(li[i].name);
+		    				}
+		    			});
+		    		}
+		    		
+		    		$("#to-paper-edit").click(function() {
+		    			submitHandVolume($("#paperName").val(), $("#examStart").val()
+		    						, $("#examEnd").val(), $("#paperSubject").val());
+		    		});
+		    		
+		    		function submitHandVolume(title, examStart, examEnd, subjectRef) {
+		    			var jsonDatas = {
+		    					"paper.examRef":"${examSid}",
+		    					"paper.name":title,
+		    					"paper.examStart":examStart,
+		    					"paper.examEnd":examEnd,
+		    					"paper.subjectRef":subjectRef
+		    			};
+		    			
+		    			for(var i=0;i<questionIds.length;i++) {
+		    				jsonDatas["qids["+i+"]"] = questionIds[i];
+		    				jsonDatas["points["+i+"]"] = points[questionIds[i]+''];
+		    				jsonDatas["userIds["+i+"]"] = teacherIds[questionIds[i]+''];
+		    			}
+		    			
+		    			$.post("createPaperHand", jsonDatas, function(data) {
+		    				window.open("loadAPaper?paper.sid=" + data.result);
+		    			});
+		    		}
+		    		</script>
 	<script >
 	/* 
 	function searchQuestions() {
@@ -954,6 +959,7 @@
 		  });
 	  }
 	 */
+	 
 	
 	 function constituteByHand(qids, examStart, examEnd, examName) {
 		  //手动组卷接口
