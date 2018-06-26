@@ -16,6 +16,7 @@ public interface UserDao {
 	int selectUserListCount(User user, User administration);
 	/*按类型查询用户列表*/
 	List<User> selectUserList(User user,int page,User administration);
+
 	/*编辑用户信息*/
 	void editUser(User user);
 	/*找回密码*/

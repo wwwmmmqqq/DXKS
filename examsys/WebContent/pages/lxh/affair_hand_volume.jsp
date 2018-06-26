@@ -26,6 +26,17 @@
         <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
+		
+		<script type="text/javascript" src="js/array.js"></script>
+		<style type="text/css">
+		.little-box {
+   			width: 25px;height:25px;line-height:25px;border: 1px solid rgba(100,100,100,0.5);
+   			cursor: pointer;
+   			color: gray;float: left;
+   			text-align: center;
+   		}
+   		.little-box:hover{background-color: rgba(100,100,100,0.5);}
+		</style>
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -56,7 +67,7 @@
 							    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-teacher">邀请老师出卷</a>
-						<a href="#" data-toggle="modal" data-target="#myModal-invite-school">邀请学校考试</a>
+						<!-- <a href="#" data-toggle="modal" data-target="#myModal-invite-school">邀请学校考试</a> -->
 					</div>
 				</div>
 		
@@ -97,12 +108,12 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-						 <li class="side_nav1">
+						<!--  <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li>
+						</li> -->
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -139,13 +150,12 @@
 		    				<div class="basket-head">
 		    					共计：（<span id="subject-amount">0</span>）道题
 		    				</div>
-		    				<div class="baskrt-list">
-		    	
+		    				<div class="baskrt-list" style="overflow: auto;max-height: 100px;">
 		    				</div>
 		    			</div>
 		    			<div class="basket-foot">
 		    				<a id="to-paper-admin-edit" data-method="post" class="basket-btn" href="" style="display: none">编辑</a>
-		    				<a id="to-paper-edit" data-method="post" class="basket-btn" href="apaper.jsp">生成试卷</a>
+		    				<a id="to-paper-edit" data-method="post" class="basket-btn" href="javascript:void(0)">生成试卷</a>
 		    				<a id="to-paper-admin-cancel" class="basket-btn" href="" style="display: none">取消</a>
 		    			</div>
 		    		</div>
@@ -153,49 +163,119 @@
 		    
 		    	<!--试题篮  end -->
 		    	
-		    	
 		    	<div class="papermanage">
-		    	
-		    	    <div id="flip"><i class="fa fa-search-minus"></i>条件搜索</div>
-		    		<div id="panel">
-		    			<form>
-		    				<div class="searchpanel">
-		    					<ul>
-		    						<li id="qtype">
-		    							<select id="question_type">
-		    							    <option>选择试题类型</option>
-		    								<option>单选题</option>
-		    								<option>多选题</option>
-		    								<option>填空题</option>
-		    								<option>判断题</option>
-		    								<option>解答题</option>
-		    							</select>
-		    						</li>	    
-		    						<li id="qdiffer"><label>难易程度</label>
-		    							<select id="question_difficultValue">
-		    								<option>简单</option>
-		    								<option>一般</option>
-		    								<option>难</option>
-		    								<option>较难</option>
-		    							</select>
-		    						</li>
-		    						<li id="qknow"><label>知识点</label>
-		    							<input type="text" id="question_knowledge" />
-		    						</li>
-		    						<li><button type="submit" class="btn btn-default searchbtn" onclick="searchQuestions()"><i class="fa fa-search"></i></button></li>
-		    					</ul>		    					
-		    				</div>		    		
-		    			</form>		
+		    		<div>
+		    			<label>试卷名称：<input id="paperName" type='text' placeholder="试卷名称"></label>
+		    			<label>考试科目：
+		    				<select id="paperSubject">
+		    					<optgroup label="考试科目" id="paperSubjectGroup"></optgroup>
+		    				</select>
+		    			</label>
+		    			<label>开始时间：<input id="examStart" type='text' placeholder="开始时间"></label>
+		    			<label>结束时间：<input id="examEnd" type='text' placeholder="结束时间"></label>
 		    		</div>
+		    	    <div id="flip"><i class="fa fa-search-minus">
+		    	    </i>搜索条件</div>
+		    		<div id="panel">
+	    				<div class="searchpanel" style="float: left;">
+	    					<ul>
+	    						<li id="qtype">
+	    							<label>搜索类型</label>
+	    							<select id="typeSels" onchange="selType(this.value)">
+	    							    <optgroup label="选择试题类型">
+		    								<option value="">全部</option>
+		    								<option value="Single">单选题</option>
+		    								<option value="Multiple">多选题</option>
+		    								<option value="Fills">填空题</option>
+		    								<option value="TrueOrFalse">判断题</option>
+		    								<option value="Subjective">解答题</option>
+	    								</optgroup>
+	    							</select>
+	    						</li>	    
+	    						<li id="qdiffer"><label>难易程度</label>
+	    							<select id="difficultValueSels" onchange="selDiff(this.value)">
+	    								<optgroup label="题目难度筛选">
+	    									<option value="">全部</option>
+		    								<option value="1">简单</option>
+		    								<option value="2">一般</option>
+		    								<option value="3">难</option>
+		    								<option value="4">较难</option>
+	    								</optgroup>
+	    							</select>
+	    						</li>
+	    						<li id="qdiffer"><label>科目</label>
+	    							<select class="subjectSels" onchange="selSubject(this.value)">
+	    								<optgroup label="科目" id="subjectGroup">
+	    									<option value="">全部</option>
+	    								</optgroup>
+	    							</select>
+	    						</li>
+	    						<li id="qknow">
+	    							<label>题目标题</label>
+	    							<input type="text" id="titleIpt" onchange="selTitle(this.value)" />
+	    						</li>
+	    						<li id="qknow">
+	    							<label>知识点</label>
+	    							<input type="text" id="knowledgeIpt" onchange="selKnowledge(this.value)" />
+	    						</li>
+	    						<li><button type="submit" class="btn btn-default searchbtn" 
+	    							onclick="doSearch()"><i class="fa fa-search"></i></button>
+	    						</li>
+	    					</ul>
+	    				</div>
+		    		</div>
+		    		
 		    		<!-- 试卷管理 start -->
 		    		<div class="panel showpaperpanel">
 		    			<header class="panel-heading" >
 		    				试题列表
 		    			</header>
 		    			<div class="panel-body panelbod">
+		    				<ul>
+		    					<div id="choosedQuestionBox"></div>
+		    				</ul>
 		    				<div class="searchlist">
-		    					<ul>
-		    					 <s:iterator id="que" value="#request.questionList" status="sta">
+		    					<ul id="question-box">
+		    						<li>
+		    							<div class="search-exam">
+		    								<div class="exam-head">
+		    									<p class="exam-head-left">
+		    									    <span>题型：单选题</span>
+		    									    <i class="line"></i>
+		    									    <span>难易度：简单</span>
+		    									    <i class="line"></i>
+		    									    <span>知识点：java语言</span>
+		    								    </p>
+		    								</div>
+		    							    <div class="exam-con">
+		    							    	<div class="exam-q"></div>
+		    							    	<div class="exam-qlist"> 
+		    							    		<div class="exam-con">
+		    							    			<div class="exam-q">
+		    							    				1.下列说法正确的是(&nbsp;&nbsp;)
+		    							    			</div>
+		    							    		    <div class="exam-s">
+		    							    			    <span class="op-item">
+		    							    			    	<span>A.</span> 
+		    							    			    	<span>Update software</span>
+		    							    			    </span>
+		    							    		    </div>
+		    							    		</div>
+		    							    		<div class="exam-foot">
+		    							    			<p class="exam-foot-left">
+		    							    				<i class="fa fa-hand-pointer-o"></i>
+		    							    				<a href="javascript:void(0)">答案：</a>
+		    							    			</p>
+		    							    			<p class="exam-foot-right">
+		    							    				<button type="button" class="btn btn-primary" onclick="addQuestion(this, 0, 2)" >+选题</button>
+		    							    			</p>
+		    							    		</div>
+		    							    	</div>
+		    							    </div>
+		    							</div>
+		    						</li>
+		    					
+		    					 <%-- <s:iterator id="que" value="#request.list" status="sta">
 		    						<li>
 		    							<div class="search-exam">
 		    								<div class="exam-head">
@@ -211,7 +291,7 @@
 		    									    <span>所属科目：${que.subjectRef}</span>
 		    									    
 		    									    <i class="line"></i>
-		    									    <span>难易度： <%-- ${que.difficultValue} --%>
+		    									    <span>难易度： ${que.difficultValue}
 		    									            ${que.difficultyValue==1?"简单":""}
 		    								                ${que.difficultyValue==2?"一般":""}
 		    							                    ${que.difficultyValue==3?"中等":""}
@@ -244,7 +324,7 @@
 			    						                 </li>
 		    							    			</s:iterator>
 		    							    		
-		    							    			    <%-- <span class="op-item">
+		    							    			    <span class="op-item">
 		    							    			    	<span>B.</span> 
 		    							    			    	<span>Update software</span>
 		    							    			    </span>
@@ -255,7 +335,7 @@
 		    							    			    <span class="op-item">
 		    							    			    	<span>D.</span> 
 		    							    			    	<span>Update software</span>
-		    							    			    </span> --%>
+		    							    			    </span>
 		    							    		    </div>
 		    							    		</div>
 		    							    		<div class="exam-foot">
@@ -272,62 +352,8 @@
 		    							    
 		    							</div>
 		    						</li>
-		    					 </s:iterator>
-		    						<%-- <li>
-		    							<div class="search-exam">
-		    								<div class="exam-head">
-		    									<p class="exam-head-left">
-		    									    <span>题型：单选题</span>
-		    									    <i class="line"></i>
-		    									    <span>难易度：简单</span>
-		    									    <i class="line"></i>
-		    									    <span>知识点：java语言</span>
-		    								    </p>
-		    								</div>
-		    							    <div class="exam-con">
-		    							    	<div class="exam-q"> 
-		    							    		
-		    							    	</div>
-		    							    	<div class="exam-qlist"> 
-		    							    		<div class="exam-con">
-		    							    			<div class="exam-q">
-		    							    				1.下列说法正确的是(&nbsp;&nbsp;)
-		    							    			</div>
-		    							    		
-		    							    		    <div class="exam-s">
-		    							    			    <span class="op-item">
-		    							    			    	<span>A.</span> 
-		    							    			    	<span>Update software</span>
-		    							    			    </span>
-		    							    			    <span class="op-item">
-		    							    			    	<span>B.</span> 
-		    							    			    	<span>Update software</span>
-		    							    			    </span>
-		    							    			    <span class="op-item">
-		    							    			    	<span>C.</span> 
-		    							    			    	<span>Update software</span>
-		    							    			    </span>
-		    							    			    <span class="op-item">
-		    							    			    	<span>D.</span> 
-		    							    			    	<span>Update software</span>
-		    							    			    </span>
-		    							    		    </div>
-		    							    		</div>
-		    							    		<div class="exam-foot">
-		    							    			<p class="exam-foot-left">
-		    							    				<i class="fa fa-hand-pointer-o"></i>
-		    							    				<a class="" href="#">查看解析</a>
-		    							    			</p>
-		    							    			<p class="exam-foot-right">
-		    							    				<button type="button" class="btn btn-primary">+选题</button>
-		    							    			</p>
-		    							    		</div>
-		    							    	</div>
-		    							    </div>
-		    							    
-		    							</div>
-		    						</li>
-		    						 --%>
+		    					 </s:iterator> --%>
+		    						
 		    					</ul>
 		    						
 		    				</div>
@@ -339,22 +365,11 @@
 		    			<div class="page_pagination">
 		    				<ul class="pagination">
 		    					<li class="page-item">
-		    						<a class="page-link" href="#">上一页</a>
+		    						<a class="page-link" href="javascript:prevPage()">上一页</a>
 		    					</li>
 		    					<li class="page-item">
-		    						<a class="page-link" href="#">1</a>
+		    						<a class="page-link" href="javascript:nextPage()">下一页</a>
 		    					</li>
-		    					<li class="page-item active">
-		    						<a class="page-link " href="#">2</a>
-		    					</li>
-		    					<li class="page-item">
-		    						<a class="page-link" href="#">3</a>
-		    					</li>
-		    					<li class="page-item">
-		    						<a class="page-link" href="#">下一页</a>
-		    					</li>
-		    					<input class="jump">
-		    					<button class="btn btn-primary btn_jump">跳转</button>
 		    				</ul>
 		    			</div>
 
@@ -436,13 +451,53 @@
 			</div>
 		</div>
 	    
-	    <!--模态框查看通知-->
+	    <!--邀请通知-->
 	    <div class="modal fade" id="myModal-invite-notice">
 	    	<div class="modal-dialog">
 	    		<div class="modal-content">
 	    
 	    			<div class="modal-header">
-	    				<h4 class="modal-title">通知</h4>
+	    				<h4 class="modal-title">邀请通知</h4>
+	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+	    			</div>
+	    
+	    			<div class="modal-body">
+	    				<div class="email">
+	    					来自xx学校xx学院xx老师的邀请
+	    					<button class="btn btn-primary accept">接受</button>
+	    					<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_email_refuse">拒绝</button>
+	    				</div>
+	    				<div class="email">
+	    					来自xx学校xx学院xx老师的邀请
+	    					<button class="btn btn-primary accept">接受</button>
+	    					<button class="btn btn-danger refuse">拒绝</button>
+	    				</div>
+	    				<div class="email">
+	    					来自xx学校xx学院xx老师的邀请
+	    					<button class="btn btn-primary accept">接受</button>
+	    					<button class="btn btn-danger refuse">拒绝</button>
+	    				</div>
+	    				<div class="email">
+	    					来自xx学校xx学院xx老师的邀请
+	    					<button class="btn btn-primary accept">接受</button>
+	    					<button class="btn btn-danger refuse">拒绝</button>
+	    				</div>
+	    			</div>
+	    
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+	     <!--阅卷通知-->
+	    <div class="modal fade" id="myModal-exam-notice">
+	    	<div class="modal-dialog">
+	    		<div class="modal-content">
+	    
+	    			<div class="modal-header">
+	    				<h4 class="modal-title">阅卷通知</h4>
 	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 	    			</div>
 	    
@@ -608,9 +663,289 @@
 	    		</div>
 	    	</div>
 	    </div>
-		
+				<script type="text/javascript">
+		    		var currentPage = 1;
+		    		var questionIds = [];
+		    		var points = {};
+		    		
+		    		var teacherNames = [];
+		    		var teacherIds = [];
+		    		
+		    		var type = "Single";
+		    		var diff = "";
+		    		var subject = "";
+		    		var title = "";
+		    		var knowledge = "";
+		    		var jsons = {
+		    			"page":currentPage,
+		    			"examSid":"${examSid}",
+		    			"keys[0]":"type",
+		    			"keys[1]":"difficultyValue",
+		    			"keys[2]":"subjectRef",
+		    			"keys[3]":"title",
+		    			"keys[4]":"knowledge",
+		    			"vals[0]":type,
+		    			"vals[1]":diff,
+		    			"vals[2]":subject,
+		    			"vals[3]":title,
+		    			"vals[4]":knowledge
+		    		};
+		    		function selType(s) {
+		    			type = s;
+		    			jsons["vals[0]"] = s;
+		    			doSearch();
+		    		}
+		    		function selDiff(s) {
+		    			diff = s;
+		    			jsons["vals[1]"] = s;
+		    			doSearch();
+		    		}
+		    		function selSubject(n) {
+		    			subject = n;
+		    			jsons["vals[2]"] = n;
+		    			doSearch();
+		    		}
+		    		function selTitle(s) {
+		    			title = s;
+		    			jsons["vals[3]"] = s;
+		    			doSearch();
+		    		}
+		    		function selKnowledge(s) {
+		    			knowledge = s;
+		    			jsons["vals[4]"] = s;
+		    			doSearch();
+		    		}
+		    		loadTeachers();
+		    		loadSubjects();
+		    		doSearch();
+		    		function doSearch(callback) {
+		    			jsons["page"] = currentPage;
+		    			$.post("searchQuestionsHandConstitute",jsons, function(data) {
+		    				var li = data.list;
+		    				var htmls = "";
+		    				for(var i=0;i<li.length;i++) {
+		    					htmls += getItemHtm(li[i]);
+		    				}
+		    				$("#question-box").html(htmls);
+		    				callback(data.list.length > 0);
+		    			});
+		    		}
+		    		
+		    		function nextPage() {
+		    			currentPage += 1;
+		    			doSearch(function(hasNext) {
+		    				if(hasNext)
+		    					currentPage ++;
+		    			});
+		    			currentPage -= 1;
+		    		}
+		    		function prevPage() {
+		    			if(currentPage > 1) {
+		    				currentPage --;
+		    				doSearch();
+		    			}
+		    		}
+		    		
+		    		function loadSubjects() {
+		    			$.post("loadSubjects", null, function(data) {
+		    				var li = data.list;
+		    				for(var i=0;i<li.length;i++) {
+		    					var opt = document.createElement("option");
+		    					opt.value = li[i].sid;
+		    					opt.innerText = li[i].name;
+		    					subjectGroup.appendChild(opt);
+		    					paperSubjectGroup.appendChild(opt);
+		    				}
+		    				loadDiffCounts();
+		    			});
+		    		}
+		    		
+		    		function getItemHtm(q) {
+		    			var options = q.options;
+		    			var optHtmls = "";
+		    			var answer = "";
+		    			for(var i=0;i<options.length;i++) {
+		    				var label = String.fromCharCode("A".charCodeAt() + i);
+		    				if("Fills Subjective TrueOrFalse".indexOf(q.type)>=0) {
+		    					label = i+1;
+		    					if("Fills" == q.type) {
+		    						answer = options[i].fillsText;
+		    					} else if("Subjective" == q.type) {
+		    						answer = options[i].subjectiveText;
+		    					} else if("TrueOrFalse" == q.type) {
+		    						answer = options[i].isAnswer=='1'?"正确":"错误";
+		    					}
+		    				}else if(options[i].isAswer) {
+		    					answer += label;
+		    				}
+		    				optHtmls += "<span class='op-item'>"
+		    						+"		<span>"+label+".</span>"
+		    						+"		<span>"+options[i].content+"</span>"
+		    						+"	 </span>";
+		    			}
+		    			
+		    			var diffText = ["","简单","一般","中等","较难"][q.difficultyValue];
+		    			var questionTypeName = {
+		    					"Single":"单选题",
+		    					"Multiple":"多选题",
+		    					"Fills":"填空题",
+		    					"TrueOrFalse":"判断题",
+		    					"Subjective":"解答题"
+		    				}[q.type];
+		    			var cssstyle = "";
+		    			var btnText = "加选题";
+		    			if(questionIds.contains(q.sid)) {
+		    				cssstyle = "style='background-color:green;border-color:green'";
+		    				btnText = "减选题";
+		    			}
+		    			
+		    			var checkerHtml = "<input type='hidden' id='teacherSel"+q.sid+"' />";
+		    			try {
+		    				if(q.type=='Subjective') {
+				    			checkerHtml = "指定老师批改<select id='teacherSel"+q.sid+"'><optGroup label='指定老师批改'>";
+				    			for(var i=0;i<teacherIds.length;i++) 
+					    			checkerHtml+="<option value='"+teacherIds[i]+"'>"+teacherNames[i]+"</option>";
+				    			checkerHtml += "</optGroup></select>";
+		    				}
+		    			}catch(e) {
+		    				alert(e);
+		    			}
+		    			
+		    			var htm = "<li id='q-item-"+q.sid+"' class='q-item-class'>"
+		    				+"	<div class='search-exam'>"
+		    				+"		<div class='exam-head'>"
+		    				+"			<p class='exam-head-left'>"
+		    				+"				<span>题型："+questionTypeName+"</span>"
+		    				+"				<i class='line'></i>"
+		    				+"				<span>难易度："+diffText+"</span>"
+		    				+"				<i class='line'></i>"
+		    				+"				<span>知识点："+q.knowledge+"</span>"
+		    				+"			</p>"
+		    				+"		</div>"
+		    				+"		<div class='exam-con'>"
+		    				+"			<div class='exam-q'></div>"
+		    				+"			<div class='exam-qlist'>"
+		    				+"				<div class='exam-con'>"
+		    				+"					<div class='exam-q'>"
+		    				+"						"+(q.sid)+"."+q.title+"(&nbsp;&nbsp;)"
+		    				+"					</div>"
+		    				+"					<div class='exam-s'>"
+		    				+ optHtmls
+		    				+"					</div>"
+		    				+"				</div>"
+		    				+"				<div class='exam-foot'>"
+		    				+"					<p class='exam-foot-left'>"
+		    				+"						<i class='fa fa-hand-pointer-o'></i>"
+		    				+"						<a href='javascript:void(0)'>答案："+answer+"</a>"
+		    				+"					</p>"
+		    				+"					<p class='exam-foot-right'>"
+		    				+checkerHtml
+		    				+"分值<input id='point_"+q.sid+"' placeholder='分值' style='width:48px' type='number' value='1'>"
+		    				+"						<button type='button' class='btn btn-primary' "
+		    				+								cssstyle+" onclick='addQuestion(this, "+q.sid+", point_"+q.sid+".value, teacherSel"+q.sid+".value)'>"+btnText+"</button>"
+		    				+"					</p>"
+		    				+"				</div>"
+		    				+"			</div>"
+		    				+"		</div>"
+		    				+"	</div>"
+		    				+"</li>";
+		    				return htm;
+		    		}
+		    		
+		    		function addQuestion(self, n, point, teacherId) {
+		    			if(point == '') {
+		    				alert("请输入分值");
+		    				return;
+		    			}
+		    			points[n+""] = point;
+		    			teacherIds[n+""] = teacherId;
+		    			
+		    			if(!questionIds.contains(n)) {
+		    				questionIds.push(n);
+		    				$(self).css({
+		    					"background-color":"green"
+		    					,"border-color":"green"
+		    				});
+		    				$(self).text("减选题");
+			    			$("#choosedQuestionBox").html($("#choosedQuestionBox").html() + $("#q-item-" + n).get(0).outerHTML);
+			    			$("#choosedQuestionBox").find("#q-item-" + n).hide();
+		    			} else {
+		    				questionIds.remove(n);
+		    				$(self).css({
+		    					"background-color":"#428bca"
+		    					,"border-color":"#357ebd"
+		    				});
+		    				$(self).text("加选题");
+		    				$("#choosedQuestionBox").find("#q-item-" + n).remove();
+		    			}
+		    			
+		    			$("#subj-amount").text(questionIds.length);
+		    			$("#subject-amount").text(questionIds.length);
+		    			var basketHtml = "";
+		    			for(var i=0;i<questionIds.length;i++) {
+		    				basketHtml += "<div class='little-box'>"+questionIds[i]+"</div>";
+		    			}
+		    			$(".baskrt-list").html(basketHtml);
+		    			
+		    			var lastClicked = null;
+		    			var lastBox = null;
+		    			$(".little-box").click(function() {
+		    				if(lastClicked == $(this).text()) {
+		    					$("#q-item-" + $(this).text()).hide();
+			    				$(".searchlist").show();
+			    				lastClicked = null;
+			    				lastBox = null;
+			    				$(this).css({"background-color":"white"});
+		    				} else {
+		    					$("#q-item-" + $(this).text()).show();
+			    				$(".searchlist").hide();
+			    				$("#q-item-"+lastClicked).hide();
+			    				$(lastBox).css({"background-color":"white"});
+		    					$(this).css({"background-color":"rgba(100,100,100,0.4)"});
+		    					lastClicked = $(this).text();
+		    					lastBox = $(this);
+		    				}
+		    			});
+		    			
+		    		}
+		    		
+		    		function loadTeachers() {
+		    			$.post("loadTeachers", null, function(data) {
+		    				var li = data.list;
+		    				for(var i=0;i<li.length;i++) {
+		    					teacherIds.push(li[i].userId);
+		    					teacherNames.push(li[i].name);
+		    				}
+		    			});
+		    		}
+		    		
+		    		$("#to-paper-edit").click(function() {
+		    			submitHandVolume($("#paperName").val(), $("#examStart").val()
+		    						, $("#examEnd").val(), $("#paperSubject").val());
+		    		});
+		    		
+		    		function submitHandVolume(title, examStart, examEnd, subjectRef) {
+		    			var jsonDatas = {
+		    					"paper.examRef":"${examSid}",
+		    					"paper.name":title,
+		    					"paper.examStart":examStart,
+		    					"paper.examEnd":examEnd,
+		    					"paper.subjectRef":subjectRef
+		    			};
+		    			
+		    			for(var i=0;i<questionIds.length;i++) {
+		    				jsonDatas["qids["+i+"]"] = questionIds[i];
+		    				jsonDatas["points["+i+"]"] = points[questionIds[i]+''];
+		    				jsonDatas["userIds["+i+"]"] = teacherIds[questionIds[i]+''];
+		    			}
+		    			
+		    			$.post("createPaperHand", jsonDatas, function(data) {
+		    				window.open("loadAPaper?paper.sid=" + data.result);
+		    			});
+		    		}
+		    		</script>
 	<script >
-	
+	/* 
 	function searchQuestions() {
 		  $.post("searchQuestions", {
 			  "question.type":$('#question_type').val(),//搜索的字段1
@@ -623,16 +958,8 @@
 			 var questionList=data.list; 
 		  });
 	  }
-	
-	
-	var questionBasketList = [];
-	function addQuestion(sid) {
-		questionList.push(sid);
-	}
-	function remove() {
-		
-	}
-	
+	 */
+	 
 	
 	 function constituteByHand(qids, examStart, examEnd, examName) {
 		  //手动组卷接口

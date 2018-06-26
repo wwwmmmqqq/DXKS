@@ -83,6 +83,11 @@ public class ConstituteAction extends CommonAction {
 	 * 返回试卷ID
 	 */
 	
+	String responser;
+	public void setResponser(String responser) {
+		this.responser = responser;
+	}
+	
 	@Action(value="/createPaperAuto"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
@@ -95,12 +100,12 @@ public class ConstituteAction extends CommonAction {
 		System.out.println(subjective);
 		System.out.println(paper);
 		
-		
 		int sid = service.createPaperAuto(paper.getExamRef()
 				, paper.getSubjectRef()//科目id
 				, paper.getName()//试卷标题名
 				, paper.getExamStart()//考试开始时间
 				, paper.getExamEnd()//考试结束时间
+				, responser
 				, single, trueOrFalse, multiple, fills, subjective);
 		
 		if (sid == -1) {
@@ -114,22 +119,44 @@ public class ConstituteAction extends CommonAction {
 	
 	List<Integer> qids = new ArrayList<>();
 	List<Integer> points = new ArrayList<>();
+	List<String> userIds = new ArrayList<String>();
 	public List<Integer> getQids() {
 		return qids;
 	}
 	public List<Integer> getPoints() {
 		return points;
 	}
-	
+	public List<String> getUserIds() {
+		return userIds;
+	}
+	public void setQids(List<Integer> qids) {
+		this.qids = qids;
+	}
+	public void setPoints(List<Integer> points) {
+		this.points = points;
+	}
+	public void setUserIds(List<String> userIds) {
+		this.userIds = userIds;
+	}
 	@Action(value="/createPaperHand"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String createPaperHand() {
-		int sid = service.createPaperHand(getSessionUser(), qids, paper.getSid(), points
+		
+		System.out.println("qids:" + Arrays.toString(qids.toArray()));
+		System.out.println("points:" + Arrays.toString(points.toArray()));
+		System.out.println("userIds:" + Arrays.toString(userIds.toArray()));
+		System.out.println("subject:" + paper.getSubjectRef());
+		System.out.println("examRef:" + paper.getExamRef());
+		
+		int sid = service.createPaperHand(getSessionUser(), qids, points, userIds
 				, paper.getExamStart(), paper.getExamEnd(), paper.getName(), paper.getExamRef(), 
 				paper.getSubjectRef());
+		
 		if (sid == -1) {
 			setResult("fail");
+		} else {
+			setResult(sid+"");
 		}
 		return aa;
 	}
