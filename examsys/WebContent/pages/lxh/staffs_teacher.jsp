@@ -530,7 +530,7 @@
 					</div>
 
 					<!-- 模态框主体 -->
-					<div class="modal-body">
+					<div class="modal-body eye_teacher">
 						<table>
 							<tbody id="teacher-info-box">
 								<tr>
