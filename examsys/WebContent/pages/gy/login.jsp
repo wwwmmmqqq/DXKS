@@ -42,22 +42,8 @@
 						<div class="input_bottom">
 							<input type="password"  id="password" class="form-control input_password" placeholder="请输入你密码" name="user.psw"/>
 						</div>
-						<div class="input_checkbox">
-							<!-- <input type="radio" name="1" id="admin" value="管理员"/>
-							<span>管理员</span>
-							<input type="radio" name="1" id="administration" value="教务"/>
-							<span>教务</span>
-							<input type="radio" name="1" id="teacher" value="教师"/>
-							<span>教师</span>
-							<input type="radio" name="1" id="student" value="学生"/>
-							<span>学生</span> -->
-						</div>
-						<div class="yzm">
-							<input name="XuasYzm" size="9" maxlength="5" class="form-control input_yzm">
-							<div >
-								<a href='javascript:refreshimg()' title='看不清楚，换个图片' ><img class="img_yzm" id='checkcode' src="http://www.cnhww.com/demo5/GetCode.asp " border="0" /></a>
-							</div>
-						</div>
+					
+						
 						
 						<div class="btn_bottom">
 							<button type="button" class="btn btn-primary btn_login" onclick="login();">登录</button>

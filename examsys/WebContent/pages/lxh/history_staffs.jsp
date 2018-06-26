@@ -109,7 +109,7 @@
 							</li>
 						</a>
 		    		</ul>
-			  	</ul>
+
 		  </div>
 		</nav>
 	</div>	
@@ -734,6 +734,36 @@
 			+"	<td>"+(i+1)+"</td>"
 			+"	<td>"+paper.subjectName+"</td>"
 			+"	<td>"+exam.invitee+"</td>" 
+			+"	<td>"+exam.periodStart+"-"+exam.periodEnd+"</td>"
+			+"	<td>"
+			+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' onclick='loadGradesByPaper("+paper.sid+")' ></i>"
+			+"	</td>"
+			+"</tr>";
+			return htm;
+		}
+		}
+		
+	/*	获取教师所接受参加过得考试*/
+		var examSid = getParam("sid"); 
+		loadPapersByExam(examSid);
+		function loadPapersByExam() {
+			  $.post("loadInvitedExamPapers", {
+				  "page":1
+			  }, function(data) {
+				  var list = data.list;
+				  var htm = "";
+				  for(var i=0;i<list.length;i++) {
+					 htm+=getMyExam(i,list[i].exam,list[i].paper);
+				  }
+				  $('#paper_list_box').html(htm);
+			  });
+		  }
+		
+		function getMyExam(i,exam,paper) {
+			var htm = "<tr>"
+			+"	<td>"+(i+1)+"</td>"
+			+"	<td>"+paper.subjectName+"</td>"
+			+"	<td>"+exam.invitee+"</td>"
 			+"	<td>"+exam.periodStart+"-"+exam.periodEnd+"</td>"
 			+"	<td>"
 			+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' onclick='loadGradesByPaper("+paper.sid+")' ></i>"

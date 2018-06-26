@@ -1,13 +1,18 @@
 package cn.examsys.xy.service.impl;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import cn.examsys.bean.Grade;
 import cn.examsys.bean.User;
+import cn.examsys.xy.dao.GradeDao;
+import cn.examsys.xy.dao.PaperDao;
 import cn.examsys.xy.dao.UserDao;
 import cn.examsys.xy.service.UserService;
 @Service(value="userService")
@@ -15,7 +20,8 @@ import cn.examsys.xy.service.UserService;
 public class UserServiceImpl implements UserService{
 	@Autowired
 	UserDao userDao;
-	
+	@Autowired
+	GradeDao gradeDao;
 	/*创建用户*/
 	@Override
 	public boolean createUser(User user) {
@@ -94,9 +100,19 @@ public class UserServiceImpl implements UserService{
 		return userDao.findUser(userId,psw);
 	}
 	@Override
-	public List<User> findAllUser(String collegeName, String type) {
+	public List<User> findAllUser(int paperRef,String collegeName) {
 		// TODO Auto-generated method stub
-		return userDao.findAllUser(collegeName,type);
+		List<Grade> gradeList = gradeDao.findAllgrade(paperRef);
+		List<User> userList = new  ArrayList<>();
+		for(int i=0;i<gradeList.size();i++) {
+			User user = userDao.findGradeUser(gradeList.get(i).getUserId(),collegeName);
+			if(user!=null) {
+				user.setGrade(gradeList.get(i));
+				userList.add(user);
+			}
+			
+		}
+		return userList;
 	}
 
 }

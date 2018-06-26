@@ -21,7 +21,7 @@
 		<header>
 			<nav id="top-nav">
 				<div id="main-nav-content">
-					<a href="student-index.html" clas="logo">
+				<a href="student-main.jsp" clas="logo">
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
@@ -36,7 +36,7 @@
 							</li>
 							<div class="dropdown-content">
 		    			<a href="javascript:setPassword()">修改密码</a>
-		    			<a >退出系统</a>
+		    			<a href="javascript:Out()">退出系统</a>
 		    		</div>
 						</ul>
 						
@@ -47,7 +47,7 @@
 		<div class="main-content">
 			<div class="breadcrumb">
 				<i class="fa fa-circle-o"></i> 位置：
-				<a href="student-index.jsp">首页</a>
+				<a >首页</a>
 				<b>></b>
 				<a href="/">在线考试</a>
 			</div>
@@ -199,14 +199,7 @@
 								
 							</ul>
 						</div>
-						<ul class="pager">
-						<li class="previous">
-							<a href="javascript:prePage()">&larr; 上一页</a>
-						</li>
-						<li class="next">
-							<a href="javascript:nextPage()">下一页&rarr;</a>
-						</li>
-					</ul>
+						
 					</div>
 				</div>
 			</section>

@@ -23,7 +23,7 @@
 		<header>
 			<nav id="top-nav">
 				<div id="main-nav-content">
-					<a href="student-index.html" class="logo">
+					<a href="student-main.jsp" clas="logo">
 						<img class="logo-img" src="img/logo.png" />
 					</a>
 					<div class="navbar-right">
@@ -47,7 +47,7 @@
 			<i class="fa fa-circle-o"></i> 位置：
 			<a href="student-main.jsp">首页</a>
 			<b>></b>
-			<a href="/">在线考试</a>
+			<a >在线考试</a>
 		</div>
 		<div class="exam-main-content">
 			<div class="exam-left">
@@ -76,7 +76,7 @@
 			</div>
 			<div class="paper-title-se">
 				<div class="title-se">
-					<span >安全知识考试</span>
+					<span >${paper.name}</span>
 				</div>
 				<button id="submitPaperBtn" class="submit-exam btn btn-primary" data-toggle="modal" data-target="#examResult">提交试卷</button>
 				<!-- 模态框（Modal） -->
@@ -202,20 +202,11 @@
 var paperSid=${request.paper.sid};
 window.onload = function() {
 	var now = "${session.Time}";//服务器当前时间
-	alert("${request.paper}")
 	var examEnd = "${request.paper.examEnd}";//这趟考试结束时间
 	//开始倒计时
 	startTimeCounting(now, examEnd);
 };
-//获取url中的参数
-//去掉了！
-/* function getParam(name) {
-  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
-  var result = window.location.search.substr(1).match(reg); //匹配目标参数
-  if (result != null) 
-  	return decodeURIComponent(result[2]);
-  return null;
-} */
+
 </script>
 <script type="text/javascript">
 //loadQuestionListByPaper(paperSid);
@@ -307,12 +298,10 @@ function todo(questionSid, optionSid, fillsAnswer, subjectiveAnswer, trueOrFalse
 function doit(questionId, optId, inputObj, trueOrFalse) {
 	if(inputObj.type == 'checkbox') {
 		trueOrFalse = inputObj.checked?1:0;
-		
 	}
 	
 	todo(questionId, optId, inputObj.value, inputObj.value, trueOrFalse);
 	$('#abc'+currentItemId).addClass('has-que-num ');
-	
 }
 
 $(document).ready(function(){
@@ -322,51 +311,6 @@ $(document).ready(function(){
 });
 	
 
-function getQueItem(n, obj) {
-	
-	var htm = 
-		"<div class='exam-paper q-item q-"+n+"' id='q-"+n+"' style='display: none'>"
-	+"					<div class='lable-question' >"
-	+"						<img  src='img/pre-lable.png' id='lable-img-"+n+"' class='lable-question-img' onclick='markClick()'/>"
-	+"					</div>"
-	+"					<table class='question ' >"
-	+"						<thead>"
-	+"							<tr>"
-	+"								<th id='no_"+n+"'>"+(n+1)+"</th>"
-	+"								<th>(1分)</th>"
-	+"								<th>"+obj.title+"</th>"
-	+"							</tr>"
-	+"						</thead>"
-	+"						<tbody>"
-	+"							<tr class='option-item'>"
-	+"								<td></td>"
-	+"								<td>A</td>"
-	+"								<td >"
-	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
-	+"								</td>"
-	+"							</tr>"
-	+"							<tr class='option-item'>"
-	+"								<td></td>"
-	+"								<td>A</td>"
-	+"								<td >"
-	+"									<input class='opt-radio' type='checkbox' />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；"
-	+"								</td>"
-	+"							</tr>"
-	+"						</tbody>"
-	+"					</table>"
-	+"					<div class='pre-next-quetion'>"
-	+"						<ul class='pager'>"
-	+"							<li class='previous'>"
-	+"								<a href='javascript:prePage()'>&larr; 上一题</a>"
-	+"							</li>"
-	+"							<li class='next'>"
-	+"								<a href='javascript:nextPage()'>下一题 &rarr;</a>"
-	+"							</li>"
-	+"						</ul>"
-	+"					</div>"
-	+"				</div>";
-	return htm;
-}
 
 </script>
 </body>

@@ -22,6 +22,8 @@
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
+
+       <script type="text/javascript" src="js/affair_index.js" ></script>
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -100,10 +102,24 @@
 							</li> 
 						</a>
 						<!-- <li class="side_nav1">
+=======
+		    		<ul class="side_nav">
+		    			<li class="side_nav1">
+							<a href="staffs_student.jsp">学生信息管理</a>
+						</li>
+						<li class="side_nav1">
+							<a href="staffs_teacher.jsp">教师信息管理</a>
+						</li>
+						<li class="side_nav1">
+							<a href="affair_index.jsp">试卷管理 </a>
+						</li>
+					  <li class="side_nav1">
+>>>>>>> origin/wmq-0624-3
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
+<<<<<<< HEAD
 						</li> -->
 						<a href="history_staffs.jsp">
 							<li class="side_nav1">
@@ -115,6 +131,7 @@
 								考次计划
 							</li>
 						</a>
+
 		    		</ul>
 		    	</div>
 		    </nav>
@@ -171,7 +188,6 @@
 		    				</ul>
 		    			</div> -->
 		    			<!-- <p>共查询到？条记录</p> -->
-		    			<p>共查询到  条记录</p>
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
@@ -841,6 +857,23 @@ function loadNoticeList(page) {
 	  });
 }
 
+
+function getLiHtml(index) {
+	if(index==1){
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+			+"<li class='page-item active'><a class='page-link' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>";			
+	}
+	else if(index==totalPage){
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>"
+			+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+			
+	}
+	else {
+		var ht = "<li class='page-item'><a class='page-link ' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>";
+	}
+	return ht;    
+}
+
 /*搜索jquery隐藏显示面板*/
 $(document).ready(function() {
     $("#flip").click(function() {
@@ -850,6 +883,7 @@ $(document).ready(function() {
 
 $.date('#date3');
 $.date('#date4');
+
 
 	</script>
 </html>

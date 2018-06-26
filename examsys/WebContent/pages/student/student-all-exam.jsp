@@ -25,7 +25,7 @@
 
 			<nav id="top-nav">
 				<div id="main-nav-content">
-					<a href="student-index.html" clas="logo">
+					<a href="student-main.jsp" clas="logo">
 						<img class="logo-img" src="<%=basePath%>img/logo.png" />
 					</a>
 
@@ -51,9 +51,9 @@
 		<div class="main-content">
 			<div class="breadcrumb">
 				<i class="fa fa-circle-o"></i> 位置：
-				<a href="student-index.jsp">首页</a>
+				<a href="student-main.jsp">首页</a>
 				<b>></b>
-				<a href="/">我的考试</a>
+				<a >我的考试</a>
 			</div>
 			<section class="left-section">
 				<div class="left-menu">
@@ -88,7 +88,7 @@
 							</span>
 						</li>
 
-						<li data-toggle="modal" data-target="#myinfo">
+						<li data-toggle="modal" data-target="#myinfo" onclick="showInfo()">
 							<span>
 								我的信息
 							</span>

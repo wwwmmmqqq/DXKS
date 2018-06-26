@@ -59,6 +59,18 @@ function getParam(name) {
   	return decodeURIComponent(result[2]);
   return null;
 }
+
+/*退出系统*/
+
+function Out() {
+	if(confirm("确定要退出吗？")) {
+		$.post("loginOut",null,function(data) {
+			if(data.result=="成功退出") {
+					location.href="../gy/login.jsp";
+			}
+	  });
+	}  
+}
 function getQuestionData(){
 	var htm=
 		"<div class='qtype'>"
