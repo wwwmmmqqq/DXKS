@@ -99,6 +99,15 @@ public class ExamAction extends CommonAction {
 		return aa;
 	}
 	
+	@Action(value="/checkPaperSubmited"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String checkPaperSubmited() {
+		boolean submited = service.checkPaperSubmited(getSessionUser(), paper.getSid());
+		setResult(submited + "");
+		return aa;
+	}
+	
 	/**
 	 * 加载题目列表
 	 * paper.sid 试卷id

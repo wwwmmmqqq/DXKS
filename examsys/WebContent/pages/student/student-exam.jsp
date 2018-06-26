@@ -247,11 +247,11 @@ function submitPaper(paperSid) {
 			  $(".exam-result").html("交卷失败，该试卷已被提交过！");
 			  $("#submitPaperBtn").html("提交试卷");
 		  } else {
-			  alert(data.result);
 			  if(data.result == "-2") {
 				  $(".exam-result").text("试卷已经提交，等待阅卷老师批改");
 			  } else {
 				  $(".exam-result").text("${session.user.name}本次考试最终得分：" + data.result + "分");
+			  	  location.href = "student-exam-score.jsp";
 			  }
 			  $("#submitPaperBtn").html("已交卷");
 			  $("#submitPaperBtn").attr("disabled", "disabled");

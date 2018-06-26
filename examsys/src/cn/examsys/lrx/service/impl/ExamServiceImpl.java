@@ -321,5 +321,16 @@ public class ExamServiceImpl implements ExamService {
 		}
 		return null;
 	}
+	@Override
+	public boolean checkPaperSubmited(User sessionUser, int sid) {
+		try {
+			Grade g = dao.findOneByHql("from Grade where paperRef=? and userId=?"
+					, new Object[]{sid, sessionUser.getUserId()});
+			return g != null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 }

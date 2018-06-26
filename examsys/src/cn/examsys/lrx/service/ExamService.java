@@ -40,5 +40,7 @@ public interface ExamService {
 	List<PaperWithExamVO> loadInvitedExamPapers(User sessionUser, int page);
 	
 	List<GradeVO> loadGradesByPaper(User sessionUser, int sid);
+
+	boolean checkPaperSubmited(User sessionUser, int sid);
 	
 }
