@@ -727,8 +727,11 @@
 		    					htmls += getItemHtm(li[i]);
 		    				}
 		    				$("#question-box").html(htmls);
-		    				if(callback != null)
+		    				try {
 		    					callback(data.list.length > 0);
+		    				} catch(e) {
+		    					
+		    				}
 		    			});
 		    		}
 		    		
