@@ -1,3 +1,4 @@
+	
 //	分页
 var currentPage = 1;
 	function nextPage() {
@@ -11,8 +12,9 @@ var currentPage = 1;
 		}
 	}
 //	获取历史成绩
-	var papsersid=getParam("sid");
+	var paperid;
 	function loadGradesByPaper(paperSid){
+		paperid=paperSid;
 		 $.post("loadGradesByPaper", {
 			  "paper.sid":paperSid
 		  }, function(data) {
@@ -39,8 +41,22 @@ var currentPage = 1;
 			  $('#data-box').html(htm);
 		  });
 	  }
+
+	/*导出*/
+	function doExportExcel(){
+        window.open("export.action?paper.sid="+paperid);
+    }
 	
-	
+	/*退出系统*/
+	function Out() {
+		if(confirm("确定要退出吗？")) {
+			$.post("loginOut",null,function(data) {
+				if(data.result=="成功退出") {
+						location.href="../gy/login.jsp";
+				}
+		  });
+		}  
+	}
 	//获取url中的参数
 	function getParam(name) {
 	  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
@@ -49,7 +65,9 @@ var currentPage = 1;
 	  	return decodeURIComponent(result[2]);
 	  return null;
 	}
+	
 	function getMyExam(i,exam,paper) {
+		 
 		var htm = "<tr>"
 		+"	<td>"+(i+1)+"</td>"
 		+"	<td>"+paper.subjectName+"</td>"
@@ -64,12 +82,12 @@ var currentPage = 1;
 	function getScore(paper,user,grade,i, order){
 		var htm=
 			"<tr>"
-		+"<td>1</td>"
+		+"<td>"+i+"</td>"
 		+"<td>"+user.userId+"</td>"
 		+"<td>"+user.name+"</td>"
 		+"<td>软件学院</td>"
 		+"<td>"+user.profession+"</td>"
-		+"<td>一班</td>"
+		+"<td>"+user.classroom+"</td>"
 		+"<td>"+paper.subjectName+"</td>"
 		+"<td>"+grade.point+"</td>"
 		+"<td>"+(i+1)+"</td>"
@@ -77,31 +95,6 @@ var currentPage = 1;
 		+"</tr>";
 		return htm;
 	}
-/*成绩导出*/
-	$('.export').click(function(){
-			var tr=$('#studentScore tbody tr');
-		tr.each(function(){
-			$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
-		})
-		$(this).hide();
-		$('.sureexport').show();
-		$('.all-choose').show();
-		$('.export').removeClass('btn-primary')
-		$('.export').addClass('btn-success sure-export')
-	})
-	
-	
-/*全选*/
-	$('.all-choose').click(function(){
-		$(' input[name="check"]').each(function(){
-			if ($(this).attr("checked")) {
-				$(this).removeAttr("checked");
-			} else {
-				$(this).attr("checked", "true");
-			}
-		})
-	})
-	
 	/*考试结果正确率判断*/
 	$(function() {
 		var scoreRate = echarts.init(document.getElementById("rate"));
@@ -139,14 +132,14 @@ var currentPage = 1;
 				type : 'pie',
 				radius : '55%',
 				center : [ '50%', '60%' ],
-				label : { // 饼图图形上的文本标签
+				label : { 
 					normal : {
 						show : true,
-						position : 'inner', // 标签的位置
+						position : 'inner', 
 						textStyle : {
 							fontWeight : 300,
 							fontSize : 16
-						// 文字的字体大小
+						
 						},
 						formatter : '{d}%'
 

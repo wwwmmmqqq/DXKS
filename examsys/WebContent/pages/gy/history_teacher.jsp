@@ -36,7 +36,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-							<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
+							<a href="#" onclick="Out()" value="退出系统">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -282,17 +282,11 @@
 
 					<!-- 模态框底部 -->
 					<div class="modal-footer foot">
-					<button type="button" class="btn btn-primary  all-choose"  style="display:none" >全选</button>
-					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </button>
-					<button type="button" class="btn btn-success  sureexport" onclick="exportScore1()"  style="display:none" >确认导出 </button>
+					<button type="button" class="btn btn-primary  export"  onclick="doExportExcel()" >导出 </button>
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
-				<script type="text/javascript">
-				function exportScore1() {
-					window.open("export.xlsx");
-				}
-				</script>
+				
 			</div>
 		</div>	
 						

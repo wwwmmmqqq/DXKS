@@ -51,71 +51,6 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 		}
 	}
 	/*用户总页面*/
-
-	/*@Override
-	public int selectUserListCount(String type) {
->>>>>>> origin/lxh4
-		// TODO Auto-generated method stub
-		String collegeName = administration.getCollegeName();
-		String tag[] = new String[]{"type","collegeName","userId","name","collegeName","department","profession","classroom"};
-		String[] value = new String[]{user.getType(),collegeName,user.getUserId(),user.getName(),user.getCollegeName(),user.getDepartment(),user.getProfession(),user.getClassroom()};
-		Object[] vals= new Object[7];
-		StringBuilder hql = new StringBuilder("from User ");
-		if(tag!=null) {
-			hql.append("where (status !='封禁' or status is null) ");
-		}
-		for(int i=0,j=0;i<value.length;i++) {
-			if(value[i]!=null && value[i].length()>0) {
-				hql.append("and "+tag[i]+" =? ");
-				vals[j]=value[i].trim();
-				j++;
-			}
-		}
-		try {
-			List<User> userList = findByHql(hql.toString(),vals);
-			int size =userList.size();
-			int totalPage=(int) Math.ceil((size*1.0)/COUNT_PER_PAGE);		
-			System.out.println("总用户数："+size);
-			System.out.println("总页面："+totalPage);
-			return totalPage;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return 0;
-		}
-	}*/
-	/*查询用户列表*/
-
-	/*@Override
-	public List<User> selectUserList(String type, int page) {
->>>>>>> origin/lxh4
-		// TODO Auto-generated method stub
-		String collegeName = administration.getCollegeName();
-		String tag[] = new String[]{"type","collegeName","userId","name","collegeName","department","profession","classroom"};
-		String[] value = new String[]{user.getType(),collegeName,user.getUserId(),user.getName(),user.getCollegeName(),user.getDepartment(),user.getProfession(),user.getClassroom()};
-		Object[] vals= new Object[7];
-		StringBuilder hql = new StringBuilder("from User ");
-		if(tag!=null) {
-			hql.append("where (status !='封禁' or status is null) ");
-		}
-		for(int i=0,j=0;i<value.length;i++) {
-			if(value[i]!=null && value[i].length()>0) {
-				hql.append("and "+tag[i]+" =? ");
-				vals[j]=value[i].trim();
-				j++;
-			}
-		}
-		try {
-			List<User> userList = findByHql(hql.toString(), vals, page);
-			return userList;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-	}*/
-	
-	/*用户总页面*/
 	@Override
 	public int selectUserListCount(User user,User administration) {
 		// TODO Auto-generated method stub
@@ -175,10 +110,6 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 			return null;
 		}
 	}
-
-
-	
-	
 	/*编辑用户信息*/
 	@Override
 	public void editUser(User user) {
@@ -214,6 +145,18 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 		String hql="from User where collegeName=? and type=?";
 		try {
 			return findByHql(hql, new Object[]{collegeName,type});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@Override
+	public User findGradeUser(String userId, String collegeName) {
+		// TODO Auto-generated method stub
+		String hql = "from User where userId=? and collegeName=?";
+		try {
+			return findOneByHql(hql, new Object[]{userId,collegeName});
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -48,7 +48,7 @@
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
 						<a href="#" >修改密码</a>
-						<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
+						<a href="#" onclick="Out()" value="退出系统">退出系统</a>
 					</div>
 				</div>
 		

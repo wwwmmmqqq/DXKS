@@ -45,14 +45,16 @@ public class User {
 	
 	String status;
 	
-	
-	/*Grade grade;
+	@Transient
+	Grade grade;
+	@Transient
 	public Grade getGrade() {
 		return grade;
 	}
+	@Transient
 	public void setGrade(Grade grade) {
 		this.grade = grade;
-	}*/
+	}
 	
 
 

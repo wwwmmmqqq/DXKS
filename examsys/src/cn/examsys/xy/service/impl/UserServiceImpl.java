@@ -1,13 +1,18 @@
 package cn.examsys.xy.service.impl;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import cn.examsys.bean.Grade;
 import cn.examsys.bean.User;
+import cn.examsys.xy.dao.GradeDao;
+import cn.examsys.xy.dao.PaperDao;
 import cn.examsys.xy.dao.UserDao;
 import cn.examsys.xy.service.UserService;
 @Service(value="userService")
@@ -15,7 +20,8 @@ import cn.examsys.xy.service.UserService;
 public class UserServiceImpl implements UserService{
 	@Autowired
 	UserDao userDao;
-	
+	@Autowired
+	GradeDao gradeDao;
 	/*创建用户*/
 	@Override
 	public boolean createUser(User user) {
@@ -33,28 +39,6 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 	/*查询用户列表*/
-
-	/*public List<User> SelectUserList(String type,int page) {
-		// TODO Auto-generated method stub
-		List<User> userList=userDao.selectUserList(type,page);*/
-		/*Iterator<User> iter = userList.iterator();
-		while (iter.hasNext()) {
-		   User it = iter.next();
-		   if("封禁".equals(it.getStatus())) {
-		    	iter.remove();
-		    	System.out.println("封禁");
-		   }
-		}*/
-	/*	return userList;
-	}*/
-	/*查询用户列表总页数*/
-	/*@Override
-	public int SelectUserListCount(String type) {
-		// TODO Auto-generated method stub
-		return userDao.selectUserListCount(type);
-	}*/
-	
-	/*查询用户列表*/
 	public List<User> SelectUserList(User user,int page,User administration) {
 		// TODO Auto-generated method stub
 		List<User> userList=userDao.selectUserList(user ,page,administration);
@@ -66,10 +50,6 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userDao.selectUserListCount(user , administration);
 	}
-
-	
-	
-	
 	/*编辑用户信息*/
 	@Override
 	public boolean editUser(User user) {
@@ -120,9 +100,19 @@ public class UserServiceImpl implements UserService{
 		return userDao.findUser(userId,psw);
 	}
 	@Override
-	public List<User> findAllUser(String collegeName, String type) {
+	public List<User> findAllUser(int paperRef,String collegeName) {
 		// TODO Auto-generated method stub
-		return userDao.findAllUser(collegeName,type);
+		List<Grade> gradeList = gradeDao.findAllgrade(paperRef);
+		List<User> userList = new  ArrayList<>();
+		for(int i=0;i<gradeList.size();i++) {
+			User user = userDao.findGradeUser(gradeList.get(i).getUserId(),collegeName);
+			if(user!=null) {
+				user.setGrade(gradeList.get(i));
+				userList.add(user);
+			}
+			
+		}
+		return userList;
 	}
 
 }
