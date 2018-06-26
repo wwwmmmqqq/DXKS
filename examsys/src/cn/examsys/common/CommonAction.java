@@ -19,7 +19,7 @@ public abstract class CommonAction extends ActionSupport {
 	
 	public CommonAction() {
 		User user = new User();
-		user.setUserId("a5");
+		user.setUserId("admin");
 		user.setPsw("123");
 		user.setType("admin");
 		user.setName("nick");

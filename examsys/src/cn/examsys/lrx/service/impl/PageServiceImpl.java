@@ -87,7 +87,7 @@ public class PageServiceImpl implements PageService {
 		try {
 			type = type==null?"":type;
 			key = key==null?"":key;
-			List<Question> li = dao.findByHql("from Question where userId=? and (type like ? or title like ?)"
+			List<Question> li = dao.findByHql("from Question where userId=? and (type like ? and title like ?)"
 					, new Object[]{sessionUser.getUserId(), "%"+type+"%", "%"+key+"%"}, page);
 			QuestionListTool.fillOptionsFromQuestionList(dao, li);
 			return li;
