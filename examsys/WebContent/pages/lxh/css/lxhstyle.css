@@ -958,4 +958,5 @@ body {
 	display: block ;
 	width: 50% !important;
 	margin-left: -20% !important;
+	z-index: 100000 !important;
 }

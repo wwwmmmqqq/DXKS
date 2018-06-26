@@ -16,16 +16,16 @@ function pop(){
 
 //隐藏窗口
 function hide(){
-	$('#choose-box-wrapper').css("display","none");
+	$('.choose-box-wrapper').css("display","none");
 }
 
 function initProvince(){
 	
 	//原先的省份列表清空
-	$('#choose-a-province').html('');
+	$('.choose-a-province').html('');
 	
 	for(i=0;i<schoolList.length;i++){
-		$('#choose-a-province').append('<a href="javascript:void(0);" class="province-item" province-id="'+schoolList[i].id+'">'+schoolList[i].name+'</a>');
+		$('.choose-a-province').append('<a href="javascript:void(0);" class="province-item" province-id="'+schoolList[i].id+'">'+schoolList[i].name+'</a>');
 	}
 	
 	//添加省份列表项的click事件
@@ -45,10 +45,10 @@ function initProvince(){
 function initSchool(provinceID){
 
 	//原先的学校列表清空
-	$('#choose-a-school').html('');
+	$('.choose-a-school').html('');
 	var schools = schoolList[provinceID-1].school;
 	for(i=0;i<schools.length;i++){
-		$('#choose-a-school').append('<a href="javascript:void(0);" class="school-item" school-id="'+schools[i].id+'">'+schools[i].name+'</a>');
+		$('.choose-a-school').append('<a href="javascript:void(0);" class="school-item" school-id="'+schools[i].id+'">'+schools[i].name+'</a>');
 	}
 	
 	//添加大学列表项的click事件
@@ -57,7 +57,7 @@ function initSchool(provinceID){
 		var school = item.attr('school-id');
 
 		//更新选择大学文本框中的值
-		$('#school-name').val(item.text());
+		$('.school-name').val(item.text());
 
 		//关闭弹窗
 		hide();
@@ -65,7 +65,7 @@ function initSchool(provinceID){
 }
 
 function makeCenter(){
-	$('#choose-box-wrapper').css("display","block");
+	$('.choose-box-wrapper').css("display","block");
 	/*$('#choose-box-wrapper').css("position","absolute");
 	$('#choose-box-wrapper').css("top", Math.max(0, (($(window).height() - $('#choose-box-wrapper').outerHeight()) / 2) + $(window).scrollTop()) + "px");
 	$('#choose-box-wrapper').css("left", Math.max(0, (($(window).width() - $('#choose-box-wrapper').outerWidth()) / 2) + $(window).scrollLeft()) + "px");*/

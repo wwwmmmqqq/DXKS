@@ -11,6 +11,8 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
+		<link rel="stylesheet" href="css/inviteSchool.css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -137,8 +139,21 @@
 	         
 			   <div class="search_hide" id="hide">
                    <input type="text" class="input_hide1 form-control "  id="name1" placeholder="考试计划名称"/>
-				   <input type="text" class="input_hide form-control" id="userId1"  placeholder="计划时间"/>
+				   <input type="text" class="input_hide form-control mydate" id="userId1"  placeholder="计划时间"/>
 				   <input type="text" class="input_hide form-control" id="userId1"  placeholder="受邀学校"/>
+				   <input type="text" class="stext hover form-control" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper">
+											<div id="choose-box">
+												<div id="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province"></div>
+												<div id="choose-a-school"></div>
+												<div id="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
 				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
 				   <input type="reset" class="btn clean">
 			   </div>
@@ -412,7 +427,8 @@
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover form-control" id="ex_periodStart" data-options="{'type':'YYYY-MM-DD hh:mm','beginYear':2010,'endYear':2088}" >
+							        	<input type="text" class="hover form-control mydate" id="add-start">
+							        	
 							        	
 							        </td>
 							    </tr>
@@ -420,7 +436,7 @@
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover form-control" id="ex_periodEnd" data-options="{'type':'YYYY-MM-DD hh:mm','beginYear':2010,'endYear':2088}" >
+							        	<input type="text" class="hover form-control mydate"  id="add-end">
 							        	
 							        </td>
 							     </tr>
@@ -464,33 +480,33 @@
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;编&nbsp;号&nbsp;
-							        	<input type="text" class="hover" readonly="readonly" id="exam_sid">
+							        	<input type="text" class="hover form-control" readonly="readonly" id="exam_sid">
 							        </td>
 							    </tr>
 							    <tr>
 							        <td >
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
-							        	<input type="text" class="hover" id="exam_title">
+							        	<input type="text" class="hover form-control" id="exam_title">
 							        </td>
 							    </tr>
 							    <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover" id="exam_periodStart">
+							        	<input type="text" class="hover form-control mydate" id="exam_periodStart">
 							        </td>
 							    </tr>
 							     <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover" id="exam_periodEnd">
+							        	<input type="text" class=" hover form-control mydate" id="exam_periodEnd">
 							        </td>
 							     </tr>
 							        <tr>
 							        	<td >
 							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
-							        		<input type="text" class="hover" id="exam_invitee">
+							        		<input type="text" class="hover form-control" id="exam_invitee">
 							        	</td>
 							        </tr>
 							       
@@ -693,6 +709,8 @@
 
 	</body>
 	<script type="text/javascript" src="js/jquery.date.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
 <script>
 loadMyExamList(1);
 var currentPage=1;
@@ -929,10 +947,21 @@ $("#find").click(function(){
 		}); */
 });
 
-$.date('#ex_periodStart');
-$.date('#ex_periodEnd');
+$.datetimepicker.setLocale('ch');
+$('.mydate').datetimepicker({
+	yearStart : 1990, // 设置最小年份
+	yearEnd : 2050, // 设置最大年份
+	yearOffset : 0, // 年偏差
+	timepicker : false, // 关闭时间选项
+	format : 'Y-m-d', // 格式化日期年-月-日
+	minDate : '1990/01/01', // 设置最小日期
+	maxDate : '2030/01/01', // 设置最大日期
+});
+
 
 
 </script>
+<script type="text/javascript" src="js/school.js"></script>
+<script type="text/javascript" src="js/inviteSchool.js" ></script>
 <script type="text/javascript" src="js/test.js" ></script>
 </html>
