@@ -689,6 +689,7 @@
 	/*	获取教师所接受参加过得考试*/
 		var examSid = getParam("sid"); 
 		loadPapersByExam(examSid);
+		alert(examSid);
 		function loadPapersByExam() {
 			  $.post("loadInvitedExamPapers", {
 				  "page":1

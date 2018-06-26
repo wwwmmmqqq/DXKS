@@ -115,11 +115,12 @@
 				        <input type="text" class="input_hide" id="profession1"  placeholder="专业"/>
 				                 性别:
 				        <select id ="sex1">
+				             <option></option>
 				             <option>男</option>
 				             <option>女</option>
 				        </select>
 				        <button type="button" class="btn right_search" onclick="loadStudentList(1)">搜索</button>
-				       <button type="button" class="btn right_search" onclick="clean()">重置</button>
+				        <button type="button" class="btn right_search" onclick="clean()">重置</button>
 			        </div>
               </div>
               
@@ -701,7 +702,7 @@
 		
 	</body>
 <script type="text/javascript">
-	loadStudentList(1);
+    loadStudentList(1);
 	var currentPage=1;
 	var totalPage=2;
 	function loadStudentList(page) {
@@ -709,7 +710,7 @@
 		var name=$('#name1').val();
 		var department=$('#department1').val();
 		var profession=$('#profession1').val();
-		var sex=$('#sex1').val();
+		var sex="";
 		$.post("selectUserList",{
 			"user.type":"学生",
 			"page":page,
@@ -728,9 +729,9 @@
 				  	number +=i+1;
 		 			htm += getItemHtml(i, userList[i],number);
 		 		}
-			 $('#student-list-box').html(htm);alert("lb");
-			 for(var j=1;j<=totalPage;j++) {alert("ll");
-				 alert(j);
+			 $('#student-list-box').html(htm);
+			 console.log("zongy"+totalPage);
+			 for(var j=1;j<=totalPage;j++) {
 				 ht += getLiHtml(j);
 			 }
 			 $('.pagination').html(ht);
@@ -777,10 +778,9 @@
 		return htm;
 	}
 	function getLiHtml(index) {
-		alert(index);
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item active'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+				+"<li class='page-item '><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
 	
 		}
 		else if(index==totalPage){
@@ -789,7 +789,7 @@
 				
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";	
+			var ht = "<li class='page-item'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";	
 		}
 		return ht;    
 	}
@@ -929,7 +929,7 @@
 		if(confirm("确定要退出吗？")) {
 			$.post("loginOut",null,function(data) {
 				if(data.result=="成功退出") {
-						location.href="../gy/gy_login.jsp";
+						location.href="../gy/login.jsp";
 				}
 		  });
 		}  
