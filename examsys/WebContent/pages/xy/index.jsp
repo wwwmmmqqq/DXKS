@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		参数：paper.sid
 		返回值：paper
 	*/
+<<<<<<< HEAD
 	$.post("createExamPlan",
 			 {	"exam.title":"1",   //用户名
 		 		"user.userId":"34"				//用户类型
@@ -22,6 +23,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 		alert(data.result);    //message为user返回信息
 			 }
 		)
+=======
+	$.post("deleteExamPlan",
+			 {	"exam.sid":"1",   //用户名
+		},function(data){
+			alert(data.result);    //result为user返回信息
+		 })	
+>>>>>>> XY
   </script>
   
   </head>

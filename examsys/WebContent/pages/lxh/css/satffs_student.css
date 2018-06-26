@@ -244,7 +244,7 @@ p{
 	margin-bottom: 10px;
 }
 .main .btn2{
-	
+	margin-top:10px;
 	margin-left: 10px;
 }
 .main .top_search{
@@ -267,11 +267,27 @@ p{
 	height: 50px;
 	margin-top: 10px;
 }
+.top_button .btn2 {
+	margin-top: 10px;
+}
 .main .top_main{
 	height: 100%;
 	margin-top:20px ;
 	background-color:white ;
 }
+.top_main .search_hide {
+	display: none;
+}
+.top_main .search_hide {
+	display: none;
+}
+.search_hide input ,select , button {
+	margin: 0px  15px;
+	border-radius: 5px;
+}
+
+
+
 /*表格*/
 .tip{
 	width: 95%;
@@ -451,6 +467,9 @@ th {
 	color: black;
 	border:1px solid #bbb;
 }
+#myModal_email_refuse textarea {
+	width: 80%;
+}
 
 /*邀请老师组卷*/
 .modal-footer .add_invite{
@@ -484,6 +503,10 @@ th {
 	padding: 10px;
 }
 
+.modal-body .choose-sex {
+    float: left;
+    margin-left: 65px;
+}
 .modal-body  input{
 	width: 60%;
 	height: 30px;
@@ -545,7 +568,7 @@ th {
 .modal-body .tb_information{
 	width: 200px;
 	height: 45px;
-	margin-left:15px ;
+	margin-left: 20px ;
 	display: inline;  /*让他具有行级元素的性质*/
 }
 .modal-footer .back_information{
@@ -555,6 +578,11 @@ th {
 	color: black;
 	border:1px solid #bbb;
 }
+.eye_student td {
+	float: left;
+	margin-left: 150px;
+}
+
 /*邀请通知模态框*/
 .modal-body .email{
 	display: block;

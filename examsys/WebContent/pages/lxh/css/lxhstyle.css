@@ -257,13 +257,19 @@
 	height: 26px;
 }
 
-.papermanage .jwchaxun .jwcxtable {
+.jwchaxun .jwcxtable {
 	
 	background-color: #FFFFFF;
 }
-.papermanage .jwchaxun .jwtable  td {
+#paper-list-box td {
+	vertical-align: middle;
+}
+.jwchaxun .jwtable  td {
 	vertical-align: middle;
 
+}
+.jwcxtable .eye {
+	color: black;
 }
 .papermanage .jwchaxun .table-foot {
 	font-size: 16px;
@@ -908,6 +914,11 @@ body {
 	color: black;
 	border:1px solid #bbb;
 }
+#myModal_email_refuse textarea {
+	width: 80%;
+}
+
+
 /*阅卷通知*/
 .modal-footer .add_invite{
 	width: 90px;
@@ -927,13 +938,13 @@ body {
 	color: black;
 	border:1px solid #bbb;
 }
-/*查看权限模态框*/
+ /*查看权限模态框*/
 .see{
 	cursor: pointer;
 }
-.see:hover{
+/*.see:hover{
 	color: blue;
-}
+} */
 /*操作栏查看权限模态框*/
 .see_information{
 	cursor:pointer ;

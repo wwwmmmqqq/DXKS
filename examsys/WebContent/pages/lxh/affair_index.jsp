@@ -23,7 +23,7 @@
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
        
-       <script type="text/javascript" src="js/jquery.min.js" ></script>  
+       
        <script type="text/javascript" src="js/affair_index.js" ></script>
 	</head>
 	<body>
@@ -39,7 +39,7 @@
 		    		<button class="dropbtn">
 		    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		    				<i class="fa fa-user"></i>
-		    				<span>Jane Doe <i class="caret"></i></span>
+		    				<span>${session.user.userId} <i class="caret"></i></span>
 		    			</a>    		
 		    	    </button>
 		    		<div class="dropdown-content">
@@ -54,8 +54,8 @@
 		    			</a>
 		    	    </button>
 		    		<div class="dropdown-content">
-		    			<a href="#" data-toggle="modal" data-target="#myModal-invite-teacher">邀请老师出卷</a>
-		    			<a href="#" data-toggle="modal" data-target="#myModal-invite-school">邀请学校考试</a>
+		    			<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
+		    			<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
 		    		</div>
 		    	</div>
 		    
@@ -68,7 +68,7 @@
 		    			    	    </button>
 		    		<div class="dropdown-content">
 		    			<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
-		    			<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">考试通知</a>
+		    			<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 		    		</div>
 		    	</div>
 		    	
@@ -82,7 +82,7 @@
 		    			<img class="user1" src="img/1098.jpg" alt="User Image">
 		    		</div>
 		    		<div class="info">
-		    			<p>Hello, 教务周</p>
+		    			<p>Hello, ${session.user.userId}</p>
 		    		</div>
 		    	</div>
 		    	<div class="light_bottom">
@@ -96,12 +96,12 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-						<!-- <li class="side_nav1">
+					  <!--   <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li> -->
+						</li>  -->
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -164,7 +164,6 @@
 		    				</ul>
 		    			</div> -->
 		    			<!-- <p>共查询到？条记录</p> -->
-		    			<p>共查询到  条记录</p>
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
@@ -219,7 +218,7 @@
 		    			</div>
 		    		</div>
 		        </div>  
-		        <!--papermanange end -->	    
+		        
 		    </div>
 		    <!--cant end -->	
 		   
@@ -302,19 +301,205 @@
 			</div>
 		</div>
       
+		<!--模态框邀请老师组卷-->
+		<div class="modal fade" id="myModal_invite_teacher">
+		    <div class="modal-dialog">
+		      <div class="modal-content">
+		        <!-- 模态框头部 -->
+		        <div class="modal-header">
+		          <h4 class="modal-title">邀请老师组卷</h4>
+		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		        </div>
+		   
+		        <!-- 模态框主体 -->
+		        <div class="modal-body">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+		        </div>
+		   
+		        <!-- 模态框底部 -->
+		        <div class="modal-footer">
+		        	<button type="button" class="btn btn-primary add_invite">邀请</button>
+		            <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
+		        </div>
+		   
+		      </div>
+		    </div>
+		</div>
+
+		<!--模态框邀请学校参加考试-->
+		<div class="modal fade" id="myModal_invite_school">
+		    <div class="modal-dialog">
+		      <div class="modal-content">
+		   
+		        <!-- 模态框头部 -->
+		        <div class="modal-header">
+		          <h4 class="modal-title">邀请学校参加考试</h4>
+		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		        </div>
+		   
+		        <!-- 模态框主体 -->
+		        <div class="modal-body">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+		        </div>
+		   
+		        <!-- 模态框底部 -->
+		        <div class="modal-footer">
+		        	<button type="button" class="btn btn-primary add_invite">邀请</button>
+		            <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
+		        </div>
+		   
+		      </div>
+		    </div>
+		</div>
+      
+      	<!--邀请通知-->
+	    <div class="modal fade" id="myModal-invite-notice">
+	    	<div class="modal-dialog">
+	    		<div class="modal-content">
+	    
+	    			<div class="modal-header">
+	    				<h4 class="modal-title">邀请通知</h4>
+	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+	    			</div>
+	    
+	    			<div class="modal-body">
+	    				<div class="email">
+	    					来自xx学校xx学院东方老师的邀请
+	    					<button class="btn btn-primary accept">接受</button>
+	    					<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_email_refuse">拒绝</button>
+	    				</div>
+	    				<div class="email">
+	    					来自xx学校xx学院xx老师的邀请
+	    					<button class="btn btn-primary accept">接受</button>
+	    					<button class="btn btn-danger refuse">拒绝</button>
+	    				</div>
+	    				<div class="email">
+	    					来自xx学校xx学院xx老师的邀请
+	    					<button class="btn btn-primary accept">接受</button>
+	    					<button class="btn btn-danger refuse">拒绝</button>
+	    				</div>
+	    				<div class="email">
+	    					来自xx学校xx学院xx老师的邀请
+	    					<button class="btn btn-primary accept">接受</button>
+	    					<button class="btn btn-danger refuse">拒绝</button>
+	    				</div>
+	    			</div>
+	    
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+		<!--阅卷通知-->
+		<div class="modal fade" id="myModal-exam-notice">
+		    	<div class="modal-dialog">
+		      	<div class="modal-content">
+		   
+		        
+		        <div class="modal-header">
+		          <h4 class="modal-title">阅卷通知</h4>
+		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
+		        </div>
+		   
+		        
+		        <div class="modal-body">
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept" >接受</button>
+		          		<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_email_refuse" >拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		          	<div class="email">
+		          		来自xx学校xx学院xx老师的邀请
+		          		<button class="btn btn-primary accept">接受</button>
+		          		<button class="btn btn-danger refuse">拒绝</button>
+		          	</div>
+		        </div>
+		   
+		       
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+		        </div>
+		      </div>
+		    </div>
+  		</div>
       
        <!--模态框修改试卷信息 -->
 		<div class="modal fade" id="myModal_check">
 			<div class="modal-dialog">
 				<div class="modal-content">
-
-					模态框头部
+					<!-- 模态框头部 -->
 					<div class="modal-header">
 						<h4 class="modal-title">修改试卷信息</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
 
-					模态框主体
+				   <!--模态框主体 -->
 					<div class="modal-body">
 						<table>
 							<tbody id="editPaper">
@@ -364,55 +549,20 @@
 							</tbody>
 						</table>
 
-					</div>
+				   </div>
 
-					模态框底部
+					<!-- 模态框底部 -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary add" onclick="editPaper();">修改</button>
 					</div>
-
 				</div>
 			</div>
-	    <!--模态框查看通知-->
-	    <div class="modal fade" id="myModal-invite-notice">
-	    	<div class="modal-dialog">
-	    		<div class="modal-content">
-	    
-	    			<div class="modal-header">
-	    				<h4 class="modal-title">通知</h4>
-	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-	    			</div>
-	    
-	    			<div class="modal-body">
-	    				<div class="email">
-	    					来自xx学校xx学院xx老师的邀请
-	    					<button class="btn btn-primary accept">接受</button>
-	    					<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_email_refuse">拒绝</button>
-	    				</div>
-	    				<div class="email">
-	    					来自xx学校xx学院xx老师的邀请
-	    					<button class="btn btn-primary accept">接受</button>
-	    					<button class="btn btn-danger refuse">拒绝</button>
-	    				</div>
-	    				<div class="email">
-	    					来自xx学校xx学院xx老师的邀请
-	    					<button class="btn btn-primary accept">接受</button>
-	    					<button class="btn btn-danger refuse">拒绝</button>
-	    				</div>
-	    				<div class="email">
-	    					来自xx学校xx学院xx老师的邀请
-	    					<button class="btn btn-primary accept">接受</button>
-	    					<button class="btn btn-danger refuse">拒绝</button>
-	    				</div>
-	    			</div>
-	    
-	    			<div class="modal-footer">
-	    				<button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
-	    			</div>
-	    		</div>
-	    	</div>
-	    </div>
+	 </div>
+	  
+	  
+	  
+	  
 	    
 	    <!--模态框邀请老师组卷-->
 	    <div class="modal fade" id="myModal-invite-teacher">
@@ -422,7 +572,7 @@
 	    			<div class="modal-header">
 	    				<h4 class="modal-title">邀请老师组卷</h4>
 	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-	    			</div>-->
+	    			</div>
 	    
 	    			<!-- 模态框主体 -->
 	    			<div class="modal-body">
@@ -547,9 +697,7 @@
 	    	</div>
 	    </div>
 	    
-	   
-	    </div>
-	</body>
+</body>
 	
 	
 	<script type="text/javascript">
@@ -634,5 +782,47 @@ function Out() {
 	  });
 	}  
 }
+
+function loadNoticeList(page) {
+	  /**获取通知列表*/
+	  $.post("loadNoticeList", {
+		  "page":page//第几页
+	  }, function(data) {
+		  var list = data.list;//列表
+		  var html = "";
+		  for(var i=0;i<list.length;i++) {
+			  html += "通知的id = <a href='javascript:readNotice("+list[i].sid+")'>" + list[i].sid +"</a>";//获取到通知的id
+			  html += "，通知的类型 = " + list[i].type;//获取到通知的类型
+			  html += "，通知的标题 = " + list[i].title ;//获取到通知的标题
+			  html += "，通知的内容 = " + list[i].content;//获取到通知的内容
+			  html += "<br>";
+		  }
+		  $('#notice-box').html(html);
+	  });
+}
+
+function getLiHtml(index) {
+	if(index==1){
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
+			+"<li class='page-item active'><a class='page-link' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>";			
+	}
+	else if(index==totalPage){
+		var ht = "<li class='page-item'><a class='page-link' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>"
+			+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+			
+	}
+	else {
+		var ht = "<li class='page-item'><a class='page-link ' href='javascript:loadMyExamList("+index+")'>"+index+"</a></li>";
+	}
+	return ht;    
+}
+
+/*搜索jquery隐藏显示面板*/
+$(document).ready(function() {
+    $("#flip").click(function() {
+        $("#panel").slideToggle("slow");
+    });
+});
+
 	</script>
 </html>
