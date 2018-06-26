@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
+		<link rel="stylesheet" href="css/inviteSchool.css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -128,10 +129,10 @@
 							添加学生
 						</button> -->
 						<div class="top_search">
-							<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addstudent">
+							<!-- <button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addstudent">
 							<i class="fa fa-plus-circle"></i>
 							添加学生
-							</button>
+							</button> -->
 							<button type="button" class="btn btn2">
 								<i class="fa fa-search-minus"></i>
 								条件搜索
@@ -295,25 +296,25 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control" >
+										<input type="text" class="hover" >
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control "  id="">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control"  id="">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover form-control"  id="">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 
@@ -434,31 +435,32 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
+										<!-- <input type="text" class="stext hover form-control" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop1()" /> -->
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 							</tbody>
@@ -493,19 +495,34 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										
+										<input type="text" class="stext hover form-control" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper">
+											<div id="choose-box">
+												<div id="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province"></div>
+												<div id="choose-a-school"></div>
+												<div id="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
+									
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
+										
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 							</tbody>
@@ -692,6 +709,9 @@
 		
 		
 	</body>
+	
+	<script type="text/javascript" src="js/school.js"></script>
+	<script type="text/javascript" src="js/inviteSchool.js" ></script>
 <script type="text/javascript">
 	loadStudentList(1);
 	var currentPage=1;
