@@ -37,7 +37,7 @@
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
-					<div class="dropdown task">
+					<!-- <div class="dropdown task">
 						<button class="dropbtn">
 						    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						    	<i class="fa fa-tasks"></i>
@@ -45,10 +45,10 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
+							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
 						</div>
-					</div>
-					<div class="dropdown task" >
+					</div> -->
+					<%-- <div class="dropdown task" >
 						<button class="dropbtn envolope">
 							<i class="fa fa-envelope envelope"></i>	
 							<span class="label-success "><i></i></span>
@@ -57,7 +57,7 @@
 							<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
 							<a href="#" data-toggle="modal" data-target="#myModal_read">阅卷通知</a>
 						</div>
-					</div>
+					</div> --%>
 				</div>
 			</nav>
 		</header>
@@ -149,8 +149,8 @@
 					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
 					    <li class="page-item"><a class="page-link" href="#">3</a></li>
 					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
-					    <input class="jump">
-					    <button class="btn btn-primary btn_jump">跳转</button>
+					    <!-- <input class="jump">
+					    <button class="btn btn-primary btn_jump">跳转</button> -->
 				  </ul>
 			  	</div>
 			  </div>
@@ -276,90 +276,19 @@
 
 					<div class="modal-footer foot">
 					<button type="button" class="btn btn-primary  all-choose"  style="display:none" >全选</NOtton>
-					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </NOtton>
-					<button type="button" class="btn btn-success  sureexport"  style="display:none" >确认导出 </NOtton>
+					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </button>
+					<button type="button" class="btn btn-success  sureexport" onclick="exportScore1()"  style="display:none" >确认导出 </button>
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</NOtton>
 					</div>
 				</div>
 			</div>
 		</div>	
+		<script type="text/javascript">
+				function exportScore1() {
+					window.open("export.xlsx");
+				}
+		</script>
 
-		
-			<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal_information">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					<!-- 模态框头部 -->
-					<div class="modal-header">
-						<h4 class="modal-title">个人信息</h4>
-						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-					</div>
-
-					<!-- 模态框主体 -->
-					<div class="modal-body">
-						<table>
-							<tbody>
-								<tr>
-									<td>
-										姓名
-										<div class="tb_information">${session.user.name}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										工号
-										<div class="tb_information">${session.user.userId}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										密码
-										<div class="tb_information">${session.user.psw}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学校
-										<div class="tb_information">${session.user.collegeName}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学院
-										<div class="tb_information">${session.user.department}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										性别
-										<div class="tb_information">${session.user.sex}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										联系方式
-										<div class="tb_information">${session.user.phone}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										邮箱
-										<div class="tb_information">${session.user.email}</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-
-					</div>
-
-					<!-- 模态框底部 -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!--模态框查看通知-->
 		<div class="modal fade" id="myModal-email">
 			    	<div class="modal-dialog">
@@ -816,8 +745,6 @@
 				} ]
 			});
 		});
-		
-	
 		
 	</script>
 </html>

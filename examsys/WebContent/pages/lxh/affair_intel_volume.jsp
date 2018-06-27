@@ -49,7 +49,7 @@
 						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
-				<div class="dropdown task">
+				<!-- <div class="dropdown task">
 					<button class="dropbtn">
 					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					    				<i class="fa fa-tasks"></i>
@@ -59,9 +59,9 @@
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-teacher">邀请老师出卷</a>
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-school">邀请学校考试</a>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="dropdown notice">
+				<%-- <div class="dropdown notice">
 					<button class="dropbtn">
 					    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					    			    				<i class="fa fa-envelope"></i>
@@ -72,7 +72,7 @@
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">考试通知</a>
 					</div>
-				</div>
+				</div> --%>
 
 			</div>
 			<!-- head end -->
@@ -132,9 +132,9 @@
 				<section class="papermanage">
 					<!-- 智能组卷 start-->
 					<div>
-						<input type="text" id="title" placeholder="输入试卷标题" />
-						 <input type="text" id="startTime" placeholder="输入开始时间" />
-						<input type="text" id="endTime" placeholder="输入结束时间" />
+						<input type="text" id="title"  placeholder="输入试卷标题" />
+						 <input type="text" id="startTime"  placeholder="输入开始时间" />
+						<input type="text" id="endTime"  placeholder="输入结束时间" />
 						<select id="subjectSel" onchange="loadDiffCounts()">
 							<optgroup label="选择科目" id="subjectOpts"></optgroup>
 						</select>
