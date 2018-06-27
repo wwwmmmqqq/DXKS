@@ -618,7 +618,8 @@ $('tr input').click(function() {
 	if($(this).val() == '0') {
 		$(this).val("");
 	}
-})
+});
+
 $('tr input').blur(function() {
 	if($(this).val() == '') {
 		$(this).val("0");
