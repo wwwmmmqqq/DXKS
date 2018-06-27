@@ -428,11 +428,11 @@
 		    
 		    
 		    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		    <script type="text/javascript" src="js/jquery-confirm.js"></script>
+		     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 		    <script type="text/javascript" src="js/toastr.js"></script>
             <script type="text/javascript" src="js/jsentryquestions.js" ></script>
             <script type="text/javascript" src="js/jquery-confirm.js" ></script>
-            <script type="text/javascript" src="js/bootstrap.min.js"></script>
+           
             
             <script type="text/javascript">
             loadSubjectDatas()

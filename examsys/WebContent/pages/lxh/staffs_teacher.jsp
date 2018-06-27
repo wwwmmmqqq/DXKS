@@ -11,9 +11,8 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
+		
 	</head>
 
 	<body>
@@ -696,7 +695,10 @@
 	    		</div>
 	    	</div>
 	    </div>
-	    
+	 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/toastr.js"></script>   
 		
 	</body>
 <script type="text/javascript">
@@ -861,7 +863,6 @@
 			 	},function(data){
 			 		/* alert("hhh");
 			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone);  */
-			 		alert(data.result);    //message为user返回信息
 			 		location.href="staffs_teacher.jsp";
 				 }
 			)}
@@ -884,7 +885,7 @@
 						"user.phone":$('#teacher_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-							alert("修改成功!");
+							toastr.success("修改成功!");
 					  	location.href="staffs_teacher.jsp";
 				  	}
 			  });
@@ -917,7 +918,7 @@
 	function checkInput() {
 		$("#editTeacher input[type=text]").each(function() {
 			if($(this).val()=="") {	
-				alert("请将信息填写完整");
+				toastr.warning("请将信息填写完整");
 				return false;
 			}else{
 				return true;

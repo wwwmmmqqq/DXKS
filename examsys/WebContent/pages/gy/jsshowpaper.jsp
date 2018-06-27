@@ -147,6 +147,8 @@
 		    							</span>
 		    							<span>知识点：${que.knowledge}</span>
 		    							<span>科目：${que.subjectName}</span>
+		    							<span>正确率：${que.accuracy}</span>
+		    							
 		    						</p>
 		    						<div class="operation">
 		    							<ul>
@@ -729,7 +731,6 @@
 		}
 		
 		$(".edit-btn").click(function() {
-			alert(sid);
 		});
 		
 		var page = 1;

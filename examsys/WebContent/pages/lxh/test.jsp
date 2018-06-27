@@ -13,10 +13,8 @@
 		<link rel="stylesheet" href="css/ionicons.min.css" />
 		<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
 		<link rel="stylesheet" href="css/inviteSchool.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/test.js" ></script>
+		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
+		
 	</head>
 	<body>
 		
@@ -308,7 +306,7 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}else{setCollege(this.value)}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
 										<div id="choose-box-wrapper" class="choose-box-wrapper">
 											<div id="choose-box" class="choose-box">
 												<div id="choose-box-title" class="choose-box-title">
@@ -379,7 +377,19 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper" class="choose-box-wrapper">
+											<div id="choose-box" class="choose-box">
+												<div id="choose-box-title" class="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province" class="choose-a-province"></div>
+												<div id="choose-a-school" class="choose-a-school"></div>
+												<div id="choose-box-bottom" class="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
 									</td>
 								</tr>
 								<tr>
@@ -671,7 +681,7 @@
 				</div>
 			</div>
 		</div>
-	  		
+	  	
 
 		<!--邀请组卷拒绝模态框-->
 		 <div class="modal fade" id="myModal_email_refuse">
@@ -702,9 +712,15 @@
 		  </div>
 		
 	</body>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/test.js" ></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 	<script type="text/javascript" src="js/jquery.date.js" ></script>
 	<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
 	<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
+	
 <script>
 loadMyExamList(1);
 var currentPage=1;
@@ -745,9 +761,18 @@ function getItemHtml(index,obj,number){
 	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
 	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a>"
 	+" <a href='loadHandConstitutePage?examSid="+obj.sid+"'>手动组卷</a>"
-	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
+	+" <a href='javascript:readyInvite("+obj.sid+",\""+obj.invitee+"\");'  data-toggle='modal' data-target='#myModal_invite_school'>邀请学校</a></td>"
 	+"</tr>"; 
     return htm;
+}
+var obj_sid = "";
+var obj_invitee = "";
+function setCollege(college) {
+	inviteCollege(obj_sid, obj_invitee, college);
+}
+function readyInvite(a,b) {
+	obj_sid = a;
+	obj_invitee = b;
 }
 function getLiHtml(index) {
 	if(index==1){
@@ -841,7 +866,6 @@ function createExamPlan() {
 			        "exam.periodEnd":$('#ex_periodEnd').val(), 
 			        "exam.invitee":$('#ex_invitee').val()
 			},function(data){
-				alert(data.result);    //message为user返回信息
 				location.href="test.jsp";
 			
 			})
@@ -852,9 +876,8 @@ function editExamPlan() {
 					"exam.title":$('#exam_title').val(),
 					"exam.periodStart":$('#exam_periodStart').val(),
 					"exam.periodEnd":$('#exam_periodEnd').val(),
-					"exam.invitee":$('#exam_invitee').val(),
+					"exam.invitee":""//$('#exam_invitee').val(),
 				},function(data) {
-					alert(data.result);
 				  	location.href="test.jsp";
 				
 		  })
@@ -862,10 +885,9 @@ function editExamPlan() {
 }
 function deleteExamPlan(node) {
 	var td = node.parentNode.parentNode.childNodes;
-	var sid = td[0].innerHTML;alert(sid);
+	var sid = td[0].innerHTML;
 	if(confirm("确定要删除该考次吗？")) {
 		$.post("deleteExamPlan",{"exam.sid":sid},function(data) {
-			     alert(data.result);
 				location.href="test.jsp";
 			
 	  }); 
@@ -883,10 +905,10 @@ function Out() {
 	}  
 }
 
-function inviteCollege(sid, colleges) {
-	var college = prompt("添加邀请的学校");
+function inviteCollege(sid, colleges, college) {
+	//var college = prompt("添加邀请的学校");
 	if(colleges.indexOf(college)>=0) {
-		alert(college + "已被邀请");
+		toastr.success(college + "已被邀请");
 	} else {
 		if(college != null) {
 			$.post("invite", {
@@ -894,7 +916,7 @@ function inviteCollege(sid, colleges) {
 				"text":college
 			}, function(data) {
 				if(data.result == "success") {
-					alert("邀请成功");
+					toastr.success("邀请成功");
 					location.reload();
 				}
 			});
@@ -910,7 +932,7 @@ function deleteExam(sid) {
 			if(data.result == "success") {
 				$("#exam"+sid).remove();
 			} else {
-				alert("删除失败");
+				toastr.error("删除失败");
 			}
 		});
 	}
@@ -920,7 +942,7 @@ function checkInput() {
 	var fill=ture;
 	$("#editStudent input[type=text]").each(function() {
 		if($(this).val()=="") {
-			alert("请将信息填写完整");
+			toastr.warning("请将信息填写完整");
 			fill=ture;
 		}
 	});

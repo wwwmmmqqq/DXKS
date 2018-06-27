@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		
+		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
 		<title></title>
 	</head>
 	<body>
@@ -56,6 +56,7 @@
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 		<script type="text/javascript">
 		function login() {
 			var Id = $('#userId').val();
@@ -65,13 +66,12 @@
 			//var administrationType = $('#administration').val();
 			//var adminType = $('#admin').val();
 			if (Id=="" || password=="") {
-				alert("请输入信息");
+				toastr.warning("请输入信息");
 				return false;
 			} else { 
 				$.post("login",{"user.userId":Id,"user.psw":password},function(data) {
 					var user = data.user;
 				 	if(data.result=="未找到该账号！" ||data.result=="密码错误！" ){
-				 		alert(data.result);
 				 		return false;
 				 	}
 					if(user.type=="学生") {

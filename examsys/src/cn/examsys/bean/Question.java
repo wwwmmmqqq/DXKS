@@ -38,6 +38,17 @@ public class Question {
 	
 	String time;
 	
+	@Formula(value="(select count(tb1.sid) / (select if(count(tb2.sid)=0,999999,count(tb2.sid)) from answersheet_tb tb2 where tb2.questionRef=sid) * 100 from answersheet_tb tb1 where tb1.scoring>0 and tb1.questionRef=sid)")
+	int accuracy;//正确率
+	
+	public int getAccuracy() {
+		return accuracy;
+	}
+	
+	public void setAccuracy(int accuracy) {
+		this.accuracy = accuracy;
+	}
+	
 	public String getSubjectName() {
 		return subjectName;
 	}

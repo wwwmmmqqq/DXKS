@@ -23,11 +23,8 @@
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
      	<link rel="stylesheet" href="css/inviteSchool.css" />
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
-		
-		<script type="text/javascript" src="js/array.js"></script>
+     	<link href="css/toastr.css" rel="stylesheet" type="text/css" />
+     	
 		<style type="text/css">
 		.little-box {
    			width: 25px;height:25px;line-height:25px;border: 1px solid rgba(100,100,100,0.5);
@@ -99,7 +96,6 @@
 				</div>
 				<div class="light_bottom">
 					<ul class="side_nav">
-<<<<<<< HEAD
 						
 		    			<a href="staffs_student.jsp">
 			    			<li class="side_nav1">
@@ -721,6 +717,12 @@
 	    		</div>
 	    	</div>
 	    </div>
+	    
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
+		<script type="text/javascript" src="js/array.js"></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 				<script type="text/javascript">
 		    		var currentPage = 1;
 		    		var questionIds = [];
@@ -873,7 +875,6 @@
 				    			checkerHtml += "</optGroup></select>";
 		    				}
 		    			}catch(e) {
-		    				alert(e);
 		    			}
 		    			
 		    			var htm = "<li id='q-item-"+q.sid+"' class='q-item-class'>"
@@ -919,7 +920,7 @@
 		    		
 		    		function addQuestion(self, n, point, teacherId) {
 		    			if(point == '') {
-		    				alert("请输入分值");
+		    				toastr.warning("请输入分值");
 		    				return;
 		    			}
 		    			points[n+""] = point;
@@ -1038,7 +1039,7 @@
 			  ,"qids[3]":qids[3]//到总题目数量 的ID 
 		  }, function(data) {
 			  if("fail" == data.result) {
-				  alert("失败");
+				  toastr.error("失败");
 			  } else {
 				  var paperSid = data.result;//返回试卷的ID  
 			  }

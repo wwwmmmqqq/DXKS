@@ -22,8 +22,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<!-- Theme style -->
 		<link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
+		
+		
 		<style type="text/css">
 		input {text-align: center;}
 		</style>
@@ -528,7 +529,9 @@
 				</div>
 			</div>
 		</div>
-
+<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 </body>
 <script type="text/javascript">
 function getParam(name) {
@@ -576,7 +579,7 @@ function setTypeDiffPercent(typeIndex, diff, value) {
 	if(pvalue>100) {
 		$("#type"+typeIndex).find("#diff_total_percent"+typeIndex).text("还差" + (100-pvalue) + "%");
 		$("#diff_total_percent" + typeIndex).css({"color":"red"});
-		alert("超出范围");
+		toastr.warning("超出范围");
 	} else if(pvalue<100) {
 		$("#type"+typeIndex).find("#diff_total_percent"+typeIndex).text("还差" + (100-pvalue) + "%");
 		$("#diff_total_percent" + typeIndex).css({"color":"orange"});
@@ -617,7 +620,7 @@ $('tr input').blur(function() {
 		$(this).val("0");
 	}
 	if(isNaN($(this).val())) {
-		alert("非数字");
+		toastr.error("非数字");
 		$(this).val("0");
 		$(this).facus();
 	}
@@ -652,7 +655,7 @@ $('#submitBtn').bind().click(function() {
 					, $("#startTime").val(), $("#endTime").val(), $("#teacherSels").val());
 	$.post("createPaperAuto", params, function(data) {
 		if(data.result != 'fail') {
-			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
+			toastr.success("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
 			//newPaperSid = data.result;
 			//$("#submitBtn").get(0).innerText = "不满意生成的试卷"+newPaperSid+"，重新组卷";
 			window.open("loadAPaper?paper.sid=" + data.result);     
