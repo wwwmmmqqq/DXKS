@@ -45,6 +45,36 @@ $(function (){
 });
 }
 
+function checkPhone(){    
+	var mobile = $("#student_phone").val();
+	//焦点移除的时候进行验证
+	var myreg =/^[1][3,4,5,7,8][0-9]{9}$/; 
+	console.log(myreg.test(mobile));
+	//手机的格式
+        if (!myreg.test(mobile)) {   			//如果手机号码的格式与正则的不符合，就提醒
+       
+        	toastr.error("手机号格式有误");        
+               return false;
+           }
+	
+        return true;
+    }
+function checkIdCard(){   
+	
+	var id = $("#student_idcard").val();
+	//焦点移除的时候进行验证
+	var myid = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
+	if(!myid.test(id)) {
+        	//如果手机号码的格式与正则的不符合，就提醒
+        	toastr.error("身份证格式有误");        
+               return false;
+           }
+        return true;
+      
+    }
+
+
+
 function modiInfo(){
 	var sid=$('.info-body input[name="user.userId"]').val();
 	var sname=$('.info-body input[name="user.name"]').val();
@@ -55,7 +85,9 @@ function modiInfo(){
 	var sidcard=$('.info-body input[name="user.idcard"]').val();
 	var sphone=$('.info-body input[name="user.phone"]').val();
 	var semail=$('.info-body input[name="user.email"]').val();
-	
+	if(!checkPhone()||!checkIdCard() ){
+		return;
+	}
 	$.post("editUser", {
 		"user.userId" : sid,
 		"user.name" : sname,

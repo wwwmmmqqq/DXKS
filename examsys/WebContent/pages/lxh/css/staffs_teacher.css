@@ -275,7 +275,7 @@ p{
 	display: none;
 }
 .search_hide input ,select , button {
-	margin: 0px  15px;
+	
 	border-radius: 5px;
 }
 
@@ -510,8 +510,8 @@ th {
 
 
 .modal-body .choose-sex {
-    float: left;
-    margin-left: 65px;
+   /*  float: left;
+    margin-left: 65px; */
 }
 .modal-body  input{
 	width: 60%;
@@ -663,4 +663,32 @@ button{
 }
 .modal-body input{
 	display:inline;
+}
+.search_hide  input{
+	display:inline;
+	width:100px;
+	
+}
+.search_hide  select{
+	display:inline;
+	width:100px;
+}
+.search_hide .input_hide1{
+	margin-left:25px;
+	margin-right:10px;
+	margin-bottom:5px;
+}
+.search_hide .input_hide{
+	margin-right:10px;
+	margin-bottom:5px;
+}
+.search_hide .right_search{
+	color:black;
+	width:50px;
+	margin-bottom:5px;
+}
+.search_hide .clean{
+	color:black;
+	width:50px;
+	margin-bottom:5px;
 }

@@ -263,8 +263,7 @@ p{
 	display:inline;
 }
 .modal-body .hover:hover{
-	border: 1px solid #0e92cf;
-	border-radius:5px ;
+	
 }
 .modal-header .close1{
 	display: block;
@@ -572,6 +571,7 @@ th {
 
 .modal-body input{
 	display:center;
+	margin-bottom: 20px;
 }
 .modal-body .hover:hover{
 	
@@ -647,4 +647,7 @@ button{
 }
 .navbar-static-top{
 	z-index:0 !important;
+}
+.now{
+	background-color: #425164;
 }

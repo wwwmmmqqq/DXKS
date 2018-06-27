@@ -47,6 +47,7 @@
 						
 						<div class="btn_bottom">
 							<button type="button" class="btn btn-primary btn_login" onclick="login();">登录</button>
+							<a href="register.jsp"><button type="button" class="btn btn-primary btn_reg" onclick="register.jsp;">学生注册</button></a>
 						</div>
 					</div>
 				</div>

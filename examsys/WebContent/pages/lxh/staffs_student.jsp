@@ -146,7 +146,6 @@
 				        <input type="text" class="input_hide form-control" id="department1"  placeholder="学院"/>
 				        <input type="text" class="input_hide form-control" id="profession1"  placeholder="专业"/>
 				        <select class="input_hide form-control" id ="sex1">
-				             <option></option>
 				             <option>男</option>
 				             <option>女</option>
 				        </select>

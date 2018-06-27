@@ -50,12 +50,12 @@
 							<input type="text" class="form-control input_password" name="user_email" placeholder="请输入邮箱"/>
 						</div>
 						
-						<div class="yzm">
+						<!-- <div class="yzm">
 							<input name="XuasYzm" size="9" maxlength="5" class="form-control input_yzm">
 							<div>
 								<a href='javascript:refreshimg()' title='看不清楚，换个图片' ><img class="img_yzm" id='checkcode' src="http://www.cnhww.com/demo5/GetCode.asp" border="0" /></a>
 							</div>
-						</div>
+						</div> -->
 						
 						<div class="btn_bottom">
 							<button type="button" class="btn btn-primary btn_login" onclick="register_ajax()">注册</button>
