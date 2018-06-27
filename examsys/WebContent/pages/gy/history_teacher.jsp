@@ -36,7 +36,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-							<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
+							<a href="#" onclick="Out()" value="退出系统">退出系统</a>
 						</div>
 					</div>
 					<div class="dropdown task">
@@ -71,7 +71,7 @@
 			  	<ul class="side_nav">
 					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 ">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 now">查看成绩</li></a>
-					<a href="teacher_read.jsp"><li class="side_nav1 ">批阅试卷</li></a>
+					<a href="loadResponsibleQuestions?page=1"><li class="side_nav1 ">批阅试卷</li></a>
 				</ul>
 		  </div>
 		</nav>
@@ -281,19 +281,12 @@
 					</div>
 
 					<!-- 模态框底部 -->
-
 					<div class="modal-footer foot">
-					<button type="button" class="btn btn-primary  all-choose"  style="display:none" >全选</button>
-					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </button>
-					<button type="button" class="btn btn-success  sureexport" onclick="exportScore1()"  style="display:none" >确认导出 </button>
+					<button type="button" class="btn btn-primary  export"  onclick="doExportExcel()" >导出 </button>
 					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
-				<script type="text/javascript">
-				function exportScore1() {
-					window.open("export.xlsx");
-				}
-				</script>
+				
 			</div>
 		</div>	
 						

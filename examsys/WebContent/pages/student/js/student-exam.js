@@ -71,16 +71,26 @@ function queClicked(obj, n) {
 	$("#q-" + n).css({"display":"block"});
 }
 /* 下一题 */
+var size='${request.queList.size()}'
 function nextPage() {
+	if(currentItemId>size){
+		toastr.error("已经是最后一题了！")
+		return;
+	}
 	currentItemId++;
-	$('#abc' + currentItemId).click();
-
+		$('#abc' + currentItemId).click();
 }
 /* 上一题 */
 function prePage() {
+	if(currentItemId<1){
+		toastr.error("已经是第一题了！")
+		return;
+	}
 	currentItemId--;
-	$('#abc' + currentItemId).click();
+		$('#abc' + currentItemId).click();
+	
 }
+
 
 /* 点击标记图片 */
 function markClick() {

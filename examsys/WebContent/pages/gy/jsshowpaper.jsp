@@ -48,7 +48,7 @@
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
 						<a href="#" >修改密码</a>
-						<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
+						<a href="#" onclick="Out()" value="退出系统">退出系统</a>
 					</div>
 				</div>
 		
@@ -80,9 +80,9 @@
 				</div>
 				<div class="light_bottom">
 					<ul class="side_nav">
-					<a href="searchQuestions"><li class="side_nav1 now">题库管理</li></a>
+					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
-					<a href="teacher_read_jump.jsp"><li class="side_nav1 ">批阅试卷</li></a>
+					<a href="loadResponsibleQuestions?page=1"><li class="side_nav1 ">批阅试卷</li></a>
 				</div>
 			</nav>
 			<!-- sidebar end -->

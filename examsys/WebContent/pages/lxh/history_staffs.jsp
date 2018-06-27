@@ -77,7 +77,6 @@
 			</div>
 			<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<ul class="side_nav">
 		    			<a href="staffs_student.jsp">
 			    			<li class="side_nav1 ">
 								学生信息管理
@@ -750,7 +749,6 @@
 				  "page":1
 			  }, function(data) {
 				  var list = data.list;
-				  alert(list);
 				  var htm = "";
 				  for(var i=0;i<list.length;i++) {
 					 htm+=getMyExam(i,list[i].exam,list[i].paper);

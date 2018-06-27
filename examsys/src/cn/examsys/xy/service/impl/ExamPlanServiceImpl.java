@@ -33,24 +33,24 @@ public class ExamPlanServiceImpl implements ExamPlanService {
 	@Override
 	public boolean editExamPlan(Exam exam) {
 		// TODO Auto-generated method stub
-		/*User currentUser=examPlanDao.findOneExam(exam.getSid());  
-		Field[] field = currentUser.getClass().getDeclaredFields(); 
-		Field[] f = user.getClass().getDeclaredFields();	
+		Exam currentExam=examPlanDao.findOneExamPlan(exam.getSid());  
+		Field[] field = currentExam.getClass().getDeclaredFields(); 
+		Field[] f = exam.getClass().getDeclaredFields();	
 		try {
 				for(int i=0;i<field.length;i++) {
 					field[i].setAccessible(true);     
 					f[i].setAccessible(true);		
-					Object vals = f[i].get(user);
-					Object val = field[i].get(currentUser);
+					Object vals = f[i].get(exam);
+					Object val = field[i].get(currentExam);
 					String type = f[i].getType().toString();
 					if(vals==null || "".equals(vals)) {
 						vals=val;
-						f[i].set(user, vals);
+						f[i].set(exam, vals);
 					}else if(type.endsWith("int")) {
-							int va = f[i].getInt(user);
-							int v = f[i].getInt(currentUser);
+							int va = f[i].getInt(exam);
+							int v = f[i].getInt(currentExam);
 							if(va==0) {
-							f[i].set(user, v);
+							f[i].set(exam, v);
 						}
 					}
 				}
@@ -60,14 +60,22 @@ public class ExamPlanServiceImpl implements ExamPlanService {
 			} catch (IllegalAccessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 		return examPlanDao.editExamPlan(exam);
 	}
 
 	@Override
 	public Exam selectOneExamPlan(int sid) {
 		// TODO Auto-generated method stub
-		return null;
+		return examPlanDao.findOneExamPlan(sid);
+	}
+
+	@Override
+	public boolean deleteExamPlan(int sid) {
+		// TODO Auto-generated method stub
+		Exam exam = examPlanDao.findOneExamPlan(sid);
+		examPlanDao.deleteExamPlan(exam);
+		return false;
 	}
 
 }

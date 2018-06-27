@@ -16,7 +16,7 @@
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		
+		<script type="text/javascript" src="js/test.js" ></script>
 	</head>
 	<body>
 		
@@ -145,6 +145,7 @@
 				   <input type="reset" class="btn clean">
 			   </div>
           
+
 					
 			
 			<!--表格-->

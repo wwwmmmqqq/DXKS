@@ -28,7 +28,7 @@
 						<button class="dropbtn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-user"></i>
-								<span>muxue <i class="caret"></i></span>
+								<span>${session.user.userId}<i class="caret"></i></span>
 							</a>
 						</button>
 						<div class="dropdown-content">
@@ -68,7 +68,7 @@
 					<img class="user1" src="img/1098.jpg" alt="User Image">
 				</div>
 				<div class="info">
-					<p>Hello, muxue</p>
+					<p>Hello, ${session.user.userId}</p>
 				</div>
 
 			</div>
@@ -116,7 +116,7 @@
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
-		    					<a href="#"><i class="fa fa-home"></i> Home</a>
+		    					<a href="affair_index.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
 		    				<li>学生信息管理</li>
 		    			</ul>
@@ -133,12 +133,26 @@
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 							</button> -->
-							<button type="button" class="btn btn2">
+						<button type="button" class="btn btn2" id="find">
 								<i class="fa fa-search-minus"></i>
 								条件搜索
-							</button>
-						</div>
+						</button>	
 					</div>
+					<div class="search_hide" id="hide">
+                        <input type="text" class="input_hide1"  id="userId1" placeholder="学号"/>
+				        <input type="text" class="input_hide" id="name1"  placeholder="姓名"/>
+				        <input type="text" class="input_hide" id="department1"  placeholder="学院"/>
+				        <input type="text" class="input_hide" id="profession1"  placeholder="专业"/>
+				                 性别:
+				        <select id ="sex1">
+				             <option>男</option>
+				             <option>女</option>
+				        </select>
+				        <button type="button" class="btn right_search" onclick="loadStudentList(1)">搜索</button>
+				       <button type="button" class="btn right_search" onclick="clean()">重置</button>
+			        </div>
+              </div>
+              
 			<!--table-->
 			<div class="tip">学生信息</div>
 			<table class="table table-striped tb1">
@@ -348,6 +362,12 @@
 					<div class="modal-body">
 						<table>
 							<tbody id="editStudent">
+							    <tr>
+									<td>
+										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" readonly="readonly" disabled id="student_userId" name="user.userId">
+									</td>
+								</tr>
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
@@ -361,12 +381,7 @@
 							        	<option class="hover 女">女</option>
 							      	 </select>		 
 							    </td>
-								<tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" readonly="readonly" id="student_userId" name="user.userId">
-									</td>
-								</tr>
+								
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
@@ -729,8 +744,20 @@
 	var currentPage=1;
 	var totalPage=1;
 	function loadStudentList(page) {
-	
-		$.post("selectUserList",{"user.type":"学生","page":page},function(data) {
+		var userId=$('#userId1').val();
+		var name=$('#name1').val();
+		var department=$('#department1').val();
+		var profession=$('#profession1').val();
+		var sex=$('#sex1').val();
+		$.post("selectUserList",{
+			"user.type":"学生",
+			"page":page,
+			"user.userId":userId,
+			"user.name":name,
+			"user.department":department,
+			"user.profession":profession,
+			"user.sex":sex
+			},function(data) {
 			var userList=data.userList;
 			  totalPage=data.totalPage;      
 			  var htm = "";
@@ -898,11 +925,10 @@
 	} */
 	
 	function editStudent() {
-		alert(checkInput());
+		/* alert(checkInput());
 		if(checkInput()==false){
-			alert("333");
 			return false;
-			} else{
+			} else{ */
 		$.post("editUser",
 					{	
 						"user.name":$('#student_name').val(),
@@ -921,7 +947,7 @@
 				  	}
 			  });
 		}
-	}
+	
 
 	function deleteStudent(node) {
 		var td = node.parentNode.parentNode.childNodes;
@@ -946,7 +972,7 @@
 		}  
 	}
 	
-	function checkInput() {
+	/* function checkInput() {
 		var filled;
 		$("#editStudent input[type=text]").each(function() {
 			if($(this).val()=="") {
@@ -957,6 +983,19 @@
 			}
 		});
 		return filled;
+	} */
+	//搜索重置
+	function clean() {
+		$("#userId1").val('');
+		$('#name1').val('');
+		$('#department1').val('');
+		$('#profession1').val('');
+		$('#sex1').val('');
 	}
+
+//搜索隐藏
+	$("#find").click(function(){
+	$("#hide").slideToggle("slow");
+	})
 </script>
 </html>
