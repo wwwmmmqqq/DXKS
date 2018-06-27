@@ -525,6 +525,12 @@
 			<script type="text/javascript" src="js/search.js" ></script>
 				<script type="text/javascript" src="js/teacher_history.js" ></script>
 				<script type="text/javascript" src="js/echarts.js"></script>
+				<script type="text/javascript">
+				/*导出*/
+				function doExportExcel(){
+			        window.open("export.action?paper.sid="+paperid);
+			    }
+				</script>
 	</body>
 
 </html>

@@ -77,7 +77,7 @@
 			<div class="light_bottom"> 
 			  <ul class="side_nav">
 		    			<a href="staffs_student.jsp">
-			    			<li class="side_nav1 now">
+			    			<li class="side_nav1 ">
 								学生信息管理
 							</li>
 						</a>
@@ -98,7 +98,7 @@
 							<a href="affair_intel_volume.jsp">智能组卷</a>
 						</li> -->
 						<a href="history_staffs.jsp">
-							<li class="side_nav1">
+							<li class="side_nav1 now">
 								历史成绩
 							</li>
 						</a>
@@ -299,19 +299,13 @@
 					<!-- 模态框底部 -->
 
 					<div class="modal-footer foot">
-					<button type="button" class="btn btn-primary  all-choose"  style="display:none" >全选</NOtton>
-					<button type="button" class="btn btn-primary  export"  onclick="exportScore()" >导出 </button>
-					<button type="button" class="btn btn-success  sureexport" onclick="exportScore1()"  style="display:none" >确认导出 </button>
-					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</NOtton>
+					<button type="button" class="btn btn-primary  export"  onclick="doExportExcel()" >导出 </button>
+					<button type="button" class="btn btn-default back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
 			</div>
 		</div>	
-		<script type="text/javascript">
-				function exportScore1() {
-					window.open("export.xlsx");
-				}
-		</script>
+	
 
 		<!--模态框查看通知-->
 		<div class="modal fade" id="myModal-email">
@@ -616,8 +610,9 @@
 			}
 		} */
 //		获取历史成绩
-		var paperSid=getParam("sid"); 
-		function loadGradesByPaper(paperSid){
+		var paperid;
+	function loadGradesByPaper(paperSid){
+		paperid=paperSid;
 			 $.post("loadGradesByPaper", {
 				  "paper.sid":paperSid
 			  }, function(data) {
@@ -630,6 +625,10 @@
 			  });
 		}
 		
+		/*导出*/
+		function doExportExcel(){
+	        window.open("export.action?paper.sid="+paperid);
+	    }
 		//获取url中的参数
 		function getParam(name) {
 		  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
@@ -683,31 +682,8 @@
 			+"</tr>"
 			return htm;
 		}
-	/*成绩导出*/
-		$('.export').click(function(){
-				var tr=$('#studentScore tbody tr');
-			tr.each(function(){
-				$(this).find("td:first").empty().append('<input name="check" type="checkbox">');
-			})
-			$(this).hide();
-			$('.sureexport').show();
-			$('.all-choose').show();
-			$('.export').removeClass('btn-primary')
-			$('.export').addClass('btn-success sure-export')
-		})
-		
-		
-	/*全选*/
-		$('.all-choose').click(function(){
-			$(' input[name="check"]').each(function(){
-				if ($(this).attr("checked")) {
-					$(this).removeAttr("checked");
-				} else {
-					$(this).attr("checked", "true");
-				}
-			})
-		})
-		
+	
+	
 		/*考试结果正确率判断*/
 		$(function() {
 			var scoreRate = echarts.init(document.getElementById("rate"));

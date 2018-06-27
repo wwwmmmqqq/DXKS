@@ -18,7 +18,7 @@
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
         <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
-
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
@@ -113,15 +113,6 @@
 								试卷管理
 							</li> 
 						</a>
-						<li class="side_nav1">
-							<a href="staffs_student.jsp">学生信息管理</a>
-						</li>
-						<li class="side_nav1">
-							<a href="staffs_teacher.jsp">教师信息管理</a>
-						</li>
-						<li class="side_nav1">
-							<a href="affair_index.jsp">试卷管理 </a>
-						</li>
 						<!--  <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
@@ -183,14 +174,14 @@
 		    	
 		    	<div class="papermanage">
 		    		<div class="p_search">
-		    			<label>试卷名称：<input class="from-control" id="paperName" type='text' placeholder="试卷名称"></label>
+		    			<label>试卷名称：<input class="form-control" id="paperName" type='text' placeholder="试卷名称"></label>
 		    			<label>考试科目：
-		    				<select id="paperSubject">
+		    				<select id="paperSubject" class="form-control" >
 		    					<optgroup label="考试科目" id="paperSubjectGroup"></optgroup>
 		    				</select>
 		    			</label>
-		    			<label>开始时间：<input class="from-control" id="examStart" type='text' placeholder="开始时间"></label>
-		    			<label>结束时间：<input class="from-control" id="examEnd" type='text' placeholder="结束时间"></label>
+		    			<label>开始时间：<input class="form-control mydate" id="examStart" type='text' placeholder="开始时间"></label>
+		    			<label>结束时间：<input class="form-control" id="examEnd" type='text' placeholder="结束时间"></label>
 		    		</div>
 		    	    <div id="flip"><i class="fa fa-search-minus">
 		    	    </i>条件搜索</div>
@@ -1033,8 +1024,21 @@
 	  function basketSlide(){
 		 $("#basketright").slideToggle(100); 
 	  }
+	  $.datetimepicker.setLocale('ch');
+	  $('.mydate').datetimepicker({
+	  	yearStart : 2018, // 设置最小年份
+	  	yearEnd : 2030, // 设置最大年份
+	  	yearOffset : 0, // 年偏差
+	  	timepicker : true, // 关闭时间选项
+	  	format : 'Y-m-d h:m', // 格式化日期年-月-日
+	  	minDate : new Date(), // 设置最小日期
+	  	maxDate : '2030/01/01', // 设置最大日期
+	  });
 	</script>
 	<script type="text/javascript" src="js/school.js"></script>
 <script type="text/javascript" src="js/inviteSchool.js" ></script>
+<script type="text/javascript" src="js/jquery.date.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
 	</body>
 </html>
