@@ -155,14 +155,14 @@
 								<tr>
 									<td>电话：</td>
 									<td>
-										<input type="text" class="form-control" name="user.phone"/>
+										<input type="text" onblur="checkPhone()" id="student_phone"  class="form-control" name="user.phone"/>
 									</td>
 								</tr>
 								
 								<tr>
 									<td>身份证号：</td>
 									<td>
-										<input type="text" class="form-control" name="user.idcard"/>
+										<input type="text" onblur="checkIdCard()" id="student_idcard" class="form-control" name="user.idcard"/>
 									</td>
 								</tr>
 								

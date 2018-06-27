@@ -47,6 +47,7 @@
 						
 						<div class="btn_bottom">
 							<button type="button" class="btn btn-primary btn_login" onclick="login();">登录</button>
+							<a href="register.jsp"><button type="button" class="btn btn-primary btn_reg" onclick="register.jsp;">学生注册</button></a>
 						</div>
 					</div>
 				</div>
@@ -55,7 +56,6 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript">
 		function login() {
 			var Id = $('#userId').val();

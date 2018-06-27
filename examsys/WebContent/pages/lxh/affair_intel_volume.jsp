@@ -17,6 +17,7 @@
 		<!-- font Awesome -->
 		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<!-- Ionicons -->
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
 		<link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
          <link rel="stylesheet" href="css/inviteSchool.css" />
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -49,7 +50,7 @@
 						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
-				<div class="dropdown task">
+				<%-- <div class="dropdown task">
 					<button class="dropbtn">
 					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					    				<i class="fa fa-tasks"></i>
@@ -72,7 +73,7 @@
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">考试通知</a>
 					</div>
-				</div>
+				</div> --%>
 
 			</div>
 			<!-- head end -->
@@ -143,8 +144,8 @@
 					<!-- 智能组卷 start-->
 					<div>
 						<input type="text" class="intel form-control" id="title" placeholder="输入试卷标题" />
-						 <input type="text" class="intel form-control" id="startTime" placeholder="输入开始时间" />
-						<input type="text" class="intel form-control" id="endTime" placeholder="输入结束时间" />
+						 <input type="text" class="intel form-control mydate" id="startTime" placeholder="输入开始时间" />
+						<input type="text" class="intel form-control mydate" id="endTime" placeholder="输入结束时间" />
 						<select id="subjectSel" class="intel form-control" onchange="loadDiffCounts()">
 							<optgroup label="选择科目" id="subjectOpts"></optgroup>
 						</select>
@@ -528,7 +529,12 @@
 				</div>
 			</div>
 		</div>
-
+	<script type="text/javascript" src="js/school.js"></script>
+	<script type="text/javascript" src="js/inviteSchool.js" ></script>
+	<script type="text/javascript" src="js/test.js" ></script>
+	<script type="text/javascript" src="js/jquery.date.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
 </body>
 <script type="text/javascript">
 function getParam(name) {
@@ -690,7 +696,17 @@ function loadTeachers() {
 	});
 }
 
+$.datetimepicker.setLocale('ch');
+$('.mydate').datetimepicker({
+	yearStart : 2018, // 设置最小年份
+	yearEnd : 2030, // 设置最大年份
+	yearOffset : 0, // 年偏差
+	timepicker : true, // 关闭时间选项
+	format : 'Y-m-d h:m', // 格式化日期年-月-日
+	minDate : new Date(), // 设置最小日期
+	maxDate : '2030/01/01', // 设置最大日期
+});
+
 </script>
-<script type="text/javascript" src="js/school.js"></script>
-<script type="text/javascript" src="js/inviteSchool.js" ></script>
+
 </html>
