@@ -24,6 +24,7 @@
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
      	<link rel="stylesheet" href="css/inviteSchool.css" />
      	<link href="css/toastr.css" rel="stylesheet" type="text/css" />
+     	 <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
      	
 		<style type="text/css">
 		.little-box {
@@ -112,8 +113,6 @@
 								试卷管理
 							</li> 
 						</a>
-						<!-- <li class="side_nav1">
-=======
 						<li class="side_nav1">
 							<a href="staffs_student.jsp">学生信息管理</a>
 						</li>
@@ -123,18 +122,11 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp">试卷管理 </a>
 						</li>
-<<<<<<< HEAD
-						 <li class="side_nav1">
->>>>>>> origin/wmq-0624-3
-=======
 						<!--  <li class="side_nav1">
->>>>>>> origin/lrx-0626-4(合并wmq-0626)
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
 						<li class="side_nav1">
 							<a href="affair_intel_volume.jsp">智能组卷</a>
-<<<<<<< HEAD
-<<<<<<< HEAD
 						</li> -->
 						<a href="history_staffs.jsp">
 							<li class="side_nav1">
@@ -717,14 +709,12 @@
 	    		</div>
 	    	</div>
 	    </div>
-	    
-<<<<<<< HEAD
+	   
         <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
 		<script type="text/javascript" src="js/array.js"></script>
 		<script type="text/javascript" src="js/toastr.js"></script>
-				<script type="text/javascript">
 	    
 <script type="text/javascript">
 		    		var currentPage = 1;
@@ -1032,15 +1022,16 @@
 		  });
 	 }
 	 
-	 /*搜索jquery隐藏显示面板*/
+	  /*搜索jquery隐藏显示面板*/
 	 $(document).ready(function() {
 	     $("#flip").click(function() {
 	         $("#panel").slideToggle("slow");
 	     });
-	 });
+	 }); 
+	
 	 //点击隐藏试题篮
 	  function basketSlide(){
-		 $('#basketright').slideToggle(100);
+		 $("#basketright").slideToggle(100); 
 	  }
 	</script>
 	<script type="text/javascript" src="js/school.js"></script>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="css/staffs_teacher.css" />
+		<link rel="stylesheet" href="css/satffs_student.css" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
@@ -18,7 +18,7 @@
 
 	<body>
 		<!--上方导航栏-->
-	<div class="all">
+
 		<header class="header">
 			<nav class="navbar navbar-static-top" role="navigation">
 				<a class="logo" href="#"><img class="logo" src="img/logo.png"></a>
@@ -56,8 +56,8 @@
 							<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 						</div>
 				</div> -->
-				</div>
-		</header>
+				</div>	
+</header>
 
 		<!--侧边导航栏-->
 
@@ -71,90 +71,118 @@
 				</div>
 
 			</div>
-		  	<div class="light_bottom"> 
-			  	<ul class="side_nav">
-			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
-			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
-			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
-			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
-			  	</ul>
+			<div class="light_bottom"> 
+			  <ul class="side_nav">
+		    			<a href="staffs_student.jsp">
+			    			<li class="side_nav1 now">
+								学生信息管理
+							</li>
+						</a>
+						<a href="staffs_teacher.jsp">
+							<li class="side_nav1">
+								教师信息管理
+							</li>
+						</a>
+						<a href="affair_index.jsp">
+							<li class="side_nav1">
+								试卷管理
+							</li> 
+						</a>
+						<!-- <li class="side_nav1">
+							<a href="affair_hand_volume.jsp">手动组卷</a>
+						</li>
+						<li class="side_nav1">
+							<a href="affair_intel_volume.jsp">智能组卷</a>
+						</li> -->
+						<a href="history_staffs.jsp">
+							<li class="side_nav1">
+								历史成绩
+							</li>
+						</a>
+						<a href="test.jsp">
+							<li class="side_nav1">
+								考次计划
+							</li>
+						</a>
+		    		</ul>
 		  </div>
 		</nav>
 
 		<!--中间部分-->
 		<div class="main">
 			<div class="main1">
-				<div class="bred position">
+			<div class="bred position">
 		    			<!--breadcrumbs start -->
 		    			<ul class="breadcrumb mybread position">
 		    				<li class="active">
 		    					<a href="affair_index.jsp"><i class="fa fa-home"></i> Home</a>
 		    				</li>
-		    				<li>用户管理</li>
+		    				<li>学生信息管理</li>
 		    			</ul>
 		    			<!--breadcrumbs end -->	
 		    	</div>
 				<div class="top_main">
 					<div class="top_button">
-						<button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addTeacher">
+						<!-- <button class="btn btn1" type="button" data-toggle="modal" data-target="#">
 							<i class="fa fa-plus-circle"></i>
-							添加教师
-						</button>
+							添加学生
+						</button> -->
+						<div class="top_search">
+							<!-- <button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addstudent">
+							<i class="fa fa-plus-circle"></i>
+							添加学生
+							</button> -->
 						<button type="button" class="btn btn2" id="find">
 								<i class="fa fa-search-minus"></i>
 								条件搜索
 						</button>	
 					</div>
 					<div class="search_hide" id="hide">
-					    <input type="text" class="input_hide1"  id="userId2" placeholder="工号"/>
-                        <input type="text" class="input_hide1"  id="name2" placeholder="姓名"/>
-				        <input type="text" class="input_hide" id="profession2"  placeholder="专业"/>
-				        <input type="text" class="input_hide" id="college2"  placeholder="学校"/>
+                        <input type="text" class="input_hide1"  id="userId1" placeholder="学号"/>
+				        <input type="text" class="input_hide" id="name1"  placeholder="姓名"/>
+				        <input type="text" class="input_hide" id="department1"  placeholder="学院"/>
+				        <input type="text" class="input_hide" id="profession1"  placeholder="专业"/>
 				                 性别:
-				        <select id="sex2">
+				        <select id ="sex1">
 				             <option></option>
 				             <option>男</option>
 				             <option>女</option>
 				        </select>
-				        <button type="button" class="btn right_search" onclick="loadTeacherList(1)">搜索</button>
+				        <button type="button" class="btn right_search" onclick="loadStudentList(1)">搜索</button>
 				        <button type="button" class="btn right_search" onclick="clean()">重置</button>
 			        </div>
               </div>
               
 			<!--table-->
-			<div class="tip">教师信息</div>
+			<div class="tip">学生信息</div>
 			<table class="table table-striped tb1">
 				<thead class="thead-light">
 					<tr class="tb_width">
 						<th>序号</th>
 						<th>姓名</th>
-						<th>工号</th>
-						<th>学校</th>						
+						<th>学号</th>
+						<th>学校</th>
+						<th>学院</th>
 						<th>专业</th>
-						<th>性别</th>
-						<th>联系方式</th>
+						<th>班级</th>
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody id="teacher-list-box">
+				<tbody id="student-list-box">
 					<tr class="tb_width">
 						<td>1</td>
 						<td>慕雪</td>
-						<td>慕雪</td>
+						<td>15478015</td>
 						<td>萍乡学院</td>
+						<td>信息与计算机工程学院</td>
 						<td>软件工程</td>
-						<td>女</td>
-						<td>1770313147</td>
+						<td>1班</td>
 						<td>
-							<i class="fa fa-eye" data-toggle="modal" data-target="#myModal_eye_teacher"></i>
-			        	<i class="fa fa-pencil check"></i>
-			        	<i class="fa fa-trash-o"></i>
-			        </td>
+							<i class="fa fa-eye see" data-toggle="modal" data-target="#myModal_eye_student"></i>
+				        	<i class="fa fa-pencil check"></i>
+				        	<i class="fa fa-trash-o"></i>
+				        </td>
 					</tr>
-					
 				</tbody>
 			</table>
 			<!--<div class="bottom_button">
@@ -173,14 +201,15 @@
 					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
 					    <li class="page-item"><a class="page-link" href="#">3</a></li>
 					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
-					    <!-- <input class="jump">
-					    <button class="btn btn-primary btn_jump">跳转</button> -->
+					   <!--  <input class="jump">
+				       <button class="btn btn-primary btn_jump">跳转</button> -->
 				  </ul>
+				 
 			  	</div>
+			</div>
 		</div>
-	</div>	
-		</div>		
-
+		</div>	
+			
 		<!--模态框查看个人信息-->
 		<div class="modal fade" id="myModal_information">
 			<div class="modal-dialog">
@@ -257,15 +286,14 @@
 			</div>
 		</div>
 		
-		
-		<!-- 模态框添加教师信息 -->
-		<div class="modal fade" id="myModal_addTeacher">
+		<!-- 模态框添加学生信息 -->
+		<div class="modal fade" id="myModal_addstudent">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
 					<!-- 模态框头部 -->
 					<div class="modal-header">
-						<h4 class="modal-title">添加教师</h4>
+						<h4 class="modal-title">添加学生</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
 
@@ -273,43 +301,34 @@
 					<div class="modal-body">
 						<table>
 							<tbody>
-							    <tr>
-									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="te_userId" >
-									</td>
-								</tr>
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="te_name">
+										<input type="text" class="hover form-control" id="" >
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover"id="te_collegeName" >
+										<input type="text" class="hover" >
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="te_profession">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 								<tr>
-								    <td class="choose-sex">
-							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  name="user.sex" id="te_sex">
-							        	<option class="hover">男</option>
-							        	<option class="hover">女</option>
-							      	 </select>		 
-							        </td>
+									<td>
+										性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover"  id="">
+									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="te_phone">
+										<input type="text" class="hover"  id="">
 									</td>
 								</tr>
 
@@ -321,43 +340,43 @@
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary add" onclick="createTeacher()">添加</button>
+						<button type="button" class="btn btn-primary add" onclick="createStudent()">添加</button>
 					</div>
 
 				</div>
 			</div>
 		</div>
-
-        <!--模态框修改教师信息 -->
+		
+		<!--模态框修改学生信息 -->
 		<div class="modal fade" id="myModal_check">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
 					<!-- 模态框头部 -->
 					<div class="modal-header">
-						<h4 class="modal-title">修改教师信息</h4>
+						<h4 class="modal-title">修改学生信息</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
 
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
-							<tbody id="editTeacher">
+							<tbody id="editStudent">
 							    <tr>
 									<td>
-										工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" readonly="readonly" disabled id="teacher_userId" name="user.userId">
+										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="text" class="hover" readonly="readonly" disabled id="student_userId" name="user.userId">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="teacher_name" name="user.name">
+										<input type="text" class="hover" id="student_name" name="user.name">
 									</td>
 								</tr>
 								<td class="choose-sex">
 							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  id="teacher_sex" name="user.sex">
+							      	<select class="hover"  id="student_sex" name="user.sex">
 							        	<option class="hover 男">男</option>
 							        	<option class="hover 女">女</option>
 							      	 </select>		 
@@ -366,37 +385,37 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="teacher_collegeName" name="user.collegeName">
+										<input type="text" class="hover" id="student_collegeName" name="user.collegeName">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="teacher_department" name="user.department">
+										<input type="text" class="hover" id="student_department" name="user.department">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="teacher_profession" name="user.profession">
+										<input type="text" class="hover" id="student_profession" name="user.profession">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="teacher_classroom" name="user.classroom">
+										<input type="text" class="hover" id="student_classroom" name="user.classroom">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										身份证号&nbsp;
-										<input type="text" class="hover" id="teacher_idcard" name="user.idcard">
+										<input type="text" class="hover" id="student_idcard" name="user.idcard">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="teacher_phone" name="user.phone">
+										<input type="text" class="hover" id="student_phone" name="user.phone">
 									</td>
 								</tr>
 
@@ -408,7 +427,7 @@
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary add" onclick="editTeacher();">修改</button>
+						<button type="button" class="btn btn-primary add" onclick="editStudent();">修改</button>
 					</div>
 
 				</div>
@@ -432,31 +451,43 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper" class="choose-box-wrapper">
+											<div id="choose-box" class="choose-box">
+												<div id="choose-box-title" class="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province" class="choose-a-province"></div>
+												<div id="choose-a-school" class="choose-a-school"></div>
+												<div id="choose-box-bottom" class="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 							</tbody>
@@ -491,19 +522,34 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										
+										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper" class="choose-box-wrapper">
+											<div id="choose-box" class="choose-box">
+												<div id="choose-box-title" class="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province" class="choose-a-province"></div>
+												<div id="choose-a-school" class="choose-a-school"></div>
+												<div id="choose-box-bottom" class="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
+									
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
+										
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<input type="text" class="hover form-control">
 									</td>
 								</tr>
 							</tbody>
@@ -520,36 +566,37 @@
 		    </div>
 		</div>
 		
-		<!--模态框查看教师信息-->
-		<div class="modal fade" id="myModal_eye_teacher">
+			
+		<!--模态框查看学生详细信息-->
+		<div class="modal fade" id="myModal_eye_student">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<!-- 模态框头部 -->
 					<div class="modal-header">
-						<h4 class="modal-title">教师信息</h4>
+						<h4 class="modal-title">学生详细信息</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
 
 					<!-- 模态框主体 -->
-					<div class="modal-body eye_teacher">
+					<div class="modal-body eye_student">
 						<table>
-							<tbody id="teacher-info-box">
+							<tbody id="student-info-box">
 								<tr>
 									<td>
-										用户名
+										姓名
 										<div class="tb_information">慕雪</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										密码
+										学号
 										<div class="tb_information">17001</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										姓名
-										<div class="tb_information">慕雪</div>
+										密码
+										<div class="tb_information">123456</div>
 									</td>
 								</tr>
 								<tr>
@@ -560,23 +607,34 @@
 								</tr>
 								<tr>
 									<td>
+										学院
+										<div class="tb_information">信计学院</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
 										专业
 										<div class="tb_information">软件工程</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										性别
-										<div class="tb_information">女</div>
+										班级
+										<div class="tb_information">1</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										身份证号
+										<div class="tb_information">123456789996325147</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式
-										<div class="tb_information">1770313147</div>
+										<div class="tb_information">1770313147@qq.com</div>
 									</td>
 								</tr>
-								
 							</tbody>
 						</table>
 
@@ -629,7 +687,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!--阅卷通知-->
 		<div class="modal fade" id="myModal-exam-notice">
 			<div class="modal-dialog">
@@ -697,34 +755,32 @@
 	    		</div>
 	    	</div>
 	    </div>
-	 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/toastr.js"></script>   
+		<script type="text/javascript" src="js/toastr.js"></script>
 		
 	</body>
 <script type="text/javascript">
-	loadTeacherList(1);
+    loadStudentList(1);
 	var currentPage=1;
-	var totalPage=3;
-	function loadTeacherList(page) {
-		var userId=$('#userId2').val();
-		var name=$('#name2').val();
-		var profession=$('#profession2').val();
-		var collegeName=$('#college2').val();
-		var sex=$('#sex2').val();
-		
+	var totalPage=2;
+	function loadStudentList(page) {
+		var userId=$('#userId1').val();
+		var name=$('#name1').val();
+		var department=$('#department1').val();
+		var profession=$('#profession1').val();
+		var sex="";
 		$.post("selectUserList",{
-			"user.type":"教师",
+			"user.type":"学生",
 			"page":page,
 			"user.userId":userId,
 			"user.name":name,
-			"user.collegeName":collegeName,
+			"user.department":department,
 			"user.profession":profession,
 			"user.sex":sex
-			
-		},function(data) {
-			  var userList=data.userList;
+			},function(data) {
+			var userList=data.userList;
 			  totalPage=data.totalPage;      
 			  var htm = "";
 			  var ht = "";
@@ -733,7 +789,8 @@
 				  	number +=i+1;
 		 			htm += getItemHtml(i, userList[i],number);
 		 		}
-			 $('#teacher-list-box').html(htm);
+			 $('#student-list-box').html(htm);
+			 console.log("zongy"+totalPage);
 			 for(var j=1;j<=totalPage;j++) {
 				 ht += getLiHtml(j);
 			 }
@@ -744,27 +801,38 @@
 	
 	function nextPage() {
 		if(currentPage<totalPage) 
-			loadTeacherList(++currentPage);
+			loadStudentList(++currentPage);
 	}
 	
 	function prevPage() {
 		if(currentPage>=2) 
-			loadTeacherList(--currentPage);
+			loadStudentList(--currentPage);
 	}
+	/* function jumpPage() {
+		var juPage=$('#jpage').html();
+		alert(juPage);
+		if(currentPage==juPage || juPage<1 || juPage>totalPage){
+			loadStudentList(currentPage);
+		} else{
+			loadStudentList(currentPage+(juPage-currentPage));
+			
+		}
+			
+	} */
 	
 	function getItemHtml(index, obj,number) {
 		var htm = "<tr class='tb_width'>"
 			+"<td>"+number+"</td>"
 			+"<td>"+obj.name+"</td>"
-			+"<td>"+obj.userId+"</td>"
+			+"<td id='userid'>"+obj.userId+"</td>"
 			+"<td>"+obj.collegeName+"</td>"
 			+"<td>"+obj.department+"</td>"
 			+"<td>"+obj.profession+"</td>"
 			+"<td>"+obj.classroom+"</td>"
 			+"<td>"
-			+"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_teacher' onclick='teacherInfo(this)'></i>" 
-			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='teacherInfo(this)'></i>"
-			+"<i class='fa fa-trash-o' onclick='deleteTeacher(this)'></i>"
+		    +"<i class='fa fa-eye see' data-toggle='modal' data-target='#myModal_eye_student' onclick='studentInfo(this)'></i>" 
+			+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='studentInfo(this)'></i>"
+			+"<i class='fa fa-trash-o' onclick='deleteStudent(this)'></i>"
 			+"</td>"
 			+"</tr>";
 		return htm;
@@ -772,35 +840,37 @@
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item active' id='first'><a class='page-link' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>";
+				+"<li class='page-item active'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+	
 		}
 		else if(index==totalPage){
-			var ht = "<li class='page-item' id='total'><a class='page-link' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>"
+			var ht = "<li class='page-item active'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
 				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
+				
 		}
 		else {
-			var ht = "<li class='page-item' id='second'><a class='page-link ' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>";
-			
+			var ht = "<li class='page-item'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";	
 		}
 		return ht;    
 	}
-	function teacherInfo(node) {
-		var td = node.parentNode.parentNode.childNodes;
+	function studentInfo(node) {
+		var td =node.parentNode.parentNode.childNodes;
 		var userId = td[2].innerHTML;
 		$.post("showUser",{"user.userId":userId},function(data) {
 			var user = data.user;
 			var info = getInfoHtml(user);
-			$('#teacher-info-box').html(info);
+			$('#student-info-box').html(info);
+			//修改模态框显示学生信息
 			
-			$('#teacher_name').val(user.name);
-			$('#teacher_sex').find("."+user.sex).attr("checked", "checked");
-			$('#teacher_userId').val(user.userId);
-			$('#teacher_collegeName').val(user.collegeName);
-			$('#teacher_department').val(user.department);
-			$('#teacher_profession').val(user.profession);
-			$('#teacher_classroom').val(user.classroom);
-			$('#teacher_idcard').val(user.idcard);
-			$('#teacher_phone').val(user.phone);
+			$('#student_name').val(user.name);
+			$('#student_sex').find("."+user.sex).attr("checked", "checked");
+			$('#student_userId').val(user.userId);
+			$('#student_collegeName').val(user.collegeName);
+			$('#student_department').val(user.department);
+			$('#student_profession').val(user.profession);
+			$('#student_classroom').val(user.classroom);
+			$('#student_idcard').val(user.idcard);
+			$('#student_phone').val(user.phone);
 		})
 	}	
 	function getInfoHtml(obj) {
@@ -813,7 +883,7 @@
 			+"<tr>"
 			+"<td>"
 			+"学号"
-			+"<div class='tb_information'>"+obj.userId+"17001</div>"
+			+"<div class='tb_information'>"+obj.userId+"</div>"
 			+"</td>"
 			+"</tr>"
 			+"<tr>"
@@ -851,56 +921,64 @@
 			+"</td></tr>";
 		return info;
 	}
-	
-	 function createTeacher() {
+	/* 
+	function createStudent() {
 		 $.post("createUser",
-				 {	"user.userId":$('#te_userId').val(),   //用户id
-			        "user.name":$('#te_name').val(),   //用户名
-			        "user.collegeName":$('#te_collegeName').val(),   //用户学校
-			        "user.profession":$('#te_profession').val(),   //用户专业
-			 		"user.type":"教师",					//用户类型
-			 		"user.sex":$('#te_sex').val(),	//用户性别
-			 		"user.phone":$('#te_phone').val(),
-			 		"user.psw":"000000"
+				 {	
+			 		"user.name":$('#').val(),//用户名
+			 		"user.userId":$('#').val(), //学号  
+				 	"user.collegeName":$('#collegeName').val(),
+				 	"user.department":$('#department').val(),
+				 	"user.profession":$('#profession').val(),
+				 	"user.classroom":$('#').val(),//班级
+			 		"user.type":"student",					//用户类型
+			 		"user.sex":$('#sex').val(),						//用户性别
+			 		"user.phone":$('#phone').val(),
+			 		"user.idcard":$('#idcard').val()
 			 	},function(data){
-			 		/* alert("hhh");
-			 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone);  */
-			 		location.href="staffs_teacher.jsp";
+			 		alert(data.result);    //message为user返回信息
+			 		if(data.result=="用户创建成功"){
+			 			alert(data.result);
+			 			location.href="staffs_student.jsp";
+			 		}else {
+			 			return false;
+			 		}
 				 }
-			)}
+			)
+	} */
 	
-	function editTeacher() {
-		/* alert("checkInput()"+checkInput()); */
+	function editStudent() {
+		/* alert(checkInput());
 		if(checkInput()==false){
 			return false;
-			} else{
+			} else{ */
 		$.post("editUser",
 					{	
-						"user.name":$('#teacher_name').val(),
-						"user.sex":$('#teacher_sex').val(),
-						"user.userId":$('#teacher_userId').val(),
-						"user.collegeName":$('#teacher_collegeName').val(),
-						"user.department":$('#teacher_department').val(),
-						"user.profession":$('#teacher_profession').val(),
-						"user.classroom":$('#teacher_classroom').val(),
-						"user.idcard":$('#teacher_idcard').val(),
-						"user.phone":$('#teacher_phone').val()
+						"user.name":$('#student_name').val(),
+						"user.sex":$('#student_sex').val(),
+						"user.userId":$('#student_userId').val(),
+						"user.collegeName":$('#student_collegeName').val(),
+						"user.department":$('#student_department').val(),
+						"user.profession":$('#student_profession').val(),
+						"user.classroom":$('#student_classroom').val(),
+						"user.idcard":$('#student_idcard').val(),
+						"user.phone":$('#student_phone').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
 							toastr.success("修改成功!");
-					  	location.href="staffs_teacher.jsp";
+					  	location.href="staffs_student.jsp";
 				  	}
 			  });
-			}
 		}
-   
-	function deleteTeacher(node) {
+	
+
+	function deleteStudent(node) {
 		var td = node.parentNode.parentNode.childNodes;
 		var userId = td[2].innerHTML;
 		if(confirm("确定要删除该用户吗？")) {
 			$.post("deleteUser",{"user.userId":userId},function(data) {
 				if(data.result=="删除成功") {
-						location.href="staffs_teacher.jsp";
+						location.href="staffs_student.jsp";
 				}
 		  }); 
 		}  
@@ -917,47 +995,31 @@
 		}  
 	}
 	
-	function checkInput() {
-		$("#editTeacher input[type=text]").each(function() {
-			if($(this).val()=="") {	
-				toastr.warning("请将信息填写完整");
-				return false;
+	/* function checkInput() {
+		var filled;
+		$("#editStudent input[type=text]").each(function() {
+			if($(this).val()=="") {
+				alert("请将信息填写完整");
+				filled=false;
 			}else{
-				return true;
+				filled=true;
 			}
-		});	
-	}
-	
+		});
+		return filled;
+	} */
 	//搜索重置
 	function clean() {
-		$("#userId2").val('');
-		$('#name2').val('');
-		$('#department2').val('');
-		$('#profession2').val('');
-		$('#sex2').val('');
-		loadTeacherList(1)
+		$("#userId1").val('');
+		$('#name1').val('');
+		$('#department1').val('');
+		$('#profession1').val('');
+		$('#sex1').val('');
+		loadStudentList(1);
 	}
-	$("#second").click(function(){
-		$("#first").removeClass("active");
-		$("#second").addClass("active");
-	});
-	
-	
-	//搜索隐藏
+
+//搜索隐藏
 	$("#find").click(function(){
 	$("#hide").slideToggle("slow");
-	/*$("#school").click(function(){
-			$("#school1").slideToggle("slow");
-		});
-		$("#institute").click(function(){
-			$("#institute1").slideToggle("slow");
-		});
-		$("#profession").click(function(){
-			$("#profession1").slideToggle("slow");
-		});
-		$("#class").click(function(){
-			$("#class1").slideToggle("slow");
-		});*/
-});
+	})
 </script>
 </html>
