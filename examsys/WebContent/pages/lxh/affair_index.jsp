@@ -959,7 +959,7 @@
 			+"	<td>"+obj.examStart+"</td>"
 			+"	<td>"+obj.examEnd+"</td>"
 			+"  <td>"
-			+"  <a href='apaper.jsp?"+obj.sid+"'><i class='fa fa-eye see'></i></a>" 
+			+"  <a href='loadAPaper?paper.sid="+obj.sid+"'><i class='fa fa-eye see'></i></a>" 
 			/* +"  <i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='paperInfo(this)'></i>"
 			+"  <i class='fa fa-trash-o' onclick='deletePaper(this)'></i>" */
 			+" </td>"

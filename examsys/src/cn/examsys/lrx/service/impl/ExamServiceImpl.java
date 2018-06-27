@@ -90,10 +90,10 @@ public class ExamServiceImpl implements ExamService {
 		Question q;
 		try {
 			q = dao.findOneByHql("from Question where sid=?", new Object[]{questionRef});
-			if (q!=null) {
+			/*if (q!=null) {
 				dao.updateBySql("update question_tb set accuracy=(select count(tb.sid) from ) where "
 						, new String[]{});
-			}
+			}*/
 		} catch (Exception e1) {
 			e1.printStackTrace();
 			return false;

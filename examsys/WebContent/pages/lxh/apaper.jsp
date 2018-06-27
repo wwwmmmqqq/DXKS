@@ -721,8 +721,8 @@
 	function delPaper() {
 		$.post("delPaper", {"sid":${paper.sid}}, function(data) {
 			if(data.result == "success") {
-				toastr.success("删除成功!");
 				window.close();
+				toastr.success("删除成功!");
 			}
 		});
 	}
