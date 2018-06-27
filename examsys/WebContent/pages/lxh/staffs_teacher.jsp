@@ -130,8 +130,8 @@
 				<thead class="thead-light">
 					<tr class="tb_width">
 						<th>序号</th>
-						<th>工号</th>
 						<th>姓名</th>
+						<th>工号</th>
 						<th>学校</th>						
 						<th>专业</th>
 						<th>性别</th>

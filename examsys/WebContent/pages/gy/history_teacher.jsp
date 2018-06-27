@@ -431,7 +431,7 @@
 								<th>参加学校</th>
 								<th>考试时间</th>
 							</thead>
-							<tbody >
+							<tbody>
 								<tr>
 									<td><input type="checkbox" name="checkbox_select"/></td>
 									<td>1</td>

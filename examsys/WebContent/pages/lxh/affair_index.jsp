@@ -163,7 +163,6 @@
 		    					<li><button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modify-paper"><i class="fa fa-pencil"></i></button></li>
 		    				</ul>
 		    			</div> -->
-		    			<!-- <p>共查询到？条记录</p> -->
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
@@ -561,9 +560,7 @@
 	 </div>
 	  
 	  
-	  
-	  
-	    
+	 
 	    <!--模态框邀请老师组卷-->
 	    <div class="modal fade" id="myModal-invite-teacher">
 	    	<div class="modal-dialog">

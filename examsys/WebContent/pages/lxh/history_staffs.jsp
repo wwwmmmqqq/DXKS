@@ -637,14 +637,14 @@
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadPapersByExam(1)'>"+index+"</a></li>";
+				+"<li class='page-item active'><a class='page-link' href='javascript:loadPapersByExam(1)'>"+index+"</a></li>";
 		}
 		else if(index==totalPage){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadPapersByExam("+index+")'>"+index+"</a></li>"
 				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadPapersByExam("+index+")'>"+index+"</a></li>";
+			var ht = "<li class='page-item '><a class='page-link ' href='javascript:loadPapersByExam("+index+")'>"+index+"</a></li>";
 			
 		}
 		return ht;    
@@ -702,7 +702,7 @@
 			  });
 		  }
 		
-		function getMyExam(i,exam,paper) {alert("i"+i);alert("exam"+exam);alert("paper"+paper);
+		function getMyExam(i,exam,paper) {
 			var htm = "<tr>"
 			+"	<td>"+(i+1)+"</td>"
 			+"	<td>"+paper.subjectName+"</td>"

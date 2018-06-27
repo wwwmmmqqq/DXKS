@@ -232,15 +232,21 @@
 }
 
 /*affair_index*/
+.p_searche label {
+	margin-right: 10px;
+}
 .papermanage #panel,#flip {
 	padding:5px;
-	text-align:center;
 	background-color: #ccd2ee;
 	border:solid 1px #ccd2ee;
 }
+.papermanage #flip {	
+	text-align:center;	
+}
 .papermanage #panel {
-	padding:50px;
-	display:none;
+	padding: 20px;
+	display: none;
+	height: 80px;
 }
 .papermanage .searchpanel {
 	float: left;
@@ -427,7 +433,7 @@ li{
 }
 .searchpanel #qtype , #qdiffer {
 	float :left;
-	margin: 0px 30px;
+	margin: 0px 10px;
 }
 .searchpanel select {
 	width: 80px;
@@ -437,7 +443,7 @@ li{
 	position: fixed;
 	padding-left: 40px;
 	right: 1px;
-	top: 55%;
+	top: 68%;
 	margin-top: -150px;
 	background: #fff;
 	border-radius: 5px 0 0 5px;

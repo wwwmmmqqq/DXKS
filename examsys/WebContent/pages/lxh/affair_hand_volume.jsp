@@ -164,7 +164,7 @@
 		    	<!--试题篮  end -->
 		    	
 		    	<div class="papermanage">
-		    		<div>
+		    		<div class="p_search">
 		    			<label>试卷名称：<input id="paperName" type='text' placeholder="试卷名称"></label>
 		    			<label>考试科目：
 		    				<select id="paperSubject">
@@ -177,7 +177,7 @@
 		    	    <div id="flip"><i class="fa fa-search-minus">
 		    	    </i>搜索条件</div>
 		    		<div id="panel">
-	    				<div class="searchpanel" style="float: left;">
+	    				<div class="searchpanel">
 	    					<ul>
 	    						<li id="qtype">
 	    							<label>搜索类型</label>
