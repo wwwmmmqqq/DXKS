@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
 		<link rel="stylesheet" href="css/inviteSchool.css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/test.js" ></script>
 	</head>
@@ -415,41 +415,20 @@
 							   
 					 <!-- 模态框主体 -->
 					<div class="modal-body">
-						<table >
-							<tbody>
-							    <tr>
-							        <td >
-							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
-							        	<input type="text" class="hover form-control" id="ex_title">
-							        </td>
-							    </tr>
-							    <tr>			        				
-							        <td >
-							        	
-							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover form-control mydate" id="add-start">
-							        	
-							        	
-							        </td>
-							    </tr>
-							     <tr>			        				
-							        <td >
-							        	
-							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover form-control mydate"  id="add-end">
-							        	
-							        </td>
-							     </tr>
-							        <tr>
-							        	<td>
-							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
-							        		<input type="text" class="hover form-control" id="ex_invitee">
-							        	</td>
-							        </tr>
-							       
-							    </tbody>
-							</table> 
-						</div>
+						<form class="form-add-exam">
+				        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
+				        	<input type="text" class="hover form-control" id="ex_title">
+				       
+				        	
+				        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
+				        	<input type="text" class="hover form-control mydate" id="ex_periodStart">
+				       
+				        	
+				        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
+				        	<input type="text" class="hover form-control mydate"  id="ex_periodEnd">
+				      
+						</form>	        	
+					</div>
 							   
 					 <!-- 模态框底部 -->
 					<div class="modal-footer">
@@ -632,7 +611,8 @@
 			      </div>
 			    </div>
 	  		</div>
-	  		<!--阅卷通知-->
+	  		
+	  	<!--阅卷通知-->
 		<div class="modal fade" id="myModal-exam-notice">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -731,8 +711,7 @@ function loadMyExamList(page) {
 
 
 function getItemHtml(index,obj,number){
-	var htm="<tr class='tb_width' id='exam"+obj.sid+"'>"
-
+	var htm="<tr class='tb_width'>"
 	+"<td>"+obj.sid+"</td>"
 	+"<td>"+obj.title+"</td>"
 	+"<td>"+obj.time+"</td>"
@@ -741,13 +720,17 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.invitee+"</td>"
 	+"<td>"+obj.explication+"</td>"
 	+"<td>"+obj.state+"</td>"
-	+"<td>"
+	+"<td id='volume'>"
+	+"<a href='affair_hand_volume.jsp?exam.sid="+obj.sid+"'>手动组卷</a></li>"
+	+"<a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a></li>"
+	+"</td>"
+	+"<td id='operate'>"
 	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
-	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a>"
-	+" <a href='loadHandConstitutePage?examSid="+obj.sid+"'>手动组卷</a>"
-	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
-	+"</tr>"; 
+	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><br>"
+	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a>"
+	+"</td></tr>"; 
     return htm;
+
 }
 function getLiHtml(index) {
 	if(index==1){
@@ -833,7 +816,8 @@ function examPlanInfo(node) {
 	return info;
 } 
  */
-function createExamPlan() {
+ function createExamPlan() {
+	/*  $(".form-add-exam").form("clear"); */
 		$.post("createExamPlan",
 				 {	
 			        "exam.title":$('#ex_title').val(), 
@@ -846,6 +830,20 @@ function createExamPlan() {
 			
 			})
 }
+/* function createExamPlan() {
+	 $(".form-add-exam").form("clear");
+		$.post("createExamPlan",
+				 {	
+			        "exam.title":$('#ex_title').val(), 
+			        "exam.periodStart":$('#ex_periodStart').val(), 
+			        "exam.periodEnd":$('#ex_periodEnd').val(), 
+			        "exam.invitee":$('#ex_invitee').val()
+			},function(data){
+				alert(data.result);    //message为user返回信息
+				location.href="test.jsp";
+			
+			})
+} */
 function editExamPlan() {
 	$.post("editExamPlan",
 				{	"exam.sid":$('#exam_sid').val(),
@@ -885,6 +883,7 @@ function Out() {
 
 function inviteCollege(sid, colleges) {
 	var college = prompt("添加邀请的学校");
+
 	if(colleges.indexOf(college)>=0) {
 		alert(college + "已被邀请");
 	} else {
@@ -944,12 +943,12 @@ $("#find").click(function(){
 
 $.datetimepicker.setLocale('ch');
 $('.mydate').datetimepicker({
-	yearStart : 1990, // 设置最小年份
-	yearEnd : 2050, // 设置最大年份
+	yearStart : 2018, // 设置最小年份
+	yearEnd : 2030, // 设置最大年份
 	yearOffset : 0, // 年偏差
-	timepicker : false, // 关闭时间选项
-	format : 'Y-m-d', // 格式化日期年-月-日
-	minDate : '1990/01/01', // 设置最小日期
+	timepicker : true, // 关闭时间选项
+	format : 'Y-m-d h:m', // 格式化日期年-月-日
+	minDate : new Date(), // 设置最小日期
 	maxDate : '2030/01/01', // 设置最大日期
 });
 

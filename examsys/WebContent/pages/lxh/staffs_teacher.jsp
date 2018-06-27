@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
 
@@ -73,14 +73,38 @@
 			</div>
 		  	<div class="light_bottom"> 
 			  	<ul class="side_nav">
-			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
-			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
-			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
-			  		<!-- <li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
-			  		<li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
-			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
-			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
-			  	</ul>
+		    			<a href="staffs_student.jsp">
+			    			<li class="side_nav1 ">
+								学生信息管理
+							</li>
+						</a>
+						<a href="staffs_teacher.jsp">
+							<li class="side_nav1 now">
+								教师信息管理
+							</li>
+						</a>
+						<a href="affair_index.jsp">
+							<li class="side_nav1">
+								试卷管理
+							</li> 
+						</a>
+						<!-- <li class="side_nav1">
+							<a href="affair_hand_volume.jsp">手动组卷</a>
+						</li>
+						<li class="side_nav1">
+							<a href="affair_intel_volume.jsp">智能组卷</a>
+						</li> -->
+						<a href="history_staffs.jsp">
+							<li class="side_nav1">
+								历史成绩
+							</li>
+						</a>
+						<a href="test.jsp">
+							<li class="side_nav1">
+								考次计划
+							</li>
+						</a>
+		    		</ul>
 		  </div>
 		</nav>
 
@@ -121,7 +145,7 @@
 				        <button type="button" class="btn right_search" onclick="loadTeacherList(1)">搜索</button>
 				        <input type="reset" class="btn clean">
 			        </div>
-              </div>
+              
               
 			<!--table-->
 			<div class="tip">教师信息</div>
@@ -177,7 +201,9 @@
 				  </ul>
 			  	</div>
 		</div>
+		</div>
 	</div>	
+	
 		</div>		
 
 		<!--模态框查看个人信息-->

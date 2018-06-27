@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="css/ionicons.min.css" />
 		<link rel="stylesheet" href="css/inviteSchool.css" />
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
 
@@ -36,7 +36,7 @@
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
-					<div class="dropdown task">
+					<!-- <div class="dropdown task">
 						<button class="dropbtn">
 						    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						    	<i class="fa fa-tasks"></i>
@@ -44,19 +44,19 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
+							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
 						</div>
 					</div>
 					<div class="dropdown task" >
-					<button class="dropbtn envolope">
-						<i class="fa fa-envelope envelope"></i>	
-						<span class="label-success "><i></i></span>
-					</button>
+						<button class="dropbtn envolope">
+							<i class="fa fa-envelope envelope"></i>	
+							<span class="label-success "><i></i></span>
+						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 							<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 						</div>
-				</div>
+					</div> -->
 				</div>	
 </header>
 
@@ -365,57 +365,58 @@
 							    <tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" readonly="readonly" disabled id="student_userId" name="user.userId">
+										<input type="text" class="hover form-control" readonly="readonly" disabled id="student_userId" name="user.userId">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_name" name="user.name">
+										<input type="text" class="hover form-control" id="student_name" name="user.name">
 									</td>
 								</tr>
+								<tr>
 								<td class="choose-sex">
 							      	  性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							      	<select class="hover"  id="student_sex" name="user.sex">
+							      	<select class="hover form-control"  id="student_sex" name="user.sex">
 							        	<option class="hover 男">男</option>
 							        	<option class="hover 女">女</option>
 							      	 </select>		 
 							    </td>
-								
+								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_collegeName" name="user.collegeName">
+										<input type="text" class="hover form-control" id="student_collegeName" name="user.collegeName">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_department" name="user.department">
+										<input type="text" class="hover form-control" id="student_department" name="user.department">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_profession" name="user.profession">
+										<input type="text" class="hover form-control" id="student_profession" name="user.profession">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										班&nbsp;&nbsp;&nbsp;&nbsp;级&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="student_classroom" name="user.classroom">
+										<input type="text" class="hover form-control" id="student_classroom" name="user.classroom">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										身份证号&nbsp;
-										<input type="text" class="hover" id="student_idcard" name="user.idcard">
+										<input type="text" class="hover form-control" id="student_idcard" name="user.idcard">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式&nbsp;
-										<input type="text" class="hover" id="student_phone" name="user.phone">
+										<input type="text" class="hover form-control" id="student_phone" name="user.phone">
 									</td>
 								</tr>
 

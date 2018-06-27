@@ -501,9 +501,9 @@ th {
 	padding: 10px;
 }
 
+
 .modal-body .choose-sex {
-    float: left;
-    margin-left: 65px;
+   
 }
 .modal-body  input{
 	width: 60%;
@@ -645,5 +645,10 @@ button{
 	background-color: #425164;
 }
 .modal-body input{
+	display:inline;
+	
+}
+.choose-sex select{
+	width:60%;
 	display:inline;
 }

@@ -142,14 +142,14 @@
 				<section class="papermanage">
 					<!-- 智能组卷 start-->
 					<div>
-						<input type="text" id="title" placeholder="输入试卷标题" />
-						 <input type="text" id="startTime" placeholder="输入开始时间" />
-						<input type="text" id="endTime" placeholder="输入结束时间" />
-						<select id="subjectSel" onchange="loadDiffCounts()">
+						<input type="text" class="intel form-control" id="title" placeholder="输入试卷标题" />
+						 <input type="text" class="intel form-control" id="startTime" placeholder="输入开始时间" />
+						<input type="text" class="intel form-control" id="endTime" placeholder="输入结束时间" />
+						<select id="subjectSel" class="intel form-control" onchange="loadDiffCounts()">
 							<optgroup label="选择科目" id="subjectOpts"></optgroup>
 						</select>
-						<select id="teacherSels">
-							<optgroup label="指定解答题批改老师" id="teacherOptions">
+						<select class="intel form-control" id="teacherSels">
+							<optgroup label="指定解答题批改老师"  id="teacherOptions">
 							
 							</optgroup>
 						</select>
