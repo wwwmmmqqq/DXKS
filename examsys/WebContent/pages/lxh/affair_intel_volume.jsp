@@ -148,6 +148,11 @@
 						<select id="subjectSel" onchange="loadDiffCounts()">
 							<optgroup label="选择科目" id="subjectOpts"></optgroup>
 						</select>
+						<select id="teacherSels">
+							<optgroup label="指定解答题批改老师" id="teacherOptions">
+							
+							</optgroup>
+						</select>
 					</div>
 						<div class="autocompose">
 							<table class="table table-hover mytable">
@@ -209,83 +214,127 @@
 
 		<!--模态框-->
 		<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal-information">
+		<div class="modal fade" id="myModal_information">
 			<div class="modal-dialog">
 				<div class="modal-content">
-		
+
 					<!-- 模态框头部 -->
 					<div class="modal-header">
 						<h4 class="modal-title">个人信息</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
-		
+
 					<!-- 模态框主体 -->
 					<div class="modal-body">
 						<table>
 							<tbody>
 								<tr>
 									<td>
-										用户名
-										<div class="tb_information">Mary Doe</div>
+										姓名
+										<div class="tb_information">${session.user.name}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										工号
+										<div class="tb_information">${session.user.userId}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										密码
-										<div class="tb_information">123456</div>
+										<div class="tb_information">${session.user.psw}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										姓名
-										<div class="tb_information">教师XXX</div>
+										学校
+										<div class="tb_information">${session.user.collegeName}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学院
+										<div class="tb_information">${session.user.department}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										性别
-										<div class="tb_information">女 </div>
+										<div class="tb_information">${session.user.sex}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										电话
-										<div class="tb_information">15574014263</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										所属大学
-										<div class="tb_information">萍乡学院</div>
+										联系方式
+										<div class="tb_information">${session.user.phone}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										邮箱
-										<div class="tb_information">1770313147@qq.com</div>
+										<div class="tb_information">${session.user.email}</div>
 									</td>
 								</tr>
-		
 							</tbody>
 						</table>
-		
+
 					</div>
-		
+
 					<!-- 模态框底部 -->
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary back_information" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<!--模态框查看通知-->
+		<!--邀请通知-->
 		<div class="modal fade" id="myModal-invite-notice">
 			<div class="modal-dialog">
 				<div class="modal-content">
 		
 					<div class="modal-header">
-						<h4 class="modal-title">通知</h4>
+						<h4 class="modal-title">邀请通知</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+		
+					<div class="modal-body">
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_email_refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+					</div>
+		
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--阅卷通知-->
+		<div class="modal fade" id="myModal-exam-notice">
+			<div class="modal-dialog">
+				<div class="modal-content">
+		
+					<div class="modal-header">
+						<h4 class="modal-title">阅卷通知</h4>
 						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
 					</div>
 		
@@ -575,13 +624,14 @@ $('tr input').blur(function() {
 })
 </script>
 <script type="text/javascript">
-function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
+function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd, responser) {
 	var params = {
 			  "paper.examRef":examRef //考试ID
 			, "paper.subjectRef":subjectRef //考试ID
 			, "paper.name":name //试卷标题名
 			, "paper.examStart":examStart //考试开始时间
 			, "paper.examEnd":examEnd //考试结束时间
+			, "responser": responser
 	};
 	var types = ["single", "multiple", "trueOrFalse", "fills", "subjective"];
 	for(var i=0;i<types.length;i++) {
@@ -598,7 +648,8 @@ function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd) {
 
 //var newPaperSid = -1;
 $('#submitBtn').bind().click(function() {
-	var params = createPaperAutoParams(examSid, subjectSel.value, $("#title").val(), $("#startTime").val(), $("#endTime").val());
+	var params = createPaperAutoParams(examSid, subjectSel.value, $("#title").val()
+					, $("#startTime").val(), $("#endTime").val(), $("#teacherSels").val());
 	$.post("createPaperAuto", params, function(data) {
 		if(data.result != 'fail') {
 			alert("组卷成功，准备跳转到开始测试页面，试卷ID" + data.result);
@@ -623,6 +674,19 @@ function loadSubjects() {
 			subjectOpts.appendChild(opt);
 		}
 		loadDiffCounts();
+	});
+}
+
+loadTeachers();
+function loadTeachers() {
+	$.post("loadTeachers", null, function(data) {
+		var li = data.list;
+		for(var i=0;i<li.length;i++) {
+			var opt = document.createElement("option");
+			opt.value = li[i].userId;
+			opt.innerText = li[i].name;
+			teacherOptions.appendChild(opt);
+		}
 	});
 }
 

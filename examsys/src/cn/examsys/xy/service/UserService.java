@@ -13,6 +13,7 @@ public interface UserService {
 	List<User> SelectUserList(User user,int page,User administration);
 	/*用户列表总页数*/
 	int SelectUserListCount(User user, User administration);
+
 	/*编辑用户信息*/
 	boolean editUser(User user);
 	/*显示一个用户信息*/

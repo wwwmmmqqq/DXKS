@@ -50,7 +50,7 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 			return null;
 		}
 	}
-	/*用户总页面*/
+
 	@Override
 	public int selectUserListCount(User user,User administration) {
 		// TODO Auto-generated method stub

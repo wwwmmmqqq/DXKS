@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<script type="text/javascript" src="js/register.js" ></script>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script src="js/popper.min.js"></script>
@@ -67,5 +66,7 @@
 			
 		</div>
 	</body>
-	<script type="text/javascript" src="js/login.js" ></script>
+	<link rel="stylesheet" href="css/toastr.css" />
+	<script type="text/javascript" src="js/toastr.js"></script>
+	<script type="text/javascript" src="js/register.js" ></script>
 </html>

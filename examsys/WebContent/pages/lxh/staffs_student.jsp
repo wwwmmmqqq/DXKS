@@ -44,7 +44,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
+							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
 						</div>
 					</div>
 					<div class="dropdown task" >
@@ -53,8 +53,8 @@
 						<span class="label-success "><i></i></span>
 					</button>
 						<div class="dropdown-content">
-							<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
-							<a href="#" data-toggle="modal" data-target="#myModal_read">阅卷通知</a>
+							<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
+							<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 						</div>
 				</div>
 				</div>	
@@ -578,7 +578,7 @@
 					</div>
 
 					<!-- 模态框主体 -->
-					<div class="modal-body">
+					<div class="modal-body eye_student">
 						<table>
 							<tbody id="student-info-box">
 								<tr>
@@ -648,92 +648,114 @@
 			</div>
 		</div>
 		
-		<!--模态框阅卷邀请通知-->
-		<div class="modal fade" id="myModal_read">
-		    	<div class="modal-dialog">
-		      	<div class="modal-content">
-		   
-		        
-		        <div class="modal-header">
-		          <h4 class="modal-title">通知</h4>
-		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
-		        </div>
-		   
-		        
-		        <div class="modal-body">
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept" >接受</button>
-		          		<button class="btn btn-danger refuse"  >拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		        </div>
-		   
-		       
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
-		        </div>
-		      </div>
-		    </div>
-  		</div>
-
-		<!--模态框查看通知-->
-		<div class="modal fade" id="myModal-email">
-			    	<div class="modal-dialog">
-			      	<div class="modal-content">
-			   
-			        
-			        <div class="modal-header">
-			          <h4 class="modal-title">通知</h4>
-			          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
-			        </div>
-			   
-			        
-			        <div class="modal-body">
-			          	<div class="email">
-			          		来自xx学校xx学院xx老师的邀请
-			          		<button class="btn btn-primary accept" >接受</button>
-			          		<button class="btn btn-danger refuse"  data-toggle="modal" data-target="#myModal_email_refuse">拒绝</button>
-			          	</div>
-			          	<div class="email">
-			          		来自xx学校xx学院xx老师的邀请
-			          		<button class="btn btn-primary accept">接受</button>
-			          		<button class="btn btn-danger refuse">拒绝</button>
-			          	</div>
-			          	<div class="email">
-			          		来自xx学校xx学院xx老师的邀请
-			          		<button class="btn btn-primary accept">接受</button>
-			          		<button class="btn btn-danger refuse">拒绝</button>
-			          	</div>
-			          	<div class="email">
-			          		来自xx学校xx学院xx老师的邀请
-			          		<button class="btn btn-primary accept">接受</button>
-			          		<button class="btn btn-danger refuse">拒绝</button>
-			          	</div>
-			        </div>
-			   
-			       
-			        <div class="modal-footer">
-			          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
-			        </div>
-			      </div>
-			    </div>
-	  		</div>
+		<!--邀请通知-->
+		<div class="modal fade" id="myModal-invite-notice">
+			<div class="modal-dialog">
+				<div class="modal-content">
 		
+					<div class="modal-header">
+						<h4 class="modal-title">邀请通知</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+		
+					<div class="modal-body">
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_email_refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+					</div>
+		
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--阅卷通知-->
+		<div class="modal fade" id="myModal-exam-notice">
+			<div class="modal-dialog">
+				<div class="modal-content">
+		
+					<div class="modal-header">
+						<h4 class="modal-title">阅卷通知</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+		
+					<div class="modal-body">
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_email_refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+					</div>
+		
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		 <!--邀请组卷拒绝模态框-->
+	    <div class="modal fade" id="myModal_email_refuse">
+	    	<div class="modal-dialog modal-sm">
+	    		<div class="modal-content">
+	    
+	    			<!-- 模态框头部 -->
+	    			<div class="modal-header">
+	    				<h4 class="modal-title">拒绝理由</h4>
+	    				<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+	    			</div>
+	    
+	    			<!-- 模态框主体 -->
+	    			<div class="modal-body">
+	    				<textarea rows="5" cols="30" placeholder="请输入拒绝理由">
+	    		         	
+	    		         </textarea>
+	    			</div>
+	    
+	    			<!-- 模态框底部 -->
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-secondary back" data-dismiss="modal">关闭</button>
+	    				<button type="button" class="btn btn-primary add">提交</button>
+	    			</div>
+	    
+	    		</div>
+	    	</div>
+	    </div>
+	    
 		
 	</body>
 	
@@ -742,7 +764,7 @@
 	<script type="text/javascript">
 	loadStudentList(1);
 	var currentPage=1;
-	var totalPage=1;
+	var totalPage=2;
 	function loadStudentList(page) {
 		var userId=$('#userId1').val();
 		var name=$('#name1').val();
@@ -767,8 +789,9 @@
 				  	number +=i+1;
 		 			htm += getItemHtml(i, userList[i],number);
 		 		}
-			 $('#student-list-box').html(htm);
-			 for(var j=1;j<=totalPage;j++) {
+			 $('#student-list-box').html(htm);alert("lb");
+			 for(var j=1;j<=totalPage;j++) {alert("ll");
+				 alert(j);
 				 ht += getLiHtml(j);
 			 }
 			 $('.pagination').html(ht);
@@ -815,13 +838,14 @@
 		return htm;
 	}
 	function getLiHtml(index) {
+		alert(index);
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+				+"<li class='page-item active'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
 	
 		}
 		else if(index==totalPage){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
+			var ht = "<li class='page-item active'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>"
 				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
 				
 		}
@@ -991,6 +1015,7 @@
 		$('#department1').val('');
 		$('#profession1').val('');
 		$('#sex1').val('');
+		loadStudentList(1);
 	}
 
 //搜索隐藏

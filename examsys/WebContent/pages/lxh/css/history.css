@@ -674,7 +674,9 @@ ul{
 	background-color:  #3c91c8;
 	color: white;
 }
-
+#myModal_email_refuse textarea {
+	width: 80%;
+}
 .modal-footer .back_invite{
 	width: 90px;
 	height: 40px;

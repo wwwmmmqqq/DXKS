@@ -508,6 +508,11 @@ th {
 	padding: 10px;
 }
 
+
+.modal-body .choose-sex {
+    float: left;
+    margin-left: 65px;
+}
 .modal-body  input{
 	width: 60%;
 	height: 30px;
@@ -567,7 +572,7 @@ th {
 .modal-body .tb_information{
 	width: 200px;
 	height: 45px;
-	margin-left:15px ;
+	margin-left: 20px ;
 	display: inline;  /*让他具有行级元素的性质*/
 }
 .modal-footer .back_information{
@@ -577,6 +582,11 @@ th {
 	color: black;
 	border:1px solid #bbb;
 }
+.eye_teacher td {
+	float: left;
+	margin-left: 150px;
+}
+
 /*邀请通知模态框*/
 .modal-body .email{
 	display: block;
@@ -622,6 +632,10 @@ th {
 	color: black;
 	border:1px solid #bbb;
 }
+#myModal_email_refuse textarea {
+	width: 80%;
+}
+
 /*查看权限模态框*/
 .see{
 	cursor: pointer;

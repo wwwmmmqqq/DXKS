@@ -1,4 +1,5 @@
 package cn.examsys.bean;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -126,7 +127,7 @@ public class Question {
 	
 
 	@Transient
-	List<Option> options;
+	List<Option> options = new ArrayList<Option>();
 	@Transient
 	public List<Option> getOptions() {
 		return options;

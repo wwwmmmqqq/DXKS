@@ -301,6 +301,7 @@ function getPaper(obj){
 	var t0 = new Date("${session.Time}").getTime();
 	var t1 = new Date(obj.examStart).getTime();
 	var t2 = new Date(obj.examEnd).getTime();
+	
 	if(!(t0<=t2 && t0>=t1)) {
 		timeBtn = "<button class='btn btn-primary start-exam' disabled data-toggle='modal' data-target='#start-exam'>开始考试</button>";
 	}
@@ -331,9 +332,20 @@ function getPaper(obj){
 var readyPaperSid = -1;
 function ready(paperSid) {
 	readyPaperSid = paperSid;
+	$.post("checkPaperSubmited", {
+		"paper.sid":paperSid
+	}, function(data) {
+		if(data.result == 'true') {
+			readyPaperSid = -1;
+		}
+	});
 }
 
 function startExam() {
+	if(readyPaperSid == -1) {
+		alert("不能重复考试");
+		return;
+	}
 	location.href="startExam?paper.sid="+readyPaperSid;
 }
 

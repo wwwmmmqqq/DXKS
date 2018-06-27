@@ -3,19 +3,26 @@ package cn.examsys.lrx.service.impl;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.plaf.TextUI;
+
+import org.apache.log4j.helpers.QuietWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.examsys.bean.Exam;
 import cn.examsys.bean.Notice;
+import cn.examsys.bean.Option;
 import cn.examsys.bean.Paper;
 import cn.examsys.bean.Question;
 import cn.examsys.bean.Subject;
 import cn.examsys.bean.User;
+import cn.examsys.common.QLBuilder;
+import cn.examsys.common.QuestionListTool;
 import cn.examsys.common.Tool;
 import cn.examsys.lrx.dao.impl.LrxDaoImpl;
 import cn.examsys.lrx.service.LrxService;
+import freemarker.template.utility.StringUtil;
 
 @Service("lrxService")
 @Transactional
@@ -125,5 +132,40 @@ public class LrxServiceImpl implements LrxService {
 		return false;
 	}
 
-	
+	@Override
+	public List<User> loadUsers(User sessionUser) {
+		try {
+			return dao.findByHql("from User where collegeRef=?"
+					, new Object[]{sessionUser.getCollegeRef()});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Question> searchQuestionsHandConstitute(User sessionUser,
+			List<String> keys, List<String> vals, int page) {
+		try {
+			for (int i = 0; i < vals.size(); i++) {
+				if ("".equals(vals.get(i).trim())) {
+					vals.set(i, "%");
+				} else {
+					vals.set(i, "%"+vals.get(i).trim()+"%");
+				}
+			}
+			String hql = QLBuilder.builderHQL(keys, Question.class, QLBuilder.MODE_LIKE, QLBuilder.LOGICAL_AND);
+			System.out.println(hql);
+			List<Question> li = dao.findByHql(hql, vals.toArray(), page);
+			
+			QuestionListTool.fillOptionsFromQuestionList(dao, li);
+			
+			return li;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }

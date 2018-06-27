@@ -34,7 +34,7 @@
 							</a>
 						</button>
 						<div class="dropdown-content">
-							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
+							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
@@ -55,8 +55,8 @@
 						<span class="label-success "><i></i></span>
 					</button>
 						<div class="dropdown-content">
-							<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
-							<a href="#" data-toggle="modal" data-target="#myModal_read">阅卷通知</a>
+							<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
+							<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 						</div>
 				</div>
 				</div>
@@ -593,18 +593,17 @@
 			</div>
 		</div>
 		
-		<!--模态框查看通知-->
-		<div class="modal fade" id="myModal-email">
+		<!--邀请通知-->
+		<div class="modal fade" id="myModal-invite-notice">
 			    	<div class="modal-dialog">
 			      	<div class="modal-content">
 			   
 			        
 			        <div class="modal-header">
-			          <h4 class="modal-title">通知</h4>
+			          <h4 class="modal-title">邀请通知</h4>
 			          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
 			        </div>
-			   
-			        
+		
 			        <div class="modal-body">
 			          	<div class="email">
 			          		来自xx学校xx学院xx老师的邀请
@@ -627,14 +626,52 @@
 			          		<button class="btn btn-danger refuse">拒绝</button>
 			          	</div>
 			        </div>
-			   
-			       
 			        <div class="modal-footer">
 			          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
 			        </div>
 			      </div>
 			    </div>
 	  		</div>
+	  		<!--阅卷通知-->
+		<div class="modal fade" id="myModal-exam-notice">
+			<div class="modal-dialog">
+				<div class="modal-content">
+		
+					<div class="modal-header">
+						<h4 class="modal-title">阅卷通知</h4>
+						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
+					</div>
+		
+					<div class="modal-body">
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse" data-toggle="modal" data-target="#myModal_email_refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+						<div class="email">
+							来自xx学校xx学院xx老师的邀请
+							<button class="btn btn-primary accept">接受</button>
+							<button class="btn btn-danger refuse">拒绝</button>
+						</div>
+					</div>
+		
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	  		
 
 		<!--邀请组卷拒绝模态框-->
 		 <div class="modal fade" id="myModal_email_refuse">
@@ -664,49 +701,6 @@
 		    </div>
 		  </div>
 		
-		<!--模态框阅卷邀请通知-->
-		<div class="modal fade" id="myModal_read">
-		    	<div class="modal-dialog">
-		      	<div class="modal-content">
-		   
-		        
-		        <div class="modal-header">
-		          <h4 class="modal-title">通知</h4>
-		          <button type="button" class="close close1" data-dismiss="modal">&times;</button>
-		        </div>
-		   
-		        
-		        <div class="modal-body">
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept" >接受</button>
-		          		<button class="btn btn-danger refuse"  >拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		          	<div class="email">
-		          		来自xx学校xx学院xx老师的邀请
-		          		<button class="btn btn-primary accept">接受</button>
-		          		<button class="btn btn-danger refuse">拒绝</button>
-		          	</div>
-		        </div>
-		   
-		       
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-secondary back-email" data-dismiss="modal">关闭</button>
-		        </div>
-		      </div>
-		    </div>
-  		</div>
-
 	</body>
 	<script type="text/javascript" src="js/jquery.date.js" ></script>
 	<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
@@ -714,7 +708,7 @@
 <script>
 loadMyExamList(1);
 var currentPage=1;
-var totalPage=3;
+var totalPage=2;
 function loadMyExamList(page) {
 	  $.post("loadMyExamList", {"page":page}, function(data) {
 		  var examList = data.list;
@@ -739,6 +733,7 @@ function loadMyExamList(page) {
 function getItemHtml(index,obj,number){
 	var htm="<tr class='tb_width' id='exam"+obj.sid+"'>"
 
+	+"<td>"+obj.sid+"</td>"
 	+"<td>"+obj.title+"</td>"
 	+"<td>"+obj.time+"</td>"
 	+"<td>"+obj.periodStart+"</td>"
@@ -748,11 +743,11 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.state+"</td>"
 	+"<td>"
 	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
-	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>组卷</a>"
+	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a>"
+	+" <a href='loadHandConstitutePage?examSid="+obj.sid+"'>手动组卷</a>"
 	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
 	+"</tr>"; 
     return htm;
-
 }
 function getLiHtml(index) {
 	if(index==1){

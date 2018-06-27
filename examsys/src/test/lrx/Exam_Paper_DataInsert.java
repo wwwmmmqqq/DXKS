@@ -170,7 +170,7 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 			
 			for (int i = 0; i < li.size(); i++) {
 				constutePaper(li.get(i).getSid(), sub.get(Tool.getIntRnd(sub.size())).getSid()
-						, "试卷名称" + i);
+						, "试卷名称" + i, "admin");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -246,7 +246,7 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 	}
 	
 	//组卷
-	private void constutePaper(int examRef, int subjectRef, String paperName) {
+	private void constutePaper(int examRef, int subjectRef, String paperName, String responser) {
 		ConstituteVO voSingle = new ConstituteVO();
 		voSingle.setCount(15);
 		voSingle.setDiff1Percent(50);
@@ -303,7 +303,7 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 		voSubjective.setDiff4Point(15);
 		
 		constitute.createPaperAuto(examRef, subjectRef, paperName, Tool.time(), Tool.time()
-				, voSingle, voTrueOrFalse, voMultiple, voFills, voSubjective);
+				, responser, voSingle, voTrueOrFalse, voMultiple, voFills, voSubjective);
 		
 	}
 	
