@@ -206,7 +206,7 @@ p{
 }
 .main1{
 	width: 90%;
-	height: 98%;
+	min-height: 100%;
 	margin: auto;
 }
 .cant .bred {
@@ -218,7 +218,7 @@ p{
 	background-color: #ffffff;
 }
 .main .position{
-	width: 100%%;
+	width: 100%;
 	color: #999;
 }
 .bred .position{

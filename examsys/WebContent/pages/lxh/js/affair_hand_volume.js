@@ -1,10 +1,5 @@
 
-/*搜索jquery隐藏显示面板*/
-$(document).ready(function() {
-    $("#flip").click(function() {
-        $("#panel").slideToggle("slow");
-    });
-});
+
 
 /*点击隐藏试题篮
     fun();

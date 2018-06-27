@@ -11,9 +11,9 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<link rel="stylesheet" href="css/inviteSchool.css" />
-		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
-		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
@@ -35,7 +35,7 @@
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
-					<div class="dropdown task">
+					<!-- <div class="dropdown task">
 						<button class="dropbtn">
 						    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						    	<i class="fa fa-tasks"></i>
@@ -43,7 +43,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
+							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
 						</div>
 					</div>
 					<div class="dropdown task" >
@@ -55,7 +55,7 @@
 							<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 							<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 						</div>
-				</div>
+				</div> -->
 				</div>	
 </header>
 
@@ -144,11 +144,12 @@
 				        <input type="text" class="input_hide" id="profession1"  placeholder="专业"/>
 				                 性别:
 				        <select id ="sex1">
+				             <option></option>
 				             <option>男</option>
 				             <option>女</option>
 				        </select>
 				        <button type="button" class="btn right_search" onclick="loadStudentList(1)">搜索</button>
-				       <button type="button" class="btn right_search" onclick="clean()">重置</button>
+				        <button type="button" class="btn right_search" onclick="clean()">重置</button>
 			        </div>
               </div>
               
@@ -760,11 +761,8 @@
 		<script type="text/javascript" src="js/toastr.js"></script>
 		
 	</body>
-	
-	<script type="text/javascript" src="js/school.js"></script>
-	<script type="text/javascript" src="js/inviteSchool.js" ></script>
-	<script type="text/javascript">
-	loadStudentList(1);
+<script type="text/javascript">
+    loadStudentList(1);
 	var currentPage=1;
 	var totalPage=2;
 	function loadStudentList(page) {
@@ -772,7 +770,7 @@
 		var name=$('#name1').val();
 		var department=$('#department1').val();
 		var profession=$('#profession1').val();
-		var sex=$('#sex1').val();
+		var sex="";
 		$.post("selectUserList",{
 			"user.type":"学生",
 			"page":page,
@@ -792,6 +790,7 @@
 		 			htm += getItemHtml(i, userList[i],number);
 		 		}
 			 $('#student-list-box').html(htm);
+			 console.log("zongy"+totalPage);
 			 for(var j=1;j<=totalPage;j++) {
 				 ht += getLiHtml(j);
 			 }
@@ -850,7 +849,7 @@
 				
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";	
+			var ht = "<li class='page-item'><a class='page-link ' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";	
 		}
 		return ht;    
 	}

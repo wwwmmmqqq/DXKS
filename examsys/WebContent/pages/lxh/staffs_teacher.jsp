@@ -11,8 +11,9 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
-		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
@@ -34,7 +35,7 @@
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
-					<div class="dropdown task">
+					<!-- <div class="dropdown task">
 						<button class="dropbtn">
 						    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						    	<i class="fa fa-tasks"></i>
@@ -42,7 +43,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
+							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
 						</div>
 					</div>
 					<div class="dropdown task" >
@@ -54,7 +55,7 @@
 							<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 							<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 						</div>
-				</div>
+				</div> -->
 				</div>
 		</header>
 
@@ -114,11 +115,12 @@
 				        <input type="text" class="input_hide" id="college2"  placeholder="学校"/>
 				                 性别:
 				        <select id="sex2">
+				             <option></option>
 				             <option>男</option>
 				             <option>女</option>
 				        </select>
 				        <button type="button" class="btn right_search" onclick="loadTeacherList(1)">搜索</button>
-				        <input type="reset" class="btn clean">
+				        <button type="button" class="btn right_search" onclick="clean()">重置</button>
 			        </div>
               </div>
               
@@ -128,8 +130,8 @@
 				<thead class="thead-light">
 					<tr class="tb_width">
 						<th>序号</th>
-						<th>工号</th>
 						<th>姓名</th>
+						<th>工号</th>
 						<th>学校</th>						
 						<th>专业</th>
 						<th>性别</th>
@@ -704,7 +706,7 @@
 <script type="text/javascript">
 	loadTeacherList(1);
 	var currentPage=1;
-	var totalPage=2;
+	var totalPage=3;
 	function loadTeacherList(page) {
 		var userId=$('#userId2').val();
 		var name=$('#name2').val();
@@ -770,14 +772,14 @@
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>";
+				+"<li class='page-item active' id='first'><a class='page-link' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>";
 		}
 		else if(index==totalPage){
-			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>"
+			var ht = "<li class='page-item' id='total'><a class='page-link' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>"
 				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>";
+			var ht = "<li class='page-item' id='second'><a class='page-link ' href='javascript:loadTeacherList("+index+")'>"+index+"</a></li>";
 			
 		}
 		return ht;    
@@ -909,7 +911,7 @@
 		if(confirm("确定要退出吗？")) {
 			$.post("loginOut",null,function(data) {
 				if(data.result=="成功退出") {
-						location.href="../gy/gy_login.jsp";
+						location.href="../gy/login.jsp";
 				}
 		  });
 		}  
@@ -928,12 +930,19 @@
 	
 	//搜索重置
 	function clean() {
-		$("#userId1").val('');
-		$('#name1').val('');
-		$('#department1').val('');
-		$('#profession1').val('');
-		$('#sex1').val('');
+		$("#userId2").val('');
+		$('#name2').val('');
+		$('#department2').val('');
+		$('#profession2').val('');
+		$('#sex2').val('');
+		loadTeacherList(1)
 	}
+	$("#second").click(function(){
+		$("#first").removeClass("active");
+		$("#second").addClass("active");
+	});
+	
+	
 	//搜索隐藏
 	$("#find").click(function(){
 	$("#hide").slideToggle("slow");

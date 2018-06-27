@@ -171,7 +171,7 @@
 		    				<span onclick="basketSlide()"><i class="fa fa-hand-o-right"></i></span>
 		    			</p>
 		    		</div>
-		    		<div class="basket-con">
+		    		<div class="basket-con" id="basketright">
 		    			<div class="basket-count">
 		    				<div class="basket-head">
 		    					共计：（<span id="subject-amount">0</span>）道题
@@ -190,20 +190,20 @@
 		    	<!--试题篮  end -->
 		    	
 		    	<div class="papermanage">
-		    		<div>
-		    			<label>试卷名称：<input id="paperName" type='text' placeholder="试卷名称"></label>
+		    		<div class="p_search">
+		    			<label>试卷名称：<input class="from-control" id="paperName" type='text' placeholder="试卷名称"></label>
 		    			<label>考试科目：
 		    				<select id="paperSubject">
 		    					<optgroup label="考试科目" id="paperSubjectGroup"></optgroup>
 		    				</select>
 		    			</label>
-		    			<label>开始时间：<input id="examStart" type='text' placeholder="开始时间"></label>
-		    			<label>结束时间：<input id="examEnd" type='text' placeholder="结束时间"></label>
+		    			<label>开始时间：<input class="from-control" id="examStart" type='text' placeholder="开始时间"></label>
+		    			<label>结束时间：<input class="from-control" id="examEnd" type='text' placeholder="结束时间"></label>
 		    		</div>
 		    	    <div id="flip"><i class="fa fa-search-minus">
-		    	    </i>搜索条件</div>
+		    	    </i>条件搜索</div>
 		    		<div id="panel">
-	    				<div class="searchpanel" style="float: left;">
+	    				<div class="searchpanel">
 	    					<ul>
 	    						<li id="qtype">
 	    							<label>搜索类型</label>
@@ -718,12 +718,15 @@
 	    	</div>
 	    </div>
 	    
+<<<<<<< HEAD
         <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
 		<script type="text/javascript" src="js/array.js"></script>
 		<script type="text/javascript" src="js/toastr.js"></script>
 				<script type="text/javascript">
+	    
+<script type="text/javascript">
 		    		var currentPage = 1;
 		    		var questionIds = [];
 		    		var points = {};
@@ -1009,24 +1012,7 @@
 		    				window.open("loadAPaper?paper.sid=" + data.result);
 		    			});
 		    		}
-		    		</script>
-	<script >
-	/* 
-	function searchQuestions() {
-		  $.post("searchQuestions", {
-			  "question.type":$('#question_type').val(),//搜索的字段1
-			  "question.difficultValue":$('#question_difficultValue').val(),
-			  "question.knowledge":$('#question_knowledge').val()//搜索的关键字1
-			  
-		  }, function(data) {alert("ooo");
-			  alert(data.result);
-			  alert(data.list);
-			 var questionList=data.list; 
-		  });
-	  }
-	 */
-	 
-	
+		    		
 	 function constituteByHand(qids, examStart, examEnd, examName) {
 		  //手动组卷接口
 		  $.post("createPaperHand", {
@@ -1046,8 +1032,15 @@
 		  });
 	 }
 	 
+	 /*搜索jquery隐藏显示面板*/
+	 $(document).ready(function() {
+	     $("#flip").click(function() {
+	         $("#panel").slideToggle("slow");
+	     });
+	 });
+	 //点击隐藏试题篮
 	  function basketSlide(){
-		 $('#basketright').hide();
+		 $('#basketright').slideToggle(100);
 	  }
 	</script>
 	<script type="text/javascript" src="js/school.js"></script>

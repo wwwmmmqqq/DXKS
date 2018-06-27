@@ -18,7 +18,7 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="css/inviteSchool.css" />
         <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <!-- <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'> -->
         <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
         <!-- Theme style -->
@@ -48,7 +48,7 @@
 		    			<a href="#" onclick="Out()">退出系统</a>
 		    		</div>
 		    	</div>
-		    	<div class="dropdown task">
+		    	<!-- <div class="dropdown task">
 		    		<button class="dropbtn">
 		    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		    				<i class="fa fa-tasks"></i>
@@ -56,7 +56,7 @@
 		    	    </button>
 		    		<div class="dropdown-content">
 		    			<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-		    			<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
+		    			<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
 		    		</div>
 		    	</div>
 		    
@@ -72,7 +72,7 @@
 		    			<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 		    		</div>
 		    	</div>
-		    	
+		    	 -->
 		    </div>
 		    <!-- head end -->
 		    
@@ -194,7 +194,6 @@
 		    					<li><button class="btn btn-default btn-xs"  data-toggle="modal" data-target="#modify-paper"><i class="fa fa-pencil"></i></button></li>
 		    				</ul>
 		    			</div> -->
-		    			<!-- <p>共查询到？条记录</p> -->
 		    			<table class="table jwcxtable">
 		    				<thead>
 		    					<tr>
@@ -209,7 +208,7 @@
 		    						<th>查看</th>
 		    					</tr>
 		    				</thead>
-		    				<tbody id="paper-list-box">
+		    				<tbody id="paper-list-box" class="tlist">
 		    					<tr id=''>
 			    					<td id=''>
 			    						1
@@ -243,8 +242,8 @@
 		    					<li class="page-item">
 		    						<a class="page-link" href="javascript:nextPage()">下一页</a>
 		    					</li>
-		    					<input class="jump" type="text" id="jpage"/>
-		    					<button class="btn btn-primary btn_jump">跳转</button>
+		    					<!-- <input class="jump" type="text" id="jpage"/>
+		    					<button class="btn btn-primary btn_jump">跳转</button> -->
 		    				</ul>
 		    			</div>
 		    		</div>
@@ -464,8 +463,6 @@
 		</div>
 		
       
-<<<<<<< HEAD
-=======
 		<!--模态框邀请老师组卷-->
 		<div class="modal fade" id="myModal_invite_teacher">
 		    <div class="modal-dialog">
@@ -771,9 +768,7 @@
 	 </div>
 	  
 	  
-	  
-	  
-	    
+	 
 	    <!--模态框邀请老师组卷-->
 	    <div class="modal fade" id="myModal-invite-teacher">
 	    	<div class="modal-dialog">
@@ -959,9 +954,8 @@
 			+"	<td>"+obj.examStart+"</td>"
 			+"	<td>"+obj.examEnd+"</td>"
 			+"  <td>"
-			+"  <a href='loadAPaper?paper.sid="+obj.sid+"'><i class='fa fa-eye see'></i></a>" 
-			/* +"  <i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='paperInfo(this)'></i>"
-			+"  <i class='fa fa-trash-o' onclick='deletePaper(this)'></i>" */
+			+"  <a href='loadAPaper?paper.sid="+obj.sid+"'><i class='fa fa-eye eye'></i></a>&nbsp;" 
+			+"  <i class='fa fa-trash-o' onclick='deletePaper("+obj.sid+")'></i>"
 			+" </td>"
 			+"</tr>";
 		return htm;
