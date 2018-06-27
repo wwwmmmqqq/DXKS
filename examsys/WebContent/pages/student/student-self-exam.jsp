@@ -217,8 +217,9 @@
 							<label>请选择题型：</label>
 							<select class="form-control type-select" >
 								<option>请选择</option>
-								<option value="">填空题</option>
 								<option value="">单选题</option>
+								<option value="">填空题</option>
+								<option value="">填空题</option>
 								<option value="">多选题</option>
 								<option value="">简答题</option>
 							</select>
