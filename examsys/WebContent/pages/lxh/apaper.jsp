@@ -99,12 +99,6 @@
 						<li class="side_nav1">
 							<a href="affair_index.jsp now">试卷管理 </a>
 						</li>
-						<!-- <li class="side_nav1">
-							<a href="affair_hand_volume.jsp">手动组卷</a>
-						</li>
-						<li class="side_nav1">
-							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li> -->
 						<li class="side_nav1">
 							<a href="history_staffs.jsp">历史成绩</a>
 						</li>
@@ -567,9 +561,10 @@
 	    		</div>
 	    	</div>
 	    </div>
-		 <script type="text/javascript" src="js/toastr.js"></script>
+		 
         <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 	</body>
 	
 	<script type="text/javascript">

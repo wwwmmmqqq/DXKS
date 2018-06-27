@@ -11,16 +11,10 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-<<<<<<< HEAD
 		<link rel="stylesheet" href="css/inviteSchool.css" />
 		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
 		
 		
-=======
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
->>>>>>> parent of 93e94f9... Merge remote-tracking branch 'origin/gy-625' into wmq-06-26-2
 	</head>
 
 	<body>
@@ -110,17 +104,7 @@
 							<i class="fa fa-plus-circle"></i>
 							添加学生
 						</button> -->
-<<<<<<< HEAD
-
-						<div class="top_search">
-							<!-- <button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal_addstudent">
-							<i class="fa fa-plus-circle"></i>
-							添加学生
-							</button> -->
-							<button type="button" class="btn btn2">
-=======
 						<button type="button" class="btn btn2" id="find">
->>>>>>> parent of 93e94f9... Merge remote-tracking branch 'origin/gy-625' into wmq-06-26-2
 								<i class="fa fa-search-minus"></i>
 								条件搜索
 						</button>	

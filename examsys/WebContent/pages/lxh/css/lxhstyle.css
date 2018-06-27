@@ -11,9 +11,7 @@
    background-color: black;
 }
 
-.now{
-	background-color: #425164;
-}
+
 /*侧面导航栏*/
 
 .navbar.bg-light {
@@ -269,9 +267,6 @@
 .jwchaxun .jwtable  td {
 	vertical-align: middle;
 
-}
-.jwcxtable .eye {
-	color: black;
 }
 .papermanage .jwchaxun .table-foot {
 	font-size: 16px;
@@ -861,13 +856,11 @@ body {
 }
 
 .modal-body input{
-	border-radius:5px ;
-	border: 1px solid black;
+	display:inline;
 	margin: 10px 0px;
 }
 .modal-body .hover:hover{
-	border: 1px solid #0e92cf;
-	border-radius:5px ;
+	
 }
 .modal-header .close1{
 	display: block;
@@ -916,11 +909,6 @@ body {
 	color: black;
 	border:1px solid #bbb;
 }
-#myModal_email_refuse textarea {
-	width: 80%;
-}
-
-
 /*阅卷通知*/
 .modal-footer .add_invite{
 	width: 90px;
@@ -940,13 +928,13 @@ body {
 	color: black;
 	border:1px solid #bbb;
 }
- /*查看权限模态框*/
+/*查看权限模态框*/
 .see{
 	cursor: pointer;
 }
-/*.see:hover{
+.see:hover{
 	color: blue;
-} */
+}
 /*操作栏查看权限模态框*/
 .see_information{
 	cursor:pointer ;
@@ -963,4 +951,13 @@ body {
 #modify-paper .modify-paper  input {
 	border: 0px;
 	width: 60%;
+}
+.now{
+	background-color: #425164;
+}
+#date-wrapper{
+	display: block ;
+	width: 50% !important;
+	margin-left: -20% !important;
+	z-index: 100000 !important;
 }

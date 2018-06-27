@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
 		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
-		
 	</head>
 
 	<body>
@@ -936,9 +935,6 @@
 		        				}
 		        			}
 		           }
-=======
-			}
->>>>>>> parent of 93e94f9... Merge remote-tracking branch 'origin/gy-625' into wmq-06-26-2
 		}
    
 	function deleteTeacher(node) {

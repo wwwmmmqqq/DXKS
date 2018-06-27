@@ -208,8 +208,13 @@
 		    }
 		    
 		    if("${result}"!="") {
-		    	alert('${result=="success"?"提交成功":"提交失败"}');
-		    }
+		    	if('${result=="success"'){
+		    		toastr.success("提交成功！");
+		    		}
+		    	else{
+		    		toastr.error("提交失败！");
+		    	}
+		    	}
 		    
 		    </script>
 		    			

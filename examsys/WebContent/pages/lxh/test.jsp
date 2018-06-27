@@ -11,10 +11,8 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/test.js" ></script>
+		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
+		
 	</head>
 	<body>
 		
@@ -112,7 +110,6 @@
 					</div>
 	         
 			   <div class="search_hide" id="hide">
-<<<<<<< HEAD
 
                    <input type="text" class="input_hide1 form-control "  id="name1" placeholder="考试计划名称"/>
 				   <input type="text" class="input_hide form-control mydate" id="userId1"  placeholder="计划时间"/>
@@ -134,15 +131,6 @@
 				   <input type="reset" class="btn clean">
 			   </div>
           
-=======
-                   <input type="text" class="input_hide1"  id="name1" placeholder="考试计划名称"/>
-				   <input type="text" class="input_hide" id="userId1"  placeholder="计划时间"/>
-				   <input type="text" class="input_hide" id="userId1"  placeholder="受邀学校"/>
-				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
-				   <input type="reset" class="btn clean">
-			   </div>
-           </div>
->>>>>>> parent of 93e94f9... Merge remote-tracking branch 'origin/gy-625' into wmq-06-26-2
 					
 			
 			<!--表格-->
@@ -680,7 +668,11 @@
 		      </div>
 		    </div>
 		  </div>
-		
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/test.js" ></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 	</body>
 <script>
 loadMyExamList(1);

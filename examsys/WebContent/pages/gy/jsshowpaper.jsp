@@ -729,7 +729,6 @@
 		}
 		
 		$(".edit-btn").click(function() {
-			alert(sid);
 		});
 		
 		var page = 1;
