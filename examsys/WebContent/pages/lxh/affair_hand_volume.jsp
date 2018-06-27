@@ -657,7 +657,7 @@
 			  "question.difficultValue":$('#question_difficultValue').val(),
 			  "question.knowledge":$('#question_knowledge').val()//搜索的关键字1
 			  
-		  }, function(data) {alert("ooo");
+		  }, function(data) {
 			  alert(data.result);
 			  alert(data.list);
 			 var questionList=data.list; 

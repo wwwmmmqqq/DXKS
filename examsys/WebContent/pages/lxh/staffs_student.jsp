@@ -780,7 +780,7 @@
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item '><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
+				+"<li class='page-item active'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
 	
 		}
 		else if(index==totalPage){

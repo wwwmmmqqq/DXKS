@@ -284,82 +284,6 @@
 			</div>
 		</div>	
 
-		
-			<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal_information">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					<!-- 模态框头部 -->
-					<div class="modal-header">
-						<h4 class="modal-title">个人信息</h4>
-						<button type="button" class="close close1" data-dismiss="modal">&times;</button>
-					</div>
-
-					<!-- 模态框主体 -->
-					<div class="modal-body">
-						<table>
-							<tbody>
-								<tr>
-									<td>
-										姓名
-										<div class="tb_information">${session.user.name}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										工号
-										<div class="tb_information">${session.user.userId}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										密码
-										<div class="tb_information">${session.user.psw}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学校
-										<div class="tb_information">${session.user.collegeName}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										学院
-										<div class="tb_information">${session.user.department}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										性别
-										<div class="tb_information">${session.user.sex}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										联系方式
-										<div class="tb_information">${session.user.phone}</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										邮箱
-										<div class="tb_information">${session.user.email}</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-
-					</div>
-
-					<!-- 模态框底部 -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!--模态框查看通知-->
 		<div class="modal fade" id="myModal-email">
 			    	<div class="modal-dialog">
@@ -637,14 +561,14 @@
 	function getLiHtml(index) {
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
-				+"<li class='page-item'><a class='page-link' href='javascript:loadPapersByExam(1)'>"+index+"</a></li>";
+				+"<li class='page-item active'><a class='page-link' href='javascript:loadPapersByExam(1)'>"+index+"</a></li>";
 		}
 		else if(index==totalPage){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:loadPapersByExam("+index+")'>"+index+"</a></li>"
 				+"<li class='page-item'><a class='page-link' href='javascript:nextPage()'>下一页</a></li>";
 		}
 		else {
-			var ht = "<li class='page-item active'><a class='page-link ' href='javascript:loadPapersByExam("+index+")'>"+index+"</a></li>";
+			var ht = "<li class='page-item'><a class='page-link ' href='javascript:loadPapersByExam("+index+")'>"+index+"</a></li>";
 			
 		}
 		return ht;    

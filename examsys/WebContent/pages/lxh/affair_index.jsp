@@ -559,10 +559,7 @@
 				</div>
 			</div>
 	 </div>
-	  
-	  
-	  
-	  
+	    
 	    
 	    <!--模态框邀请老师组卷-->
 	    <div class="modal fade" id="myModal-invite-teacher">
