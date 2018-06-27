@@ -230,7 +230,14 @@
 	width: 600px;
 	min-height: 40px;
 }
-
+/*affair_intel_volume*/
+.search_box input , select {
+    height: 30px;
+    margin-right: 50px;
+    width: 140px;
+    float: left;
+    margin-bottom: 10px;
+}
 /*affair_index*/
 .p_searche label {
 	margin-right: 10px;

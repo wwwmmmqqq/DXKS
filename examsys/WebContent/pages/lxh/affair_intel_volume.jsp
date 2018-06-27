@@ -131,7 +131,7 @@
 				</div>
 				<section class="papermanage">
 					<!-- 智能组卷 start-->
-					<div>
+					<div class="search_box">
 						<input type="text" id="title"  placeholder="输入试卷标题" />
 						 <input type="text" id="startTime"  placeholder="输入开始时间" />
 						<input type="text" id="endTime"  placeholder="输入结束时间" />
