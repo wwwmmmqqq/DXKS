@@ -129,7 +129,7 @@
 		    	</div>
 				
 				<div class="top_main">
-					<div class="top_button">
+					<!-- <div class="top_button">
 						<button class="btn btn1" type="button" >
 							<i class="fa fa-mail-forward history"></i>
 							导出成绩
@@ -137,20 +137,20 @@
 						<button type="button" class="btn btn2">
 							<i class="fa fa-search-minus"></i>
 							条件搜索
-						</button>
+						</button> -->
 						
-					</div>
+					 
 					
 					<div class="tip">历史成绩</div>
 					<table class="table table-striped tb1">
 						<thead class="thead-light">
-							<!-- <tr>
+							 <tr>
 								<th>序号</th>
 								<th>科目</th>
 								<th>邀请学校</th>
 								<th>考试时间</th>
 								<th>操作</th>
-							</tr> -->
+							</tr>
 					    </thead>
 					    <tbody id="paper_list_box">
 					       <!--  <tr>
@@ -169,13 +169,14 @@
 				<div class="page_pagination">
 					<ul class="pagination">
 					    <li class="page-item"><a class="page-link" href="#">上一页</a></li>
-					    <li class="page-item"><a class="page-link" href="#">1</a></li>
+					    <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
 					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
-					    <li class="page-item"><a class="page-link" href="#">3</a></li>
+					    <li class="page-item"><a class="page-link" href="#">3</a></li> -->
 					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
 					    <!-- <input class="jump">
 					    <button class="btn btn-primary btn_jump">跳转</button> -->
 				  </ul>
+			  	</div>
 			  	</div>
 			  </div>
 			</div>

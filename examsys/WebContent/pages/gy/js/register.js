@@ -13,12 +13,14 @@ function checkEmail(){
 
 function register_ajax(){
 	console.log("ajax");
+	var user_id=$("input[name='user_id']").val();
 	var user_name=$("input[name='user_name']").val();
 	var user_psw=$("input[name='user_psw']").val();
 	var user_email=$("input[name='user_email']").val();
 	var user_psw1=$("input[name='user_psw1']").val();
 	var formData=new FormData();
-		formData.append("user.userId",user_name);
+		formData.append("user.userId",user_id);
+		formData.append("user.name",user_name);
 		formData.append("user.psw",user_psw);
 		formData.append("user.email",user_email);
 		

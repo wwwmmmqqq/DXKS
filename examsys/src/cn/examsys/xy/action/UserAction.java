@@ -92,13 +92,15 @@ public class UserAction extends CommonAction{
 						user.setType("教务");
 					}
 					user.setPsw("000000");
+					System.out.println(user.getUserId());
 					boolean currentUser=userService.createUser(user);
 					if(!currentUser){
 						System.out.println("用户创建失败");
 						setResult("用户创建失败");
+					}else{
+						System.out.println("用户创建成功");
+						setResult("用户创建成功");
 					}
-					System.out.println("用户创建成功");
-					setResult("用户创建成功");
 				}
 		}
 		return aa;

@@ -36,7 +36,7 @@
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
-					<div class="dropdown task">
+					<!-- <div class="dropdown task">
 						<button class="dropbtn">
 						    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						    	<i class="fa fa-tasks"></i>
@@ -44,7 +44,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
+							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
 						</div>
 					</div>
 					<div class="dropdown task" >
@@ -56,7 +56,7 @@
 							<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 							<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 						</div>
-				</div>
+				</div> -->
 				</div>
 			</nav>
 		</header>
@@ -364,10 +364,23 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover">
+										<!-- <input type="text" class="hover" id="collegeName"> -->
+										 <input type="text"  name="school" class="stext hover form-control school-name ex_invitee" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" /> 
+												 <div id="choose-box-wrapper" class="choose-box-wrapper">
+													<div id="choose-box" class="choose-box">
+														<div id="choose-box-title" class="choose-box-title">
+															<span>选择学校</span>
+														</div>
+														<div id="choose-a-province" class="choose-a-province"></div>
+														<div id="choose-a-school" class="choose-a-school"></div>
+														<div id="choose-box-bottom" class="choose-box-bottom">
+															<input type="botton" onclick="hide()" value="关闭" />
+														</div>
+													</div>
+												</div> 
 									</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
 										<input type="text" class="hover">
@@ -378,14 +391,14 @@
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
 										<input type="text" class="hover">
 									</td>
-								</tr>
+								</tr> -->
 							</tbody>
 						</table>
 		        </div>
 		   
 		        <!-- 模态框底部 -->
 		        <div class="modal-footer">
-		        	<button type="button" class="btn btn-primary add_invite">邀请</button>
+		        	<button type="button" class="btn btn-primary add_invite" onclick="inviteCollege()">邀请</button>
 		            <button type="button" class="btn btn-secondary back_invite" data-dismiss="modal">关闭</button>
 		        </div>
 		   
@@ -433,7 +446,7 @@
 							        		<!-- 受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp; -->
 <!-- 							        		<input type="text" class="stext hover form-control school-name ex_invitee"  name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" >
  -->							        		<!-- <input type="text" class="stext hover form-control school-name" name="school" id="school-name" /> -->
-												<div id="choose-box-wrapper" class="choose-box-wrapper">
+												<!-- <div id="choose-box-wrapper" class="choose-box-wrapper">
 													<div id="choose-box" class="choose-box">
 														<div id="choose-box-title" class="choose-box-title">
 															<span>选择学校</span>
@@ -444,7 +457,7 @@
 															<input type="botton" onclick="hide()" value="关闭" />
 														</div>
 													</div>
-												</div>
+												</div> -->
 							        	</td>
 							        </tr>
 							       
@@ -748,11 +761,11 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.explication+"</td>"
 	+"<td>"+obj.state+"</td>"
 	+"<td>"
-	+" <a href='loadHandConstitutePage?examSid="+obj.sid+"'>手动组卷</a>"
-	+"<a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>|智能组卷</a>"
+	+" <a href='loadHandConstitutePage?examSid="+obj.sid+"'>手动组卷</br></a>"
+	+"<a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a>"
 			+"<td>"
 	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
-	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
+	+"</br> <a href='javascript:void(0)' onclick='readyInvite("+obj.sid+",\""+obj.invitee+"\");' data-toggle='modal' data-target='#myModal_invite_school'>邀请学校</a></td>"
 	
 	+"</tr>"; 
     return htm;
@@ -891,8 +904,17 @@ function Out() {
 	}  
 }
 
-function inviteCollege(sid, colleges) {
-	var college = prompt("添加邀请的学校");
+var sid, colleges;
+function readyInvite(a,b) {
+	sid = a;
+	colleges = b;
+	pop();
+}
+
+function inviteCollege() {
+	//var college = prompt("添加邀请的学校");
+	//alert(sid + "," + colleges)
+	var college = $("#school-name").val();
 	if(colleges.indexOf(college)>=0) {
 		alert(college + "已被邀请");
 	} else {

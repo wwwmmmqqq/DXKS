@@ -559,8 +559,8 @@
 		    </div>
 		  </div>
 
-		<!--模态框查看个人信息-->
-		<div class="modal fade" id="myModal-information">
+		 <!--模态框查看个人信息-->
+	  <div class="modal fade" id="myModal-information">
 			<div class="modal-dialog">
 				<div class="modal-content">
 
@@ -577,49 +577,49 @@
 								<tr>
 									<td>
 										姓名
-										<div class="tb_information">慕雪</div>
+										<div class="tb_information">${session.user.name}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										工号
-										<div class="tb_information">17001</div>
+										<div class="tb_information">${session.user.userId}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										密码
-										<div class="tb_information">123456</div>
+										<div class="tb_information">${session.user.psw}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学校
-										<div class="tb_information">萍乡学院</div>
+										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学院
-										<div class="tb_information">信计学院</div>
+										<div class="tb_information">${session.user.department}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										性别
-										<div class="tb_information">女</div>
+										<div class="tb_information">${session.user.sex}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										联系方式
-										<div class="tb_information">1770313147</div>
+										<div class="tb_information">${session.user.phone}</div>
 									</td>
 								</tr>
 								<tr>
 									<td>
 										邮箱
-										<div class="tb_information">1770313147@qq.com</div>
+										<div class="tb_information">${session.user.email}</div>
 									</td>
 								</tr>
 							</tbody>

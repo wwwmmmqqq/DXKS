@@ -171,7 +171,7 @@ public class PersonalServiceImpl implements PersonalService {
 	}
 
 	@Override
-	public String registUser(String userId, String psw, String email) {
+	public String registUser(String userId, String psw, String email ,String name) {
 		User u = dao.findEntity(User.class, userId);
 		if (u == null) {
 			User user = new User();
@@ -179,6 +179,7 @@ public class PersonalServiceImpl implements PersonalService {
 			user.setPsw(psw);
 			user.setType("学生");
 			user.setEmail(email);
+			user.setName(name);
 			try {
 				dao.saveEntity(user);
 				return "success";

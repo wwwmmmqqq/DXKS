@@ -11,7 +11,9 @@
    background-color: black;
 }
 
-
+body{
+	background-color: #f1f2f7;
+}
 /*侧面导航栏*/
 
 .navbar.bg-light {
@@ -244,8 +246,8 @@
 }
 .papermanage #panel,#flip {
 	padding:5px;
-	background-color: #ccd2ee;
-	border:solid 1px #ccd2ee;
+	/* background-color: #ccd2ee;
+	border:solid 1px #ccd2ee; */
 }
 .papermanage #flip {	
 	text-align:center;	
@@ -258,12 +260,13 @@
 .papermanage .searchpanel {
 	float: left;
 	margin_top: -15px;
+	width:100%;
 }
 .searchpanel li {
+	width:16%;
 	float: left;
 }
 .searchpanel #qtype , #startTime {
-	margin-right:20px;
 	float: left;
 }
 .searchpanel .searchbtn {
@@ -396,6 +399,7 @@ li{
 #qtype, #leamount1, #leamount2, #leamount3, #leamount4, #leamount5, #qmount, #leamark, #trash ,#eachq {
 	vertical-align: middle;
 }
+
 .mytable td {
 	width: 10%;
 	overflow: hidden;
@@ -429,7 +433,53 @@ li{
 	margin: 10px 30px;
     background: #f0f3f4;
 }
+
+
 /*handzujuan*/
+.papermanage .p_search {
+	width:100%;
+}
+.p_search label {
+	float:left;
+}
+.papermanage #panel {
+	padding: 10px;
+	display: none;
+	height: 50px;
+}
+.searchpanel  label {
+	float: left;
+	margin-top: 4px;
+}
+.searchpanel  #qknow {
+	width:23%;
+}
+.searchpanel  #qtitle {
+	width:22%;
+}
+#qtitle input {
+	float:left;
+	width: 155px;
+}
+#qknow input {
+	float:left;
+	width: 155px;
+}
+#qknow button{
+	float:left;
+}
+#qknow label {
+	float:left;
+}
+.searchpanel .searchbtn {
+	float：left;
+}
+.searchpanel  li {
+	width:16%;
+	float: left;
+	margin-right: 10px;
+}
+
 .content .testpanel {
 	width: 85%;
 	margin: 1px 1px;
@@ -441,11 +491,11 @@ li{
 }
 .searchpanel #qtype , #qdiffer {
 	float :left;
-	margin: 0px 10px;
 }
 .searchpanel select {
-	width: 150px;
+	width: 100px;
 }
+
 
 .cant .basket {
 	position: fixed;
@@ -1000,4 +1050,13 @@ body {
 }
 .p_search {
 	margin-bottom:10px;
+}
+.jwchaxun{
+	background:white;
+}
+#qtype{
+	width:100px;
+}
+.btn-index{
+	background:white;
 }

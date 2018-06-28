@@ -160,7 +160,7 @@
 		   
 		    	
 		    	<div class="papermanage">
-		    		<div id="flip"><i class="fa fa-search-minus"></i>条件搜索</div>
+		    		<div id="flip"><button type="button" class="btn btn-index"><i class="fa fa-search-minus"></i>条件搜索</button></div>
 		    		<div id="panel">
 		    			<form>
 		    				<div class="searchpanel">

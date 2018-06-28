@@ -185,7 +185,7 @@ public class PersonalAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String registUser() {
-		String rst = serivce.registUser(user.getUserId(), user.getPsw(), user.getEmail());
+		String rst = serivce.registUser(user.getUserId(), user.getPsw(), user.getEmail(),user.getName());
 		setResult(rst);
 		return aa;
 	}

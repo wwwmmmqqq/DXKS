@@ -85,6 +85,11 @@ body{
 	padding-top: 30px;
 	padding-left: 30px;
 }
+.login_box .input_id{
+	width: 85%;
+	height: 40px;
+	margin:30px  auto;
+}
 .login_box .input_name{
 	width: 85%;
 	height: 40px;

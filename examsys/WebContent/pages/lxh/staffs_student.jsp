@@ -973,7 +973,17 @@
 		if( !checkIdCard()||!checkPhone() ){
 			return;
 		}
-		$.post("editUser",
+
+		var bo = true;
+		$("#editStudent input[type=text]").each(function() {
+		if($(this).val()=="" && bo) { 
+			toastr.warning("请将信息填写完整");
+			bo = false;
+			return;
+		}
+	});
+		if(bo){
+			$.post("editUser",
 					{	
 						"user.name":$('#student_name').val(),
 						"user.sex":$('#student_sex').val(),
@@ -983,7 +993,7 @@
 						"user.profession":$('#student_profession').val(),
 						"user.classroom":$('#student_classroom').val(),
 						"user.idcard":$('#student_idcard').val(),
-						"user.phone":$('#student_phone').val()
+						"user.phone":$('#student_phone').val(),
 						"user.email":$('#student_email').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
@@ -991,6 +1001,8 @@
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
+		}
+		
 		}
 	
 	

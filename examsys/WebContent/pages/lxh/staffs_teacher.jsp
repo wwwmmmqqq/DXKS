@@ -282,7 +282,7 @@
 							<tr>
 									<td>
 										工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover " id="te_userId" >
+										<input type="text" class="hover form-control" id="te_userId" >
 									</td>
 								</tr> 
 							<tr>
@@ -301,12 +301,13 @@
 									name="user.department">
 								</td>
 							</tr>
-							<!-- <tr>
+						
+							<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover" id="te_profession">
+										<input type="text" class="hover form-control" id="te_profession">
 									</td>
-								</tr> -->
+								</tr> 
 							<tr>
 								<td class="choose-sex">
 									性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp; <select
@@ -871,21 +872,35 @@
 	}
 	
 	function createTeacher() {
-	 	$.post("createUser",
-			 {	"user.userId":$('#te_userId').val(),   //用户id
-		        "user.name":$('#te_name').val(),   //用户名
-		        "user.college":$('#te_college').val(),   //用户学校
-		        "user.department":$('#te_department').val(),   //用户学校
-		        "user.profession":$('#te_profession').val(),   //用户专业
-		 		"user.type":"教师",					//用户类型
-		 		"user.sex":$('#te_sex').val(),	//用户性别
-		 		"user.phone":$('#te_phone').val(),
-		 		"user.psw":"000000"
-		 	},function(data){
-		 		/* alert("hhh");
-		 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone);  */
-		 		location.href="staffs_teacher.jsp";
-			 })
+	
+			var bo = true;
+			$("#myModal_addTeacher input[type=text]").each(function() {
+			if($(this).val()=="" && bo) { 
+				toastr.warning("请将信息填写完整");
+				bo = false;
+				return;
+			}
+		});
+			if(bo){
+				$.post("createUser",
+						 {	"user.userId":$('#te_userId').val(),   //用户id
+					        "user.name":$('#te_name').val(),   //用户名
+					        "user.collegeName":$('#te_collegeName').val(),   //用户学校
+					        "user.department":$('#te_department').val(),   //用户学校
+					        "user.profession":$('#te_profession').val(),   //用户专业
+					 		"user.type":"教师",					//用户类型
+					 		"user.sex":$('#te_sex').val(),	//用户性别
+					 		"user.phone":$('#te_phone').val(),
+					 		"user.psw":"000000"
+					 	},function(data){
+					 		
+					 		/* alert("hhh");
+					 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone);  */
+					 		toastr.success(data.result);
+					 		location.href="staffs_teacher.jsp";
+						 })
+			}
+	 
 	}
 	
 	function checkPhone(){    
@@ -916,32 +931,48 @@
 	    }
 
        	   function editTeacher() {
-       		if( !checkIdCard()||!checkPhone() ){
-    			return;
-    		}
-       			if(checkInput()==false){
-       				return false;
-       				} else{
-       					$.post("editUser",
-           						{	
-           							"user.name":$('#teacher_name').val(),
-           							"user.sex":$('#teacher_sex').val(),
-           							"user.userId":$('#teacher_userId').val(),
-           							"user.collegeName":$('#teacher_collegeName').val(),
-           							"user.department":$('#teacher_department').val(),
-           							"user.profession":$('#teacher_profession').val(),
-           							"user.idcard":$('#teacher_idcard').val(),
-           							"user.phone":$('#teacher_phone').val()
-           						},function(data) {
-           							if(data.result=="编辑用户成功") {
-           								toastr.success("修改成功！");
-           						  	location.href="staffs_teacher.jsp";
-           					  	}
-           				  });
-       				}
-       			}
+	       		if( !checkIdCard()||!checkPhone() ){
+	    			return;
+	    		}
+
+					var bo = true;
+					$("#editTeacher input[type=text]").each(function() {
+	    			if($(this).val()=="" && bo) { 
+	    				toastr.warning("请将信息填写完整");
+	    				bo = false;
+	    				return;
+	    			}
+	    		});
+					
+					if(bo) {
+    				$.post("editUser",
+       						{	
+       							"user.name":$('#teacher_name').val(),
+       							"user.sex":$('#teacher_sex').val(),
+       							"user.userId":$('#teacher_userId').val(),
+       							"user.collegeName":$('#teacher_collegeName').val(),
+       							"user.department":$('#teacher_department').val(),
+       							"user.profession":$('#teacher_profession').val(),
+       							"user.idcard":$('#teacher_idcard').val(),
+       							"user.phone":$('#teacher_phone').val()
+       						},function(data) {
+       							toastr.success(data.result);
+       						  	location.href="staffs_teacher.jsp";
+       							
+       				  });
+					}
+				}
 		           
-		
+     /*   	function checkInput() {
+    		$("#editTeacher input[type=text]").each(function() {
+    			if($(this).val()=="") {	
+    				toastr.warning("请将信息填写完整");
+    				return false;
+    			}else{
+    				return true;
+    			}
+    		});	
+    	} */
    
 	function deleteTeacher(node) {
 		var td = node.parentNode.parentNode.childNodes;
@@ -966,16 +997,7 @@
 		}  
 	}
 	
-	function checkInput() {
-		$("#editTeacher input[type=text]").each(function() {
-			if($(this).val()=="") {	
-				toastr.warning("请将信息填写完整");
-				return false;
-			}else{
-				return true;
-			}
-		});	
-	}
+
 	
 	//搜索重置
 	function clean() {
