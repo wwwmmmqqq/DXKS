@@ -49,7 +49,7 @@
 				<i class="fa fa-circle-o"></i> 位置：
 				<a >首页</a>
 				<b>></b>
-				<a href="/">在线考试</a>
+				<a>在线考试</a>
 			</div>
 			<section class="left-section">
 				<div class="left-menu">

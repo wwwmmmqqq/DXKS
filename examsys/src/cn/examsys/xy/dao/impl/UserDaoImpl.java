@@ -57,7 +57,7 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 		String collegeName = administration.getCollegeName();
 		String tag[] = new String[]{"type","collegeName","userId","name","collegeName","department","profession","classroom","sex"};
 		String[] value = new String[]{user.getType(),collegeName,user.getUserId(),user.getName(),user.getCollegeName(),user.getDepartment(),user.getProfession(),user.getClassroom(),user.getSex()};
-		Object[] vals= new Object[7];
+		Object[] vals= new Object[8];
 		StringBuilder hql = new StringBuilder("from User ");
 		if(tag!=null) {
 			hql.append("where (status !='封禁' or status is null) ");
@@ -87,9 +87,9 @@ public class UserDaoImpl extends DaoAdapter implements UserDao{
 	public List<User> selectUserList(User user, int page,User administration) {
 		// TODO Auto-generated method stub
 		String collegeName = administration.getCollegeName();
-		String tag[] = new String[]{"type","collegeName","userId","name","collegeName","department","profession","classroom"};
-		String[] value = new String[]{user.getType(),collegeName,user.getUserId(),user.getName(),user.getCollegeName(),user.getDepartment(),user.getProfession(),user.getClassroom()};
-		Object[] vals= new Object[7];
+		String tag[] = new String[]{"type","collegeName","userId","name","collegeName","department","profession","classroom","sex"};
+		String[] value = new String[]{user.getType(),collegeName,user.getUserId(),user.getName(),user.getCollegeName(),user.getDepartment(),user.getProfession(),user.getClassroom(),user.getSex()};
+		Object[] vals= new Object[8];
 		StringBuilder hql = new StringBuilder("from User ");
 		if(tag!=null) {
 			hql.append("where (status !='封禁' or status is null) ");

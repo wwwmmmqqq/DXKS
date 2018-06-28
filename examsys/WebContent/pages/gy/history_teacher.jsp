@@ -41,7 +41,7 @@
 					</div>
 					<div class="dropdown task">
 					</div>
-					<div class="dropdown task" >
+					<%-- <div class="dropdown task" >
 						<button class="dropbtn envolope">
 							<i class="fa fa-envelope envelope"></i>	
 							<span class="label-success success1"></span>
@@ -50,7 +50,7 @@
 							<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
 							<a href="#" data-toggle="modal" data-target="#myModal_read">阅卷通知</a>
 						</div>
-					</div>
+					</div> --%>
 				</div>
 			</nav>
 		</header>
@@ -270,9 +270,9 @@
 							<tbody >
 							</tbody>
 						</table>
-					<div id="rate">
+					<!-- <div id="rate">
 					
-					</div>
+					</div> -->
 					</div>
 
 					<!-- 模态框底部 -->

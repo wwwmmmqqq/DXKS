@@ -147,9 +147,9 @@
 		    				    <li>
 		    				    	<button type="button" class="btn btn-primary loadPaper" onclick="delPaper()">删除样卷 </button>
 		    				    </li>
-		    				    <li>
+		    				  <!--   <li>
 		    				       <button type="button" class="btn btn-primary loadPaper">导出试卷</button>
-		    				    </li>
+		    				    </li> -->
 		    				</ul>
 		    			</header>
 		    			<div class="panel-body ">

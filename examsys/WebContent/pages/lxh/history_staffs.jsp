@@ -144,24 +144,24 @@
 					<div class="tip">历史成绩</div>
 					<table class="table table-striped tb1">
 						<thead class="thead-light">
-							<tr>
+							<!-- <tr>
 								<th>序号</th>
 								<th>科目</th>
 								<th>邀请学校</th>
 								<th>考试时间</th>
 								<th>操作</th>
-							</tr>
+							</tr> -->
 					    </thead>
 					    <tbody id="paper_list_box">
-					        <tr>
+					       <!--  <tr>
 				               <td>1</td>				               
 					           <td>数据库概论</td>
 					           <td>萍乡学院</td>
 				               <td>2018-10-10</td>
 					           <td class="td_correct" data-toggle="modal" data-target="#myModal_eye_score">
-				                   <i class="fa fa-eye"></i>
+				                   <i class="fa fa-eye" ></i>
 					           </td>
-				           </tr>
+				           </tr> -->
 				      </tbody>
 				</table>
 				
@@ -291,9 +291,9 @@
 							<tbody id="studentScore">
 							</tbody>
 						</table>
-					<div id="rate">
+					<!-- <div id="rate">
 					
-					</div>
+					</div> -->
 					</div>
 
 					<!-- 模态框底部 -->
@@ -648,25 +648,31 @@
 				  var list = data.list; 
 				  var htm = "";
 				  for(var i=0;i<list.length;i++) { 
-					 htm+=getMyExam(i,list[i].exam,list[i].paper);
+					 htm+=getMyExam(i,list[i].exam, list[i].paper, list[i].order);
 				  }
 				  $('#paper_list_box').html(htm);
 			  });
 		  }
 		
 		function getMyExam(i,exam,paper) {
+			if(exam == null) {
+				exam = {};
+				exam['invitee'] = "考次已被删除";
+				exam['periodStart'] = "考次已被删除";
+				exam['periodEnd'] = "考次已被删除";
+			}
 			var htm = "<tr>"
 			+"	<td>"+(i+1)+"</td>"
 			+"	<td>"+paper.subjectName+"</td>"
 			+"	<td>"+exam.invitee+"</td>"
-			+"	<td>"+exam.periodStart+"-"+exam.periodEnd+"</td>"
+			+"	<td>"+exam.periodStart+" 到 "+exam.periodEnd+"</td>"
 			+"	<td>"
 			+"		<i class='fa fa-eye' data-toggle='modal' data-target='#myModal_correct' onclick='loadGradesByPaper("+paper.sid+")' ></i>"
 			+"	</td>"
 			+"</tr>";
 			return htm;
 		}
-		function getScore(paper,user,grade,i){
+		function getScore(paper,user,grade,i,order){
 			var htm=
 				"<tr>"
 			+"<td>1</td>"
@@ -678,8 +684,8 @@
 			+"<td>"+paper.subjectName+"</td>"
 			+"<td>"+grade.point+"</td>"
 			+"<td>"+i+"</td>"
-			+"<td>"+(i+1)+"</td>"
-			+"</tr>"
+			+"<td>"+order+"</td>"
+			+"</tr>";
 			return htm;
 		}
 	

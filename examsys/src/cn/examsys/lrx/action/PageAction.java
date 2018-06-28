@@ -159,6 +159,15 @@ public class PageAction extends CommonAction {
 		return aa;
 	}
 	
+	//试卷管理
+	@Action(value="/loadAPaperStu", results={
+				@Result(name="success", location="/pages/student/student-paper-detail.jsp") })
+	public String loadAPaperStu() {
+		list = service.loadQuestionList(getSessionUser(), paper.getSid());
+		System.out.println(list.size());
+		return aa;
+	}
+	
 	Question question = new Question();
 	List<Option> options = new ArrayList<>();
 	public List<Option> getOptions() {

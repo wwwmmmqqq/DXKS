@@ -275,7 +275,8 @@ p{
 	display: none;
 }
 .search_hide input ,select , button {
-	
+	display:inline;
+	width:100px;
 	border-radius: 5px;
 }
 

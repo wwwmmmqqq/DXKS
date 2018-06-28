@@ -44,7 +44,7 @@
 					</div>
 				</div>
 		
-				<div class="dropdown notice">
+				<!-- <div class="dropdown notice">
 					<button class="dropbtn">
 				    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				    			    				<i class="fa fa-envelope"></i>
@@ -56,7 +56,7 @@
 						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<!-- head end -->
 		

@@ -248,12 +248,7 @@
 										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										学院
-										<div class="tb_information">${session.user.department}</div>
-									</td>
-								</tr>
+							
 								<tr>
 									<td>
 										性别
@@ -266,12 +261,7 @@
 										<div class="tb_information">${session.user.phone}</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										邮箱
-										<div class="tb_information">${session.user.email}</div>
-									</td>
-								</tr>
+								
 							</tbody>
 						</table>
 
@@ -416,6 +406,12 @@
 									<td>
 										联系方式&nbsp;
 										<input type="text" onblur="checkPhone()" class="hover form-control" id="student_phone" name="user.phone">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										邮箱&nbsp;
+										<input type="text" onblur="checkEmail()" class="hover form-control" id="student_email" name="user.email">
 									</td>
 								</tr>
 
@@ -791,7 +787,6 @@
 		 		}
 			 $('#student-list-box').html(htm);
 			 for(var j=1;j<=totalPage;j++) {
-				 alert(j);
 				 ht += getLiHtml(j);
 			 }
 			 $('.pagination').html(ht);
@@ -838,7 +833,6 @@
 		return htm;
 	}
 	function getLiHtml(index) {
-		alert(index);
 		if(index==1){
 			var ht = "<li class='page-item'><a class='page-link' href='javascript:prevPage()'>上一页</a></li>"
 				+"<li class='page-item active'><a class='page-link' href='javascript:loadStudentList("+index+")'>"+index+"</a></li>";
@@ -990,9 +984,10 @@
 						"user.classroom":$('#student_classroom').val(),
 						"user.idcard":$('#student_idcard').val(),
 						"user.phone":$('#student_phone').val()
+						"user.email":$('#student_email').val()
 					},function(data) {
 						if(data.result=="编辑用户成功") {
-							alert("修改成功!");
+							toastr.success("修改成功!");
 					  	location.href="staffs_student.jsp";
 				  	}
 			  });
@@ -1049,5 +1044,18 @@
 	$("#find").click(function(){
 	$("#hide").slideToggle("slow");
 	})
+	
+	function checkEmail(){    
+	var id = $("#student_email").val();
+	//焦点移除的时候进行验证
+	var myid =/^\w+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
+	if(!myid.test(id)) {
+        	//如果邮箱的格式与正则的不符合，就提醒
+        	toastr.error("邮箱格式有误");        
+               return false;
+           }
+        return true;
+      
+    }
 </script>
 </html>

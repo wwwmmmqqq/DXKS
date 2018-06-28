@@ -75,6 +75,31 @@ public class ExamAction extends CommonAction {
 	}
 	
 	/**
+	 * 获取考试列表
+	 * 参数：page
+	 * @return
+	 */
+	@Action(value="/loadMyExamList_jw"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadMyExamListJw() {
+		if (!isLogin()) {
+			setResult("did not login");
+			return aa;
+		}
+		list = service.loadMyExamsListJw(getSessionUser(), 0);
+		System.out.println(getSessionUser());
+		//list = service.loadMyExamsList(getSessionUser(), page);
+		/*try {
+			//TODO 测试数据
+			list = BeanAutoFit.fitBeanArray(Exam.class, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
+		return aa;
+	}
+	
+	/**
 	 * 加载试卷
 	 * exam.sid 考试id
 	 * @return

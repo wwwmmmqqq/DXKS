@@ -48,6 +48,15 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void teste() {
 		
+		try {
+			List li = daoAdapter.findByHql("select p from Grade g,Paper p where g.userId=? and g.paperRef=p.sid order by g.sid desc" 
+					, new Object[]{"a0"}, 1);
+					
+			System.out.println(li.size());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		/*try {
 			List<QuestionCheckVO> li = dao.findByHql("select new cn.examsys.lrx.vo.QuestionCheckVO(q, a, o)"

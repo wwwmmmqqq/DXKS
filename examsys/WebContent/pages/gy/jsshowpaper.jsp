@@ -52,7 +52,7 @@
 					</div>
 				</div>
 		
-				<div class="dropdown notice">
+				<%-- <div class="dropdown notice">
 					<button class="dropbtn">
 				    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				    			    				<i class="fa fa-envelope"></i>
@@ -63,7 +63,7 @@
 							<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
 							<a href="#" data-toggle="modal" data-target="#myModal_read">阅卷通知</a>
 					</div>
-				</div>
+				</div> --%>
 		
 			</div>
 			<!-- head end -->
@@ -731,9 +731,9 @@
 		$(".edit-btn").click(function() {
 		});
 		
-		var page = 1;
-		var key = "";
-		var type = "";
+		var page = getParameter("page");
+		var key = getParameter("key");
+		var type = getParameter("type");
 		
 		function searchKey(s) {
 			key = s;
@@ -742,23 +742,31 @@
 		
 		function searchType(s) {
 			type = s;
+			page = 1;
 			search();
 		}
 		
 		function search() {
 			location.href = "searchQuestions?page="+page+"&key="+key+"&type="+type;
 		}
-		
 		function nextPage() {
-			if(page < 4)
-				page ++;
-			search();
+			if(page < Number(Number('${totalPage}')/10)){
+				page = Number(page) + 1;
+				search();
+			}
 		}
 		
 		function prevPage() {
-			if(page > 0)
+			if(page > 0) {
 				page --;
-			search();
+				search();
+			}
+		}
+		
+		function getParameter(name) {
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null) return unescape(r[2]); return null;
 		}
 		</script>
 	</body>

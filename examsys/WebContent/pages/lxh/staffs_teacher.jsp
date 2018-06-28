@@ -279,12 +279,12 @@
 				<div class="modal-body">
 					<table>
 						<tbody>
-							<!-- <tr>
+							<tr>
 									<td>
-										学&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
+										工&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;
 										<input type="text" class="hover " id="te_userId" >
 									</td>
-								</tr> -->
+								</tr> 
 							<tr>
 								<td>姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp; <input
 									type="text" class="hover form-control" id="te_name">
@@ -297,7 +297,7 @@
 							</tr>
 							<tr>
 								<td>学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp; <input
-									type="text" class="hover form-control" id="teacher_department"
+									type="text" class="hover form-control" id="te_department"
 									name="user.department">
 								</td>
 							</tr>
@@ -819,7 +819,7 @@
 			+"<tr>"
 			+"<td>"
 			+"学号"
-			+"<div class='tb_information'>"+obj.userId+"17001</div>"
+			+"<div class='tb_information'>"+obj.userId+"</div>"
 			+"</td>"
 			+"</tr>"
 			+"<tr>"
@@ -834,10 +834,6 @@
 			+"<tr><td>"
 			+"专业"
 			+"<div class='tb_information'>"+obj.profession+"</div>"
-			+"</td></tr>"
-			+"<tr><td>"
-			+"班级"
-			+"<div class='tb_information'>"+obj.classroom+"</div>"
 			+"</td></tr>"
 			+"<tr><td>"
 			+"身份证号"
@@ -879,6 +875,7 @@
 			 {	"user.userId":$('#te_userId').val(),   //用户id
 		        "user.name":$('#te_name').val(),   //用户名
 		        "user.college":$('#te_college').val(),   //用户学校
+		        "user.department":$('#te_department').val(),   //用户学校
 		        "user.profession":$('#te_profession').val(),   //用户专业
 		 		"user.type":"教师",					//用户类型
 		 		"user.sex":$('#te_sex').val(),	//用户性别
@@ -933,7 +930,6 @@
            							"user.collegeName":$('#teacher_collegeName').val(),
            							"user.department":$('#teacher_department').val(),
            							"user.profession":$('#teacher_profession').val(),
-           							"user.classroom":$('#teacher_classroom').val(),
            							"user.idcard":$('#teacher_idcard').val(),
            							"user.phone":$('#teacher_phone').val()
            						},function(data) {

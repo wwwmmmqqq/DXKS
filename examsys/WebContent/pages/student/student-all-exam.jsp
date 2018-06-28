@@ -249,13 +249,14 @@ function loadMyHistoryPapersByexam(){
 	  }, function(data) {
 		  var paperHistoryList = data.list;
 		  var htm = "";
+		  alert(data.list.length)
 		  for(var i=0;i<paperHistoryList.length;i++) {
 			htm+=getMyHistoryPaper(paperHistoryList[i])
 		  }
 		  $('.history-paper').html(htm);
 	  });
 }
-function getMyHistoryPaper(grade,paper){
+function getMyHistoryPaper(obj){
 	var htm=
 		"<ul class='paper-item'>"
 		+"	<li>"
@@ -271,11 +272,15 @@ function getMyHistoryPaper(grade,paper){
 		+"			</div>"
 		+"		</div>"
 		+"		<div class='exam-button'>"
-		+"			<button class='btn btn-primary'>查看</button>"
+		+"			<button class='btn btn-primary' onclick='intoPaper("+obj.sid+")'>查看</button>"
 		+"		</div>"
 		+"	</li>"
 		+"</ul>"
 		return htm;
+}
+
+function intoPaper(paperSid) {
+	location.href = "loadAPaperStu?paper.sid=" + paperSid;
 }
 </script>
 </body>

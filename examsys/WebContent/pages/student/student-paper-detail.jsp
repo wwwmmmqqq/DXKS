@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="s" uri="/struts-tags" %>
           <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -188,7 +189,128 @@
 			</section>
 			<section class="right-section">
 				<div class="right-content">
-					<div class="paper-title-info">
+				   
+		    <div class="cant">
+		    	<div class="bred">
+		    			<!--breadcrumbs start -->
+		    			<ul class="breadcrumb mybread">
+		    				<li class="active">
+		    					<a href="affair_index.jsp"><i class="fa fa-home"></i>Home</a>
+		    				</li>
+		    	
+		    			</ul>
+		    			<!--breadcrumbs end -->	
+		    	</div>
+		    	<div class="papermanage">
+		    		<!-- 试卷管理 start -->
+		    		<div class="panel showpaperpanel">
+		    			<div class="panel-body ">
+		    				<div class="exam-list">
+		    					<s:iterator id="que" value="#request.list" status="sta">
+		    					<ul>
+		    						<li>
+			    						
+									</li>
+		    						<li>
+		    						 
+		    							<div class="exam-content">
+		    								<!-- <div class="exam-question">		    							    
+		    								</div> -->
+		    								<div class="exam-qlist">
+		    									<div class="exam-content">
+		    										<div class="exam-question">
+		    											<h5>
+		    											<s:if test="#request.lastType != #request.que.type">
+						 									<p style="font-size: 24px">
+						 									${(que.type=="Single")?"单选题":""}
+															${(que.type=="Multiple")?"多选题":""}
+															${(que.type=="TrueOrFalse")?"判断题":""}
+															${(que.type=="Fills")?"填空题":""}
+															${(que.type=="Subjective")?"解答题":""}
+															</p>
+														</s:if>
+		    											${sta.index+1}. ${que.title}
+		    											</h5>
+		    										</div>
+		    						
+		    										<div class="exam-selection">
+		    										<s:iterator id="opt" value="#que.options" status="st">
+		    											<span class="op-item">
+		    											   <s:if test="'Single Multiple'.indexOf(#que.type)>=0">
+		    											        <%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("st")).getIndex()+'A')); %>
+		    											   		<span>${optionLabel}. ${opt.content} </span>
+		    											   </s:if>
+		    											   <s:else>
+		    											   	<div>${st.index+1}. ${opt.content} </div>
+		    											   	<div><textarea class="xz-que" readonly="readonly" cols="30" rows="3"></textarea></div>
+		    											   </s:else>
+		    											</span>
+		    										</s:iterator>	
+		    										    <!-- <span class="op-item">
+		    							                	<span>B.</span>
+		    											   <span>Update software</span>
+		    											</span>
+		    											<span class="op-item">
+		    									    	    <span>C.</span>
+		    											<span>Update software</span>
+		    											</span>
+		    											<span class="op-item">
+		    									    		<span>D.</span>
+		    											<span>Update software</span>
+		    											</span> -->
+		    										</div>
+		    									</div>
+		    									
+		    								</div>
+		    							</div>
+                                    </li>
+                                   <%--  <li>
+		    							<div class="exam-content">
+		    								<div class="exam-question">
+		    							    
+		    								</div>
+		    								<div class="exam-qlist">
+		    									<div class="exam-content">
+		    										<div class="exam-question">
+		    											1.下列说法正确的是(<input type="text" class="xz-que" size="5" placeholder=""/>)
+		    										</div>
+		    							
+		    										<div class="exam-selection">
+		    											<span class="op-item">
+		    									    	   <span>A.</span>
+		    											   <span>Update software</span>
+		    											</span>
+		    										    <span class="op-item">
+		    							                	<span>B.</span>
+		    											   <span>Update software</span>
+		    											</span>
+		    											<span class="op-item">
+		    									    	    <span>C.</span>
+		    											<span>Update software</span>
+		    											</span>
+		    											<span class="op-item">
+		    									    		<span>D.</span>
+		    											<span>Update software</span>
+		    											</span>
+		    										</div>
+		    									</div>
+		    									
+		    								</div>
+		    							</div>
+		    							
+		      
+                                    </li> --%>
+                               </ul>
+                               <%
+                               cn.examsys.bean.Question question = (cn.examsys.bean.Question)request.getAttribute("que");
+                               if(question!=null)
+                            	   request.setAttribute("lastType", question.getType());
+                               %>
+                              </s:iterator>
+		    				</div>
+		    	
+		    			</div>
+					<!-- <div class="paper-title-info">
 					<div class="detail-paper-title">
 						<span>软件工程导论测试卷A</span>
 						
@@ -203,7 +325,7 @@
 							<li>120分钟</li>
 						</ul>
 						</div>
-						</div>
+					</div>
 					<div class="detaile-question">
 						<div class="all-que">
 							<ul class="que-type">
@@ -334,7 +456,7 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</section>
 			</div>

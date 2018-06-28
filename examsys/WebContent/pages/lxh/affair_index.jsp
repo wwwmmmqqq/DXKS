@@ -950,7 +950,7 @@
 	}
 	
 	function getItemHtml(index, obj) {
-		var htm = "<tr id=''>"
+		var htm = "<tr id='item"+obj.sid+"'>"
 			+"	<td>"+obj.sid+"</td>"
 			+"	<td>"+obj.examRef+"</td>"
 			+"	<td>"+obj.subjectRef+"</td>"
@@ -972,6 +972,19 @@ function editePaper() {
 	})
 	
 }
+
+function deletePaper(n) {
+	if(confirm("确认删除？")) {
+		$.post("delPaper",{"sid":n},function(data) {
+			if(data.result == "success") {
+				$('#item' + n).remove();
+			} else {
+				toastr.error("删除失败");
+			}
+		});
+	}
+}
+
 function Out() {
 	if(confirm("确定要退出吗？")) {
 		$.post("loginOut",null,function(data) {

@@ -238,6 +238,7 @@ $("#submitPaperBtn").click(function() {
 });
 
 function submitPaper(paperSid) {
+	if(confirm("是否确认交卷？"))
 	  $("#submitPaperBtn").text("交卷中...");
 	  $.post("submitPaper", {
 		  "paper.sid":paperSid

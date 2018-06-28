@@ -265,8 +265,10 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public List<Paper> loadMyHistoryPapers(User sessionUser, int page) {
 		try {
-			return dao.findByHql("from Paper where userId=? order by sid desc" 
+			List li = dao.findByHql("select p from Grade g,Paper p where g.userId=? and g.paperRef=p.sid order by g.sid desc" 
 					, new Object[]{sessionUser.getUserId()}, page);
+			System.out.println(li.size());
+			return li;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -335,6 +337,17 @@ public class ExamServiceImpl implements ExamService {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	@Override
+	public List<Exam> loadMyExamsListJw(User sessionUser, int page) {
+		try {
+			return dao.findByHql("from Exam where locate(?, invitee)>0 order by sid desc"
+					, new Object[]{sessionUser.getCollegeName()}
+					, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 }
