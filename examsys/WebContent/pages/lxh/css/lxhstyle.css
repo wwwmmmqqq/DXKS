@@ -438,6 +438,7 @@ li{
 /*handzujuan*/
 .papermanage .p_search {
 	width:100%;
+	height:50px;
 }
 .p_search label {
 	float:left;
@@ -450,6 +451,11 @@ li{
 .searchpanel  label {
 	float: left;
 	margin-top: 4px;
+}
+.top-btn button{
+/* 	width:50px; */
+margin-top:20px;
+	line-height:20px;
 }
 .searchpanel  #qknow {
 	width:23%;
@@ -1055,7 +1061,7 @@ body {
 	background:white;
 }
 #qtype{
-	width:100px;
+	width:200px;
 }
 .btn-index{
 	background:white;

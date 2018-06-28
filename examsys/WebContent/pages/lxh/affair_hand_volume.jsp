@@ -182,6 +182,7 @@
 		    			</label>
 		    			<label>开始时间：<input class="form-control mydate" id="examStart" type='text' placeholder="开始时间"></label>
 		    			<label>结束时间：<input class="form-control" id="examEnd" type='text' placeholder="结束时间"></label>
+		    		
 		    		</div>
 		    	    
 		    	    <div class="top-btn">
@@ -193,7 +194,7 @@
 	    				<div class="searchpanel">
 	    					<ul>
 	    						<li id="qtype">
-	    							<label>搜索类型</label>
+	    							<label>搜索类型:</label>
 	    							<select id="typeSels" class="form-control" onchange="selType(this.value)">
 	    							    <optgroup label="选择试题类型">
 		    								<option value="">全部</option>
@@ -205,7 +206,7 @@
 	    								</optgroup>
 	    							</select>
 	    						</li>	    
-	    						<li id="qdiffer"><label>难易程度</label>
+	    						<li id="qdiffer"><label>难易程度:</label>
 	    							<select id="difficultValueSels" class="form-control" onchange="selDiff(this.value)">
 	    								<optgroup label="题目难度筛选">
 	    									<option value="">全部</option>
@@ -216,7 +217,9 @@
 	    								</optgroup>
 	    							</select>
 	    						</li>
-	    						<li id="qsub"><label>科目</label>
+	    						<li id="qsub">
+	    						<label>科目:</label>
+	    						
 	    							<select class="subjectSels" class="form-control" onchange="selSubject(this.value)">
 	    								<optgroup label="科目" id="subjectGroup">
 	    									<option value="">全部</option>
@@ -224,17 +227,19 @@
 	    							</select>
 	    						</li>
 	    						<li id="qtitle">
-	    							 <label>题目标题</label> 
+	    						<label>	 题目标题:</label>
+	    						
 	    							<input type="text" class="form-control" id="titleIpt" onchange="selTitle(this.value)" />
 	    						</li>
 	    						<li id="qknow">
-	    							 <label>知识点</label> 
+	    						<label> 知识点:</label>
+	    							
 	    							<input type="text" class="form-control" id="knowledgeIpt" onchange="selKnowledge(this.value)" />
 	    						<button type="submit" class="btn btn-default searchbtn" 
 	    							onclick="doSearch()"><i class="fa fa-search"></i></button>
 	    						
 	    						</li>
-	    						<li>	    						</li>
+	    						
 	    						</ul>
 	    						
 	    					
