@@ -46,8 +46,8 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public List<Exam> loadMyExamsList(User sessionUser, int page) {
 		try {
-			return dao.findByHql("from Exam where locate(?, invitee)>0"
-					, new Object[]{sessionUser.getCollegeName()}
+			return dao.findByHql("from Exam where locate(?, invitee)>0 and periodStart<=? and periodEnd>=?"
+					, new Object[]{sessionUser.getCollegeName(), Tool.time(), Tool.time()}
 					, page);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -306,11 +306,11 @@ public class ExamServiceImpl implements ExamService {
 		try {
 			List<GradeVO> vos = dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
 					+ " from Grade g, User u, Paper p where p.sid=? and u.userId=g.userId and g.paperRef=?"
-					+ " order by g.point"
+					+ " order by g.point desc"
 					, new Object[]{sid, sid});
 			List<GradeVO> vos_order_inner_college = dao.findByHql("select new cn.examsys.lrx.vo.GradeVO(g, u, p)"
 					+ " from Grade g, User u, Paper p where p.sid=? and u.userId=g.userId and g.paperRef=? and u.collegeRef=?"
-					+ " order by g.point"
+					+ " order by g.point desc"
 					, new Object[]{sid, sid, sessionUser.getCollegeRef()});
 			for (int i = 0; i < vos.size(); i++) {
 				for (int j = 0; j < vos_order_inner_college.size(); j++) {

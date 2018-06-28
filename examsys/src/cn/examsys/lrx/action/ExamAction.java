@@ -14,15 +14,9 @@ import org.springframework.stereotype.Controller;
 import cn.examsys.adapters.DaoAdapter;
 import cn.examsys.bean.Answersheet;
 import cn.examsys.bean.Exam;
-import cn.examsys.bean.Grade;
 import cn.examsys.bean.Paper;
-import cn.examsys.bean.Question;
-import cn.examsys.bean.User;
-import cn.examsys.common.BeanAutoFit;
 import cn.examsys.common.CommonAction;
 import cn.examsys.lrx.service.ExamService;
-import cn.examsys.lrx.vo.GradeVO;
-import cn.examsys.lrx.vo.PaperWithExamVO;
 
 @Namespace("/")
 @ParentPackage("json-default")//非json时，则为"struts-default"
@@ -64,9 +58,11 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadMyExamList() {
-		DaoAdapter.COUNT_PER_PAGE = 5;
-		list = service.loadMyExamsList(getSessionUser(), page);
-		DaoAdapter.COUNT_PER_PAGE = 10;
+		if (!isLogin()) {
+			setResult("did not login");
+			return aa;
+		}
+		list = service.loadMyExamsList(getSessionUser(), 0);
 		System.out.println(getSessionUser());
 		//list = service.loadMyExamsList(getSessionUser(), page);
 		/*try {
@@ -87,6 +83,10 @@ public class ExamAction extends CommonAction {
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String loadPapersByExam() {
+		if (!isLogin()) {
+			setResult("did not login");
+			return aa;
+		}
 		DaoAdapter.COUNT_PER_PAGE = 5;
 		list = service.loadPapersByExam(getSessionUser(), exam.getSid(), page);
 		DaoAdapter.COUNT_PER_PAGE = 10;

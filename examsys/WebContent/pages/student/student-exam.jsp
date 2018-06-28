@@ -128,7 +128,7 @@
 				</div>
 				<div class="question">
 					<div id="no_${st.index}">
-						${st.index+1}. ${item.title} 
+						${st.index+1}.  &nbsp;&nbsp;&nbsp;${item.title} 
 						${(item.type=="Single")?"(单选题)":""}
 						${(item.type=="Multiple")?"(多选题)":""}
 						${(item.type=="TrueOrFalse")?"(判断题)":""}
@@ -139,31 +139,31 @@
 						<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("st1")).getIndex()+'A')); %>
 						<div class="option-item">
 							<s:if test="#item.type == 'Single'">
-								${optionLabel}. 
+								${optionLabel}.  &nbsp;&nbsp;
 								<input class="opt-together" type="radio" name="single${item.sid}"
-									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)" /> &nbsp;
 								${optItem.content}
 							</s:if>
 							<s:elseif test="#item.type == 'Multiple'">
-								${optionLabel}.
+								${optionLabel}. &nbsp; &nbsp;
 								<input class="opt-together" type="checkbox"
-									 onchange="doit(${item.sid}, ${optItem.sid}, this)" />
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)" /> &nbsp;
 								${optItem.content}
 							</s:elseif>
 							<s:elseif test="#item.type== 'Fills'">
-								<div>${st1.index+1}. ${optItem.content}</div>
+								<div>${st1.index+1}. &nbsp; &nbsp; ${optItem.content}</div>
 								<input type="text" class="opt-input"
-									 onchange="doit(${item.sid}, ${optItem.sid}, this)">
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)"> &nbsp;
 							</s:elseif>
 							<s:elseif test="#item.type == 'TrueOrFalse'">
-								<div>${st1.index+1}. ${optItem.content}</div>
+								<div>${st1.index+1}.  &nbsp; &nbsp;${optItem.content}</div> &nbsp; &nbsp;
 								<input class="opt-together" type="radio" name="tf${optItem.sid}"
-									 onchange="doit(${item.sid}, ${optItem.sid}, this, 1)">正确 
-								<input class="opt-together" type="radio" name="tf${optItem.sid}"
-									 onchange="doit(${item.sid}, ${optItem.sid}, this, 0)">错误
+									 onchange="doit(${item.sid}, ${optItem.sid}, this, 1)"> &nbsp;正确  &nbsp;
+								<input class="opt-together" type="radio" name="tf${optItem.sid}" 
+									 onchange="doit(${item.sid}, ${optItem.sid}, this, 0)"> &nbsp;错误 &nbsp;
 							</s:elseif>
 							<s:elseif test="#item.type == 'Subjective'">
-								<div>${st1.index+1}. ${optItem.content}</div>
+								<div>${st1.index+1}. &nbsp; &nbsp;${optItem.content}</div><br>
 								<textarea rows="4" cols="25" placeHolder="填写答案" style="padding:3px;width: 80%;height: 104px;"
 									 onchange="doit(${item.sid}, ${optItem.sid}, this)"></textarea>
 							</s:elseif>

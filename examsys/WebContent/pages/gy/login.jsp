@@ -72,18 +72,16 @@
 			} else { 
 				$.post("login",{"user.userId":Id,"user.psw":password},function(data) {
 					var user = data.user;
-				 	if(data.result=="未找到该账号！" ||data.result=="密码错误！" ){
+				 	if(data.result=="未找到该账号！" || data.result=="密码错误！" ){
 				 		return false;
 				 	}
 					if(user.type=="学生") {
-
 						window.location.href = "../student/student-main.jsp";
 					} else if(user.type=="教师") {
 						window.location.href = "../gy/jsshowpaper.jsp";
 					} else if(user.type=="教务") {
 						window.location.href = "../lxh/affair_index.jsp";
-					 }
-					else if(user.type=="管理员") {
+					} else if(user.type=="管理员" || user.type=="admin") {
 						window.location.href = "../gy/admin.jsp";
 				 	}
 				});

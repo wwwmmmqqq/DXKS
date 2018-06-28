@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="s" uri="/struts-tags" %>
            <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -197,15 +198,10 @@
 					<div class="selfexam">
 						<div class="exam-choose">
 							<label>请选择科目：</label>
-							<select class="form-control object-select" >
-								<option>请选择</option>
-								<option>软件工程导论</option>
-								<option>数据库概论</option>
-								<option value="">计算机导论</option>
-								<option value="">大学英语</option>
-								<option value="">四级英语</option>
+							<select class="form-control object-select" id="subjectRef" >
+								<option value="">所有</option>
 							</select>
-							<label>请选择课程章节：</label>
+							<!-- <label>请选择课程章节：</label>
 							<select class="form-control union-select" >
 								<option>请选择</option>
 								<option>第一章</option>
@@ -213,15 +209,15 @@
 								<option value="">第三章</option>
 								<option value="">第四章</option>
 								<option value="">第五章</option>
-							</select>
+							</select> -->
 							<label>请选择题型：</label>
-							<select class="form-control type-select" >
-								<option>请选择</option>
-								<option value="">单选题</option>
-								<option value="">填空题</option>
-								<option value="">填空题</option>
-								<option value="">多选题</option>
-								<option value="">简答题</option>
+							<select class="form-control type-select" id="questionType" >
+								<option value="">所有</option>
+								<option value="Single">单选题</option>
+								<option value="Multiple">多选题</option>
+								<option value="Fills">填空题</option>
+								<option value="TrueOrFalse">判断题</option>
+								<option value="Subjective">解答题</option>
 							</select>
 						</div>
 						<div class="self-exam-content">
@@ -230,55 +226,68 @@
 					<thead>
 						<tr>
 							<th>1.</th>
-							<th>(1分)</th>
-							<th>下列哪项不属于因为疫苗的本质因素而引起的不良反应：</th>
+							<th></th>
+							<th>${vo.question.title}</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td></td>
-							<td>A</td>
-							<td>
-								<input type="radio" />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>B</td>
-							<td>
-								<input type="radio" />疫苗生产过程中残留的微量的动物血清引起少数人过敏；
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>C</td>
-							<td>
-								<input type="radio" />疫苗运输过程中保存温度过低导致疫苗变质，接种后出现不良反应。
-							</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>D</td>
-							<td>
-								<input type="radio" />疫苗添加剂引起的过敏反应。
-							</td>
-						</tr>
-						<tr>
+						<s:iterator id="optItem" value="#request.vo.question.options" status="st1">
+						<%request.setAttribute("optionLabel", (char)(((org.apache.struts2.views.jsp.IteratorStatus)request.getAttribute("st1")).getIndex()+'A')); %>
+						<div class="option-item">
+							<s:if test="#item.type == 'Single'">
+								${optionLabel}.  &nbsp;&nbsp;
+								<input class="opt-together" type="radio" name="single${item.sid}"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)" /> &nbsp;
+								${optItem.content}
+							</s:if>
+							<s:elseif test="#item.type == 'Multiple'">
+								${optionLabel}. &nbsp; &nbsp;
+								<input class="opt-together" type="checkbox"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)" /> &nbsp;
+								${optItem.content}
+							</s:elseif>
+							<s:elseif test="#item.type== 'Fills'">
+								<div>${st1.index+1}. &nbsp; &nbsp; ${optItem.content}</div>
+								<input type="text" class="opt-input"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)"> &nbsp;
+							</s:elseif>
+							<s:elseif test="#item.type == 'TrueOrFalse'">
+								<div>${st1.index+1}.  &nbsp; &nbsp;${optItem.content}</div> &nbsp; &nbsp;
+								<input class="opt-together" type="radio" name="tf${optItem.sid}"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this, 1)"> &nbsp;正确  &nbsp;
+								<input class="opt-together" type="radio" name="tf${optItem.sid}" 
+									 onchange="doit(${item.sid}, ${optItem.sid}, this, 0)"> &nbsp;错误 &nbsp;
+							</s:elseif>
+							<s:elseif test="#item.type == 'Subjective'">
+								<div>${st1.index+1}. &nbsp; &nbsp;${optItem.content}</div><br>
+								<textarea rows="4" cols="25" placeHolder="填写答案" style="padding:3px;width: 80%;height: 104px;"
+									 onchange="doit(${item.sid}, ${optItem.sid}, this)"></textarea>
+							</s:elseif>
+						</div>
+					</s:iterator>
+					<!-- <tr>
+								<td></td>
+								<td>A</td>
+								<td>
+									<input type="radio" />减毒疫苗在体内复制繁殖引起类似自然感染的临床症状；
+								</td>
+							</tr>
+						<tr> 
 							<td></td>
 							<td></td>
 							<td><span>参考答案：</span>
 								<span>A</span>
-						</tr>
+						</tr>-->
 					</tbody>
 				</table>
 				<button class="que-label btn btn-primary">查看答案</button>
 				<div class="pre-next-quetion">
 					<ul class="pager">
-						<li class="previous">
+						<!-- <li class="previous">
 							<a href="#">&larr; 上一题</a>
-						</li>
+						</li> -->
 						<li class="next">
-							<a href="#">下一题 &rarr;</a>
+							<a href="javascript:next()">下一题 &rarr;</a>
 						</li>
 					</ul>
 				</div>
@@ -293,6 +302,27 @@
 <script type="text/javascript" src="js/jquery-confirm.js"></script>
 		<script type="text/javascript" src="js/com.js"></script>
 		<script type="text/javascript" src="js/toastr.js"></script>
+		
+		<script type="text/javascript">
+		loadSubjects();
+		function loadSubjects() {
+			$.post("loadSubjects", null, function(data) {
+				var li = data.list;
+				for(var i=0;i<li.length;i++) {
+					var opt = document.createElement("option");
+					opt.value = li[i].sid;
+					opt.innerText = li[i].name;
+					$(".object-select").get(0).appendChild(opt);
+				}
+			});
+		}
+		
+		function next() {
+			var questionType = $("#questionType").val();
+			var subjectRef = $("#subjectRef").val();
+			location.href = "randomQuestionPage?question.type="+questionType+"&question.subjectRef="+subjectRef;
+		}
+		</script>
 </body>
 
 </html>

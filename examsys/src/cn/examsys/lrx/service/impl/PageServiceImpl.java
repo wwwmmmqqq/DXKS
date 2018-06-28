@@ -1,6 +1,7 @@
 package cn.examsys.lrx.service.impl;
 
 import java.lang.reflect.Field;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -96,6 +97,18 @@ public class PageServiceImpl implements PageService {
 		}
 		return null;
 	}
+	
+	@Override
+	public int loadSearchQuestionsPage(User sessionUser, String type, String key) {
+		try {
+			BigInteger bi = dao.findOneBySql("select count(sid) from question_tb where userId=? and (type like ? and title like ?)"
+					, new Object[]{sessionUser.getUserId(), "%"+type+"%", "%"+key+"%"});
+			return bi.intValue();
+		} catch (Exception e) { 
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 	@Override
 	public List<Question> loadQuestionList(User sessionUser, int sid) {
@@ -158,5 +171,27 @@ public class PageServiceImpl implements PageService {
 		}
 		return null;
 	}
+
+	@Override
+	public QuestionCheckVO loadQuestionBy(int subjectRef, String type) {
+		int oldCount = dao.COUNT_PER_PAGE;
+		dao.COUNT_PER_PAGE = 1;
+		try {
+			QuestionCheckVO v = dao.findOneByHql("select new cn.examsys.lrx.vo.QuestionCheckVO(q, a, o)"
+					+ " from Question q, Answersheet a, Option o"
+					+ " where q.sid=a.questionRef and a.optionRef=o.sid"
+					+ " and q.subjectRef=? and q.type=? order by RAND()"
+					, new Object[]{subjectRef, type});
+			List<Option> optLi = dao.findByHql("from Option where questionRef=?"
+					, new Object[]{v.getQuestion().getSid()});
+			v.getQuestion().setOptions(optLi);
+			return v;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		dao.COUNT_PER_PAGE = oldCount;
+		return null;
+	}
+
 	
 }

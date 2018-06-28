@@ -145,10 +145,10 @@
 				        <input type="text" class="input_hide  form-control"  id="name1"  placeholder="姓名"/>
 				        <input type="text" class="input_hide form-control" id="department1"  placeholder="学院"/>
 				        <input type="text" class="input_hide form-control" id="profession1"  placeholder="专业"/>
-				        <select class="input_hide form-control" id ="sex1">
+				        <!-- <select class="input_hide form-control" id ="sex1">
 				             <option>男</option>
 				             <option>女</option>
-				        </select>
+				        </select> -->
 				        <button type="button" class="btn right_search" onclick="loadStudentList(1)">搜索</button>
 				       <button type="button" class="btn right_search" onclick="clean()">重置</button>
 			        </div>
@@ -770,15 +770,15 @@
 		var name=$('#name1').val();
 		var department=$('#department1').val();
 		var profession=$('#profession1').val();
-		var sex=$('#sex1').val();
+		//var sex=$('#sex1').val();
 		$.post("selectUserList",{
 			"user.type":"学生",
 			"page":page,
 			"user.userId":userId,
 			"user.name":name,
 			"user.department":department,
-			"user.profession":profession,
-			"user.sex":sex
+			"user.profession":profession
+			//"user.sex":sex
 			},function(data) {
 			var userList=data.userList;
 			  totalPage=data.totalPage;      

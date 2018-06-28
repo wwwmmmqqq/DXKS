@@ -244,14 +244,14 @@
 					<!-- 考试卡片 -->
 					</div>
 				
-					<ul class="pager">
+					<!-- <ul class="pager">
 						<li class="previous">
 							<a href="javascript:prePage()">&larr; 上一页</a>
 						</li>
 						<li class="next">
 							<a href="javascript:nextPage()">下一页&rarr;</a>
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 
 			</section>
@@ -305,6 +305,7 @@ function getPaper(obj){
 	if(!(t0<=t2 && t0>=t1)) {
 		timeBtn = "<button class='btn btn-primary start-exam' disabled data-toggle='modal' data-target='#start-exam'>开始考试</button>";
 	}
+	var totalTime = (new Date(obj.examEnd).getTime() - new Date(obj.examStart).getTime()) / 1000 / 60;
 	var htm=
 		"<ul class='paper-item'>"
 		+"<li>"
@@ -316,8 +317,8 @@ function getPaper(obj){
 			+"<div class='paper-body'>"
 				+"<span>总分："+obj.totalScore+"分</span>"
 				+"<span>及格："+obj.totalScore*0.6+"分</span>"
-				+"<span>"+obj.time+"</span>"
-				+"<span id='examend'>"+obj.examStart+" - "+obj.examEnd+"</span>"
+				+"<span>"+totalTime+"分钟</span>"
+				+"<span id='examend'>"+obj.examStart+" 到 "+obj.examEnd+"</span>"
 			+"</div>"
 		+"</div>"
 		+"<div class='exam-button'>"

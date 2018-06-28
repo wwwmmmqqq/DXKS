@@ -80,7 +80,7 @@
 				</div>
 				<div class="light_bottom">
 					<ul class="side_nav">
-					<a href="showItemBankListByUserJump?page=1"><li class="side_nav1 now">题库管理</li></a>
+					<a href="searchQuestions?page=1"><li class="side_nav1 now">题库管理</li></a>
 					<a href="history_teacher.jsp"><li class="side_nav1 ">查看成绩</li></a>
 					<a href="loadResponsibleQuestions?page=1"><li class="side_nav1 ">批阅试卷</li></a>
 				</div>
@@ -276,9 +276,9 @@
 		    				<div class="page_pagination">
 		    					<ul class="pagination">
 		    						<li class="page-item">
-		    							<a class="page-link" href="#">上一页</a>
+		    							<a class="page-link" href="javascript:prevPage()">上一页</a>
 		    						</li>
-		    						<li class="page-item">
+		    						<!-- <li class="page-item">
 		    							<a class="page-link" href="#">1</a>
 		    						</li>
 		    						<li class="page-item active">
@@ -286,12 +286,10 @@
 		    						</li>
 		    						<li class="page-item">
 		    							<a class="page-link" href="#">3</a>
-		    						</li>
+		    						</li> -->
 		    						<li class="page-item">
-		    							<a class="page-link" href="#">下一页</a>
+		    							<a class="page-link" href="javascript:nextPage()">下一页</a>
 		    						</li>
-		    						<input class="jump">
-		    						<button class="btn btn-primary btn_jump">跳转</button>
 		    					</ul>
 		    				</div>
 		    			</div>
@@ -751,6 +749,17 @@
 			location.href = "searchQuestions?page="+page+"&key="+key+"&type="+type;
 		}
 		
+		function nextPage() {
+			if(page < 4)
+				page ++;
+			search();
+		}
+		
+		function prevPage() {
+			if(page > 0)
+				page --;
+			search();
+		}
 		</script>
 	</body>
 	

@@ -50,8 +50,12 @@ public class PageAction extends CommonAction {
 		return list;
 	}
 	@Action(value="/startExam", results={
-			@Result(name="success", location="/pages/student/student-exam.jsp")})
+			@Result(name="success", location="/pages/student/student-exam.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
 	public String startExam() {
+		if (!isLogin()) {
+			return "login";
+		}
 		
 		queList = service.loadQuestionList(paper.getSid());
 		paper = service.loadPaper(paper.getSid());
@@ -65,16 +69,25 @@ public class PageAction extends CommonAction {
 	 * @return
 	 */
 	@Action(value="/loadMyGrades", results={
-			@Result(name="success", location="/pages/gy/history_teacher.jsp")})
+			@Result(name="success", location="/pages/gy/history_teacher.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
 	public String loadMyGrades() {
+		if (!isLogin()) {
+			return "login";
+		}
+		
 		list = service.loadGrades(getSessionUser(), page);
 		return aa;
 	}
 	
 	
 	@Action(value="/loadResponsibleQuestions", results={
-			@Result(name="success", location="/pages/gy/teacher_read.jsp")})
+			@Result(name="success", location="/pages/gy/teacher_read.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
 	public String loadResponsibleQuestions() {
+		if (!isLogin()) {
+			return "login";
+		}
 		list = service.loadResponsibleQuestions(getSessionUser()
 				, paper.getSid(), page);
 		return aa;
@@ -96,14 +109,22 @@ public class PageAction extends CommonAction {
 	}
 	
 	@Action(value="/searchQuestions", results={
-			@Result(name="success", location="/pages/gy/jsshowpaper.jsp")})
+			@Result(name="success", location="/pages/gy/jsshowpaper.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
 	public String searchQuestions() {
+		
+		if (!isLogin()) {
+			return "login";
+		}
+		
 		if (page == 0) {
 			page = 1;
 		}
 		System.out.println(key + ", " + type);
 		list = service.searchQuestions(getSessionUser(), type, key, page);
 		System.out.println(list.size());
+		int totalPage = service.loadSearchQuestionsPage(getSessionUser(), type, key);
+		request.setAttribute("totalPage", totalPage);
 		return aa;
 	}
 	
@@ -115,8 +136,13 @@ public class PageAction extends CommonAction {
 		this.examSid = examSid;
 	}
 	@Action(value="/loadHandConstitutePage", results={
-			@Result(name="success", location="/pages/lxh/affair_hand_volume.jsp")})
+			@Result(name="success", location="/pages/lxh/affair_hand_volume.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
 	public String loadHandConstitutePage() {
+		if (!isLogin()) {
+			return "login";
+		}
+
 		if (page == 0) {
 			page = 1;
 		}
@@ -143,13 +169,29 @@ public class PageAction extends CommonAction {
 	}
 	
 	@Action(value="/createNewQuestion", results={
-			@Result(name="success", location="/pages/gy/jsentryquestions.jsp") })
+			@Result(name="success", location="/pages/gy/jsentryquestions.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
 	public String createNewQuestion() {
+		if (!isLogin()) {
+			return "login";
+		}
 		System.out.println(Arrays.toString(options.toArray()));
 		boolean bo = service.saveQuestion(getSessionUser(), question, options);
 		if (!bo) {
 			setResult("fail");
 		}
+		return aa;
+	}
+	
+	QuestionCheckVO vo;
+	public QuestionCheckVO getVo() {
+		return vo;
+	}
+	@Action(value="/randomQuestionPage", results={
+			@Result(name="success", location="/pages/student/student-self-exam.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
+	public String randomQuestionPage() {
+		vo = service.loadQuestionBy(question.getSubjectRef(), question.getType());
 		return aa;
 	}
 	

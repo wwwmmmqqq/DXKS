@@ -99,8 +99,12 @@ public class JumpAction extends CommonAction {
 	}
 	
 	@Action(value="/showItemBankListByUserJump"
-			,results={@Result(name="success",location="/pages/gy/jsshowpaper.jsp")})
+			,results={@Result(name="success",location="/pages/gy/jsshowpaper.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
 	public String showItemBankListByUser(){
+		if (!isLogin()) {
+			return "login";
+		}
 		/**
 		 * 数据测试
 		 */
@@ -139,9 +143,13 @@ public class JumpAction extends CommonAction {
 		return SUCCESS;
 	}
 	
-	@Action(value="/showItemBankListByTypeJump",results={@Result(name="success",location="/pages/gy/affair_hand_volume.jsp")})
+	@Action(value="/showItemBankListByTypeJump"
+			,results={@Result(name="success",location="/pages/gy/affair_hand_volume.jsp")
+			,@Result(name="login", location="/pages/gy/login.jsp")})
 	public String showItemBankListByType(){
-		
+		if (!isLogin()) {
+			return "login";
+		}
 		if(getSessionUser().getType().contains("admin")) {              //管理员查看类型所有
 			System.out.println("Action按类型查看"+question.getType());
 			questionList=itemBankService.selectItemQuestionListByType(question.getType(),page);

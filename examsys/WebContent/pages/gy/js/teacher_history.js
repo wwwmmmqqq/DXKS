@@ -80,6 +80,11 @@ var currentPage = 1;
 		return htm;
 	}
 	function getScore(paper,user,grade,i, order){
+		if(order == '0' || order == 0) {
+			order = "非本校";
+		} else {
+			order -= 1;
+		}
 		var htm=
 			"<tr>"
 		+"<td>"+i+"</td>"

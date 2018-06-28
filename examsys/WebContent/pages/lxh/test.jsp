@@ -11,11 +11,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
-		<link rel="stylesheet" href="css/inviteSchool.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/test.js" ></script>
+		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
 		
 	</head>
 	<body>
@@ -38,7 +34,7 @@
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
-					<!-- <div class="dropdown task">
+					<div class="dropdown task">
 						<button class="dropbtn">
 						    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						    	<i class="fa fa-tasks"></i>
@@ -46,10 +42,10 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_invite_teacher">邀请老师出卷</a>
-							<a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a>
+							<!-- <a href="#" data-toggle="modal" data-target="#myModal_invite_school">邀请学校考试</a> -->
 						</div>
-					</div> -->
-					<!-- <div class="dropdown task" >
+					</div>
+					<div class="dropdown task" >
 					<button class="dropbtn envolope">
 						<i class="fa fa-envelope envelope"></i>	
 						<span class="label-success "><i></i></span>
@@ -57,7 +53,7 @@
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 							<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
-						</div> -->
+						</div>
 				</div>
 				</div>
 			</nav>
@@ -76,39 +72,15 @@
 
 			</div>
 		  	<div class="light_bottom"> 
-			  	 <ul class="side_nav">
-		    			<a href="staffs_student.jsp">
-			    			<li class="side_nav1 ">
-								学生信息管理
-							</li>
-						</a>
-						<a href="staffs_teacher.jsp">
-							<li class="side_nav1">
-								教师信息管理
-							</li>
-						</a>
-						<a href="affair_index.jsp">
-							<li class="side_nav1">
-								试卷管理
-							</li> 
-						</a>
-						<!-- <li class="side_nav1">
-							<a href="affair_hand_volume.jsp">手动组卷</a>
-						</li>
-						<li class="side_nav1">
-							<a href="affair_intel_volume.jsp">智能组卷</a>
-						</li> -->
-						<a href="history_staffs.jsp">
-							<li class="side_nav1">
-								历史成绩
-							</li>
-						</a>
-						<a href="test.jsp">
-							<li class="side_nav1 now">
-								考次计划
-							</li>
-						</a>
-		    		</ul>
+			  	<ul class="side_nav">
+			  		<li class="side_nav1"><a href="staffs_student.jsp">学生信息管理</a></li>
+			  		<li class="side_nav1"><a href="staffs_teacher.jsp">教师信息管理</a></li>	
+			  		<li class="side_nav1"><a href="affair_index.jsp">试卷管理</a></li>
+			  		<!--<li class="side_nav1"><a href="affair_hand_volume.jsp">手动组卷</a></li>
+			  		 <li class="side_nav1"><a href="affair_intel_volume.jsp">智能组卷</a></li> -->
+			  		<li class="side_nav1"><a href="history_staffs.jsp">历史成绩</a></li>	
+			  		<li class="side_nav1"><a href="test.jsp">考次计划</a></li>	
+			  	</ul>
 		  </div>
 		</nav>
 		
@@ -138,18 +110,30 @@
 					</div>
 	         
 			   <div class="search_hide" id="hide">
+
                    <input type="text" class="input_hide1 form-control "  id="name1" placeholder="考试计划名称"/>
 				   <input type="text" class="input_hide form-control mydate" id="userId1"  placeholder="计划时间"/>
 				   <input type="text" class="input_hide form-control" id="userId1"  placeholder="受邀学校"/>
+				   <input type="text" class="stext hover form-control" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
+										<div id="choose-box-wrapper">
+											<div id="choose-box">
+												<div id="choose-box-title">
+													<span>选择学校</span>
+												</div>
+												<div id="choose-a-province"></div>
+												<div id="choose-a-school"></div>
+												<div id="choose-box-bottom">
+													<input type="botton" onclick="hide()" value="关闭" />
+												</div>
+											</div>
+										</div>
 				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
 				   <input type="reset" class="btn clean">
 			   </div>
           
-
 					
 			
 			<!--表格-->
-			<div>
 			<div class="tip">考试计划</div>
 			<table class="table table-striped tb1">
 				<thead class="thead-light">
@@ -184,7 +168,6 @@
 			        </tr>
 				</tbody>
 			</table>
-			 </div>
 				<!--<div class="bottom_button">
 					<button class="btn btn3" type="button" >全选</button>
 					<button class="btn btn4" type="button" >全不选</button>
@@ -201,8 +184,8 @@
 					    <li class="page-item active"><a class="page-link " href="#">2</a></li>
 					    <li class="page-item"><a class="page-link" href="#">3</a></li>
 					    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
-					   <!--  <input class="jump">
-					    <button class="btn btn-primary btn_jump">跳转</button> -->
+					    <input class="jump">
+					    <button class="btn btn-primary btn_jump">跳转</button>
 				  </ul>
 			  	</div>
 			
@@ -302,45 +285,33 @@
 								<tr>
 									<td>
 										姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}else{setCollege(this.value)}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
-										<div id="choose-box-wrapper" class="choose-box-wrapper">
-											<div id="choose-box" class="choose-box">
-												<div id="choose-box-title" class="choose-box-title">
-													<span>选择学校</span>
-												</div>
-												<div id="choose-a-province" class="choose-a-province"></div>
-												<div id="choose-a-school" class="choose-a-school"></div>
-												<div id="choose-box-bottom" class="choose-box-bottom">
-													<input type="botton" onclick="hide()" value="关闭" />
-												</div>
-											</div>
-										</div>
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
 								</tr>
-								<!-- <tr>
+								<tr>
 									<td>
 										专&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="hover form-control">
+										<input type="text" class="hover">
 									</td>
-								</tr> -->
+								</tr>
 							</tbody>
 						</table>
 		        </div>
@@ -379,19 +350,7 @@
 								<tr>
 									<td>
 										学&nbsp;&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="text" class="stext hover form-control school-name" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
-										<div id="choose-box-wrapper" class="choose-box-wrapper">
-											<div id="choose-box" class="choose-box">
-												<div id="choose-box-title" class="choose-box-title">
-													<span>选择学校</span>
-												</div>
-												<div id="choose-a-province" class="choose-a-province"></div>
-												<div id="choose-a-school" class="choose-a-school"></div>
-												<div id="choose-box-bottom" class="choose-box-bottom">
-													<input type="botton" onclick="hide()" value="关闭" />
-												</div>
-											</div>
-										</div>
+										<input type="text" class="hover">
 									</td>
 								</tr>
 								<tr>
@@ -427,20 +386,38 @@
 							   
 					 <!-- 模态框主体 -->
 					<div class="modal-body">
-						<form class="form-add-exam">
-				        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
-				        	<input type="text" class="hover form-control" id="ex_title">
-				       
-				        	
-				        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
-				        	<input type="text" class="hover form-control mydate" id="ex_periodStart">
-				       
-				        	
-				        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-				        	<input type="text" class="hover form-control mydate"  id="ex_periodEnd">
-				      
-						</form>	        	
-					</div>
+						<table >
+							<tbody>
+							    <tr>
+							        <td >
+							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
+							        	<input type="text" class="hover" id="ex_title">
+							        </td>
+							    </tr>
+							    <tr>			        				
+							        <td >
+							        	
+							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
+							        	<input type="text" class="hover" id="ex_periodStart">
+							        </td>
+							    </tr>
+							     <tr>			        				
+							        <td >
+							        	
+							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
+							        	<input type="text" class="hover" id="ex_periodEnd">
+							        </td>
+							     </tr>
+							        <tr>
+							        	<td >
+							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
+							        		<input type="text" class="hover" id="ex_invitee">
+							        	</td>
+							        </tr>
+							       
+							    </tbody>
+							</table> 
+						</div>
 							   
 					 <!-- 模态框底部 -->
 					<div class="modal-footer">
@@ -471,33 +448,33 @@
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;编&nbsp;号&nbsp;
-							        	<input type="text" class="hover form-control" readonly="readonly" id="exam_sid">
+							        	<input type="text" class="hover" readonly="readonly" id="exam_sid">
 							        </td>
 							    </tr>
 							    <tr>
 							        <td >
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
-							        	<input type="text" class="hover form-control" id="exam_title">
+							        	<input type="text" class="hover" id="exam_title">
 							        </td>
 							    </tr>
 							    <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover form-control mydate" id="exam_periodStart">
+							        	<input type="text" class="hover" id="exam_periodStart">
 							        </td>
 							    </tr>
 							     <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class=" hover form-control mydate" id="exam_periodEnd">
+							        	<input type="text" class="hover" id="exam_periodEnd">
 							        </td>
 							     </tr>
 							        <tr>
 							        	<td >
 							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
-							        		<input type="text" class="hover form-control" id="exam_invitee">
+							        		<input type="text" class="hover" id="exam_invitee">
 							        	</td>
 							        </tr>
 							       
@@ -623,8 +600,7 @@
 			      </div>
 			    </div>
 	  		</div>
-	  		
-	  	<!--阅卷通知-->
+	  		<!--阅卷通知-->
 		<div class="modal fade" id="myModal-exam-notice">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -663,7 +639,7 @@
 				</div>
 			</div>
 		</div>
-	  	
+	  		
 
 		<!--邀请组卷拒绝模态框-->
 		 <div class="modal fade" id="myModal_email_refuse">
@@ -692,14 +668,12 @@
 		      </div>
 		    </div>
 		  </div>
-		<script type="text/javascript" src="js/school.js"></script>
-	<script type="text/javascript" src="js/inviteSchool.js" ></script>
-	<script type="text/javascript" src="js/test.js" ></script>
-	<script type="text/javascript" src="js/jquery.date.js" ></script>
-	<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
-	<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/test.js" ></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 	</body>
-	
 <script>
 loadMyExamList(1);
 var currentPage=1;
@@ -726,7 +700,8 @@ function loadMyExamList(page) {
 
 
 function getItemHtml(index,obj,number){
-	var htm="<tr class='tb_width'>"
+	var htm="<tr class='tb_width' id='exam"+obj.sid+"'>"
+
 	+"<td>"+obj.sid+"</td>"
 	+"<td>"+obj.title+"</td>"
 	+"<td>"+obj.time+"</td>"
@@ -735,27 +710,13 @@ function getItemHtml(index,obj,number){
 	+"<td>"+obj.invitee+"</td>"
 	+"<td>"+obj.explication+"</td>"
 	+"<td>"+obj.state+"</td>"
-	+"<td id='volume'>"
-	+"<a href='affair_hand_volume.jsp?exam.sid="+obj.sid+"'>手动组卷</a></li>"
-	+"<a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a></li>"
-	+"</td>"
-	+"<td id='operate'>"
+	+"<td>"
 	+"<i class='fa fa-pencil check' data-toggle='modal' data-target='#myModal_check' onclick='examPlanInfo(this)' ></i>"
-	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><br>"
-	/* +" <a href='loadHandConstitutePage?examSid="+obj.sid+"'>手动组卷</a>" */
-	+" <a href='javascript:readyInvite("+obj.sid+",\""+obj.invitee+"\");'  data-toggle='modal' data-target='#myModal_invite_school'>邀请学校</a></td>"
+	+"<i class='fa fa-trash-o' onclick='deleteExam("+obj.sid+")'></i><a href='affair_intel_volume.jsp?exam.sid="+obj.sid+"'>智能组卷</a>"
+	+" <a href='loadHandConstitutePage?examSid="+obj.sid+"'>手动组卷</a>"
+	+" <a href='javascript:inviteCollege("+obj.sid+",\""+obj.invitee+"\");'>邀请学校</a></td>"
 	+"</tr>"; 
     return htm;
-
-}
-var obj_sid = "";
-var obj_invitee = "";
-function setCollege(college) {
-	inviteCollege(obj_sid, obj_invitee, college);
-}
-function readyInvite(a,b) {
-	obj_sid = a;
-	obj_invitee = b;
 }
 function getLiHtml(index) {
 	if(index==1){
@@ -841,21 +802,7 @@ function examPlanInfo(node) {
 	return info;
 } 
  */
- function createExamPlan() {
-	/*  $(".form-add-exam").form("clear"); */
-		$.post("createExamPlan",
-				 {	
-			        "exam.title":$('#ex_title').val(), 
-			        "exam.periodStart":$('#ex_periodStart').val(), 
-			        "exam.periodEnd":$('#ex_periodEnd').val(), 
-			        "exam.invitee":$('#ex_invitee').val()
-			},function(data){
-				location.href="test.jsp";
-			
-			})
-}
-/* function createExamPlan() {
-	 $(".form-add-exam").form("clear");
+function createExamPlan() {
 		$.post("createExamPlan",
 				 {	
 			        "exam.title":$('#ex_title').val(), 
@@ -867,15 +814,16 @@ function examPlanInfo(node) {
 				location.href="test.jsp";
 			
 			})
-} */
+}
 function editExamPlan() {
 	$.post("editExamPlan",
 				{	"exam.sid":$('#exam_sid').val(),
 					"exam.title":$('#exam_title').val(),
 					"exam.periodStart":$('#exam_periodStart').val(),
 					"exam.periodEnd":$('#exam_periodEnd').val(),
-					"exam.invitee":""//$('#exam_invitee').val(),
+					"exam.invitee":$('#exam_invitee').val(),
 				},function(data) {
+					alert(data.result);
 				  	location.href="test.jsp";
 				
 		  })
@@ -883,9 +831,10 @@ function editExamPlan() {
 }
 function deleteExamPlan(node) {
 	var td = node.parentNode.parentNode.childNodes;
-	var sid = td[0].innerHTML;
+	var sid = td[0].innerHTML;alert(sid);
 	if(confirm("确定要删除该考次吗？")) {
 		$.post("deleteExamPlan",{"exam.sid":sid},function(data) {
+			     alert(data.result);
 				location.href="test.jsp";
 			
 	  }); 
@@ -903,10 +852,10 @@ function Out() {
 	}  
 }
 
-function inviteCollege(sid, colleges, college) {
-	//var college = prompt("添加邀请的学校");
+function inviteCollege(sid, colleges) {
+	var college = prompt("添加邀请的学校");
 	if(colleges.indexOf(college)>=0) {
-		toastr.success(college + "已被邀请");
+		alert(college + "已被邀请");
 	} else {
 		if(college != null) {
 			$.post("invite", {
@@ -914,7 +863,7 @@ function inviteCollege(sid, colleges, college) {
 				"text":college
 			}, function(data) {
 				if(data.result == "success") {
-					toastr.success("邀请成功");
+					alert("邀请成功");
 					location.reload();
 				}
 			});
@@ -930,7 +879,7 @@ function deleteExam(sid) {
 			if(data.result == "success") {
 				$("#exam"+sid).remove();
 			} else {
-				toastr.error("删除失败");
+				alert("删除失败");
 			}
 		});
 	}
@@ -940,7 +889,7 @@ function checkInput() {
 	var fill=ture;
 	$("#editStudent input[type=text]").each(function() {
 		if($(this).val()=="") {
-			toastr.warning("请将信息填写完整");
+			alert("请将信息填写完整");
 			fill=ture;
 		}
 	});
@@ -962,19 +911,6 @@ $("#find").click(function(){
 		}); */
 });
 
-$.datetimepicker.setLocale('ch');
-$('.mydate').datetimepicker({
-	yearStart : 2018, // 设置最小年份
-	yearEnd : 2030, // 设置最大年份
-	yearOffset : 0, // 年偏差
-	timepicker : true, // 关闭时间选项
-	format : 'Y-m-d h:m', // 格式化日期年-月-日
-	minDate : new Date(), // 设置最小日期
-	maxDate : '2030/01/01', // 设置最大日期
-});
-
-
-
 </script>
-	
+<script type="text/javascript" src="js/test.js" ></script>
 </html>

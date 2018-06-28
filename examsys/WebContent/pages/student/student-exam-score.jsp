@@ -217,14 +217,14 @@
 					</table>
 					</div>
 					<div class="exam-page">
-					<ul class="pager">
+					<!-- <ul class="pager">
 						<li class="previous">
 							<a href="javascript:prePage()">&larr; 上一页</a>
 						</li>
 						<li class="next">
 							<a href="javascript:nextPage()">下一页&rarr;</a>
 						</li>
-					</ul>
+					</ul> -->
 					</div>
 				</div>
 
@@ -264,11 +264,11 @@
 			var htm=
 				"<tr>"
 			+"<td>"+(i+1)+"</td>"
-			+"<td>"+grade.subjectName+"</td>"
+			+"<td>"+paper.subjectName+"</td>"
 			+"<td>"+paper.totalScore+"</td>"
 			+"<td>"+paper.totalScore*0.6+"</td>"
-			+"<td>"+grade.score+"</td>"
-			+"<td>"+grade.score/grade.totalScore+"</td>"
+			+"<td>"+grade.point+"</td>"
+			+"<td>"+Math.floor(grade.point/paper.totalScore * 100)+"%</td>"
 			+"<td>"+grade.time+"</td>"
 			+"</tr>"
 			return htm;

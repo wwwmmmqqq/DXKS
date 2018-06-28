@@ -30,5 +30,8 @@ public interface PageService {
 
 	List<Question> searchQuestionsHandConstitute(User sessionUser, String type, String key, int page);
 
+	int loadSearchQuestionsPage(User sessionUser, String type, String key);
+
+	QuestionCheckVO loadQuestionBy(int subjectRef, String type);
 	
 }

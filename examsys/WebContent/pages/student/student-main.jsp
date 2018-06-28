@@ -225,6 +225,9 @@ loadMyExamList(0);
 /*加载考次列表*/
 function loadMyExamList(page) {
 	  $.post("loadMyExamList", {"page":page}, function(data){
+		  if(data.result == "did not login") {
+			  location.replace('../gy/login.jsp');
+		  }
 		  var examList = data.list;
 		  var htm = "";
 		  for(var i=0;i<examList.length;i++){

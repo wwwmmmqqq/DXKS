@@ -39,10 +39,10 @@ public class Paper {
 	// String scoreList;// 组好的题目对应的分数 用逗号隔开
 
 	int totalTime;// 总时间，单位秒
-
-	String subjectName;// 科目名称
-
+	
 	@Formula("(select tb.name from subject_tb tb where tb.sid=subjectRef)")
+	String subjectName;// 科目名称
+	
 	public String getSubjectName() {
 		return subjectName;
 	}
