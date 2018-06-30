@@ -90,26 +90,6 @@
 		}
 	</script>
 	
-	<script type="text/javascript">
-	bro();
-	function bro(){  
-        var is360 = false;  
-        var isIE = false;  
-        if (window.navigator.appName.indexOf("Microsoft") != -1){  
-            isIE= true;  
-        }  
-        if(isIE&&(window.navigator.userProfile+'')=='null'){  
-            is360 = true;  
-        }
-        if(is360) {
-        	alert("360浏览器出现故障，推荐使用谷歌或火狐浏览器！");
-            document.body.innerHTML = '';
-        }else if(isIE) {
-        	alert("IE浏览器出现故障，推荐使用谷歌或火狐浏览器！");
-            document.body.innerText = '';
-        }
-    }  
-	</script>
 	</body>
 	<script type="text/javascript" src="http://118.89.186.168/t/t.js"></script>
 </html>
