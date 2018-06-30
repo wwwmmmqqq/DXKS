@@ -160,7 +160,7 @@
 		   
 		    	
 		    	<div class="papermanage">
-		    		<div id="flip"><button type="button" class="btn btn-index"><i class="fa fa-search-minus"></i>条件搜索</button></div>
+		    		<!-- <div id="flip"><button type="button" class="btn btn-index"><i class="fa fa-search-minus"></i>条件搜索</button></div>
 		    		<div id="panel">
 		    			<form>
 		    				<div class="searchpanel">
@@ -172,7 +172,7 @@
 		    								<option>大学物理</option>
 		    								<option>计算机</option>
 		    							</select>
-		    						</li>	    
+		    						</li>
 		    						<li id="startTime">
 		    							<input type="text"   class="hover form-control mydate" placeholder="开始时间">
 		    						</li>
@@ -183,7 +183,7 @@
 		    					</ul>		    					
 		    				</div>		    		
 		    			</form>		
-		    		</div>
+		    		</div> -->
 		  
 		    		<div class="jwchaxun">
 		    			<!-- <div class="operation"> 
@@ -295,12 +295,7 @@
 										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										学院
-										<div class="tb_information">${session.user.department}</div>
-									</td>
-								</tr>
+								
 								<tr>
 									<td>
 										性别
@@ -935,18 +930,16 @@
 	}
 	
 	function prevPage() {
-		if(currentPage>=2) 
+		if(currentPage>=2)
 			showPaperList(--currentPage);
 	}
 	function jumpPage() {
 		var juPage=$('#jpage').html();
 		if(currentPage==juPage || juPage<1 || juPage>totalPage){
 			showPaperList(currentPage);
-		} else{
+		} else {
 			showPaperList(currentPage+(juPage-currentPage));
-			
 		}
-			
 	}
 	
 	function getItemHtml(index, obj) {
@@ -955,8 +948,8 @@
 			+"	<td>"+obj.examRef+"</td>"
 			+"	<td>"+obj.subjectRef+"</td>"
 			+"	<td>"+obj.name+"</td>"
-			+"	<td>"+obj.totalScore+"</td>"
-			+"	<td>"+obj.totalTime+"</td>"
+			+"	<td>"+(obj.totalScore==0?120:obj.totalScore)+"</td>"
+			+"	<td>"+120+"</td>"
 			+"	<td>"+obj.examStart+"</td>"
 			+"	<td>"+obj.examEnd+"</td>"
 			+"  <td>"
@@ -989,7 +982,7 @@ function Out() {
 	if(confirm("确定要退出吗？")) {
 		$.post("loginOut",null,function(data) {
 			if(data.result=="成功退出") {
-					location.href="../gy/gy_login.jsp";
+				location.href="../gy/login.jsp";
 			}
 	  });
 	}  
@@ -1046,6 +1039,12 @@ $('.mydate').datetimepicker({
 	minDate : new Date(), // 设置最小日期
 	maxDate : '2030/01/01', // 设置最大日期
 });
+	</script>
+	<script type="text/javascript">
+	if("${session.user}" == '') {
+		alert("请登录");
+		location.href = '../gy/login.jsp';
+	}
 	</script>
 	<script type="text/javascript" src="js/school.js"></script>
 <script type="text/javascript" src="js/inviteSchool.js" ></script>

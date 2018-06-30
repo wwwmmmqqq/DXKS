@@ -37,16 +37,14 @@ public class LoginAction extends CommonAction{
 	public String login(){
 		String pass=user.getPsw();
 		user=loginService.login(user.getUserId());
-		System.out.println("123");
-		if(user.getUserId()==null||user.getStatus()=="封禁"){
+		
+		if(user==null || user.getUserId()==null||user.getStatus()=="封禁"){
 			setResult("未找到该账号！");
 		}else if(!pass.equals(user.getPsw())) {		
 			setResult("密码错误！");
-		}
-		else{
+		} else {
 			saveLogin(user);
 		}
-		
 		return aa;
 	}
 	

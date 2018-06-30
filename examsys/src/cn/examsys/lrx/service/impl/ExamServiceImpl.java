@@ -46,8 +46,8 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public List<Exam> loadMyExamsList(User sessionUser, int page) {
 		try {
-			return dao.findByHql("from Exam where locate(?, invitee)>0 and periodStart<=? and periodEnd>=?"
-					, new Object[]{sessionUser.getCollegeName(), Tool.time(), Tool.time()}
+			return dao.findByHql("from Exam where locate(?, invitee)>0 order by sid desc"
+					, new Object[]{sessionUser.getCollegeName() }
 					, page);
 		} catch (Exception e) {
 			e.printStackTrace();

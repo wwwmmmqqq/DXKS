@@ -350,4 +350,10 @@
 		    			<!-- /.modal -->
 		    		</div>	
 	</body>
+	<script type="text/javascript">
+	if("${session.user}" == '') {
+		alert("请登录");
+		location.href = '../gy/login.jsp';
+	}
+	</script>
 </html>

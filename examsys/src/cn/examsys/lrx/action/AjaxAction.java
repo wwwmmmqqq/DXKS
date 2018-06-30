@@ -158,6 +158,13 @@ public class AjaxAction extends CommonAction {
 		return aa;
 	}
 	
+	@Action(value="/addCollege"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String addCollege() {
+		return aa;
+	}
+	
 	@Override
 	public String getResult() {
 		return result;

@@ -22,7 +22,6 @@
             <link href="css/lxhstyle1.css" rel="stylesheet" type="text/css" />
             <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
             <link href="css/toastr.css" rel="stylesheet" type="text/css" />
-            
 	</head>
 	<body>
 		<section class="navgationandhead">
@@ -144,74 +143,6 @@
 	    		</div>
 	    		</form>
 		    </div>
-		    <script type="text/javascript">
-		    var nextLabel = 1;
-		    var questionType = "Single";
-		    var whichAttr = "isAnswer";//option的哪个属性  根据题目类型来
-		    function setQuestionType(s) {
-		    	if(questionType != s) {
-			    	$("#option-box").html("");
-			    	$("#answer-box").html("答&nbsp;&nbsp;案&nbsp;");
-			    	nextLabel = 1;
-		    	}
-		    	
-		    	if("Fills" == questionType) {
-		    		whichAttr = "fillsText";
-		    	} else if("Subjective" == questionType) {
-		    		whichAttr = "subjectiveText";
-		    	}
-		    	
-		    	$("#addMoreBtn").hide();
-		    	if("Fills".indexOf(s)>=0) {
-		    		$("#option-box").html("");
-		    		$("#answer-box").html("答&nbsp;&nbsp;案&nbsp;<input name='options["+(nextLabel-1)+"].fillsText'/>");
-		    	} else if(s == "TrueOrFalse"){
-		    		$("#option-box").html("");
-		    		var optHtm = "<label><input type='radio' name='options["+(nextLabel-1)+"].isAnswer' value='1' style='width: 23px;height:23px;margin-left:20px' > 对</label>"
-		    						+"<label><input type='radio' name='options["+(nextLabel-1)+"].isAnswer' value='0' style='width: 23px;height:23px;' > 错</label>"
-		    		$("#answer-box").html("答&nbsp;&nbsp;案&nbsp;"+optHtm);
-		    	} else if(s == "Subjective"){
-		    		$("#option-box").html("");
-		    		$("#answer-box").html("答&nbsp;&nbsp;案&nbsp;<textarea name='options["+(nextLabel-1)+"].subjectiveText' rows='3' cols='26'></textarea>");
-		    	} else {
-		    		$("#addMoreBtn").show();
-		    	}
-		    	
-		    	questionType = s;
-		    	
-		    	$("#question_type").val(s);
-		    }
-		    
-		    function addMoreOption() {
-		    	
-		    	var sLabel = nextLabel;
-		    	if("Single Multiple".indexOf(questionType)>=0) {
-		    		sLabel = String.fromCharCode(nextLabel + 'A'.charCodeAt() - 1);
-		    	}
-		    	
-		    	var optionType = "radio";
-		    	if("Multiple" == questionType) {
-		    		optionType = "checkbox";
-		    	}
-		    	
-		    	
-		    	var optItem = "<div id='opt"+(nextLabel-1)+"' style='margin-bottom: 5px'>"+sLabel+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-							    + "	<input class='form-control' type='text' name='options["+(nextLabel-1)+"].content' />"
-							    + "</div>";
-				var labelItem = "<label style='margin-left: 20px;font-size: 24px;color: gray;'><input type='"+optionType+"' name='options["+(nextLabel-1)+"]."+whichAttr+"' value='1' "
-					+ " class='choose1' style='width: 20px;height: 20px;'/> "+sLabel+"</label>";
-				
-				$("#option-box").get(0).innerHTML += optItem;
-				$("#answer-box").get(0).innerHTML += labelItem;
-				
-				nextLabel ++;
-		    }
-		    
-		    if("${result}"!="") {
-		    	alert('${result=="success"?"提交成功":"提交失败"}');
-		    }
-		    
-		    </script>
 		    			
 		    			<!--模态框-->
 			 <!--模态框查看个人信息-->
@@ -426,14 +357,12 @@
 				</div>
 			</div>
 		    
-		    
 		    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-		    <script type="text/javascript" src="js/toastr.js"></script>
+            <script type="text/javascript" src="js/toastr.js"></script>
+		    <script type="text/javascript" src="js/bootstrap.min.js"></script>
             <script type="text/javascript" src="js/jsentryquestions.js" ></script>
             <script type="text/javascript" src="js/jquery-confirm.js" ></script>
            
-            
             <script type="text/javascript">
             loadSubjectDatas()
             function loadSubjectDatas() {
@@ -448,6 +377,83 @@
             	});
             }
             </script>
+            
+            
+            
+            <script type="text/javascript">
+		    var nextLabel = 1;
+		    var questionType = "Single";
+		    var whichAttr = "isAnswer";//option的哪个属性  根据题目类型来
+		    function setQuestionType(s) {
+		    	if(questionType != s) {
+			    	$("#option-box").html("");
+			    	$("#answer-box").html("答&nbsp;&nbsp;案&nbsp;");
+			    	nextLabel = 1;
+		    	}
+		    	
+		    	if("Fills" == questionType) {
+		    		whichAttr = "fillsText";
+		    	} else if("Subjective" == questionType) {
+		    		whichAttr = "subjectiveText";
+		    	}
+		    	
+		    	$("#addMoreBtn").hide();
+		    	if("Fills".indexOf(s)>=0) {
+		    		$("#option-box").html("");
+		    		$("#answer-box").html("答&nbsp;&nbsp;案&nbsp;<input name='options["+(nextLabel-1)+"].fillsText'/>");
+		    	} else if(s == "TrueOrFalse"){
+		    		$("#option-box").html("");
+		    		var optHtm = "<label><input type='radio' name='options["+(nextLabel-1)+"].isAnswer' value='1' style='width: 23px;height:23px;margin-left:20px' > 对</label>"
+		    						+"<label><input type='radio' name='options["+(nextLabel-1)+"].isAnswer' value='0' style='width: 23px;height:23px;' > 错</label>"
+		    		$("#answer-box").html("答&nbsp;&nbsp;案&nbsp;"+optHtm);
+		    	} else if(s == "Subjective"){
+		    		$("#option-box").html("");
+		    		$("#answer-box").html("答&nbsp;&nbsp;案&nbsp;<textarea name='options["+(nextLabel-1)+"].subjectiveText' rows='3' cols='26'></textarea>");
+		    	} else {
+		    		$("#addMoreBtn").show();
+		    	}
+		    	
+		    	questionType = s;
+		    	
+		    	$("#question_type").val(s);
+		    }
+		    
+		    function addMoreOption() {
+		    	
+		    	var sLabel = nextLabel;
+		    	if("Single Multiple".indexOf(questionType)>=0) {
+		    		sLabel = String.fromCharCode(nextLabel + 'A'.charCodeAt() - 1);
+		    	}
+		    	
+		    	var optionType = "radio";
+		    	if("Multiple" == questionType) {
+		    		optionType = "checkbox";
+		    	}
+		    	
+		    	
+		    	var optItem = "<div id='opt"+(nextLabel-1)+"' style='margin-bottom: 5px'>"+sLabel+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+							    + "	<input class='form-control' type='text' name='options["+(nextLabel-1)+"].content' />"
+							    + "</div>";
+				var labelItem = "<label style='margin-left: 20px;font-size: 24px;color: gray;'><input type='"+optionType+"' name='options["+(nextLabel-1)+"]."+whichAttr+"' value='1' "
+					+ " class='choose1' style='width: 20px;height: 20px;'/> "+sLabel+"</label>";
+				
+				$("#option-box").get(0).innerHTML += optItem;
+				$("#answer-box").get(0).innerHTML += labelItem;
+				
+				nextLabel ++;
+		    }
+		    
+		    if("${result}"!="") {
+		    	if('${result}' == 'success') {
+		    		//jquery.js要在toastr.js前面
+		    		toastr.success("提交成功");
+		    	} else {
+		    		toastr.error("提交失败");
+		    	}
+		    }
+		    
+		    </script>
+            
             
             <script>
             

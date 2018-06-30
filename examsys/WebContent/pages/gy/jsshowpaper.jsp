@@ -40,18 +40,18 @@
 			<div class="banner">
 				<div class="dropdown users">
 					<button class="dropbtn">
-				    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				    				<i class="fa fa-user"></i>
-				    				<span>teacher <i class="caret"></i></span>
-				    			</a>    		
-				    	    </button>
+		    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		    				<i class="fa fa-user"></i>
+		    				<span>teacher <i class="caret"></i></span>
+		    			</a>    		
+		    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="#" >修改密码</a>
+						<!-- a href="#" >修改密码</a> -->
 						<a href="#" onclick="Out()" value="退出系统">退出系统</a>
 					</div>
 				</div>
-		
+				
 				<%-- <div class="dropdown notice">
 					<button class="dropbtn">
 				    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -735,6 +735,8 @@
 		var key = getParameter("key");
 		var type = getParameter("type");
 		
+		$("#keyInput").val(key);
+		
 		function searchKey(s) {
 			key = s;
 			search();
@@ -747,6 +749,11 @@
 		}
 		
 		function search() {
+			if(type == 'null' || type == null) {
+				type = "";
+			} else if(key == 'null' || key == null) {
+				key = "";
+			}
 			location.href = "searchQuestions?page="+page+"&key="+key+"&type="+type;
 		}
 		function nextPage() {

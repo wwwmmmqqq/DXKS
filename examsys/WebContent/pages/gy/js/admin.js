@@ -137,14 +137,14 @@ function administrationInfo(node) {
 		var user = data.user;
 		var info = getInfoHtml(user);
 		$('#administration-info-box').html(info);
-		var permission = user.permission;
+		/*var permission = user.permission;
 		if(permission!=null && permission.length>0) {
 			var strs=permission.split(" ");
 			var permission_answer = strs[0];
 			var permission_paper = strs[1];
 			$('#administration_permission_answer').val(permission_answer);
 			$('#administration_permission_paper').val(permission_paper);
-		}
+		}*/
 		
 		$('#administration_name').val(user.name);
 		$('#administration_sex').val(user.sex);
@@ -185,10 +185,10 @@ function getInfoHtml(obj) {
 		+"邮箱"
 		+"<div class='tb_information'>"+obj.email+"</div>"
 		+"</td></tr>"
-		+"<tr><td>"
+		/*+"<tr><td>"
 		+"权限"
 		+"<div class='tb_information'>"+obj.permission+"</div>"
-		+"</td></tr>"
+		+"</td></tr>"*/
 		;
 	return info;
 }

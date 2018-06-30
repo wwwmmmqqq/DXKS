@@ -69,30 +69,46 @@
 			if (Id=="" || password=="") {
 				toastr.warning("请输入信息");
 				return false;
-			} else { 
-				if("${session.user}"!="") {
-					location.href="../login.jsp";
-				}
-				else{
-					$.post("login",{"user.userId":Id,"user.psw":password},function(data) {
-						var user = data.user;
-					 	if(data.result=="未找到该账号！" || data.result=="密码错误！" ){
-					 		return false;
-					 	}
-						if(user.type=="学生") {
-							window.location.href = "../student/student-main.jsp";
-						} else if(user.type=="教师") {
-							window.location.href = "../gy/jsshowpaper.jsp";
-						} else if(user.type=="教务") {
-							window.location.href = "../lxh/affair_index.jsp";
-						} else if(user.type=="管理员" || user.type=="admin") {
-							window.location.href = "../gy/admin.jsp";
-					 	}
-					});
-				}
-				
+			} else {
+				$.post("login",{"user.userId":Id,"user.psw":password},function(data) {
+					var user = data.user;
+				 	if(data.result=="未找到该账号！" || data.result=="密码错误！" ){
+				 		toastr.warning(data.result);
+				 		return false;
+				 	}
+					if(user.type=="学生") {
+						window.location.href = "../student/student-main.jsp";
+					} else if(user.type=="教师") {
+						window.location.href = "../gy/jsshowpaper.jsp";
+					} else if(user.type=="教务") {
+						window.location.href = "../lxh/affair_index.jsp";
+					} else if(user.type=="管理员" || user.type=="admin") {
+						window.location.href = "../gy/admin.jsp";
+				 	}
+				});
 			}
 		}
+	</script>
+	
+	<script type="text/javascript">
+	bro();
+	function bro(){  
+        var is360 = false;  
+        var isIE = false;  
+        if (window.navigator.appName.indexOf("Microsoft") != -1){  
+            isIE= true;  
+        }  
+        if(isIE&&(window.navigator.userProfile+'')=='null'){  
+            is360 = true;  
+        }
+        if(is360) {
+        	alert("360浏览器出现故障，推荐使用谷歌或火狐浏览器！");
+            document.body.innerHTML = '';
+        }else if(isIE) {
+        	alert("IE浏览器出现故障，推荐使用谷歌或火狐浏览器！");
+            document.body.innerText = '';
+        }
+    }  
 	</script>
 	</body>
 

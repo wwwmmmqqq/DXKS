@@ -229,11 +229,7 @@
 									<div class="tb_information">${session.user.collegeName}</div>
 								</td>
 							</tr>
-							<tr>
-								<td>学院
-									<div class="tb_information">${session.user.department}</div>
-								</td>
-							</tr>
+							
 							<tr>
 								<td>性别
 									<div class="tb_information">${session.user.sex}</div>
@@ -408,6 +404,11 @@
 							<tr>
 								<td>联系方式&nbsp; <input type="text" onblur="checkPhone()"
 									class="hover form-control" id="teacher_phone" name="user.phone">
+								</td>
+							</tr>
+							<tr>
+								<td>电子邮件&nbsp; <input type="text" onblur="checkEmail()"
+									class="hover form-control" id="teacher_email" name="user.email">
 								</td>
 							</tr>
 
@@ -800,7 +801,8 @@
 			$('#teacher-info-box').html(info);
 			
 			$('#teacher_name').val(user.name);
-			$('#teacher_sex').find("."+user.sex).attr("checked", "checked");
+			/* $('#teacher_sex').find("."+user.sex).attr("checked", "checked"); */
+			 $('#teacher_sex').val(user.sex);
 			$('#teacher_userId').val(user.userId);
 			$('#teacher_collegeName').val(user.collegeName);
 			$('#teacher_department').val(user.department);
@@ -808,7 +810,8 @@
 			$('#teacher_classroom').val(user.classroom);
 			$('#teacher_idcard').val(user.idcard);
 			$('#teacher_phone').val(user.phone);
-		})
+			$('#teacher_email').val(user.email);
+		});
 	}	
 	function getInfoHtml(obj) {
 		var info = "<tr>"
@@ -893,12 +896,9 @@
 					 		"user.phone":$('#te_phone').val(),
 					 		"user.psw":"000000"
 					 	},function(data){
-					 		
-					 		/* alert("hhh");
-					 		alert("UserName="+data.user.name+"----UserSex="+data.user.sex+"-----phone="+data.user.phone);  */
 					 		toastr.success(data.result);
 					 		location.href="staffs_teacher.jsp";
-						 })
+						 });
 			}
 	 
 	}
@@ -917,6 +917,18 @@
 		
 	        return true;
 	    }
+	function checkEmail(){    
+		var id = $("#teacher_email").val();
+		//焦点移除的时候进行验证
+		var myid =/^\w+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
+		if(!myid.test(id)) {
+	        	//如果邮箱的格式与正则的不符合，就提醒
+	        	toastr.error("邮箱格式有误");        
+	               return false;
+	           }
+	        return true;
+	      
+	    }
 	function checkIdCard(){    
 		var id = $("#teacher_idcard").val();
 		//焦点移除的时候进行验证
@@ -931,7 +943,7 @@
 	    }
 
        	   function editTeacher() {
-	       		if( !checkIdCard()||!checkPhone() ){
+	       		if( !checkIdCard()||!checkPhone()||!checkEmail() ){
 	    			return;
 	    		}
 
@@ -943,7 +955,6 @@
 	    				return;
 	    			}
 	    		});
-					
 					if(bo) {
     				$.post("editUser",
        						{	
@@ -954,7 +965,8 @@
        							"user.department":$('#teacher_department').val(),
        							"user.profession":$('#teacher_profession').val(),
        							"user.idcard":$('#teacher_idcard').val(),
-       							"user.phone":$('#teacher_phone').val()
+       							"user.phone":$('#teacher_phone').val(),
+       							"user.email":$('#teacher_email').val()
        						},function(data) {
        							toastr.success(data.result);
        						  	location.href="staffs_teacher.jsp";
@@ -1005,6 +1017,7 @@
 		$('#name2').val('');
 		$('#department2').val('');
 		$('#profession2').val('');
+		$('#college2').val('');
 		//$('#sex2').val('');
 		loadTeacherList(1)
 	}
@@ -1030,5 +1043,11 @@
 			$("#class1").slideToggle("slow");
 		});*/
 });
+</script>
+<script type="text/javascript">
+if("${session.user}" == '') {
+	alert("请登录");
+	location.href = '../gy/login.jsp';
+}
 </script>
 </html>

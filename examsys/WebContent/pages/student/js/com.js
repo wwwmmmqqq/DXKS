@@ -78,7 +78,7 @@ function checkIdCard(){
 function modiInfo(){
 	var sid=$('.info-body input[name="user.userId"]').val();
 	var sname=$('.info-body input[name="user.name"]').val();
-	var ssex=$('.info-body input[name="user.sex"]').val();
+	var ssex=$('.info-body select[name="user.sex"]').val();
 	var scollegeName=$('.info-body input[name="user.collegeName"]').val();
 	var sdepartment=$('.info-body input[name="user.permission"]').val();
 	var sprofession=$('.info-body input[name="user.profession"]').val();
@@ -99,7 +99,7 @@ function modiInfo(){
 		"user.phone":sphone,
 		"user.email":semail
 	}, function(data) {
-		toastr.success("密码修改成功！");
+		toastr.success("信息修改成功！");
 	})
 }
 

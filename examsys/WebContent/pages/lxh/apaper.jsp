@@ -52,7 +52,7 @@
 						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
-				<div class="dropdown task">
+				<%-- <div class="dropdown task">
 					<button class="dropbtn">
 				    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				    				<i class="fa fa-tasks"></i>
@@ -75,7 +75,7 @@
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">阅卷通知</a>
 					</div>
-				</div>
+				</div> --%>
 		
 			</div>
 			<!-- head end -->
@@ -261,7 +261,7 @@
 		    			<!-- 试卷管理 end -->
 		    			
 		    			
-		    			<div class="page_pagination">
+		    			<!-- <div class="page_pagination">
 		    				<ul class="pagination">
 		    					<li class="page-item">
 		    						<a class="page-link" href="#">上一页</a>
@@ -281,7 +281,7 @@
 		    					<input class="jump">
 		    					<button class="btn btn-primary btn_jump">跳转</button>
 		    				</ul>
-		    			</div>
+		    			</div> -->
 		    			
 		    			
 		    		</div>	
@@ -330,12 +330,7 @@
 										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										学院
-										<div class="tb_information">${session.user.department}</div>
-									</td>
-								</tr>
+								
 								<tr>
 									<td>
 										性别
@@ -726,6 +721,14 @@
 			}
 		});
 	}
+	</script>
+	<script type="text/javascript">
+	if("${session.user}" == '') {
+		alert("请登录");
+		location.href = '../gy/login.jsp';
+	}
+	
+	
 	</script>
 	<script type="text/javascript" src="js/school.js"></script>
 <script type="text/javascript" src="js/inviteSchool.js" ></script>

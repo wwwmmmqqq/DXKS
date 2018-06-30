@@ -150,7 +150,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "q"+sid+" " + ((options!=null)?Arrays.toString(options.toArray()):"nil");
+		return "q"+sid+" "+ subjectRef ;//+ "," + ((options!=null)?Arrays.toString(options.toArray()):"nil");
 	}
 	
 }

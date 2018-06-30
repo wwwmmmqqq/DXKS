@@ -33,7 +33,7 @@
 							</a>
 						</button>
 						<div class="dropdown-content">
-							<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
+							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
@@ -222,12 +222,7 @@
 										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										学院
-										<div class="tb_information">${session.user.department}</div>
-									</td>
-								</tr>
+								
 								<tr>
 									<td>
 										性别
@@ -679,9 +674,9 @@
 			+"<td>1</td>"
 			+"<td>"+user.userId+"</td>"
 			+"<td>"+user.name+"</td>"
-			+"<td>软件学院</td>"
+			+"<td>"+user.department+"</td>"
 			+"<td>"+user.profession+"</td>"
-			+"<td>一班</td>"
+			+"<td>"+user.classroom+"</td>"
 			+"<td>"+paper.subjectName+"</td>"
 			+"<td>"+grade.point+"</td>"
 			+"<td>"+i+"</td>"
@@ -753,5 +748,21 @@
 			});
 		});
 		
+	</script>
+	<script type="text/javascript">
+	if("${session.user}" == '') {
+		alert("请登录");
+		location.href = '../gy/login.jsp';
+	}
+	function Out() {
+		if(confirm("确定要退出吗？")) {
+			$.post("loginOut",null,function(data) {
+				if(data.result=="成功退出") {
+						location.href="../gy/login.jsp";
+				}
+		  });
+		}  
+	}
+	
 	</script>
 </html>

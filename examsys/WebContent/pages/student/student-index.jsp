@@ -40,7 +40,7 @@
 							</li>
 							<div class="dropdown-content">
 		    			<a href="javascript:setPassword()">修改密码</a>
-		    			<a >退出系统</a>
+		    			<a  href="javascript:Out()">退出系统</a>
 		    		</div>
 						</ul>
 						
@@ -114,57 +114,61 @@
 								<tr class="basic-info">
 									<td>学号：</td>
 									<td>
-								
 										<input type="text" class="form-control" disabled="disabled" name="user.userId" value='${session.user.userId}'/>
 									</td>
 								</tr>
 								<tr>
 									<td>姓名：</td>
 									<td>
-										<input type="text" class="form-control" name="user.name"/>
+										<input type="text" class="form-control" name="user.name" value="${session.user.name}"/>
 									</td>
 								</tr>
 								<tr>
 									<td>性别：</td>
 									<td>
-										<input type="text" class="form-control" name="user.sex"/>
+										<select class="form-control" name="user.sex">
+											<optgroup label="选择性别" >
+											<option value="男" ${session.user.sex=='男'?"selected":""}>男</option>
+											<option value="女" ${session.user.sex=='女'?"selected":""}>女</option>
+											</optgroup>
+										</select>
 									</td>
 								</tr>
 								<tr>
 									<td>学校：</td>
 									<td>
-										<input type="text" class="form-control" name="user.collegeName"/>
+										<input type="text" class="form-control" name="user.collegeName" value="${session.user.name}"/>
 									</td>
 								</tr>
 								<tr>
 									<td>学院：</td>
 									<td>
-										<input type="text" class="form-control" name="user.permission"/>
+										<input type="text" class="form-control" name="user.permission" value="${session.user.permission}"/>
 									</td>
 								</tr>
 								<tr>
 									<td>专业：</td>
 									<td>
-										<input type="text" class="form-control" name="user.profession"/>
+										<input type="text" class="form-control" name="user.profession" value="${session.user.profession}"/>
 									</td>
 								</tr>
 								<tr>
 									<td>邮箱：</td>
 									<td>
-										<input type="text" class="form-control" name="user.email"/>
+										<input type="text" class="form-control" name="user.email" value="${session.user.email}"/>
 									</td>
 								</tr>
 								<tr>
 									<td>电话：</td>
 									<td>
-										<input type="text" onblur="checkPhone()" id="student_phone" class="form-control" name="user.phone"/>
+										<input type="text" onblur="checkPhone()" id="student_phone" class="form-control" name="user.phone" value="${session.user.phone}"/>
 									</td>
 								</tr>
 								
 								<tr>
 									<td>身份证号：</td>
 									<td>
-										<input type="text" onblur="checkIdCard()" id="student_idcard" class="form-control" name="user.idcard"/>
+										<input type="text" onblur="checkIdCard()" id="student_idcard" class="form-control" name="user.idcard" value="${session.user.idcard}" />
 									</td>
 								</tr>
 								
@@ -175,7 +179,7 @@
 								</div>
 								<div class="modal-footer">
 									
-									<button type="button" id="modify-button"class="btn btn-primary" data-dismiss="modal">确认修改
+									<button type="button" id="modify-button" class="btn btn-primary" onclick="modifyInfo()" data-dismiss="modal">确认修改
 									</button>
 									<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 									</button>
@@ -315,8 +319,8 @@ function getPaper(obj){
 				+"<span>"+obj.name+"</span>"
 			+"</div>"
 			+"<div class='paper-body'>"
-				+"<span>总分："+obj.totalScore+"分</span>"
-				+"<span>及格："+obj.totalScore*0.6+"分</span>"
+				+"<span>总分："+(obj.totalScore==0?120:obj.totalScore)+"分</span>"
+				+"<span>及格："+(obj.totalScore==0?120:obj.totalScore)*0.6+"分</span>"
 				+"<span>"+totalTime+"分钟</span>"
 				+"<span id='examend'>"+obj.examStart+" 到 "+obj.examEnd+"</span>"
 			+"</div>"
@@ -344,7 +348,7 @@ function ready(paperSid) {
 
 function startExam() {
 	if(readyPaperSid == -1) {
-		alert("不能重复考试");
+		toastr.error("不能重复考试");
 		return;
 	}
 	location.href="startExam?paper.sid="+readyPaperSid;

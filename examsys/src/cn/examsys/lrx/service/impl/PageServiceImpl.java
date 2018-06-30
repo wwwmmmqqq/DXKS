@@ -88,8 +88,9 @@ public class PageServiceImpl implements PageService {
 		try {
 			type = type==null?"":type;
 			key = key==null?"":key;
-			List<Question> li = dao.findByHql("from Question where userId=? and (type like ? and title like ?)"
-					, new Object[]{sessionUser.getUserId(), "%"+type+"%", "%"+key+"%"}, page);
+			System.out.println(key + "," + type);
+			List<Question> li = dao.findByHql("from Question where userId=? and (type like ? and (title like ? or subjectName like ?))"
+					, new Object[]{sessionUser.getUserId(), "%"+type+"%", "%"+key+"%", "%"+key+"%"}, page);
 			QuestionListTool.fillOptionsFromQuestionList(dao, li);
 			return li;
 		} catch (Exception e) {

@@ -208,7 +208,7 @@
 							        			<tr>
 							        				<td class="choose-sex">
 							        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-							        						<select class="form-control" name="sex" id="administrationSex">
+							        						<select class="hover" name="sex" id="administrationSex">
 							        							<option value="男">男</option>
 							        							<option value="女">女</option>
 							        						</select>
@@ -563,11 +563,11 @@
 									邮箱<div class="tb_information">1770313147@qq.com</div>
 								</td>
 							</tr>  
-							<tr>
+							<!-- <tr>
 								<td >
 									权限<div class="tb_information">能查看答案，不能阅卷</div>
 								</td>
-							</tr> 
+							</tr>  -->
 						</tbody>
 					</table>
 				</div>
@@ -597,24 +597,24 @@
 												<tbody>
 								        			<tr>
 								        				<td >
-								        					用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名<input type="text" class="tb_information " id="administration_userId">
+								        					用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名<input type="text" class="tb_information needs" id="administration_userId">
 								        				</td>
 								        			</tr>
 								        			<tr>			        				
 								        				<td >
-								        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;<input class="tb_information" id="administration_psw">
+								        					密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;<input class="tb_information needs" id="administration_psw">
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
 								        					姓&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_name">
+								        					<input class="tb_information needs" id="administration_name">
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
 								        					性&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_sex">
+								        					<input class="tb_information needs" id="administration_sex">
 								        				</td>
 								        			</tr>
 								        			<tr>
@@ -625,17 +625,17 @@
 								        			</tr>
 								        			<tr>
 								        				<td >
-								        					所属&nbsp;大学&nbsp;<input class="tb_information" id="administration_collegeName">
+								        					所属&nbsp;大学&nbsp;<input class="tb_information needs" id="administration_collegeName">
 								        				</td>
 								        			</tr>
 								        			<tr>
 								        				<td >
 								        					邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;&nbsp;
-								        					<input class="tb_information" id="administration_email">
+								        					<input class="tb_information needs" id="administration_email">
 								        				</td>
 								        			</tr>
 								        			<tr>
-							        				<td >
+							        				<!-- <td >
 							        					权&nbsp;&nbsp;&nbsp;&nbsp;限&nbsp;&nbsp;&nbsp;&nbsp;
 							        					<select class="option" id="administration_permission_answer"> 
 							        						<option>能查看答案</option>
@@ -645,7 +645,7 @@
 							        						<option>能够阅卷</option>
 							        						<option>不能阅卷</option>
 							        					</select>
-							        				</td>
+							        				</td> -->
 							        			</tr>
 												</tbody>
 											</table>
@@ -667,6 +667,23 @@
 		<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 	  <script type="text/javascript" src="js/search.js" ></script>
 	<script type="text/javascript" src="js/admin.js" ></script>
+	
+	<script type="text/javascript">
+	function checkInputs() {
+		var bo = true;
+		$(".needs").each(function(){
+			if(bo) {
+				if($(this).val() == '') {
+					$(this).css({"border":"1px solid red"});
+					bo = false;
+				} else {
+					$(this).css({"border":"1px solid gray"});
+				}
+			}
+		});
+		return bo;
+	}
+	</script>
 	</body>
 	
 </html>

@@ -39,25 +39,143 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 	
 	@Autowired
 	ConstituteService conService;
-	public static void main(String[] args) {
+	
+	//插入组织信息
+	@Test
+	public void test0() {
+		String orgNames[] = new String[]{
+				"怀化市委政法委机关"
+				,"怀化市县市区政委法委"
+				,"怀化市综治维成员单位"
+				,"委领导及处级干部"
+				,"办公室"
+				,"研究室"
+				,"政法舆情应对科"
+				,"政治部"
+				,"机关党委、工会"
+		};
+		int parentIds[] = new int[]{
+				0,0,0,1,1,1,1,1,1
+		};
 		
+		for (int i = 0; i < parentIds.length; i++) {
+			Tableorg org = new Tableorg();
+			org.setOrgName(orgNames[i]);
+			org.setParentId(parentIds[i]);
+			try {
+				daoAdapter.saveEntity(org);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
+	}
+	//插入用户信息
+	@Test
+	public void test4() {
+		Tableuser u1 = new Tableuser();
+		Tableuser u2 = new Tableuser();
+		Tableuser u3 = new Tableuser();
+		
+		u1.setPassword("888888");
+		u1.setRealname("张小斌");
+		u1.setPhonenumber("13034867830");
+		u1.setOrgID(27);
+		u1.setVerion(5);
+		u1.setState(1);
+		u1.setShortnumber1("12345");
+		
+
+		u2.setPassword("888888");
+		u2.setRealname("段高柯");
+		u2.setPhonenumber("130348866666");
+		u2.setOrgID(12);
+		u2.setVerion(5);
+		u2.setState(1);
+		
+		u3.setPassword("888888");
+		u3.setRealname("向晔林");
+		u3.setPhonenumber("13100219189");
+		u3.setOrgID(19);
+		u3.setVerion(5);
+		u3.setState(1);
+		try {
+			daoAdapter.saveEntity(u1);
+			daoAdapter.saveEntity(u2);
+			daoAdapter.saveEntity(u3);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	//在table_user插入一条新记录
+	@Test
+	public void asd() {
+		try {
+			Tableorg o = daoAdapter.findOneByHql("from Tableorg order by RAND() ");
+			Tableuser u = new Tableuser();
+			u.setOrgID(o.getOrgID());
+			u.setRealname("啦啦啦");
+			u.setPassword("8888");
+			dao.saveEntity(u);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * (2)	在table_user中插入记录时
+	 * ，phonenumber1、phonenumber2不能和已有的记录
+	 * phonenumber1和phonenumber2冲突。shortnumber1和shortnumber2也有同样要求。
+	 */
+	@Test
+	public void test_() {
+		Tableuser u = new Tableuser();
+		u.setRealname("asdfasdffas");
+		u.setShortnumber1("231321321");
+		u.setShortnumber2("23423234");
+		u.setPhonenumber("234");
+		u.setPhonenumber2("234234");
+		try {
+			Object tmp = daoAdapter.findOneByHql("from Tableuser where phonenumber=? or phonenumber2=? or shortnumber1=? or shortnumber2=?"
+					, new Object[]{u.getPhonenumber(), u.getPhonenumber2(), u.getShortnumber1(),u.getShortnumber2()});
+			if (tmp == null) {
+				System.out.println("没有冲突");
+				daoAdapter.saveEntity(u);
+				System.out.println("保存成功");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
 	@Test
 	public void teste() {
-		
-		try {
-			List li = daoAdapter.findByHql("select p from Grade g,Paper p where g.userId=? and g.paperRef=p.sid order by g.sid desc" 
-					, new Object[]{"a0"}, 1);
-					
-			System.out.println(li.size());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		/*
+		 * "keys[0]":"type",
+   			"keys[1]":"difficultyValue",
+   			"keys[2]":"subjectRef",
+   			"keys[3]":"title",
+   			"keys[4]":"knowledge",
+		 */
+		List<String> keys = new ArrayList<String>();
+		keys.add("type");
+		keys.add("difficultyValue");
+		keys.add("subjectRef");
+		keys.add("title");
+		keys.add("knowledge");
+		List<String> vals = new ArrayList<String>();
+		vals.add("Single");
+		vals.add("");
+		vals.add("2");
+		vals.add("");
+		vals.add("");
+		User u = new User();
+		u.setUserId("a5");
+		List<Question> li = service.searchQuestionsHandConstitute(u, keys, vals, 1);
+		System.out.println(Arrays.toString(li.toArray()));
 		/*try {
 			List<QuestionCheckVO> li = dao.findByHql("select new cn.examsys.lrx.vo.QuestionCheckVO(q, a, o)"
 					+ " from Constitute c, Answersheet a, Question q, Option o "

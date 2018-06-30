@@ -3,6 +3,12 @@
  * By 雾空 https://github.com/weijhfly/jqueryDatePlugin
  * Time:2017/1/24
 */
+
+$(".mydate").change(function() {
+	var t = $(this).val();
+	$(this).val(t.substring(0, t.length-2) + "00");
+});
+
 (function (factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD

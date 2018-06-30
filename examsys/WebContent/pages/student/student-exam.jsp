@@ -36,7 +36,7 @@
 							</li>
 								<div class="dropdown-content">
 		    			<a href="javascript:setPassword()">修改密码</a>
-		    			<a >退出系统</a>
+		    			<a  href="javascript:Out()">退出系统</a>
 		    		</div>
 						</ul>
 					</div>

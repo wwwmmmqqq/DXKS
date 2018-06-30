@@ -50,7 +50,7 @@
 						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
-				<div class="dropdown task">
+				<%-- <div class="dropdown task">
 					<button class="dropbtn">
 					    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					    				<i class="fa fa-tasks"></i>
@@ -73,7 +73,7 @@
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">考试通知</a>
 					</div>
-				</div>
+				</div> --%>
 
 			</div>
 			<!-- head end -->
@@ -143,16 +143,14 @@
 				<section class="papermanage">
 					<!-- 智能组卷 start-->
 					<div>
-						<input type="text" class="intel form-control" id="title" placeholder="输入试卷标题" />
-						 <input type="text" class="intel form-control mydate" id="startTime" placeholder="输入开始时间" />
-						<input type="text" class="intel form-control mydate" id="endTime" placeholder="输入结束时间" />
-						<select id="subjectSel" class="intel form-control" onchange="loadDiffCounts()">
+						<input type="text" class="intel form-control needs" id="title" placeholder="输入试卷标题" />
+						 <input type="text" class="intel form-control mydate needs" id="startTime" placeholder="输入开始时间" />
+						<input type="text" class="intel form-control mydate needs" id="endTime" placeholder="输入结束时间" />
+						<select id="subjectSel" class="intel form-control needs" onchange="loadDiffCounts()">
 							<optgroup label="选择科目" id="subjectOpts"></optgroup>
 						</select>
-						<select class="intel form-control" id="teacherSels">
-							<optgroup label="指定解答题批改老师"  id="teacherOptions">
-							
-							</optgroup>
+						<select class="intel form-control needs" id="teacherSels">
+							<optgroup label="指定解答题批改老师"  id="teacherOptions"></optgroup>
 						</select>
 					</div>
 						<div class="autocompose">
@@ -253,12 +251,7 @@
 										<div class="tb_information">${session.user.collegeName}</div>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										学院
-										<div class="tb_information">${session.user.department}</div>
-									</td>
-								</tr>
+								
 								<tr>
 									<td>
 										性别
@@ -529,10 +522,15 @@
 				</div>
 			</div>
 		</div>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
-		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="js/toastr.js"></script>
+
 </body>
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="js/toastr.js"></script>
+<script type="text/javascript" src="js/school.js"></script>
+<script type="text/javascript" src="js/inviteSchool.js" ></script>
+
 <script type="text/javascript">
 function getParam(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //匹配目标参数
@@ -651,6 +649,10 @@ function createPaperAutoParams(examRef, subjectRef, name, examStart, examEnd, re
 
 //var newPaperSid = -1;
 $('#submitBtn').bind().click(function() {
+	if(checkInputs() == false) {
+		alert("请填写完整");
+		return false;
+	}
 	var params = createPaperAutoParams(examSid, subjectSel.value, $("#title").val()
 					, $("#startTime").val(), $("#endTime").val(), $("#teacherSels").val());
 	$.post("createPaperAuto", params, function(data) {
@@ -685,15 +687,68 @@ function loadTeachers() {
 	$.post("loadTeachers", null, function(data) {
 		var li = data.list;
 		for(var i=0;i<li.length;i++) {
-			var opt = document.createElement("option");
-			opt.value = li[i].userId;
-			opt.innerText = li[i].name;
-			teacherOptions.appendChild(opt);
+			if(li[i].type == '教师' && li[i].type != '' ) {
+				var opt = document.createElement("option");
+				opt.value = li[i].userId;
+				opt.innerText = li[i].name;
+				teacherOptions.appendChild(opt);
+			}
 		}
 	});
 }
 
 </script>
-<script type="text/javascript" src="js/school.js"></script>
-<script type="text/javascript" src="js/inviteSchool.js" ></script>
+<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
+<script type="text/javascript" src="js/jquery.date.js" ></script>
+<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
+<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
+
+<script type="text/javascript">
+//点击隐藏试题篮
+function basketSlide(){
+	 $("#basketright").slideToggle(100); 
+}
+$.datetimepicker.setLocale('ch');
+$('.mydate').datetimepicker({
+	yearStart : 2018, // 设置最小年份
+	yearEnd : 2030, // 设置最大年份
+	yearOffset : 0, // 年偏差
+	timepicker : true, // 关闭时间选项
+	format : 'Y-m-d h:m', // 格式化日期年-月-日
+	minDate : new Date(), // 设置最小日期
+	maxDate : '2030/01/01', // 设置最大日期
+});
+</script>
+<script type="text/javascript">
+if("${session.user}" == '') {
+	alert("请登录");
+	location.href = '../gy/login.jsp';
+}
+
+function Out() {
+	if(confirm("确定要退出吗？")) {
+		$.post("loginOut",null,function(data) {
+			if(data.result=="成功退出") {
+				location.href="../gy/login.jsp";
+			}
+	  });
+	}  
+}
+
+
+function checkInputs() {
+	var bo = true;
+	$(".needs").each(function(){
+		if(bo) {
+			if($(this).val() == '') {
+				$(this).css({"border":"1px solid red"});
+				bo = false;
+			} else {
+				$(this).css({"border":"none"});
+			}
+		}
+	});
+	return bo;
+}
+</script>
 </html>

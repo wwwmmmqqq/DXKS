@@ -120,12 +120,18 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})
 	public String editUser(){
+		System.out.println(user.getEmail());
 		boolean currentUser=userService.editUser(user);
 		if(!currentUser){
 			setResult("编辑用户失败！");
+		}else{
+			System.out.println("编辑用户成功");
+			setResult("编辑用户成功");
+			getSessionUser().setSex(user.getSex());
 		}
-		System.out.println("编辑用户成功");
-		setResult("编辑用户成功");
+		
+		
+		
 		return aa;
 	}
 	

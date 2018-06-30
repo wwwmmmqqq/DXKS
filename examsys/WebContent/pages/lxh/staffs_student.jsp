@@ -7,17 +7,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="css/satffs_student.css" />
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/font-awesome.min.css" />
-		<link rel="stylesheet" href="css/ionicons.min.css" />
-		<link rel="stylesheet" href="css/inviteSchool.css" />
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<link rel="stylesheet" href="css/toastr.css" />
-		<script type="text/javascript" src="js/toastr.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/satffs_student.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/ionicons.min.css" />
+	<link rel="stylesheet" href="css/inviteSchool.css" />
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="css/toastr.css" />
+	<script type="text/javascript" src="js/toastr.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
-
 	<body>
 		<!--上方导航栏-->
 
@@ -408,13 +407,7 @@
 										<input type="text" onblur="checkPhone()" class="hover form-control" id="student_phone" name="user.phone">
 									</td>
 								</tr>
-								<tr>
-									<td>
-										邮箱&nbsp;
-										<input type="text" onblur="checkEmail()" class="hover form-control" id="student_email" name="user.email">
-									</td>
-								</tr>
-
+								
 							</tbody>
 						</table>
 
@@ -858,7 +851,7 @@
 			//修改模态框显示学生信息
 			
 			$('#student_name').val(user.name);
-			$('#student_sex').find("."+user.sex).attr("checked", "checked");
+			$('#student_sex').val(user.sex);//.find("."+user.sex).attr("checked", "checked");
 			$('#student_userId').val(user.userId);
 			$('#student_collegeName').val(user.collegeName);
 			$('#student_department').val(user.department);
@@ -1069,5 +1062,11 @@
         return true;
       
     }
+</script>
+<script type="text/javascript">
+if("${session.user}" == '') {
+	alert("请登录");
+	location.href = '../gy/login.jsp';
+}
 </script>
 </html>

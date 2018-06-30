@@ -494,36 +494,36 @@
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;编&nbsp;号&nbsp;
-							        	<input type="text" class="hover" readonly="readonly" id="exam_sid">
+							        	<input type="text" class="hover form-control" readonly="readonly" id="exam_sid" >
 							        </td>
 							    </tr>
 							    <tr>
 							        <td >
 							        	考&nbsp;试&nbsp;计&nbsp;划&nbsp;名&nbsp;称&nbsp;
-							        	<input type="text" class="hover" id="exam_title">
+							        	<input type="text" class="hover needs form-control" id="exam_title">
 							        </td>
 							    </tr>
 							    <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;开&nbsp;始&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover" id="exam_periodStart">
+							        	<input type="text" class="hover mydate form-control" id="exam_periodStart">
 							        </td>
 							    </tr>
 							     <tr>			        				
 							        <td >
 							        	
 							        	考&nbsp;试&nbsp;结&nbsp;束&nbsp;时&nbsp;间&nbsp;
-							        	<input type="text" class="hover" id="exam_periodEnd">
+							        	<input type="text" class="hover mydate form-control" id="exam_periodEnd">
 							        </td>
 							     </tr>
-							        <tr>
+							      <!--   <tr>
 							        	<td >
 							        		受&nbsp;&nbsp;&nbsp;&nbsp;邀&nbsp;&nbsp;&nbsp;&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;校&nbsp;&nbsp;
-							        		<input type="text" class="hover" id="exam_invitee">
+							        		<input type="text" class="hover form-control" id="exam_invitee">
 							        	</td>
 							        </tr>
-							       
+							        -->
 							    </tbody>
 							</table> 
 						</div>
@@ -820,8 +820,25 @@ function examPlanInfo(node) {
 		$('#exam_periodStart').val(exam.periodStart);
 		$('#exam_periodEnd').val(exam.periodEnd);
 		$('#exam_invitee').val(exam.invitee);
-	})
+	});
 }	
+
+
+
+function checkInputs() {
+	var bo = true;
+	$(".needs").each(function(){
+		if(bo) {
+			if($(this).val() == '') {
+				$(this).css({"border":"1px solid red"});
+				bo = false;
+			} else {
+				$(this).css({"border":"1px solid gray"});
+			}
+		}
+	});
+	return bo;
+}
  /* function getInfoHtml(obj) {
 	var info ="<tr>"
 	    +"<td>计划编号<div class='tb_information'>"+obj.sid+"</div>"
@@ -868,6 +885,10 @@ function createExamPlan() {
 			})
 }
 function editExamPlan() {
+	if(checkInputs() == false) {
+		alert("请输入完整");
+		return false;
+	}
 	$.post("editExamPlan",
 				{	"exam.sid":$('#exam_sid').val(),
 					"exam.title":$('#exam_title').val(),
@@ -875,9 +896,8 @@ function editExamPlan() {
 					"exam.periodEnd":$('#exam_periodEnd').val(),
 					"exam.invitee":$('#exam_invitee').val(),
 				},function(data) {
-					alert(data.result);
 				  	location.href="test.jsp";
-				
+				  	alert(data.result);
 		  })
 	
 }
@@ -915,6 +935,10 @@ function inviteCollege() {
 	//var college = prompt("添加邀请的学校");
 	//alert(sid + "," + colleges)
 	var college = $("#school-name").val();
+	if(college == 'undefined' || college == '' || college == undefined) {
+		alert("未邀请");
+		return;
+	}
 	if(colleges.indexOf(college)>=0) {
 		alert(college + "已被邀请");
 	} else {
@@ -981,6 +1005,12 @@ $('.mydate').datetimepicker({
 	minDate : new Date(), // 设置最小日期
 	maxDate : '2030/01/01', // 设置最大日期
 });
+</script>
+<script type="text/javascript">
+if("${session.user}" == '') {
+	alert("请登录");
+	location.href = '../gy/login.jsp';
+}
 </script>
 <script type="text/javascript" src="js/test.js" ></script>
 </html>

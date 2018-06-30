@@ -29,9 +29,11 @@ public class Grade {
 	
 	int timeComsuming;//消耗时间 秒
 	
+	@Formula("(select tb.name from subject_tb tb where tb.sid=(select tb.subjectRef from paper_tb tb where tb.sid=paperRef))")
 	String subjectName;
 	
 	int state;//成绩的状态 0:waiting 1:checked
+	
 	
 	public int getState() {
 		return state;
