@@ -6,7 +6,11 @@
 
 $(".mydate").change(function() {
 	var t = $(this).val();
-	$(this).val(t.substring(0, t.length-2) + "00");
+	if(t == '') {
+		$(this).val('');
+	} else {
+		$(this).val(t.substring(0, t.length-2) + "00");
+	}
 });
 
 (function (factory) {

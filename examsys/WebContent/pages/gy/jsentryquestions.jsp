@@ -35,13 +35,13 @@
 					<button class="dropbtn">
 				    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				    				<i class="fa fa-user"></i>
-				    				<span>teacher <i class="caret"></i></span>
+				    				<span>${session.user.name}  <i class="caret"></i></span>
 				    			</a>    		
 				    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="javascript:modifyPassword()" >修改密码</a>
-						<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
+							<a href="javascript:setPassword()">修改密码</a>
+							<a href="#" onclick="Out()" value="退出系统">退出系统</a>
 					</div>
 				</div>
 		
@@ -67,7 +67,7 @@
 						<img class="user1" src="img/1098.jpg" alt="User Image">
 					</div>
 					<div class="info">
-						<p>Hello, teacher</p>
+						<p>Hello, ${session.user.name} </p>
 					</div>
 				</div>
 				<div class="light_bottom">
@@ -458,50 +458,60 @@
             <script>
             
             
-              /* 修改密码 */
-            function modifyPassword(){
-             	var str = '<form id="user_setting" action="">' +
-         		'<table style="width:100%;">' +
-         		'<tbody>' +
-         		'<tr>' +
-         		'<td>旧密码</td>' +
-         		'<td><input type="text"class="form-control" name="oldpwd"/></td>' +
-         		'</tr>' +
-         		'<tr>' +
-         		'<td>新密码</td>' +
-         		'<td><input type="text"class="form-control"name="newpwd"/></td>' +
-         		'</tr>' +
-         		'<tr>' +
-         		'<td>确认密码</td>' +
-         		'<td><input type="text"class="form-control"name="repwd"/></td>' +
-         		'</tr>' +
-         		'</tbody>' +
-         		'</table>' +
-         		'</form>'
-         		$.confirm({
-        	title : '修改密码',
-        	smoothContent : false,
-        	content : str,
-        	buttons : {
-        		deleteUser : {
-        			btnClass : 'btn-blue',
-        			text : '修改',
-        			action : function() {
-        				var oldpwd=$('#user_setting input[name="user.oldpwd"]').val();
-        				var newpwd=$('#user_setting input[name="user.newpwd"]').val();
-        				var repwd=$('#user_setting input[name="user.repwd"]').val();
-        				$.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
-        					toastr.success("密码修改成功");
-        			  })
-        			}
-        		},
-        		cancelAction : {
-        			btnClass : 'btn-default',
-        			text : '取消',
-        		}
-        	}
-        });
-             }
+          //修改密码
+			function setPassword(){
+		   var str = '<form id="user_setting" action="">' +
+			'<table style="width:100%;">' +
+			'<tbody>' +
+			'<tr>' +
+			'<td>旧密码</td>' +
+			'<td><input type="text"class="form-control" name="user.oldpwd"/></td>' +
+			'</tr>' +
+			'<tr>' +
+			'<td>新密码</td>' +
+			'<td><input type="password"class="form-control"name="user.newpwd"/></td>' +
+			'</tr>' +
+			'<tr>' +
+			'<td>确认密码</td>' +
+			'<td><input type="password"class="form-control"name="user.repwd"/></td>' +
+			'</tr>' +
+			'</tbody>' +
+			'</table>' +
+			'</form>'
+			$.confirm({
+		title : '修改密码',
+		smoothContent : false,
+		content : str,
+		buttons : {
+			deleteUser : {
+				btnClass : 'btn-blue',
+				text : '修改',
+				action : function() {
+					var oldpwd=$('#user_setting input[name="user.oldpwd"]').val();
+					var newpwd=$('#user_setting input[name="user.newpwd"]').val();
+					var repwd=$('#user_setting input[name="user.repwd"]').val();
+					if(repwd!=newpwd) {
+						toastr.error("确认密码不正确！");
+						return false;
+					}
+						 $.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
+							if(data.result=="密码修改成功") {
+								toastr.success(data.result);
+							}else{
+								toastr.error(data.result);
+								return false;
+							}
+					  });
+					
+				}
+			},
+			cancelAction : {
+				btnClass : 'btn-default',
+				text : '取消',
+			}
+		}
+	});
+	}
            
         </script>  
         

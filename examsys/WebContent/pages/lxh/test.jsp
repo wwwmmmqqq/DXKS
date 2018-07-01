@@ -131,9 +131,7 @@
 	         
 			   <div class="search_hide" id="hide">
 
-                   <input type="text" class="input_hide1 form-control "  id="name1" placeholder="考试计划名称"/>
-				   <input type="text" class="input_hide form-control mydate" id="userId1"  placeholder="计划时间"/>
-				   <input type="text" class="input_hide form-control" id="userId1"  placeholder="受邀学校"/>
+                   <input type="text" class="input_hide1 form-control "  id="name1" placeholder="关键字模糊搜索"/>
 				  <!--  <input type="text" class="stext hover form-control" name="school" id="school-name" value="请选择大学" onblur="if(this.value==''){this.value='请选择大学'}" onfocus="if(this.value=='请选择大学'){this.value=''}" onclick="pop()" />
 										<div id="choose-box-wrapper">
 											<div id="choose-box">
@@ -147,10 +145,9 @@
 												</div>
 											</div>
 										</div> -->
-				   <button type="button" class="btn right_search" onclick="loadDatas(1)">搜索</button>
-				   <input type="reset" class="btn clean">
+					   <button type="button" class="btn right_search" onclick="search(1)">搜索</button>
+					   <input type="reset" class="btn clean" onclick="name1.value='';search(1);">
 			   </div>
-          
 					
 			
 			<!--表格-->
@@ -730,6 +727,28 @@ var currentPage=1;
 var totalPage=2;
 function loadMyExamList(page) {
 	  $.post("loadMyExamList_jw", {"page":page}, function(data) {
+		  var examList = data.list;
+		  var htm = "";
+		  var ht="";
+		  for(var i=0;i<examList.length;i++) {
+			  //其他信息详见cn.examsys.bean.Exam.java文件
+			  var number=(page-1)*10;
+		      number +=i+1;	
+			  htm +=getItemHtml(i,examList[i],number); 		
+		  }
+		  $('#tplan-list-box').html(htm);		  
+		  for(var j=1;j<=totalPage;j++) {
+				 ht += getLiHtml(j);
+			 }
+			 $('.pagination').html(ht);
+		 		currentPage = page;
+	  });
+}
+
+function search(page) {
+	//搜索的
+	key = $("#name1").val();
+	$.post("loadMyExamListJwSearch", {"page":1, "key":key}, function(data) {
 		  var examList = data.list;
 		  var htm = "";
 		  var ht="";

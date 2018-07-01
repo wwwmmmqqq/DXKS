@@ -26,7 +26,7 @@ public class GradeDaoImpl extends DaoAdapter implements GradeDao {
 	@Override
 	public List<Grade> findAllgrade(int paperRef) {
 		// TODO Auto-generated method stub
-		String hql="from Grade where paperRef=?";
+		String hql="from Grade where paperRef=? order by point desc";
 		try {
 			return findByHql(hql, new Object[]{paperRef});
 		} catch (Exception e) {

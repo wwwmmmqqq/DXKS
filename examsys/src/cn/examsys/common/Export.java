@@ -24,7 +24,7 @@ public class Export {
 		HSSFCellStyle style = wb.createCellStyle();    //创建样式
 		style.setWrapText(true);  
         
-		String[] column = new String[]{"学号","姓名","学院","专业","班级","考试科目","成绩","总排名","本校排名"};
+		String[] column = new String[]{"学号","姓名","学院","专业","班级","考试科目","成绩","总排名"};
 		String[] paper = new String[]{"标题","科目","总时长","总分值","单选题","多选题","填空题","判断题","简答题"};
 		
 		//设置表头
@@ -36,7 +36,7 @@ public class Export {
 			for(int i=0;i<userList.size();i++){
 				row=sheet.createRow(i+1);     //第i行
 				//创建单元格并设置值
-				Object[] user = new Object[]{userList.get(i).getUserId(),userList.get(i).getName(),userList.get(i).getDepartment(),userList.get(i).getProfession(),userList.get(i).getClassroom(),userList.get(i).getGrade().getSubjectName(),userList.get(i).getGrade().getPoint(),"总排名","本校排名"};
+				Object[] user = new Object[]{userList.get(i).getUserId(),userList.get(i).getName(),userList.get(i).getDepartment(),userList.get(i).getProfession(),userList.get(i).getClassroom(),userList.get(i).getGrade().getSubjectName(),userList.get(i).getGrade().getPoint(), i+1};
 				for(int j=0;j<user.length;j++) {
 					row.createCell(j).setCellValue((user[j]+"").toString());    //第i行第j列
 					if(user[j]  instanceof Integer) {

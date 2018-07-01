@@ -44,5 +44,7 @@ public interface ExamService {
 	boolean checkPaperSubmited(User sessionUser, int sid);
 
 	List<Exam> loadMyExamsListJw(User sessionUser, int i);
+
+	List<Exam> loadMyExamsList(User sessionUser, String key, int page);
 	
 }

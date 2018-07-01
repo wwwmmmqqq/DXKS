@@ -349,5 +349,15 @@ public class ExamServiceImpl implements ExamService {
 			return null;
 		}
 	}
+	@Override
+	public List<Exam> loadMyExamsList(User sessionUser, String key, int page) {
+		try {
+			return dao.findByHql("from Exam where invitee like ? or title like ? or periodStart like ? or periodEnd like ?"
+					, new Object[]{"%"+key+"%","%"+key+"%","%"+key+"%","%"+key+"%"}, page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }
