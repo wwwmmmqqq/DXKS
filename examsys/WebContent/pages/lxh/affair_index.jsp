@@ -14,6 +14,7 @@
         <!-- bootstrap 3.0.2 -->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
+        <link rel="stylesheet" href="css/jquery.datetimepicker.css" />
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
         <link rel="stylesheet" href="css/inviteSchool.css" />
@@ -164,19 +165,19 @@
 		    			<form>
 		    				<div class="searchpanel">
 		    					<ul>
-		    						<li id="qtype"><label>科目</label>
-		    							<select>
+		    						<li id="qtype">
+		    							<select  class="hover form-control">
 		    								<option>高等数学</option>
 		    								<option>大学英语</option>
 		    								<option>大学物理</option>
 		    								<option>计算机</option>
 		    							</select>
 		    						</li>	    
-		    						<li id="startTime"><label>开始时间</label>
-		    							<input type="text" id="date3" data-options="{'type':'YYYY-MM-DD hh:mm','beginYear':2010,'endYear':2088}" style="width:166px;">
+		    						<li id="startTime">
+		    							<input type="text"   class="hover form-control mydate" placeholder="开始时间">
 		    						</li>
-		    						<li><label>结束时间</label>
-		    							<input type="text" id="date4" data-options="{'type':'YYYY-MM-DD hh:mm','beginYear':2010,'endYear':2088}" style="width:166px;">
+		    						<li>
+		    							<input type="text" class="mydate hover form-control" placeholder="结束时间">
 		    						</li>
 		    						<li><button type="submit" class="btn btn-default searchbtn"><i class="fa fa-search"></i></button></li>
 		    					</ul>		    					
@@ -904,7 +905,12 @@
 	    
 </body>
 	
-	
+	<script type="text/javascript" src="js/school.js"></script>
+	<script type="text/javascript" src="js/inviteSchool.js" ></script>
+	<script type="text/javascript" src="js/test.js" ></script>
+	<script type="text/javascript" src="js/jquery.date.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
 	<script type="text/javascript" src="js/jquery.date.js" ></script>
 	<script type="text/javascript">
 	
@@ -1017,9 +1023,16 @@ $(document).ready(function() {
     });
 });
 
-$.date('#date3');
-$.date('#date4');
-
+$.datetimepicker.setLocale('ch');
+$('.mydate').datetimepicker({
+	yearStart : 2018, // 设置最小年份
+	yearEnd : 2030, // 设置最大年份
+	yearOffset : 0, // 年偏差
+	timepicker : true, // 关闭时间选项
+	format : 'Y-m-d h:m', // 格式化日期年-月-日
+	minDate : new Date(), // 设置最小日期
+	maxDate : '2030/01/01', // 设置最大日期
+});
 	</script>
 	<script type="text/javascript" src="js/school.js"></script>
 <script type="text/javascript" src="js/inviteSchool.js" ></script>

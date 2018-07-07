@@ -36,16 +36,16 @@
 					<button class="dropbtn">
 				    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				    				<i class="fa fa-user"></i>
-				    				<span>teacher <i class="caret"></i></span>
+				    				<span>${session.user.name} <i class="caret"></i></span>
 				    			</a>    		
 				    	    </button>
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-information">个人中心</a>
-						<a href="javascript:modifyPassword()" >修改密码</a>
-						<a href="#" onclick="myFunction()" value="退出系统">退出系统</a>
+						<a href="javascript:setPassword()" >修改密码</a>
+						<a href="#" onclick="Out()" value="退出系统">退出系统</a>
 					</div>
 				</div>
-		
+		<%-- 
 				<div class="dropdown notice">
 					<button class="dropbtn">
    			    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -57,7 +57,7 @@
 						<a href="#" data-toggle="modal" data-target="#myModal-email">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal_read">阅卷通知</a>
 					</div>
-				</div>
+				</div> --%>
 			</div>
 			<!-- head end -->
 		
@@ -68,7 +68,7 @@
 						<img class="user1" src="img/1098.jpg" alt="User Image">
 					</div>
 					<div class="info">
-						<p>Hello, teacher</p>
+						<p>Hello, ${session.user.name}</p>
 					</div>
 				</div>
 				<div class="light_bottom">
@@ -226,62 +226,63 @@
 						</div>
 
 						<!-- 模态框主体 -->
-						<div class="modal-body">
+						<!-- 模态框主体 -->
+					<div class="modal-body">
 							<table>
-								<tbody>
-									<tr>
-										<td>
-											姓名
-											<div class="tb_information">慕雪</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											工号
-											<div class="tb_information">17001</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											密码
-											<div class="tb_information">123456</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											学校
-											<div class="tb_information">萍乡学院</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											学院
-											<div class="tb_information">信计学院</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											性别
-											<div class="tb_information">女</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											联系方式
-											<div class="tb_information">1770313147</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											邮箱
-											<div class="tb_information">1770313147@qq.com</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+							<tbody>
+								<tr>
+									<td>
+										姓名
+										<div class="tb_information">${session.user.name}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										工号
+										<div class="tb_information">${session.user.userId}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										密码
+										<div class="tb_information">${session.user.psw}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学校
+										<div class="tb_information">${session.user.collegeName}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										学院
+										<div class="tb_information">${session.user.department}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										性别
+										<div class="tb_information">${session.user.sex}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										联系方式
+										<div class="tb_information">${session.user.phone}</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										邮箱
+										<div class="tb_information">${session.user.email}</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 
 						</div>
-
+						
 						<!-- 模态框底部 -->
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary back-information" data-dismiss="modal">关闭</button>
@@ -447,58 +448,63 @@
             		subjectRef.innerHTML = s;
             	});
             }
+            
+            function setPassword(){
+				   var str = '<form id="user_setting" action="">' +
+					'<table style="width:100%;">' +
+					'<tbody>' +
+					'<tr>' +
+					'<td>旧密码</td>' +
+					'<td><input type="text"class="form-control" name="user.oldpwd"/></td>' +
+					'</tr>' +
+					'<tr>' +
+					'<td>新密码</td>' +
+					'<td><input type="password"class="form-control"name="user.newpwd"/></td>' +
+					'</tr>' +
+					'<tr>' +
+					'<td>确认密码</td>' +
+					'<td><input type="password"class="form-control"name="user.repwd"/></td>' +
+					'</tr>' +
+					'</tbody>' +
+					'</table>' +
+					'</form>'
+					$.confirm({
+				title : '修改密码',
+				smoothContent : false,
+				content : str,
+				buttons : {
+					deleteUser : {
+						btnClass : 'btn-blue',
+						text : '修改',
+						action : function() {
+							var oldpwd=$('#user_setting input[name="user.oldpwd"]').val();
+							var newpwd=$('#user_setting input[name="user.newpwd"]').val();
+							var repwd=$('#user_setting input[name="user.repwd"]').val();
+							if(repwd!=newpwd) {
+								toastr.error("确认密码不正确！");
+								return false;
+							}
+								 $.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
+									if(data.result=="密码修改成功") {
+										toastr.success(data.result);
+									}else{
+										toastr.error(data.result);
+										return false;
+									}
+							  });
+							
+						}
+					},
+					cancelAction : {
+						btnClass : 'btn-default',
+						text : '取消',
+					}
+				}
+			});
+			}
             </script>
             
-            <script>
             
-            
-              /* 修改密码 */
-            function modifyPassword(){
-             	var str = '<form id="user_setting" action="">' +
-         		'<table style="width:100%;">' +
-         		'<tbody>' +
-         		'<tr>' +
-         		'<td>旧密码</td>' +
-         		'<td><input type="text"class="form-control" name="oldpwd"/></td>' +
-         		'</tr>' +
-         		'<tr>' +
-         		'<td>新密码</td>' +
-         		'<td><input type="text"class="form-control"name="newpwd"/></td>' +
-         		'</tr>' +
-         		'<tr>' +
-         		'<td>确认密码</td>' +
-         		'<td><input type="text"class="form-control"name="repwd"/></td>' +
-         		'</tr>' +
-         		'</tbody>' +
-         		'</table>' +
-         		'</form>'
-         		$.confirm({
-        	title : '修改密码',
-        	smoothContent : false,
-        	content : str,
-        	buttons : {
-        		deleteUser : {
-        			btnClass : 'btn-blue',
-        			text : '修改',
-        			action : function() {
-        				var oldpwd=$('#user_setting input[name="user.oldpwd"]').val();
-        				var newpwd=$('#user_setting input[name="user.newpwd"]').val();
-        				var repwd=$('#user_setting input[name="user.repwd"]').val();
-        				$.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
-        					toastr.success("密码修改成功");
-        			  })
-        			}
-        		},
-        		cancelAction : {
-        			btnClass : 'btn-default',
-        			text : '取消',
-        		}
-        	}
-        });
-             }
-           
-        </script>  
-        
 	</body>
 	
 </html>

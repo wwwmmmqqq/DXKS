@@ -18,7 +18,7 @@ public abstract class CommonAction extends ActionSupport {
 	protected String aa = "success";
 	
 	public CommonAction() {
-		User user = new User();
+		/*User user = new User();
 		user.setUserId("a2");
 		user.setPsw("123");
 		user.setType("admin");
@@ -26,7 +26,7 @@ public abstract class CommonAction extends ActionSupport {
 		user.setCollegeName("萍乡学院");
 		user.setPermission("");
 		user.setSex("男");
-		saveLogin(user);
+		saveLogin(user);*/
 		
 		session.setAttribute("Time", Tool.time());//服务器时间
 		

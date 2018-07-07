@@ -60,6 +60,7 @@
 		<script type="text/javascript" src="js/toastr.js"></script>
 		<script type="text/javascript">
 		function login() {
+			
 			var Id = $('#userId').val();
 			var password = $('#password').val();
 			//var studentType = $('#student').val();
@@ -70,6 +71,7 @@
 				toastr.warning("请输入信息");
 				return false;
 			} else { 
+				
 				$.post("login",{"user.userId":Id,"user.psw":password},function(data) {
 					var user = data.user;
 				 	if(data.result=="未找到该账号！" ||data.result=="密码错误！" ){

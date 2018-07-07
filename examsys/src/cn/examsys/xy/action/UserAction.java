@@ -180,24 +180,25 @@ public class UserAction extends CommonAction{
 			,results={@Result(type="json")}
 			,params={"contentType","text/html"})
 	public String changePsw() {
-	
-			int u=userService.findUser(getSessionUserId(),user.getPsw());
-			if(u>0) {
-				if(user.getPsw().equals(rePsw)) {
-					setResult("新密码不能与旧密码一致");
-				}else {
-					user.setUserId(getSessionUserId());
-					user.setPsw(rePsw);
-					user.setUserId(getSessionUserId());
-					userService.editUser(user);
-					setResult("密码修改成功");
-				}
+		int u=userService.findUser(getSessionUserId(),user.getPsw());
+		System.out.println("mima:"+u);
+		if(u>0) {
+			if(user.getPsw().equals(rePsw)) {
+				setResult("新密码不能与旧密码一致");
 			}else {
-				setResult("旧密码输入错误");
+				user.setUserId(getSessionUserId());
+				user.setPsw(rePsw);
+				user.setUserId(getSessionUserId());
+				userService.editUser(user);
+				setResult("密码修改成功");
 			}
-		
-		return aa;
-	}
+		}else {
+			setResult("旧密码输入错误");
+		}
+	
+	return aa;
+}
+
 	
 	
 	@Override

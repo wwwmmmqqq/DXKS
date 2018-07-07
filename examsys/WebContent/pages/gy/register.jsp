@@ -47,7 +47,7 @@
 							<input type="password" class="form-control input_password" name="user_psw1" placeholder="确认密码"/>
 						</div>
 						<div class="input_bottom">
-							<input type="text" class="form-control input_password" name="user_email" placeholder="请输入邮箱"/>
+							<input type="text" class="form-control input_password" id="email" name="user_email" placeholder="请输入邮箱"/>
 						</div>
 						
 						<!-- <div class="yzm">
@@ -58,7 +58,7 @@
 						</div> -->
 						
 						<div class="btn_bottom">
-							<button type="button" class="btn btn-primary btn_login" onclick="register_ajax()">注册</button>
+							<button type="button" class="btn btn-primary btn_login" onblur="checkEmail()" onclick="register_ajax()">注册</button>
 						</div>
 					</div>
 				</div>

@@ -18,7 +18,7 @@
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
         <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
-
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css" />
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <!-- Theme style -->
         <link href="css/lxhstyle.css" rel="stylesheet" type="text/css" />
@@ -56,7 +56,7 @@
 						<a href="#" onclick="Out()">退出系统</a>
 					</div>
 				</div>
-				<div class="dropdown task">
+		<%-- 		<div class="dropdown task">
 					<button class="dropbtn">
 							    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							    				<i class="fa fa-tasks"></i>
@@ -79,7 +79,7 @@
 					<div class="dropdown-content">
 						<a href="#" data-toggle="modal" data-target="#myModal-invite-notice">邀请通知</a>
 						<a href="#" data-toggle="modal" data-target="#myModal-exam-notice">考试通知</a>
-					</div>
+					</div> --%>
 				</div>
 		
 			</div>
@@ -113,15 +113,6 @@
 								试卷管理
 							</li> 
 						</a>
-						<li class="side_nav1">
-							<a href="staffs_student.jsp">学生信息管理</a>
-						</li>
-						<li class="side_nav1">
-							<a href="staffs_teacher.jsp">教师信息管理</a>
-						</li>
-						<li class="side_nav1">
-							<a href="affair_index.jsp">试卷管理 </a>
-						</li>
 						<!--  <li class="side_nav1">
 							<a href="affair_hand_volume.jsp">手动组卷</a>
 						</li>
@@ -183,14 +174,12 @@
 		    	
 		    	<div class="papermanage">
 		    		<div class="p_search">
-		    			<label>试卷名称：<input class="from-control" id="paperName" type='text' placeholder="试卷名称"></label>
-		    			<label>考试科目：
-		    				<select id="paperSubject">
-		    					<optgroup label="考试科目" id="paperSubjectGroup"></optgroup>
-		    				</select>
-		    			</label>
-		    			<label>开始时间：<input class="from-control" id="examStart" type='text' placeholder="开始时间"></label>
-		    			<label>结束时间：<input class="from-control" id="examEnd" type='text' placeholder="结束时间"></label>
+		    			<input class="hover form-control" id="paperName" type='text' placeholder="试卷名称">
+	    				<select id="paperSubject" class="hover form-control" >
+	    					<optgroup label="考试科目" id="paperSubjectGroup"></optgroup>
+	    				</select>
+		    			<input class="form-control hover mydate" id="examStart" type='text' placeholder="开始时间">
+		    			<input class="form-control hover mydate" id="examEnd" type='text' placeholder="结束时间">
 		    		</div>
 		    	    <div id="flip"><i class="fa fa-search-minus">
 		    	    </i>条件搜索</div>
@@ -715,7 +704,11 @@
 		<script type="text/javascript" src="js/affair_hand_volume.js" ></script>
 		<script type="text/javascript" src="js/array.js"></script>
 		<script type="text/javascript" src="js/toastr.js"></script>
-	    
+	    <script type="text/javascript" src="js/school.js"></script>
+		<script type="text/javascript" src="js/inviteSchool.js" ></script>
+		<script type="text/javascript" src="js/jquery.date.js" ></script>
+		<script type="text/javascript" src="js/jquery.datetimepicker.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js" ></script>
 <script type="text/javascript">
 		    		var currentPage = 1;
 		    		var questionIds = [];
@@ -1033,8 +1026,19 @@
 	  function basketSlide(){
 		 $("#basketright").slideToggle(100); 
 	  }
+	 
+	  $.datetimepicker.setLocale('ch');
+	  $('.mydate').datetimepicker({
+	  	yearStart : 2018, // 设置最小年份
+	  	yearEnd : 2030, // 设置最大年份
+	  	yearOffset : 0, // 年偏差
+	  	timepicker : true, // 关闭时间选项
+	  	format : 'Y-m-d h:m', // 格式化日期年-月-日
+	  	minDate : new Date(), // 设置最小日期
+	  	maxDate : '2030/01/01', // 设置最大日期
+	  });
+
 	</script>
-	<script type="text/javascript" src="js/school.js"></script>
-<script type="text/javascript" src="js/inviteSchool.js" ></script>
+	
 	</body>
 </html>

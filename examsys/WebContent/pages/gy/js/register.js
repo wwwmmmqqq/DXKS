@@ -1,3 +1,16 @@
+function checkEmail(){    
+	var id = $("#email").val();
+	//焦点移除的时候进行验证
+	var myid =/^\w+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
+	if(!myid.test(id)) {
+        	//如果邮箱的格式与正则的不符合，就提醒
+        	toastr.error("邮箱格式有误");        
+               return false;
+           }
+        return true;
+      
+    }
+
 function register_ajax(){
 	console.log("ajax");
 	var user_name=$("input[name='user_name']").val();
@@ -12,7 +25,9 @@ function register_ajax(){
 		if(user_name==""||user_psw==""||user_email==""||user_psw1==""){
 			alert("请输入信息")
 		}else{
-			
+			if( !checkEmail() ){
+    			return;
+    		}
 			if(user_psw==user_psw1){
 				
 				$.ajax({
@@ -46,3 +61,4 @@ function register_ajax(){
 		}
 		
 }
+
