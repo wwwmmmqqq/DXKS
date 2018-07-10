@@ -25,13 +25,14 @@
 					<img src="img/login.png" class="header_right">
 				</div>
 			</div>
+			
 			<div class="main">
 				<!--<img src="img/login_left.jpg"  class="img_left"/>-->
 				<!--登录-->
 				<div class="title_line">
 					<span class="tit" style="font-size: 38px;">登录</span>
 				</div>
-				
+				<marquee direction="left" style="font-size: 30px;color: gray">最近有点小郁闷(￣﹏￣；)，大概是想你们了。2018-07-02 22:30</marquee>
 				<!--整体-->
 				<div class="login_box clearfix">
 					<div class="login_left">
