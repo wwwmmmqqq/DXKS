@@ -66,7 +66,7 @@
 			//var administrationType = $('#administration').val();
 			//var adminType = $('#admin').val();
 			if (Id=="" || password=="") {
-				toastr.warning("请输入信息");
+				toastr.warning("请将信息输入完整");
 				return false;
 			} else {
 				$.post("login",{"user.userId":Id,"user.psw":password},function(data) {

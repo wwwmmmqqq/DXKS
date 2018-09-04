@@ -14,7 +14,8 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
 		<link href="css/toastr.css" rel="stylesheet" type="text/css" />
-		
+		 <link href="css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+          <link href="css/toastr.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		
@@ -33,6 +34,7 @@
 						</button>
 						<div class="dropdown-content">
 							<a href="#" data-toggle="modal" data-target="#myModal_information">个人中心</a>
+							<a href="javascript:setPassword()">修改密码</a>
 							<a href="#" onclick="Out()">退出系统</a>
 						</div>
 					</div>
@@ -1025,11 +1027,67 @@ $('.mydate').datetimepicker({
 	maxDate : '2030/01/01', // 设置最大日期
 });
 </script>
+<script type="text/javascript" src="js/jquery-confirm.js" ></script>
+		<script type="text/javascript" src="js/toastr.js"></script>
 <script type="text/javascript">
 if("${session.user}" == '') {
 	alert("请登录");
 	location.href = '../gy/login.jsp';
 }
+function setPassword(){
+	   var str = '<form id="user_setting" action="">' +
+		'<table style="width:100%;">' +
+		'<tbody>' +
+		'<tr>' +
+		'<td>旧密码</td>' +
+		'<td><input type="text"class="form-control" name="user.oldpwd"/></td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>新密码</td>' +
+		'<td><input type="password"class="form-control"name="user.newpwd"/></td>' +
+		'</tr>' +
+		'<tr>' +
+		'<td>确认密码</td>' +
+		'<td><input type="password"class="form-control"name="user.repwd"/></td>' +
+		'</tr>' +
+		'</tbody>' +
+		'</table>' +
+		'</form>'
+		$.confirm({
+	title : '修改密码',
+	smoothContent : false,
+	content : str,
+	buttons : {
+		deleteUser : {
+			btnClass : 'btn-blue',
+			text : '修改',
+			action : function() {
+				var oldpwd=$('#user_setting input[name="user.oldpwd"]').val();
+				var newpwd=$('#user_setting input[name="user.newpwd"]').val();
+				var repwd=$('#user_setting input[name="user.repwd"]').val();
+				if(repwd!=newpwd) {
+					toastr.error("确认密码不正确！");
+					return false;
+				}
+					 $.post("changePsw",{"user.psw":oldpwd,"rePsw":newpwd},function(data) {
+						if(data.result=="密码修改成功") {
+							toastr.success(data.result);
+						}else{
+							toastr.error(data.result);
+							return false;
+						}
+				  });
+				
+			}
+		},
+		cancelAction : {
+			btnClass : 'btn-default',
+			text : '取消',
+		}
+	}
+});
+}
+
 </script>
 <script type="text/javascript" src="js/test.js" ></script>
 </html>

@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="css/ionicons.min.css" />
+		<script type="text/javascript" src="js/toastr.js"></script>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script src="js/popper.min.js"></script>
@@ -48,7 +49,7 @@
 							<input type="password" class="form-control input_password" name="user_psw1" placeholder="确认密码"/>
 						</div>
 						<div class="input_bottom">
-							<input type="text" class="form-control input_password" id="email" name="user_email" placeholder="请输入邮箱"/>
+							<input type="text" class="form-control input_password" id="email" name="user_email" placeholder="请输入邮箱" onblur="checkEmail()"/>
 						</div>
 						
 						<!-- <div class="yzm">
@@ -59,7 +60,7 @@
 						</div> -->
 						
 						<div class="btn_bottom">
-							<button type="button" class="btn btn-primary btn_login" onblur="checkEmail()" onclick="register_ajax()">注册</button>
+							<button type="button" class="btn btn-primary btn_login"  onclick="register_ajax()">注册</button>
 						</div>
 					</div>
 				</div>
