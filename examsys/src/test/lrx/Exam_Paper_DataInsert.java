@@ -34,6 +34,10 @@ public class Exam_Paper_DataInsert extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	ConstituteService constitute;
 	
+	public static void main(String[] args) {
+		
+	}
+	
 	@Test
 	public void addSubjectAndColleges() {
 		String colleges[] = new String[]{
